@@ -1,0 +1,15 @@
+.logo {
+  display: inline-block;
+  background: url(../images/logo.svg) no-repeat top left;
+  background-size: contain;
+}
+
+.logo--large {
+  width: 70px;
+  height: 70px;
+}
+
+.logo--small {
+  width: 50px;
+  height: 50px;
+}

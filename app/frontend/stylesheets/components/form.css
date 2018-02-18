@@ -1,0 +1,35 @@
+.form {
+  border-radius: 5px;
+  background: var(--secondaryBackgroundColor);
+  padding: 20px;
+}
+
+.form--global {
+  width: 320px;
+  box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 1px rgba(9, 30, 66, 0.31);
+}
+
+.form--global form {
+  margin-top: 40px;
+}
+
+.form__field {
+  margin-top: 15px;
+}
+
+.form__field--submit {
+  margin-top: 30px;
+}
+
+.form__field label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.form__field input {
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+}

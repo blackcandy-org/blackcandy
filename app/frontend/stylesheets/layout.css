@@ -1,0 +1,11 @@
+.display__full-page-center {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom right, var(--mainColor), var(--mainBackgroundColor));
+}
+
+.display__text-center {
+  text-align: center;
+}

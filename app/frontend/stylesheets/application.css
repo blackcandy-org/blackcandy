@@ -1,3 +1,7 @@
-p {
-  background: red;
-}
+@import 'settings.css';
+@import 'reset.css';
+@import 'layout.css';
+@import 'components/form.css';
+@import 'components/logo.css';
+@import 'components/button.css';
+@import 'components/flash.css';

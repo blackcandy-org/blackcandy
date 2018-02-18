@@ -30,4 +30,5 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  forgot_password: 'Forgot?'
+  sign_up_info: "Don't have an account?"

@@ -48,6 +48,7 @@ GEM
       io-like (~> 0.3.0)
     arel (9.0.0)
     ast (2.4.0)
+    bcrypt (3.1.11)
     bindex (0.5.0)
     bootsnap (1.1.8)
       msgpack (~> 1.0)
@@ -65,8 +66,14 @@ GEM
     chromedriver-helper (1.2.0)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
+    clearance (1.16.1)
+      bcrypt
+      email_validator (~> 1.4)
+      rails (>= 3.1)
     concurrent-ruby (1.0.5)
     crass (1.0.3)
+    email_validator (1.6.0)
+      activemodel
     erubi (1.7.0)
     ffi (1.9.21)
     globalid (0.4.1)
@@ -192,6 +199,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.15)
   chromedriver-helper
+  clearance (~> 1.16.0)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (~> 0.18)

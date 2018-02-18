@@ -13,6 +13,8 @@ import * as ActiveStorage from 'activestorage';
 import { Application } from 'stimulus';
 import { definitionsFromContext } from 'stimulus/webpack-helpers';
 
+import 'normalize.css';
+import 'notie/dist/notie.css';
 import '../stylesheets/application.css';
 
 RailsUjs.start();

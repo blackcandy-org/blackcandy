@@ -1,0 +1,29 @@
+/* override style for notie */
+
+.notie-container {
+  font-size: 1rem;
+}
+
+.notie-textbox {
+  padding: 10px;
+}
+
+.notie-background-success {
+  background: var(--successColor);
+}
+
+.notie-background-warning {
+  background: var(--warningColor);
+}
+
+.notie-background-error {
+  background: var(--errorColor);
+}
+
+.notie-background-info {
+  background: var(--infoColor);
+}
+
+.notie-background-neutral {
+  background: var(--neutralColor);
+}

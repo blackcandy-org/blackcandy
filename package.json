@@ -5,6 +5,8 @@
     "@rails/webpacker": "^3.2.0",
     "action_cable": "^5.0.0-beta3",
     "activestorage": "^0.1.1",
+    "normalize.css": "^8.0.0",
+    "notie": "^4.3.1",
     "rails-ujs": "^5.1.4",
     "stimulus": "^1.0.0",
     "turbolinks": "^5.1.1"

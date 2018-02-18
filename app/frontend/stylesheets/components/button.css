@@ -1,0 +1,15 @@
+.button {
+  border-radius: 4px;
+  border: none;
+  padding: 10px 12px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.button:hover {
+  filter: brightness(.9);
+}
+
+.button--primary {
+  background: var(--mainColor);
+}

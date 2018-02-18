@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BlackCandy</title>
+    <title>Black Candy</title>
     <%= csrf_meta_tags %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,12 @@
   </head>
 
   <body>
+    <% flash.each do |key, value| -%>
+      <div data-controller='flash' data-flash-type='<%= key %>'>
+        <%= h value %>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

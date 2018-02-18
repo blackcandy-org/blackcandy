@@ -1,0 +1,30 @@
+<%= render 'shared/form_global' do %>
+  <%= form_for :session, url: '/sign_in' do |form| %>
+    <div class='form__field'>
+      <%= form.label :email %>
+      <%= form.text_field :email, type: 'email' %>
+    </div>
+
+    <div class='form__field'>
+      <%= form.label :password do %>
+        <span><%= t(:password) %></span>
+        <%= link_to t(:forgot_password), '/reset_password' %>
+      <% end %>
+
+      <%= form.password_field :password %>
+    </div>
+
+    <div class='form__field form__field--submit'>
+      <%= form.submit class: 'button button--primary' %>
+    </div>
+
+    <% if Clearance.configuration.allow_sign_up? %>
+      <div class='form__field display__text-center'>
+        <label>
+          <%= t(:sign_up_info) %>
+          <%= link_to t(:sign_up), '/sign_up' %>
+        </label>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
