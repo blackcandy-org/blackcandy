@@ -15,6 +15,14 @@
       </div>
     <% end %>
 
-    <%= yield %>
+    <% if logged_in? %>
+        <%= render 'layouts/header' %>
+        <%= render 'layouts/container' do %>
+          <%= yield %>
+        <% end %>
+        <%= render 'layouts/footer' %>
+    <% else %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>

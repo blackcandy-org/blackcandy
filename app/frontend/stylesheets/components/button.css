@@ -7,7 +7,7 @@
 }
 
 .button:hover {
-  filter: brightness(.9);
+  filter: brightness(0.9);
 }
 
 .button--primary {

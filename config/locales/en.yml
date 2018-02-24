@@ -30,5 +30,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  forgot_password: 'Forgot?'
-  sign_up_info: "Don't have an account?"
+  label:
+    login: 'Login'
+    logout: 'Logout'
+  error:
+    login: 'Wrong email or password'

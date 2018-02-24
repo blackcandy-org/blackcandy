@@ -5,6 +5,7 @@
     "@rails/webpacker": "^3.2.0",
     "action_cable": "^5.0.0-beta3",
     "activestorage": "^0.1.1",
+    "feather-icons": "^4.6.0",
     "normalize.css": "^8.0.0",
     "notie": "^4.3.1",
     "rails-ujs": "^5.1.4",
@@ -12,6 +13,7 @@
     "turbolinks": "^5.1.1"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.2",
     "eslint": "^4.15.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",

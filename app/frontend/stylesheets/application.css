@@ -1,7 +1,11 @@
 @import 'settings.css';
 @import 'reset.css';
 @import 'layout.css';
+@import 'display.css';
 @import 'components/form.css';
 @import 'components/logo.css';
 @import 'components/button.css';
 @import 'components/flash.css';
+@import 'components/avatar.css';
+@import 'components/nav.css';
+@import 'components/dropdown.css';

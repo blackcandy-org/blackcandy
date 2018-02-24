@@ -4,8 +4,8 @@ html {
 }
 
 *,
-*::before,
-*::after {
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -13,12 +13,4 @@ body {
   background-color: var(--mainBackgroundColor);
   font-family: var(--defaultFontFamily);
   color: var(--mainFontColor);
-}
-
-a {
-  color: var(--secondaryFontColor);
-}
-
-a:hover {
-  filter: brightness(.9);
 }

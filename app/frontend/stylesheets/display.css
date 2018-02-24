@@ -1,0 +1,22 @@
+.display__full-page-center {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom right, var(--mainColor), var(--secondaryBackgroundColor));
+}
+
+.display__text-center {
+  text-align: center;
+}
+
+.display__space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.display__align-center {
+  display: flex;
+  align-items: center;
+}

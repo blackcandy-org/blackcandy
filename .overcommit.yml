@@ -50,9 +50,9 @@ PreCommit:
     enabled: true
     required_executable: './bin/yarn'
     command: ['./bin/yarn', 'run', 'eslint']
-    include: 'app/javascript/**/*.js'
+    include: 'app/frontend/**/*.js'
   StyleLint:
     enabled: true
     description: 'Analyze with StyleLint'
     required_executable: './bin/yarn'
-    command: ['./bin/yarn', 'run', 'stylelint', 'app/javascript/**/*.css']
+    command: ['./bin/yarn', 'run', 'stylelint', 'app/frontend/**/*.css']

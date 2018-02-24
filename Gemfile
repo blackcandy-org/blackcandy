@@ -13,8 +13,8 @@ gem 'puma', '~> 3.11'
 gem 'webpacker'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-# Authentication
-gem 'clearance', '~> 1.16.0'
+# For secure password
+gem 'bcrypt', '~> 3.1.11'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

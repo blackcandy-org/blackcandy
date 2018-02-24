@@ -1,0 +1,8 @@
+.nav {
+  padding: 10px 20px;
+}
+
+.nav__global__title {
+  margin-left: 10px;
+  font-weight: bold;
+}

@@ -1,14 +1,15 @@
 :root {
   --mainColor: rgb(111, 51, 129);
-  --secondaryBackgroundColor: rgb(67, 67, 67);
-  --mainBackgroundColor: rgb(28, 28, 28);
-  --mainFontColor: rgb(255, 255, 251);
-  --secondaryFontColor: rgb(189, 192, 186);
+  --secondaryBackgroundColor: rgb(28, 28, 28);
+  --mainBackgroundColor: rgb(8, 8, 8);
+  --mainFontColor: rgb(255, 255, 255);
+  --secondaryFontColor: rgb(28, 28, 28);
   --successColor: rgb(34, 125, 81);
   --warningColor: rgb(240, 94, 28);
   --errorColor: rgb(203, 27, 69);
   --infoColor: rgb(88, 178, 220);
   --neutralColor: rgb(130, 130, 130);
   --defaultFontSize: 16px;
+  --smallFontSize: 14px;
   --defaultFontFamily: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "Wenquanyi Micro Hei", sans-serif;
 }

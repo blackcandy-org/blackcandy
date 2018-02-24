@@ -13,4 +13,4 @@ export default class extends Controller {
       text: this.element.textContent
     });
   }
-};
+}
