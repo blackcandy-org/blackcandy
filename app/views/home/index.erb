@@ -1,4 +1,19 @@
-<div data-controller='hello'>
-  <input data-target='hello.name' type='text'>
-  <button data-action='hello#greet'>Greet</button>
-</div>
+<ul class='playlist' data-controller='playlist' data-playlist-content=<%= @playlist %>>
+  <% @songs.each_with_index do |song, index| %>
+    <li class='playlist__item display__space-between'
+      data-action='click->playlist#play'
+      data-target='playlist.item'
+      data-playlist-index=<%= index %>>
+      <div class='playlist__item__header display__align-center'>
+        <span data-controller='icon' data-icon-type='play-circle'></span>
+        <div class='playlist__item__info'>
+          <span class='playlist__item__info--name'><%= song.name %></span>
+          <span class='playlist__item__info--artist'><%= song.artist_name %></span>
+        </div>
+      </div>
+      <div class='playlist__item__footer'>
+        <span><%= song.duration %></span>
+      </div>
+    </li>
+  <% end %>
+</ul>

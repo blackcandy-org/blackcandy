@@ -5,12 +5,15 @@
     "@rails/webpacker": "^3.2.0",
     "action_cable": "^5.0.0-beta3",
     "activestorage": "^0.1.1",
+    "babel-polyfill": "^6.26.0",
     "feather-icons": "^4.6.0",
+    "howler": "^2.0.9",
     "normalize.css": "^8.0.0",
     "notie": "^4.3.1",
     "rails-ujs": "^5.1.4",
     "stimulus": "^1.0.0",
-    "turbolinks": "^5.1.1"
+    "turbolinks": "^5.1.1",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",

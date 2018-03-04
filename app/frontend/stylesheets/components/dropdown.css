@@ -15,7 +15,7 @@
   z-index: 1;
   min-width: 100px;
   margin: 15px 0;
-  background: #fff;
+  background: var(--tertiaryBackgroundColor);
   border-radius: 3px;
   font-size: var(--smallFontSize);
 }
@@ -28,19 +28,22 @@
   right: 6px;
   left: auto;
   border: 6px solid transparent;
-  border-bottom-color: #fff;
+  border-bottom-color: var(--tertiaryBackgroundColor);
 }
 
 .dropdown__list__item {
   display: block;
-  padding: 5px 10px;
+  padding: 8px 10px;
   text-decoration: none;
-  color: var(--secondaryFontColor);
+  color: var(--mainFontColor);
 }
 
 .dropdown__list__item:hover {
   background: var(--mainColor);
-  color: #fff;
+}
+
+.dropdown__list__item .icon {
+  margin-right: 10px;
 }
 
 .dropdown--show {

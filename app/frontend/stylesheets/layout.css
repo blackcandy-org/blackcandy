@@ -5,6 +5,7 @@
 .container {
   height: calc(100vh - 100px);
   background: var(--secondaryBackgroundColor);
+  padding: 10px;
 }
 
 .footer {

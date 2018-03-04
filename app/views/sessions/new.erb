@@ -3,7 +3,7 @@
     <div class='display__text-center'>
       <span class='logo logo--large'></span>
     </div>
-    <%= form_for :session, url: login_path do |form| %>
+    <%= form_with scope: :session, url: login_path, local: true do |form| %>
       <div class='form__field'>
         <%= form.label :email %>
         <%= form.text_field :email, type: 'email' %>

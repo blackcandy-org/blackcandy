@@ -1,6 +1,7 @@
 {
   "extends": "stylelint-config-standard",
   "rules": {
-    "selector-pseudo-element-colon-notation": "single"
+    "selector-pseudo-element-colon-notation": "single",
+    "custom-property-empty-line-before": null
   }
 }

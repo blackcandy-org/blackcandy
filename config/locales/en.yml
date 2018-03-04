@@ -33,5 +33,9 @@ en:
   label:
     login: 'Login'
     logout: 'Logout'
+    upload: 'Upload'
   error:
     login: 'Wrong email or password'
+  default:
+    album_name: 'Untitled Album'
+    artist_name: 'Untitled Artist'

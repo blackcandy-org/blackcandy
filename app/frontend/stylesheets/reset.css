@@ -14,3 +14,7 @@ body {
   font-family: var(--defaultFontFamily);
   color: var(--mainFontColor);
 }
+
+.turbolinks-progress-bar {
+  background-color: var(--mainBackgroundColor);
+}

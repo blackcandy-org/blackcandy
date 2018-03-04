@@ -4,9 +4,10 @@ class User < ApplicationRecord
   before_create :downcase_email
 
   validates :email, presence: true, format: { with: VALID_EMAIL }, uniqueness: true
-  validates :password, presence: true, length: { minimum: 6 }, on: :create
+  validates :password, presence: true, length: { minimum: 6 }
 
   has_secure_password
+  has_many :songs, dependent: :destroy
 
   private
 

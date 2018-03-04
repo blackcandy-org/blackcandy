@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+
+  resources :songs, only: [:index, :new, :show, :create, :destroy]
 end

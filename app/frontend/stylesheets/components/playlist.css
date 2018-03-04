@@ -1,0 +1,37 @@
+.playlist {
+  overflow-y: auto;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  margin: auto;
+  padding: 0;
+  max-width: 600px;
+}
+
+.playlist__item {
+  padding: 13px;
+  border-bottom: 1px solid #222;
+  cursor: pointer;
+}
+
+.playlist__item__info {
+  margin: 0 10px;
+}
+
+.playlist__item__info--artist {
+  margin-left: 8px;
+  color: var(--tertiaryFontColor);
+}
+
+.playlist__item__footer {
+  color: var(--tertiaryFontColor);
+  font-size: var(--smallFontSize);
+}
+
+.playlist__item:hover {
+  background: var(--mainColor);
+}
+
+.playlist__item--current {
+  background: var(--mainColor);
+}

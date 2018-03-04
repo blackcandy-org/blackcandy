@@ -16,6 +16,7 @@ module.exports = {
     "default-case": "off"
   },
   "globals": {
-    "document": true
+    "document": true,
+    "fetch": true
   }
 };

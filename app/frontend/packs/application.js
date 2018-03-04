@@ -13,6 +13,9 @@ import * as ActiveStorage from 'activestorage';
 import { Application } from 'stimulus';
 import { definitionsFromContext } from 'stimulus/webpack-helpers';
 
+import 'babel-polyfill';
+import 'whatwg-fetch';
+
 import 'normalize.css';
 import 'notie/dist/notie.css';
 import '../stylesheets/application.css';
@@ -22,6 +25,6 @@ Turbolinks.start();
 ActiveStorage.start();
 
 const application = Application.start();
-const controllers = require.context('../controllers', true, /\.js$/);
+const controllers = require.context('../javascripts/controllers', true, /\.js$/);
 
 application.load(definitionsFromContext(controllers));

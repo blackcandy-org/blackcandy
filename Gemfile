@@ -15,6 +15,10 @@ gem 'webpacker'
 gem 'jbuilder', '~> 2.5'
 # For secure password
 gem 'bcrypt', '~> 3.1.11'
+# Get mp3 file info
+gem 'ruby-mp3info', '~> 0.8.10'
+# Get album and artist info from spotify
+gem 'rspotify', '~> 2.0.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

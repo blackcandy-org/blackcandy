@@ -11,7 +11,14 @@
           <span data-controller='icon' data-icon-type='chevron-down'></span>
         </div>
         <ul data-target='dropdown.list' class='dropdown__list'>
-          <%= link_to t('label.logout'), logout_path, class: 'dropdown__list__item', method: :delete %></li>
+          <%= link_to new_song_path, class: 'dropdown__list__item display__align-center' do %>
+            <span data-controller='icon' data-icon-type='upload'></span>
+            <span><%= t('label.upload') %></span>
+          <% end %>
+          <%= link_to logout_path, class: 'dropdown__list__item display__align-center', method: :delete do %>
+            <span data-controller='icon' data-icon-type='power'></span>
+            <span><%= t('label.logout') %></span>
+          <% end %>
         </ul>
       </div>
     </div>
