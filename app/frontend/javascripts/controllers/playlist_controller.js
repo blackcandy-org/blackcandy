@@ -1,17 +1,12 @@
 import { Controller } from 'stimulus';
-import Player from '../player';
 
 export default class extends Controller {
   static targets = ['item'];
 
-  connect() {
-    this.player = new Player(JSON.parse(this.data.get('content')));
-  }
-
   play(event) {
     const playlistIndex = parseInt(event.currentTarget.dataset.playlistIndex, 10);
 
-    this.player.play(playlistIndex);
+    this.playerController.player.play(playlistIndex);
     this.showCurrentItem(playlistIndex);
   }
 
@@ -19,5 +14,14 @@ export default class extends Controller {
     this.itemTargets.forEach((element, index) => {
       element.classList.toggle('playlist__item--current', playlistIndex == index);
     });
+  }
+
+  get playlistContent() {
+    return JSON.parse(this.data.get('content'));
+  }
+
+  get playerController() {
+    const player = document.querySelector('#js-player');
+    return this.application.getControllerForElementAndIdentifier(player, 'player');
   }
 }

@@ -20,3 +20,17 @@
   display: flex !important;
   align-items: center;
 }
+
+.display__justify-align-center {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.display__full-height {
+  height: 100%;
+}
+
+.display__full-width {
+  width: 100%;
+}

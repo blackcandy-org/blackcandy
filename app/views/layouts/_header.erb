@@ -8,15 +8,15 @@
       <div data-controller='dropdown' class='dropdown'>
         <div class='display__align-center' data-target='dropdown.trigger' data-action='click->dropdown#showDropdown'>
           <%= avatar(current_user, class: 'dropdown__trigger') %>
-          <span data-controller='icon' data-icon-type='chevron-down'></span>
+          <span data-controller='icon' data-icon-type='chevron-down' class='icon'></span>
         </div>
         <ul data-target='dropdown.list' class='dropdown__list'>
           <%= link_to new_song_path, class: 'dropdown__list__item display__align-center' do %>
-            <span data-controller='icon' data-icon-type='upload'></span>
+            <span data-controller='icon' data-icon-type='upload' class='icon'></span>
             <span><%= t('label.upload') %></span>
           <% end %>
           <%= link_to logout_path, class: 'dropdown__list__item display__align-center', method: :delete do %>
-            <span data-controller='icon' data-icon-type='power'></span>
+            <span data-controller='icon' data-icon-type='power' class='icon'></span>
             <span><%= t('label.logout') %></span>
           <% end %>
         </ul>

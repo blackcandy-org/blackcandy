@@ -3,12 +3,12 @@
 }
 
 .container {
-  height: calc(100vh - 100px);
+  height: calc(100vh - 110px);
   background: var(--secondaryBackgroundColor);
   padding: 10px;
 }
 
 .footer {
-  height: 50px;
+  height: 60px;
 }
 

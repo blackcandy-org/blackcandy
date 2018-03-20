@@ -17,6 +17,9 @@ module.exports = {
   },
   "globals": {
     "document": true,
-    "fetch": true
+    "fetch": true,
+    "window": true,
+    "localStorage": true,
+    "Event": true
   }
 };
