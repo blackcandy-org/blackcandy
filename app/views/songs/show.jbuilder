@@ -1,2 +1,3 @@
-json.(@song, :id, :album_name, :artist_name)
-json.url @song.media.service_url
+json.(@song, :id, :name, :artist_name, :length)
+json.url url_for(@song.media)
+json.album_image_url @song.album.image_url

@@ -7,7 +7,6 @@
 }
 
 .dropdown__list {
-  display: none;
   position: absolute;
   right: 20px;
   list-style: none;
@@ -44,8 +43,4 @@
 
 .dropdown__list__item .icon {
   margin-right: 10px;
-}
-
-.dropdown--show {
-  display: block;
 }

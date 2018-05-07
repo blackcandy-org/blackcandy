@@ -2,7 +2,7 @@
   "name": "black_candy",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "^3.2.0",
+    "@rails/webpacker": "3.4",
     "action_cable": "^5.0.0-beta3",
     "activestorage": "^0.1.1",
     "babel-polyfill": "^6.26.0",
@@ -22,6 +22,6 @@
     "eslint-plugin-import": "^2.8.0",
     "stylelint": "^8.4.0",
     "stylelint-config-standard": "^18.0.0",
-    "webpack-dev-server": "^2.11.0"
+    "webpack-dev-server": "2.11.2"
   }
 }

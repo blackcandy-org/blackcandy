@@ -3,7 +3,7 @@ import notie from 'notie';
 
 export default class extends Controller {
   connect() {
-    this.element.style.display = 'none';
+    this.element.classList.add('hidden');
 
     const types = ['success', 'warning', 'error', 'info', 'neutral'];
     const type = this.data.get('type');

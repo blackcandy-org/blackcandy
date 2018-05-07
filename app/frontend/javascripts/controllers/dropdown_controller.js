@@ -6,12 +6,12 @@ export default class extends Controller {
   showDropdown() {
     const closeDropdown = (event) => {
       if (event.target.parentNode !== this.triggerTarget) {
-        this.listTarget.classList.remove('dropdown--show');
+        this.listTarget.classList.add('hidden');
         document.removeEventListener('click', closeDropdown);
       }
     };
 
-    this.listTarget.classList.add('dropdown--show');
+    this.listTarget.classList.remove('hidden');
     document.addEventListener('click', closeDropdown);
   }
 }

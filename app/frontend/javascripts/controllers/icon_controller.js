@@ -3,10 +3,10 @@ import feather from 'feather-icons';
 
 export default class extends Controller {
   connect() {
-    const iconType = this.data.get('type');
+    const type = this.data.get('type');
     const elementClass = this.element.className;
 
-    this.element.outerHTML = feather.icons[iconType].toSvg({
+    this.element.outerHTML = feather.icons[type].toSvg({
       class: elementClass
     });
   }

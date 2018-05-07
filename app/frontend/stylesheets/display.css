@@ -21,6 +21,11 @@
   align-items: center;
 }
 
+.display__align-baseline {
+  display: flex !important;
+  align-items: baseline;
+}
+
 .display__justify-align-center {
   display: flex !important;
   align-items: center;

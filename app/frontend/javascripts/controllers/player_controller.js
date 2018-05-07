@@ -1,26 +1,38 @@
 import { Controller } from 'stimulus';
+
 import Player from '../player';
+import { formatDuration } from '../helper';
 
 const defaultVolume = 0.5;
+const defaultAlbumImage = '/images/default_album.png';
 
 export default class extends Controller {
-  static targets = ['mainButton', 'volumeInput'];
+  static targets = [
+    'info',
+    'mainButton',
+    'volume',
+    'albumImage',
+    'songName',
+    'artistName',
+    'songDuration',
+    'songTimer',
+    'progress'
+  ];
 
-  connect() {
+  initialize() {
     this.player = new Player(this.playlistController.playlistContent);
 
     this.player.onplay = () => {
-      this.mainButtonTarget.classList.add('player__control__main--playing');
-      this.playlistController.showCurrentItem(this.currentIndex);
+      this._setPlayingStatus();
     };
 
     this.player.onpause = () => {
-      this.mainButtonTarget.classList.remove('player__control__main--playing');
+      this._setPauseStatus();
     };
 
-    this.volumeInputTarget.value = localStorage.getItem('volume') || defaultVolume;
+    this.volumeTarget.value = localStorage.getItem('volume') || defaultVolume;
     // dispatch change event on player volume input.
-    this.volumeInputTarget.dispatchEvent(new Event('change'));
+    this.volumeTarget.dispatchEvent(new Event('change'));
   }
 
   togglePlay() {
@@ -50,5 +62,37 @@ export default class extends Controller {
 
   get currentIndex() {
     return this.player.currentIndex;
+  }
+
+  get currentSong() {
+    return this.player.currentSong;
+  }
+
+  _setPlayingStatus() {
+    this.infoTarget.classList.remove('hidden');
+    this.mainButtonTarget.classList.add('playing');
+
+    this.albumImageTarget.src = this.currentSong.album_image_url || defaultAlbumImage;
+    this.songNameTarget.textContent = this.currentSong.name;
+    this.artistNameTarget.textContent = this.currentSong.artist_name;
+    this.songDurationTarget.textContent = formatDuration(this.currentSong.length);
+
+    window.requestAnimationFrame(this._setProgress.bind(this));
+    this.playlistController.showCurrentItem(this.currentIndex);
+  }
+
+  _setPauseStatus() {
+    this.mainButtonTarget.classList.remove('playing');
+  }
+
+  _setProgress() {
+    const seek = this.currentSong.howl.seek();
+
+    this.songTimerTarget.textContent = formatDuration(seek);
+    this.progressTarget.value = (seek / this.currentSong.length) * 100 || 0;
+
+    if (this.player.isPlaying()) {
+      window.requestAnimationFrame(this._setProgress.bind(this));
+    }
   }
 }

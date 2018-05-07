@@ -10,7 +10,7 @@
           <%= avatar(current_user, class: 'dropdown__trigger') %>
           <span data-controller='icon' data-icon-type='chevron-down' class='icon'></span>
         </div>
-        <ul data-target='dropdown.list' class='dropdown__list'>
+        <ul data-target='dropdown.list' class='dropdown__list hidden'>
           <%= link_to new_song_path, class: 'dropdown__list__item display__align-center' do %>
             <span data-controller='icon' data-icon-type='upload' class='icon'></span>
             <span><%= t('label.upload') %></span>

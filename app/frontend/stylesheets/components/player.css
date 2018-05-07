@@ -11,20 +11,12 @@
   display: none;
 }
 
-.player__control__main--playing .player__control__pause-button {
+.playing .player__control__pause-button {
   display: inline-block;
 }
 
-.player__control__main--playing .player__control__play-button {
+.playing .player__control__play-button {
   display: none;
-}
-
-.player__info {
-  display: none;
-}
-
-.player__info--show {
-  display: block;
 }
 
 .player__info__image {
@@ -34,6 +26,22 @@
 .player__info__image img {
   width: 40px;
   height: 40px;
+}
+
+.player__info__artist-name {
+  font-size: 14px;
+  margin-left: 15px;
+  color: var(--tertiaryFontColor);
+}
+
+.player__info__song-duration,
+.player__info__song-timer {
+  font-size: 14px;
+  margin: 0 10px;
+}
+
+.player__info__song-duration {
+  color: var(--tertiaryFontColor);
 }
 
 .player__setting__volume {
