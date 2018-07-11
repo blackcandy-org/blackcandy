@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_01_062649) do
+ActiveRecord::Schema.define(version: 2018_07_05_063404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,42 +38,47 @@ ActiveRecord::Schema.define(version: 2018_03_01_062649) do
 
   create_table "albums", force: :cascade do |t|
     t.string "name", null: false
-    t.string "artist_name"
     t.integer "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_url"
-    t.string "spotify_id"
     t.index ["artist_id"], name: "index_albums_on_artist_id"
-    t.index ["spotify_id"], name: "index_albums_on_spotify_id"
   end
 
   create_table "artists", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "spotify_id"
-    t.string "image_url"
-    t.index ["spotify_id"], name: "index_artists_on_spotify_id"
+    t.index ["name"], name: "index_artists_on_name", unique: true
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.string "var", null: false
+    t.text "value"
+    t.integer "thing_id"
+    t.string "thing_type", limit: 30
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["thing_type", "thing_id", "var"], name: "index_settings_on_thing_type_and_thing_id_and_var", unique: true
   end
 
   create_table "songs", force: :cascade do |t|
     t.string "name", null: false
-    t.string "album_name", null: false
-    t.string "artist_name", null: false
+    t.string "file_path", null: false
+    t.string "md5_hash", null: false
     t.float "length", default: 0.0, null: false
     t.integer "tracknum"
-    t.integer "user_id", null: false
     t.integer "album_id"
+    t.integer "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["album_id"], name: "index_songs_on_album_id"
-    t.index ["user_id"], name: "index_songs_on_user_id"
+    t.index ["artist_id"], name: "index_songs_on_artist_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "password_digest", null: false
+    t.boolean "is_admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

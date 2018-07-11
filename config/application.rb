@@ -27,6 +27,6 @@ module BlackCandy
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    RSpotify::authenticate(ENV['SPOTIFY_CLIENT_ID'], ENV['SPOTIFY_CLIENT_SECRET'])
+    config.active_job.queue_adapter = :sidekiq
   end
 end

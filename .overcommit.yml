@@ -41,11 +41,6 @@ PreCommit:
   RuboCop:
     enabled: true
     command: ['bundle', 'exec', 'rubocop']
-    exclude:
-      - 'vendor/**/*'
-      - 'Gemfile'
-      - 'db/**/*'
-      - 'config/**/*'
   EsLint:
     enabled: true
     required_executable: './bin/yarn'

@@ -4,5 +4,7 @@ class CreateArtists < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.timestamps null: false
     end
+
+    add_index :artists, :name, unique: true
   end
 end

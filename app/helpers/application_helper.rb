@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def avatar(user, options = {})
     options[:class] = "#{options[:class]} avatar"

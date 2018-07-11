@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   before_action :find_user, only: [:create]
 
@@ -24,7 +26,7 @@ class SessionsController < ApplicationController
 
   private
 
-  def find_user
-    @user = User.find_by(email: params[:session][:email].downcase)
-  end
+    def find_user
+      @user = User.find_by(email: params[:session][:email].downcase)
+    end
 end

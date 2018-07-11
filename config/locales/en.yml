@@ -33,7 +33,7 @@ en:
   label:
     login: 'Login'
     logout: 'Logout'
-    upload: 'Upload'
+    users: 'Users'
   error:
     login: 'Wrong email or password'
   default:

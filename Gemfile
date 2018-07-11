@@ -13,16 +13,18 @@ gem 'puma', '~> 3.11'
 gem 'webpacker', '~> 3.4.3'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-# For secure password
+# Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.11'
-# Get mp3 file info
-gem 'ruby-mp3info', '~> 0.8.10'
+# Get meta data from audio file
+gem 'taglib-ruby', '~> 0.7.1'
 # Get album and artist info from spotify
 gem 'rspotify', '~> 2.0.0'
+# For settings
+gem 'rails-settings-cached', '~> 0.7.1'
+# Use sidekiq for backgroud job
+gem 'sidekiq', '~> 5.1.3'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

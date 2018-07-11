@@ -1,24 +1,29 @@
+# frozen_string_literal: true
+
 class Album < ApplicationRecord
-  include SpotifyApi
+  DEFAULT_NAME = 'Unknown Album'
+
+  validates :name, presence: true
+  validates :name, uniqueness: { scope: :artist }
 
   has_many :songs, dependent: :destroy
   belongs_to :artist
 
-  def self.create_or_find_from_song(song)
-    album_info = get_spotify_info(song)
+  has_one_attached :image
 
-    if album_info.present?
-      find_or_create_by(spotify_id: album_info[:spotify_id]) do |item|
-        item.name = album_info[:name]
-        item.artist_name = album_info[:artist_name]
-        item.image_url = album_info[:image_url]
-      end
-    else
-      find_or_create_by(name: song.album_name)
-    end
+  def has_image?
+    image.attached?
   end
 
-  def add_song(song)
-    song.album_id = id if song.album_id.blank?
+  def self.attach_image(album_id, file_path)
+    album = find_by(id: album_id)
+    file_image = MediaFile.image(file_path)
+
+    return unless album && file_image.present?
+
+    album.image.attach(
+      io: StringIO.new(file_image),
+      filename: 'cover'
+    )
   end
 end
