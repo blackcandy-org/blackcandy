@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
     return unless logged_in?
 
     session.delete(:user_id)
-    redirect_to login_path
+    redirect_to new_session_path
   end
 
   private

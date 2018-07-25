@@ -15,7 +15,7 @@
             <span data-controller='icon' data-icon-type='users' class='icon'></span>
             <span><%= t('label.users') %></span>
           <% end %>
-          <%= link_to logout_path, class: 'dropdown__list__item display__align-center', method: :delete do %>
+          <%= link_to session_path, class: 'dropdown__list__item display__align-center', method: :delete do %>
             <span data-controller='icon' data-icon-type='power' class='icon'></span>
             <span><%= t('label.logout') %></span>
           <% end %>

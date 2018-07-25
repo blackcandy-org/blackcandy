@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def require_login
-    redirect_to login_path unless logged_in?
+    redirect_to new_session_path unless logged_in?
   end
 
   def require_admin
