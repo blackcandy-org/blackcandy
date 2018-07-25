@@ -17,7 +17,9 @@ async function fetchSong(id) {
 
 Player.prototype = {
   async play(currentIndex) {
-    const song = this.playlist[currentIndex];
+    const song = {
+      id: this.playlist[currentIndex]
+    };
 
     if (!song.howl) {
       const data = await fetchSong(song.id);

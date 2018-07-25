@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-json.(@song, :id, :name, :artist_name, :length)
-json.url url_for(@song.media)
-json.album_image_url @song.album.image_url
+json.(@song, :id, :name, :length)
+json.url new_stream_path(song_id: @song.id)
+# json.album_image_url url_for(@song.album.image)

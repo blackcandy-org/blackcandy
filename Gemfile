@@ -27,7 +27,7 @@ gem 'sidekiq', '~> 5.1.3'
 # gem 'redis', '~> 4.0'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -53,6 +53,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop', '~> 0.52.1', require: false
+  gem 'memory_profiler'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

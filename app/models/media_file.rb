@@ -28,13 +28,17 @@ class MediaFile
       Dir.glob("#{Setting.media_path}/**/*.{#{SUPPORT_FORMATE.join(',')}}", File::FNM_CASEFOLD)
     end
 
+    def format(file_path)
+      File.extname(file_path).downcase.delete('.')
+    end
+
     def image(file_path)
-      case File.extname(file_path).downcase
-      when /\A(\.mp3|\.m4a)\z/
+      case format(file_path)
+      when /\A(mp3|m4a)\z/
         get_image_from_mpeg_file(file_path)
-      when '.flac'
+      when 'flac'
         get_image_from_flac_file(file_path)
-      when '.wav'
+      when 'wav'
         get_image_from_wav_file(file_path)
       else
         false
@@ -62,6 +66,7 @@ class MediaFile
       end
 
       def get_image_from_tag(tag)
+        return unless tag
         tag.frame_list('APIC').first&.picture
       end
   end

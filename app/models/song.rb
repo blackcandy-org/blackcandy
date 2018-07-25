@@ -15,4 +15,8 @@ class Song < ApplicationRecord
       time.round.to_s.rjust(2, '0')
     end.join(':')
   end
+
+  def format
+    MediaFile.format(file_path)
+  end
 end

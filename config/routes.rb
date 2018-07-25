@@ -7,4 +7,5 @@ Rails.application.routes.draw do
 
   resources :songs, only: [:index, :new, :show, :create, :destroy]
   resources :users
+  resources :stream, only: [:new]
 end
