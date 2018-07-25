@@ -3,11 +3,19 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
-  def require_login
-    redirect_to new_session_path unless logged_in?
-  end
+  before_action :find_current_user
 
-  def require_admin
-    head :forbidden unless is_admin?
-  end
+  private
+
+    def find_current_user
+      Current.user = User.find_by(id: session[:user_id])
+    end
+
+    def require_login
+      redirect_to new_session_path unless logged_in?
+    end
+
+    def require_admin
+      head :forbidden unless is_admin?
+    end
 end

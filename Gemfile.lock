@@ -52,6 +52,7 @@ GEM
     bindex (0.5.0)
     bootsnap (1.3.0)
       msgpack (~> 1.0)
+    brakeman (4.3.1)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (2.18.0)
@@ -241,6 +242,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.11)
   bootsnap (>= 1.1.0)
+  brakeman
   byebug
   capybara (~> 2.15)
   chromedriver-helper

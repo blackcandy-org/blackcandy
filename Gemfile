@@ -53,7 +53,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop', '~> 0.52.1', require: false
-  gem 'memory_profiler'
+  # Security vulnerability scanner
+  gem 'brakeman', require: false
+  gem 'memory_profiler', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
