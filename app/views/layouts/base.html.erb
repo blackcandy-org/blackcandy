@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Black Candy</title>
+    <%= csrf_meta_tags %>
+
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div id='js-flash'>
+      <%= render 'shared/flash' %>
+    </div>
+    <%= content_for?(:body) ? yield(:body) : yield %>
+  </body>
+</html>

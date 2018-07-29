@@ -1,28 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Black Candy</title>
-    <%= csrf_meta_tags %>
+<% content_for :body do %>
+  <%= render 'layouts/header' %>
+  <%= render 'layouts/container' do %>
+    <%= yield %>
+  <% end %>
+  <%= render 'layouts/footer' %>
+<% end %>
 
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <% flash.each do |key, value| -%>
-      <div data-controller='flash' data-flash-type='<%= key %>'>
-        <%= h value %>
-      </div>
-    <% end %>
-
-    <% if logged_in? %>
-        <%= render 'layouts/header' %>
-        <%= render 'layouts/container' do %>
-          <%= yield %>
-        <% end %>
-        <%= render 'layouts/footer' %>
-    <% else %>
-      <%= yield %>
-    <% end %>
-  </body>
-</html>
+<%= render template: 'layouts/base' %>

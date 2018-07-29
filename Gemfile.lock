@@ -215,6 +215,9 @@ GEM
     taglib-ruby (0.7.1)
     thor (0.20.0)
     thread_safe (0.3.6)
+    turbolinks (5.1.1)
+      turbolinks-source (~> 5.1)
+    turbolinks-source (5.1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     unf (0.1.4)
@@ -261,6 +264,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   taglib-ruby (~> 0.7.1)
+  turbolinks
   tzinfo-data
   web-console (>= 3.3.0)
   webpacker (~> 3.4.3)

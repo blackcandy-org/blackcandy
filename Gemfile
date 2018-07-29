@@ -23,6 +23,8 @@ gem 'rspotify', '~> 2.0.0'
 gem 'rails-settings-cached', '~> 0.7.1'
 # Use sidekiq for backgroud job
 gem 'sidekiq', '~> 5.1.3'
+# Server-side support for Turbolinks redirection
+gem 'turbolinks'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 
