@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
   layout 'base'
 
   def new
-    # redirect_to new_user_path unless User.any?
     redirect_to root_path if logged_in?
   end
 

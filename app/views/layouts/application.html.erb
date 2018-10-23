@@ -1,9 +1,10 @@
 <% content_for :body do %>
-  <%= render 'layouts/header' %>
-  <%= render 'layouts/container' do %>
-    <%= yield %>
-  <% end %>
-  <%= render 'layouts/footer' %>
+  <div class='wrapper'>
+    <%= render 'layouts/sidebar' %>
+    <%= render 'layouts/main' do %>
+      <%= yield %>
+    <% end %>
+  </div>
 <% end %>
 
 <%= render template: 'layouts/base' %>

@@ -1,14 +1,12 @@
-.header {
-  height: 50px;
+.wrapper {
+  display: flex;
 }
 
-.container {
-  height: calc(100vh - 110px);
+.wrapper__main {
   background: var(--secondaryBackgroundColor);
-  padding: 10px;
+  width: 75%;
 }
 
-.footer {
-  height: 60px;
+.wrapper__sidebar {
+  width: 25%;
 }
-

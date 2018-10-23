@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class StreamController < ApplicationController
+  include ActionController::Live
+
   before_action :require_login
   before_action :set_header
 
@@ -21,6 +23,8 @@ class StreamController < ApplicationController
 
     # Let nginx can get value of media_path dynamically in the nginx config,
     # when use X-Accel-Redirect header to send file.
+    #
+    # Todo: add apache send_file header description.
     def set_header
       if Rails.configuration.action_dispatch.x_sendfile_header == 'X-Accel-Redirect'
         response.set_header('X-Media-Path', Setting.media_path)
@@ -31,10 +35,12 @@ class StreamController < ApplicationController
     # The instance of Stream can respond to each() method. So the download can be streamed,
     # instead of read whole data into memory.
     def send_stream(stream)
-      options = { filename: stream.transcode_file_name }
-      send_file_headers! options
+      response.headers['Content-Type'] = 'audio/mpeg'
 
-      self.status = 200
-      self.response_body = stream
+      stream.each do |data|
+        response.stream.write data
+      end
+    ensure
+      response.stream.close
     end
 end
