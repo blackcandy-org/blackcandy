@@ -1,0 +1,19 @@
+version: '3.0'
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+      - ~/media_data:/root/media_data
+      - bundler_data:/usr/local/bundle
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:11.1-alpine
+    volumes:
+      - db_data:/var/lib/postgresql/data
+volumes:
+  bundler_data:
+  db_data:

@@ -1,29 +1,21 @@
-/* override style for notie */
-
-.notie-container {
-  font-size: 1rem;
+.flash {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 
-.notie-textbox {
-  padding: 10px;
+.flash__content {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 4px;
 }
 
-.notie-background-success {
-  background: var(--successColor);
+.flash__content--success {
+  background: var(--green);
 }
 
-.notie-background-warning {
-  background: var(--warningColor);
-}
-
-.notie-background-error {
-  background: var(--errorColor);
-}
-
-.notie-background-info {
-  background: var(--infoColor);
-}
-
-.notie-background-neutral {
-  background: var(--neutralColor);
+.flash__content--error {
+  background: var(--red);
 }

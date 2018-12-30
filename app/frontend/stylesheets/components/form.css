@@ -1,6 +1,6 @@
 .form {
   border-radius: 5px;
-  background: var(--secondaryBackgroundColor);
+  background: var(--black-light);
   padding: 20px;
 }
 
@@ -23,7 +23,7 @@
 
 .form__field label {
   display: block;
-  font-size: var(--smallFontSize);
+  font-size: var(--font-size-sm);
   margin-bottom: 5px;
 }
 

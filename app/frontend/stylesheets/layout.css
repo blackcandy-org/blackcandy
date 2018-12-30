@@ -3,10 +3,10 @@
 }
 
 .wrapper__main {
-  background: var(--secondaryBackgroundColor);
   width: 75%;
 }
 
 .wrapper__sidebar {
+  background-color: var(--black);
   width: 25%;
 }

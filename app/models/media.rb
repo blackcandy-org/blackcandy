@@ -24,13 +24,13 @@ class Media
 
     private
 
-    def clean_up(media_hashes)
-      Song.where.not(md5_hash: media_hashes).destroy_all
+      def clean_up(media_hashes)
+        Song.where.not(md5_hash: media_hashes).destroy_all
 
-      # Clean up no content albums and artist.
-      Album.left_outer_joins(:songs).where('songs.id is null').destroy_all
-      Artist.left_outer_joins(:songs).where('songs.id is null').destroy_all
-    end
+        # Clean up no content albums and artist.
+        Album.left_outer_joins(:songs).where('songs.id is null').destroy_all
+        Artist.left_outer_joins(:songs).where('songs.id is null').destroy_all
+      end
   end
 
   private

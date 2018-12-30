@@ -5,11 +5,11 @@ export default class extends Controller {
   connect() {
     this.element.classList.add('hidden');
 
-    const types = ['success', 'warning', 'error', 'info', 'neutral'];
+    const types = ['success', 'error'];
     const type = this.data.get('type');
 
     notie.alert({
-      type: types.includes(type) ? type : 'error',
+      type: types.includes(type) ? type : 'success',
       text: this.element.textContent
     });
   }

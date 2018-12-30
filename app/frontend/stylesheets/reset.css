@@ -1,6 +1,6 @@
 html {
   box-sizing: border-box;
-  font-size: var(--defaultFontSize);
+  font-size: var(--font-size-md);
 }
 
 *,
@@ -10,11 +10,11 @@ html {
 }
 
 body {
-  background-color: var(--mainBackgroundColor);
-  font-family: var(--defaultFontFamily);
-  color: var(--mainFontColor);
+  background-color: var(--black-light);
+  font-family: var(--font-family);
+  color: var(--white);
 }
 
 .turbolinks-progress-bar {
-  background-color: var(--mainBackgroundColor);
+  background-color: var(--purple);
 }

@@ -1,12 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.4.1'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 5.2.2'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.18'
+gem 'pg', '~> 1.1.3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -17,8 +15,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.11'
 # Get meta data from audio file
 gem 'taglib-ruby', '~> 0.7.1'
-# Get album and artist info from spotify
-gem 'rspotify', '~> 2.0.0'
 # For settings
 gem 'rails-settings-cached', '~> 0.7.1'
 # Use sidekiq for backgroud job
@@ -54,7 +50,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rubocop', '~> 0.52.1', require: false
+  gem 'rubocop', '~> 0.61.1', require: false
   # Security vulnerability scanner
   gem 'brakeman', require: false
   gem 'memory_profiler', require: false

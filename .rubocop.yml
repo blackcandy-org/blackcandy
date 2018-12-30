@@ -2,6 +2,7 @@ AllCops:
   # RuboCop has a bunch of cops enabled by default. This setting tells RuboCop
   # to ignore them, so only the ones explicitly set in this file are enabled.
   DisabledByDefault: true
+  TargetRubyVersion: 2.6
   Exclude:
     - 'vendor/**/*'
     - 'Gemfile'
@@ -33,7 +34,7 @@ Layout/ElseAlignment:
 
 # Align `end` with the matching keyword or starting expression except for
 # assignments, where it should be aligned with the LHS.
-Lint/EndAlignment:
+Layout/EndAlignment:
   Enabled: true
   EnforcedStyleAlignWith: variable
   AutoCorrect: true

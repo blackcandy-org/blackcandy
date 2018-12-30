@@ -1,21 +1,22 @@
 :root {
-  --mainColor: rgb(111, 51, 129);
+  --purple-dark: #2b1833;
+  --purple: #77428d;
+  --purple-light: #a15abf;
 
-  --mainBackgroundColor: rgb(8, 8, 8);
-  --secondaryBackgroundColor: rgb(28, 28, 28);
-  --tertiaryBackgroundColor: rgb(79, 79, 72);
+  --black: #080808;
+  --black-light: #1a1a1a;
+  --black-lighter: #333;
 
-  --mainFontColor: rgb(255, 255, 255);
-  --secondaryFontColor: rgb(28, 28, 28);
-  --tertiaryFontColor: rgb(130, 130, 130);
+  --grey: #8c8c8c;
+  --grey-light: #bfbfbf;
 
-  --successColor: rgb(34, 125, 81);
-  --warningColor: rgb(240, 94, 28);
-  --errorColor: rgb(203, 27, 69);
-  --infoColor: rgb(88, 178, 220);
-  --neutralColor: rgb(130, 130, 130);
+  --white: #fff;
+  --red: #a61637;
+  --green: #16a660;
 
-  --defaultFontSize: 16px;
-  --smallFontSize: 14px;
-  --defaultFontFamily: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "Wenquanyi Micro Hei", sans-serif;
+  --font-size-lg: 18px;
+  --font-size-md: 16px;
+  --font-size-sm: 14px;
+
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "Wenquanyi Micro Hei", sans-serif;
 }

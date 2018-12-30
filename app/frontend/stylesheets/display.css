@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom right, var(--mainColor), var(--secondaryBackgroundColor));
+  background: linear-gradient(0deg, var(--black-light), var(--purple-light));
 }
 
 .display__text-center {

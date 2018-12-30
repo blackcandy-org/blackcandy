@@ -2,7 +2,7 @@
   border-radius: 4px;
   border: none;
   padding: 10px 12px;
-  color: #fff;
+  color: var(--white);
   cursor: pointer;
 }
 
@@ -11,5 +11,5 @@
 }
 
 .button--primary {
-  background: var(--mainColor);
+  background: var(--purple);
 }
