@@ -1,0 +1,80 @@
+/* Style for noty notification library */
+
+#noty_layout__topCenter {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  z-index: 9999999;
+  transform: translateZ(0) scale(1, 1);
+  backface-visibility: hidden;
+  filter: blur(0);
+  max-width: 90%;
+
+  top: 5%;
+  left: 50%;
+  width: 325px;
+  transform: translate(calc(-50% - .5px)) translateZ(0) scale(1, 1);
+}
+
+.noty_bar {
+  transform: translate(0, 0) scale(1, 1);
+  overflow: hidden;
+  margin: 4px 0;
+  overflow: hidden;
+  border-radius: 5px;
+  position: relative;
+}
+
+.noty_bar .noty_body {
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.noty_type__error {
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.noty_type__success {
+  background-color: var(--green);
+  color: var(--white);
+}
+
+.noty_effects_open {
+  opacity: 0;
+  transform: translate(50%);
+  animation: noty_anim_in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation-fill-mode: forwards;
+  animation-name: fadeInDown;
+}
+
+.noty_effects_close {
+  animation: noty_anim_out 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation-fill-mode: forwards;
+  animation-name: fadeOutUp
+}
+
+.noty_fix_effects_height {
+  animation: noty_anim_height 75ms ease-out;
+}
+
+@keyframes noty_anim_in {
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes noty_anim_out {
+  100% {
+    transform: translate(50%);
+    opacity: 0;
+  }
+}
+
+@keyframes noty_anim_height {
+  100% {
+    height: 0;
+  }
+}

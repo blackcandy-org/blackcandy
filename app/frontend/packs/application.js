@@ -17,7 +17,6 @@ import 'babel-polyfill';
 import 'whatwg-fetch';
 
 import 'normalize.css';
-import 'notie/dist/notie.css';
 import '../stylesheets/application.css';
 
 RailsUjs.start();

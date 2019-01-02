@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus';
-import notie from 'notie';
+import Noty from 'noty';
 
 export default class extends Controller {
   connect() {
@@ -8,9 +8,12 @@ export default class extends Controller {
     const types = ['success', 'error'];
     const type = this.data.get('type');
 
-    notie.alert({
+    new Noty({
       type: types.includes(type) ? type : 'success',
-      text: this.element.textContent
-    });
+      text: this.element.textContent,
+      layout: 'topCenter',
+      timeout: 2500,
+      progressBar: false
+    }).show();
   }
 }

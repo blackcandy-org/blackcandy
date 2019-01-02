@@ -4444,9 +4444,10 @@ normalize.css@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-8.0.0.tgz#14ac5e461612538a4ce9be90a7da23f86e718493"
 
-notie@^4.3.1:
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/notie/-/notie-4.3.1.tgz#0d199de15130242e21675507aba63c6929e0adda"
+noty@^3.1.0:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/noty/-/noty-3.1.4.tgz#f9eaac9df7883921b270ec6f2869e9aeedd8071b"
+  integrity sha512-HKOH392eBygTojC6fXVBOFxTqebjnn/e7/AS69zlWSH3Tn6+0RzfT3aDCGx2PY6Ed3xKBPhtz+xeHAHQGEh68Q==
 
 npm-run-path@^2.0.0:
   version "2.0.2"
