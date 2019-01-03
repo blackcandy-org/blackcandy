@@ -6,7 +6,6 @@
     "action_cable": "^5.0.0-beta3",
     "activestorage": "^0.1.1",
     "babel-polyfill": "^6.26.0",
-    "feather-icons": "^4.6.0",
     "howler": "^2.0.9",
     "normalize.css": "^8.0.0",
     "noty": "^3.1.0",

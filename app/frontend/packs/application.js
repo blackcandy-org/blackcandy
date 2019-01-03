@@ -18,6 +18,7 @@ import 'whatwg-fetch';
 
 import 'normalize.css';
 import '../stylesheets/application.css';
+import '../images/feather-sprite.svg';
 
 RailsUjs.start();
 Turbolinks.start();
