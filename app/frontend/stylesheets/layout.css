@@ -1,12 +1,8 @@
-.wrapper {
-  display: flex;
-}
-
-.wrapper__main {
+.layout__main {
   width: 75%;
 }
 
-.wrapper__sidebar {
-  background-color: var(--black);
+.layout__sidebar {
+  background-color: var(--layout-sidebar-bg-color);
   width: 25%;
 }

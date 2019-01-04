@@ -1,4 +1,5 @@
 :root {
+  /* Colors */
   --purple-dark: #2b1833;
   --purple: #77428d;
   --purple-light: #a15abf;
@@ -14,9 +15,40 @@
   --red: #a61637;
   --green: #26a616;
 
+  /* Fonts */
+  --font-size: 16px;
   --font-size-lg: 18px;
-  --font-size-md: 16px;
   --font-size-sm: 14px;
 
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "Wenquanyi Micro Hei", sans-serif;
+
+  /* Border radius */
+  --border-radius: 4px;
+  --border-radius-sm: 2px;
+  --border-radius-lg: 8px;
+  --border-radius-round: 50%;
+
+  /* Body */
+  --body-bg-color: var(--black-light);
+  --body-color: var(--white);
+
+  /* Layout */
+  --layout-sidebar-bg-color: var(--black);
+
+  /* Progress bar */
+  --progress-bar-bg-color: var(--purple);
+
+  /* Avatar */
+  --avatar-border-radius: var(--border-radius-round);
+  --avatar-border-color: var(--grey-light);
+
+  /* Button */
+  --btn-border-radius: var(--border-radius);
+  --btn-color: var(--white);
+  --btn-primary-bg-color: var(--purple);
+
+  /* Form */
+  --form-border-radius: var(--border-radius-lg);
+  --form-bg-color: var(--black-light);
+  --form-input-border-radius: var(--border-radius);
 }

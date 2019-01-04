@@ -1,8 +1,8 @@
 .button {
-  border-radius: 4px;
+  border-radius: var(--btn-border-radius);
   border: none;
   padding: 10px 12px;
-  color: var(--white);
+  color: var(--btn-color);
   cursor: pointer;
 }
 
@@ -11,5 +11,5 @@
 }
 
 .button--primary {
-  background: var(--purple);
+  background: var(--btn-primary-bg-color);
 }

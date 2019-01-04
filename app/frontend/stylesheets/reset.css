@@ -1,6 +1,6 @@
 html {
   box-sizing: border-box;
-  font-size: var(--font-size-md);
+  font-size: var(--font-size);
 }
 
 *,
@@ -10,11 +10,11 @@ html {
 }
 
 body {
-  background-color: var(--black-light);
   font-family: var(--font-family);
-  color: var(--white);
+  background-color: var(--body-bg-color);
+  color: var(--body-color);
 }
 
 .turbolinks-progress-bar {
-  background-color: var(--purple);
+  background-color: var(--progress-bar-bg-color);
 }
