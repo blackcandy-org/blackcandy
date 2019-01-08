@@ -51,4 +51,9 @@
   --form-border-radius: var(--border-radius-lg);
   --form-bg-color: var(--black-light);
   --form-input-border-radius: var(--border-radius);
+
+  /* Noty flash message */
+  --noty-bar-border-radius: var(--border-radius);
+  --noty-success-bg-color: var(--green);
+  --noty-error-bg-color: var(--red);
 }

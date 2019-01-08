@@ -21,7 +21,7 @@
   overflow: hidden;
   margin: 4px 0;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: var(--noty-bar-border-radius);
   position: relative;
 }
 
@@ -32,12 +32,12 @@
 }
 
 .noty_type__error {
-  background-color: var(--red);
+  background-color: var(--noty-error-bg-color);
   color: var(--white);
 }
 
 .noty_type__success {
-  background-color: var(--green);
+  background-color: var(--noty-success-bg-color);
   color: var(--white);
 }
 
