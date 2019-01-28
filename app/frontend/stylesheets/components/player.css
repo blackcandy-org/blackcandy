@@ -1,6 +1,13 @@
-.player__control,
-.player__setting {
-  margin: 0 50px;
+.player {
+  padding-top: 25px;
+}
+
+.player__control {
+  padding: 36px 20px;
+}
+
+.player__control__minor {
+  color: var(--grey);
 }
 
 .player__control__main {
@@ -19,69 +26,50 @@
   display: none;
 }
 
-.player__info__image {
-  margin-right: 20px;
+.player__info {
+  padding: 0 20px 25px;
 }
 
-.player__info__image img {
-  width: 40px;
-  height: 40px;
+.player__info__cover {
+  margin-right: 30px;
 }
 
-.player__info__artist-name {
-  font-size: 14px;
-  margin-left: 15px;
-  color: var(--tertiaryFontColor);
+.player__info__cover img {
+  width: 100px;
+  height: 100px;
 }
 
-.player__info__song-duration,
-.player__info__song-timer {
-  font-size: 14px;
-  margin: 0 10px;
+.player__info__detail {
+  color: var(--grey);
+  margin-bottom: 4px;
 }
 
-.player__info__song-duration {
-  color: var(--tertiaryFontColor);
+.player__info__detail--main {
+  color: var(--white);
+  font-size: var(--font-size-lg);
+  margin-bottom: 12px;
 }
 
-.player__setting__volume {
-  margin-left: 10px;
-  appearance: none;
-  width: 130px;
-  height: 5px;
-  border-radius: 5px;
-  background: var(--mainColor);
-  outline: none;
+.player__timer {
+  margin: 8px 0 0;
 }
 
-.player__setting__volume::-webkit-slider-thumb {
-  appearance: none;
-  width: 10px;
-  height: 10px;
-  border-radius: 100%;
-  background: #fff;
-  cursor: pointer;
+.player__timer__item {
+  margin-right: 10px;
 }
 
-.player__setting__volume::-moz-range-thumb {
-  width: 10px;
-  height: 10px;
-  border-radius: 100%;
-  background: #fff;
-  cursor: pointer;
+.player__timer__item--main {
+  color: var(--grey-light);
 }
 
 .player__progress {
-  height: 8px;
-  margin-top: 10px;
+  height: 2px;
   border: 0 none;
-  background: var(--secondaryBackgroundColor);
-  border-radius: 14px;
+  background: var(--player-progress-bg-color);
 }
 
 .player__progress::-moz-progress-bar {
-  border-radius: 12px;
-  background: var(--mainColor);
+  background: var(--player-progress-color);
 }
 
 .player__progress::-webkit-progress-bar {
@@ -89,6 +77,5 @@
 }
 
 .player__progress::-webkit-progress-value {
-  border-radius: 12px;
-  background: var(--mainColor);
+  background: var(--player-progress-color);
 }

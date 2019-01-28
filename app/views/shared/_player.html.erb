@@ -1,0 +1,32 @@
+<% test_song = Song.first %>
+<div class='player display__flex-end-vertical'>
+  <div class='player__info display__flex'>
+    <div class='player__info__cover'>
+      <%= image_tag url_for(test_song.album.image) %>
+    </div>
+    <div>
+      <div class='player__info__detail player__info__detail--main'><%= test_song.name %></div>
+      <div class='player__info__detail'><%= test_song.album.name %></div>
+      <div class='player__info__detail'><%= test_song.artist.name %></div>
+      <div class='player__info__detail player__timer'>
+        <span class='player__timer__item player__timer__item--main'>01:11</span>
+        <span class='player__timer__item'>/</span>
+        <span class='player__timer__item'><%= test_song.duration %></span>
+      </div>
+    </div>
+  </div>
+  <progress class='player__progress' value='22' max='100'></progress>
+  <div class='player__control display__space-between'>
+    <div class='player__control__minor'>
+      <%= icon_tag 'repeat', size: 'small' %>
+    </div>
+    <div>
+      <span><%= icon_tag 'rewind', size: 'large' %></span>
+      <span class='player__control__main'><%= icon_tag 'play', size: 'large' %></span>
+      <span><%= icon_tag 'fast-forward', size: 'large' %></span>
+    </div>
+    <div class='player__control__minor'>
+      <%= icon_tag 'heart', size: 'small' %>
+    </div>
+  </div>
+</div>

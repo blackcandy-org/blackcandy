@@ -56,4 +56,8 @@
   --noty-bar-border-radius: var(--border-radius);
   --noty-success-bg-color: var(--green);
   --noty-error-bg-color: var(--red);
+
+  /* Player */
+  --player-progress-bg-color: var(--black-light);
+  --player-progress-color: var(--purple);
 }

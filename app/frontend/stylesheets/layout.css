@@ -1,5 +1,10 @@
+.layout {
+  height: 100vh;
+}
+
 .layout__main {
   width: 75%;
+  overflow-y: scroll;
 }
 
 .layout__sidebar {
