@@ -1,9 +1,11 @@
 .player {
-  padding-top: 25px;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 .player__control {
-  padding: 36px 20px;
+  padding: 28px 20px;
 }
 
 .player__control__minor {
@@ -14,20 +16,8 @@
   margin: 0 25px;
 }
 
-.player__control__pause-button {
-  display: none;
-}
-
-.playing .player__control__pause-button {
-  display: inline-block;
-}
-
-.playing .player__control__play-button {
-  display: none;
-}
-
 .player__info {
-  padding: 0 20px 25px;
+  padding: 25px 20px;
 }
 
 .player__info__cover {

@@ -34,6 +34,9 @@ en:
     login: 'Login'
     logout: 'Logout'
     users: 'Users'
+    playlist: 'Playlist'
+    collections: 'Collections'
+    favorites: 'Favorites'
   error:
     login: 'Wrong email or password'
   default:

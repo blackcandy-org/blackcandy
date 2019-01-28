@@ -1,0 +1,25 @@
+.tab {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tab__item {
+  padding-bottom: 13px;
+  border-bottom: 2px solid transparent;
+}
+
+.tab__item a {
+  color: var(--tab-color);
+  text-decoration: none;
+}
+
+.tab__item--active {
+  border-color: var(--tab-active-color);
+}
+
+.tab__item--active a {
+  color: var(--tab-active-color);
+}

@@ -1,35 +1,34 @@
 .playlist {
-  list-style: none;
-  margin: 0;
-  margin: auto;
-  padding: 0;
-  max-width: 600px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.playlist__nav {
+  margin-bottom: 35px;
+}
+
+.playlist__content {
+  overflow-y: auto;
 }
 
 .playlist__item {
-  padding: 13px;
-  border-bottom: 1px solid #222;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--playlist-border-color);
   cursor: pointer;
+  color: var(--playlist-color);
+  font-size: var(--font-size-sm);
 }
 
-.playlist__item__info {
-  margin: 0 10px;
+.playlist__item__detail {
+  margin-right: 15px;
 }
 
-.playlist__item__info--artist {
-  margin-left: 8px;
-  color: var(--tertiaryFontColor);
+.playlist__item__detail__main {
+  color: var(--white);
+  font-weight: bold;
+  margin-bottom: 4px;
 }
 
-.playlist__item__footer {
-  color: var(--tertiaryFontColor);
-  font-size: var(--smallFontSize);
-}
-
-.playlist__item:hover {
-  background: var(--mainColor);
-}
-
-.playlist__item--current {
-  background: var(--mainColor);
+.playlist__item:hover .playlist__item__detail__main {
+  color: var(--playlist-active-color);
 }

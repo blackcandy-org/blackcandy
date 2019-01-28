@@ -1,5 +1,5 @@
 <% test_song = Song.first %>
-<div class='player display__flex-end-vertical'>
+<div class='player'>
   <div class='player__info display__flex'>
     <div class='player__info__cover'>
       <%= image_tag url_for(test_song.album.image) %>
@@ -21,9 +21,9 @@
       <%= icon_tag 'repeat', size: 'small' %>
     </div>
     <div>
-      <span><%= icon_tag 'rewind', size: 'large' %></span>
-      <span class='player__control__main'><%= icon_tag 'play', size: 'large' %></span>
-      <span><%= icon_tag 'fast-forward', size: 'large' %></span>
+      <span><%= icon_tag 'rewind' %></span>
+      <span class='player__control__main'><%= icon_tag 'play' %></span>
+      <span><%= icon_tag 'fast-forward' %></span>
     </div>
     <div class='player__control__minor'>
       <%= icon_tag 'heart', size: 'small' %>

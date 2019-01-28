@@ -57,7 +57,16 @@
   --noty-success-bg-color: var(--green);
   --noty-error-bg-color: var(--red);
 
+  /* Tab */
+  --tab-color: var(--grey-light);
+  --tab-active-color: var(--purple-light);
+
   /* Player */
   --player-progress-bg-color: var(--black-light);
   --player-progress-color: var(--purple);
+
+  /* Playlist */
+  --playlist-color: var(--grey-light);
+  --playlist-border-color: var(--black-lighter);
+  --playlist-active-color: var(--purple-light);
 }

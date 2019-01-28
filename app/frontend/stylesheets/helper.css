@@ -5,3 +5,9 @@
 .hidden {
   display: none !important;
 }
+
+.none-style-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

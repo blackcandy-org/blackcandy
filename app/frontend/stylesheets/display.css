@@ -35,12 +35,6 @@
   justify-content: center;
 }
 
-.display__flex-end-vertical {
-  display: flex !important;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
 .display__full-height {
   height: 100%;
 }
