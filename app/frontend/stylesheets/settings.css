@@ -69,4 +69,9 @@
   --playlist-color: var(--grey-light);
   --playlist-border-color: var(--black-lighter);
   --playlist-active-color: var(--purple-light);
+
+  /* Search bar */
+  --search-bar-bg-color: var(--black-lighter);
+  --search-bar-border-radius: var(--border-radius);
+  --search-bar-color: var(--white);
 }

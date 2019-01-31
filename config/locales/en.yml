@@ -37,6 +37,10 @@ en:
     playlist: 'Playlist'
     collections: 'Collections'
     favorites: 'Favorites'
+    albums: 'Albums'
+    artist: 'Artist'
+    songs: 'Songs'
+    settings: 'Settings'
   error:
     login: 'Wrong email or password'
   default:

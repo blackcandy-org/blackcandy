@@ -1,7 +1,5 @@
 .player {
   padding-top: 15px;
-  display: flex;
-  flex-direction: column;
 }
 
 .player__control {
@@ -36,7 +34,7 @@
 
 .player__info__detail--main {
   color: var(--white);
-  font-size: var(--font-size-lg);
+  font-weight: bold;
   margin-bottom: 12px;
 }
 

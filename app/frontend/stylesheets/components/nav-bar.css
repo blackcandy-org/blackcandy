@@ -1,0 +1,8 @@
+.nav-bar {
+  padding: 15px 0;
+}
+
+.nav-bar .tab {
+  max-width: 350px;
+  margin: auto;
+}

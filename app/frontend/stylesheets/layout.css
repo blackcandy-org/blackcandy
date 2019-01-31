@@ -5,6 +5,7 @@
 .layout__main {
   width: 75%;
   overflow-y: auto;
+  padding: 0 20px;
 }
 
 .layout__sidebar {
@@ -12,5 +13,4 @@
   width: 25%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }

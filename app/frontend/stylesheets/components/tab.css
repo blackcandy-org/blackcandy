@@ -16,6 +16,10 @@
   text-decoration: none;
 }
 
+.tab__item a:hover {
+  color: var(--tab-active-color);
+}
+
 .tab__item--active {
   border-color: var(--tab-active-color);
 }

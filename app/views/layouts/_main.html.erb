@@ -1,3 +1,9 @@
 <div class='layout__main'>
-  <%= yield %>
+  <header>
+    <%= render 'shared/search_bar' %>
+    <%= render 'shared/nav_bar' %>
+  </header>
+  <main>
+    <%= yield %>
+  </main>
 </div>
