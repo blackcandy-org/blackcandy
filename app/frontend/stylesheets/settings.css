@@ -34,6 +34,7 @@
 
   /* Layout */
   --layout-sidebar-bg-color: var(--black);
+  --layout-header-bg-color: var(--black-light);
 
   /* Progress bar */
   --progress-bar-bg-color: var(--purple);
@@ -74,4 +75,8 @@
   --search-bar-bg-color: var(--black-lighter);
   --search-bar-border-radius: var(--border-radius);
   --search-bar-color: var(--white);
+
+  /* Card */
+  --card-title-color: var(--white);
+  --card-text-color: var(--grey);
 }

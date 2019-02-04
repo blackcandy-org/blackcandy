@@ -5,12 +5,22 @@
 .layout__main {
   width: 75%;
   overflow-y: auto;
-  padding: 0 20px;
 }
 
 .layout__sidebar {
-  background-color: var(--layout-sidebar-bg-color);
+  background: var(--layout-sidebar-bg-color);
   width: 25%;
   display: flex;
   flex-direction: column;
+}
+
+.layout__main__header {
+  position: sticky;
+  top: 0;
+  background: var(--layout-header-bg-color);
+  z-index: 100;
+}
+
+.layout__main__content {
+  margin: 0 60px;
 }

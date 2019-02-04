@@ -20,4 +20,8 @@ module ApplicationHelper
       <title>#{ title }</title>
       <use xlink:href='#{ asset_pack_path 'images/feather-sprite.svg' }##{name}'/></svg>"
   end
+
+  def album_image_tag(album, options = {})
+    image_tag(album.image.attached? ? album.image : 'default_album.png', options)
+  end
 end

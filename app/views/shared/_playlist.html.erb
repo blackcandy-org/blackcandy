@@ -14,16 +14,14 @@
   </div>
   <div class='playlist__content display__full-height'>
     <ul class='none-style-list'>
-      <% if @songs.present? %>
-        <% @songs.each_with_index do |song, index| %>
-          <li class='playlist__item display__space-between'>
-            <div class='playlist__item__detail'>
-              <div class='playlist__item__detail__main'><%= song.name %></div>
-              <div><%= song.artist.name %></div>
-            </div>
-            <div><%= song.duration %></div>
-          </li>
-        <% end %>
+      <% Song.take(10).each_with_index do |song, index| %>
+        <li class='playlist__item display__space-between'>
+          <div class='playlist__item__detail'>
+            <div class='playlist__item__detail__main'><%= song.name %></div>
+            <div><%= song.artist.name %></div>
+          </div>
+          <div><%= song.duration %></div>
+        </li>
       <% end %>
     </ul>
   </div>

@@ -11,3 +11,9 @@
   padding: 0;
   margin: 0;
 }
+
+.text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

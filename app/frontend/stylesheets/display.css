@@ -35,6 +35,10 @@
   justify-content: center;
 }
 
+.display__flex-wrap {
+  flex-wrap: wrap;
+}
+
 .display__full-height {
   height: 100%;
 }

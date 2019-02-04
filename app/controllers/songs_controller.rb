@@ -5,7 +5,6 @@ class SongsController < ApplicationController
 
   def index
     @songs = Song.includes(:artist).all
-    @playlist = @songs.pluck(:id).to_json
   end
 
   def show

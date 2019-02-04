@@ -1,0 +1,26 @@
+.card {
+  width: 150px;
+  margin: 0 15px 50px;
+}
+
+.card__image {
+  width: 150px;
+  height: 150px;
+}
+
+.card__body {
+  margin-top: 12px;
+}
+
+.card__title {
+  font-size: var(--font-size);
+  margin: 0 0 10px;
+  font-weight: normal;
+  color: var(--card-title-color);
+}
+
+.card__text {
+  font-size: var(--font-size-sm);
+  color: var(--card-text-color);
+  margin: 0;
+}
