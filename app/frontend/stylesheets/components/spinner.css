@@ -1,0 +1,28 @@
+.spinner {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.spinner__beat {
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+  animation: stretchDelay 0.7s infinite linear;
+  animation-fill-mode: both;
+  border-radius: 100%;
+  margin: 2px;
+  background-color: var(--spinner-bg-color);
+}
+
+.spinner--small .spinner__beat {
+  height: 10px;
+  width: 10px;
+}
+
+.spinner__beat--add {
+  animation-delay: 0s;
+}
+
+.spinner__beat--even {
+  animation-delay: 0.35s;
+}

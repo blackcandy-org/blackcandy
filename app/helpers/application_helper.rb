@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  include Pagy::Frontend
+
   def avatar(user, options = {})
     options[:class] = "#{options[:class]} avatar"
     hash = Digest::MD5.hexdigest(user.email)
@@ -23,5 +25,14 @@ module ApplicationHelper
 
   def album_image_tag(album, options = {})
     image_tag(album.image.attached? ? album.image : 'default_album.png', options)
+  end
+
+  def spinner_tag(size: '')
+    size_class = size.blank? ? '' : "spinner--#{size}"
+
+    raw "<div class='spinner #{size_class}'>
+      <div class='spinner__beat spinner__beat--odd'></div>
+      <div class='spinner__beat spinner__beat--even'></div>
+      <div class='spinner__beat spinner__beat--odd'></div></div>"
   end
 end

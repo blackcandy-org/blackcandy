@@ -1,0 +1,6 @@
+(function() {
+  const albumsContent = document.querySelector('#js-albums-content').innerHTML;
+
+  document.querySelector('#js-albums-container').innerHTML = '<%= j(render partial: 'albums', locals: { albums: @albums, pagy: @pagy }) %>';
+  document.querySelector('#js-albums-content').insertAdjacentHTML('afterbegin', albumsContent);
+})();

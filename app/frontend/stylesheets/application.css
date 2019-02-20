@@ -16,4 +16,5 @@
 @import 'components/card.css';
 @import 'components/search-bar.css';
 @import 'components/nav-bar.css';
+@import 'components/spinner.css';
 @import 'lib/noty.css';

@@ -104,6 +104,7 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.9.1)
       mini_portile2 (~> 2.4.0)
+    pagy (1.3.3)
     parallel (1.12.1)
     parser (2.5.3.0)
       ast (~> 2.4.0)
@@ -219,6 +220,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   memory_profiler
   mini_magick (~> 4.8)
+  pagy (~> 1.3.3)
   pg (~> 1.1.3)
   puma (~> 3.11)
   rails (~> 5.2.2)

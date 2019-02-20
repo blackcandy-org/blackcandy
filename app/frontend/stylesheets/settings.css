@@ -79,4 +79,7 @@
   /* Card */
   --card-title-color: var(--white);
   --card-text-color: var(--grey);
+
+  /* Spinner */
+  --spinner-bg-color: var(--purple);
 }

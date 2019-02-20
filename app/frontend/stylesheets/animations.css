@@ -20,3 +20,15 @@
     transform: translate3d(0, -100%, 0);
   }
 }
+
+@keyframes stretchDelay {
+  50% {
+    transform: scale(0.75);
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

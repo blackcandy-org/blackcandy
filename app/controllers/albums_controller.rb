@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 class AlbumsController < ApplicationController
+  include Pagy::Backend
+
   before_action :require_login
 
   def index
-    @albums = Album.includes(:artist).all
+    @pagy, @albums = pagy_countless(Album.includes(:artist))
   end
 
   def show

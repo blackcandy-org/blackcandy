@@ -7,13 +7,13 @@ unless Rails.env.production?
     RuboCop::RakeTask.new
 
     task :javascript do
-      unless system('yarn run eslint app/frontend/**/*.js')
+      unless system("yarn run eslint 'app/frontend/**/*.js'")
         abort('rails lint:javascript failed')
       end
     end
 
     task :css do
-      unless system('yarn run stylelint app/frontend/**/*.css')
+      unless system("yarn run stylelint 'app/frontend/**/*.css'")
         abort('rails lint:css failed')
       end
     end

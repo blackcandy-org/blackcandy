@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'albums#index'
+  root 'home#index'
 
   resource :session, only: [:new, :create, :destroy]
   resources :songs, only: [:index, :show]

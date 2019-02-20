@@ -21,6 +21,8 @@ gem 'rails-settings-cached', '~> 0.7.1'
 gem 'sidekiq', '~> 5.1.3'
 # Server-side support for Turbolinks redirection
 gem 'turbolinks'
+# Pagination
+gem 'pagy', '~> 1.3.3'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 

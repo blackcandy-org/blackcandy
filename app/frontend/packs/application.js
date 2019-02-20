@@ -14,7 +14,6 @@ import { Application } from 'stimulus';
 import { definitionsFromContext } from 'stimulus/webpack-helpers';
 
 import 'babel-polyfill';
-import 'whatwg-fetch';
 
 import 'normalize.css';
 import '../stylesheets/application.css';

@@ -1,11 +1,3 @@
-<div class='display__space-between display__flex-wrap'>
-  <% @albums.each do |album| %>
-    <div class='card'>
-      <%= album_image_tag album, class: 'card__image' %>
-      <div class='card__body'>
-        <h2 class='card__title text-truncate'><%= album.name %></h2>
-        <p class='card__text text-truncate'><%= album.artist.name %></p>
-      </div>
-    </div>
-  <% end %>
+<div id='js-albums-container'>
+  <%= render partial: 'albums', locals: { albums: @albums, pagy: @pagy } %>
 </div>
