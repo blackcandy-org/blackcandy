@@ -6041,10 +6041,10 @@ schema-utils@^0.4.0, schema-utils@^0.4.5:
     ajv "^6.1.0"
     ajv-keywords "^3.1.0"
 
-scrollmonitor@^1.2.4:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/scrollmonitor/-/scrollmonitor-1.2.4.tgz#823d04cc1574aa3b71de7cc70ef91ebe633344a0"
-  integrity sha512-HBQpeZVAYETbNk0DAmi+X4hdTQMk5WRa/Udez9o8yC8GcRiPDgBxyEdV9g9Su/TWOuUeVfVGfNcyboEyzkte4Q==
+scrollmagic@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/scrollmagic/-/scrollmagic-2.0.6.tgz#518bdf85a1755af819fe109ee8517b8e798c4e9a"
+  integrity sha512-uH4Z/NggT50MD3iOTOa6/B9n9+WkMpKGrVj3NuRRg2WoKaaZXCXx8EgKJBmH3SzRKHYHbZ3NJDPQ2AOhXlsTuw==
 
 scss-tokenizer@^0.2.3:
   version "0.2.3"

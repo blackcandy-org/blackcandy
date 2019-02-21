@@ -1,5 +1,6 @@
 import { Controller } from 'stimulus';
 import { ajax } from 'rails-ujs';
+import ScrollMagic from 'scrollmagic';
 
 export default class extends Controller {
   static targets = ['trigger']
@@ -7,26 +8,29 @@ export default class extends Controller {
   connect() {
     if (!this.hasNextPage) { return; }
 
-    const watcher = this.createWatcher();
-    this.bindNextPageEvent(watcher);
+    const scene = this.createScene();
+    this.bindNextPageEvent(scene);
   }
 
   disconnect() {
-    this.watcher.destroy();
+    this.scrollController.destroy();
   }
 
-  createWatcher() {
-    const scrollMonitor = require('scrollmonitor');
-    const containerMonitor = scrollMonitor.createContainer(this.data.get('container'));
-    this.watcher = containerMonitor.create(this.triggerTarget);
+  createScene() {
+    this.scrollController = new ScrollMagic.Controller({
+      container: this.data.get('container')
+    });
 
-    return this.watcher;
+    return new ScrollMagic.Scene({
+      triggerElement: this.triggerTarget,
+      triggerHook: 'onEnter'
+    }).addTo(this.scrollController);
   }
 
-  bindNextPageEvent(watcher) {
+  bindNextPageEvent(scene) {
     let ajaxRequest;
 
-    watcher.enterViewport(() => {
+    scene.on('enter', () => {
       if (ajaxRequest) {
         // Abort previous ajax request.
         ajaxRequest.abort();

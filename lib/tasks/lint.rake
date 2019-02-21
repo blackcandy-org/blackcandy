@@ -6,9 +6,9 @@ unless Rails.env.production?
   namespace :lint do
     RuboCop::RakeTask.new
 
-    task :javascript do
+    task :js do
       unless system("yarn run eslint 'app/frontend/**/*.js'")
-        abort('rails lint:javascript failed')
+        abort('rails lint:js failed')
       end
     end
 
@@ -18,6 +18,6 @@ unless Rails.env.production?
       end
     end
 
-    task all: [:rubocop, :javascript, :css]
+    task all: [:rubocop, :js, :css]
   end
 end

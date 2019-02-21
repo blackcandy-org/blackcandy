@@ -10,7 +10,7 @@
     "normalize.css": "^8.0.0",
     "noty": "^3.1.0",
     "rails-ujs": "^5.1.4",
-    "scrollmonitor": "^1.2.4",
+    "scrollmagic": "^2.0.6",
     "stimulus": "^1.0.0",
     "turbolinks": "^5.1.1"
   },
