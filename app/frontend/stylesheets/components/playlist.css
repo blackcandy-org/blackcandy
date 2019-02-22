@@ -1,20 +1,27 @@
 .playlist {
-  padding: 20px;
   overflow: hidden;
+  position: relative;
 }
 
 .playlist__nav {
-  margin-bottom: 35px;
+  padding: 20px 20px 0;
+  border-bottom: 1px solid var(--black-dark);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--playlist-bg-color);
 }
 
 .playlist__content {
   overflow-y: auto;
+  padding: 60px 20px 0;
 }
 
 .playlist__item {
   padding: 12px 0;
-  border-bottom: 1px solid var(--playlist-border-color);
   cursor: pointer;
+  border-bottom: 1px solid var(--playlist-border-color);
   color: var(--playlist-color);
   font-size: var(--font-size-sm);
 }

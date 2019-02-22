@@ -1,5 +1,5 @@
 .player {
-  padding-top: 15px;
+  box-shadow: -3px -2px 4px var(--black-dark);
 }
 
 .player__control {

@@ -13,6 +13,7 @@ body {
   font-family: var(--font-family);
   background-color: var(--body-bg-color);
   color: var(--body-color);
+  overflow-y: hidden;
 }
 
 .turbolinks-progress-bar {

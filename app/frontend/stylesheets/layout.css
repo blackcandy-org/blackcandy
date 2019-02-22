@@ -19,8 +19,9 @@
   top: 0;
   background: var(--layout-header-bg-color);
   z-index: 100;
+  border-bottom: 1px solid var(--layout-header-border-color);
 }
 
 .layout__main__content {
-  margin: 0 60px 35px;
+  margin: 25px 60px 35px;
 }

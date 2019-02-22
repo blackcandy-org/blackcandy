@@ -1,12 +1,13 @@
 :root {
   /* Colors */
-  --purple-dark: #2b1833;
+  --purple-dark: #361e40;
   --purple: #77428d;
   --purple-light: #a15abf;
 
-  --black: #080808;
-  --black-light: #1a1a1a;
-  --black-lighter: #333;
+  --black-dark: #000;
+  --black: #121212;
+  --black-light: #212121;
+  --black-lighter: #3b3b3b;
 
   --grey: #8c8c8c;
   --grey-light: #bfbfbf;
@@ -35,6 +36,7 @@
   /* Layout */
   --layout-sidebar-bg-color: var(--black);
   --layout-header-bg-color: var(--black-light);
+  --layout-header-border-color: var(--black);
 
   /* Progress bar */
   --progress-bar-bg-color: var(--purple);
@@ -68,7 +70,8 @@
 
   /* Playlist */
   --playlist-color: var(--grey-light);
-  --playlist-border-color: var(--black-lighter);
+  --playlist-bg-color: var(--black);
+  --playlist-border-color: var(--black-light);
   --playlist-active-color: var(--purple-light);
 
   /* Search bar */
