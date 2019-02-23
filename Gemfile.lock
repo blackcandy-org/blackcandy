@@ -151,6 +151,8 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     redis (4.1.0)
+    redis-objects (1.4.3)
+      redis (~> 4.0)
     rubocop (0.61.1)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -225,6 +227,7 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.2)
   rails-settings-cached (~> 0.7.1)
+  redis-objects (~> 1.4)
   rubocop (~> 0.61.1)
   selenium-webdriver
   sidekiq (~> 5.1.3)

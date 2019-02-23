@@ -8,12 +8,20 @@ services:
       - bundler_data:/usr/local/bundle
     ports:
       - 3000:3000
+    environment:
+      REDIS_URL: redis://redis:6379/0
     depends_on:
       - postgres
+      - redis
   postgres:
     image: postgres:11.1-alpine
     volumes:
       - db_data:/var/lib/postgresql/data
+  redis:
+    image: redis:4.0-alpine
+    volumes:
+      - redis_data:/data
 volumes:
   bundler_data:
   db_data:
+  redis_data:

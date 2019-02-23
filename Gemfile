@@ -23,6 +23,8 @@ gem 'sidekiq', '~> 5.1.3'
 gem 'turbolinks'
 # Pagination
 gem 'pagy', '~> 1.3.3'
+# Map redis types directly to ruby objects
+gem 'redis-objects', '~> 1.4'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 
