@@ -9,7 +9,6 @@
 
 import RailsUjs from 'rails-ujs';
 import Turbolinks from 'turbolinks';
-import * as ActiveStorage from 'activestorage';
 import { Application } from 'stimulus';
 import { definitionsFromContext } from 'stimulus/webpack-helpers';
 
@@ -21,7 +20,6 @@ import '../images/feather-sprite.svg';
 
 RailsUjs.start();
 Turbolinks.start();
-ActiveStorage.start();
 
 const application = Application.start();
 const controllers = require.context('../javascripts/controllers', true, /\.js$/);

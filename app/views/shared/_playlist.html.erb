@@ -1,28 +1,8 @@
 <div class='playlist display__full-height'>
-  <div class='playlist__nav'>
-    <ul class='tab'>
-      <li class='tab__item tab__item--active'>
-        <a href='#'><%= t('label.playlist') %></a>
-      </li>
-      <li class='tab__item'>
-        <a href='#'><%= t('label.collections') %></a>
-      </li>
-      <li class='tab__item'>
-        <a href='#'><%= t('label.favorites') %></a>
-      </li>
-    </ul>
+  <div class='playlist__nav' id='js-playlist-nav'>
+    <%= render partial: 'playlist/tab', locals: { active_path: playlist_path('current') } %>
   </div>
-  <div class='playlist__content display__full-height'>
-    <ul class='none-style-list'>
-      <% Song.take(10).each_with_index do |song, index| %>
-        <li class='playlist__item display__space-between'>
-          <div class='playlist__item__detail'>
-            <div class='playlist__item__detail__main'><%= song.name %></div>
-            <div><%= song.artist.name %></div>
-          </div>
-          <div><%= song.duration %></div>
-        </li>
-      <% end %>
-    </ul>
+  <div class='playlist__content display__full-height' id='js-playlist-content'>
+    <%= render partial: 'playlist/list', locals: { playlist: Current.user.current_playlist } %>
   </div>
 </div>

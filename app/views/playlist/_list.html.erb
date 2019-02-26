@@ -1,0 +1,11 @@
+<ul class='none-style-list'>
+  <% playlist.songs.each do |song| %>
+    <li class='playlist__item display__space-between'>
+      <div class='playlist__item__detail'>
+        <div class='playlist__item__detail__main'><%= song.name %></div>
+        <div><%= song.artist.name %></div>
+      </div>
+      <div><%= song.duration %></div>
+    </li>
+  <% end %>
+</ul>
