@@ -25,4 +25,12 @@ class Playlist
   def clear
     @song_ids.clear
   end
+
+  def empty?
+    @song_ids.empty?
+  end
+
+  def count
+    @song_ids.size
+  end
 end

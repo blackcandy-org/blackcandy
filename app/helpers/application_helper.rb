@@ -10,17 +10,18 @@ module ApplicationHelper
     image_tag("https://www.gravatar.com/avatar/#{hash}", options)
   end
 
-  def icon_tag(name, size: '', title: '')
-    size_class = size.blank? ? '' : "icon--#{size}"
+  def icon_tag(name, options = {})
+    size_class = options[:size].blank? ? '' : "icon--#{options[:size]}"
+    icon_class = ['icon', size_class, options[:class]].join(' ')
 
     raw "<svg fill='none'
       stroke='currentColor'
       stroke-width='2'
       stroke-linecap='round'
       stroke-linejoin='round'
-      class='icon #{ size_class }'>
-      <title>#{ title }</title>
-      <use xlink:href='#{ asset_pack_path 'images/feather-sprite.svg' }##{name}'/></svg>"
+      class='#{icon_class}'>
+      <title>#{options[:title]}</title>
+      <use xlink:href='#{asset_pack_path 'images/feather-sprite.svg'}##{name}'/></svg>"
   end
 
   def album_image_tag(album, options = {})
@@ -34,5 +35,9 @@ module ApplicationHelper
       <div class='spinner__beat spinner__beat--odd'></div>
       <div class='spinner__beat spinner__beat--even'></div>
       <div class='spinner__beat spinner__beat--odd'></div></div>"
+  end
+
+  def empty_alert_tag
+    content_tag(:div, t('text.no_items'), class: 'display__justify-align-center display__full-height')
   end
 end

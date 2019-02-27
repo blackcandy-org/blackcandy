@@ -25,3 +25,15 @@
 .layout__main__content {
   margin: 25px 60px 35px;
 }
+
+.layout__nav-bar {
+  padding-top: 15px;
+  max-width: 350px;
+  margin: auto;
+}
+
+.layout__search-bar {
+  padding: 20px 0;
+  max-width: 350px;
+  margin: auto;
+}

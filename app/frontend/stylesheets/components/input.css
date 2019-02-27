@@ -1,0 +1,20 @@
+.input {
+  display: flex;
+  align-items: center;
+  background: var(--input-bg-color);
+  border-radius: var(--input-border-radius);
+  padding: 0 8px;
+}
+
+.input input {
+  width: 100%;
+  background: var(--input-bg-color);
+  border: none;
+  color: var(--input-color);
+  padding: 6px 8px;
+}
+
+.input__icon {
+  display: flex;
+  color: var(--input-icon-color);
+}

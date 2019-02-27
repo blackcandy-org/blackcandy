@@ -74,10 +74,11 @@
   --playlist-border-color: var(--black-light);
   --playlist-active-color: var(--purple-light);
 
-  /* Search bar */
-  --search-bar-bg-color: var(--black-lighter);
-  --search-bar-border-radius: var(--border-radius);
-  --search-bar-color: var(--white);
+  /* Input */
+  --input-bg-color: var(--black-lighter);
+  --input-border-radius: var(--border-radius);
+  --input-color: var(--white);
+  --input-icon-color: var(--black);
 
   /* Card */
   --card-title-color: var(--white);

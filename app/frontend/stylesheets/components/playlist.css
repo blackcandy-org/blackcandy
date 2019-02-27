@@ -15,7 +15,7 @@
 
 .playlist__content {
   overflow-y: auto;
-  padding: 60px 20px 0;
+  padding: 70px 20px 0;
 }
 
 .playlist__item {
@@ -32,7 +32,7 @@
 
 .playlist__item__detail__main {
   color: var(--white);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .playlist__item:hover .playlist__item__detail__main {

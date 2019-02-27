@@ -1,0 +1,7 @@
+<li class='playlist__item display__space-between'>
+  <div class='playlist__item__detail'>
+    <div class='playlist__item__detail__main'><%= song_collection.name %></div>
+    <div><%= t('text.tracks_count', count: song_collection.playlist.count) %></div>
+  </div>
+  <div><%= icon_tag('chevron-right') %></div>
+</li>

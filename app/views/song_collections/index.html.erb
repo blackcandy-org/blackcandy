@@ -1,0 +1,15 @@
+<%= form_with model: SongCollection.new, class: 'display__space-between' do |form| %>
+  <div class='input'>
+    <%= form.text_field :name %>
+  </div>
+  <%= form.submit t('label.create'), class: 'button button--primary button--small' %>
+<% end %>
+<% if @song_collections.present? %>
+  <ul class='none-style-list' id='js-song-collection-list'>
+    <% @song_collections.each do |song_collection| %>
+      <%= render partial: 'list_item', locals: { song_collection: song_collection } %>
+    <% end %>
+  </ul>
+<% else %>
+  <%= empty_alert_tag %>
+<% end %>

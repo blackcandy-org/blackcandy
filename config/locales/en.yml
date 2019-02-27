@@ -41,8 +41,12 @@ en:
     artist: 'Artist'
     songs: 'Songs'
     settings: 'Settings'
+    create: 'Create'
   error:
     login: 'Wrong email or password'
   default:
     album_name: 'Untitled Album'
     artist_name: 'Untitled Artist'
+  text:
+    no_items: 'No items'
+    tracks_count: '%{count} tracks'

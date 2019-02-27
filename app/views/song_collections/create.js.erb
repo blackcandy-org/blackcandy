@@ -1,0 +1,3 @@
+// render flash message
+document.querySelector('#js-flash').innerHTML = '<%= j(render 'shared/flash') %>';
+document.querySelector('#js-song-collection-list').insertAdjacentHTML('afterbegin', '<%= j(render partial: 'list_item', locals: { song_collection: @song_collection }) %>');

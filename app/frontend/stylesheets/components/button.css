@@ -13,3 +13,8 @@
 .button--primary {
   background: var(--btn-primary-bg-color);
 }
+
+.button--small {
+  padding: 5px 6px;
+  font-size: var(--font-size-sm);
+}
