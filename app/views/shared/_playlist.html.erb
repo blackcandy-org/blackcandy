@@ -1,8 +1,19 @@
-<div class='playlist display__full-height'>
-  <div class='playlist__nav' id='js-playlist-nav'>
-    <%= render partial: 'playlist/tab', locals: { active_path: playlist_path('current') } %>
+<div class='playlist display__full-height' data-controller='playlist-tab'>
+  <div class='playlist__nav'>
+    <ul class='tab' data-action='click->playlist-tab#toggle'>
+      <% playlist_tab_items.each_with_index do |tab_item| %>
+        <li class='tab__item'>
+          <%= link_to tab_item[:title], tab_item[:path], remote: true, data: { target: 'playlist-tab.item', action: 'ajax:beforeSend->playlist-tab#showSpinner ajax:success->playlist-tab#hideSpinner' } %>
+        </li>
+      <% end %>
+    </ul>
   </div>
-  <div class='playlist__content display__full-height' id='js-playlist-content'>
-    <%= render partial: 'playlist/list', locals: { playlist: Current.user.current_playlist } %>
+  <div class='playlist__content display__full-height'>
+    <div class='display__full-height' id='js-playlist-content' data-target='playlist-tab.content'>
+      <%= render partial: 'playlist/list', locals: { playlist: Current.user.current_playlist } %>
+    </div>
+    <div class='hidden display__justify-align-center display__full-height' data-target='playlist-tab.spinner'>
+      <%= spinner_tag %>
+    </div>
   </div>
 </div>

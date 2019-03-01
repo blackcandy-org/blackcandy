@@ -6,9 +6,7 @@
 <% end %>
 <% if @song_collections.present? %>
   <ul class='none-style-list' id='js-song-collection-list'>
-    <% @song_collections.each do |song_collection| %>
-      <%= render partial: 'list_item', locals: { song_collection: song_collection } %>
-    <% end %>
+    <%= render partial: 'song_collection', collection: @song_collections %>
   </ul>
 <% else %>
   <%= empty_alert_tag %>

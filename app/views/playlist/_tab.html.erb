@@ -1,7 +1,0 @@
-<ul class='tab'>
-  <% playlist_tab_items.each do |tab_item| %>
-    <li class="tab__item <%= 'tab__item--active' if tab_item[:path] == active_path %>">
-      <%= link_to tab_item[:title], tab_item[:path], remote: true %>
-    </li>
-  <% end %>
-</ul>
