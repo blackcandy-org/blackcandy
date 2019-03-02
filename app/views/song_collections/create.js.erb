@@ -1,3 +1,7 @@
-// render flash message
-document.querySelector('#js-flash').innerHTML = '<%= j(render 'shared/flash') %>';
-document.querySelector('#js-song-collection-list').insertAdjacentHTML('afterbegin', '<%= j(render partial: 'list_item', locals: { song_collection: @song_collection }) %>');
+App.renderFlash('<%= j(render 'shared/flash') %>');
+
+document.getElementById('song_collection_name').value = '';
+
+<% if @song_collection.valid? %>
+  document.querySelector('#js-song-collection-list').insertAdjacentHTML('afterbegin', '<%= j(render partial: 'song_collection', locals: { song_collection: @song_collection }) %>');
+<% end %>

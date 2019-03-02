@@ -50,3 +50,4 @@ en:
   text:
     no_items: 'No items'
     tracks_count: '%{count} tracks'
+    create_success: 'Create success'

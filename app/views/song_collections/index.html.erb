@@ -1,11 +1,11 @@
-<%= form_with model: SongCollection.new, class: 'display__space-between' do |form| %>
+<%= form_with model: SongCollection.new, class: 'display__space-between form' do |form| %>
   <div class='input'>
     <%= form.text_field :name %>
   </div>
   <%= form.submit t('label.create'), class: 'button button--primary button--small' %>
 <% end %>
 <% if @song_collections.present? %>
-  <ul class='none-style-list' id='js-song-collection-list'>
+  <ul class='none-style-list' id='js-song-collection-list' data-action='ajax:success->playlist-tab#hideSpinner'>
     <%= render partial: 'song_collection', collection: @song_collections %>
   </ul>
 <% else %>

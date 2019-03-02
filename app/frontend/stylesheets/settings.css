@@ -14,7 +14,7 @@
 
   --white: #fff;
   --red: #a61637;
-  --green: #26a616;
+  --green: #23a650;
 
   /* Fonts */
   --font-size: 16px;
@@ -73,6 +73,8 @@
   --playlist-bg-color: var(--black);
   --playlist-border-color: var(--black-light);
   --playlist-active-color: var(--purple-light);
+  --playlist-item-primary-bg-color: var(--black-light);
+  --playlist-item-primary-border-radius: var(--border-radius);
 
   /* Input */
   --input-bg-color: var(--black-lighter);

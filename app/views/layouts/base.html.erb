@@ -9,9 +9,6 @@
   </head>
 
   <body>
-    <div id='js-flash'>
-      <%= render 'shared/flash' %>
-    </div>
     <%= content_for?(:body) ? yield(:body) : yield %>
   </body>
 </html>

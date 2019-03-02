@@ -1,5 +1,5 @@
 .bg-gradient {
-  background: linear-gradient(0deg, var(--black-light), var(--purple-light));
+  background: linear-gradient(0deg, var(--purple-light), var(--black-light));
 }
 
 .hidden {

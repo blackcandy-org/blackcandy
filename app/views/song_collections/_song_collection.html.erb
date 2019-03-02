@@ -1,6 +1,10 @@
-<li class='playlist__item display__space-between'>
-  <div class='playlist__item__detail'>
-    <div class='playlist__item__detail__main'><%= song_collection.name %></div>
-  </div>
-  <div><%= icon_tag('chevron-right') %></div>
+<li class='playlist__item'>
+  <%= link_to song_collection_path(song_collection), remote: true, class: 'display__space-between' do %>
+    <div class='playlist__item__detail'>
+      <div class='playlist__item__detail__main'>
+        <%= song_collection.name %>
+      </div>
+    </div>
+    <div><%= icon_tag('chevron-right') %></div>
+  <% end %>
 </li>

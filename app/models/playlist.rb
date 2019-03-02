@@ -11,7 +11,7 @@ class Playlist
   end
 
   def songs
-    Song.where(id: @song_ids.to_a)
+    Song.includes(:artist).where(id: @song_ids.to_a)
   end
 
   def push(song_id)

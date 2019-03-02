@@ -27,5 +27,11 @@
     <symbol id="chevron-right" viewBox="0 0 24 24">
       <polyline points="9 18 15 12 9 6"/>
     </symbol>
+    <symbol id="chevron-left" viewBox="0 0 24 24">
+      <polyline points="15 18 9 12 15 6"/>
+    </symbol>
+    <symbol id="more-vertical" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/>
+    </symbol>
   </defs>
 </svg>

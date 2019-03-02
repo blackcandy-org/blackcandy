@@ -11,9 +11,9 @@ export default class extends Controller {
     new Noty({
       type: types.includes(type) ? type : 'success',
       text: this.element.textContent,
-      layout: 'topCenter',
       timeout: 2500,
-      progressBar: false
+      progressBar: false,
+      container: '#js-flash'
     }).show();
   }
 }

@@ -11,6 +11,7 @@ import RailsUjs from 'rails-ujs';
 import Turbolinks from 'turbolinks';
 import { Application } from 'stimulus';
 import { definitionsFromContext } from 'stimulus/webpack-helpers';
+import App from '../javascripts/app';
 
 import 'babel-polyfill';
 
@@ -25,3 +26,4 @@ const application = Application.start();
 const controllers = require.context('../javascripts/controllers', true, /\.js$/);
 
 application.load(definitionsFromContext(controllers));
+window.App = App;

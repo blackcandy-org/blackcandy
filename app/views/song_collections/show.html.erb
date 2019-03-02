@@ -1,0 +1,15 @@
+<div class='playlist__item playlist__item--primary display__space-between'>
+  <div class='display__align-center'>
+    <div>
+      <%= link_to song_collections_path, remote: true, data: { action: 'ajax:success->playlist-tab#hideSpinner' } do %>
+        <%= icon_tag('chevron-left') %>
+      <% end %>
+    </div>
+    <div class='playlist__item__detail'>
+      <div class='playlist__item__detail__main'><%= @song_collection.name %></div>
+      <div><%= t('text.tracks_count', { count: @playlist.count }) %></div>
+    </div>
+  </div>
+  <div><%= icon_tag('more-vertical') %></div>
+</div>
+<%= render partial: 'playlist/list', locals: { playlist: @playlist } %>

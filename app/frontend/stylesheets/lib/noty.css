@@ -1,7 +1,7 @@
 /* Style for noty notification library */
 
-#noty_layout__topCenter {
-  position: fixed;
+#js-flash {
+  position: absolute;
   margin: 0;
   padding: 0;
   z-index: 9999999;
@@ -20,10 +20,11 @@
   overflow: hidden;
   border-radius: var(--noty-bar-border-radius);
   position: relative;
+  opacity: 0.9;
 }
 
 .noty_bar .noty_body {
-  padding: 10px;
+  padding: 8px;
   font-size: 14px;
   text-align: center;
 }
