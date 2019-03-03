@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
 class SongCollectionsController < ApplicationController
+  include Pagy::Backend
+
   before_action :require_login
 
   def index
-    @song_collections = Current.user.song_collections.order(id: :desc)
+    @pagy, @song_collections = pagy_countless(Current.user.song_collections.order(id: :desc))
   end
 
   def show
     @song_collection = SongCollection.find_by(id: params[:id])
-    head :not_found unless @song_collection.present?
-
-    @playlist = @song_collection.playlist
+    @pagy, @songs = pagy_countless(@song_collection.playlist.songs)
   end
 
   def create

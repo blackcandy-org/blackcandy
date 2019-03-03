@@ -1,10 +1,18 @@
 import { Controller } from 'stimulus';
+import { ajax } from 'rails-ujs';
 
 export default class extends Controller {
   static targets = ['item', 'content', 'spinner'];
 
   initialize() {
+    const firstTabUrl = this.itemTargets[0].getAttribute('href');
     this._toggleWithIndex(0);
+
+    ajax({
+      url: firstTabUrl,
+      type: 'get',
+      dataType: 'script'
+    });
   }
 
   toggle(event) {

@@ -13,7 +13,9 @@ export default class extends Controller {
   }
 
   disconnect() {
-    this.scrollController.destroy();
+    if (this.scrollController) {
+      this.scrollController.destroy(true);
+    }
   }
 
   createScene() {
@@ -36,6 +38,8 @@ export default class extends Controller {
         ajaxRequest.abort();
       }
 
+      if (this.isTriggerHidden) { return; }
+
       ajax({
         url: this.data.get('nextUrl'),
         type: 'get',
@@ -49,5 +53,9 @@ export default class extends Controller {
 
   get hasNextPage() {
     return this.triggerTarget.childElementCount != 0;
+  }
+
+  get isTriggerHidden() {
+    return this.triggerTarget.offsetParent == null;
   }
 }

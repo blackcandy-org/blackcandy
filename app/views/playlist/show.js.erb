@@ -1,1 +1,6 @@
-document.querySelector('#js-playlist-content').innerHTML = '<%= j(render partial: 'list', locals: { playlist: @playlist }) %>';
+<% if @pagy.page == 1 %>
+  // If it's first page just render whole list content, avoid to add old playlist content to the new one.
+  App.renderPlaylistContent('<%= j(render partial: 'list', locals: { songs: @songs, pagy: @pagy }) %>');
+<% else %>
+  App.appendPlaylistNewContentTo('#js-playlist-list-content', '<%= j(render partial: 'list', locals: { songs: @songs, pagy: @pagy }) %>');
+<% end %>

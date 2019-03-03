@@ -1,3 +1,2 @@
-document.querySelector('#js-login-form').innerHTML = '<%= j(render 'form') %>'
-
+App.renderContent('#js-login-form', '<%= j(render 'form') %>');
 App.renderFlash('<%= j(render 'shared/flash') %>');

@@ -14,8 +14,8 @@ class Playlist
     Song.includes(:artist).where(id: @song_ids.to_a)
   end
 
-  def push(song_id)
-    @song_ids << song_id.to_i
+  def push(*song_ids)
+    @song_ids.merge(song_ids.flatten.map(&:to_i))
   end
 
   def delete(song_id)

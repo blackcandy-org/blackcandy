@@ -1,8 +1,9 @@
-<% if playlist.empty? %>
+<% if songs.empty? %>
   <%= empty_alert_tag %>
 <% else %>
-  <ul class='none-style-list'>
-    <% playlist.songs.each do |song| %>
+<div data-controller='infinite-scroll' data-infinite-scroll-container='.playlist__content' data-infinite-scroll-next-url='<%= pagy_next_url(pagy) %>'>
+  <ul class='none-style-list' id='js-playlist-list-content'>
+    <% songs.each do |song| %>
       <li class='playlist__item display__space-between'>
         <div class='playlist__item__detail'>
           <div class='playlist__item__detail__main'><%= song.name %></div>
@@ -12,4 +13,10 @@
       </li>
     <% end %>
   </ul>
+  <div data-target='infinite-scroll.trigger'>
+    <% if pagy.next %>
+      <%= spinner_tag %>
+    <% end %>
+  </div>
+</div>
 <% end %>

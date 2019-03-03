@@ -22,7 +22,7 @@ gem 'sidekiq', '~> 5.1.3'
 # Server-side support for Turbolinks redirection
 gem 'turbolinks'
 # Pagination
-gem 'pagy', '~> 1.3.3'
+gem 'pagy', '~> 2.0.0'
 # Map redis types directly to ruby objects
 gem 'redis-objects', '~> 1.4'
 # Use Redis adapter to run Action Cable in production

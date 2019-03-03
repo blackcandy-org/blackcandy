@@ -7,9 +7,9 @@
     </div>
     <div class='playlist__item__detail'>
       <div class='playlist__item__detail__main'><%= @song_collection.name %></div>
-      <div><%= t('text.tracks_count', { count: @playlist.count }) %></div>
+      <div><%= t('text.tracks_count', { count: @songs.count }) %></div>
     </div>
   </div>
   <div><%= icon_tag('more-vertical') %></div>
 </div>
-<%= render partial: 'playlist/list', locals: { playlist: @playlist } %>
+<%= render partial: 'playlist/list', locals: { songs: @songs, pagy: @pagy } %>

@@ -10,7 +10,6 @@
   </div>
   <div class='playlist__content display__full-height'>
     <div class='display__full-height' id='js-playlist-content' data-target='playlist-tab.content'>
-      <%= render partial: 'playlist/list', locals: { playlist: Current.user.current_playlist } %>
     </div>
     <div class='hidden display__justify-align-center display__full-height' data-target='playlist-tab.spinner'>
       <%= spinner_tag %>
