@@ -1,0 +1,13 @@
+<% if @songs.empty? %>
+  <%= empty_alert_tag %>
+<% else %>
+  <div class='playlist__item playlist__item--primary display__space-between'>
+    <div class='display__align-center'>
+      <div class='playlist__item__detail'>
+        <div><%= t('text.tracks_count', { count: @playlist.count }) %></div>
+      </div>
+    </div>
+    <div><%= icon_tag('more-vertical') %></div>
+  </div>
+  <%= render partial: 'list', locals: { songs: @songs, pagy: @pagy } %>
+<% end %>

@@ -12,4 +12,8 @@
   </div>
   <div><%= icon_tag('more-vertical') %></div>
 </div>
-<%= render partial: 'playlist/list', locals: { songs: @songs, pagy: @pagy } %>
+<% if @songs.empty? %>
+  <%= empty_alert_tag %>
+<% else %>
+  <%= render partial: 'playlist/list', locals: { songs: @songs, pagy: @pagy } %>
+<% end %>

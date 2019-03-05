@@ -20,6 +20,7 @@ module.exports = {
     "fetch": true,
     "window": true,
     "localStorage": true,
-    "Event": true
+    "Event": true,
+    "App": true
   }
 };

@@ -12,6 +12,7 @@ import Turbolinks from 'turbolinks';
 import { Application } from 'stimulus';
 import { definitionsFromContext } from 'stimulus/webpack-helpers';
 import App from '../javascripts/app';
+import player from '../javascripts/player';
 
 import 'babel-polyfill';
 
@@ -26,4 +27,6 @@ const application = Application.start();
 const controllers = require.context('../javascripts/controllers', true, /\.js$/);
 
 application.load(definitionsFromContext(controllers));
+
 window.App = App;
+window.App.player = player;

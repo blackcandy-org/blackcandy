@@ -17,3 +17,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.overflow-hidden {
+  overflow: hidden;
+}

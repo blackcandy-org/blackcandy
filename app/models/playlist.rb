@@ -10,6 +10,10 @@ class Playlist
     @song_ids = song_ids
   end
 
+  def song_ids
+    @song_ids.to_a
+  end
+
   def songs
     Song.includes(:artist).where(id: @song_ids.to_a)
   end

@@ -1,29 +1,28 @@
-<% test_song = Song.first %>
-<div class='player'>
+<div class='player' data-controller='player'>
   <div class='player__info display__flex'>
     <div class='player__info__cover'>
-      <%= image_tag url_for(test_song.album.image) %>
+      <img data-target='player.image' />
     </div>
-    <div>
-      <div class='player__info__detail player__info__detail--main'><%= test_song.name %></div>
-      <div class='player__info__detail'><%= test_song.album.name %></div>
-      <div class='player__info__detail'><%= test_song.artist.name %></div>
+    <div class='overflow-hidden'>
+      <div class='player__info__detail player__info__detail--main text-truncate' data-target='player.songName'></div>
+      <div class='player__info__detail text-truncate' data-target='player.albumName'></div>
+      <div class='player__info__detail text-truncate' data-target='player.artistName'></div>
       <div class='player__info__detail player__timer'>
-        <span class='player__timer__item player__timer__item--main'>01:11</span>
+        <span class='player__timer__item player__timer__item--main' data-target='player.songTimer'></span>
         <span class='player__timer__item'>/</span>
-        <span class='player__timer__item'><%= test_song.duration %></span>
+        <span class='player__timer__item' data-target='player.songDuration'></span>
       </div>
     </div>
   </div>
-  <progress class='player__progress display__full-width display__flex' value='22' max='100'></progress>
+  <progress data-target='player.progress' class='player__progress display__full-width display__flex' max='100'></progress>
   <div class='player__control display__space-between'>
     <div class='player__control__minor'>
       <%= icon_tag 'repeat', size: 'small' %>
     </div>
     <div>
-      <span><%= icon_tag 'rewind' %></span>
-      <span class='player__control__main'><%= icon_tag 'play' %></span>
-      <span><%= icon_tag 'fast-forward' %></span>
+      <span data-action='click->player#previous'><%= icon_tag 'rewind' %></span>
+      <span data-action='click->player#togglePlay' class='player__control__main'><%= icon_tag 'play' %></span>
+      <span data-action='click->player#next'><%= icon_tag 'fast-forward' %></span>
     </div>
     <div class='player__control__minor'>
       <%= icon_tag 'heart', size: 'small' %>

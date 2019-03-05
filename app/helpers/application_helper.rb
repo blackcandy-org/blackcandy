@@ -24,8 +24,8 @@ module ApplicationHelper
       <use xlink:href='#{asset_pack_path 'images/feather-sprite.svg'}##{name}'/></svg>"
   end
 
-  def album_image_tag(album, options = {})
-    image_tag(album.image.attached? ? album.image : 'default_album.png', options)
+  def album_image_url(album)
+    album.image.attached? ? url_for(album.image) : 'default_album.png'
   end
 
   def spinner_tag(size: '')

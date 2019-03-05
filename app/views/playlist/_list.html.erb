@@ -1,6 +1,3 @@
-<% if songs.empty? %>
-  <%= empty_alert_tag %>
-<% else %>
 <div data-controller='infinite-scroll' data-infinite-scroll-container='.playlist__content' data-infinite-scroll-next-url='<%= pagy_next_url(pagy) %>'>
   <ul class='none-style-list' id='js-playlist-list-content'>
     <% songs.each do |song| %>
@@ -19,4 +16,3 @@
     <% end %>
   </div>
 </div>
-<% end %>

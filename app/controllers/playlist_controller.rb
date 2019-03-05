@@ -8,13 +8,18 @@ class PlaylistController < ApplicationController
   def show
     case params[:id]
     when 'current'
-      playlist = Current.user.current_playlist
+      @playlist = Current.user.current_playlist
     when 'favorite'
-      playlist = Current.user.favorite_playlist
+      @playlist = Current.user.favorite_playlist
     else
-      playlist = SongCollection.find_by(id: params[:id]).playlist
+      @playlist = SongCollection.find_by(id: params[:id]).playlist
     end
 
-    @pagy, @songs = pagy_countless(playlist.songs)
+    @pagy, @songs = pagy_countless(@playlist.songs)
+
+    respond_to do |format|
+      format.js
+      format.json  { render json: @playlist.song_ids }
+    end
   end
 end

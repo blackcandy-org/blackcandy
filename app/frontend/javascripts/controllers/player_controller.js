@@ -1,38 +1,26 @@
 import { Controller } from 'stimulus';
-
-import Player from '../player';
 import { formatDuration } from '../helper';
-
-const defaultVolume = 0.5;
-const defaultAlbumImage = '/images/default_album.png';
+import { ajax } from 'rails-ujs';
 
 export default class extends Controller {
   static targets = [
     'info',
-    'mainButton',
-    'volume',
-    'albumImage',
+    'image',
     'songName',
     'artistName',
+    'albumName',
     'songDuration',
     'songTimer',
     'progress'
   ];
 
   initialize() {
-    this.player = new Player(this.playlistController.playlistContent);
+    this.player = App.player;
+    this._initPlaylist();
 
     this.player.onplay = () => {
       this._setPlayingStatus();
     };
-
-    this.player.onpause = () => {
-      this._setPauseStatus();
-    };
-
-    this.volumeTarget.value = localStorage.getItem('volume') || defaultVolume;
-    // dispatch change event on player volume input.
-    this.volumeTarget.dispatchEvent(new Event('change'));
   }
 
   togglePlay() {
@@ -51,15 +39,6 @@ export default class extends Controller {
     this.player.previous();
   }
 
-  changeVolume(event) {
-    this.player.volume(event.target.value);
-  }
-
-  get playlistController() {
-    const playlist = document.querySelector('#js-playlist');
-    return this.application.getControllerForElementAndIdentifier(playlist, 'playlist');
-  }
-
   get currentIndex() {
     return this.player.currentIndex;
   }
@@ -68,21 +47,18 @@ export default class extends Controller {
     return this.player.currentSong;
   }
 
-  _setPlayingStatus() {
-    this.infoTarget.classList.remove('hidden');
-    this.mainButtonTarget.classList.add('playing');
+  get isStoped() {
+    return !!this.player.currentSong;
+  }
 
-    this.albumImageTarget.src = this.currentSong.album_image_url || defaultAlbumImage;
+  _setPlayingStatus() {
+    this.imageTarget.src = this.currentSong.album_image_url;
     this.songNameTarget.textContent = this.currentSong.name;
     this.artistNameTarget.textContent = this.currentSong.artist_name;
+    this.albumNameTarget.textContent = this.currentSong.album_name;
     this.songDurationTarget.textContent = formatDuration(this.currentSong.length);
 
     window.requestAnimationFrame(this._setProgress.bind(this));
-    this.playlistController.showCurrentItem(this.currentIndex);
-  }
-
-  _setPauseStatus() {
-    this.mainButtonTarget.classList.remove('playing');
   }
 
   _setProgress() {
@@ -94,5 +70,16 @@ export default class extends Controller {
     if (this.player.isPlaying()) {
       window.requestAnimationFrame(this._setProgress.bind(this));
     }
+  }
+
+  _initPlaylist() {
+    ajax({
+      url: '/playlist/current',
+      type: 'get',
+      dataType: 'json',
+      success: (response) => {
+        this.player.playlist = response;
+      }
+    });
   }
 }

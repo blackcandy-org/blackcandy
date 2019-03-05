@@ -1,47 +1,38 @@
-import { Howl, Howler } from 'howler';
+import { Howl } from 'howler';
+import { ajax } from 'rails-ujs';
 
-function Player(playlist) {
-  this.playlist = playlist;
-  this.currentIndex = 0;
-  this.currentSong = {};
-  this.onplay = () => {};
-  this.onpause = () => {};
-}
+const player = {
+  playlist: [],
+  currentIndex: 0,
+  currentSong: {},
+  onplay: () => {},
 
-async function fetchSong(id) {
-  const response = await fetch(`songs/${id}`, { credentials: 'same-origin' });
-  const songInfo = await response.json();
-
-  return songInfo;
-}
-
-Player.prototype = {
-  async play(currentIndex) {
+  play(currentIndex) {
     const song = {
       id: this.playlist[currentIndex]
     };
 
     if (!song.howl) {
-      const data = await fetchSong(song.id);
+      ajax({
+        url: `/songs/${song.id}`,
+        type: 'get',
+        dataType: 'json',
+        success: (response) => {
+          song.howl = new Howl({
+            src: [response.url],
+            html5: true,
+            onplay: this.onplay,
+          });
 
-      song.howl = new Howl({
-        src: [data.url],
-        html5: true,
-        onplay: this.onplay,
-        onpause: this.onpause
+          Object.assign(song, response);
+
+          this.currentIndex = currentIndex;
+          this.currentSong = song;
+
+          song.howl.play();
+        }
       });
-
-      Object.assign(song, data);
     }
-
-    if (this.currentSong.howl && song !== this.currentSong) {
-      this.currentSong.howl.stop();
-    }
-
-    this.currentIndex = currentIndex;
-    this.currentSong = song;
-
-    song.howl.play();
   },
 
   pause() {
@@ -55,6 +46,7 @@ Player.prototype = {
       this.currentIndex += 1;
     }
 
+    this.currentSong.howl.stop();
     this.play(this.currentIndex);
   },
 
@@ -65,17 +57,13 @@ Player.prototype = {
       this.currentIndex -= 1;
     }
 
+    this.currentSong.howl.stop();
     this.play(this.currentIndex);
   },
 
   isPlaying() {
     return this.currentSong.howl ? this.currentSong.howl.playing() : false;
-  },
-
-  volume(value) {
-    localStorage.setItem('volume', value);
-    Howler.volume(value);
   }
 };
 
-export default Player;
+export default player;
