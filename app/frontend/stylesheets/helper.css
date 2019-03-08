@@ -21,3 +21,7 @@
 .overflow-hidden {
   overflow: hidden;
 }
+
+.pointer-cursor {
+  cursor: pointer;
+}

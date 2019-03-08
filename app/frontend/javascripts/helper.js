@@ -1,10 +1,14 @@
-function formatDuration(length) {
-  const minutes = (length / 60) % 60;
-  const seconds = length % 60;
+function formatDuration(secs) {
+  const minutes = Math.floor(secs / 60) || 0;
+  const seconds = (secs - (minutes * 60)) || 0;
 
-  return [minutes, seconds].map((time) => {
-    return Math.round(time).toString().padStart(2, '0');
-  }).join(':');
+  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
-export { formatDuration };
+function toggleVisible(elements, currentElement) {
+  elements.forEach((element) => {
+    element.classList.toggle('hidden', element == currentElement);
+  });
+}
+
+export { formatDuration, toggleVisible };

@@ -12,6 +12,7 @@ module.exports = {
     "no-useless-escape": "off",
     "no-underscore-dangle": "off",
     "no-param-reassign": "off",
+    "no-unused-expressions": "off",
     "consistent-return": "off",
     "default-case": "off"
   },

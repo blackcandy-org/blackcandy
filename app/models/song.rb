@@ -19,4 +19,8 @@ class Song < ApplicationRecord
   def format
     MediaFile.format(file_path)
   end
+
+  def favorited?
+    Current.user.favorite_playlist.include?(id)
+  end
 end

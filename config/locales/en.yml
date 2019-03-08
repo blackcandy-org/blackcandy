@@ -50,4 +50,5 @@ en:
   text:
     no_items: 'No items'
     tracks_count: '%{count} tracks'
-    create_success: 'Create success'
+    create_success: 'Created successfully'
+    update_playlist_success: 'Update playlist successfully'

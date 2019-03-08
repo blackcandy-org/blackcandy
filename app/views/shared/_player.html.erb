@@ -1,30 +1,33 @@
 <div class='player' data-controller='player'>
-  <div class='player__info display__flex'>
-    <div class='player__info__cover'>
-      <img data-target='player.image' />
-    </div>
-    <div class='overflow-hidden'>
-      <div class='player__info__detail player__info__detail--main text-truncate' data-target='player.songName'></div>
-      <div class='player__info__detail text-truncate' data-target='player.albumName'></div>
-      <div class='player__info__detail text-truncate' data-target='player.artistName'></div>
-      <div class='player__info__detail player__timer'>
-        <span class='player__timer__item player__timer__item--main' data-target='player.songTimer'></span>
-        <span class='player__timer__item'>/</span>
-        <span class='player__timer__item' data-target='player.songDuration'></span>
+  <div data-target='player.header' class='player__header'>
+    <div class='player__info display__flex'>
+      <div class='player__info__cover'>
+        <img data-target='player.image' />
+      </div>
+      <div class='overflow-hidden'>
+        <div class='player__info__detail player__info__detail--main text-truncate' data-target='player.songName'></div>
+        <div class='player__info__detail text-truncate' data-target='player.albumName'></div>
+        <div class='player__info__detail text-truncate' data-target='player.artistName'></div>
+        <div class='player__info__detail player__timer'>
+          <span class='player__timer__item player__timer__item--main' data-target='player.songTimer'></span>
+          <span class='player__timer__item'>/</span>
+          <span class='player__timer__item' data-target='player.songDuration'></span>
+        </div>
       </div>
     </div>
+    <progress data-target='player.progress' class='player__progress display__full-width display__flex' max='100'></progress>
   </div>
-  <progress data-target='player.progress' class='player__progress display__full-width display__flex' max='100'></progress>
   <div class='player__control display__space-between'>
-    <div class='player__control__minor'>
+    <div class='player__control__minor pointer-cursor'>
       <%= icon_tag 'repeat', size: 'small' %>
     </div>
     <div>
-      <span data-action='click->player#previous'><%= icon_tag 'rewind' %></span>
-      <span data-action='click->player#togglePlay' class='player__control__main'><%= icon_tag 'play' %></span>
-      <span data-action='click->player#next'><%= icon_tag 'fast-forward' %></span>
+      <span class='pointer-cursor' data-action='click->player#previous'><%= icon_tag 'rewind' %></span>
+      <span data-action='click->player#togglePlay' class='player__control__main pointer-cursor' data-target='player.playButton'><%= icon_tag 'play' %></span>
+      <span data-action='click->player#togglePlay' class='player__control__main pointer-cursor hidden' data-target='player.playButton'><%= icon_tag 'pause' %></span>
+      <span data-action='click->player#next' class='pointer-cursor'><%= icon_tag 'fast-forward' %></span>
     </div>
-    <div class='player__control__minor'>
+    <div data-target='player.favoriteButton' data-action='click->player#toggleFavorite' class='player__control__minor pointer-cursor'>
       <%= icon_tag 'heart', size: 'small' %>
     </div>
   </div>

@@ -10,4 +10,9 @@ class SongsController < ApplicationController
   def show
     @song = Song.select('songs.*, albums.name as album_name, artists.name as artist_name').joins(:artist, :album).find_by(id: params[:id])
   end
+
+  def favorite
+    Current.user.favorite_playlist.toggle(params[:id])
+    head :ok
+  end
 end

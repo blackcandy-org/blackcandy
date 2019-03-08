@@ -8,9 +8,9 @@ const player = {
   onplay: () => {},
 
   play(currentIndex) {
-    const song = {
-      id: this.playlist[currentIndex]
-    };
+    const song = this.playlist[currentIndex];
+    this.currentIndex = currentIndex;
+    this.currentSong = song;
 
     if (!song.howl) {
       ajax({
@@ -25,44 +25,54 @@ const player = {
           });
 
           Object.assign(song, response);
-
-          this.currentIndex = currentIndex;
-          this.currentSong = song;
-
           song.howl.play();
         }
       });
+    } else {
+      song.howl.play();
     }
   },
 
   pause() {
-    this.currentSong.howl.pause();
+    this.currentSong.howl && this.currentSong.howl.pause();
+  },
+
+  stop() {
+    this.currentSong.howl && this.currentSong.howl.stop();
   },
 
   next() {
+    this.stop();
+
     if (this.currentIndex + 1 >= this.playlist.length) {
       this.currentIndex = 0;
     } else {
       this.currentIndex += 1;
     }
 
-    this.currentSong.howl.stop();
     this.play(this.currentIndex);
   },
 
   previous() {
+    this.stop();
+
     if (this.currentIndex - 1 < 0) {
       this.currentIndex = this.playlist.length - 1;
     } else {
       this.currentIndex -= 1;
     }
 
-    this.currentSong.howl.stop();
     this.play(this.currentIndex);
   },
 
   isPlaying() {
-    return this.currentSong.howl ? this.currentSong.howl.playing() : false;
+    return this.currentSong.howl && this.currentSong.howl.playing();
+  },
+
+  updatePlaylist(songIds) {
+    this.playlist = songIds.map((songId) => {
+      return { id: songId };
+    });
   }
 };
 

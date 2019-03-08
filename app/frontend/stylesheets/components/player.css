@@ -67,3 +67,23 @@
 .player__progress::-webkit-progress-value {
   background: var(--player-progress-color);
 }
+
+.player__header {
+  visibility: hidden;
+  max-height: 0;
+}
+
+.player__header--show {
+  transition: max-height 0.4s ease-in-out;
+  max-height: 200px;
+  overflow: auto;
+  visibility: visible;
+}
+
+.player__favorite {
+  color: var(--player-favorite-color);
+}
+
+.player__favorite svg {
+  fill: var(--player-favorite-color);
+}

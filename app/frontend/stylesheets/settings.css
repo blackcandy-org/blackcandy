@@ -67,6 +67,7 @@
   /* Player */
   --player-progress-bg-color: var(--black-light);
   --player-progress-color: var(--purple);
+  --player-favorite-color: var(--red);
 
   /* Playlist */
   --playlist-color: var(--grey-light);
