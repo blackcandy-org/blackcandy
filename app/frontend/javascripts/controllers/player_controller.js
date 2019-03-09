@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus';
-import { formatDuration, toggleVisible } from '../helper';
+import { formatDuration, toggleHide, toggleShow } from '../helper';
 import { ajax } from 'rails-ujs';
 
 export default class extends Controller {
@@ -13,24 +13,18 @@ export default class extends Controller {
     'songTimer',
     'progress',
     'playButton',
-    'favoriteButton'
+    'favoriteButton',
+    'modeButton'
   ];
 
   initialize() {
-    this.player = App.player;
+    this._initPlayer();
+    this._initMode();
     this._initPlaylist();
-
-    this.player.onplay = () => {
-      this._setPlayingStatus();
-    };
-
-    this.player.onend = () => {
-      this.next();
-    };
   }
 
   togglePlay(event) {
-    toggleVisible(this.playButtonTargets, event.currentTarget);
+    toggleHide(this.playButtonTargets, event.currentTarget);
 
     if (this.player.isPlaying()) {
       this.player.pause();
@@ -51,6 +45,22 @@ export default class extends Controller {
     });
   }
 
+  nextMode() {
+    if (this.currentModeIndex + 1 >= this.modes.length) {
+      this.currentModeIndex = 0;
+    } else {
+      this.currentModeIndex += 1;
+    }
+
+    this.updateMode();
+  }
+
+  updateMode() {
+    toggleShow(this.modeButtonTargets, this.modeButtonTargets[this.currentModeIndex]);
+
+    this.player.isShuffle = this.currentMode == 'shuffle';
+  }
+
   next() {
     this.player.next();
   }
@@ -67,6 +77,10 @@ export default class extends Controller {
     return this.player.currentSong;
   }
 
+  get currentMode() {
+    return this.modes[this.currentModeIndex];
+  }
+
   _setPlayingStatus() {
     this.imageTarget.src = this.currentSong.album_image_url;
     this.songNameTarget.textContent = this.currentSong.name;
@@ -74,8 +88,8 @@ export default class extends Controller {
     this.albumNameTarget.textContent = this.currentSong.album_name;
     this.songDurationTarget.textContent = formatDuration(this.currentSong.length);
     this.favoriteButtonTarget.classList.toggle('player__favorite', this.currentSong.is_favorited);
+    this.headerTarget.classList.add('player__header--show');
 
-    this._showPlayerHeader();
     window.requestAnimationFrame(this._setProgress.bind(this));
   }
 
@@ -90,6 +104,22 @@ export default class extends Controller {
     }
   }
 
+  _initPlayer() {
+    this.player = App.player;
+
+    this.player.onplay = () => {
+      this._setPlayingStatus();
+    };
+
+    this.player.onend = () => {
+      if (this.currentMode == 'single') {
+        this.player.play(this.currentIndex);
+      } else {
+        this.next();
+      }
+    };
+  }
+
   _initPlaylist() {
     ajax({
       url: '/playlist/current',
@@ -101,7 +131,9 @@ export default class extends Controller {
     });
   }
 
-  _showPlayerHeader() {
-    this.headerTarget.classList.add('player__header--show');
+  _initMode() {
+    this.modes = ['normal', 'shuffle', 'single'];
+    this.currentModeIndex = 0;
+    this.updateMode();
   }
 }

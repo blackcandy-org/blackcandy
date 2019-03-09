@@ -5,10 +5,24 @@ function formatDuration(secs) {
   return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
-function toggleVisible(elements, currentElement) {
+function toggleHide(elements, currentElement) {
   elements.forEach((element) => {
     element.classList.toggle('hidden', element == currentElement);
   });
 }
 
-export { formatDuration, toggleVisible };
+function toggleShow(elements, currentElement) {
+  elements.forEach((element) => {
+    element.classList.toggle('hidden', element != currentElement);
+  });
+}
+
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+export { formatDuration, toggleHide, toggleShow, shuffle };

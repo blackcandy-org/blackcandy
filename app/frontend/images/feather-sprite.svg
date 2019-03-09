@@ -33,5 +33,8 @@
     <symbol id="more-vertical" viewBox="0 0 24 24">
       <circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/>
     </symbol>
+    <symbol id="repeat-1" viewBox="0 0 24 24">
+      <path d="M9.013,7 L9.563,7 L9.563,14.854 L8.881,14.854 L8.881,7.836 C8.375,8.386 7.748,8.771 7,8.991 L7,8.309 C7.363,8.199 7.726,8.034 8.078,7.814 C8.43,7.583 8.749,7.308 9.013,7 Z"></path><polyline points="14 0 18 4 14 8"></polyline> <path d="M0,10 L0,8 C-4.4408921e-16,5.790861 1.790861,4 4,4 L18,4"></path><polyline points="4 22 0 18 4 14"></polyline><path d="M18,12 L18,14 C18,16.209139 16.209139,18 14,18 L0,18"></path>
+    </symbol>
   </defs>
 </svg>

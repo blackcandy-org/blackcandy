@@ -1,5 +1,6 @@
 import { Howl } from 'howler';
 import { ajax } from 'rails-ujs';
+import { shuffle } from './helper';
 
 const player = {
   playlist: null,
@@ -7,9 +8,10 @@ const player = {
   currentSong: {},
   onplay: null,
   onend: null,
+  isShuffle: false,
 
   play(currentIndex) {
-    const song = this.playlist[currentIndex];
+    const song = this.isShuffle ? this.shufflePlaylist[currentIndex] : this.playlist[currentIndex];
     this.currentIndex = currentIndex;
     this.currentSong = song;
 
@@ -75,6 +77,8 @@ const player = {
     this.playlist = songIds.map((songId) => {
       return { id: songId };
     });
+
+    this.shufflePlaylist = shuffle(Object.assign([], this.playlist));
   }
 };
 

@@ -18,8 +18,10 @@
     <progress data-target='player.progress' class='player__progress display__full-width display__flex' max='100'></progress>
   </div>
   <div class='player__control display__space-between'>
-    <div class='player__control__minor pointer-cursor'>
-      <%= icon_tag 'repeat', size: 'small' %>
+    <div class='player__control__minor pointer-cursor' data-action='click->player#nextMode'>
+      <span data-target='player.modeButton'><%= icon_tag 'repeat', size: 'small' %></span>
+      <span data-target='player.modeButton'><%= icon_tag 'shuffle', size: 'small' %></span>
+      <span data-target='player.modeButton'><%= icon_tag 'repeat-1', size: 'small' %></span>
     </div>
     <div>
       <span class='pointer-cursor' data-action='click->player#previous'><%= icon_tag 'rewind' %></span>
