@@ -23,6 +23,10 @@ export default class extends Controller {
     this.player.onplay = () => {
       this._setPlayingStatus();
     };
+
+    this.player.onend = () => {
+      this.next();
+    };
   }
 
   togglePlay(event) {

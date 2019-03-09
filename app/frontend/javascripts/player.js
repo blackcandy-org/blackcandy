@@ -2,10 +2,11 @@ import { Howl } from 'howler';
 import { ajax } from 'rails-ujs';
 
 const player = {
-  playlist: [],
+  playlist: null,
   currentIndex: 0,
   currentSong: {},
-  onplay: () => {},
+  onplay: null,
+  onend: null,
 
   play(currentIndex) {
     const song = this.playlist[currentIndex];
@@ -22,6 +23,7 @@ const player = {
             src: [response.url],
             html5: true,
             onplay: this.onplay,
+            onend: this.onend
           });
 
           Object.assign(song, response);
