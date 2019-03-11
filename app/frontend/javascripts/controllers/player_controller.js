@@ -132,7 +132,7 @@ export default class extends Controller {
   }
 
   _initMode() {
-    this.modes = ['normal', 'shuffle', 'single'];
+    this.modes = ['normal', 'single', 'shuffle'];
     this.currentModeIndex = 0;
     this.updateMode();
   }

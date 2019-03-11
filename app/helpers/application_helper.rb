@@ -14,14 +14,13 @@ module ApplicationHelper
     size_class = options[:size].blank? ? '' : "icon--#{options[:size]}"
     icon_class = ['icon', size_class, options[:class]].join(' ')
 
-    raw "<svg fill='none'
-      stroke='currentColor'
+    raw "<svg fill='currentColor'
       stroke-width='2'
       stroke-linecap='round'
       stroke-linejoin='round'
       class='#{icon_class}'>
       <title>#{options[:title]}</title>
-      <use xlink:href='#{asset_pack_path 'images/feather-sprite.svg'}##{name}'/></svg>"
+      <use xlink:href='#{asset_pack_path 'images/material-design-icons.svg'}##{name}'/></svg>"
   end
 
   def album_image_url(album)

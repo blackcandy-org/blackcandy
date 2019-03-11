@@ -83,7 +83,3 @@
 .player__favorite {
   color: var(--player-favorite-color);
 }
-
-.player__favorite svg {
-  fill: var(--player-favorite-color);
-}
