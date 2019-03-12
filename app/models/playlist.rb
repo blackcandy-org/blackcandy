@@ -32,12 +32,12 @@ class Playlist
     include?(song_id) ? delete(song_id) : push(song_id)
   end
 
-  def update(action:, song_ids: [])
-    case action
+  def update(attributes)
+    case attributes[:update_action]
     when 'push'
-      push(song_ids)
+      push(attributes[:song_ids])
     when 'delete'
-      delete(song_ids)
+      delete(attributes[:song_ids])
     end
   end
 

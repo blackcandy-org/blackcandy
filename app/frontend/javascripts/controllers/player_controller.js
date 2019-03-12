@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus';
-import { formatDuration, toggleHide, toggleShow } from '../helper';
+import { formatDuration, toggleShow, dispatchEvent } from '../helper';
 import { ajax } from 'rails-ujs';
 
 export default class extends Controller {
@@ -13,6 +13,7 @@ export default class extends Controller {
     'songTimer',
     'progress',
     'playButton',
+    'pauseButton',
     'favoriteButton',
     'modeButton'
   ];
@@ -23,14 +24,12 @@ export default class extends Controller {
     this._initPlaylist();
   }
 
-  togglePlay(event) {
-    toggleHide(this.playButtonTargets, event.currentTarget);
+  play() {
+    this.player.play(this.currentIndex);
+  }
 
-    if (this.player.isPlaying()) {
-      this.player.pause();
-    } else {
-      this.player.play(this.currentIndex);
-    }
+  pause() {
+    this.player.pause();
   }
 
   toggleFavorite() {
@@ -58,7 +57,7 @@ export default class extends Controller {
   updateMode() {
     toggleShow(this.modeButtonTargets, this.modeButtonTargets[this.currentModeIndex]);
 
-    this.player.isShuffle = this.currentMode == 'shuffle';
+    this.player.updateShuffleStatus(this.currentMode == 'shuffle');
   }
 
   next() {
@@ -89,8 +88,18 @@ export default class extends Controller {
     this.songDurationTarget.textContent = formatDuration(this.currentSong.length);
     this.favoriteButtonTarget.classList.toggle('player__favorite', this.currentSong.is_favorited);
     this.headerTarget.classList.add('player__header--show');
+    this.pauseButtonTarget.classList.remove('hidden');
+    this.playButtonTarget.classList.add('hidden');
 
     window.requestAnimationFrame(this._setProgress.bind(this));
+
+    // let playlist can show current palying song
+    dispatchEvent(document, 'showPlayingItem');
+  }
+
+  _setPauseStatus() {
+    this.pauseButtonTarget.classList.add('hidden');
+    this.playButtonTarget.classList.remove('hidden');
   }
 
   _setProgress() {
@@ -109,6 +118,10 @@ export default class extends Controller {
 
     this.player.onplay = () => {
       this._setPlayingStatus();
+    };
+
+    this.player.onpause = () => {
+      this._setPauseStatus();
     };
 
     this.player.onend = () => {

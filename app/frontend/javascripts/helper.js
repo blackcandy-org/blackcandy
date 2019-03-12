@@ -5,12 +5,6 @@ function formatDuration(secs) {
   return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
-function toggleHide(elements, currentElement) {
-  elements.forEach((element) => {
-    element.classList.toggle('hidden', element == currentElement);
-  });
-}
-
 function toggleShow(elements, currentElement) {
   elements.forEach((element) => {
     element.classList.toggle('hidden', element != currentElement);
@@ -25,4 +19,8 @@ function shuffle(a) {
   return a;
 }
 
-export { formatDuration, toggleHide, toggleShow, shuffle };
+function dispatchEvent(element, type) {
+  element.dispatchEvent(new Event(type));
+}
+
+export { formatDuration, toggleShow, shuffle, dispatchEvent };

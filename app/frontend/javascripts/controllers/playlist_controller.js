@@ -1,27 +1,39 @@
 import { Controller } from 'stimulus';
+import { ajax } from 'rails-ujs';
 
 export default class extends Controller {
   static targets = ['item'];
 
-  play(event) {
-    const playlistIndex = parseInt(event.currentTarget.dataset.playlistIndex, 10);
-
-    this.playerController.player.play(playlistIndex);
-    this.showCurrentItem(playlistIndex);
+  initialize() {
+    this.player = App.player;
   }
 
-  showCurrentItem(playlistIndex) {
-    this.itemTargets.forEach((element, index) => {
-      element.classList.toggle('playlist__item--current', playlistIndex == index);
+  connect() {
+    this.showPlayingItem();
+  }
+
+  play({ target }) {
+    const { songId } = target.closest('.playlist__item').dataset;
+    const playlistIndex = this.player.playlistIndexOf(songId);
+
+    if (playlistIndex != -1) {
+      this.player.skipTo(playlistIndex);
+    } else {
+      ajax({
+        url: '/playlist/current',
+        type: 'put',
+        dataType: 'script',
+        data: `update_action=push&song_ids[]=${songId}`,
+        success: () => {
+          this.player.skipTo(this.player.pushToPlaylist(songId));
+        }
+      });
+    }
+  }
+
+  showPlayingItem() {
+    this.itemTargets.forEach((element) => {
+      element.classList.toggle('playlist__item--active', element.dataset.songId == this.player.currentSong.id);
     });
-  }
-
-  get playlistContent() {
-    return JSON.parse(this.data.get('content'));
-  }
-
-  get playerController() {
-    const player = document.querySelector('#js-player');
-    return this.application.getControllerForElementAndIdentifier(player, 'player');
   }
 }

@@ -3,15 +3,12 @@ import { ajax } from 'rails-ujs';
 import { shuffle } from './helper';
 
 const player = {
-  playlist: null,
   currentIndex: 0,
   currentSong: {},
-  onplay: null,
-  onend: null,
   isShuffle: false,
 
   play(currentIndex) {
-    const song = this.isShuffle ? this.shufflePlaylist[currentIndex] : this.playlist[currentIndex];
+    const song = this.playlist[currentIndex];
     this.currentIndex = currentIndex;
     this.currentSong = song;
 
@@ -25,6 +22,7 @@ const player = {
             src: [response.url],
             html5: true,
             onplay: this.onplay,
+            onpause: this.onpause,
             onend: this.onend
           });
 
@@ -46,39 +44,55 @@ const player = {
   },
 
   next() {
-    this.stop();
-
-    if (this.currentIndex + 1 >= this.playlist.length) {
-      this.currentIndex = 0;
-    } else {
-      this.currentIndex += 1;
-    }
-
-    this.play(this.currentIndex);
+    this.skipTo(this.currentIndex + 1);
   },
 
   previous() {
+    this.skipTo(this.currentIndex - 1);
+  },
+
+  skipTo(index) {
     this.stop();
 
-    if (this.currentIndex - 1 < 0) {
-      this.currentIndex = this.playlist.length - 1;
-    } else {
-      this.currentIndex -= 1;
+    if (index >= this.playlist.length) {
+      index = 0;
+    } else if (index < 0) {
+      index = this.playlist.length - 1;
     }
 
-    this.play(this.currentIndex);
+    this.play(index);
   },
 
   isPlaying() {
     return this.currentSong.howl && this.currentSong.howl.playing();
   },
 
+  updateShuffleStatus(isShuffle) {
+    this.isShuffle = isShuffle;
+    this.playlist = isShuffle ?
+      shuffle(Object.assign([], this.normalPlaylist)) :
+      this.normalPlaylist;
+  },
+
   updatePlaylist(songIds) {
-    this.playlist = songIds.map((songId) => {
-      return { id: songId };
+    this.normalPlaylist = songIds.map((songId) => {
+      return { id: Number(songId) };
     });
 
-    this.shufflePlaylist = shuffle(Object.assign([], this.playlist));
+    this.playlist = this.normalPlaylist;
+  },
+
+  pushToPlaylist(songId) {
+    const song = { id: Number(songId) };
+
+    this.normalPlaylist.push(song);
+    this.updateShuffleStatus(this.isShuffle);
+
+    return this.playlist.indexOf(song); // return index of new song
+  },
+
+  playlistIndexOf(songId) {
+    return this.playlist.map(song => song.id).indexOf(Number(songId));
   }
 };
 

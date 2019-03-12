@@ -15,9 +15,7 @@ export default class extends Controller {
     });
   }
 
-  toggle(event) {
-    const { target } = event;
-
+  toggle({ target }) {
     if (this.itemTargets.includes(target)) {
       this._toggleWithIndex(this.itemTargets.indexOf(target));
     }

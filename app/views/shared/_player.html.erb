@@ -25,8 +25,8 @@
     </div>
     <div>
       <span class='pointer-cursor' data-action='click->player#previous'><%= icon_tag 'rewind' %></span>
-      <span data-action='click->player#togglePlay' class='player__control__main pointer-cursor' data-target='player.playButton'><%= icon_tag 'play' %></span>
-      <span data-action='click->player#togglePlay' class='player__control__main pointer-cursor hidden' data-target='player.playButton'><%= icon_tag 'pause' %></span>
+      <span data-action='click->player#play' class='player__control__main pointer-cursor' data-target='player.playButton'><%= icon_tag 'play' %></span>
+      <span data-action='click->player#pause' class='player__control__main pointer-cursor hidden' data-target='player.pauseButton'><%= icon_tag 'pause' %></span>
       <span data-action='click->player#next' class='pointer-cursor'><%= icon_tag 'fast-forward' %></span>
     </div>
     <div data-target='player.favoriteButton' data-action='click->player#toggleFavorite' class='player__control__minor pointer-cursor'>

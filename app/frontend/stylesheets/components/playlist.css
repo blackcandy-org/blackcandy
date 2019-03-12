@@ -44,7 +44,8 @@
 }
 
 .playlist__item a:hover,
-.playlist__item a:hover .playlist__item__detail__main {
+.playlist__item--active .playlist__item__detail__main,
+.playlist__item:hover .playlist__item__detail__main {
   color: var(--playlist-active-color);
 }
 
