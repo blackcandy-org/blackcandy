@@ -10,7 +10,7 @@ module Playlistable
 
   class_methods do
     def has_playlist
-      set :song_ids
+      list :song_ids
 
       define_method :playlist do
         @playlist ||= Playlist.new(song_ids)
@@ -19,7 +19,7 @@ module Playlistable
 
     def has_playlists(*names)
       names.each do |name|
-        set "#{name}_song_ids"
+        list "#{name}_song_ids"
 
         define_method "#{name}_playlist" do
           instance_variable_get("@#{name}_playlist") ||

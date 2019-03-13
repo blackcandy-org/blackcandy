@@ -6,25 +6,25 @@ class Playlist
   end
 
   def song_ids=(song_ids)
-    raise TypeError, 'Invalid song ids, expect Redis::Set instance' unless song_ids.is_a? Redis::Set
+    raise TypeError, 'Invalid song ids, expect Redis::Set instance' unless song_ids.is_a? Redis::List
     @song_ids = song_ids
   end
 
   def song_ids
-    @song_ids.to_a
+    @song_ids.uniq
   end
 
   def songs
-    Song.includes(:artist).where(id: @song_ids.to_a)
+    Song.includes(:artist).find_ordered(song_ids)
   end
 
   def push(*song_ids)
-    @song_ids.merge(song_ids.flatten.map(&:to_i))
+    @song_ids.push(*song_ids.flatten)
   end
 
   def delete(*song_ids)
     song_ids.flatten.each do |song_id|
-      @song_ids.delete(song_id.to_i)
+      @song_ids.delete(song_id)
     end
   end
 
@@ -50,7 +50,7 @@ class Playlist
   end
 
   def include?(song_id)
-    @song_ids.include? song_id
+    @song_ids.include? song_id.to_s
   end
 
   def count

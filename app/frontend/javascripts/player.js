@@ -8,6 +8,8 @@ const player = {
   isShuffle: false,
 
   play(currentIndex) {
+    if (this.playlist.length == 0) { return }
+
     const song = this.playlist[currentIndex];
     this.currentIndex = currentIndex;
     this.currentSong = song;
