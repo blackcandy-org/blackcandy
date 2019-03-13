@@ -40,6 +40,7 @@ export default class extends Controller {
       type: 'post',
       success: () => {
         this.favoriteButtonTarget.classList.toggle('player__favorite');
+        this.currentSong.is_favorited = true;
       }
     });
   }
