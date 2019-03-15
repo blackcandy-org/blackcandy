@@ -42,6 +42,8 @@ en:
     songs: 'Songs'
     settings: 'Settings'
     create: 'Create'
+    play_all: 'Play all'
+    clear: 'Clear'
   error:
     login: 'Wrong email or password'
   default:

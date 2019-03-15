@@ -89,4 +89,10 @@
 
   /* Spinner */
   --spinner-bg-color: var(--purple);
+
+  /* Dropdown */
+  --dropdown-bg-color: var(--black-lighter);
+  --dropdown-active-color: var(--grey);
+  --dropdown-color: var(--white);
+  --dropdown-border-radius: var(--border-radius);
 }

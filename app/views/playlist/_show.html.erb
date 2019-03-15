@@ -7,7 +7,13 @@
         <div><%= t('text.tracks_count', { count: @playlist.count }) %></div>
       </div>
     </div>
-    <div><%= icon_tag('more-vertical') %></div>
+    <div data-controller='dropdown' class='dropdown'>
+      <span data-action='click->dropdown#show'><%= icon_tag('more-vertical') %></span>
+      <ul data-target='dropdown.list' class='hidden dropdown__list'>
+        <li class='dropdown__list__item' data-action='click->playlist#play_all'><%= t('label.play_all') %></li>
+        <li class='dropdown__list__item'><%= t('label.clear') %></li>
+      </ul>
+    </div>
   </div>
   <%= render partial: 'list', locals: { songs: @songs, pagy: @pagy } %>
 <% end %>
