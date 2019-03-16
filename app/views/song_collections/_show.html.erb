@@ -1,18 +1,24 @@
 <div class='playlist__item playlist__item--primary display__space-between'>
   <div class='display__align-center'>
     <div>
-      <%= link_to song_collections_path, remote: true, data: { action: 'ajax:success->playlist-tab#hideSpinner' } do %>
+      <%= link_to song_collections_path, remote: true do %>
         <%= icon_tag('chevron-left') %>
       <% end %>
     </div>
     <div class='playlist__item__detail'>
       <div class='playlist__item__detail__main'><%= @song_collection.name %></div>
-      <div><%= t('text.tracks_count', { count: @songs.count }) %></div>
+      <div><%= t('text.tracks_count', { count: @song_collection.tracks_count }) %></div>
     </div>
   </div>
-  <div><%= icon_tag('more-vertical') %></div>
+  <div data-controller='dropdown' class='dropdown'>
+    <span data-action='click->dropdown#show'><%= icon_tag('more-vertical') %></span>
+    <div data-target='dropdown.list' class='hidden dropdown__list'>
+      <a class='dropdown__item' data-action='click->playlist#play_all'><%= t('label.play_all') %></a>
+      <%= link_to t('label.clear'), playlist_path(@song_collection.id), method: :delete, remote: true, class: 'dropdown__item' %>
+    </div>
+  </div>
 </div>
-<% if @songs.empty? %>
+<% if @songs.blank? %>
   <%= empty_alert_tag %>
 <% else %>
   <%= render partial: 'playlist/list', locals: { songs: @songs, pagy: @pagy } %>

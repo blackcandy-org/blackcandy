@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus';
-import { formatDuration, toggleShow, dispatchEvent } from '../helper';
+import { formatDuration, toggleShow } from '../helper';
 import { ajax } from 'rails-ujs';
 
 export default class extends Controller {
@@ -95,7 +95,7 @@ export default class extends Controller {
     window.requestAnimationFrame(this._setProgress.bind(this));
 
     // let playlist can show current palying song
-    dispatchEvent(document, 'showPlayingItem');
+    App.dispatchEvent(document, 'show.playingitem');
   }
 
   _setPauseStatus() {

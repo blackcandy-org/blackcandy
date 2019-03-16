@@ -1,4 +1,4 @@
-<% if @songs.empty? %>
+<% if @songs.blank? %>
   <%= empty_alert_tag %>
 <% else %>
   <div class='playlist__item playlist__item--primary display__space-between'>
@@ -9,10 +9,10 @@
     </div>
     <div data-controller='dropdown' class='dropdown'>
       <span data-action='click->dropdown#show'><%= icon_tag('more-vertical') %></span>
-      <ul data-target='dropdown.list' class='hidden dropdown__list'>
-        <li class='dropdown__list__item' data-action='click->playlist#play_all'><%= t('label.play_all') %></li>
-        <li class='dropdown__list__item'><%= t('label.clear') %></li>
-      </ul>
+      <div data-target='dropdown.list' class='hidden dropdown__list'>
+        <a class='dropdown__item' data-action='click->playlist#play_all'><%= t('label.play_all') %></a>
+        <%= link_to t('label.clear'), playlist_path(params[:id]), method: :delete, remote: true, class: 'dropdown__item' %>
+      </div>
     </div>
   </div>
   <%= render partial: 'list', locals: { songs: @songs, pagy: @pagy } %>

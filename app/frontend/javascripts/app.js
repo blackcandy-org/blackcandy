@@ -23,5 +23,9 @@ export default {
 
     this.renderContent('#js-albums-container', newAlbumContent);
     document.querySelector(selector).insertAdjacentHTML('afterbegin', oldContent);
+  },
+
+  dispatchEvent(element, type) {
+    element.dispatchEvent(new Event(type));
   }
 };

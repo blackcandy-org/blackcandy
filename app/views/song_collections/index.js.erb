@@ -1,6 +1,7 @@
 <% if @pagy.page == 1 %>
   // If it's first page just render whole list content, avoid to add old song_collections content to the new one.
   App.renderPlaylistContent('<%= j(render 'index') %>');
+  App.dispatchEvent(document.querySelector('#js-playlist'), 'hide.spinner');
 <% else %>
   App.appendPlaylistNewContentTo('#js-song-collection-list', '<%= j(render 'index') %>');
 <% end %>

@@ -19,8 +19,4 @@ function shuffle(a) {
   return a;
 }
 
-function dispatchEvent(element, type) {
-  element.dispatchEvent(new Event(type));
-}
-
-export { formatDuration, toggleShow, shuffle, dispatchEvent };
+export { formatDuration, toggleShow, shuffle };

@@ -1,5 +1,5 @@
 <div data-controller='infinite-scroll playlist' data-infinite-scroll-container='.playlist__content' data-infinite-scroll-next-url='<%= pagy_next_url(pagy) %>'>
-  <ul class='none-style-list' id='js-playlist-list-content' data-action='click->playlist#play showPlayingItem@document->playlist#showPlayingItem'>
+  <ul class='none-style-list' id='js-playlist-list-content' data-action='click->playlist#play show.playingitem@document->playlist#showPlayingItem'>
     <% songs.each do |song| %>
       <li class='playlist__item display__space-between pointer-cursor' data-target='playlist.item' data-song-id='<%= song.id %>'>
         <div class='playlist__item__detail'>

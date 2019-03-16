@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   resources :users
   resources :stream, only: [:new]
   resources :song_collections
-  resources :playlist, only: [:show, :update, :destroy], constraints: { id: /(current|favorite|\d)/ }
+  resources :playlist, only: [:show, :update, :destroy], constraints: { id: /(current|favorite|\d+)/ }
 end

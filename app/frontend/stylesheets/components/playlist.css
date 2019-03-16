@@ -23,6 +23,7 @@
   padding: 12px 0;
   border-bottom: 1px solid var(--playlist-border-color);
   color: var(--playlist-color);
+  text-decoration: none;
 }
 
 .playlist__item a {
@@ -47,6 +48,10 @@
 .playlist__item--active .playlist__item__detail__main,
 .playlist__item:hover .playlist__item__detail__main {
   color: var(--playlist-active-color);
+}
+
+.playlist__item--primary:hover .playlist__item__detail__main {
+  color: var(--white);
 }
 
 .playlist__item--primary {

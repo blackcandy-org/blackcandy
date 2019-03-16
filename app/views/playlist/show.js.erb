@@ -1,6 +1,7 @@
 <% if @pagy.page == 1 %>
   // If it's first page just render whole list content, avoid to add old playlist content to the new one.
   App.renderPlaylistContent('<%= j(render 'show') %>');
+  App.dispatchEvent(document.querySelector('#js-playlist'), 'hide.spinner');
 <% else %>
   App.appendPlaylistNewContentTo('#js-playlist-list-content', '<%= j(render 'show') %>');
 <% end %>

@@ -1,0 +1,7 @@
+<% if %w(current favorite).include? params[:id] %>
+  App.renderPlaylistContent('<%= j(render 'show') %>');
+<% else %>
+  App.renderPlaylistContent('<%= j(render 'song_collections/show') %>');
+<% end %>
+
+App.dispatchEvent(document.querySelector('#js-playlist'), 'hide.spinner');

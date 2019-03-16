@@ -20,6 +20,7 @@ class PlaylistController < ApplicationController
 
   def destroy
     @playlist.destroy
+    @songs = nil
   end
 
   private
@@ -31,7 +32,8 @@ class PlaylistController < ApplicationController
       when 'favorite'
         @playlist = Current.user.favorite_playlist
       else
-        @playlist = SongCollection.find_by(id: params[:id]).playlist
+        @song_collection = SongCollection.find_by(id: params[:id])
+        @playlist = @song_collection.playlist
       end
     end
 
