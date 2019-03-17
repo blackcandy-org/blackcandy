@@ -41,7 +41,7 @@ class Playlist
     end
   end
 
-  def destroy
+  def clear
     @song_ids.clear
   end
 
@@ -55,5 +55,9 @@ class Playlist
 
   def count
     @song_ids.size
+  end
+
+  def replace(song_ids)
+    clear; push(song_ids)
   end
 end

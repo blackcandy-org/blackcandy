@@ -19,8 +19,13 @@ class PlaylistController < ApplicationController
   end
 
   def destroy
-    @playlist.destroy
+    @playlist.clear
     @songs = nil
+  end
+
+  def play
+    return if params[:id] == 'current'
+    Current.user.current_playlist.replace(@playlist.song_ids)
   end
 
   private
