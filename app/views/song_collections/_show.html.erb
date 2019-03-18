@@ -1,4 +1,4 @@
-<div class='playlist__item playlist__item--primary display__space-between'>
+<div class='playlist__item playlist__item--primary display__space-between' data-controller='song-collection' data-song-collection-id='<%= @song_collection.id %>'>
   <div class='display__align-center'>
     <div>
       <%= link_to song_collections_path, remote: true do %>
@@ -6,7 +6,12 @@
       <% end %>
     </div>
     <div class='playlist__item__detail'>
-      <div class='playlist__item__detail__main'><%= @song_collection.name %></div>
+      <div class='playlist__item__detail__main'>
+        <span data-target='song-collection.name'><%= @song_collection.name %></span>
+        <div class='input'>
+          <input data-target='song-collection.nameInput' data-action='blur->song-collection#updateName keydown->song-collection#updateNameOnEnter' class='hidden' />
+        </div>
+      </div>
       <div><%= t('text.tracks_count', { count: @song_collection.tracks_count }) %></div>
     </div>
   </div>
@@ -18,6 +23,7 @@
         <%= link_to t('label.clear'), playlist_path(@song_collection.id), method: :delete, remote: true, class: 'dropdown__item' %>
       <% end %>
       <%= link_to t('label.delete'), song_collection_path(@song_collection), method: :delete, remote: true, class: 'dropdown__item' %>
+      <a data-action='song-collection#rename' class='dropdown__item'><%= t('label.rename') %></a>
     </div>
   </div>
 </div>

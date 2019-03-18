@@ -45,6 +45,7 @@ en:
     play_all: 'Play all'
     clear: 'Clear'
     delete: 'Delete'
+    rename: 'Rename'
   error:
     login: 'Wrong email or password'
   default:

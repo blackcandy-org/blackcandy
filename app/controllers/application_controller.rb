@@ -30,6 +30,6 @@ class ApplicationController < ActionController::Base
     end
 
     def require_admin
-      raise BlackCandy::ForbiddenError unless is_admin?
+      raise Error::Forbidden unless is_admin?
     end
 end

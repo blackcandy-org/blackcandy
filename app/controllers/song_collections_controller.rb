@@ -4,7 +4,7 @@ class SongCollectionsController < ApplicationController
   include Pagy::Backend
 
   before_action :require_login
-  before_action :find_song_collction, only: [:show, :destroy]
+  before_action :find_song_collction, only: [:show, :destroy, :update]
 
   def index
     @pagy, @song_collections = pagy_countless(Current.user.song_collections.order(id: :desc))
@@ -22,6 +22,10 @@ class SongCollectionsController < ApplicationController
     else
       flash.now[:error] = @song_collection.errors.full_messages.join(' ')
     end
+  end
+
+  def update
+    @song_collection.update(song_collection_params)
   end
 
   def destroy
