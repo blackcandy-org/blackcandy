@@ -11,11 +11,7 @@ class PlaylistController < ApplicationController
   end
 
   def update
-    if @playlist.update(playlist_params)
-      flash.now[:success] = t('text.update_playlist_success')
-    else
-      head :bad_request
-    end
+    @playlist.update(playlist_params)
   end
 
   def destroy
@@ -24,7 +20,7 @@ class PlaylistController < ApplicationController
   end
 
   def play
-    return if params[:id] == 'current'
+    raise Error::Forbidden if params[:id] == 'current' || @playlist.empty?
     Current.user.current_playlist.replace(@playlist.song_ids)
   end
 
@@ -37,7 +33,7 @@ class PlaylistController < ApplicationController
       when 'favorite'
         @playlist = Current.user.favorite_playlist
       else
-        @song_collection = SongCollection.find_by(id: params[:id])
+        @song_collection = Current.user.song_collections.find(params[:id])
         @playlist = @song_collection.playlist
       end
     end

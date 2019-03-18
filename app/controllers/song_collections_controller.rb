@@ -4,13 +4,13 @@ class SongCollectionsController < ApplicationController
   include Pagy::Backend
 
   before_action :require_login
+  before_action :find_song_collction, only: [:show, :destroy]
 
   def index
     @pagy, @song_collections = pagy_countless(Current.user.song_collections.order(id: :desc))
   end
 
   def show
-    @song_collection = SongCollection.find_by(id: params[:id])
     @pagy, @songs = pagy_countless(@song_collection.playlist.songs)
   end
 
@@ -24,9 +24,20 @@ class SongCollectionsController < ApplicationController
     end
   end
 
+  def destroy
+    @song_collection.destroy
+    @pagy, @song_collections = pagy_countless(Current.user.song_collections.order(id: :desc))
+
+    render 'index'
+  end
+
   private
 
     def song_collection_params
       params.require(:song_collection).permit(:name)
+    end
+
+    def find_song_collction
+      @song_collection = Current.user.song_collections.find(params[:id])
     end
 end

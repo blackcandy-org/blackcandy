@@ -44,6 +44,7 @@ en:
     create: 'Create'
     play_all: 'Play all'
     clear: 'Clear'
+    delete: 'Delete'
   error:
     login: 'Wrong email or password'
   default:

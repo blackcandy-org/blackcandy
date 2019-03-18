@@ -5,6 +5,20 @@ class ApplicationController < ActionController::Base
 
   before_action :find_current_user
 
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    respond_to do |format|
+      format.js { head :not_found }
+      format.json { head :not_found }
+    end
+  end
+
+  rescue_from Error::Forbidden do |exception|
+    respond_to do |format|
+      format.js { head :forbidden }
+      format.json { head :forbidden }
+    end
+  end
+
   private
 
     def find_current_user
@@ -16,6 +30,6 @@ class ApplicationController < ActionController::Base
     end
 
     def require_admin
-      head :forbidden unless is_admin?
+      raise BlackCandy::ForbiddenError unless is_admin?
     end
 end

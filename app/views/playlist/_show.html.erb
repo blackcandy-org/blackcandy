@@ -10,7 +10,9 @@
     <div data-controller='dropdown' class='dropdown'>
       <span data-action='click->dropdown#show'><%= icon_tag('more-vertical') %></span>
       <div data-target='dropdown.list' class='hidden dropdown__list'>
-        <%= link_to t('label.play_all'), play_playlist_path(params[:id]), method: :post, remote: true, class: 'dropdown__item' %>
+        <% unless params[:id] == 'current' %>
+          <%= link_to t('label.play_all'), play_playlist_path(params[:id]), method: :post, remote: true, class: 'dropdown__item' %>
+        <% end %>
         <%= link_to t('label.clear'), playlist_path(params[:id]), method: :delete, remote: true, class: 'dropdown__item' %>
       </div>
     </div>
