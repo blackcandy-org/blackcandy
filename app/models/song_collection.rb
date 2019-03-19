@@ -7,8 +7,4 @@ class SongCollection < ApplicationRecord
   validates :name, presence: true
 
   has_playlist
-
-  def tracks_count
-    playlist.count
-  end
 end

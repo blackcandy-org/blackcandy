@@ -1,4 +1,4 @@
-<div data-controller='infinite-scroll playlist' data-infinite-scroll-container='.playlist__content' data-infinite-scroll-next-url='<%= pagy_next_url(pagy) %>'>
+<div data-controller='infinite-scroll' data-infinite-scroll-container='.playlist__content' data-infinite-scroll-next-url='<%= pagy_next_url(pagy) %>'>
   <ul class='none-style-list' id='js-playlist-list-content' data-action='click->playlist#play show.playingitem@document->playlist#showPlayingItem'>
     <% songs.each do |song| %>
       <li class='playlist__item display__space-between pointer-cursor' data-target='playlist.item' data-song-id='<%= song.id %>'>
@@ -6,7 +6,13 @@
           <div class='playlist__item__detail__main'><%= song.name %></div>
           <div><%= song.artist.name %></div>
         </div>
-        <div><%= song.duration %></div>
+        <div>
+          <div class='playlist__item__action'>
+            <%= icon_tag 'playlist-add', size: 'small' %>
+            <span data-action='click->playlist#deleteSong'><%= icon_tag 'delete', size: 'small' %></span>
+          </div>
+          <span class='playlist__item__duration'><%= song.duration %></span>
+        </div>
       </li>
     <% end %>
   </ul>

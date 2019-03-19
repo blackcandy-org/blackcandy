@@ -51,6 +51,15 @@
   color: var(--playlist-active-color);
 }
 
+.playlist__item__action,
+.playlist__item:hover .playlist__item__duration {
+  display: none;
+}
+
+.playlist__item:hover .playlist__item__action {
+  display: block;
+}
+
 .playlist__item--primary:hover .playlist__item__detail__main {
   color: var(--white);
 }

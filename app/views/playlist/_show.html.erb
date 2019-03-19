@@ -1,21 +1,26 @@
-<% if @songs.blank? %>
+<% if @playlist.empty? %>
   <%= empty_alert_tag %>
 <% else %>
-  <div class='playlist__item playlist__item--primary display__space-between'>
-    <div class='display__align-center'>
-      <div class='playlist__item__detail'>
-        <div><%= t('text.tracks_count', { count: @playlist.count }) %></div>
+  <div data-controller='playlist' data-playlist-id='<%= params[:id] %>'>
+    <div class='playlist__item playlist__item--primary display__space-between'>
+      <div class='display__align-center'>
+        <div class='playlist__item__detail'>
+          <div>
+            <span data-target='playlist.count'><%= @playlist.count %></span>
+            <span> <%= t('label.tracks') %></span>
+          </div>
+        </div>
+      </div>
+      <div data-controller='dropdown' class='dropdown'>
+        <span data-action='click->dropdown#show'><%= icon_tag('more-vertical') %></span>
+        <div data-target='dropdown.list' class='hidden dropdown__list'>
+          <% unless params[:id] == 'current' %>
+            <%= link_to t('label.play_all'), play_playlist_path(params[:id]), method: :post, remote: true, class: 'dropdown__item' %>
+          <% end %>
+          <%= link_to t('label.clear'), playlist_path(params[:id]), method: :delete, remote: true, class: 'dropdown__item' %>
+        </div>
       </div>
     </div>
-    <div data-controller='dropdown' class='dropdown'>
-      <span data-action='click->dropdown#show'><%= icon_tag('more-vertical') %></span>
-      <div data-target='dropdown.list' class='hidden dropdown__list'>
-        <% unless params[:id] == 'current' %>
-          <%= link_to t('label.play_all'), play_playlist_path(params[:id]), method: :post, remote: true, class: 'dropdown__item' %>
-        <% end %>
-        <%= link_to t('label.clear'), playlist_path(params[:id]), method: :delete, remote: true, class: 'dropdown__item' %>
-      </div>
-    </div>
+    <%= render partial: 'list', locals: { songs: @songs, pagy: @pagy } %>
   </div>
-  <%= render partial: 'list', locals: { songs: @songs, pagy: @pagy } %>
 <% end %>

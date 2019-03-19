@@ -35,9 +35,9 @@ class Playlist
   def update(attributes)
     case attributes[:update_action]
     when 'push'
-      push(attributes[:song_ids])
+      push(attributes[:song_id])
     when 'delete'
-      delete(attributes[:song_ids])
+      delete(attributes[:song_id])
     end
   end
 

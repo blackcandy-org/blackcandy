@@ -11,7 +11,8 @@ class SongCollectionsController < ApplicationController
   end
 
   def show
-    @pagy, @songs = pagy_countless(@song_collection.playlist.songs)
+    @playlist = @song_collection.playlist
+    @pagy, @songs = pagy_countless(@playlist.songs)
   end
 
   def create

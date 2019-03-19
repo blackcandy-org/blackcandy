@@ -39,6 +39,6 @@ class PlaylistController < ApplicationController
     end
 
     def playlist_params
-      params.permit(:update_action, song_ids: [])
+      params.permit(:update_action, :song_id)
     end
 end

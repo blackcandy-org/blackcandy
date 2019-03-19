@@ -46,6 +46,7 @@ en:
     clear: 'Clear'
     delete: 'Delete'
     rename: 'Rename'
+    tracks: 'Tracks'
   error:
     login: 'Wrong email or password'
   default:
@@ -53,6 +54,5 @@ en:
     artist_name: 'Untitled Artist'
   text:
     no_items: 'No items'
-    tracks_count: '%{count} tracks'
     create_success: 'Created successfully'
     update_playlist_success: 'Update playlist successfully'

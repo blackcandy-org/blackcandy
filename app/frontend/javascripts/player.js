@@ -93,6 +93,15 @@ const player = {
     return this.playlist.indexOf(song); // return index of new song
   },
 
+  deleteFromPlaylist(songId) {
+    const index = this.playlistIndexOf(songId);
+
+    this.normalPlaylist.splice(index, 1);
+    this.updateShuffleStatus(this.isShuffle);
+
+    if (this.currentSong.id == Number(songId)) { this.next(); }
+  },
+
   playlistIndexOf(songId) {
     return this.playlist.map(song => song.id).indexOf(Number(songId));
   }

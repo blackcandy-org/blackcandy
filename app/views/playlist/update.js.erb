@@ -1,0 +1,4 @@
+<% if params[:update_action] == 'delete' && @playlist.empty? %>
+  <% partial = (%w(current favorite).include? params[:id]) ? 'playlist/show' : 'song_collections/show' %>
+  App.renderPlaylistContent('<%= j(render partial) %>');
+<% end %>

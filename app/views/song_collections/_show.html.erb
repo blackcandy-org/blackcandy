@@ -1,34 +1,39 @@
-<div class='playlist__item playlist__item--primary display__space-between' data-controller='song-collection' data-song-collection-id='<%= @song_collection.id %>'>
-  <div class='display__align-center'>
-    <div>
-      <%= link_to song_collections_path, remote: true do %>
-        <%= icon_tag('chevron-left') %>
-      <% end %>
-    </div>
-    <div class='playlist__item__detail'>
-      <div class='playlist__item__detail__main'>
-        <span data-target='song-collection.name'><%= @song_collection.name %></span>
-        <div class='input'>
-          <input data-target='song-collection.nameInput' data-action='blur->song-collection#updateName keydown->song-collection#updateNameOnEnter' class='hidden' />
+<div data-controller='playlist' data-playlist-id='<%= @song_collection.id %>' class='display__full-height'>
+  <div class='playlist__item playlist__item--primary display__space-between' data-controller='song-collection' data-song-collection-id='<%= @song_collection.id %>'>
+    <div class='display__align-center'>
+      <div>
+        <%= link_to song_collections_path, remote: true do %>
+          <%= icon_tag('chevron-left') %>
+        <% end %>
+      </div>
+      <div class='playlist__item__detail'>
+        <div class='playlist__item__detail__main'>
+          <span data-target='song-collection.name'><%= @song_collection.name %></span>
+          <div class='input'>
+            <input data-target='song-collection.nameInput' data-action='blur->song-collection#updateName keydown->song-collection#updateNameOnEnter' class='hidden' />
+          </div>
+        </div>
+        <div>
+          <span data-target='playlist.count'><%= @playlist.count %></span>
+          <span> <%= t('label.tracks') %><span>
         </div>
       </div>
-      <div><%= t('text.tracks_count', { count: @song_collection.tracks_count }) %></div>
+    </div>
+    <div data-controller='dropdown' class='dropdown'>
+      <span data-action='click->dropdown#show'><%= icon_tag('more-vertical') %></span>
+      <div data-target='dropdown.list' class='hidden dropdown__list'>
+        <% unless @playlist.blank? %>
+          <%= link_to t('label.play_all'), play_playlist_path(@song_collection.id), method: :post, remote: true, class: 'dropdown__item' %>
+          <%= link_to t('label.clear'), playlist_path(@song_collection.id), method: :delete, remote: true, class: 'dropdown__item' %>
+        <% end %>
+        <%= link_to t('label.delete'), song_collection_path(@song_collection), method: :delete, remote: true, class: 'dropdown__item' %>
+        <a data-action='song-collection#rename' class='dropdown__item'><%= t('label.rename') %></a>
+      </div>
     </div>
   </div>
-  <div data-controller='dropdown' class='dropdown'>
-    <span data-action='click->dropdown#show'><%= icon_tag('more-vertical') %></span>
-    <div data-target='dropdown.list' class='hidden dropdown__list'>
-      <% unless @songs.blank? %>
-        <%= link_to t('label.play_all'), play_playlist_path(@song_collection.id), method: :post, remote: true, class: 'dropdown__item' %>
-        <%= link_to t('label.clear'), playlist_path(@song_collection.id), method: :delete, remote: true, class: 'dropdown__item' %>
-      <% end %>
-      <%= link_to t('label.delete'), song_collection_path(@song_collection), method: :delete, remote: true, class: 'dropdown__item' %>
-      <a data-action='song-collection#rename' class='dropdown__item'><%= t('label.rename') %></a>
-    </div>
-  </div>
+  <% if @playlist.blank? %>
+    <%= empty_alert_tag %>
+  <% else %>
+    <%= render partial: 'playlist/list', locals: { songs: @songs, pagy: @pagy } %>
+  <% end %>
 </div>
-<% if @songs.blank? %>
-  <%= empty_alert_tag %>
-<% else %>
-  <%= render partial: 'playlist/list', locals: { songs: @songs, pagy: @pagy } %>
-<% end %>
