@@ -10,6 +10,11 @@ export default class extends Controller {
 
   connect() {
     this.showPlayingItem();
+    document.addEventListener('show.playingitem', this.showPlayingItem.bind(this));
+  }
+
+  disconnect() {
+    document.removeEventListener('show.playingitem', this.showPlayingItem.bind(this));
   }
 
   play({ target }) {
@@ -28,6 +33,18 @@ export default class extends Controller {
         }
       });
     }
+  }
+
+  playAll() {
+    ajax({
+      url: `/playlist/${this.id}/play`,
+      type: 'post',
+      dataType: 'json',
+      success: (songIds) => {
+        this.player.updatePlaylist(songIds);
+        this.player.skipTo(0);
+      }
+    });
   }
 
   deleteSong(event) {

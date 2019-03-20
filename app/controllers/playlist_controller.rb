@@ -22,6 +22,8 @@ class PlaylistController < ApplicationController
   def play
     raise Error::Forbidden if params[:id] == 'current' || @playlist.empty?
     Current.user.current_playlist.replace(@playlist.song_ids)
+
+    render 'show'
   end
 
   private

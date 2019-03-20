@@ -1,6 +1,6 @@
-<div data-controller='infinite-scroll' data-infinite-scroll-container='.layout__main' data-infinite-scroll-next-url='<%= pagy_next_url(pagy) %>'>
+<div data-controller='infinite-scroll' data-infinite-scroll-container='.layout__main' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
   <div class='display__space-between display__flex-wrap' id='js-albums-content'>
-    <% albums.each do |album| %>
+    <% @albums.each do |album| %>
       <div class='card'>
         <%= image_tag album_image_url(album), class: 'card__image' %>
         <div class='card__body'>
@@ -11,7 +11,7 @@
     <% end %>
   </div>
   <div data-target='infinite-scroll.trigger'>
-    <% if pagy.next %>
+    <% if @pagy.next %>
       <%= spinner_tag %>
     <% end %>
   </div>

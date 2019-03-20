@@ -1,9 +1,9 @@
-<div id='js-playlist' class='playlist display__full-height' data-controller='playlist-tab' data-action='ajax:beforeSend->playlist-tab#showSpinner hide.spinner->playlist-tab#hideSpinner'>
+<div id='js-playlist' class='playlist display__full-height' data-controller='playlist-tab'>
   <div class='playlist__nav'>
     <ul class='tab' data-action='click->playlist-tab#toggle'>
       <% playlist_tab_items.each do |tab_item| %>
         <li class='tab__item'>
-          <%= link_to tab_item[:title], tab_item[:path], remote: true, data: { target: 'playlist-tab.item' } %>
+          <%= link_to tab_item[:title], tab_item[:path], remote: true, data: { target: 'playlist-tab.item', show_spinner: true } %>
         </li>
       <% end %>
     </ul>

@@ -1,4 +1,4 @@
-<%= link_to song_collection_path(song_collection), remote: true, class: 'playlist__item display__space-between' do %>
+<%= link_to song_collection_path(song_collection), remote: true, class: 'playlist__item display__space-between', data: { show_spinner: true } do %>
   <div class='playlist__item__detail'>
     <div class='playlist__item__detail__main'>
       <%= song_collection.name %>

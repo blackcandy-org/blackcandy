@@ -15,9 +15,25 @@ export default class extends Controller {
     });
   }
 
+  connect() {
+    this.element.addEventListener('ajax:beforeSend', this.handleRequest.bind(this));
+    this.element.addEventListener('hide.spinner', this.hideSpinner.bind(this));
+  }
+
+  disconnect() {
+    this.element.removeEventListener('ajax:beforeSend', this.handleRequest.bind(this));
+    this.element.removeEventListener('hide.spinner', this.hideSpinner.bind(this));
+  }
+
   toggle({ target }) {
     if (this.itemTargets.includes(target)) {
       this._toggleWithIndex(this.itemTargets.indexOf(target));
+    }
+  }
+
+  handleRequest({ target }) {
+    if (target.dataset.showSpinner) {
+      this.showSpinner();
     }
   }
 

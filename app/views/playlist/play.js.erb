@@ -1,3 +1,0 @@
-App.player.updatePlaylist(JSON.parse('<%= j(render inline: @playlist.song_ids.to_json) %>'));
-App.player.skipTo(0);
-App.dispatchEvent(document.querySelector('#js-playlist'), 'hide.spinner');

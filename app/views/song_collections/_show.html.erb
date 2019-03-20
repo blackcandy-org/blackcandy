@@ -2,7 +2,7 @@
   <div class='playlist__item playlist__item--primary display__space-between' data-controller='song-collection' data-song-collection-id='<%= @song_collection.id %>'>
     <div class='display__align-center'>
       <div>
-        <%= link_to song_collections_path, remote: true do %>
+        <%= link_to song_collections_path, remote: true, data: { show_spinner: true } do %>
           <%= icon_tag('chevron-left') %>
         <% end %>
       </div>
@@ -23,10 +23,10 @@
       <span data-action='click->dropdown#show'><%= icon_tag('more-vertical') %></span>
       <div data-target='dropdown.list' class='hidden dropdown__list'>
         <% unless @playlist.blank? %>
-          <%= link_to t('label.play_all'), play_playlist_path(@song_collection.id), method: :post, remote: true, class: 'dropdown__item' %>
-          <%= link_to t('label.clear'), playlist_path(@song_collection.id), method: :delete, remote: true, class: 'dropdown__item' %>
+          <a class='dropdown__item' data-action='playlist#playAll'><%= t('label.play_all') %></a>
+          <%= link_to t('label.clear'), playlist_path(@song_collection.id), method: :delete, remote: true, class: 'dropdown__item', data: { show_spinner: true } %>
         <% end %>
-        <%= link_to t('label.delete'), song_collection_path(@song_collection), method: :delete, remote: true, class: 'dropdown__item' %>
+        <%= link_to t('label.delete'), song_collection_path(@song_collection), method: :delete, remote: true, class: 'dropdown__item', data: { show_spinner: true } %>
         <a data-action='song-collection#rename' class='dropdown__item'><%= t('label.rename') %></a>
       </div>
     </div>
