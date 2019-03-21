@@ -13,6 +13,7 @@ module.exports = {
     "no-underscore-dangle": "off",
     "no-param-reassign": "off",
     "no-unused-expressions": "off",
+    "class-methods-use-this": "off",
     "consistent-return": "off",
     "default-case": "off"
   },

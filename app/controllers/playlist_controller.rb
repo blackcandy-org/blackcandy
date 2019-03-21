@@ -4,7 +4,7 @@ class PlaylistController < ApplicationController
   include Pagy::Backend
 
   before_action :require_login
-  before_action :find_playlist
+  before_action :find_playlist, except: [:init]
 
   def show
     @pagy, @songs = pagy_countless(@playlist.songs)
@@ -24,6 +24,11 @@ class PlaylistController < ApplicationController
     Current.user.current_playlist.replace(@playlist.song_ids)
 
     render 'show'
+  end
+
+  def init
+    @playlist = Current.user.current_playlist
+    @pagy, @songs = pagy_countless(@playlist.songs, page: 1)
   end
 
   private

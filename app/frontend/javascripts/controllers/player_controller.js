@@ -136,12 +136,9 @@ export default class extends Controller {
 
   _initPlaylist() {
     ajax({
-      url: '/playlist/current',
+      url: '/playlist/init',
       type: 'get',
-      dataType: 'json',
-      success: (response) => {
-        this.player.updatePlaylist(response);
-      }
+      dataType: 'script'
     });
   }
 

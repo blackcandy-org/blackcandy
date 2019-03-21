@@ -1,7 +1,7 @@
 <% if @playlist.empty? %>
   <%= empty_alert_tag %>
 <% else %>
-  <div data-controller='playlist' data-playlist-id='<%= params[:id] %>'>
+  <div data-controller='playlist' data-playlist-id='current'>
     <div class='playlist__item playlist__item--primary display__space-between'>
       <div class='display__align-center'>
         <div class='playlist__item__detail'>
@@ -14,13 +14,10 @@
       <div data-controller='dropdown' class='dropdown'>
         <span data-action='click->dropdown#show'><%= icon_tag('more-vertical') %></span>
         <div data-target='dropdown.list' class='hidden dropdown__list'>
-          <% unless params[:id] == 'current' %>
-            <a class='dropdown__item' data-action='playlist#playAll'><%= t('label.play_all') %></a>
-          <% end %>
-          <%= link_to t('label.clear'), playlist_path(params[:id]), method: :delete, remote: true, class: 'dropdown__item', data: { show_spinner: true } %>
+          <%= link_to t('label.clear'), playlist_path('current'), method: :delete, remote: true, class: 'dropdown__item', data: { show_spinner: true } %>
         </div>
       </div>
     </div>
-    <%= render partial: 'list', locals: { songs: @songs, pagy: @pagy, next_url: pagy_next_url(@pagy) } %>
+    <%= render partial: 'list', locals: { songs: @songs, pagy: @pagy, next_url: "#{@pagy.next ? '/playlist/current?page=2' : ''}" } %>
   </div>
 <% end %>

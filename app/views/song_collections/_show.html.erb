@@ -34,6 +34,6 @@
   <% if @playlist.blank? %>
     <%= empty_alert_tag %>
   <% else %>
-    <%= render partial: 'playlist/list', locals: { songs: @songs, pagy: @pagy } %>
+    <%= render partial: 'playlist/list', locals: { songs: @songs, pagy: @pagy, next_url: pagy_next_url(@pagy) } %>
   <% end %>
 </div>
