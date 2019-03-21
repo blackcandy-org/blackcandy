@@ -26,6 +26,7 @@ export default {
   },
 
   dispatchEvent(element, type) {
+    if (typeof element == 'string') { element = document.querySelector(element); }
     element.dispatchEvent(new Event(type));
   }
 };

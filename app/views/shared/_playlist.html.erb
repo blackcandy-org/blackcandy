@@ -1,17 +1,17 @@
-<div id='js-playlist' class='playlist display__full-height' data-controller='playlist-tab'>
+<div id='js-playlist' class='playlist display__full-height' data-controller='playlist-request'>
   <div class='playlist__nav'>
-    <ul class='tab' data-action='click->playlist-tab#toggle'>
+    <ul class='tab' data-controller='tab' data-action='click->tab#toggle'>
       <% playlist_tab_items.each do |tab_item| %>
         <li class='tab__item'>
-          <%= link_to tab_item[:title], tab_item[:path], remote: true, data: { target: 'playlist-tab.item', show_spinner: true } %>
+          <%= link_to tab_item[:title], tab_item[:path], remote: true, data: { target: 'tab.item', show_loading: true } %>
         </li>
       <% end %>
     </ul>
   </div>
-  <div class='playlist__content display__full-height'>
-    <div class='display__full-height' id='js-playlist-content' data-target='playlist-tab.content'>
+  <div class='playlist__content display__full-height' data-controller='loading' id='js-playlist-loading'>
+    <div class='display__full-height' id='js-playlist-content' data-target='loading.content'>
     </div>
-    <div class='hidden display__justify-align-center display__full-height' data-target='playlist-tab.spinner'>
+    <div class='hidden display__justify-align-center display__full-height' data-target='loading.indicator'>
       <%= spinner_tag %>
     </div>
   </div>

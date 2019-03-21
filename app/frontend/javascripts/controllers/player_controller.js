@@ -20,8 +20,8 @@ export default class extends Controller {
 
   initialize() {
     this._initPlayer();
-    this._initMode();
     this._initPlaylist();
+    this._initMode();
   }
 
   play() {

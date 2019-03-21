@@ -4,4 +4,4 @@
   App.renderPlaylistContent('<%= j(render 'song_collections/show') %>');
 <% end %>
 
-App.dispatchEvent(document.querySelector('#js-playlist'), 'hide.spinner');
+App.dispatchEvent('#js-playlist-loading', 'hide.loading');

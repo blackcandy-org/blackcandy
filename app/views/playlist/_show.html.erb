@@ -17,7 +17,7 @@
           <% unless params[:id] == 'current' %>
             <a class='dropdown__item' data-action='playlist#playAll'><%= t('label.play_all') %></a>
           <% end %>
-          <%= link_to t('label.clear'), playlist_path(params[:id]), method: :delete, remote: true, class: 'dropdown__item', data: { show_spinner: true } %>
+          <%= link_to t('label.clear'), playlist_path(params[:id]), method: :delete, remote: true, class: 'dropdown__item', data: { show_loading: true } %>
         </div>
       </div>
     </div>
