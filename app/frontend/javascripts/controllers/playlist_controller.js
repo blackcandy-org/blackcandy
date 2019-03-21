@@ -17,7 +17,35 @@ export default class extends Controller {
     document.removeEventListener('show.playingitem', this.showPlayingItem.bind(this));
   }
 
-  play({ target }) {
+  actionHandler({ target }) {
+    switch (target.closest('[data-playlist-action]').dataset.playlistAction) {
+      case 'delete':
+        this._deleteSong(target);
+        break;
+      default:
+        this._play(target);
+    }
+  }
+
+  playAll() {
+    ajax({
+      url: `/playlist/${this.id}/play`,
+      type: 'post',
+      dataType: 'json',
+      success: (songIds) => {
+        this.player.updatePlaylist(songIds);
+        this.player.skipTo(0);
+      }
+    });
+  }
+
+  showPlayingItem() {
+    this.itemTargets.forEach((element) => {
+      element.classList.toggle('playlist__item--active', element.dataset.songId == this.player.currentSong.id);
+    });
+  }
+
+  _play(target) {
     const { songId } = target.closest('.playlist__item').dataset;
     const playlistIndex = this.player.playlistIndexOf(songId);
 
@@ -35,22 +63,8 @@ export default class extends Controller {
     }
   }
 
-  playAll() {
-    ajax({
-      url: `/playlist/${this.id}/play`,
-      type: 'post',
-      dataType: 'json',
-      success: (songIds) => {
-        this.player.updatePlaylist(songIds);
-        this.player.skipTo(0);
-      }
-    });
-  }
-
-  deleteSong(event) {
-    event.stopPropagation();
-
-    const playlistItemElement = event.target.closest('.playlist__item');
+  _deleteSong(target) {
+    const playlistItemElement = target.closest('.playlist__item');
     const { songId } = playlistItemElement.dataset;
 
     ajax({
@@ -68,12 +82,6 @@ export default class extends Controller {
           this.countTarget.innerText = this.count - 1;
         }
       }
-    });
-  }
-
-  showPlayingItem() {
-    this.itemTargets.forEach((element) => {
-      element.classList.toggle('playlist__item--active', element.dataset.songId == this.player.currentSong.id);
     });
   }
 

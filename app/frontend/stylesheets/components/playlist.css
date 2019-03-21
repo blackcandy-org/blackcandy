@@ -57,7 +57,7 @@
 }
 
 .playlist__item:hover .playlist__item__action {
-  display: block;
+  display: flex;
 }
 
 .playlist__item--primary:hover .playlist__item__detail__main {

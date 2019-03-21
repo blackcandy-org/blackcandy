@@ -99,7 +99,7 @@ const player = {
     this.normalPlaylist.splice(index, 1);
     this.updateShuffleStatus(this.isShuffle);
 
-    if (this.currentSong.id == Number(songId)) { this.next(); }
+    if (this.currentSong.id == Number(songId)) { this.skipTo(index); }
   },
 
   playlistIndexOf(songId) {
