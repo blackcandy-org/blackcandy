@@ -18,7 +18,6 @@ import 'babel-polyfill';
 
 import 'normalize.css';
 import '../stylesheets/application.css';
-import '../images/material-design-icons.svg';
 
 RailsUjs.start();
 Turbolinks.start();

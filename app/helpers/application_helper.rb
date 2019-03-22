@@ -20,7 +20,7 @@ module ApplicationHelper
       stroke-linejoin='round'
       class='#{icon_class}'>
       <title>#{options[:title]}</title>
-      <use xlink:href='#{asset_pack_path 'images/material-design-icons.svg'}##{name}'/></svg>"
+      <use xlink:href='##{name}'/></svg>"
   end
 
   def album_image_url(album)

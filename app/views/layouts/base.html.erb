@@ -10,5 +10,6 @@
 
   <body>
     <%= content_for?(:body) ? yield(:body) : yield %>
+    <%= render 'shared/icons.svg' %>
   </body>
 </html>
