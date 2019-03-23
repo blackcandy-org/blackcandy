@@ -1,0 +1,35 @@
+.dialog {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 400px;
+  z-index: 100;
+  background: var(--dialog-bg-color);
+  border-radius: var(--dialog-border-radius);
+  max-height: calc(100% - 100px);
+}
+
+.dialog__header {
+  padding: 12px 20px;
+  background: var(--dialog-header-bg-color);
+  color: var(--dialog-header-color);
+  border-top-left-radius: var(--dialog-border-radius);
+  border-top-right-radius: var(--dialog-border-radius);
+}
+
+.dialog__title {
+  margin: 0;
+  margin-right: 15px;
+  font-size: var(--dialog-title-font-size);
+}
+
+.dialog__content {
+  padding: 12px 20px;
+  font-size: var(--dialog-content-font-size);
+  overflow-y: auto;
+}

@@ -1,0 +1,15 @@
+<section id='js-playlist-dialog' class='dialog hidden' data-controller='dialog'>
+  <header class='dialog__header display__space-between'>
+    <h2 class='dialog__title'><%= t('text.add_to_collection') %></h2>
+    <span class='pointer-cursor' data-action='click->dialog#hide'>
+      <%= icon_tag 'close', size: 'small' %>
+    </span>
+  </header>
+  <div class='dialog__content display__full-height' data-controller='loading' id='js-playlist-dialog-loading'>
+    <div id='js-playlist-dialog-content' data-target='loading.content'>
+    </div>
+    <div class='hidden display__justify-align-center display__full-height' data-target='loading.indicator'>
+      <%= spinner_tag size: 'small' %>
+    </div>
+  </div>
+</section>

@@ -22,6 +22,9 @@ export default class extends Controller {
       case 'delete':
         this._deleteSong(target);
         break;
+      case 'showCollectionDialog':
+        this._showCollectionDialog(target);
+        break;
       default:
         this._play(target);
     }
@@ -81,6 +84,22 @@ export default class extends Controller {
           playlistItemElement.remove();
           this.countTarget.innerText = this.count - 1;
         }
+      }
+    });
+  }
+
+  _showCollectionDialog(target) {
+    const { songId } = target.closest('.playlist__item').dataset;
+
+    App.dispatchEvent('#js-playlist-dialog', 'show.dialog');
+    App.dispatchEvent('#js-playlist-dialog-loading', 'show.loading');
+
+    ajax({
+      url: `/songs/${songId}/add`,
+      type: 'get',
+      dataType: 'script',
+      success: () => {
+        App.dispatchEvent('#js-playlist-dialog-loading', 'hide.loading');
       }
     });
   }

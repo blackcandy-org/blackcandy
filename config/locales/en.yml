@@ -56,3 +56,4 @@ en:
     no_items: 'No items'
     create_success: 'Created successfully'
     update_playlist_success: 'Update playlist successfully'
+    add_to_collection: 'Add to collection'

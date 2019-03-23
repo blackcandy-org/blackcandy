@@ -16,6 +16,8 @@
   --red: #a61637;
   --green: #23a650;
 
+  --box-shadow-color: var(--black-dark);
+
   /* Fonts */
   --font-size: 16px;
   --font-size-lg: 18px;
@@ -95,4 +97,15 @@
   --dropdown-active-color: var(--grey);
   --dropdown-color: var(--white);
   --dropdown-border-radius: var(--border-radius);
+
+  /* Dialog */
+  --dialog-bg-color: var(--black);
+  --dialog-header-bg-color: var(--grey);
+  --dialog-header-color: var(--black);
+  --dialog-border-radius: var(--border-radius);
+  --dialog-title-font-size: var(--font-size-lg);
+  --dialog-content-font-size: var(--font-size);
+
+  /* Overlay */
+  --overlay-bg-color: var(--black-light);
 }

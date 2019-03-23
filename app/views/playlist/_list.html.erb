@@ -8,7 +8,7 @@
         </div>
         <div>
           <div class='playlist__item__action'>
-            <%= icon_tag 'playlist-add', size: 'small' %>
+            <span data-playlist-action='showCollectionDialog'><%= icon_tag 'playlist-add', size: 'small' %>
             <span data-playlist-action='delete'><%= icon_tag 'delete', size: 'small' %></span>
           </div>
           <span class='playlist__item__duration'><%= song.duration %></span>

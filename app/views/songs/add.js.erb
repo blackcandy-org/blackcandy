@@ -1,0 +1,5 @@
+<% if @pagy.page == 1 %>
+  App.renderContent('#js-playlist-dialog-content', '<%= j(render 'add') %>');
+<% else %>
+  App.appendPlaylistDialogNewContentTo('#js-playlist-dialog-song-collections', '<%= j(render 'add') %>');
+<% end %>

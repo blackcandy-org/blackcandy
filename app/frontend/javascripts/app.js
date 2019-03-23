@@ -25,6 +25,13 @@ export default {
     document.querySelector(selector).insertAdjacentHTML('afterbegin', oldContent);
   },
 
+  appendPlaylistDialogNewContentTo(selector, newPlaylistDialogContent) {
+    const oldContent = document.querySelector(selector).innerHTML;
+
+    this.renderContent('#js-playlist-dialog-content', newPlaylistDialogContent);
+    document.querySelector(selector).insertAdjacentHTML('afterbegin', oldContent);
+  },
+
   dispatchEvent(element, type) {
     if (typeof element == 'string') { element = document.querySelector(element); }
     element.dispatchEvent(new Event(type));

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SongsController < ApplicationController
+  include Pagy::Backend
+
   before_action :require_login
 
   def index
@@ -14,5 +16,9 @@ class SongsController < ApplicationController
   def favorite
     Current.user.favorite_playlist.toggle(params[:id])
     head :ok
+  end
+
+  def add
+    @pagy, @song_collections = pagy_countless(Current.user.song_collections.order(id: :desc))
   end
 end

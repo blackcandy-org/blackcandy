@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :songs, only: [:index, :show] do
     member do
       post 'favorite'
+      get 'add'
     end
   end
 

@@ -12,7 +12,7 @@
   background: var(--dropdown-bg-color);
   border-radius: var(--dropdown-border-radius);
   color: var(--dropdown-color);
-  box-shadow: -1px 1px 4px var(--black-dark);
+  box-shadow: -1px 1px 4px var(--box-shadow-color);
 }
 
 .dropdown__item {

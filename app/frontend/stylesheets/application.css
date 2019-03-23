@@ -16,4 +16,6 @@
 @import 'components/spinner.css';
 @import 'components/input.css';
 @import 'components/dropdown.css';
+@import 'components/dialog.css';
+@import 'components/overlay.css';
 @import 'lib/noty.css';
