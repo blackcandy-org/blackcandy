@@ -36,4 +36,20 @@ export default class extends Controller {
       this.updateName();
     }
   }
+
+  add({ target, currentTarget }) {
+    const { songId } = currentTarget.dataset;
+    const { songCollectionId } = target.closest('[data-song-collection-id]').dataset;
+
+    App.dispatchEvent('#js-playlist-dialog-loading', 'show.loading');
+
+    ajax({
+      url: `/playlist/${songCollectionId}`,
+      type: 'put',
+      data: `update_action=push&song_id=${songId}`,
+      success: () => {
+        App.dispatchEvent('#js-playlist-dialog', 'hide.dialog');
+      }
+    });
+  }
 }

@@ -49,11 +49,13 @@ en:
     tracks: 'Tracks'
   error:
     login: 'Wrong email or password'
+  success:
+    add: 'Add successfully'
+    delete: 'Delete successfully'
+    create: 'Created successfully'
   default:
     album_name: 'Untitled Album'
     artist_name: 'Untitled Artist'
   text:
     no_items: 'No items'
-    create_success: 'Created successfully'
-    update_playlist_success: 'Update playlist successfully'
     add_to_collection: 'Add to collection'

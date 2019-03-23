@@ -11,7 +11,14 @@ class PlaylistController < ApplicationController
   end
 
   def update
-    @playlist.update(playlist_params)
+    if @playlist.update(playlist_params)
+      case params[:update_action]
+      when 'push'
+        flash.now[:success] = t('success.add')
+      when 'delete'
+        flash.now[:success] = t('success.delete')
+      end
+    end
   end
 
   def destroy

@@ -103,7 +103,7 @@
   --dialog-header-bg-color: var(--grey);
   --dialog-header-color: var(--black);
   --dialog-border-radius: var(--border-radius);
-  --dialog-title-font-size: var(--font-size-lg);
+  --dialog-title-font-size: var(--font-size);
   --dialog-content-font-size: var(--font-size);
 
   /* Overlay */

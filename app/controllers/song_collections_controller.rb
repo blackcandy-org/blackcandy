@@ -19,7 +19,7 @@ class SongCollectionsController < ApplicationController
     @song_collection = Current.user.song_collections.new song_collection_params
 
     if @song_collection.save
-      flash.now[:success] = t('text.create_success')
+      flash.now[:success] = t('success.create')
     else
       flash.now[:error] = @song_collection.errors.full_messages.join(' ')
     end

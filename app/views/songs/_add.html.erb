@@ -1,8 +1,8 @@
 <% if @song_collections.present? %>
-  <div data-controller='infinite-scroll' data-infinite-scroll-container='.dialog__content' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
-    <div id='js-playlist-dialog-song-collections'>
+  <div data-controller='infinite-scroll song-collection' data-infinite-scroll-container='.dialog__content' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
+    <div id='js-playlist-dialog-song-collections' data-action='click->song-collection#add' data-song-id='<%= params[:id] %>'>
       <% @song_collections.each do |song_collection| %>
-        <div class='playlist__item pointer-cursor'>
+        <div class='playlist__item pointer-cursor' data-song-collection-id='<%= song_collection.id %>'>
           <div class='playlist__item__detail'>
             <div class='playlist__item__detail__main'>
               <%= song_collection.name %>

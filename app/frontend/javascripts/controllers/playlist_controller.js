@@ -49,7 +49,7 @@ export default class extends Controller {
   }
 
   _play(target) {
-    const { songId } = target.closest('.playlist__item').dataset;
+    const { songId } = target.closest('[data-song-id]').dataset;
     const playlistIndex = this.player.playlistIndexOf(songId);
 
     if (playlistIndex != -1) {
@@ -89,7 +89,7 @@ export default class extends Controller {
   }
 
   _showCollectionDialog(target) {
-    const { songId } = target.closest('.playlist__item').dataset;
+    const { songId } = target.closest('[data-song-id]').dataset;
 
     App.dispatchEvent('#js-playlist-dialog', 'show.dialog');
     App.dispatchEvent('#js-playlist-dialog-loading', 'show.loading');

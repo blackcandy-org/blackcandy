@@ -39,4 +39,8 @@ module ApplicationHelper
   def empty_alert_tag
     content_tag(:div, t('text.no_items'), class: 'display__justify-align-center display__full-height')
   end
+
+  def render_flash
+    render 'shared/flash'
+  end
 end

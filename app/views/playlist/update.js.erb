@@ -2,3 +2,5 @@
   <% partial = (%w(current favorite).include? params[:id]) ? 'playlist/show' : 'song_collections/show' %>
   App.renderPlaylistContent('<%= j(render partial) %>');
 <% end %>
+
+<%= render_flash %>
