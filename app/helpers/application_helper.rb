@@ -23,8 +23,15 @@ module ApplicationHelper
       <use xlink:href='##{name}'/></svg>"
   end
 
-  def album_image_url(album)
-    album.image.attached? ? url_for(album.image) : 'default_album.png'
+  def album_image_url(album, size: '')
+    sizes_options = { small: 200, medium: 300, large: 400 }
+    size = sizes_options[size.to_sym]
+
+    if size
+      album.image.attached? ? url_for(album.image.variant(resize: "#{size}x#{size}")) : "/images/default_album#{size}x#{size}.png"
+    else
+      album.image.attached? ? url_for(album.image) : '/images/default_album.png'
+    end
   end
 
   def spinner_tag(size: '')

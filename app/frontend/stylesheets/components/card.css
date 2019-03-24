@@ -13,14 +13,15 @@
 }
 
 .card__title {
-  font-size: var(--font-size);
+  display: block;
+  font-size: var(--card-font-size);
   margin: 0 0 10px;
   font-weight: normal;
   color: var(--card-title-color);
 }
 
 .card__text {
-  font-size: var(--font-size-sm);
+  font-size: var(--card-font-size);
   color: var(--card-text-color);
   margin: 0;
 }

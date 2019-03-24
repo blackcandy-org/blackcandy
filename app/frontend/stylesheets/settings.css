@@ -17,6 +17,7 @@
   --green: #23a650;
 
   --box-shadow-color: var(--black-dark);
+  --link-active-color: var(--purple-light);
 
   /* Fonts */
   --font-size: 16px;
@@ -88,6 +89,7 @@
   /* Card */
   --card-title-color: var(--white);
   --card-text-color: var(--grey);
+  --card-font-size: var(--font-size-sm);
 
   /* Spinner */
   --spinner-bg-color: var(--purple);
@@ -108,4 +110,9 @@
 
   /* Overlay */
   --overlay-bg-color: var(--black-light);
+
+  /* Album page */
+  --album-detail-color: var(--grey-light);
+  --album-detail-main-color: var(--white);
+  --album-playlist-border-color: var(--black);
 }

@@ -2,9 +2,11 @@
   <div class='display__space-between display__flex-wrap' id='js-albums-content'>
     <% @albums.each do |album| %>
       <div class='card'>
-        <%= image_tag album_image_url(album), class: 'card__image' %>
+        <%= link_to album_path(album) do %>
+          <%= image_tag album_image_url(album, size: 'medium'), class: 'card__image' %>
+        <% end %>
         <div class='card__body'>
-          <h2 class='card__title text-truncate'><%= album.name %></h2>
+          <%= link_to album.name, album_path(album), class: 'card__title text-truncate' %>
           <p class='card__text text-truncate'><%= album.artist.name %></p>
         </div>
       </div>

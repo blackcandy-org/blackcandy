@@ -6,10 +6,10 @@ class AlbumsController < ApplicationController
   before_action :require_login
 
   def index
-    @pagy, @albums = pagy_countless(Album.includes(:artist), items: 40)
+    @pagy, @albums = pagy_countless(Album.with_attached_image.includes(:artist), items: 40)
   end
 
   def show
-    @album = Album.find(params[:id])
+    @album = Album.includes(:artist, :songs).find(params[:id])
   end
 end
