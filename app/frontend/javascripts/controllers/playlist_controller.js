@@ -42,6 +42,24 @@ export default class extends Controller {
     });
   }
 
+  clear() {
+    App.dispatchEvent('#js-playlist-loading', 'show.loading');
+
+    ajax({
+      url: `/playlist/${this.id}`,
+      type: 'delete',
+      dataType: 'script',
+      success: () => {
+        App.dispatchEvent('#js-playlist-loading', 'hide.loading');
+
+        if (this.isCurrent) {
+          this.player.updatePlaylist([]);
+          this.player.stop();
+        }
+      }
+    });
+  }
+
   showPlayingItem() {
     this.itemTargets.forEach((element) => {
       element.classList.toggle('list__item--active', element.dataset.songId == this.player.currentSong.id);

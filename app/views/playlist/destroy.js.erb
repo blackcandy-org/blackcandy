@@ -3,5 +3,3 @@
 <% else %>
   App.renderPlaylistContent('<%= j(render 'song_collections/show') %>');
 <% end %>
-
-App.dispatchEvent('#js-playlist-loading', 'hide.loading');

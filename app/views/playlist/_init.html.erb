@@ -2,22 +2,7 @@
   <%= empty_alert_tag %>
 <% else %>
   <div data-controller='playlist' data-playlist-id='current'>
-    <div class='heading'>
-      <div class='heading__body'>
-        <div class='heading__body__text'>
-          <span data-target='playlist.count'><%= @playlist.count %></span>
-          <span> <%= t('label.tracks') %></span>
-        </div>
-      </div>
-      <div class='heading__footer'>
-        <div data-controller='dropdown' class='dropdown'>
-          <span data-action='click->dropdown#show'><%= icon_tag('more-vertical') %></span>
-          <div data-target='dropdown.list' class='hidden dropdown__list'>
-            <%= link_to t('label.clear'), playlist_path('current'), method: :delete, remote: true, class: 'dropdown__item', data: { show_loading: true } %>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render partial: 'heading', locals: { playlist: @playlist, id: 'current' } %>
     <%= render partial: 'list', locals: { songs: @songs, pagy: @pagy, next_url: "#{@pagy.next ? '/playlist/current?page=2' : ''}" } %>
   </div>
 <% end %>

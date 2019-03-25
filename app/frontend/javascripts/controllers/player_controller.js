@@ -103,6 +103,12 @@ export default class extends Controller {
     this.playButtonTarget.classList.remove('hidden');
   }
 
+  _setStopStatus() {
+    if (!this.player.playlist.length) {
+      this.headerTarget.classList.remove('player__header--show');
+    }
+  }
+
   _setProgress() {
     const seek = this.currentSong.howl ? this.currentSong.howl.seek() : 0;
 
@@ -123,6 +129,10 @@ export default class extends Controller {
 
     this.player.onpause = () => {
       this._setPauseStatus();
+    };
+
+    this.player.onstop = () => {
+      this._setStopStatus();
     };
 
     this.player.onend = () => {

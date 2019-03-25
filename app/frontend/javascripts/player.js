@@ -25,7 +25,8 @@ const player = {
             html5: true,
             onplay: this.onplay,
             onpause: this.onpause,
-            onend: this.onend
+            onend: this.onend,
+            onstop: this.onstop
           });
 
           Object.assign(song, response);
@@ -81,7 +82,7 @@ const player = {
       return { id: Number(songId) };
     });
 
-    this.playlist = this.normalPlaylist;
+    this.updateShuffleStatus(this.isShuffle);
   },
 
   pushToPlaylist(songId) {

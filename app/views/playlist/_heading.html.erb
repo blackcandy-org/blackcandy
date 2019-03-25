@@ -1,0 +1,19 @@
+<div class='heading'>
+  <div class='heading__body'>
+    <div class='heading__body__text'>
+      <span data-target='playlist.count'><%= playlist.count %></span>
+      <span> <%= t('label.tracks') %></span>
+    </div>
+  </div>
+  <div class='heading__footer'>
+    <div data-controller='dropdown' class='dropdown'>
+      <span data-action='click->dropdown#show'><%= icon_tag('more-vertical') %></span>
+      <div data-target='dropdown.list' class='hidden dropdown__list'>
+        <% unless id == 'current' %>
+          <a class='dropdown__item' data-action='playlist#playAll'><%= t('label.play_all') %></a>
+        <% end %>
+        <a class='dropdown__item' data-action='playlist#clear'><%= t('label.clear') %></a>
+      </div>
+    </div>
+  </div>
+</div>
