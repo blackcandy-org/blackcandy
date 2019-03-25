@@ -1,18 +1,18 @@
 <div data-controller='infinite-scroll' data-infinite-scroll-container='.playlist__content' data-infinite-scroll-next-url='<%= next_url %>'>
-  <ul class='none-style-list' id='js-playlist-list-content' data-action='click->playlist#actionHandler'>
+  <ul class='list' id='js-playlist-list-content' data-action='click->playlist#actionHandler'>
     <% songs.each do |song| %>
-      <li class='playlist__item display__space-between pointer-cursor' data-target='playlist.item' data-song-id='<%= song.id %>' data-playlist-action='play'>
-        <div class='playlist__item__detail'>
-          <div class='playlist__item__detail__main'><%= song.name %></div>
-          <div><%= song.artist.name %></div>
-        </div>
-        <div>
-          <div class='playlist__item__action'>
-            <span data-playlist-action='showCollectionDialog'><%= icon_tag 'playlist-add', size: 'small' %>
+      <li class='list__item pointer-cursor' data-target='playlist.item' data-song-id='<%= song.id %>' data-playlist-action='play'>
+        <span class='list__item__content'>
+          <span class='list__item__info list__item__info--main'><%= song.name %></span>
+          <span class='list__item__info'><%= song.artist.name %></span>
+        </span>
+        <span class='list__item__content list__item__content--minor'>
+          <span class='list__item__info list__item__info--action'>
+            <span data-playlist-action='showCollectionDialog'><%= icon_tag 'playlist-add', size: 'small' %></span>
             <span data-playlist-action='delete'><%= icon_tag 'delete', size: 'small' %></span>
-          </div>
-          <span class='playlist__item__duration'><%= song.duration %></span>
-        </div>
+          </span>
+          <span class='list__item__info list__item__info--minor'><%= song.duration %></span>
+        </span>
       </li>
     <% end %>
   </ul>

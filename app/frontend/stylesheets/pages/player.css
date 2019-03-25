@@ -7,35 +7,11 @@
 }
 
 .player__control__minor {
-  color: var(--grey);
+  color: var(--player-color);
 }
 
 .player__control__main {
   margin: 0 25px;
-}
-
-.player__info {
-  padding: 25px 20px;
-}
-
-.player__info__cover {
-  margin-right: 30px;
-}
-
-.player__info__cover img {
-  width: 100px;
-  height: 100px;
-}
-
-.player__info__detail {
-  color: var(--grey);
-  margin-bottom: 4px;
-}
-
-.player__info__detail--main {
-  color: var(--white);
-  font-weight: bold;
-  margin-bottom: 12px;
 }
 
 .player__timer {
@@ -47,7 +23,7 @@
 }
 
 .player__timer__item--main {
-  color: var(--grey-light);
+  color: var(--player-timer-color);
 }
 
 .player__progress {
@@ -82,4 +58,12 @@
 
 .player__favorite {
   color: var(--player-favorite-color);
+}
+
+.player .heading {
+  padding: 25px 20px;
+}
+
+.player .heading__body__text {
+  color: var(--player-color);
 }

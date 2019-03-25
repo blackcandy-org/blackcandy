@@ -6,20 +6,10 @@
   display: none !important;
 }
 
-.none-style-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
 .text-truncate {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.overflow-hidden {
-  overflow: hidden;
 }
 
 .pointer-cursor {

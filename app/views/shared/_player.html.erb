@@ -1,14 +1,14 @@
 <div class='player' data-controller='player'>
   <div data-target='player.header' class='player__header'>
-    <div class='player__info display__flex'>
-      <div class='player__info__cover'>
+    <div class='heading'>
+      <div class='heading__image heading__image--small'>
         <img data-target='player.image' />
       </div>
-      <div class='overflow-hidden'>
-        <div class='player__info__detail player__info__detail--main text-truncate' data-target='player.songName'></div>
-        <div class='player__info__detail text-truncate' data-target='player.albumName'></div>
-        <div class='player__info__detail text-truncate' data-target='player.artistName'></div>
-        <div class='player__info__detail player__timer'>
+      <div class='heading__body'>
+        <div class='heading__body__text heading__body__text--main text-truncate' data-target='player.songName'></div>
+        <div class='heading__body__text text-truncate' data-target='player.albumName'></div>
+        <div class='heading__body__text text-truncate' data-target='player.artistName'></div>
+        <div class='heading__body__text player__timer'>
           <span class='player__timer__item player__timer__item--main' data-target='player.songTimer'></span>
           <span class='player__timer__item'>/</span>
           <span class='player__timer__item' data-target='player.songDuration'></span>

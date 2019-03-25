@@ -6,9 +6,9 @@
 <% end %>
 <% if @song_collections.present? %>
   <div data-controller='infinite-scroll' data-infinite-scroll-container='.playlist__content' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
-    <div id='js-song-collection-list'>
+    <ul id='js-song-collection-list' class='list'>
       <%= render partial: 'song_collection', collection: @song_collections %>
-    </div>
+    </ul>
     <div data-target='infinite-scroll.trigger'>
       <% if @pagy.next %>
         <%= spinner_tag %>

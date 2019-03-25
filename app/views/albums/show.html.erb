@@ -1,39 +1,37 @@
 <div class='album' data-controller='playlist'>
   <div class='album__header'>
-    <div class='display__flex'>
-      <div class='album__cover'>
+    <div class='heading'>
+      <div class='heading__image heading__image--medium'>
         <%= image_tag album_image_url(@album, size: 'medium') %>
       </div>
-      <div class='album__detail'>
-        <div>
-          <div class='album__detail__item album__detail__item--main'><%= @album.name %></div>
-          <div class='album__detail__item'><%= @album.artist.name %></div>
-          <div class='album__detail__item'>
-            <span><%= @album.songs.count %> <%= t('label.tracks') %></span>
-          </div>
+      <div class='heading__body'>
+        <div class='heading__body__text heading__body__text--main'><%= @album.name %></div>
+        <div class='heading__body__text'><%= @album.artist.name %></div>
+        <div class='heading__body__text'>
+          <span><%= @album.songs.count %> <%= t('label.tracks') %></span>
         </div>
-        <div>
+        <div class='heading__body__actions'>
           <button data-action='playlist#playAll' class='button button--primary'><%= t('label.play_all') %></button>
         </div>
       </div>
     </div>
   </div>
   <div class='album__content'>
-    <ul class='none-style-list' data-action='click->playlist#actionHandler'>
+    <ul class='list' data-action='click->playlist#actionHandler'>
       <% @album.songs.each_with_index do |song, index| %>
-        <li class='playlist__item display__space-between pointer-cursor' data-target='playlist.item' data-song-id='<%= song.id %>' data-playlist-action='play'>
-          <div class='display__flex'>
-            <div><%= index %></div>
-            <div class='playlist__item__detail'>
-              <div class='playlist__item__detail__main'><%= song.name %></div>
-            </div>
-          </div>
-          <div>
-            <div class='playlist__item__action'>
-              <span data-playlist-action='showCollectionDialog'><%= icon_tag 'playlist-add', size: 'small' %>
-            </div>
-            <span class='playlist__item__duration'><%= song.duration %></span>
-          </div>
+        <li class='list__item pointer-cursor' data-target='playlist.item' data-song-id='<%= song.id %>' data-playlist-action='play'>
+          <span class='list__item__content'>
+            <span class='list__item__info'><%= index %></span>
+          </span>
+          <span class='list__item__content'>
+            <span class='list__item__info list__item__info--main'><%= song.name %></span>
+          </span>
+          <span class='list__item__content list__item__content--minor'>
+            <span class='list__item__info list__item__info--action' data-playlist-action='showCollectionDialog'>
+              <%= icon_tag 'playlist-add', size: 'small' %>
+            </span>
+            <span class='list__item__info list__item__info--minor'><%= song.duration %></span>
+          </span>
         </li>
       <% end %>
     </ul>

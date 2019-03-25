@@ -44,7 +44,7 @@ export default class extends Controller {
 
   showPlayingItem() {
     this.itemTargets.forEach((element) => {
-      element.classList.toggle('playlist__item--active', element.dataset.songId == this.player.currentSong.id);
+      element.classList.toggle('list__item--active', element.dataset.songId == this.player.currentSong.id);
     });
   }
 
@@ -67,7 +67,7 @@ export default class extends Controller {
   }
 
   _deleteSong(target) {
-    const playlistItemElement = target.closest('.playlist__item');
+    const playlistItemElement = target.closest('[data-song-id]');
     const { songId } = playlistItemElement.dataset;
 
     ajax({

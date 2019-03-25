@@ -1,0 +1,27 @@
+.playlist {
+  overflow: hidden;
+  position: relative;
+}
+
+.playlist__nav {
+  padding: 20px 20px 0;
+  border-bottom: 1px solid var(--black-dark);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: var(--playlist-bg-color);
+}
+
+.playlist__content {
+  overflow-y: auto;
+  padding: 70px 20px 0;
+  font-size: var(--font-size-sm);
+}
+
+.playlist .heading {
+  background: var(--playlist-heading-bg-color);
+  border-radius: var(--playlist-heading-border-radius);
+  padding: 12px 6px 12px 8px;
+}

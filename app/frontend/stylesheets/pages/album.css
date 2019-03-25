@@ -8,32 +8,6 @@
   margin-top: 40px;
 }
 
-.album__detail {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-left: 30px;
-}
-
-.album__detail__item {
-  margin-bottom: 10px;
-  color: var(--album-detail-color);
-}
-
-.album__detail__item--main {
-  font-weight: bold;
-  color: var(--album-detail-main-color);
-}
-
-.album__cover img {
-  height: 150px;
-  width: 150px;
-}
-
-.album__content .playlist__item {
+.album__content .list__item {
   border-color: var(--album-playlist-border-color);
-}
-
-.album__content .playlist__item__detail {
-  margin-left: 12px;
 }

@@ -1,8 +1,12 @@
-<%= link_to song_collection_path(song_collection), remote: true, class: 'playlist__item display__space-between', data: { show_loading: true } do %>
-  <div class='playlist__item__detail'>
-    <div class='playlist__item__detail__main'>
-      <%= song_collection.name %>
-    </div>
-  </div>
-  <div><%= icon_tag('chevron-right') %></div>
-<% end %>
+<li>
+  <%= link_to song_collection_path(song_collection), remote: true, class: 'list__item', data: { show_loading: true } do %>
+    <span class='list__item__content'>
+      <span class='list__item__info list__item__info--main'>
+        <%= song_collection.name %>
+      </span>
+    </span>
+    <span class='list__item__content list__item__content--minor'>
+      <%= icon_tag('chevron-right') %>
+    </span>
+  <% end %>
+</li>

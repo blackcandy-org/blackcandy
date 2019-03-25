@@ -3,12 +3,11 @@
 @import 'display.css';
 @import 'helper.css';
 @import 'animations.css';
+
 @import 'components/form.css';
 @import 'components/logo.css';
 @import 'components/button.css';
 @import 'components/avatar.css';
-@import 'components/playlist.css';
-@import 'components/player.css';
 @import 'components/icon.css';
 @import 'components/tab.css';
 @import 'components/card.css';
@@ -17,6 +16,12 @@
 @import 'components/dropdown.css';
 @import 'components/dialog.css';
 @import 'components/overlay.css';
+@import 'components/list.css';
+@import 'components/heading.css';
+
 @import 'pages/layout.css';
+@import 'pages/playlist.css';
+@import 'pages/player.css';
 @import 'pages/album.css';
+
 @import 'lib/noty.css';
