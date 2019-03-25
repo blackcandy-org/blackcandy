@@ -15,3 +15,7 @@
 .pointer-cursor {
   cursor: pointer;
 }
+
+.monospace-font {
+  font-family: var(--monospace-fonts);
+}

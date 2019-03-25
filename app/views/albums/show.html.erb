@@ -21,7 +21,7 @@
       <% @album.songs.each_with_index do |song, index| %>
         <li class='list__item pointer-cursor' data-target='playlist.item' data-song-id='<%= song.id %>' data-playlist-action='play'>
           <span class='list__item__content'>
-            <span class='list__item__info'><%= index %></span>
+            <span class='list__item__info monospace-font'><%= index + 1 %></span>
           </span>
           <span class='list__item__content'>
             <span class='list__item__info list__item__info--main'><%= song.name %></span>
@@ -30,7 +30,7 @@
             <span class='list__item__info list__item__info--action' data-playlist-action='showCollectionDialog'>
               <%= icon_tag 'playlist-add', size: 'small' %>
             </span>
-            <span class='list__item__info list__item__info--minor'><%= song.duration %></span>
+            <span class='list__item__info list__item__info--minor monospace-font'><%= song.duration %></span>
           </span>
         </li>
       <% end %>
