@@ -32,13 +32,9 @@ export default class extends Controller {
 
   playAll() {
     ajax({
-      url: `/playlist/${this.id}/play`,
+      url: this.data.get('playPath'),
       type: 'post',
-      dataType: 'json',
-      success: (songIds) => {
-        this.player.updatePlaylist(songIds);
-        this.player.skipTo(0);
-      }
+      dataType: 'script'
     });
   }
 

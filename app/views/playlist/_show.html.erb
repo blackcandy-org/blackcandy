@@ -1,8 +1,8 @@
-<% if @playlist.empty? %>
-  <%= empty_alert_tag %>
-<% else %>
-  <div data-controller='playlist' data-playlist-id='<%= params[:id] %>'>
+<div data-controller='playlist' data-playlist-id='<%= params[:id] %>' data-playlist-play-path='<%= play_playlist_path(params[:id]) %>' class='display__full-height'>
+  <% if @playlist.empty? %>
+    <%= empty_alert_tag %>
+  <% else %>
     <%= render partial: 'heading', locals: { playlist: @playlist, id: params[:id] } %>
     <%= render partial: 'list', locals: { songs: @songs, pagy: @pagy, next_url: pagy_next_url(@pagy) } %>
-  </div>
-<% end %>
+  <% end %>
+</div>

@@ -1,8 +1,8 @@
-<% if @playlist.empty? %>
-  <%= empty_alert_tag %>
-<% else %>
-  <div data-controller='playlist' data-playlist-id='current'>
-    <%= render partial: 'heading', locals: { playlist: @playlist, id: 'current' } %>
-    <%= render partial: 'list', locals: { songs: @songs, pagy: @pagy, next_url: "#{@pagy.next ? '/playlist/current?page=2' : ''}" } %>
-  </div>
-<% end %>
+<div data-controller='playlist' data-playlist-id='current' data-playlist-play-path='<%= play_playlist_path('current') %>' class='display__full-height'>
+  <% if @playlist.empty? %>
+    <%= empty_alert_tag %>
+  <% else %>
+    <%= render partial: 'playlist/heading', locals: { playlist: @playlist, id: 'current' } %>
+    <%= render partial: 'playlist/list', locals: { songs: @songs, pagy: @pagy, next_url: "#{@pagy.next ? '/playlist/current?page=2' : ''}" } %>
+  <% end %>
+</div>
