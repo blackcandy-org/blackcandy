@@ -17,7 +17,6 @@
 .playlist__content {
   overflow-y: auto;
   padding: 70px 20px 0;
-  font-size: var(--font-size-sm);
 }
 
 .playlist .heading {

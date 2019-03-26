@@ -1,6 +1,6 @@
 html {
   box-sizing: border-box;
-  font-size: var(--font-size);
+  font-size: var(--font-size-md);
   overflow-y: hidden;
 }
 

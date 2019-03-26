@@ -6,6 +6,10 @@
   margin-right: 30px;
 }
 
+.heading__image img {
+  border-radius: var(--heading-image-border-radius);
+}
+
 .heading__image--small img {
   height: 100px;
   width: 100px;
@@ -26,7 +30,6 @@
 .heading__body__text {
   margin-top: 6px;
   color: var(--heading-text-color);
-  font-size: var(--heading-text-font-size);
 }
 
 .heading__body__text:first-child {
