@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resource :session, only: [:new, :create, :destroy]
-  resources :artist, only: [:index, :show]
+  resources :artists, only: [:index, :show]
   resources :users
   resources :stream, only: [:new]
   resources :song_collections, except: [:new, :edit]

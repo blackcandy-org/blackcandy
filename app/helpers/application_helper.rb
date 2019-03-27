@@ -23,14 +23,16 @@ module ApplicationHelper
       <use xlink:href='##{name}'/></svg>"
   end
 
-  def album_image_url(album, size: '')
+  def image_url_for(object, size: '')
     sizes_options = { small: 200, medium: 300, large: 400 }
     size = sizes_options[size.to_sym]
+    default_image_name = "default_#{object.class.name.downcase}"
 
     if size
-      album.image.attached? ? url_for(album.image.variant(resize: "#{size}x#{size}")) : "/images/default_album#{size}x#{size}.png"
+      image_size = "#{size}x#{size}"
+      object.image.attached? ? url_for(object.image.variant(resize: image_size)) : "/images/#{default_image_name}#{image_size}.png"
     else
-      album.image.attached? ? url_for(album.image) : '/images/default_album.png'
+      object.image.attached? ? url_for(object.image) : "/images/#{default_image_name}.png"
     end
   end
 
@@ -49,5 +51,14 @@ module ApplicationHelper
 
   def render_flash
     render 'shared/flash'
+  end
+
+  def duration(sec)
+    minutes = (sec / 60) % 60
+    seconds = sec % 60
+
+    [minutes, seconds].map do |time|
+      time.round.to_s.rjust(2, '0')
+    end.join(':')
   end
 end

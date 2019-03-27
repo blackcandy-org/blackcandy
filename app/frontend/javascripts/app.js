@@ -23,6 +23,13 @@ export default {
     document.querySelector(selector).insertAdjacentHTML('afterbegin', oldContent);
   },
 
+  appendArtistNewContentTo(selector, newAlbumContent) {
+    const oldContent = document.querySelector(selector).innerHTML;
+
+    this.renderContent('#js-artists-container', newAlbumContent);
+    document.querySelector(selector).insertAdjacentHTML('afterbegin', oldContent);
+  },
+
   appendPlaylistDialogNewContentTo(selector, newPlaylistDialogContent) {
     const oldContent = document.querySelector(selector).innerHTML;
 

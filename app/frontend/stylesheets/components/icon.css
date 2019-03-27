@@ -1,14 +1,14 @@
 .icon {
-  width: 22px;
-  height: 22px;
-}
-
-.icon--small {
   width: 18px;
   height: 18px;
 }
 
+.icon--small {
+  width: 16px;
+  height: 16px;
+}
+
 .icon--large {
-  width: 26px;
-  height: 26px;
+  width: 22px;
+  height: 22px;
 }

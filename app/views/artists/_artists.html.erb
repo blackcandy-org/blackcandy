@@ -1,0 +1,19 @@
+<div data-controller='infinite-scroll' data-infinite-scroll-container='.layout__main' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
+  <div class='display__space-between display__flex-wrap' id='js-artists-content'>
+    <% @artists.each do |artist| %>
+      <div class='card'>
+        <%= link_to artist_path(artist) do %>
+          <%= image_tag image_url_for(artist, size: 'medium'), class: 'card__image' %>
+        <% end %>
+        <div class='card__body'>
+          <%= link_to artist.name, artist_path(artist), class: 'card__title text-truncate' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div data-target='infinite-scroll.trigger'>
+    <% if @pagy.next %>
+      <%= spinner_tag %>
+    <% end %>
+  </div>
+</div>

@@ -19,18 +19,18 @@
   </div>
   <div class='player__control display__space-between'>
     <div class='player__control__minor pointer-cursor' data-action='click->player#nextMode'>
-      <span data-target='player.modeButton'><%= icon_tag 'repeat', size: 'small' %></span>
-      <span data-target='player.modeButton'><%= icon_tag 'repeat-one', size: 'small' %></span>
-      <span data-target='player.modeButton'><%= icon_tag 'shuffle', size: 'small' %></span>
+      <span data-target='player.modeButton'><%= icon_tag 'repeat' %></span>
+      <span data-target='player.modeButton'><%= icon_tag 'repeat-one' %></span>
+      <span data-target='player.modeButton'><%= icon_tag 'shuffle' %></span>
     </div>
     <div>
-      <span class='pointer-cursor' data-action='click->player#previous'><%= icon_tag 'rewind' %></span>
-      <span data-action='click->player#play' class='player__control__main pointer-cursor' data-target='player.playButton'><%= icon_tag 'play' %></span>
-      <span data-action='click->player#pause' class='player__control__main pointer-cursor hidden' data-target='player.pauseButton'><%= icon_tag 'pause' %></span>
-      <span data-action='click->player#next' class='pointer-cursor'><%= icon_tag 'fast-forward' %></span>
+      <span class='pointer-cursor' data-action='click->player#previous'><%= icon_tag 'rewind', size: 'large' %></span>
+      <span data-action='click->player#play' class='player__control__main pointer-cursor' data-target='player.playButton'><%= icon_tag 'play', size: 'large' %></span>
+      <span data-action='click->player#pause' class='player__control__main pointer-cursor hidden' data-target='player.pauseButton'><%= icon_tag 'pause', size: 'large' %></span>
+      <span data-action='click->player#next' class='pointer-cursor'><%= icon_tag 'fast-forward', size: 'large' %></span>
     </div>
     <div data-target='player.favoriteButton' data-action='click->player#toggleFavorite' class='player__control__minor pointer-cursor'>
-      <%= icon_tag 'heart', size: 'small' %>
+      <%= icon_tag 'heart' %>
     </div>
   </div>
 </div>
