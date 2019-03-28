@@ -7,7 +7,7 @@ class SongCollectionsController < ApplicationController
   before_action :find_song_collction, only: [:show, :destroy, :update]
 
   def index
-    @pagy, @song_collections = pagy_countless(Current.user.song_collections.order(id: :desc))
+    @pagy, @song_collections = pagy_countless(Current.user.song_collections.order(created_at: :desc))
   end
 
   def show
@@ -31,7 +31,7 @@ class SongCollectionsController < ApplicationController
 
   def destroy
     @song_collection.destroy
-    @pagy, @song_collections = pagy_countless(Current.user.song_collections.order(id: :desc))
+    @pagy, @song_collections = pagy_countless(Current.user.song_collections.order(created_at: :desc))
 
     render 'index'
   end

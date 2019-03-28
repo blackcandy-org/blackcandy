@@ -19,6 +19,6 @@ class SongsController < ApplicationController
   end
 
   def add
-    @pagy, @song_collections = pagy_countless(Current.user.song_collections.order(id: :desc))
+    @pagy, @song_collections = pagy_countless(Current.user.song_collections.order(created_at: :desc))
   end
 end
