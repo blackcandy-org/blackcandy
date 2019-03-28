@@ -3,5 +3,5 @@
   App.renderPlaylistContent('<%= j(render 'show') %>');
   App.dispatchEvent('#js-playlist-loading', 'hide.loading');
 <% else %>
-  App.appendPlaylistNewContentTo('#js-playlist-list-content', '<%= j(render 'show') %>');
+  App.appedNextPageContentTo('#js-playlist-list-content', '<%= j(render partial: 'songs', locals: { songs: @songs }) %>', '<%= pagy_next_url(@pagy) %>')
 <% end %>

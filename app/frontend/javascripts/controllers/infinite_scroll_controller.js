@@ -38,10 +38,14 @@ export default class extends Controller {
         ajaxRequest.abort();
       }
 
-      if (this.isTriggerHidden) { return; }
+      if (!this.hasNextPage) {
+        this.triggerTarget.classList.add('hidden');
+      }
+
+      if (this.isTriggerHidden && !this.hasNextPage) { return; }
 
       ajax({
-        url: this.data.get('nextUrl'),
+        url: this.nextUrl,
         type: 'get',
         dataType: 'script',
         beforeSend(xhr) {
@@ -52,7 +56,11 @@ export default class extends Controller {
   }
 
   get hasNextPage() {
-    return this.triggerTarget.childElementCount != 0;
+    return !!this.nextUrl;
+  }
+
+  get nextUrl() {
+    return this.data.get('nextUrl');
   }
 
   get isTriggerHidden() {

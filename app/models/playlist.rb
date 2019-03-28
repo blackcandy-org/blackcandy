@@ -54,7 +54,7 @@ class Playlist
   end
 
   def count
-    @song_ids.size
+    song_ids.size
   end
 
   def replace(song_ids)

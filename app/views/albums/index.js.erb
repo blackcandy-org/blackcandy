@@ -1,1 +1,1 @@
-App.appendAlbumNewContentTo('#js-albums-content', '<%= j(render 'albums') %>');
+App.appedNextPageContentTo('#js-albums-content', '<%= j render('albums') %>', '<%= pagy_next_url(@pagy) %>')

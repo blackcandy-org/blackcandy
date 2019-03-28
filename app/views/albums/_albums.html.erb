@@ -1,20 +1,11 @@
-<div data-controller='infinite-scroll' data-infinite-scroll-container='.layout__main' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
-  <div class='display__space-between display__flex-wrap' id='js-albums-content'>
-    <% @albums.each do |album| %>
-      <div class='card'>
-        <%= link_to album_path(album) do %>
-          <%= image_tag image_url_for(album, size: 'medium'), class: 'card__image' %>
-        <% end %>
-        <div class='card__body'>
-          <%= link_to album.name, album_path(album), class: 'card__title text-truncate' %>
-          <p class='card__text text-truncate'><%= album.artist.name %></p>
-        </div>
-      </div>
+<% @albums.each do |album| %>
+  <div class='card'>
+    <%= link_to album_path(album) do %>
+      <%= image_tag image_url_for(album, size: 'medium'), class: 'card__image' %>
     <% end %>
+    <div class='card__body'>
+      <%= link_to album.name, album_path(album), class: 'card__title text-truncate' %>
+      <p class='card__text text-truncate'><%= album.artist.name %></p>
+    </div>
   </div>
-  <div data-target='infinite-scroll.trigger'>
-    <% if @pagy.next %>
-      <%= spinner_tag %>
-    <% end %>
-  </div>
-</div>
+<% end %>
