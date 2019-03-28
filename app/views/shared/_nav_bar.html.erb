@@ -1,15 +1,15 @@
 <nav class='layout__nav-bar'>
   <ul class='tab'>
-    <li class='tab__item tab__item--active'>
+    <li class='tab__item <%= 'tab__item--active' if is_active?('albums') %>'>
       <%= link_to t('label.albums'), albums_path %>
     </li>
-    <li class='tab__item'>
+    <li class='tab__item <%= 'tab__item--active' if is_active?('artists') %>'>
       <%= link_to t('label.artists'), artists_path %>
     </li>
-    <li class='tab__item'>
+    <li class='tab__item <%= 'tab__item--active' if is_active?('songs') %>'>
       <a href='#'><%= t('label.songs') %></a>
     </li>
-    <li class='tab__item'>
+    <li class='tab__item <%= 'tab__item--active' if is_active?('settings') %>'>
       <a href='#'><%= t('label.settings') %></a>
     </li>
   </ul>

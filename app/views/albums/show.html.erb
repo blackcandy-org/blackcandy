@@ -20,11 +20,8 @@
   </div>
   <div class='album__content'>
     <ul class='list' data-action='click->playlist#actionHandler'>
-      <% @songs.each_with_index do |song, index| %>
+      <% @songs.each do |song| %>
         <li class='list__item pointer-cursor' data-target='playlist.item' data-song-id='<%= song.id %>' data-playlist-action='play'>
-          <span class='list__item__content'>
-            <span class='list__item__info monospace-font'><%= index + 1 %></span>
-          </span>
           <span class='list__item__content'>
             <span class='list__item__info list__item__info--main'><%= song.name %></span>
           </span>

@@ -61,4 +61,8 @@ module ApplicationHelper
       time.round.to_s.rjust(2, '0')
     end.join(':')
   end
+
+  def is_active?(controller)
+    controller == params[:controller]
+  end
 end

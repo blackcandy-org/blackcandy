@@ -5,8 +5,8 @@
 
 .spinner__beat {
   display: inline-block;
-  height: 14px;
-  width: 14px;
+  height: 12px;
+  width: 12px;
   animation: stretchDelay 0.7s infinite linear;
   animation-fill-mode: both;
   border-radius: 100%;
