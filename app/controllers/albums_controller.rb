@@ -15,7 +15,7 @@ class AlbumsController < ApplicationController
   end
 
   def play
-    @song_ids = @album.songs.ids
+    @song_ids = @album.songs.order(:tracknum).ids
     @playlist = Current.user.current_playlist
 
     @playlist.replace(@song_ids)
