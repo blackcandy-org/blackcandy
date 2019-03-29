@@ -1,4 +1,4 @@
-<% @albums.each do |album| %>
+<% albums.each do |album| %>
   <div class='card'>
     <%= link_to album_path(album) do %>
       <%= image_tag image_url_for(album, size: 'medium'), class: 'card__image' %>

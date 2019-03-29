@@ -23,8 +23,8 @@
 .heading__body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   overflow: hidden;
+  padding: 2px 0;
 }
 
 .heading__body__text {

@@ -23,5 +23,6 @@
 @import 'pages/playlist.css';
 @import 'pages/player.css';
 @import 'pages/album.css';
+@import 'pages/artist.css';
 
 @import 'lib/noty.css';
