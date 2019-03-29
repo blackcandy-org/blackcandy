@@ -1,0 +1,29 @@
+.songs {
+  max-width: 650px;
+  margin: auto;
+}
+
+.songs__name {
+  min-width: 30%;
+}
+
+.songs__artist {
+  min-width: 30%;
+}
+
+.songs__album {
+  min-width: 30%;
+}
+
+.songs__actions {
+  min-width: 10%;
+  text-align: end;
+}
+
+.songs .list__item {
+  border-color: var(--songs-list-border-color);
+}
+
+.songs .list__item__info--action {
+  justify-content: flex-end;
+}

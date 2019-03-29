@@ -7,7 +7,7 @@
       <%= link_to t('label.artists'), artists_path %>
     </li>
     <li class='tab__item <%= 'tab__item--active' if is_active?('songs') %>'>
-      <a href='#'><%= t('label.songs') %></a>
+      <%= link_to t('label.songs'), songs_path %>
     </li>
     <li class='tab__item <%= 'tab__item--active' if is_active?('settings') %>'>
       <a href='#'><%= t('label.settings') %></a>

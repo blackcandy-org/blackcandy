@@ -15,7 +15,7 @@
 .list__item__content {
   display: flex;
   flex-direction: column;
-  margin-right: 15px;
+  padding-right: 15px;
 }
 
 .list__item__info {
@@ -30,7 +30,7 @@
 }
 
 .list__item__content--minor {
-  margin-right: 0;
+  padding-right: 0;
   margin-left: auto;
 }
 

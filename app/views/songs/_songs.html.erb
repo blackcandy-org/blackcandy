@@ -1,0 +1,19 @@
+<% @songs.each do |song| %>
+  <li class='list__item pointer-cursor' data-target='playlist.item' data-song-id='<%= song.id %>' data-playlist-action='play'>
+    <span class='list__item__content songs__name'>
+      <span class='list__item__info list__item__info--main text-truncate'><%= song.name %></span>
+    </span>
+    <span class='list__item__content songs__artist'>
+      <span class='list__item__info text-truncate'><%= song.artist.name %></span>
+    </span>
+    <span class='list__item__content songs__album'>
+      <span class='list__item__info text-truncate'><%= song.album.name %></span>
+    </span>
+    <span class='list__item__content list__item__content--minor songs__actions'>
+      <span class='list__item__info list__item__info--action' data-playlist-action='showCollectionDialog'>
+        <%= icon_tag 'playlist-add', size: 'small' %>
+      </span>
+      <span class='list__item__info list__item__info--minor monospace-font'><%= duration(song.length) %></span>
+    </span>
+  </li>
+<% end %>

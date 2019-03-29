@@ -128,4 +128,7 @@
 
   /* Artist page */
   --artist-header-border-color: var(--black);
+
+  /* Songs page */
+  --songs-list-border-color: var(--black);
 }

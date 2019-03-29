@@ -1,0 +1,10 @@
+<div class='songs' data-controller='playlist infinite-scroll' data-infinite-scroll-container='.layout__main' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
+  <ul id='js-songs-content' class='list' data-action='click->playlist#actionHandler'>
+    <%= render 'songs' %>
+  </ul>
+  <div data-target='infinite-scroll.trigger'>
+    <% if @pagy.next %>
+      <%= spinner_tag %>
+    <% end %>
+  </div>
+</div>
