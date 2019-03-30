@@ -1,0 +1,13 @@
+<div class='display__small-width'>
+  <div class='heading'>
+    <div class='heading__image'>
+      <%= image_tag avatar_url(Current.user, '100'), class: 'image image--xsmall' %>
+    </div>
+    <div class='heading__body'>
+      <div class='heading__body__text heading__body__text--main'><%= Current.user.email %></div>
+    </div>
+    <div class='heading__footer'>
+      <span><%= icon_tag('more-vertical', size: 'large') %></span>
+    </div>
+  </div>
+</div>

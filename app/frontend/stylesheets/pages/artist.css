@@ -1,9 +1,0 @@
-.artist__header {
-  padding-bottom: 40px;
-  margin: 0 15px;
-  border-bottom: 1px solid var(--artist-header-border-color);
-}
-
-.artist__content {
-  padding-top: 40px;
-}

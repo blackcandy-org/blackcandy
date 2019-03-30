@@ -7,7 +7,7 @@
 @import 'components/form.css';
 @import 'components/logo.css';
 @import 'components/button.css';
-@import 'components/avatar.css';
+@import 'components/image.css';
 @import 'components/icon.css';
 @import 'components/tab.css';
 @import 'components/card.css';
@@ -18,12 +18,11 @@
 @import 'components/overlay.css';
 @import 'components/list.css';
 @import 'components/heading.css';
+@import 'components/line.css';
 
 @import 'pages/layout.css';
 @import 'pages/playlist.css';
 @import 'pages/player.css';
-@import 'pages/album.css';
-@import 'pages/artist.css';
 @import 'pages/songs.css';
 
 @import 'lib/noty.css';

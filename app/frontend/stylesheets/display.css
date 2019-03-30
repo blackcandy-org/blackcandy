@@ -46,3 +46,13 @@
 .display__full-width {
   width: 100%;
 }
+
+.display__small-width {
+  max-width: 600px;
+  margin: auto;
+}
+
+.display__medium-width {
+  max-width: 650px;
+  margin: auto;
+}

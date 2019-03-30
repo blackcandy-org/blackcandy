@@ -1,7 +1,7 @@
 <% @artists.each do |artist| %>
   <div class='card'>
     <%= link_to artist_path(artist) do %>
-      <%= image_tag image_url_for(artist, size: 'medium'), class: 'card__image' %>
+      <%= image_tag image_url_for(artist), class: 'image' %>
     <% end %>
     <div class='card__body'>
       <%= link_to artist.name, artist_path(artist), class: 'card__title text-truncate' %>

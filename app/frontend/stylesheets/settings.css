@@ -46,10 +46,6 @@
   /* Progress bar */
   --progress-bar-bg-color: var(--purple);
 
-  /* Avatar */
-  --avatar-border-radius: var(--border-radius-round);
-  --avatar-border-color: var(--grey-light);
-
   /* Button */
   --btn-border-radius: var(--border-radius-md);
   --btn-color: var(--white);
@@ -74,6 +70,7 @@
   --list-main-color: var(--grey-lighter);
   --list-border-color: var(--black-light);
   --list-active-color: var(--purple-light);
+  --list-border-dark-color: var(--black);
 
   /* Input */
   --input-bg-color: var(--black-lighter);
@@ -84,7 +81,6 @@
   /* Card */
   --card-title-color: var(--grey-lighter);
   --card-text-color: var(--grey);
-  --card-image-border-radius: var(--border-radius-md);
 
   /* Spinner */
   --spinner-bg-color: var(--purple);
@@ -105,11 +101,16 @@
   /* Overlay */
   --overlay-bg-color: var(--black-light);
 
+  /* Image */
+  --image-border-radius: var(--border-radius-md);
+
+  /* Line */
+  --line-color: var(--black);
+
   /* Heading */
   --heading-text-color: var(--grey-light);
   --heading-text-main-color: var(--white);
   --heading-text-main-font-size: var(--font-size-lg);
-  --heading-image-border-radius: var(--border-radius-md);
 
   /* Playlist page */
   --playlist-bg-color: var(--black);
@@ -122,13 +123,4 @@
   --player-favorite-color: var(--red);
   --player-color: var(--grey);
   --player-timer-color: var(--grey-lighter);
-
-  /* Album page */
-  --album-playlist-border-color: var(--black);
-
-  /* Artist page */
-  --artist-header-border-color: var(--black);
-
-  /* Songs page */
-  --songs-list-border-color: var(--black);
 }

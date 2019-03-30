@@ -2,22 +2,12 @@
   display: flex;
 }
 
+.heading--expand {
+  margin: 40px 0 30px;
+}
+
 .heading__image {
   margin-right: 30px;
-}
-
-.heading__image img {
-  border-radius: var(--heading-image-border-radius);
-}
-
-.heading__image--small img {
-  height: 100px;
-  width: 100px;
-}
-
-.heading__image--medium img {
-  height: 150px;
-  width: 150px;
 }
 
 .heading__body {

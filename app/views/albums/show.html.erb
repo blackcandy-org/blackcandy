@@ -1,38 +1,34 @@
-<div class='album' data-controller='playlist' data-playlist-play-path='<%= play_album_path(@album) %>'>
-  <div class='album__header'>
-    <div class='heading'>
-      <div class='heading__image heading__image--medium'>
-        <%= image_tag image_url_for(@album, size: 'medium') %>
+<div class='display__small-width' data-controller='playlist' data-playlist-play-path='<%= play_album_path(@album) %>'>
+  <div class='heading heading--expand'>
+    <div class='heading__image'>
+      <%= image_tag image_url_for(@album), class: 'image' %>
+    </div>
+    <div class='heading__body'>
+      <div class='heading__body__text heading__body__text--main'><%= @album.name %></div>
+      <div class='heading__body__text'><%= @album.artist.name %></div>
+      <div class='heading__body__text'>
+        <span><%= @songs.load.size %> <%= t('label.tracks') %></span>
+        <span>,</span>
+        <span><%= duration(@songs.sum(:length)) %></span>
       </div>
-      <div class='heading__body'>
-        <div class='heading__body__text heading__body__text--main'><%= @album.name %></div>
-        <div class='heading__body__text'><%= @album.artist.name %></div>
-        <div class='heading__body__text'>
-          <span><%= @songs.load.size %> <%= t('label.tracks') %></span>
-          <span>,</span>
-          <span><%= duration(@songs.sum(:length)) %></span>
-        </div>
-        <div class='heading__body__actions'>
-          <button data-action='playlist#playAll' class='button button--primary'><%= t('label.play_all') %></button>
-        </div>
+      <div class='heading__body__actions'>
+        <button data-action='playlist#playAll' class='button button--primary'><%= t('label.play_all') %></button>
       </div>
     </div>
   </div>
-  <div class='album__content'>
-    <ul class='list' data-action='click->playlist#actionHandler'>
-      <% @songs.each do |song| %>
-        <li class='list__item pointer-cursor' data-target='playlist.item' data-song-id='<%= song.id %>' data-playlist-action='play'>
-          <span class='list__item__content'>
-            <span class='list__item__info list__item__info--main'><%= song.name %></span>
+  <ul class='list list--dark-border' data-action='click->playlist#actionHandler'>
+    <% @songs.each do |song| %>
+      <li class='list__item pointer-cursor' data-target='playlist.item' data-song-id='<%= song.id %>' data-playlist-action='play'>
+        <span class='list__item__content'>
+          <span class='list__item__info list__item__info--main'><%= song.name %></span>
+        </span>
+        <span class='list__item__content list__item__content--minor'>
+          <span class='list__item__info list__item__info--action' data-playlist-action='showCollectionDialog'>
+            <%= icon_tag 'playlist-add', size: 'small' %>
           </span>
-          <span class='list__item__content list__item__content--minor'>
-            <span class='list__item__info list__item__info--action' data-playlist-action='showCollectionDialog'>
-              <%= icon_tag 'playlist-add', size: 'small' %>
-            </span>
-            <span class='list__item__info list__item__info--minor monospace-font'><%= duration(song.length) %></span>
-          </span>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+          <span class='list__item__info list__item__info--minor monospace-font'><%= duration(song.length) %></span>
+        </span>
+      </li>
+    <% end %>
+  </ul>
 </div>

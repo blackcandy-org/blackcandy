@@ -3,11 +3,9 @@
 module ApplicationHelper
   include Pagy::Frontend
 
-  def avatar(user, options = {})
-    options[:class] = "#{options[:class]} avatar"
+  def avatar_url(user, size)
     hash = Digest::MD5.hexdigest(user.email)
-
-    image_tag("https://www.gravatar.com/avatar/#{hash}", options)
+    "https://www.gravatar.com/avatar/#{hash}?s=#{size.to_i}"
   end
 
   def icon_tag(name, options = {})
@@ -25,7 +23,7 @@ module ApplicationHelper
 
   def image_url_for(object, size: '')
     sizes_options = { small: 200, medium: 300, large: 400 }
-    size = sizes_options[size.to_sym]
+    size = sizes_options[size.to_sym] || sizes_options[:medium]
     default_image_name = "default_#{object.class.name.downcase}"
 
     if size

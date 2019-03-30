@@ -3,12 +3,6 @@
   margin: 0 15px 50px;
 }
 
-.card__image {
-  width: 150px;
-  height: 150px;
-  border-radius: var(--card-image-border-radius);
-}
-
 .card__body {
   margin-top: 12px;
 }

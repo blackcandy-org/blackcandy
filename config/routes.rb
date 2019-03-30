@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resource :session, only: [:new, :create, :destroy]
+  resource :setting, only: [:show, :update]
   resources :artists, only: [:index, :show]
   resources :users
   resources :stream, only: [:new]

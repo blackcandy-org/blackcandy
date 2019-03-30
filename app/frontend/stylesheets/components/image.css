@@ -1,0 +1,20 @@
+.image {
+  width: 150px;
+  height: 150px;
+  border-radius: var(--image-border-radius);
+}
+
+.image--xsmall {
+  width: 50px;
+  height: 50px;
+}
+
+.image--small {
+  width: 100px;
+  height: 100px;
+}
+
+.image--large {
+  width: 200px;
+  height: 200px;
+}
