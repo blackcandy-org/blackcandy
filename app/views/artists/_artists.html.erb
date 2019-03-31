@@ -1,10 +1,10 @@
 <% @artists.each do |artist| %>
-  <div class='card'>
+  <div class='cards__item'>
     <%= link_to artist_path(artist) do %>
       <%= image_tag image_url_for(artist), class: 'image' %>
     <% end %>
-    <div class='card__body'>
-      <%= link_to artist.name, artist_path(artist), class: 'card__title text-truncate' %>
+    <div class='cards__item__body'>
+      <%= link_to artist.name, artist_path(artist), class: 'cards__item__title text-truncate' %>
     </div>
   </div>
 <% end %>

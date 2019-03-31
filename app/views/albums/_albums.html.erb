@@ -1,11 +1,11 @@
 <% albums.each do |album| %>
-  <div class='card'>
+  <div class='cards__item'>
     <%= link_to album_path(album) do %>
       <%= image_tag image_url_for(album), class: 'image' %>
     <% end %>
-    <div class='card__body'>
-      <%= link_to album.name, album_path(album), class: 'card__title text-truncate' %>
-      <p class='card__text text-truncate'><%= album.artist.name %></p>
+    <div class='cards__item__body'>
+      <%= link_to album.name, album_path(album), class: 'cards__item__title text-truncate' %>
+      <p class='cards__item__text text-truncate'><%= album.artist.name %></p>
     </div>
   </div>
 <% end %>

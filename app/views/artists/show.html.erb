@@ -1,19 +1,21 @@
-<div class='heading heading--expand'>
-  <div class='heading__image'>
-    <%= image_tag image_url_for(@artist), class: 'image' %>
-  </div>
-  <div class='heading__body'>
-    <div class='heading__body__text heading__body__text--main'><%= @artist.name %></div>
-    <div class='heading__body__text'>
-      <span><%= @artist.albums.size %> <%= t('label.albums') %></span>
-      <span>,</span>
-      <span><%= @artist.songs.size %> <%= t('label.songs')%></span>
+<div class='cards'>
+  <div class='heading heading--expand'>
+    <div class='heading__image'>
+      <%= image_tag image_url_for(@artist), class: 'image' %>
+    </div>
+    <div class='heading__body'>
+      <div class='heading__body__text heading__body__text--main'><%= @artist.name %></div>
+      <div class='heading__body__text'>
+        <span><%= @artist.albums.size %> <%= t('label.albums') %></span>
+        <span>,</span>
+        <span><%= @artist.songs.size %> <%= t('label.songs')%></span>
+      </div>
     </div>
   </div>
 </div>
 <div class='line'></div>
 <div data-controller='infinite-scroll' data-infinite-scroll-container='.layout__main' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
-  <div class='display__space-between display__flex-wrap' id='js-albums-content'>
+  <div class='cards' id='js-albums-content'>
     <%= render partial: 'albums/albums', locals: { albums: @albums } %>
   </div>
   <div data-target='infinite-scroll.trigger'>
