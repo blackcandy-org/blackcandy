@@ -1,0 +1,26 @@
+<%= form_with model: @user, class: 'form display__small-width' do |form| %>
+  <div class='form__field'>
+    <%= form.label :email %>
+    <div class='input'>
+      <%= form.email_field :email %>
+    </div>
+  </div>
+
+  <div class='form__field'>
+    <%= form.label :password %>
+    <div class='input'>
+      <%= form.password_field :password %>
+    </div>
+  </div>
+
+  <div class='form__field'>
+    <%= form.label :password_confirmation %>
+    <div class='input'>
+      <%= form.password_field :password_confirmation %>
+    </div>
+  </div>
+
+  <div class='form__field form__field--submit'>
+    <%= form.submit t('label.update'), class: 'button button--primary' %>
+  </div>
+<% end %>

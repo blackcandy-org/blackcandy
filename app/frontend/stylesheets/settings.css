@@ -112,6 +112,9 @@
   --heading-text-main-color: var(--white);
   --heading-text-main-font-size: var(--font-size-lg);
 
+  /* Avatar */
+  --avatar-border-radius: var(--border-radius-round);
+
   /* Playlist page */
   --playlist-bg-color: var(--black);
   --playlist-heading-bg-color: var(--black-light);

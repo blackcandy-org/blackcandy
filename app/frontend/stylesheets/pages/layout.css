@@ -31,7 +31,9 @@
 }
 
 .layout__search-bar {
-  padding: 20px 0;
-  max-width: 350px;
-  margin: auto;
+  padding: 20px;
+}
+
+.layout__search-bar .input {
+  width: 350px;
 }

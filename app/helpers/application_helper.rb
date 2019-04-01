@@ -3,9 +3,9 @@
 module ApplicationHelper
   include Pagy::Frontend
 
-  def avatar_url(user, size)
+  def avatar_tag(user)
     hash = Digest::MD5.hexdigest(user.email)
-    "https://www.gravatar.com/avatar/#{hash}?s=#{size.to_i}"
+    image_tag "https://www.gravatar.com/avatar/#{hash}", class: 'avatar'
   end
 
   def icon_tag(name, options = {})

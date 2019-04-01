@@ -47,15 +47,19 @@ en:
     delete: 'Delete'
     rename: 'Rename'
     tracks: 'Tracks'
+    edit: 'Edit'
+    update: 'Update'
   error:
     login: 'Wrong email or password'
   success:
     add: 'Add successfully'
     delete: 'Delete successfully'
     create: 'Created successfully'
+    update: 'Updated successfully'
   default:
     album_name: 'Untitled Album'
     artist_name: 'Untitled Artist'
   text:
     no_items: 'No items'
     add_to_collection: 'Add to collection'
+    user_edit: 'Edit user'

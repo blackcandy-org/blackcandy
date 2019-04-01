@@ -6,8 +6,7 @@ class User < ApplicationRecord
   before_create :downcase_email
 
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
-  validates :password, presence: true, length: { minimum: 6 },
-    unless: Proc.new { |user| user.password.blank? }
+  validates :password, length: { minimum: 6 }
 
   has_many :song_collections, dependent: :destroy
   has_secure_password

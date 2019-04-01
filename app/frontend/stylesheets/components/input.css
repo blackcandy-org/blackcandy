@@ -12,6 +12,7 @@
   border: none;
   color: var(--input-color);
   padding: 6px 2px;
+  filter: none;
 }
 
 .input__icon {

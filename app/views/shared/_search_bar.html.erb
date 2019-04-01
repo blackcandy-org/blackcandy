@@ -1,8 +1,16 @@
-<div class='layout__search-bar'>
+<div class='layout__search-bar display__space-between'>
+  <div class='avatar'><!-- Placeholder for search-bar layout to keep search bar input center --></div>
   <div class='input'>
     <div class='input__icon'>
       <%= icon_tag 'search', size: 'large' %>
     </div>
     <%= search_field_tag(:q) %>
+  </div>
+  <div data-controller='dropdown' class='dropdown'>
+    <span data-action='click->dropdown#show'><%= avatar_tag Current.user %></span>
+    <div data-target='dropdown.list' class='hidden dropdown__list'>
+      <%= link_to t('label.edit'), edit_user_path(Current.user), class: 'dropdown__item' %>
+      <%= link_to t('label.logout'), session_path, method: :delete, class: 'dropdown__item' %>
+    </div>
   </div>
 </div>

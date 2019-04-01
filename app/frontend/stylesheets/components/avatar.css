@@ -1,0 +1,5 @@
+.avatar {
+  width: 25px;
+  height: 25px;
+  border-radius: var(--avatar-border-radius);
+}
