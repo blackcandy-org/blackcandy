@@ -48,7 +48,7 @@ module ApplicationHelper
   end
 
   def render_flash
-    render 'shared/flash'
+    render 'shared/flash.js.erb'
   end
 
   def duration(sec)

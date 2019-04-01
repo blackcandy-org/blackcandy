@@ -6,16 +6,25 @@ class UsersController < ApplicationController
   before_action :auth_user, only: [:edit, :update]
 
   def index
-    @users = User.all
+    @users = User.where.not(id: Current.user.id)
   end
 
   def new
+    @user = User.new
   end
 
   def edit
   end
 
   def create
+    @user = User.new user_params
+
+    if @user.save
+      flash[:success] = t('success.create')
+      redirect_to users_path
+    else
+      flash.now[:error] = @user.errors.full_messages.join(' ')
+    end
   end
 
   def update
@@ -27,6 +36,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    # Avoit user delete self
+    raise Error::Forbidden if @user == Current.user
+
+    @user.destroy
+    flash.now[:success] = t('success.delete')
   end
 
   private

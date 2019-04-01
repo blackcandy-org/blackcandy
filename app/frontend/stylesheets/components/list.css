@@ -27,6 +27,11 @@
   color: var(--list-color);
 }
 
+.list__item__info,
+.list__item__info a {
+  color: var(--list-color);
+}
+
 .list__item__info:first-child,
 .list__item__info--action,
 .list__item__info--minor {

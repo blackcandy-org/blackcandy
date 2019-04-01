@@ -10,6 +10,7 @@
 
   <body>
     <%= content_for?(:body) ? yield(:body) : yield %>
+    <%= render 'shared/flash' %>
     <%= render 'shared/icons.svg' %>
   </body>
 </html>

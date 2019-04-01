@@ -18,6 +18,7 @@
 .dropdown__item {
   display: block;
   padding: 8px 10px;
+  white-space: nowrap;
 }
 
 a.dropdown__item {

@@ -10,6 +10,10 @@
   filter: brightness(0.9);
 }
 
+a.button:hover {
+  color: var(--btn-color);
+}
+
 .button--primary {
   background: var(--btn-primary-bg-color);
 }

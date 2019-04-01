@@ -11,8 +11,8 @@
     "noty": "^3.1.0",
     "rails-ujs": "^5.1.4",
     "scrollmagic": "^2.0.6",
-    "stimulus": "^1.0.0",
-    "turbolinks": "^5.1.1"
+    "stimulus": "^1.1.0",
+    "turbolinks": "^5.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",

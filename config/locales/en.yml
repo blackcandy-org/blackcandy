@@ -47,8 +47,7 @@ en:
     delete: 'Delete'
     rename: 'Rename'
     tracks: 'Tracks'
-    edit: 'Edit'
-    update: 'Update'
+    save: 'Save'
   error:
     login: 'Wrong email or password'
   success:
@@ -62,4 +61,7 @@ en:
   text:
     no_items: 'No items'
     add_to_collection: 'Add to collection'
-    user_edit: 'Edit user'
+    update_profile: 'Update profile'
+    manage_users: 'Manage users'
+    add_user: 'Add user'
+    create_user: 'Create User'

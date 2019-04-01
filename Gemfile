@@ -20,7 +20,7 @@ gem 'rails-settings-cached', '~> 0.7.1'
 # Use sidekiq for backgroud job
 gem 'sidekiq', '~> 5.1.3'
 # Server-side support for Turbolinks redirection
-gem 'turbolinks'
+gem 'turbolinks', '~> 5.2.0'
 # Pagination
 gem 'pagy', '~> 2.0.0'
 # Map redis types directly to ruby objects

@@ -5,22 +5,19 @@
       <%= form.email_field :email %>
     </div>
   </div>
-
   <div class='form__field'>
     <%= form.label :password %>
     <div class='input'>
       <%= form.password_field :password %>
     </div>
   </div>
-
   <div class='form__field'>
     <%= form.label :password_confirmation %>
     <div class='input'>
       <%= form.password_field :password_confirmation %>
     </div>
   </div>
-
   <div class='form__field form__field--submit'>
-    <%= form.submit t('label.update'), class: 'button button--primary' %>
+    <%= form.submit t('label.save'), class: 'button button--primary' %>
   </div>
 <% end %>
