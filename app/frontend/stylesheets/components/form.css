@@ -2,6 +2,17 @@
   padding-bottom: 20px;
 }
 
+.form--inline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form--inline .input {
+  width: 100%;
+  margin-right: 20px;
+}
+
 .form--global {
   width: 320px;
   box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 1px rgba(9, 30, 66, 0.31);
@@ -24,7 +35,7 @@
 
 .form__field label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .form__field input {

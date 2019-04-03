@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  rescue_from Error::Forbidden do |exception|
+  rescue_from BlackCandyError::Forbidden do |exception|
     respond_to do |format|
       format.js { head :forbidden }
       format.json { head :forbidden }
@@ -30,6 +30,6 @@ class ApplicationController < ActionController::Base
     end
 
     def require_admin
-      raise Error::Forbidden unless is_admin?
+      raise BlackCandyError::Forbidden unless is_admin?
     end
 end

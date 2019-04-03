@@ -27,7 +27,7 @@ class PlaylistController < ApplicationController
   end
 
   def play
-    raise Error::Forbidden if params[:id] == 'current' || @playlist.empty?
+    raise BlackCandyError::Forbidden if params[:id] == 'current' || @playlist.empty?
 
     @song_ids = @playlist.song_ids
     Current.user.current_playlist.replace(@song_ids)

@@ -1,0 +1,30 @@
+<div class='heading heading--expand'>
+  <div class='heading__body'>
+    <div class='heading__body__text heading__body__text--main'><%= t('text.media_path') %></div>
+  </div>
+</div>
+<%= form_with model: Setting, url: setting_path, method: :put, class: 'form form--inline' do |form| %>
+  <div class='input'>
+    <%= form.text_field :media_path, value: Setting.media_path %>
+  </div>
+  <%= form.submit t('label.sync'), class: 'button button--primary' %>
+<% end %>
+
+<div class='line'></div>
+
+<div class='heading heading--expand'>
+  <div class='heading__body'>
+    <div class='heading__body__text heading__body__text--main'><%= t('label.integration') %></div>
+  </div>
+</div>
+<%= form_with model: Setting, url: setting_path, method: :put, class: 'form' do |form| %>
+  <div class='form__field'>
+    <%= form.label :discogs_token %>
+    <div class='input'>
+      <%= form.text_field :discogs_token, value: Setting.discogs_token %>
+    </div>
+  </div>
+  <div class='form__field form__field--submit'>
+    <%= form.submit t('label.save'), class: 'button button--primary' %>
+  </div>
+<% end %>

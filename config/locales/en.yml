@@ -48,8 +48,12 @@ en:
     rename: 'Rename'
     tracks: 'Tracks'
     save: 'Save'
+    sync: 'Sync'
+    integration: 'Integration'
   error:
     login: 'Wrong email or password'
+    media_path_blank: 'Media path is not exist'
+    media_path_unreadable: 'Media path is unreadable'
   success:
     add: 'Add successfully'
     delete: 'Delete successfully'
@@ -65,3 +69,4 @@ en:
     manage_users: 'Manage users'
     add_user: 'Add user'
     create_user: 'Create User'
+    media_path: 'Media path'
