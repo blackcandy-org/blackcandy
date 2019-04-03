@@ -31,3 +31,7 @@
   overflow-y: auto;
   max-height: calc(100vh - 300px);
 }
+
+.dialog .overlay {
+  background: var(--dialog-bg-color);
+}

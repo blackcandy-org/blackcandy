@@ -34,13 +34,13 @@ module ApplicationHelper
     end
   end
 
-  def spinner_tag(size: '')
-    size_class = size.blank? ? '' : "spinner--#{size}"
+  def loader_tag(size: '')
+    size_class = size.blank? ? '' : "loader--#{size}"
 
-    raw "<div class='spinner #{size_class}'>
-      <div class='spinner__beat spinner__beat--odd'></div>
-      <div class='spinner__beat spinner__beat--even'></div>
-      <div class='spinner__beat spinner__beat--odd'></div></div>"
+    raw "<div class='loader #{size_class}'>
+      <div class='loader__beat loader__beat--odd'></div>
+      <div class='loader__beat loader__beat--even'></div>
+      <div class='loader__beat loader__beat--odd'></div></div>"
   end
 
   def empty_alert_tag

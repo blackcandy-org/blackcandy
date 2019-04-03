@@ -39,14 +39,14 @@ export default class extends Controller {
   }
 
   clear() {
-    App.dispatchEvent('#js-playlist-loading', 'show.loading');
+    App.dispatchEvent('#js-playlist-loader', 'show.loader');
 
     ajax({
       url: `/playlist/${this.id}`,
       type: 'delete',
       dataType: 'script',
       success: () => {
-        App.dispatchEvent('#js-playlist-loading', 'hide.loading');
+        App.dispatchEvent('#js-playlist-loader', 'hide.loader');
 
         if (this.isCurrent) {
           this.player.updatePlaylist([]);
@@ -106,14 +106,14 @@ export default class extends Controller {
     const { songId } = target.closest('[data-song-id]').dataset;
 
     App.dispatchEvent('#js-playlist-dialog', 'show.dialog');
-    App.dispatchEvent('#js-playlist-dialog-loading', 'show.loading');
+    App.dispatchEvent('#js-playlist-dialog-loader', 'show.loader');
 
     ajax({
       url: `/songs/${songId}/add`,
       type: 'get',
       dataType: 'script',
       success: () => {
-        App.dispatchEvent('#js-playlist-dialog-loading', 'hide.loading');
+        App.dispatchEvent('#js-playlist-dialog-loader', 'hide.loader');
       }
     });
   }

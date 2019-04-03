@@ -82,8 +82,8 @@
   --card-title-color: var(--grey-lighter);
   --card-text-color: var(--grey);
 
-  /* Spinner */
-  --spinner-bg-color: var(--purple);
+  /* Loader */
+  --loader-bg-color: var(--purple);
 
   /* Dropdown */
   --dropdown-bg-color: var(--black-lighter);

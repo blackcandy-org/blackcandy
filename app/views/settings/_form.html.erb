@@ -3,7 +3,7 @@
     <div class='heading__body__text heading__body__text--main'><%= t('text.media_path') %></div>
   </div>
 </div>
-<%= form_with model: Setting, url: setting_path, method: :put, class: 'form form--inline' do |form| %>
+<%= form_with model: Setting, url: setting_path, method: :put, class: 'form form--inline', data: { show_loader: true } do |form| %>
   <div class='input'>
     <%= form.text_field :media_path, value: Setting.media_path %>
   </div>

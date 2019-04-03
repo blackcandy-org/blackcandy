@@ -1,10 +1,18 @@
 .overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 99;
   background: var(--overlay-bg-color);
+}
+
+.overlay--fixed {
+  position: fixed;
   opacity: 0.75;
+}
+
+.overlay--dark {
+  opacity: 0.95;
 }

@@ -19,3 +19,7 @@
 .monospace-font {
   font-family: var(--monospace-fonts);
 }
+
+.position-relative {
+  position: relative;
+}

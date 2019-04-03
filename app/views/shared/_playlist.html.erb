@@ -1,18 +1,20 @@
-<div id='js-playlist' class='playlist display__full-height' data-controller='playlist-request'>
+<div id='js-playlist' class='playlist display__full-height' data-controller='ajax' data-ajax-loader='#js-playlist-loader'>
   <div class='playlist__nav'>
     <ul class='tab' data-controller='tab' data-action='click->tab#toggle'>
       <% playlist_tab_items.each do |tab_item| %>
         <li class='tab__item'>
-          <%= link_to tab_item[:title], tab_item[:path], remote: true, data: { target: 'tab.item', show_loading: true } %>
+          <%= link_to tab_item[:title], tab_item[:path], remote: true, data: { target: 'tab.item', show_loader: true } %>
         </li>
       <% end %>
     </ul>
   </div>
-  <div class='playlist__content display__full-height' data-controller='loading' id='js-playlist-loading'>
-    <div class='display__full-height' id='js-playlist-content' data-target='loading.content'>
-    </div>
-    <div class='hidden display__justify-align-center display__full-height' data-target='loading.indicator'>
-      <%= spinner_tag %>
+  <div class='playlist__container display__full-height'>
+    <div class='display__full-height position-relative'>
+      <div class='playlist__content display__full-height' id='js-playlist-content'>
+      </div>
+      <div id='js-playlist-loader' class='overlay display__justify-align-center hidden' data-controller='loader'>
+        <%= loader_tag %>
+      </div>
     </div>
   </div>
   <%= render 'playlist/dialog' %>

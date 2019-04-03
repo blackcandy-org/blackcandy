@@ -12,20 +12,12 @@ export default class extends Controller {
   }
 
   show() {
-    if (!document.querySelector('.overlay')) {
-      const overlayElement = document.createElement('div');
-
-      overlayElement.classList.add('overlay');
-      document.body.appendChild(overlayElement);
-    } else {
-      document.querySelector('.overlay').classList.remove('hidden');
-    }
-
+    document.querySelector('#js-overlay').classList.remove('hidden');
     this.element.classList.remove('hidden');
   }
 
   hide() {
-    document.querySelector('.overlay').classList.add('hidden');
+    document.querySelector('#js-overlay').classList.add('hidden');
     this.element.classList.add('hidden');
   }
 }

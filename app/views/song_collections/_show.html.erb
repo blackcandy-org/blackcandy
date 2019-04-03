@@ -1,7 +1,7 @@
 <div data-controller='playlist' data-playlist-id='<%= @song_collection.id %>' data-playlist-play-path='<%= play_playlist_path(@song_collection) %>' class='display__full-height'>
   <div class='heading' data-controller='song-collection' data-song-collection-id='<%= @song_collection.id %>'>
     <div class='heading__header'>
-      <%= link_to song_collections_path, remote: true, data: { show_loading: true } do %>
+      <%= link_to song_collections_path, remote: true, data: { show_loader: true } do %>
         <%= icon_tag('chevron-left') %>
       <% end %>
     </div>
@@ -23,9 +23,9 @@
         <div data-target='dropdown.list' class='hidden dropdown__list'>
           <% unless @playlist.blank? %>
             <a class='dropdown__item' data-action='playlist#playAll'><%= t('label.play_all') %></a>
-            <%= link_to t('label.clear'), playlist_path(@song_collection.id), method: :delete, remote: true, class: 'dropdown__item', data: { show_loading: true } %>
+            <%= link_to t('label.clear'), playlist_path(@song_collection.id), method: :delete, remote: true, class: 'dropdown__item', data: { show_loader: true } %>
           <% end %>
-          <%= link_to t('label.delete'), song_collection_path(@song_collection), method: :delete, remote: true, class: 'dropdown__item', data: { show_loading: true } %>
+          <%= link_to t('label.delete'), song_collection_path(@song_collection), method: :delete, remote: true, class: 'dropdown__item', data: { show_loader: true } %>
           <a data-action='song-collection#rename' class='dropdown__item'><%= t('label.rename') %></a>
         </div>
       </div>

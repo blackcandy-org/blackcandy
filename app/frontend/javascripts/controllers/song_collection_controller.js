@@ -41,7 +41,7 @@ export default class extends Controller {
     const { songId } = currentTarget.dataset;
     const { songCollectionId } = target.closest('[data-song-collection-id]').dataset;
 
-    App.dispatchEvent('#js-playlist-dialog-loading', 'show.loading');
+    App.dispatchEvent('#js-playlist-dialog-loader', 'show.loader');
 
     ajax({
       url: `/playlist/${songCollectionId}`,

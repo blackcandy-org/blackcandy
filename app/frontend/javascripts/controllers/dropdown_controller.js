@@ -5,7 +5,7 @@ export default class extends Controller {
 
   show() {
     this.listTarget.classList.remove('hidden');
-    document.addEventListener('click', () => { this.close(); }, { once: true, capture: true });
+    document.addEventListener('click', this.close.bind(this), { once: true, capture: true });
   }
 
   close() {

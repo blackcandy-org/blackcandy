@@ -1,9 +1,9 @@
-.spinner {
+.loader {
   text-align: center;
   margin: 10px 0;
 }
 
-.spinner__beat {
+.loader__beat {
   display: inline-block;
   height: 12px;
   width: 12px;
@@ -11,18 +11,23 @@
   animation-fill-mode: both;
   border-radius: 100%;
   margin: 2px;
-  background-color: var(--spinner-bg-color);
+  background-color: var(--loader-bg-color);
 }
 
-.spinner--small .spinner__beat {
+.loader--small .loader__beat {
   height: 10px;
   width: 10px;
 }
 
-.spinner__beat--add {
+.loader--large .loader__beat {
+  height: 14px;
+  width: 14px;
+}
+
+.loader__beat--add {
   animation-delay: 0s;
 }
 
-.spinner__beat--even {
+.loader__beat--even {
   animation-delay: 0.35s;
 }
