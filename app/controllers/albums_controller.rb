@@ -7,11 +7,13 @@ class AlbumsController < ApplicationController
   before_action :find_album, except: [:index]
 
   def index
-    @pagy, @albums = pagy_countless(Album.with_attached_image.includes(:artist))
+    @pagy, @albums = pagy_countless(Album.with_attached_image.includes(:artist).order(:name))
   end
 
   def show
     @songs = @album.songs.order(:tracknum)
+
+    AttachAlbumImageFromDiscogsJob.perform_later(@album.id) unless @album.has_image?
   end
 
   def play

@@ -44,7 +44,7 @@ class Media
       end
 
       # Attach image from file to the album.
-      AttachAlbumImageJob.perform_later(album.id, file.file_path) unless album.has_image?
+      AttachAlbumImageFromFileJob.perform_later(album.id, file.file_path) unless album.has_image?
 
       return true unless song.file_path != file.file_path
 

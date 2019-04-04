@@ -28,7 +28,9 @@ module ApplicationHelper
 
     if size
       image_size = "#{size}x#{size}"
-      object.image.attached? ? url_for(object.image.variant(resize: image_size)) : "/images/#{default_image_name}#{image_size}.png"
+      image_variant_options = { resize: "#{image_size}^", gravity: 'Center', extent: image_size }
+
+      object.image.attached? ? url_for(object.image.variant(image_variant_options)) : "/images/#{default_image_name}#{image_size}.png"
     else
       object.image.attached? ? url_for(object.image) : "/images/#{default_image_name}.png"
     end

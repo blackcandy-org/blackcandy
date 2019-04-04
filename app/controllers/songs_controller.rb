@@ -6,7 +6,7 @@ class SongsController < ApplicationController
   before_action :require_login
 
   def index
-    @pagy, @songs = pagy_countless(Song.includes(:artist, :album))
+    @pagy, @songs = pagy_countless(Song.includes(:artist, :album).order(:name))
   end
 
   def show

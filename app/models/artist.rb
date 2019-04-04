@@ -9,4 +9,8 @@ class Artist < ApplicationRecord
   has_many :songs, dependent: :destroy
 
   has_one_attached :image
+
+  def has_image?
+    image.attached?
+  end
 end
