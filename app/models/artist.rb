@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Artist < ApplicationRecord
+  include Searchable
+
   DEFAULT_NAME = 'Unknown Artist'
 
   validates :name, presence: true

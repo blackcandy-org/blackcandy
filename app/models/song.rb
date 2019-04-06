@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Song < ApplicationRecord
+  include Searchable
+
   validates :name, :file_path, :md5_hash, presence: true
 
   belongs_to :album

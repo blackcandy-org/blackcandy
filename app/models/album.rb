@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Album < ApplicationRecord
+  include Searchable
+
   DEFAULT_NAME = 'Unknown Album'
 
   validates :name, presence: true

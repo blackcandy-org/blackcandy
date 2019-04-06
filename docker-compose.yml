@@ -14,7 +14,7 @@ services:
       - postgres
       - redis
   postgres:
-    image: postgres:11.1-alpine
+    image: groonga/pgroonga:2.1.8-alpine-11.1
     volumes:
       - db_data:/var/lib/postgresql/data
   redis:
