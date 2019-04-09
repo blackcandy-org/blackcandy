@@ -6,7 +6,8 @@ class ArtistsController < ApplicationController
   before_action :require_login
 
   def index
-    @pagy, @artists = pagy_countless(Artist.with_attached_image.order(:name))
+    records = Artist.search_by_name(params[:query]).with_attached_image.order(:name)
+    @pagy, @artists = pagy_countless(records)
   end
 
   def show

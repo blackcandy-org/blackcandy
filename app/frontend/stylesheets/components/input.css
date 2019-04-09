@@ -15,8 +15,21 @@
   filter: none;
 }
 
+.input form {
+  width: 100%;
+}
+
 .input__icon {
   display: flex;
   color: var(--input-icon-color);
   margin-right: 6px;
+}
+
+.input__icon a {
+  color: var(--input-icon-color);
+}
+
+.input__icon--right {
+  margin-left: auto;
+  margin-right: 0;
 }
