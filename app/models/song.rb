@@ -8,6 +8,8 @@ class Song < ApplicationRecord
   belongs_to :album
   belongs_to :artist
 
+  search_by :name, associations: [:artist, :album]
+
   def format
     MediaFile.format(file_path)
   end

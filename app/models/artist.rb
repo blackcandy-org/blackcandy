@@ -12,6 +12,8 @@ class Artist < ApplicationRecord
 
   has_one_attached :image
 
+  search_by :name
+
   def has_image?
     image.attached?
   end

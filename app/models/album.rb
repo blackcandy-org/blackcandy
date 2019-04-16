@@ -13,6 +13,8 @@ class Album < ApplicationRecord
 
   has_one_attached :image
 
+  search_by :name, associations: :artist
+
   def has_image?
     image.attached?
   end

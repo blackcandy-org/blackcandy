@@ -7,7 +7,7 @@ class AlbumsController < ApplicationController
   before_action :find_album, except: [:index]
 
   def index
-    records = Album.search_by_name(params[:query]).with_attached_image.includes(:artist).order(:name)
+    records = Album.with_attached_image.includes(:artist).search(params[:query]).order(:name)
     @pagy, @albums = pagy_countless(records)
   end
 
