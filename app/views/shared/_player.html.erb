@@ -15,7 +15,9 @@
         </div>
       </div>
     </div>
-    <progress data-target='player.progress' class='player__progress display__full-width display__flex' max='100'></progress>
+    <div class='player__progress pointer-cursor'>
+      <progress data-target='player.progress' data-action='click->player#seek' class='display__full-width display__flex' max='100'></progress>
+    </div>
   </div>
   <div class='player__control display__space-between'>
     <div class='player__control__minor pointer-cursor' data-action='click->player#nextMode'>

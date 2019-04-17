@@ -70,6 +70,11 @@ const player = {
     return this.currentSong.howl && this.currentSong.howl.playing();
   },
 
+  seek(percent) {
+    const sound = this.currentSong.howl;
+    sound.seek(sound.duration() * percent);
+  },
+
   updateShuffleStatus(isShuffle) {
     this.isShuffle = isShuffle;
     this.playlist = isShuffle ?

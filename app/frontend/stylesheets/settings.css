@@ -122,6 +122,7 @@
 
   /* Player page */
   --player-progress-bg-color: var(--black-light);
+  --player-progress-hover-bg-color: var(--black-lighter);
   --player-progress-color: var(--purple);
   --player-favorite-color: var(--red);
   --player-color: var(--grey);

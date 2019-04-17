@@ -27,21 +27,32 @@
 }
 
 .player__progress {
+  display: flex;
+  align-items: center;
+  height: 4px;
+}
+
+.player__progress progress {
   height: 2px;
   border: 0 none;
   background: var(--player-progress-bg-color);
 }
 
-.player__progress::-moz-progress-bar {
+.player__progress progress::-moz-progress-bar {
   background: var(--player-progress-color);
 }
 
-.player__progress::-webkit-progress-bar {
+.player__progress progress::-webkit-progress-bar {
   background: transparent;
 }
 
-.player__progress::-webkit-progress-value {
+.player__progress progress::-webkit-progress-value {
   background: var(--player-progress-color);
+}
+
+.player__progress:hover progress {
+  height: 4px;
+  background: var(--player-progress-hover-bg-color);
 }
 
 .player__header {

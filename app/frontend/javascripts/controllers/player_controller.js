@@ -69,6 +69,10 @@ export default class extends Controller {
     this.player.previous();
   }
 
+  seek(event) {
+    this.player.seek(event.offsetX / event.target.offsetWidth);
+  }
+
   get currentIndex() {
     return this.player.currentIndex;
   }
