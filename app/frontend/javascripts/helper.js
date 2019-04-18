@@ -1,8 +1,9 @@
 function formatDuration(secs) {
-  const minutes = Math.floor(secs / 60) || 0;
-  const seconds = (secs - (minutes * 60)) || 0;
+  const date = new Date(null);
+  date.setSeconds(secs);
+  const dateString = date.toISOString();
 
-  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  return secs > 60 * 60 ? dateString.substring(11, 19) : dateString.substring(14, 19);
 }
 
 function toggleShow(elements, currentElement) {

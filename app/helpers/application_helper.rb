@@ -49,13 +49,9 @@ module ApplicationHelper
     render 'shared/flash.js.erb'
   end
 
-  def duration(sec)
-    minutes = (sec / 60) % 60
-    seconds = sec % 60
-
-    [minutes, seconds].map do |time|
-      time.round.to_s.rjust(2, '0')
-    end.join(':')
+  def formatDuration(sec)
+    time = Time.at(sec)
+    sec > 1.hour ? time.strftime('%T') : time.strftime('%M:%S')
   end
 
   def is_active?(controller)

@@ -9,7 +9,7 @@
       <div class='heading__body__text'>
         <span><%= @songs.load.size %> <%= t('label.tracks') %></span>
         <span>,</span>
-        <span><%= duration(@songs.sum(:length)) %></span>
+        <span class='monospace-font'><%= formatDuration(@songs.sum(:length)) %></span>
       </div>
       <div class='heading__body__actions'>
         <button data-action='playlist#playAll' class='button button--primary'><%= t('label.play_all') %></button>
@@ -26,7 +26,7 @@
           <span class='list__item__info list__item__info--action' data-playlist-action='showCollectionDialog'>
             <%= icon_tag 'playlist-add', size: 'small' %>
           </span>
-          <span class='list__item__info list__item__info--minor monospace-font'><%= duration(song.length) %></span>
+          <span class='list__item__info list__item__info--minor monospace-font'><%= formatDuration(song.length) %></span>
         </span>
       </li>
     <% end %>
