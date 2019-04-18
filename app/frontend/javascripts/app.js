@@ -9,6 +9,14 @@ export default {
     this.renderContent('#js-playlist-content', content);
   },
 
+  renderMainContent(content) {
+    this.renderContent('#js-layout-main', content);
+  },
+
+  renderNavBar(content) {
+    this.renderContent('#js-nav-bar', content);
+  },
+
   appedNextPageContentTo(selector, newContent, nextUrl) {
     document.querySelector(selector).insertAdjacentHTML('beforeend', newContent);
     document.querySelector(selector).closest('[data-infinite-scroll-next-url]').dataset.infiniteScrollNextUrl = nextUrl;

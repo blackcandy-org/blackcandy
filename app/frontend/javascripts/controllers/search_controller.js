@@ -1,10 +1,11 @@
 import { Controller } from 'stimulus';
+import { ajax } from 'rails-ujs';
 
 export default class extends Controller {
   static targets = ['loader'];
 
   AVAILABLE_RESOURCES = ['albums', 'artists', 'songs'];
-  SEARCH_TIMEOUT = 800
+  SEARCH_TIMEOUT = 600
 
   query({ target }) {
     this.loaderTarget.classList.remove('hidden');
@@ -16,21 +17,16 @@ export default class extends Controller {
     this.searchTimeout = setTimeout(() => {
       const queryUrl = this.AVAILABLE_RESOURCES.includes(this.resource) ? `/${this.resource}` : '/albums';
 
-      Turbolinks.visit(`${queryUrl}?query=${target.value.trim()}`);
-      this._focusInput();
+      ajax({
+        url: `${queryUrl}?query=${target.value.trim()}`,
+        type: 'get',
+        dataType: 'script',
+        success: () => {
+          this.loaderTarget.classList.add('hidden');
+        }
+      });
     }, this.SEARCH_TIMEOUT);
   }
-
-  _focusInput() {
-    document.addEventListener('turbolinks:load', () => {
-      const searchElement = document.querySelector('#js-search-input');
-      const searchValueLength = searchElement.value.length;
-
-      searchElement.focus();
-      searchElement.setSelectionRange(searchValueLength, searchValueLength);
-    }, { once: true });
-  }
-
 
   get resource() {
     return this.data.get('resource');

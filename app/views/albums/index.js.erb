@@ -1,1 +1,6 @@
-App.appedNextPageContentTo('#js-albums-content', '<%= j(render partial: 'albums', locals: { albums: @albums }) %>', '<%= pagy_next_url(@pagy) %>')
+<% if @pagy.page == 1 %>
+  App.renderNavBar('<%= j(render 'shared/nav_bar') %>');
+  App.renderMainContent('<%= j(render template: 'albums/index.html.erb') %>');
+<% else %>
+  App.appedNextPageContentTo('#js-albums-content', '<%= j(render partial: 'albums', locals: { albums: @albums }) %>', '<%= pagy_next_url(@pagy) %>')
+<% end %>

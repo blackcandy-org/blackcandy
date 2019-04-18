@@ -6,7 +6,7 @@
     <div class='input__icon' data-action='click->search#focus'>
       <%= icon_tag 'search', size: 'large' %>
     </div>
-    <input id='js-search-input' value='<%= params[:query] %>' data-action='input->search#query' />
+    <input id='js-search-input' data-action='input->search#query' />
     <div class='input__icon input__icon--right hidden' data-target='search.loader'>
       <%= loader_tag size: 'small' %>
     </div>
