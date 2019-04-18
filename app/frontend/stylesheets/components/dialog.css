@@ -29,6 +29,7 @@
 .dialog__content {
   padding: 12px 20px;
   overflow-y: auto;
+  min-height: 50px;
   max-height: calc(100vh - 300px);
 }
 

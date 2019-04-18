@@ -1,33 +1,20 @@
 .loader {
-  text-align: center;
-  margin: 10px 0;
+  border: 5px solid color(var(--loader-bg-color) a(30%));
+  border-top: 5px solid var(--loader-bg-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.9s linear infinite;
 }
 
-.loader__beat {
-  display: inline-block;
-  height: 12px;
-  width: 12px;
-  animation: stretchDelay 0.7s infinite linear;
-  animation-fill-mode: both;
-  border-radius: 100%;
-  margin: 2px;
-  background-color: var(--loader-bg-color);
+.loader--small {
+  height: 22px;
+  width: 22px;
+  border-width: 3px;
 }
 
-.loader--small .loader__beat {
-  height: 10px;
-  width: 10px;
-}
-
-.loader--large .loader__beat {
-  height: 14px;
-  width: 14px;
-}
-
-.loader__beat--add {
-  animation-delay: 0s;
-}
-
-.loader__beat--even {
-  animation-delay: 0.35s;
+.loader--large {
+  height: 55px;
+  width: 55px;
+  border-width: 7px;
 }

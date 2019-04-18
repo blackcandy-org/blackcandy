@@ -18,7 +18,7 @@
   <div class='cards' id='js-albums-content'>
     <%= render partial: 'albums/albums', locals: { albums: @albums } %>
   </div>
-  <div data-target='infinite-scroll.trigger'>
+  <div data-target='infinite-scroll.trigger' class='display__justify-align-center'>
     <% if @pagy.next %>
       <%= loader_tag %>
     <% end %>

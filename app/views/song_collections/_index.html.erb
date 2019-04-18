@@ -10,7 +10,7 @@
       <%= render partial: 'song_collection', collection: @song_collections %>
     <% end %>
   </ul>
-  <div data-target='infinite-scroll.trigger'>
+  <div data-target='infinite-scroll.trigger' class='display__justify-align-center'>
     <% if @pagy.next %>
       <%= loader_tag %>
     <% end %>

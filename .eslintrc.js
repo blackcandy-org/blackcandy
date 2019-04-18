@@ -23,6 +23,7 @@ module.exports = {
     "window": true,
     "localStorage": true,
     "Event": true,
-    "App": true
+    "App": true,
+    "Turbolinks": true
   }
 };

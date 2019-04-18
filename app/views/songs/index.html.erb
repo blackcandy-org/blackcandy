@@ -2,7 +2,7 @@
   <ul id='js-songs-content' class='list list--dark-border' data-action='click->playlist#actionHandler'>
     <%= render 'songs' %>
   </ul>
-  <div data-target='infinite-scroll.trigger'>
+  <div data-target='infinite-scroll.trigger' class='display__justify-align-center'>
     <% if @pagy.next %>
       <%= loader_tag %>
     <% end %>

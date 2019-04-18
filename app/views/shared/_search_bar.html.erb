@@ -2,18 +2,13 @@
   <div class='avatar'>
     <!-- Placeholder for search-bar layout to keep search bar input center -->
   </div>
-  <div class='input' data-controller='search'>
-    <div class='input__icon'>
+  <div class='input' data-controller='search' data-search-resource='<%= params[:controller] %>'>
+    <div class='input__icon' data-action='click->search#focus'>
       <%= icon_tag 'search', size: 'large' %>
     </div>
-    <%= form_with url: search_path, method: :post do |form| %>
-      <%= form.hidden_field :resource, value: params[:controller] %>
-      <%= form.search_field :query, value: session[:query], data: { target: 'search.input', action: 'input->search#updateInput' } %>
-    <% end %>
-    <div class='input__icon input__icon--right' data-target='search.clear'>
-      <%= link_to search_path(resource: params[:controller]), method: :delete, remote: true do %>
-        <%= icon_tag 'close', size: 'large' %>
-      <% end %>
+    <input id='js-search-input' value='<%= params[:query] %>' data-action='input->search#query' />
+    <div class='input__icon input__icon--right hidden' data-target='search.loader'>
+      <%= loader_tag size: 'small' %>
     </div>
   </div>
   <div data-controller='dropdown' class='dropdown'>

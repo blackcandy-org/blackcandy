@@ -38,11 +38,7 @@ module ApplicationHelper
 
   def loader_tag(size: '')
     size_class = size.blank? ? '' : "loader--#{size}"
-
-    raw "<div class='loader #{size_class}'>
-      <div class='loader__beat loader__beat--odd'></div>
-      <div class='loader__beat loader__beat--even'></div>
-      <div class='loader__beat loader__beat--odd'></div></div>"
+    raw "<div class='loader #{size_class}'></div>"
   end
 
   def empty_alert_tag

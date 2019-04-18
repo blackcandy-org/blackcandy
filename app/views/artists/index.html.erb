@@ -2,7 +2,7 @@
   <div class='cards' id='js-artists-content'>
     <%= render 'artists' %>
   </div>
-  <div data-target='infinite-scroll.trigger'>
+  <div data-target='infinite-scroll.trigger' class='display__justify-align-center'>
     <% if @pagy.next %>
       <%= loader_tag %>
     <% end %>

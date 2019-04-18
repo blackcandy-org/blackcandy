@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
   resource :setting, only: [:show, :update]
-  resource :search, only: [:create, :destroy]
   resources :artists, only: [:index, :show]
   resources :users, except: [:show]
   resources :stream, only: [:new]

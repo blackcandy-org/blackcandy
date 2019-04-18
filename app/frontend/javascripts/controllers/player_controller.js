@@ -71,6 +71,7 @@ export default class extends Controller {
 
   seek(event) {
     this.player.seek(event.offsetX / event.target.offsetWidth);
+    window.requestAnimationFrame(this._setProgress.bind(this));
   }
 
   get currentIndex() {

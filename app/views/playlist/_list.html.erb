@@ -2,7 +2,7 @@
   <ul class='list' id='js-playlist-list-content' data-action='click->playlist#actionHandler'>
     <%= render partial: 'playlist/songs', locals: { songs: songs }%>
   </ul>
-  <div data-target='infinite-scroll.trigger'>
+  <div data-target='infinite-scroll.trigger' class='display__justify-align-center'>
     <% if pagy.next %>
       <%= loader_tag %>
     <% end %>

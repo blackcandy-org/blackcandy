@@ -1,13 +1,13 @@
 <nav class='layout__nav-bar'>
   <ul class='tab'>
     <li class='tab__item <%= 'tab__item--active' if is_active?('albums') %>'>
-      <%= link_to t('label.albums'), albums_path(query: session[:query]) %>
+      <%= link_to t('label.albums'), albums_path %>
     </li>
     <li class='tab__item <%= 'tab__item--active' if is_active?('artists') %>'>
-      <%= link_to t('label.artists'), artists_path(query: session[:query]) %>
+      <%= link_to t('label.artists'), artists_path %>
     </li>
     <li class='tab__item <%= 'tab__item--active' if is_active?('songs') %>'>
-      <%= link_to t('label.songs'), songs_path(query: session[:query]) %>
+      <%= link_to t('label.songs'), songs_path %>
     </li>
     <% if Current.user.is_admin? %>
       <li class='tab__item <%= 'tab__item--active' if is_active?('settings') %>'>

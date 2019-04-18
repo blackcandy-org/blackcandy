@@ -11,7 +11,7 @@
   background: var(--input-bg-color);
   border: none;
   color: var(--input-color);
-  padding: 6px 2px;
+  padding: 7px 2px;
   filter: none;
 }
 
@@ -32,4 +32,9 @@
 .input__icon--right {
   margin-left: auto;
   margin-right: 0;
+}
+
+.input .loader {
+  border-color: transparent;
+  border-top-color: var(--input-icon-color);
 }
