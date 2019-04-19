@@ -151,7 +151,7 @@ export default class extends Controller {
 
   _initPlaylist() {
     ajax({
-      url: '/playlist/init',
+      url: '/playlist/current?init=true',
       type: 'get',
       dataType: 'script'
     });

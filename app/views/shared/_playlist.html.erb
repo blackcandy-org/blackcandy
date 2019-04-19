@@ -1,12 +1,6 @@
 <div id='js-playlist' class='playlist display__full-height' data-controller='ajax' data-ajax-loader='#js-playlist-loader'>
-  <div class='playlist__nav'>
-    <ul class='tab' data-controller='tab' data-action='click->tab#toggle'>
-      <% playlist_tab_items.each do |tab_item| %>
-        <li class='tab__item'>
-          <%= link_to tab_item[:title], tab_item[:path], remote: true, data: { target: 'tab.item', show_loader: true } %>
-        </li>
-      <% end %>
-    </ul>
+  <div id='js-playlist-nav' class='playlist__nav'>
+    <%= render 'playlist/nav' %>
   </div>
   <div class='playlist__container display__full-height'>
     <div class='display__full-height position-relative'>

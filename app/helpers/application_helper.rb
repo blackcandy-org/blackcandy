@@ -49,12 +49,20 @@ module ApplicationHelper
     render 'shared/flash.js.erb'
   end
 
+  def render_playlist(html)
+    render partial: 'shared/playlist.js.erb', locals: { html: html }
+  end
+
+  def render_main_content(html)
+    render partial: 'shared/main.js.erb', locals: { html: html }
+  end
+
   def formatDuration(sec)
     time = Time.at(sec)
     sec > 1.hour ? time.strftime('%T') : time.strftime('%M:%S')
   end
 
-  def is_active?(controller)
-    controller == params[:controller]
+  def is_active?(controller: '', path: '')
+    controller == params[:controller] || current_page?(path)
   end
 end

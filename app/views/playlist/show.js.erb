@@ -1,6 +1,10 @@
 <% if @pagy.page == 1 %>
-  // If it's first page just render whole list content, avoid to add old playlist content to the new one.
-  App.renderPlaylistContent('<%= j(render 'show') %>');
+  <% if params[:init] %>
+    <%= render_playlist(render partial: 'show', locals: { next_url: "#{@pagy.next ? '/playlist/current?page=2' : ''}" }) %>
+    App.player.updatePlaylist(JSON.parse('<%= j(render inline: @playlist.song_ids.to_json) %>'));
+  <% else %>
+    <%= render_playlist(render 'show') %>
+  <% end %>
 <% else %>
   App.appedNextPageContentTo('#js-playlist-list-content', '<%= j(render partial: 'songs', locals: { songs: @songs }) %>', '<%= pagy_next_url(@pagy) %>')
 <% end %>

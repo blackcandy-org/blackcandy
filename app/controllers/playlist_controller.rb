@@ -33,11 +33,6 @@ class PlaylistController < ApplicationController
     Current.user.current_playlist.replace(@song_ids)
   end
 
-  def init
-    @playlist = Current.user.current_playlist
-    @pagy, @songs = pagy_countless(@playlist.songs, page: 1)
-  end
-
   private
 
     def find_playlist

@@ -1,2 +1,0 @@
-App.renderPlaylistContent('<%= j(render partial: 'show', locals: { next_url: "#{@pagy.next ? '/playlist/current?page=2' : ''}" , id: 'current' }) %>');
-App.player.updatePlaylist(JSON.parse('<%= j(render inline: @playlist.song_ids.to_json) %>'));

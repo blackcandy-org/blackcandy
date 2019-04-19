@@ -41,7 +41,7 @@
   /* Layout */
   --layout-sidebar-bg-color: var(--black);
   --layout-header-bg-color: var(--black-light);
-  --layout-header-border-color: var(--black);
+  --layout-header-border-color: var(--black-dark);
 
   /* Progress bar */
   --progress-bar-bg-color: var(--purple);

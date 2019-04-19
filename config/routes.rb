@@ -25,9 +25,5 @@ Rails.application.routes.draw do
     member do
       post 'play'
     end
-
-    collection do
-      get 'init'
-    end
   end
 end

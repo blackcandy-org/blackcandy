@@ -1,6 +1,5 @@
 <% if @pagy.page == 1 %>
-  App.renderNavBar('<%= j(render 'shared/nav_bar') %>');
-  App.renderMainContent('<%= j(render template: 'artists/index.html.erb') %>');
+  <%= render_main_content(render template: 'artists/index.html.erb') %>
 <% else %>
   App.appedNextPageContentTo('#js-artists-content', '<%= j render('artists') %>', '<%= pagy_next_url(@pagy) %>')
 <% end %>
