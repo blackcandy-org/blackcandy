@@ -4,7 +4,7 @@
       <%= image_tag image_url_for(artist), class: 'image' %>
     <% end %>
     <div class='cards__item__body'>
-      <%= link_to artist.name, artist_path(artist), class: 'cards__item__title text-truncate' %>
+      <%= link_to artist.title, artist_path(artist), class: 'cards__item__title text-truncate' %>
     </div>
   </div>
 <% end %>

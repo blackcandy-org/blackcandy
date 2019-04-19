@@ -82,9 +82,8 @@ class MediaFile
         tag = file.tag
 
         @name = tag.title.presence || File.basename(file_path)
-        @album_name = tag.album.presence || Album::DEFAULT_NAME
-        @artist_name = tag.artist.presence || Artist::DEFAULT_NAME
-
+        @album_name = tag.album.presence
+        @artist_name = tag.artist.presence
         @tracknum = tag.track
         @length = file.audio_properties.length
       end

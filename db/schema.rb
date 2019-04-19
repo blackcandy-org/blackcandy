@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_06_063106) do
+ActiveRecord::Schema.define(version: 2019_04_19_150116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgroonga"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_063106) do
   end
 
   create_table "albums", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.integer "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_063106) do
   end
 
   create_table "artists", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_artists_on_name", unique: true

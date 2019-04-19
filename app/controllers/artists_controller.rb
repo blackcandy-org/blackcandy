@@ -14,6 +14,6 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
     @pagy, @albums = pagy_countless(@artist.albums.with_attached_image)
 
-    AttachArtistImageFromDiscogsJob.perform_later(@artist.id) unless @artist.has_image?
+    AttachArtistImageFromDiscogsJob.perform_later(@artist.id) unless @artist.has_image? || @artist.is_unknown?
   end
 end

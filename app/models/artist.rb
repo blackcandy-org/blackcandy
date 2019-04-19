@@ -3,10 +3,6 @@
 class Artist < ApplicationRecord
   include Searchable
 
-  DEFAULT_NAME = 'Unknown Artist'
-
-  validates :name, presence: true
-
   has_many :albums, dependent: :destroy
   has_many :songs, dependent: :destroy
 
@@ -14,7 +10,15 @@ class Artist < ApplicationRecord
 
   search_by :name
 
+  def title
+    is_unknown? ? I18n.t('text.unknown_album') : name
+  end
+
   def has_image?
     image.attached?
+  end
+
+  def is_unknown?
+    name.blank?
   end
 end

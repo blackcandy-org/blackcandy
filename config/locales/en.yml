@@ -70,3 +70,5 @@ en:
     add_user: 'Add user'
     create_user: 'Create User'
     media_path: 'Media path'
+    unknown_artist: 'Unknown Artist'
+    unknown_album: 'Unknown Album'

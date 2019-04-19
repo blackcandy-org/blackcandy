@@ -4,8 +4,8 @@
       <%= image_tag image_url_for(@album), class: 'image' %>
     </div>
     <div class='heading__body'>
-      <div class='heading__body__text heading__body__text--main'><%= @album.name %></div>
-      <div class='heading__body__text'><%= @album.artist.name %></div>
+      <div class='heading__body__text heading__body__text--main'><%= @album.title %></div>
+      <div class='heading__body__text'><%= @album.artist.title %></div>
       <div class='heading__body__text'>
         <span><%= @songs.load.size %> <%= t('label.tracks') %></span>
         <span>,</span>

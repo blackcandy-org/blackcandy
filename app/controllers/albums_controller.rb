@@ -14,7 +14,7 @@ class AlbumsController < ApplicationController
   def show
     @songs = @album.songs.order(:tracknum)
 
-    AttachAlbumImageFromDiscogsJob.perform_later(@album.id) unless @album.has_image?
+    AttachAlbumImageFromDiscogsJob.perform_later(@album.id) unless @album.has_image? || @album.is_unknown?
   end
 
   def play

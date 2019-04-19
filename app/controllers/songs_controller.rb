@@ -11,7 +11,7 @@ class SongsController < ApplicationController
   end
 
   def show
-    @song = Song.select('songs.*, albums.name as album_name, artists.name as artist_name').joins(:artist, :album).find(params[:id])
+    @song = Song.find(params[:id])
   end
 
   def favorite
