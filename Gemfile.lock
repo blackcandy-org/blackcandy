@@ -205,7 +205,7 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
-    webpacker (3.4.3)
+    webpacker (4.0.2)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
       railties (>= 4.2)
@@ -245,7 +245,7 @@ DEPENDENCIES
   turbolinks (~> 5.2.0)
   tzinfo-data
   web-console (>= 3.3.0)
-  webpacker (~> 3.4.3)
+  webpacker (~> 4.0.2)
 
 BUNDLED WITH
    1.17.3

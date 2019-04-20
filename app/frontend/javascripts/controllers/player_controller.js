@@ -1,6 +1,6 @@
 import { Controller } from 'stimulus';
-import { formatDuration, toggleShow } from '../helper';
 import { ajax } from 'rails-ujs';
+import { formatDuration, toggleShow } from '../helper';
 
 export default class extends Controller {
   static targets = [

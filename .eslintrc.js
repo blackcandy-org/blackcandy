@@ -15,7 +15,8 @@ module.exports = {
     "no-unused-expressions": "off",
     "class-methods-use-this": "off",
     "consistent-return": "off",
-    "default-case": "off"
+    "default-case": "off",
+    "operator-linebreak": ["error", "after"]
   },
   "globals": {
     "document": true,

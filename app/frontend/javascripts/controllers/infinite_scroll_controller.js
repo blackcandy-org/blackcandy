@@ -50,6 +50,7 @@ export default class extends Controller {
         dataType: 'script',
         beforeSend(xhr) {
           ajaxRequest = xhr;
+          return true;
         }
       });
     });

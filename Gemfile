@@ -8,7 +8,7 @@ gem 'pg', '~> 1.1.3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 3.4.3'
+gem 'webpacker', '~> 4.0.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password

@@ -1,5 +1,5 @@
 .loader {
-  border: 5px solid color(var(--loader-bg-color) a(30%));
+  border: 5px solid color-mod(var(--loader-bg-color) a(30%));
   border-top: 5px solid var(--loader-bg-color);
   border-radius: 50%;
   width: 40px;

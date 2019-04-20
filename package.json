@@ -2,25 +2,23 @@
   "name": "black_candy",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "3.4",
-    "action_cable": "^5.0.0-beta3",
-    "activestorage": "^0.1.1",
-    "babel-polyfill": "^6.26.0",
+    "@rails/webpacker": "4.0.2",
+    "@babel/polyfill": "^7.4.3",
     "howler": "^2.0.9",
-    "normalize.css": "^8.0.0",
+    "normalize.css": "^8.0.1",
     "noty": "^3.1.0",
-    "rails-ujs": "^5.1.4",
+    "rails-ujs": "^5.2.3",
     "scrollmagic": "^2.0.6",
     "stimulus": "^1.1.0",
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.2",
-    "eslint": "^4.15.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "stylelint": "^8.4.0",
-    "stylelint-config-standard": "^18.0.0",
-    "webpack-dev-server": "2.11.2"
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "stylelint": "^10.0.1",
+    "stylelint-config-standard": "^18.3.0",
+    "webpack-dev-server": "3.3.1"
   }
 }

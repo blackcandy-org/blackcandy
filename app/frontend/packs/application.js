@@ -14,7 +14,7 @@ import { definitionsFromContext } from 'stimulus/webpack-helpers';
 import App from '../javascripts/app';
 import player from '../javascripts/player';
 
-import 'babel-polyfill';
+import '@babel/polyfill';
 
 import 'normalize.css';
 import '../stylesheets/application.css';

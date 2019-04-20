@@ -5,6 +5,7 @@ export default class extends Controller {
   static targets = ['loader'];
 
   AVAILABLE_RESOURCES = ['albums', 'artists', 'songs'];
+
   SEARCH_TIMEOUT = 600
 
   query({ target }) {
