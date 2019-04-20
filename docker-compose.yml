@@ -10,6 +10,7 @@ services:
       - 3000:3000
     environment:
       REDIS_URL: redis://redis:6379/0
+      WEBPACKER_DEV_SERVER_HOST: webpacker
     depends_on:
       - postgres
       - redis
@@ -21,6 +22,18 @@ services:
     image: redis:4.0-alpine
     volumes:
       - redis_data:/data
+  webpacker:
+    build: .
+    command: ./bin/webpack-dev-server
+    volumes:
+      - .:/app
+      - bundler_data:/usr/local/bundle
+    environment:
+      NODE_ENV: development
+      RAILS_ENV: development
+      WEBPACKER_DEV_SERVER_HOST: webpacker
+    ports:
+      - 3035:3035
 volumes:
   bundler_data:
   db_data:
