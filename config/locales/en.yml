@@ -50,6 +50,8 @@ en:
     save: 'Save'
     sync: 'Sync'
     integration: 'Integration'
+    close: 'Close'
+    more: 'More'
   error:
     login: 'Wrong email or password'
     media_path_blank: 'Media path is not exist'
@@ -59,9 +61,6 @@ en:
     delete: 'Delete successfully'
     create: 'Created successfully'
     update: 'Updated successfully'
-  default:
-    album_name: 'Untitled Album'
-    artist_name: 'Untitled Artist'
   text:
     no_items: 'No items'
     add_to_collection: 'Add to collection'
@@ -72,3 +71,12 @@ en:
     media_path: 'Media path'
     unknown_artist: 'Unknown Artist'
     unknown_album: 'Unknown Album'
+    go_back: 'Go back'
+    repeat_mode: 'Repeat mode'
+    single_mode: 'Single mode'
+    shuffle_mode: 'Shuffle mode'
+    previous_song: 'Previous song'
+    next_song: 'Next song'
+    play_song: 'Play song'
+    pause_song: 'Pause song'
+    toggle_favorite: 'Toggle favorite'

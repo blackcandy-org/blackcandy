@@ -6,8 +6,8 @@
     </span>
     <span class='list__item__content list__item__content--minor'>
       <span class='list__item__info list__item__info--action'>
-        <span data-playlist-action='showCollectionDialog'><%= icon_tag 'playlist-add', size: 'small' %></span>
-        <span data-playlist-action='delete'><%= icon_tag 'delete', size: 'small' %></span>
+        <span data-playlist-action='showCollectionDialog'><%= icon_tag 'playlist-add', size: 'small', title: t('text.add_to_collection') %></span>
+        <span data-playlist-action='delete'><%= icon_tag 'delete', size: 'small', title: t('label.delete') %></span>
       </span>
       <span class='list__item__info list__item__info--minor monospace-font'><%= formatDuration(song.length) %></span>
     </span>

@@ -2,7 +2,7 @@
   <div class='heading' data-controller='song-collection' data-song-collection-id='<%= @song_collection.id %>'>
     <div class='heading__header'>
       <%= link_to song_collections_path, remote: true, data: { show_loader: true } do %>
-        <%= icon_tag('chevron-left') %>
+        <%= icon_tag 'chevron-left', title: t('text.go_back') %>
       <% end %>
     </div>
     <div class='heading__body'>
@@ -19,7 +19,7 @@
     </div>
     <div class='heading__footer'>
       <div data-controller='dropdown' class='dropdown'>
-        <span data-action='click->dropdown#show'><%= icon_tag('more-vertical') %></span>
+        <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', title: t('label.more') %></span>
         <div data-target='dropdown.list' class='hidden dropdown__list'>
           <% unless @playlist.blank? %>
             <a class='dropdown__item' data-action='playlist#playAll'><%= t('label.play_all') %></a>

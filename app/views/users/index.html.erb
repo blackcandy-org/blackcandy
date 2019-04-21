@@ -21,7 +21,7 @@
           <span class='list__item__content list__item__content--minor'>
             <span class='list__item__info'>
               <%= link_to user_path(user), method: :delete, remote: true do %>
-                <%= icon_tag 'delete', size: 'small' %>
+                <%= icon_tag 'delete', size: 'small', title: t('label.delete') %>
               <% end %>
             </span>
           </span>
