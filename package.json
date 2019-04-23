@@ -2,9 +2,9 @@
   "name": "black_candy",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "4.0.2",
     "@babel/polyfill": "^7.4.3",
-    "howler": "^2.0.9",
+    "@rails/webpacker": "^4.0.2",
+    "howler": "^2.1.2",
     "normalize.css": "^8.0.1",
     "noty": "^3.1.0",
     "rails-ujs": "^5.2.3",

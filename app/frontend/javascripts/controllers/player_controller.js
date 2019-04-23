@@ -1,5 +1,6 @@
 import { Controller } from 'stimulus';
 import { ajax } from 'rails-ujs';
+import { Howl } from 'howler';
 import { formatDuration, toggleShow } from '../helper';
 
 export default class extends Controller {
@@ -40,7 +41,7 @@ export default class extends Controller {
       type: 'post',
       success: () => {
         this.favoriteButtonTarget.classList.toggle('player__favorite');
-        this.currentSong.is_favorited = true;
+        this.currentSong.data.is_favorited = true;
       }
     });
   }
@@ -86,13 +87,31 @@ export default class extends Controller {
     return this.modes[this.currentModeIndex];
   }
 
+  _getCurrentSongInfo() {
+    if (!this.currentSong.data) {
+      ajax({
+        url: `/songs/${this.currentSong.id}`,
+        type: 'get',
+        dataType: 'json',
+        success: (response) => {
+          this.currentSong.data = response;
+          this._setPlayingStatus();
+        }
+      });
+    } else {
+      this._setPlayingStatus();
+    }
+  }
+
   _setPlayingStatus() {
-    this.imageTarget.src = this.currentSong.album_image_url;
-    this.songNameTarget.textContent = this.currentSong.name;
-    this.artistNameTarget.textContent = this.currentSong.artist_name;
-    this.albumNameTarget.textContent = this.currentSong.album_name;
-    this.songDurationTarget.textContent = formatDuration(this.currentSong.length);
-    this.favoriteButtonTarget.classList.toggle('player__favorite', this.currentSong.is_favorited);
+    const songData = this.currentSong.data;
+
+    this.imageTarget.src = songData.album_image_url;
+    this.songNameTarget.textContent = songData.name;
+    this.artistNameTarget.textContent = songData.artist_name;
+    this.albumNameTarget.textContent = songData.album_name;
+    this.songDurationTarget.textContent = formatDuration(songData.length);
+    this.favoriteButtonTarget.classList.toggle('player__favorite', songData.is_favorited);
     this.headerTarget.classList.add('player__header--show');
     this.pauseButtonTarget.classList.remove('hidden');
     this.playButtonTarget.classList.add('hidden');
@@ -118,7 +137,7 @@ export default class extends Controller {
     const seek = this.currentSong.howl ? this.currentSong.howl.seek() : 0;
 
     this.songTimerTarget.textContent = formatDuration(Math.round(seek));
-    this.progressTarget.value = (seek / this.currentSong.length) * 100 || 0;
+    this.progressTarget.value = (seek / this.currentSong.data.length) * 100 || 0;
 
     if (this.player.isPlaying()) {
       window.requestAnimationFrame(this._setProgress.bind(this));
@@ -126,10 +145,15 @@ export default class extends Controller {
   }
 
   _initPlayer() {
+    // Hack for Safari issue of can not play song when first time page loaded.
+    // So call Howl init function manually let document have audio unlock event when click or touch.
+    // When first time user interact page the audio will be unlocked.
+    new Howl({ src: [''] });
+
     this.player = App.player;
 
     this.player.onplay = () => {
-      this._setPlayingStatus();
+      this._getCurrentSongInfo();
     };
 
     this.player.onpause = () => {

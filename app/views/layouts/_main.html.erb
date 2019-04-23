@@ -1,12 +1,14 @@
 <div class='layout__main'>
-  <header class='layout__main__header'>
-    <div id='js-flash'></div>
-    <%= render 'shared/search_bar' %>
-    <div id='js-nav-bar'>
-      <%= render 'shared/nav_bar' %>
-    </div>
-  </header>
-  <main id='js-layout-main' class='layout__main__content'>
-    <%= yield %>
-  </main>
+  <div>
+    <header class='layout__main__header'>
+      <div id='js-flash'></div>
+      <%= render 'shared/search_bar' %>
+      <div id='js-nav-bar'>
+        <%= render 'shared/nav_bar' %>
+      </div>
+    </header>
+    <main id='js-layout-main' class='layout__main__content'>
+      <%= yield %>
+    </main>
+  </div>
 </div>
