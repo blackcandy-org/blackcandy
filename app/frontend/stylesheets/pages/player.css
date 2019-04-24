@@ -1,5 +1,6 @@
 .player {
   box-shadow: -3px -2px 4px var(--box-shadow-color);
+  z-index: 100;
 }
 
 .player__control {

@@ -22,6 +22,7 @@
 
 .layout__main__content {
   margin: 25px 60px 35px;
+  height: 100%;
 }
 
 .layout__nav-bar {

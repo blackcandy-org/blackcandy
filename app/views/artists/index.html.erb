@@ -1,10 +1,14 @@
-<div data-controller='infinite-scroll' data-infinite-scroll-container='.layout__main' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
-  <div class='cards' id='js-artists-content'>
-    <%= render 'artists' %>
+<% if @artists.empty? %>
+  <%= empty_alert_tag has_icon: true %>
+<% else %>
+  <div data-controller='infinite-scroll' data-infinite-scroll-container='.layout__main' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
+    <div class='cards' id='js-artists-content'>
+      <%= render 'artists' %>
+    </div>
+    <div data-target='infinite-scroll.trigger' class='display__justify-align-center'>
+      <% if @pagy.next %>
+        <%= loader_tag %>
+      <% end %>
+    </div>
   </div>
-  <div data-target='infinite-scroll.trigger' class='display__justify-align-center'>
-    <% if @pagy.next %>
-      <%= loader_tag %>
-    <% end %>
-  </div>
-</div>
+<% end %>

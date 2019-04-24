@@ -13,18 +13,6 @@
   margin-right: 20px;
 }
 
-.form--global {
-  width: 320px;
-  box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 1px rgba(9, 30, 66, 0.31);
-  border-radius: var(--form-border-radius);
-  background: var(--form-bg-color);
-  padding: 20px;
-}
-
-.form--global form {
-  margin-top: 40px;
-}
-
 .form__field {
   margin-top: 15px;
 }

@@ -52,8 +52,6 @@
   --btn-primary-bg-color: var(--purple);
 
   /* Form */
-  --form-border-radius: var(--border-radius-lg);
-  --form-bg-color: var(--black-light);
   --form-input-border-radius: var(--border-radius-md);
 
   /* Noty flash message */
@@ -114,6 +112,13 @@
 
   /* Avatar */
   --avatar-border-radius: var(--border-radius-round);
+
+  /* Box */
+  --box-border-radius: var(--border-radius-lg);
+  --box-bg-color: var(--black-light);
+
+  /* Notice */
+  --notice-text-main-font-size: var(--font-size-lg);
 
   /* Playlist page */
   --playlist-bg-color: var(--black);

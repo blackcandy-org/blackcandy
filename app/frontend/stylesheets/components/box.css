@@ -1,0 +1,16 @@
+.box {
+  width: 320px;
+  box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 1px rgba(9, 30, 66, 0.31);
+  border-radius: var(--box-border-radius);
+  background: var(--box-bg-color);
+  padding: 20px;
+}
+
+.box--large {
+  width: 360px;
+}
+
+.box__header {
+  text-align: center;
+  margin-bottom: 40px;
+}

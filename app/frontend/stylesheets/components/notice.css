@@ -1,0 +1,18 @@
+.notice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.notice__text {
+  margin-bottom: 10px;
+}
+
+.notice__text--main {
+  font-weight: bold;
+  font-size: var(--notice-text-main-font-size);
+}
+
+.notice__text:last-child {
+  margin-bottom: 0;
+}

@@ -56,6 +56,10 @@ en:
     login: 'Wrong email or password'
     media_path_blank: 'Media path is not exist'
     media_path_unreadable: 'Media path is unreadable'
+    forbidden: "Sorry, you do not have permission to visit it"
+    not_found: "The page you were looking for doesn't exist"
+    unprocessable_entity: 'The change you wanted was rejected'
+    internal_server_error: "We're sorry, but something went wrong"
   success:
     add: 'Add successfully'
     delete: 'Delete successfully'

@@ -1,5 +1,5 @@
 <div class='layout__main'>
-  <div>
+  <div class='display__flex-vertical display__full-height'>
     <header class='layout__main__header'>
       <div id='js-flash'></div>
       <%= render 'shared/search_bar' %>
@@ -7,7 +7,7 @@
         <%= render 'shared/nav_bar' %>
       </div>
     </header>
-    <main id='js-layout-main' class='layout__main__content'>
+    <main id='js-layout-main' class='layout__main__content position-relative'>
       <%= yield %>
     </main>
   </div>

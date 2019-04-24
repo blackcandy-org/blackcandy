@@ -1,0 +1,14 @@
+<% content_for :body do %>
+  <div class='display__full-page-center bg-gradient'>
+    <div class='box box--large'>
+      <div class='box__header'>
+        <span class='logo logo--large'></span>
+      </div>
+      <div class='notice'>
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= render template: 'layouts/base' %>

@@ -28,5 +28,6 @@ module BlackCandy
     # the framework and any gems in your application.
 
     config.active_job.queue_adapter = :sidekiq
+    config.exceptions_app = self.routes
   end
 end

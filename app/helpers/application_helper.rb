@@ -9,6 +9,8 @@ module ApplicationHelper
   end
 
   def icon_tag(name, options = {})
+    return if name.blank?
+
     size_class = options[:size].blank? ? '' : "icon--#{options[:size]}"
     icon_class = ['icon', size_class, options[:class]].join(' ')
 
@@ -41,8 +43,8 @@ module ApplicationHelper
     raw "<div class='loader #{size_class}'></div>"
   end
 
-  def empty_alert_tag
-    content_tag(:div, t('text.no_items'), class: 'display__justify-align-center display__full-height')
+  def empty_alert_tag(has_icon: false)
+    render partial: 'shared/empty_alert', locals: { has_icon: has_icon }
   end
 
   def render_flash

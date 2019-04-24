@@ -1,10 +1,14 @@
-<div class='display__medium-width' data-controller='playlist infinite-scroll' data-infinite-scroll-container='.layout__main' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
-  <ul id='js-songs-content' class='list list--dark-border' data-action='click->playlist#actionHandler'>
-    <%= render 'songs' %>
-  </ul>
-  <div data-target='infinite-scroll.trigger' class='display__justify-align-center'>
-    <% if @pagy.next %>
-      <%= loader_tag %>
-    <% end %>
+<% if @songs.empty? %>
+  <%= empty_alert_tag has_icon: true %>
+<% else %>
+  <div class='display__medium-width' data-controller='playlist infinite-scroll' data-infinite-scroll-container='.layout__main' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
+    <ul id='js-songs-content' class='list list--dark-border' data-action='click->playlist#actionHandler'>
+      <%= render 'songs' %>
+    </ul>
+    <div data-target='infinite-scroll.trigger' class='display__justify-align-center'>
+      <% if @pagy.next %>
+        <%= loader_tag %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>

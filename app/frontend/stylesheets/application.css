@@ -21,6 +21,8 @@
 @import 'components/heading.css';
 @import 'components/line.css';
 @import 'components/avatar.css';
+@import 'components/notice.css';
+@import 'components/box.css';
 
 @import 'pages/layout.css';
 @import 'pages/playlist.css';

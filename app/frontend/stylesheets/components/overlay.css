@@ -4,8 +4,11 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 99;
+  z-index: 100;
   background: var(--overlay-bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .overlay--fixed {

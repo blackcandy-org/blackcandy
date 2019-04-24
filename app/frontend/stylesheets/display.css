@@ -9,6 +9,11 @@
   display: flex;
 }
 
+.display__flex-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
 .display__text-center {
   text-align: center;
 }

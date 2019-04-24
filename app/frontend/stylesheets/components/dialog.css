@@ -7,7 +7,7 @@
   right: 0;
   margin: auto;
   width: 400px;
-  z-index: 100;
+  z-index: 1000;
   background: var(--dialog-bg-color);
   border-radius: var(--dialog-border-radius);
 }
