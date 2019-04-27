@@ -1,4 +1,4 @@
-<% if %w(current favorite).include? params[:id] %>
+<% if params[:id].in? %w(current favorite) %>
   App.renderPlaylistContent('<%= j(render 'show') %>');
 <% else %>
   App.renderPlaylistContent('<%= j(render 'song_collections/show') %>');

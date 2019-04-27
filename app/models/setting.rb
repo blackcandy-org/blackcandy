@@ -7,7 +7,7 @@ class Setting < RailsSettings::Base
 
   def self.update(values)
     values.each do |key, value|
-      next unless AVAILABLE_SETTINGS.include?(key)
+      next unless key.in?(AVAILABLE_SETTINGS)
       self[key.to_sym] = value if value != self[key.to_sym]
     end
   end

@@ -1,4 +1,5 @@
 import { Howl } from 'howler';
+import { ajax } from 'rails-ujs';
 import { shuffle } from './helper';
 
 const player = {
@@ -14,17 +15,28 @@ const player = {
     this.currentSong = song;
 
     if (!song.howl) {
-      song.howl = new Howl({
-        src: [`/stream/new?song_id=${song.id}`],
-        html5: true,
-        onplay: this.onplay,
-        onpause: this.onpause,
-        onend: this.onend,
-        onstop: this.onstop
-      });
-    }
+      ajax({
+        url: `/songs/${song.id}`,
+        type: 'get',
+        dataType: 'json',
+        success: (response) => {
+          song.howl = new Howl({
+            src: [response.url],
+            format: [response.format],
+            html5: true,
+            onplay: this.onplay,
+            onpause: this.onpause,
+            onend: this.onend,
+            onstop: this.onstop
+          });
 
-    song.howl.play();
+          Object.assign(song, response);
+          song.howl.play();
+        }
+      });
+    } else {
+      song.howl.play();
+    }
   },
 
   pause() {

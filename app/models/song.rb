@@ -11,11 +11,12 @@ class Song < ApplicationRecord
   search_by :name, associations: [:artist, :album]
 
   def format
-    MediaFile.format(file_path)
+    file_format = MediaFile.format(file_path)
+    file_format.in?(Stream::TRANSCODING_FORMATS) ? Stream::TRANSCODE_FORMAT : file_format
   end
 
   def favorited?
-    Current.user.favorite_playlist.include?(id)
+    id.in? Current.user.favorite_playlist
   end
 
   def self.find_ordered(ids)
