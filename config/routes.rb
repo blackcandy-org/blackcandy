@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :artists, only: [:index, :show]
   resources :users, except: [:show]
   resources :stream, only: [:new]
-  resources :song_collections, except: [:new, :edit]
+  resources :song_collections, except: [:new, :edit, :show]
 
   resources :albums, only: [:index, :show] do
     member do

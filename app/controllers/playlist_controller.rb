@@ -4,7 +4,7 @@ class PlaylistController < ApplicationController
   include Pagy::Backend
 
   before_action :require_login
-  before_action :find_playlist, except: [:init]
+  before_action :find_playlist
 
   def show
     @pagy, @songs = pagy_countless(@playlist.songs)
@@ -14,9 +14,18 @@ class PlaylistController < ApplicationController
     if @playlist.update(playlist_params)
       case params[:update_action]
       when 'push'
-        flash.now[:success] = t('success.add')
+        @song = Song.find(playlist_params[:song_id])
+        flash.now[:success] = t('success.add_to_playlist')
+
+        if @playlist.count == 1
+          show; render action: 'show'
+        end
       when 'delete'
-        flash.now[:success] = t('success.delete')
+        flash.now[:success] = t('success.delete_from_playlist')
+
+        if @playlist.empty?
+          show; render action: 'show'
+        end
       end
     end
   end

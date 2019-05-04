@@ -1,4 +1,4 @@
-<div data-controller='playlist' data-playlist-id='<%= @song_collection.id %>' data-playlist-play-path='<%= play_playlist_path(@song_collection) %>' class='display__full-height'>
+<div data-controller='playlist' data-playlist-id='<%= @song_collection.id %>' data-playlist-play-path='<%= play_playlist_path(@song_collection) %>' class='display__full-height display__flex-vertical'>
   <div class='heading' data-controller='song-collection' data-song-collection-id='<%= @song_collection.id %>'>
     <div class='heading__header'>
       <%= link_to song_collections_path, remote: true, data: { show_loader: true } do %>
@@ -31,9 +31,11 @@
       </div>
     </div>
   </div>
-  <% if @playlist.blank? %>
-    <%= empty_alert_tag %>
-  <% else %>
-    <%= render partial: 'playlist/list', locals: { songs: @songs, pagy: @pagy, next_url: pagy_next_url(@pagy) } %>
-  <% end %>
+  <div class='position-relative display__full-height'>
+    <% if @playlist.blank? %>
+      <%= empty_alert_tag %>
+    <% else %>
+      <%= render partial: 'playlist/list', locals: { songs: @songs, pagy: @pagy, next_url: pagy_next_url(@pagy) } %>
+    <% end %>
+  </div>
 </div>

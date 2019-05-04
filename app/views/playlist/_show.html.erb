@@ -1,10 +1,5 @@
-<% playlist_id = local_assigns[:id] || params[:id] %>
-
-<div data-controller='playlist' data-playlist-id='<%= playlist_id %>' data-playlist-play-path='<%= play_playlist_path(playlist_id) %>' class='display__full-height'>
-  <% if @playlist.empty? %>
-    <%= empty_alert_tag %>
-  <% else %>
-    <%= render partial: 'playlist/heading', locals: { playlist: @playlist, id: playlist_id } %>
-    <%= render partial: 'playlist/list', locals: { songs: @songs, pagy: @pagy, next_url: local_assigns[:next_url] || pagy_next_url(@pagy) } %>
-  <% end %>
-</div>
+<% if params[:id].in?(%w(current favorite)) %>
+  <%= render 'single' %>
+<% else %>
+  <%= render 'collection' %>
+<% end %>

@@ -1,0 +1,26 @@
+<% if @playlist.empty? %>
+  <%= empty_alert_tag %>
+<% else %>
+  <div data-controller='playlist' data-playlist-id='<%= params[:id] %>' data-playlist-play-path='<%= play_playlist_path(params[:id]) %>' class='display__full-height'>
+    <div class='heading'>
+      <div class='heading__body'>
+        <div class='heading__body__text'>
+          <span data-target='playlist.count'><%= @playlist.count %></span>
+          <span> <%= t('label.tracks') %></span>
+        </div>
+      </div>
+      <div class='heading__footer'>
+        <div data-controller='dropdown' class='dropdown'>
+          <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', title: t('label.more') %></span>
+          <div data-target='dropdown.list' class='hidden dropdown__list'>
+            <% unless params[:id] == 'current' %>
+              <a class='dropdown__item' data-action='playlist#playAll'><%= t('label.play_all') %></a>
+            <% end %>
+            <a class='dropdown__item' data-action='playlist#clear'><%= t('label.clear') %></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= render partial: 'playlist/list', locals: { songs: @songs, pagy: @pagy, next_url: local_assigns[:next_url] || pagy_next_url(@pagy) } %>
+  </div>
+<% end %>

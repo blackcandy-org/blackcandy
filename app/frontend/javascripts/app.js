@@ -14,9 +14,9 @@ export default {
     document.querySelector(selector).closest('[data-infinite-scroll-next-url]').dataset.infiniteScrollNextUrl = nextUrl;
   },
 
-  dispatchEvent(element, type) {
+  dispatchEvent(element, type, data = null) {
     if (typeof element == 'string') { element = document.querySelector(element); }
-    element.dispatchEvent(new Event(type));
+    element.dispatchEvent(new CustomEvent(type, { detail: data }));
   },
 
   showNotification(text, type) {

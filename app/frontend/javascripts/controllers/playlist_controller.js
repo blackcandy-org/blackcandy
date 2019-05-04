@@ -11,10 +11,12 @@ export default class extends Controller {
   connect() {
     this.showPlayingItem();
     document.addEventListener('show.playingitem', this.showPlayingItem.bind(this));
+    this.element.addEventListener('updateCount', this._updateCount.bind(this));
   }
 
   disconnect() {
     document.removeEventListener('show.playingitem', this.showPlayingItem.bind(this));
+    this.element.removeEventListener('updateCount', this._updateCount.bind(this));
   }
 
   actionHandler({ target }) {
@@ -94,9 +96,8 @@ export default class extends Controller {
 
         // When already delete all playlist items, use rails ujs to render empty page,
         // avoid to remove item manually.
-        if (this.count > 1) {
+        if (playlistItemElement) {
           playlistItemElement.remove();
-          this.countTarget.innerText = this.count - 1;
         }
       }
     });
@@ -118,15 +119,15 @@ export default class extends Controller {
     });
   }
 
+  _updateCount(event) {
+    this.countTarget.innerText = event.detail;
+  }
+
   get id() {
     return this.data.get('id');
   }
 
   get isCurrent() {
     return this.id == 'current';
-  }
-
-  get count() {
-    return Number(this.countTarget.innerText);
   }
 }

@@ -34,7 +34,7 @@ en:
     login: 'Login'
     logout: 'Logout'
     users: 'Users'
-    playlist: 'Playlist'
+    current: 'Current'
     collections: 'Collections'
     favorites: 'Favorites'
     albums: 'Albums'
@@ -61,10 +61,11 @@ en:
     unprocessable_entity: 'The change you wanted was rejected'
     internal_server_error: "We're sorry, but something went wrong"
   success:
-    add: 'Add successfully'
     delete: 'Delete successfully'
     create: 'Created successfully'
     update: 'Updated successfully'
+    add_to_playlist: 'Add to playlist successfully'
+    delete_from_playlist: 'Delete from playlist successfully'
   text:
     no_items: 'No items'
     add_to_collection: 'Add to collection'

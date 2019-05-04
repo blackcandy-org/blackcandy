@@ -65,6 +65,6 @@ module ApplicationHelper
   end
 
   def is_active?(controller: '', path: '')
-    controller == params[:controller] || current_page?(path)
+    controller == params[:controller] || (path.is_a?(Regexp) ? (path =~ request.path) : (path == request.path))
   end
 end

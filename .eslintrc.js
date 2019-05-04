@@ -25,6 +25,7 @@ module.exports = {
     "localStorage": true,
     "Event": true,
     "App": true,
-    "Turbolinks": true
+    "Turbolinks": true,
+    "CustomEvent": true
   }
 };

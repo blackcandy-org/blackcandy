@@ -1,6 +1,17 @@
-<% if params[:update_action] == 'delete' && @playlist.empty? %>
-  <% partial = (params[:id].in? %w(current favorite) ? 'playlist/show' : 'song_collections/show' %>
-  App.renderPlaylistContent('<%= j(render partial) %>');
-<% end %>
+(function() {
+  var playlistElement = document.querySelector("[data-controller='playlist']");
+  App.dispatchEvent(playlistElement, 'updateCount', '<%= @playlist.count %>');
+
+  <% if params[:update_action] == 'push' && @playlist.count > 1 %>
+    var infiniteScrollElement = playlistElement.querySelector("[data-controller='infinite-scroll']");
+
+    if (playlistElement &&
+      playlistElement.dataset.playlistId == '<%= params[:id] %>' &&
+      infiniteScrollElement &&
+      !infiniteScrollElement.dataset.infiniteScrollNextUrl) {
+      document.querySelector('#js-playlist-list-content').insertAdjacentHTML('beforeend', "<%= j(render partial: 'playlist/songs', locals: { songs: [@song]})%>");
+    }
+  <% end %>
+})();
 
 <%= render_flash %>
