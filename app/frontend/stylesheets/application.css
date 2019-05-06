@@ -3,7 +3,6 @@
 @import 'display.css';
 @import 'helper.css';
 @import 'animations.css';
-@import 'responsive.css';
 
 @import 'components/form.css';
 @import 'components/logo.css';
@@ -29,4 +28,5 @@
 @import 'pages/player.css';
 @import 'pages/songs.css';
 
+@import 'responsive.css';
 @import 'lib/noty.css';

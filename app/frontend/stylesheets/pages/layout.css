@@ -10,6 +10,14 @@
   background: var(--layout-sidebar-bg-color);
   display: flex;
   flex-direction: column;
+  transition: all 0.2s ease-out;
+}
+
+.layout__sidebar.show {
+  z-index: 100;
+  visibility: visible;
+  height: 100%;
+  opacity: 1;
 }
 
 .layout__main__header {
@@ -23,6 +31,12 @@
 .layout__main__content {
   margin: 25px 60px 35px;
   height: 100%;
+}
+
+.layout__main__footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 .layout__nav-bar {

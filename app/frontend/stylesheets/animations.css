@@ -21,18 +21,6 @@
   }
 }
 
-@keyframes stretchDelay {
-  50% {
-    transform: scale(0.75);
-    opacity: 0.2;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }

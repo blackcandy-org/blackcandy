@@ -131,5 +131,7 @@
   --player-progress-color: var(--purple);
   --player-favorite-color: var(--red);
   --player-color: var(--grey);
+  --player-bg-color: var(--black);
+  --player-footer-bg-color: var(--black-light);
   --player-timer-color: var(--grey-lighter);
 }

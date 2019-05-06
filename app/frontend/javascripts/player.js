@@ -24,10 +24,10 @@ const player = {
             src: [response.url],
             format: [response.format],
             html5: true,
-            onplay: this.onplay,
-            onpause: this.onpause,
-            onend: this.onend,
-            onstop: this.onstop
+            onplay: () => { App.dispatchEvent(document, 'set.playingStatus'); },
+            onpause: () => { App.dispatchEvent(document, 'set.pauseStatus'); },
+            onend: () => { App.dispatchEvent(document, 'set.endStatus'); },
+            onstop: () => { App.dispatchEvent(document, 'set.stopStatus'); }
           });
 
           Object.assign(song, response);

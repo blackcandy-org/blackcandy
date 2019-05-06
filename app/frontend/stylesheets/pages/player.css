@@ -1,6 +1,7 @@
 .player {
   box-shadow: -3px -2px 4px var(--box-shadow-color);
   z-index: 100;
+  background: var(--player-bg-color);
 }
 
 .player__control {
@@ -57,12 +58,12 @@
 }
 
 .player__header {
+  transition: max-height 0.2s ease-out;
   visibility: hidden;
   max-height: 0;
 }
 
-.player__header--show {
-  transition: max-height 0.4s ease-in-out;
+.player__header.show {
   max-height: 200px;
   overflow: auto;
   visibility: visible;
@@ -78,4 +79,29 @@
 
 .player .heading__body__text {
   color: var(--player-color);
+}
+
+.player--mini {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  justify-content: space-between;
+}
+
+.player--mini .player__control {
+  color: var(--player-color);
+  padding: 15px 0;
+}
+
+.player--mini .player__control__main {
+  margin: 0 20px;
+}
+
+.player--mini .player__info .icon {
+  margin-right: 10px;
+}
+
+.player__footer {
+  padding: 2px 0;
+  background: var(--player-footer-bg-color);
 }

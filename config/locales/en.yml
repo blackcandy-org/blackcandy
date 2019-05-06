@@ -85,3 +85,5 @@ en:
     play_song: 'Play song'
     pause_song: 'Pause song'
     toggle_favorite: 'Toggle favorite'
+    expand_player: 'Expand player'
+    collapse_player: 'Collapse player'

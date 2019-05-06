@@ -25,6 +25,20 @@ export default class extends Controller {
     this._initMode();
   }
 
+  connect() {
+    document.addEventListener('set.playingStatus', this._setPlayingStatus.bind(this));
+    document.addEventListener('set.pauseStatus', this._setPauseStatus.bind(this));
+    document.addEventListener('set.stopStatus', this._setStopStatus.bind(this));
+    document.addEventListener('set.endStatus', this._setEndStatus.bind(this));
+  }
+
+  disconnect() {
+    document.removeEventListener('set.playingStatus', this._setPlayingStatus.bind(this));
+    document.removeEventListener('set.pauseStatus', this._setPauseStatus.bind(this));
+    document.removeEventListener('set.stopStatus', this._setStopStatus.bind(this));
+    document.removeEventListener('set.endStatus', this._setEndStatus.bind(this));
+  }
+
   play() {
     this.player.play(this.currentIndex);
   }
@@ -75,6 +89,10 @@ export default class extends Controller {
     window.requestAnimationFrame(this._setProgress.bind(this));
   }
 
+  collapse() {
+    document.querySelector('#js-sidebar').classList.remove('show');
+  }
+
   get currentIndex() {
     return this.player.currentIndex;
   }
@@ -97,7 +115,7 @@ export default class extends Controller {
     this.songDurationTarget.textContent = formatDuration(currentSong.length);
 
     this.favoriteButtonTarget.classList.toggle('player__favorite', currentSong.is_favorited);
-    this.headerTarget.classList.add('player__header--show');
+    this.headerTarget.classList.add('show');
     this.pauseButtonTarget.classList.remove('hidden');
     this.playButtonTarget.classList.add('hidden');
 
@@ -114,7 +132,15 @@ export default class extends Controller {
 
   _setStopStatus() {
     if (!this.player.playlist.length) {
-      this.headerTarget.classList.remove('player__header--show');
+      this.headerTarget.classList.remove('show');
+    }
+  }
+
+  _setEndStatus() {
+    if (this.currentMode == 'single') {
+      this.player.play(this.currentIndex);
+    } else {
+      this.next();
     }
   }
 
@@ -136,26 +162,6 @@ export default class extends Controller {
     new Howl({ src: [''], format: ['mp3'] });
 
     this.player = App.player;
-
-    this.player.onplay = () => {
-      this._setPlayingStatus();
-    };
-
-    this.player.onpause = () => {
-      this._setPauseStatus();
-    };
-
-    this.player.onstop = () => {
-      this._setStopStatus();
-    };
-
-    this.player.onend = () => {
-      if (this.currentMode == 'single') {
-        this.player.play(this.currentIndex);
-      } else {
-        this.next();
-      }
-    };
   }
 
   _initPlaylist() {
