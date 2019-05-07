@@ -18,3 +18,7 @@
   width: 55px;
   border-width: 7px;
 }
+
+.loader--expand {
+  margin: 15px 0;
+}

@@ -119,6 +119,14 @@
   .cards__item {
     width: calc(100% / 2 - 30px);
   }
+
+  .songs__artist {
+    display: none;
+  }
+
+  .songs__album {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 730px) {
@@ -143,6 +151,7 @@
   .layout__main__content {
     margin-left: 10px;
     margin-right: 10px;
+    margin-bottom: 70px;
   }
 
   .player__footer {
@@ -156,6 +165,27 @@
   .cards__item {
     width: calc(100% / 3 - 30px);
   }
+
+  .display__medium-width {
+    max-width: 500px;
+  }
+
+  .songs__album {
+    display: none;
+  }
+
+  .songs__name {
+    min-width: 50%;
+  }
+
+  .songs__artist {
+    min-width: 40%;
+  }
+
+  .player__control,
+  .player .heading {
+    padding: 20px;
+  }
 }
 
 @media screen and (max-width: 560px) {
@@ -168,12 +198,53 @@
     margin-left: 10px;
     margin-right: 10px;
   }
+
+  .layout__search-bar {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .layout__search-bar .input {
+    width: 260px;
+  }
+
+  .layout__nav-bar {
+    max-width: 340px;
+  }
+
+  .display__medium-width,
+  .display__small-width,
+  .dialog,
+  .box--large {
+    max-width: 325px;
+  }
+
+  .line {
+    margin: 30px 0;
+  }
+
+  .heading--expand {
+    margin: 30px 0 20px;
+  }
+
+  .songs__artist {
+    display: none;
+  }
+
+  .songs__album {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 360px) {
-  .cards__item .image {
+  .image {
     width: 120px;
     height: 120px;
+  }
+
+  .image--small {
+    width: 90px;
+    height: 90px;
   }
 
   .cards {
@@ -182,5 +253,37 @@
 
   .cards__item {
     width: calc(100% / 2 - 20px);
+    margin-bottom: 30px;
+  }
+
+  .layout__search-bar .input {
+    width: 220px;
+  }
+
+  .layout__search-bar .input input {
+    width: 75%;
+  }
+
+  .layout__nav-bar {
+    max-width: 300px;
+  }
+
+  .display__medium-width,
+  .display__small-width,
+  .dialog,
+  .box {
+    max-width: 290px;
+  }
+
+  .player__timer__item {
+    margin-right: 5px;
+  }
+
+  .heading__body__text--main {
+    margin-bottom: 10px;
+  }
+
+  .heading__body__text {
+    margin-bottom: 5px;
   }
 }

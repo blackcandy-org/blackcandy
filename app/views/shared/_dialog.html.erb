@@ -1,4 +1,4 @@
-<section id='js-playlist-dialog' class='dialog hidden' data-controller='dialog'>
+<section id='js-dialog' class='dialog hidden' data-controller='dialog'>
   <header class='dialog__header display__space-between'>
     <h2 class='dialog__title'><%= t('text.add_to_collection') %></h2>
     <span class='pointer-cursor' data-action='click->dialog#hide'>
@@ -6,9 +6,9 @@
     </span>
   </header>
   <div class='dialog__content position-relative'>
-    <div id='js-playlist-dialog-content'>
+    <div id='js-dialog-content'>
     </div>
-    <div id='js-playlist-dialog-loader' class='overlay hidden' data-controller='loader'>
+    <div id='js-dialog-loader' class='overlay hidden' data-controller='loader'>
       <%= loader_tag size: 'small' %>
     </div>
   </div>

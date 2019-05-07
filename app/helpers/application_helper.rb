@@ -38,9 +38,9 @@ module ApplicationHelper
     end
   end
 
-  def loader_tag(size: '')
+  def loader_tag(size: '', expand: false)
     size_class = size.blank? ? '' : "loader--#{size}"
-    raw "<div class='loader #{size_class}'></div>"
+    raw "<div class='loader #{size_class} #{'loader--expand' if expand}'></div>"
   end
 
   def empty_alert_tag(has_icon: false)

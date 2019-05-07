@@ -41,14 +41,14 @@ export default class extends Controller {
     const { songId } = currentTarget.dataset;
     const { songCollectionId } = target.closest('[data-song-collection-id]').dataset;
 
-    App.dispatchEvent('#js-playlist-dialog-loader', 'show.loader');
+    App.dispatchEvent('#js-dialog-loader', 'show.loader');
 
     ajax({
       url: `/playlist/${songCollectionId}`,
       type: 'put',
       data: `update_action=push&song_id=${songId}`,
       success: () => {
-        App.dispatchEvent('#js-playlist-dialog', 'hide.dialog');
+        App.dispatchEvent('#js-dialog', 'hide.dialog');
       }
     });
   }

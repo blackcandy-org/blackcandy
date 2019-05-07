@@ -18,12 +18,8 @@
 }
 
 .heading__body__text {
-  margin-top: 6px;
+  margin-bottom: 6px;
   color: var(--heading-text-color);
-}
-
-.heading__body__text:first-child {
-  margin-top: 0;
 }
 
 .heading__body__text--main {
