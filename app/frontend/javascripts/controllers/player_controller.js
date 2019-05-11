@@ -23,20 +23,25 @@ export default class extends Controller {
     this._initPlayer();
     this._initPlaylist();
     this._initMode();
+
+    this._setPlayingStatus = this._setPlayingStatus.bind(this);
+    this._setPauseStatus = this._setPauseStatus.bind(this);
+    this._setStopStatus = this._setStopStatus.bind(this);
+    this._setEndStatus = this._setEndStatus.bind(this);
   }
 
   connect() {
-    document.addEventListener('set.playingStatus', this._setPlayingStatus.bind(this));
-    document.addEventListener('set.pauseStatus', this._setPauseStatus.bind(this));
-    document.addEventListener('set.stopStatus', this._setStopStatus.bind(this));
-    document.addEventListener('set.endStatus', this._setEndStatus.bind(this));
+    document.addEventListener('set.playingStatus', this._setPlayingStatus);
+    document.addEventListener('set.pauseStatus', this._setPauseStatus);
+    document.addEventListener('set.stopStatus', this._setStopStatus);
+    document.addEventListener('set.endStatus', this._setEndStatus);
   }
 
   disconnect() {
-    document.removeEventListener('set.playingStatus', this._setPlayingStatus.bind(this));
-    document.removeEventListener('set.pauseStatus', this._setPauseStatus.bind(this));
-    document.removeEventListener('set.stopStatus', this._setStopStatus.bind(this));
-    document.removeEventListener('set.endStatus', this._setEndStatus.bind(this));
+    document.removeEventListener('set.playingStatus', this._setPlayingStatus);
+    document.removeEventListener('set.pauseStatus', this._setPauseStatus);
+    document.removeEventListener('set.stopStatus', this._setStopStatus);
+    document.removeEventListener('set.endStatus', this._setEndStatus);
   }
 
   play() {

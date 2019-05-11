@@ -1,12 +1,16 @@
 import { Controller } from 'stimulus';
 
 export default class extends Controller {
+  initialize() {
+    this._beforeSend = this._beforeSend.bind(this);
+  }
+
   connect() {
-    this.element.addEventListener('ajax:beforeSend', this._beforeSend.bind(this));
+    this.element.addEventListener('ajax:beforeSend', this._beforeSend);
   }
 
   disconnect() {
-    this.element.removeEventListener('ajax:beforeSend', this._beforeSend.bind(this));
+    this.element.removeEventListener('ajax:beforeSend', this._beforeSend);
   }
 
   _beforeSend({ target }) {

@@ -6,17 +6,19 @@ export default class extends Controller {
 
   initialize() {
     this.player = App.player;
+    this.showPlayingItem = this.showPlayingItem.bind(this);
+    this._updateCount = this._updateCount.bind(this);
   }
 
   connect() {
     this.showPlayingItem();
-    document.addEventListener('show.playingitem', this.showPlayingItem.bind(this));
-    this.element.addEventListener('updateCount', this._updateCount.bind(this));
+    document.addEventListener('show.playingitem', this.showPlayingItem);
+    this.element.addEventListener('updateCount', this._updateCount);
   }
 
   disconnect() {
-    document.removeEventListener('show.playingitem', this.showPlayingItem.bind(this));
-    this.element.removeEventListener('updateCount', this._updateCount.bind(this));
+    document.removeEventListener('show.playingitem', this.showPlayingItem);
+    this.element.removeEventListener('updateCount', this._updateCount);
   }
 
   actionHandler({ target }) {

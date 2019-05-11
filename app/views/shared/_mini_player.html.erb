@@ -1,4 +1,4 @@
-<div class='player player--mini' data-controller='mini-player'>
+<div id='js-mini-player' class='player player--mini' data-controller='mini-player' data-turbolinks-permanent>
   <div data-action='click->mini-player#expand' class='player__info display__align-center text-truncate'>
     <span><%= icon_tag 'expand-less', size: 'large', title: t('text.expand_player') %></span>
     <span data-target='mini-player.songName' class='text-truncate'></span>

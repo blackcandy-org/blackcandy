@@ -5,16 +5,18 @@ export default class extends Controller {
 
   initialize() {
     this._initPlayer();
+    this._setPlayingStatus = this._setPlayingStatus.bind(this);
+    this._setPauseStatus = this._setPauseStatus.bind(this);
   }
 
   connect() {
-    document.addEventListener('set.playingStatus', this._setPlayingStatus.bind(this));
-    document.addEventListener('set.pauseStatus', this._setPauseStatus.bind(this));
+    document.addEventListener('set.playingStatus', this._setPlayingStatus);
+    document.addEventListener('set.pauseStatus', this._setPauseStatus);
   }
 
   disconnect() {
-    document.removeEventListener('set.playingStatus', this._setPlayingStatus.bind(this));
-    document.removeEventListener('set.pauseStatus', this._setPauseStatus.bind(this));
+    document.removeEventListener('set.playingStatus', this._setPlayingStatus);
+    document.removeEventListener('set.pauseStatus', this._setPauseStatus);
   }
 
   play() {
