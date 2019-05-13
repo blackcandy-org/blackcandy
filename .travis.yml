@@ -1,0 +1,7 @@
+language: ruby
+
+services:
+  - docker
+
+script:
+  - docker-compose run --rm web bash -c "bundle exec rails lint:all"

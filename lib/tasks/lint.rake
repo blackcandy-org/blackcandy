@@ -4,18 +4,16 @@ unless Rails.env.production?
   require 'rubocop/rake_task'
 
   namespace :lint do
-    RuboCop::RakeTask.new
+    RuboCop::RakeTask.new(:rubocop) do |task|
+      task.fail_on_error = false
+    end
 
     task :js do
-      unless system("yarn run eslint 'app/frontend/**/*.js'")
-        abort('rails lint:js failed')
-      end
+      system("yarn run eslint 'app/frontend/**/*.js'")
     end
 
     task :css do
-      unless system("yarn run stylelint 'app/frontend/**/*.css'")
-        abort('rails lint:css failed')
-      end
+      system("yarn run stylelint 'app/frontend/**/*.css'")
     end
 
     task all: [:rubocop, :js, :css]
