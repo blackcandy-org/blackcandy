@@ -1,7 +1,10 @@
-language: ruby
+language: minimal
 
 services:
   - docker
 
+before_script:
+  - docker-compose run --rm web bash -c "bundle && yarn"
 script:
-  - docker-compose run --rm web bash -c "bundle exec rails lint:all"
+  - docker-compose run --rm web bash -c "rails lint:all"
+  - docker-compose run --rm web bash -c "rails test"
