@@ -1,0 +1,18 @@
+version: '3.0'
+services:
+  test_web:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    volumes:
+      - .:/app
+      - ~/media_data:/root/media_data
+    environment:
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      - test_postgres
+      - test_redis
+  test_postgres:
+    image: groonga/pgroonga:2.1.8-alpine-11.1
+  test_redis:
+    image: redis:4.0-alpine

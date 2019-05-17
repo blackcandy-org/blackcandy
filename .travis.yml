@@ -4,7 +4,8 @@ services:
   - docker
 
 before_script:
-  - docker-compose run --rm web bash -c "bundle && yarn"
+  - docker-compose -f docker-compose.test.yml run --rm test_web bash -c "bundle && yarn"
+
 script:
-  - docker-compose run --rm web bash -c "rails lint:all"
-  - docker-compose run --rm web bash -c "rails test"
+  - docker-compose -f docker-compose.test.yml run --rm test_web bash -c "rails lint:all"
+  - docker-compose -f docker-compose.test.yml run --rm test_web bash -c "rails test"

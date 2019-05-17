@@ -29,8 +29,6 @@ services:
       - .:/app
       - bundler_data:/usr/local/bundle
     environment:
-      NODE_ENV: development
-      RAILS_ENV: development
       WEBPACKER_DEV_SERVER_HOST: webpacker
     ports:
       - 3035:3035

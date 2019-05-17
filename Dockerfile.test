@@ -1,5 +1,5 @@
 FROM node:10.15.0-slim as node
-FROM ruby:2.6.0
+FROM ruby:2.6.0-slim
 
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
 COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
@@ -13,6 +13,6 @@ RUN apt-get update \
   && ln -s /opt/yarn/bin/yarn /usr/local/bin/yarn \
   && ln -s /opt/yarn/bin/yarnpkg /usr/local/bin/yarnpkg
 
-WORKDIR /app
+ENV RAILS_ENV test
 
-CMD ["bin/rails", "s", "-b", "0.0.0.0"]
+WORKDIR /app
