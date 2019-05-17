@@ -1,11 +1,12 @@
 version: '3.0'
 services:
   web:
-    build: .
+    image: blackcandy/base
     volumes:
       - .:/app
       - ~/media_data:/root/media_data
       - bundler_data:/usr/local/bundle
+    command: ["bin/rails", "s", "-b", "0.0.0.0"]
     ports:
       - 3000:3000
     environment:
@@ -23,7 +24,7 @@ services:
     volumes:
       - redis_data:/data
   webpacker:
-    build: .
+    image: blackcandy/base
     command: ./bin/webpack-dev-server
     volumes:
       - .:/app

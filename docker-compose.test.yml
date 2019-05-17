@@ -1,9 +1,7 @@
 version: '3.0'
 services:
   test_web:
-    build:
-      context: .
-      dockerfile: Dockerfile.test
+    image: blackcandy/base
     volumes:
       - .:/app
       - ~/media_data:/root/media_data
