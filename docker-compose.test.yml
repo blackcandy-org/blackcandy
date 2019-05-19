@@ -4,9 +4,13 @@ services:
     image: blackcandy/base
     volumes:
       - .:/app
-      - ~/media_data:/root/media_data
+      - ${BlACK_CANDY_MEDIA_PATH}:/media_data
+      - bundler_data:/usr/local/bundle
     environment:
-      REDIS_URL: redis://redis:6379/0
+      DB_HOST: postgres
+      DB_USER: postgres
+      REDIS_DATA_URL: redis://redis:6379/0
+      MEDIA_PATH: /media_data
     depends_on:
       - test_postgres
       - test_redis
@@ -14,3 +18,5 @@ services:
     image: groonga/pgroonga:2.1.8-alpine-11.1
   test_redis:
     image: redis:4.0-alpine
+volumes:
+  bundler_data:

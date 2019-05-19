@@ -3,6 +3,9 @@ language: minimal
 services:
   - docker
 
+env:
+  - BlACK_CANDY_MEDIA_PATH=./test/fixtures/files
+
 before_script:
   - docker-compose -f docker-compose.test.yml run --rm test_web bash -c "bundle && yarn"
 

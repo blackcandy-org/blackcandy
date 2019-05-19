@@ -1,1 +1,1 @@
-Redis::Objects.redis = Redis.new(url: ENV['REDIS_URL'])
+Redis::Objects.redis = Redis.new(url: ENV['REDIS_DATA_URL'])

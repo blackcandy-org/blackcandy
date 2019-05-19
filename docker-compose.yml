@@ -4,13 +4,16 @@ services:
     image: blackcandy/base
     volumes:
       - .:/app
-      - ~/media_data:/root/media_data
+      - ${BLACK_CANDY_MEDIA_PATH}:/media_data
       - bundler_data:/usr/local/bundle
     command: ["bin/rails", "s", "-b", "0.0.0.0"]
     ports:
       - 3000:3000
     environment:
-      REDIS_URL: redis://redis:6379/0
+      DB_HOST: postgres
+      DB_USER: postgres
+      REDIS_DATA_URL: redis://redis:6379/0
+      MEDIA_PATH: /media_data
       WEBPACKER_DEV_SERVER_HOST: webpacker
     depends_on:
       - postgres
