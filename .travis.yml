@@ -4,11 +4,10 @@ services:
   - docker
 
 env:
-  - BlACK_CANDY_MEDIA_PATH=./test/fixtures/files
+  - BLACK_CANDY_MEDIA_PATH=./test/fixtures/files
 
 before_script:
-  - docker-compose -f docker-compose.test.yml run --rm test_web bash -c "bundle && yarn"
+  - make test_setup
 
 script:
-  - docker-compose -f docker-compose.test.yml run --rm test_web bash -c "rails lint:all"
-  - docker-compose -f docker-compose.test.yml run --rm test_web bash -c "rails test"
+  - make test_run

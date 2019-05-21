@@ -1,6 +1,6 @@
 version: '3.0'
 services:
-  web:
+  app:
     image: blackcandy/base
     volumes:
       - .:/app
