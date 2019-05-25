@@ -39,13 +39,13 @@ build_base:
 	@docker push blackcandy/base
 
 build_web:
-	@docker build - < web.Dockerfile -t blackcandy/web
+	@docker build -f web.Dockerfile -t blackcandy/web .
 	@docker tag blackcandy/web blackcandy/web:$(LAST_COMMIT_TAG)
 	@$(DOCKER_LOGIN_COMMAND)
 	@docker push blackcandy/web
 
 build:
-	@docker build -t blackcandy/blackcandy
+	@docker build -t blackcandy/blackcandy .
 	@docker tag blackcandy/blackcandy blackcandy/blackcandy:$$(cat VERSION)
 	@$(DOCKER_LOGIN_COMMAND)
 	@docker push blackcandy/blackcandy:$$(cat VERSION)

@@ -1,0 +1,40 @@
+version: '3.0'
+services:
+  app:
+    image: blackcandy/blackcandy
+    volumes:
+      - ${BLACK_CANDY_MEDIA_PATH}:/media_data
+      - ./log:/app/log
+    environment:
+      DB_HOST: postgres
+      DB_USER: postgres
+      REDIS_DATA_URL: redis://redis:6379/0
+      REDIS_CACHE_URL: redis://redis:6379/1
+      MEDIA_PATH: /media_data
+    depends_on:
+      - postgres
+      - redis
+  postgres:
+    image: groonga/pgroonga:2.1.8-alpine-11.1
+    volumes:
+      - production_db_data:/var/lib/postgresql/data
+  redis:
+    image: redis:4.0-alpine
+    volumes:
+      - production_redis_data:/data
+  worker:
+    image: blackcandy/blackcandy
+    environment:
+      REDIS_SIDEKIQ_URL: redis://redis:6379/2
+    command: bundle exec sidekiq
+  web:
+    image: blackcandy/web
+    volumes:
+      - ./log:/var/www/black_candy/log
+    depends_on:
+      - app
+    ports:
+      - 80:80
+volumes:
+  production_db_data:
+  production_redis_data:
