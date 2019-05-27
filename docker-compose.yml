@@ -1,15 +1,18 @@
 version: '3.0'
 services:
-  app:
+  app: &app_base
     image: blackcandy/blackcandy
     volumes:
-      - ${BLACK_CANDY_MEDIA_PATH}:/media_data
       - ./log:/app/log
+      - ${BLACK_CANDY_MEDIA_PATH}:/media_data
+      - production_public_data:/app/public
+      - production_storage_data:/app/storage
     environment:
       DB_HOST: postgres
       DB_USER: postgres
       REDIS_DATA_URL: redis://redis:6379/0
       REDIS_CACHE_URL: redis://redis:6379/1
+      REDIS_SIDEKIQ_URL: redis://redis:6379/2
       MEDIA_PATH: /media_data
     depends_on:
       - postgres
@@ -23,18 +26,21 @@ services:
     volumes:
       - production_redis_data:/data
   worker:
-    image: blackcandy/blackcandy
-    environment:
-      REDIS_SIDEKIQ_URL: redis://redis:6379/2
+    <<: *app_base
     command: bundle exec sidekiq
   web:
     image: blackcandy/web
     volumes:
       - ./log:/var/www/black_candy/log
+      - ${BLACK_CANDY_MEDIA_PATH}:/media_data
+      - production_public_data:/var/www/black_candy/public
     depends_on:
       - app
+      - worker
     ports:
       - 80:80
 volumes:
   production_db_data:
   production_redis_data:
+  production_public_data:
+  production_storage_data:

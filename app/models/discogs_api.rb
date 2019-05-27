@@ -4,10 +4,11 @@ class DiscogsAPI
   include HTTParty
 
   base_uri 'https://api.discogs.com'
-  default_params token: Setting.discogs_token
 
   class << self
     def search(options)
+      default_params token: Setting.discogs_token
+
       response = get('/database/search', options)
       response.parsed_response['results'] if response.success?
     end

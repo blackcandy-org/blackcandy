@@ -4,13 +4,11 @@ class StreamController < ApplicationController
   include ActionController::Live
 
   before_action :require_login
+  before_action :find_song
   before_action :set_header
 
   def new
-    song = Song.find_by(id: params[:song_id])
-    return head :forbidden unless song
-
-    stream = Stream.new(song)
+    stream = Stream.new(@song)
 
     if stream.need_transcode?
       send_stream stream
@@ -23,11 +21,10 @@ class StreamController < ApplicationController
 
     # Let nginx can get value of media_path dynamically in the nginx config,
     # when use X-Accel-Redirect header to send file.
-    #
-    # Todo: add apache send_file header description.
     def set_header
       if Rails.configuration.action_dispatch.x_sendfile_header == 'X-Accel-Redirect'
         response.set_header('X-Media-Path', Setting.media_path)
+        response.set_header('X-Accel-Redirect', "/private_media/#{@song.file_path.sub(Setting.media_path, '')}")
       end
     end
 
@@ -42,5 +39,9 @@ class StreamController < ApplicationController
       end
     ensure
       response.stream.close
+    end
+
+    def find_song
+      @song = Song.find(params[:song_id])
     end
 end
