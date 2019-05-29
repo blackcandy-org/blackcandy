@@ -1,10 +1,10 @@
-<div data-controller='infinite-scroll' data-infinite-scroll-container='.playlist__content' data-infinite-scroll-next-url='<%= next_url %>'>
+<div data-controller='infinite-scroll' data-infinite-scroll-container='.playlist__container' data-infinite-scroll-next-url='<%= next_url %>'>
   <ul class='list' id='js-playlist-list-content' data-action='click->playlist#actionHandler'>
     <%= render partial: 'playlist/songs', locals: { songs: songs }%>
   </ul>
   <div data-target='infinite-scroll.trigger' class='display__justify-align-center'>
     <% if pagy.next %>
-      <%= loader_tag %>
+      <%= loader_tag expand: true %>
     <% end %>
   </div>
 </div>

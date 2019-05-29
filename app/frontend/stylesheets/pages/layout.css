@@ -3,7 +3,8 @@
 }
 
 .layout__main {
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .layout__sidebar {
@@ -21,16 +22,18 @@
 }
 
 .layout__main__header {
-  position: sticky;
-  top: 0;
   background: var(--layout-header-bg-color);
   z-index: 10;
   border-bottom: 1px solid var(--layout-header-border-color);
 }
 
-.layout__main__content {
-  margin: 25px 60px 35px;
+.layout__main__container {
   height: 100%;
+  overflow-y: auto;
+}
+
+.layout__main__container__content {
+  margin: 25px 60px 35px;
 }
 
 .layout__main__footer {

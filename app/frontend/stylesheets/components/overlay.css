@@ -4,7 +4,6 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 101;
   background: var(--overlay-bg-color);
   display: flex;
   align-items: center;
@@ -12,6 +11,7 @@
 }
 
 .overlay--fixed {
+  z-index: 101;
   position: fixed;
   opacity: 0.75;
 }

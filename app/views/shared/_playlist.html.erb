@@ -2,13 +2,10 @@
   <div id='js-playlist-nav' class='playlist__nav'>
     <%= render 'playlist/nav' %>
   </div>
-  <div class='playlist__container display__full-height'>
-    <div class='display__full-height position-relative'>
-      <div class='playlist__content display__full-height' id='js-playlist-content'>
-      </div>
-      <div id='js-playlist-loader' class='overlay hidden' data-controller='loader'>
-        <%= loader_tag %>
-      </div>
+  <div class='playlist__container position-relative'>
+    <div class='playlist__content' id='js-playlist-content'></div>
+    <div id='js-playlist-loader' class='overlay hidden' data-controller='loader'>
+      <%= loader_tag %>
     </div>
   </div>
 </div>

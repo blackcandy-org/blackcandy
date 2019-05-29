@@ -1,17 +1,17 @@
 <div class='layout__main'>
-  <div class='display__flex-vertical'>
-    <header class='layout__main__header'>
-      <div id='js-flash'></div>
-      <%= render 'shared/search_bar' %>
-      <div id='js-nav-bar'>
-        <%= render 'shared/nav_bar' %>
-      </div>
-    </header>
-    <main id='js-layout-main' class='layout__main__content position-relative'>
+  <header class='layout__main__header'>
+    <div id='js-flash'></div>
+    <%= render 'shared/search_bar' %>
+    <div id='js-nav-bar'>
+      <%= render 'shared/nav_bar' %>
+    </div>
+  </header>
+  <main class='layout__main__container position-relative'>
+    <div id='js-layout-main' class='layout__main__container__content'>
       <%= yield %>
-    </main>
-    <footer class='layout__main__footer hidden'>
-      <%= render 'shared/mini_player' %>
-    </footer>
-  </div>
+    </div>
+  </main>
+  <footer class='layout__main__footer hidden'>
+    <%= render 'shared/mini_player' %>
+  </footer>
 </div>

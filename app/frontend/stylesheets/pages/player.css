@@ -102,6 +102,6 @@
 }
 
 .player__footer {
-  padding: 2px 0;
+  padding: 7px 0;
   background: var(--player-footer-bg-color);
 }
