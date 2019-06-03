@@ -5,7 +5,6 @@ services:
     volumes:
       - ./log:/app/log
       - ${BLACK_CANDY_MEDIA_PATH}:/media_data
-      - production_public_data:/app/public
       - production_storage_data:/app/storage
     environment:
       DB_HOST: postgres
@@ -33,7 +32,6 @@ services:
     volumes:
       - ./log:/var/www/black_candy/log
       - ${BLACK_CANDY_MEDIA_PATH}:/media_data
-      - production_public_data:/var/www/black_candy/public
     depends_on:
       - app
       - worker
@@ -42,5 +40,4 @@ services:
 volumes:
   production_db_data:
   production_redis_data:
-  production_public_data:
   production_storage_data:
