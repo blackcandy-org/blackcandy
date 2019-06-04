@@ -1,7 +1,6 @@
 DEV_APP_COMMAND = docker-compose -f docker-compose.development.yml run --rm app
 TEST_APP_COMMAND = docker-compose -f docker-compose.test.yml run --rm test_app
 DOCKER_LOGIN_COMMAND = docker login -u $(DOCKER_USER) -p $(DOCKER_PASS)
-LAST_COMMIT_TAG = $$(git log -1 --pretty=%H)
 
 dev_run:
 	@docker-compose -f docker-compose.development.yml up
@@ -34,7 +33,6 @@ test_setup:
 
 build_base:
 	@docker build - < base.Dockerfile -t blackcandy/base
-	@docker tag blackcandy/base blackcandy/base:$(LAST_COMMIT_TAG)
 	@$(DOCKER_LOGIN_COMMAND)
 	@docker push blackcandy/base:latest
 
