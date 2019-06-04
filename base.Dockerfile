@@ -9,7 +9,7 @@ COPY --from=node /usr/local/bin/npm /usr/local/bin/npm
 COPY --from=node /opt/yarn-* /opt/yarn
 
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends build-essential git libpq-dev imagemagick libtag1-dev ffmpeg \
+  && apt-get install -y --no-install-recommends build-essential git vim libpq-dev imagemagick libtag1-dev ffmpeg \
   && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
   && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
   && ln -s /opt/yarn/bin/yarn /usr/local/bin/yarn \
