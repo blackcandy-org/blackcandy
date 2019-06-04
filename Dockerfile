@@ -7,7 +7,7 @@ ADD . /app
 
 RUN bundle install --without development test && yarn
 
-RUN bundle exec rails assets:precompile
+RUN bundle exec rails assets:precompile SECRET_KEY_BASE=fake_secure_for_compile
 
 EXPOSE 3000
 
