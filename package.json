@@ -2,12 +2,13 @@
   "name": "black_candy",
   "private": true,
   "dependencies": {
-    "@babel/polyfill": "^7.4.3",
-    "@rails/webpacker": "^4.0.2",
+    "@rails/webpacker": "^4.0.7",
+    "core-js": "^3.1.3",
     "howler": "^2.1.2",
     "normalize.css": "^8.0.1",
     "noty": "^3.1.0",
     "rails-ujs": "^5.2.3",
+    "regenerator-runtime": "^0.13.2",
     "scrollmagic": "^2.0.6",
     "stimulus": "^1.1.0",
     "turbolinks": "^5.2.0"
@@ -19,6 +20,6 @@
     "eslint-plugin-import": "^2.17.2",
     "stylelint": "^10.0.1",
     "stylelint-config-standard": "^18.3.0",
-    "webpack-dev-server": "3.3.1"
+    "webpack-dev-server": "3.5.1"
   }
 }
