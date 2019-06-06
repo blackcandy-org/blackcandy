@@ -4,7 +4,7 @@ services:
     image: blackcandy/base
     volumes:
       - .:/app
-      - ${BLACK_CANDY_MEDIA_PATH}:/media_data
+      - ./test/fixtures/files:/media_data
       - test_bundler_data:/usr/local/bundle
     environment:
       DB_HOST: test_postgres

@@ -13,18 +13,14 @@ dev_setup:
 	@$(DEV_APP_COMMAND) yarn
 	@$(DEV_APP_COMMAND) rails db:setup
 
-dev_run_lint:
-	@$(DEV_APP_COMMAND) rails lint:all
-
-dev_run_test:
-	@$(DEV_APP_COMMAND) rails test
-
 dev_shell:
 	@$(DEV_APP_COMMAND) bash
 
 test_run:
-	@$(TEST_APP_COMMAND) rails lint:all
 	@$(TEST_APP_COMMAND) rails test
+
+test_run_lint:
+	@$(TEST_APP_COMMAND) rails lint:all
 
 test_setup:
 	@$(TEST_APP_COMMAND) bundle install --without development

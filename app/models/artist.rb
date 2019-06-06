@@ -11,7 +11,7 @@ class Artist < ApplicationRecord
   search_by :name
 
   def title
-    is_unknown? ? I18n.t('text.unknown_album') : name
+    is_unknown? ? I18n.t('text.unknown_artist') : name
   end
 
   def has_image?

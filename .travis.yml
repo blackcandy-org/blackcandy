@@ -3,11 +3,9 @@ language: minimal
 services:
   - docker
 
-env:
-  - BLACK_CANDY_MEDIA_PATH=./test/fixtures/files
-
 before_script:
   - make test_setup
 
 script:
   - make test_run
+  - make test_run_lint
