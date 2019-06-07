@@ -22,6 +22,9 @@ test_run:
 test_run_lint:
 	@$(TEST_APP_COMMAND) rails lint:all
 
+test_shell:
+	@$(TEST_APP_COMMAND) bash
+
 test_setup:
 	@$(TEST_APP_COMMAND) bundle install --without development
 	@$(TEST_APP_COMMAND) yarn

@@ -10,13 +10,13 @@ class DiscogsAPI
       default_params token: Setting.discogs_token
 
       response = get('/database/search', options)
-      response.parsed_response['results'] if response.success?
+      JSON.parse response, symbolize_names: true if response.success?
     end
 
     def artist_image(artist)
       raise TypeError, 'Expect Artist instance' unless artist.is_a? Artist
 
-      options = { query: { type: 'artist', q: artist.name } }
+      options = { query: { type: 'artist', q: artist.name }, format: :plain }
       get_image(search(options))
     end
 
@@ -28,8 +28,8 @@ class DiscogsAPI
     end
 
     def get_image(response)
-      return if response.blank?
-      response.first['cover_image']
+      return if response[:results].blank?
+      response[:results].first[:cover_image]
     end
   end
 end
