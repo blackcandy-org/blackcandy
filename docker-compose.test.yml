@@ -4,13 +4,11 @@ services:
     image: blackcandy/base
     volumes:
       - .:/app
-      - ./test/fixtures/files:/media_data
       - test_bundler_data:/usr/local/bundle
     environment:
       DB_HOST: test_postgres
       DB_USER: postgres
       REDIS_DATA_URL: redis://test_redis:6379/0
-      MEDIA_PATH: /media_data
       RAILS_ENV: test
     depends_on:
       - test_postgres
