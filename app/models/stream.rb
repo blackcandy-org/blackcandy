@@ -16,10 +16,6 @@ class Stream
     @song.format.in? TRANSCODING_FORMATS
   end
 
-  def transcode_file_name
-    "#{File.basename(file_path, ".*")}.#{TRANSCODE_FORMAT}"
-  end
-
   # let instance of Stream can respond to each() method.
   # So the download can be streamed, instead of read whole data into memory.
   def each

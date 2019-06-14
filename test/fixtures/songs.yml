@@ -1,0 +1,34 @@
+mp3_sample:
+  name: 'mp3_sample'
+  file_path: '/app/test/fixtures/files/artist1_album2.mp3'
+  md5_hash: 'fake_md5'
+  artist: 'artist1'
+  album: 'album2'
+
+flac_sample:
+  name: 'flac_sample'
+  file_path: '/app/test/fixtures/files/artist1_album1.flac'
+  md5_hash: 'fake_md5'
+  artist: 'artist1'
+  album: 'album1'
+
+ogg_sample:
+  name: 'ogg_sample'
+  file_path: '/app/test/fixtures/files/artist2_album3.ogg'
+  md5_hash: 'fake_md5'
+  artist: 'artist2'
+  album: 'album3'
+
+wav_sample:
+  name: 'wav_sample'
+  file_path: '/app/test/fixtures/files/artist2_album3.wav'
+  md5_hash: 'fake_md5'
+  artist: 'artist2'
+  album: 'album3'
+
+m4a_sample:
+  name: 'm4a_sample'
+  file_path: '/app/test/fixtures/files/artist1_album1.m4a'
+  md5_hash: 'fake_md5'
+  artist: 'artist1'
+  album: 'album1'

@@ -33,70 +33,53 @@ class MediaTest < ActiveSupport::TestCase
   end
 
   test 'should change associations when modify album info on file' do
-    media_path = Rails.root.join('test', 'fixtures', 'files')
+    create_tmp_dir(from: Setting.media_path) do |tmp_dir|
+      Setting.media_path = tmp_dir
+      update_media_tag File.join(tmp_dir, 'artist1_album2.mp3'), album: 'album1'
 
-    Setting.stub :media_path, media_path do
-      FakeFS do
-        FakeFS::FileSystem.clone(media_path)
+      Media.sync
 
-        update_media_tag(file_fixture('artist1_album2.mp3'), album: 'album1')
-        Media.sync
-
-        assert_equal Album.where(name: 'album1'), Artist.find_by_name('artist1').albums
-        assert_equal Song.where(name: %w(flac_sample m4a_sample mp3_sample)), Album.find_by_name('album1').songs
-      end
+      assert_equal Album.where(name: 'album1'), Artist.find_by_name('artist1').albums
+      assert_equal Song.where(name: %w(flac_sample m4a_sample mp3_sample)), Album.find_by_name('album1').songs
     end
   end
 
   test 'should change associations when modify artist info on file' do
-    media_path = Rails.root.join('test', 'fixtures', 'files')
+    create_tmp_dir(from: Setting.media_path) do |tmp_dir|
+      Setting.media_path = tmp_dir
+      update_media_tag File.join(tmp_dir, 'artist1_album2.mp3'), artist: 'artist2'
 
-    Setting.stub :media_path, media_path do
-      FakeFS do
-        FakeFS::FileSystem.clone(media_path)
+      Media.sync
 
-        update_media_tag(file_fixture('artist1_album2.mp3'), artist: 'artist2')
-        Media.sync
-
-        assert_equal Album.where(name: %w(album2 album3)), Artist.find_by_name('artist2').albums
-        assert_equal Song.where(name: %w(mp3_sample ogg_sample wav_sample)), Artist.find_by_name('artist2').songs
-      end
+      assert_equal Album.where(name: %w(album2 album3)), Artist.find_by_name('artist2').albums
+      assert_equal Song.where(name: %w(mp3_sample ogg_sample wav_sample)), Artist.find_by_name('artist2').songs
     end
   end
 
   test 'should change song attribute when modify song info on file' do
-    media_path = Rails.root.join('test', 'fixtures', 'files')
+    create_tmp_dir(from: Setting.media_path) do |tmp_dir|
+      Setting.media_path = tmp_dir
+      update_media_tag File.join(tmp_dir, 'artist1_album2.mp3'), track: 2
 
-    Setting.stub :media_path, media_path do
-      FakeFS do
-        FakeFS::FileSystem.clone(media_path)
-
-        update_media_tag(file_fixture('artist1_album2.mp3'), track: 2)
-
-        assert_changes -> { Song.find_by_name('mp3_sample').tracknum }, from: 1, to: 2 do
-          Media.sync
-        end
+      assert_changes -> { Song.find_by_name('mp3_sample').tracknum }, from: 1, to: 2 do
+        Media.sync
       end
     end
   end
 
   test 'should clear records on database when delete file' do
-    media_path = Rails.root.join('test', 'fixtures', 'files')
+    create_tmp_dir(from: Setting.media_path) do |tmp_dir|
+      Setting.media_path = tmp_dir
 
-    Setting.stub :media_path, media_path do
-      FakeFS do
-        FakeFS::FileSystem.clone(media_path)
+      File.delete File.join(tmp_dir, 'artist2_album3.ogg')
+      File.delete File.join(tmp_dir, 'artist2_album3.wav')
 
-        File.delete(file_fixture('artist2_album3.ogg'))
-        File.delete(file_fixture('artist2_album3.wav'))
+      Media.sync
 
-        Media.sync
-
-        assert_nil Song.find_by_name('ogg_sample')
-        assert_nil Song.find_by_name('wav_sample')
-        assert_nil Album.find_by_name('album3')
-        assert_nil Artist.find_by_name('artist2')
-      end
+      assert_nil Song.find_by_name('ogg_sample')
+      assert_nil Song.find_by_name('wav_sample')
+      assert_nil Album.find_by_name('album3')
+      assert_nil Artist.find_by_name('artist2')
     end
   end
 end

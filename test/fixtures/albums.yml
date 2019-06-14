@@ -1,3 +1,9 @@
-idiot:
-  name: 'The Idiot'
-  artist: 'iggy'
+album1:
+  name: 'album1'
+  artist: 'artist1'
+album2:
+  name: 'album2'
+  artist: 'artist1'
+album3:
+  name: 'album3'
+  artist: 'artist2'

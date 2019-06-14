@@ -12,35 +12,40 @@ class MediaFileTest < ActiveSupport::TestCase
       '/app/test/fixtures/files/artist1_album1.m4a'
     ]
 
-    Setting.stub :media_path, Rails.root.join('test', 'fixtures', 'files') do
-      assert_equal expect_file_paths, MediaFile.file_paths
+    Setting.media_path = Rails.root.join('test', 'fixtures', 'files')
+
+    MediaFile.file_paths.each do |file_path|
+      assert_includes expect_file_paths, file_path
     end
   end
 
   test 'should ignore not supported files under media_path' do
-    Setting.stub :media_path, Rails.root.join('test', 'fixtures', 'files') do
-      assert_not_includes MediaFile.file_paths, '/app/test/fixtures/files/not_supported_file.txt'
-    end
+    Setting.media_path = Rails.root.join('test', 'fixtures', 'files')
+
+    assert_not_includes MediaFile.file_paths, '/app/test/fixtures/files/not_supported_file.txt'
   end
 
   test 'should raise error when media_path is not exist' do
-    Setting.stub :media_path, '/not_exist' do
-      assert_raises BlackCandyError::InvalidFilePath  do
-        MediaFile.file_paths
-      end
+    Setting.media_path = '/not_exist'
+
+    assert_raises BlackCandyError::InvalidFilePath  do
+      MediaFile.file_paths
     end
   end
 
   test 'should raise error when media_path is unreadble' do
-    Setting.stub :media_path, 'test_files' do
-      FakeFS do
-        Dir.mkdir 'test_files'
-        File.chmod(000, 'test_files')
+    Dir.mkdir 'test_files'
+    File.chmod(100, 'test_files')
+    Setting.media_path = 'test_dir'
 
-        assert_raises BlackCandyError::InvalidFilePath do
-          MediaFile.file_paths
-        end
+    begin
+      assert_not File.readable? 'test_dir'
+      assert_raises BlackCandyError::InvalidFilePath do
+        MediaFile.file_paths
       end
+    ensure
+      File.chmod(770, 'test_files')
+      FileUtils.remove_entry('test_files')
     end
   end
 
