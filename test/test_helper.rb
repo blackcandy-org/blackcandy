@@ -59,4 +59,8 @@ class ActiveSupport::TestCase
     tmp_file.close
     tmp_file.unlink
   end
+
+  def flush_redis
+    Redis::Objects.redis.flushdb
+  end
 end

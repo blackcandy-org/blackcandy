@@ -6,7 +6,7 @@ class Playlist
   end
 
   def song_ids=(song_ids)
-    raise TypeError, 'Invalid song ids, expect Redis::Set instance' unless song_ids.is_a? Redis::List
+    raise TypeError, 'Invalid song ids, expect Redis::List instance' unless song_ids.is_a? Redis::List
     @song_ids = song_ids
   end
 
@@ -19,7 +19,8 @@ class Playlist
   end
 
   def push(*song_ids)
-    @song_ids.push(*song_ids.flatten)
+    ids = song_ids.flatten
+    @song_ids.push(*ids) unless ids.blank?
   end
 
   def delete(*song_ids)
