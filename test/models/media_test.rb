@@ -17,19 +17,19 @@ class MediaTest < ActiveSupport::TestCase
   end
 
   test 'should create associations between artists and albums' do
-    assert_equal Album.where(name: %w(album1 album2)), Artist.find_by_name('artist1').albums
-    assert_equal Album.where(name: 'album3'), Artist.find_by_name('artist2').albums
+    assert_equal Album.where(name: %w(album1 album2)).ids.sort, Artist.find_by_name('artist1').albums.ids.sort
+    assert_equal Album.where(name: 'album3').ids.sort, Artist.find_by_name('artist2').albums.ids.sort
   end
 
   test 'should create associations between albums and songs' do
-    assert_equal Song.where(name: %w(flac_sample m4a_sample)), Album.find_by_name('album1').songs
-    assert_equal Song.where(name: 'mp3_sample'), Album.find_by_name('album2').songs
-    assert_equal Song.where(name: %w(ogg_sample wav_sample)), Album.find_by_name('album3').songs
+    assert_equal Song.where(name: %w(flac_sample m4a_sample)).ids.sort, Album.find_by_name('album1').songs.ids.sort
+    assert_equal Song.where(name: 'mp3_sample').ids.sort, Album.find_by_name('album2').songs.ids.sort
+    assert_equal Song.where(name: %w(ogg_sample wav_sample)).ids.sort, Album.find_by_name('album3').songs.ids.sort
   end
 
   test 'should create associations between artists and songs' do
-    assert_equal Song.where(name: %w(flac_sample mp3_sample m4a_sample)), Artist.find_by_name('artist1').songs
-    assert_equal Song.where(name: %w(ogg_sample wav_sample)), Artist.find_by_name('artist2').songs
+    assert_equal Song.where(name: %w(flac_sample mp3_sample m4a_sample)).ids.sort, Artist.find_by_name('artist1').songs.ids.sort
+    assert_equal Song.where(name: %w(ogg_sample wav_sample)).ids.sort, Artist.find_by_name('artist2').songs.ids.sort
   end
 
   test 'should change associations when modify album info on file' do
@@ -39,8 +39,8 @@ class MediaTest < ActiveSupport::TestCase
 
       Media.sync
 
-      assert_equal Album.where(name: 'album1'), Artist.find_by_name('artist1').albums
-      assert_equal Song.where(name: %w(flac_sample m4a_sample mp3_sample)), Album.find_by_name('album1').songs
+      assert_equal Album.where(name: 'album1').ids.sort, Artist.find_by_name('artist1').albums.ids.sort
+      assert_equal Song.where(name: %w(flac_sample m4a_sample mp3_sample)).ids.sort, Album.find_by_name('album1').songs.ids.sort
     end
   end
 
@@ -51,8 +51,8 @@ class MediaTest < ActiveSupport::TestCase
 
       Media.sync
 
-      assert_equal Album.where(name: %w(album2 album3)), Artist.find_by_name('artist2').albums
-      assert_equal Song.where(name: %w(mp3_sample ogg_sample wav_sample)), Artist.find_by_name('artist2').songs
+      assert_equal Album.where(name: %w(album2 album3)).ids.sort, Artist.find_by_name('artist2').albums.ids.sort
+      assert_equal Song.where(name: %w(mp3_sample ogg_sample wav_sample)).ids.sort, Artist.find_by_name('artist2').songs.ids.sort
     end
   end
 

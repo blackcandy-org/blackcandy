@@ -1,0 +1,8 @@
+admin:
+  email: 'admin@blackcandy.com'
+  is_admin: true
+  password_digest: 'foobar'
+
+visitor:
+  email: 'visitor@blackcandy.com'
+  password_digest: 'foobar'
