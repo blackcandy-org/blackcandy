@@ -63,4 +63,12 @@ class ActiveSupport::TestCase
   def flush_redis
     Redis::Objects.redis.flushdb
   end
+
+  def login(user)
+    session[:user_id] = user.id
+  end
+
+  def logout(user)
+    session.delete(:user_id)
+  end
 end
