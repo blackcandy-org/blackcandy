@@ -65,10 +65,51 @@ class ActiveSupport::TestCase
   end
 
   def login(user)
-    session[:user_id] = user.id
+    post session_url, params: { email: user.email, password: 'foobar' }
   end
 
-  def logout(user)
-    session.delete(:user_id)
+  def logout
+    delete session_url
+  end
+
+  def assert_admin_access(request_method, request_url, **request_args)
+    login users(:visitor1)
+    send(request_method, request_url, **request_args)
+    assert_response :forbidden
+
+    teardown_fixtures
+
+    login users(:admin)
+    send(request_method, request_url, **request_args)
+    yield
+  end
+
+  def assert_login_access(request_method, request_url, **request_args)
+    send(request_method, request_url, **request_args)
+    assert_redirected_to new_session_url
+
+    teardown_fixtures
+
+    login users(:visitor1)
+    send(request_method, request_url, **request_args)
+    yield
+  end
+
+  def assert_self_or_admin_access(current_user, request_method, request_url, **request_args)
+    login users(:admin)
+    send(request_method, request_url, **request_args)
+    yield
+
+    teardown_fixtures
+
+    login current_user
+    send(request_method, request_url, **request_args)
+    yield
+
+    teardown_fixtures
+
+    login User.where.not(email: current_user.email, is_admin: true).first
+    send(request_method, request_url, **request_args)
+    assert_response :forbidden
   end
 end

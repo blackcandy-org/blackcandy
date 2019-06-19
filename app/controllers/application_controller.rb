@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.js { head :not_found }
       format.json { head :not_found }
-      format.html { redirect_to not_found_path }
+      format.html { redirect_to not_found_path, status: :not_found }
     end
   end
 
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.js { head :forbidden }
       format.json { head :forbidden }
-      format.html { redirect_to forbidden_path }
+      format.html { redirect_to forbidden_path, status: :forbidden }
     end
   end
 

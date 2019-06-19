@@ -1,8 +1,12 @@
 admin:
   email: 'admin@blackcandy.com'
   is_admin: true
-  password_digest: 'foobar'
+  password_digest: <%= BCrypt::Password.create('foobar') %>
 
-visitor:
-  email: 'visitor@blackcandy.com'
-  password_digest: 'foobar'
+visitor1:
+  email: 'visitor1@blackcandy.com'
+  password_digest: <%= BCrypt::Password.create('foobar') %>
+
+visitor2:
+  email: 'visitor2@blackcandy.com'
+  password_digest: <%= BCrypt::Password.create('foobar') %>

@@ -12,14 +12,14 @@ class PlaylistableTest < ActiveSupport::TestCase
   end
 
   test 'should have named playlist method when declared has_playlists method on class' do
-    assert_respond_to users(:visitor), :current_playlist
-    assert_respond_to users(:visitor), :favorite_playlist
+    assert_respond_to users(:visitor1), :current_playlist
+    assert_respond_to users(:visitor1), :favorite_playlist
   end
 
   test 'should return instance of Playlist when call playlist method' do
     assert song_collections(:song_collection1).playlist.instance_of? Playlist
-    assert users(:visitor).current_playlist.instance_of? Playlist
-    assert users(:visitor).favorite_playlist.instance_of? Playlist
+    assert users(:visitor1).current_playlist.instance_of? Playlist
+    assert users(:visitor1).favorite_playlist.instance_of? Playlist
   end
 
   test 'should have data connection between playlist method and redis list' do
@@ -30,7 +30,7 @@ class PlaylistableTest < ActiveSupport::TestCase
   end
 
   test 'should have data connection between named playlist method and redis list' do
-    user = users(:visitor)
+    user = users(:visitor1)
     current_playlist_redis_key = user.redis_field_key(:current_song_ids)
     favorite_playlist_redis_key = user.redis_field_key(:favorite_song_ids)
 
@@ -43,7 +43,7 @@ class PlaylistableTest < ActiveSupport::TestCase
 
   test 'should clean redis data after record removed' do
     song_collection = song_collections(:song_collection1)
-    user = users(:visitor)
+    user = users(:visitor1)
 
     playlist_redis_key = song_collection.redis_field_key(:song_ids)
     current_playlist_redis_key = user.redis_field_key(:current_song_ids)
