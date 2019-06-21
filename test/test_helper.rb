@@ -5,6 +5,10 @@ require 'rails/test_help'
 require 'webmock/minitest'
 require 'minitest/mock'
 require 'taglib'
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :transaction
+DatabaseCleaner.orm = :active_record
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
@@ -71,45 +75,44 @@ class ActiveSupport::TestCase
   def logout
     delete session_url
   end
+end
 
-  def assert_admin_access(request_method, request_url, **request_args)
+class ActionDispatch::IntegrationTest
+  include Turbolinks::Assertions
+
+  def assert_admin_access(method: :get, url:, **args)
     login users(:visitor1)
-    send(request_method, request_url, **request_args)
+    send(method, url, **args)
     assert_response :forbidden
 
-    teardown_fixtures
-
     login users(:admin)
-    send(request_method, request_url, **request_args)
-    yield
+    send(method, url, **args)
+    yield users(:admin)
   end
 
-  def assert_login_access(request_method, request_url, **request_args)
-    send(request_method, request_url, **request_args)
+  def assert_login_access(user: users(:visitor1), method: :get, url:, **args)
+    logout
+    send(method, url, **args)
     assert_redirected_to new_session_url
 
-    teardown_fixtures
-
-    login users(:visitor1)
-    send(request_method, request_url, **request_args)
-    yield
+    login user
+    send(method, url, **args)
+    yield user
   end
 
-  def assert_self_or_admin_access(current_user, request_method, request_url, **request_args)
-    login users(:admin)
-    send(request_method, request_url, **request_args)
-    yield
-
-    teardown_fixtures
-
-    login current_user
-    send(request_method, request_url, **request_args)
-    yield
-
-    teardown_fixtures
-
-    login User.where.not(email: current_user.email, is_admin: true).first
-    send(request_method, request_url, **request_args)
+  def assert_self_or_admin_access(method: :get, user:, url:, **args)
+    login User.where.not(email: user.email, is_admin: true).first
+    send(method, url, **args)
     assert_response :forbidden
+
+    DatabaseCleaner.cleaning do
+      login users(:admin)
+      send(method, url, **args)
+      yield
+    end
+
+    login user
+    send(method, url, **args)
+    yield
   end
 end

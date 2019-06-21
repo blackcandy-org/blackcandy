@@ -11,7 +11,7 @@ class Playlist
   end
 
   def song_ids
-    @song_ids.uniq
+    @song_ids.uniq.map(&:to_i)
   end
 
   def songs

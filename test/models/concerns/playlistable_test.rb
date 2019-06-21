@@ -8,7 +8,7 @@ class PlaylistableTest < ActiveSupport::TestCase
   end
 
   test 'should have playlist method when declared has_playlist method on class' do
-    assert_respond_to song_collections(:song_collection1), :playlist
+    assert_respond_to song_collections(:collection1), :playlist
   end
 
   test 'should have named playlist method when declared has_playlists method on class' do
@@ -17,15 +17,15 @@ class PlaylistableTest < ActiveSupport::TestCase
   end
 
   test 'should return instance of Playlist when call playlist method' do
-    assert song_collections(:song_collection1).playlist.instance_of? Playlist
+    assert song_collections(:collection1).playlist.instance_of? Playlist
     assert users(:visitor1).current_playlist.instance_of? Playlist
     assert users(:visitor1).favorite_playlist.instance_of? Playlist
   end
 
   test 'should have data connection between playlist method and redis list' do
-    playlist_redis_key = song_collections(:song_collection1).redis_field_key(:song_ids)
+    playlist_redis_key = song_collections(:collection1).redis_field_key(:song_ids)
 
-    song_collections(:song_collection1).playlist.push(1)
+    song_collections(:collection1).playlist.push(1)
     assert_equal ['1'], Redis::Objects.redis.lrange(playlist_redis_key, 0, -1)
   end
 
@@ -42,7 +42,7 @@ class PlaylistableTest < ActiveSupport::TestCase
   end
 
   test 'should clean redis data after record removed' do
-    song_collection = song_collections(:song_collection1)
+    song_collection = song_collections(:collection1)
     user = users(:visitor1)
 
     playlist_redis_key = song_collection.redis_field_key(:song_ids)

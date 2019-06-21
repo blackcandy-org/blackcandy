@@ -19,7 +19,7 @@ class PlaylistTest < ActiveSupport::TestCase
   test 'should remove duplicate value when get song_ids' do
     @redis_list.push(1, 1, 2, 2, 3)
 
-    assert_equal ['1', '2', '3'], @playlist.song_ids
+    assert_equal [1, 2, 3], @playlist.song_ids
   end
 
   test 'should get arbitrary ordered songs from database' do

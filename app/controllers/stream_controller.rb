@@ -24,7 +24,7 @@ class StreamController < ApplicationController
     def set_header
       if Rails.configuration.action_dispatch.x_sendfile_header == 'X-Accel-Redirect'
         response.set_header('X-Media-Path', Setting.media_path)
-        response.set_header('X-Accel-Redirect', "/private_media/#{@song.file_path.sub(Setting.media_path, '')}")
+        response.set_header('X-Accel-Redirect', File.join('/private_media', @song.file_path.sub(Setting.media_path, '')))
       end
     end
 
