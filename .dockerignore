@@ -5,6 +5,8 @@
 /storage/*
 /node_modules
 /public/packs/
+/test
+/images
 
 yarn-error.log
 base.Dockerfile
