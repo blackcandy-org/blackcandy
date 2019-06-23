@@ -3,6 +3,7 @@
 </p>
 
 # Black candy
+[![Build status](https://travis-ci.org/aidewoode/black_candy.svg?branch=master)](https://travis-ci.org/aidewoode/black_candy)
 
 Black candy is a self hosted music streaming server built with Rails and Stimulus. The goal of the project is to create a real personal music center.
 
