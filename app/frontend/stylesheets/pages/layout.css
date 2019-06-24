@@ -22,6 +22,7 @@
 }
 
 .layout__main__header {
+  position: relative;
   background: var(--layout-header-bg-color);
   z-index: 10;
   border-bottom: 1px solid var(--layout-header-border-color);

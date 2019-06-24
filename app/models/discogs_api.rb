@@ -23,12 +23,12 @@ class DiscogsAPI
     def album_image(album)
       raise TypeError, 'Expect Album instance' unless album.is_a? Album
 
-      options = { query: { type: 'master', release_title: album.name, artist: album.artist.name } }
+      options = { query: { type: 'master', release_title: album.name, artist: album.artist.name }, format: :plain }
       get_image(search(options))
     end
 
     def get_image(response)
-      return if response[:results].blank?
+      return if response.blank? || response[:results].blank?
       response[:results].first[:cover_image]
     end
   end

@@ -4,6 +4,8 @@ class AttachArtistImageFromDiscogsJob < ApplicationJob
   queue_as :default
 
   def perform(artist_id)
+    return if Setting.discogs_token.blank?
+
     artist = Artist.find_by(id: artist_id)
     image_url = DiscogsAPI.artist_image(artist)
 
