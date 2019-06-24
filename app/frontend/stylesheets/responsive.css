@@ -200,8 +200,7 @@
   }
 
   .layout__search-bar {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 15px 10px;
   }
 
   .layout__search-bar .input {
@@ -210,6 +209,7 @@
 
   .layout__nav-bar {
     max-width: 340px;
+    padding-top: 6px;
   }
 
   .display__medium-width,
@@ -234,21 +234,55 @@
   .songs__album {
     display: none;
   }
+
+  .playlist__nav {
+    padding: 15px 15px 0;
+  }
+
+  .playlist__content {
+    margin: 15px;
+  }
+
+  .list__item {
+    padding: 10px 0;
+  }
+
+  .image--small {
+    width: 50px;
+    height: 50px;
+  }
+
+  .player .heading {
+    display: flex;
+    align-items: center;
+  }
+
+  .player .heading,
+  .player__control {
+    padding: 12px 15px;
+  }
+
+  .player .heading__body__text {
+    display: none;
+  }
+
+  .player .heading__body__text.heading__body__text--main {
+    display: block;
+  }
+
+  .player__timer__item {
+    margin-right: 2px;
+  }
 }
 
 @media screen and (max-width: 360px) {
   .image {
-    width: 120px;
-    height: 120px;
-  }
-
-  .image--small {
-    width: 90px;
-    height: 90px;
+    width: 135px;
+    height: 135px;
   }
 
   .cards {
-    max-width: 280px;
+    max-width: 310px;
   }
 
   .cards__item {

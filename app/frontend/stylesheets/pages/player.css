@@ -90,7 +90,7 @@
 
 .player--mini .player__control {
   color: var(--player-color);
-  padding: 15px 0;
+  padding: 12px 0;
 }
 
 .player--mini .player__control__main {
@@ -99,6 +99,10 @@
 
 .player--mini .player__info .icon {
   margin-right: 10px;
+}
+
+.player--mini .player__info {
+  width: 100%;
 }
 
 .player__footer {

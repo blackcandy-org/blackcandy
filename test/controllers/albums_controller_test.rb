@@ -15,14 +15,16 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'should call album image attach job when show album unless album already had image' do
+  test 'should call album image attach job when show album unless album do not need attach' do
     album = albums(:album1)
     mock = MiniTest::Mock.new
     mock.expect(:call, true, [album.id])
 
     AttachAlbumImageFromDiscogsJob.stub(:perform_later, mock) do
-      assert_login_access(url: album_url(album)) do
-        mock.verify
+      album.stub(:need_attach_from_discogs?, true) do
+        assert_login_access(url: album_url(album)) do
+          mock.verify
+        end
       end
     end
   end
