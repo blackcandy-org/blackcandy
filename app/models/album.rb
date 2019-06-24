@@ -23,4 +23,8 @@ class Album < ApplicationRecord
   def is_unknown?
     name.blank?
   end
+
+  def need_attach_from_discogs?
+    Setting.discogs_token.present? && !has_image? && !is_unknown?
+  end
 end
