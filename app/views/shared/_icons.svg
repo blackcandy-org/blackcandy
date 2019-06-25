@@ -1,5 +1,5 @@
 <!-- All icons from material-design-icons -->
-<svg xmlns="http://www.w3.org/2000/svg">
+<svg width="0" height="0" display="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <symbol id="play" viewBox="0 0 24 24">
       <path d="M8 5v14l11-7z"/>

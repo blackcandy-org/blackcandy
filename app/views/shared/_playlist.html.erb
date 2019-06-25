@@ -2,8 +2,10 @@
   <div id='js-playlist-nav' class='playlist__nav'>
     <%= render 'playlist/nav' %>
   </div>
-  <div class='playlist__container position-relative'>
-    <div class='playlist__content' id='js-playlist-content'></div>
+  <div class='display__full-height noscroll position-relative'>
+    <div class='playlist__container'>
+      <div class='playlist__content' id='js-playlist-content'></div>
+    </div>
     <div id='js-playlist-loader' class='overlay hidden' data-controller='loader'>
       <%= loader_tag %>
     </div>

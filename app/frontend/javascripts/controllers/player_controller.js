@@ -96,6 +96,7 @@ export default class extends Controller {
 
   collapse() {
     document.querySelector('#js-sidebar').classList.remove('show');
+    document.body.classList.remove('noscroll');
   }
 
   get currentIndex() {

@@ -33,6 +33,7 @@ export default class extends Controller {
 
   expand() {
     document.querySelector('#js-sidebar').classList.add('show');
+    document.body.classList.add('noscroll');
   }
 
   _setPlayingStatus() {

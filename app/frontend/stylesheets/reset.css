@@ -1,7 +1,6 @@
 html {
   box-sizing: border-box;
   font-size: var(--font-size-md);
-  overflow-y: hidden;
 }
 
 *,
@@ -14,8 +13,6 @@ body {
   font-family: var(--sans-serif-fonts);
   background-color: var(--body-bg-color);
   color: var(--body-color);
-  overflow-y: hidden;
-  height: 100vh;
 }
 
 a {

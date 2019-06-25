@@ -6,10 +6,8 @@
       <%= render 'shared/nav_bar' %>
     </div>
   </header>
-  <main class='layout__main__container position-relative'>
-    <div id='js-layout-main' class='layout__main__container__content'>
-      <%= yield %>
-    </div>
+  <main id='js-layout-main' class='layout__main__content position-relative'>
+    <%= yield %>
   </main>
   <footer class='layout__main__footer hidden'>
     <%= render 'shared/mini_player' %>

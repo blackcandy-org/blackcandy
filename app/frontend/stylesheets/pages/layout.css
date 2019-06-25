@@ -1,17 +1,23 @@
 .layout {
-  height: 100vh;
+  display: flex;
 }
 
 .layout__main {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
 }
 
 .layout__sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
   background: var(--layout-sidebar-bg-color);
   display: flex;
   flex-direction: column;
-  transition: all 0.2s ease-out;
+  transition: 0.2s;
 }
 
 .layout__sidebar.show {
@@ -22,18 +28,15 @@
 }
 
 .layout__main__header {
-  position: relative;
+  position: sticky;
+  top: 0;
   background: var(--layout-header-bg-color);
   z-index: 10;
   border-bottom: 1px solid var(--layout-header-border-color);
 }
 
-.layout__main__container {
+.layout__main__content {
   height: 100%;
-  overflow-y: auto;
-}
-
-.layout__main__container__content {
   margin: 25px 60px 35px;
 }
 

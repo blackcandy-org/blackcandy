@@ -20,7 +20,7 @@ export default class extends Controller {
 
   createScene() {
     this.scrollController = new ScrollMagic.Controller({
-      container: this.data.get('container')
+      container: this.data.get('container') || window
     });
 
     return new ScrollMagic.Scene({

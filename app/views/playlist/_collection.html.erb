@@ -31,11 +31,7 @@
       </div>
     </div>
   </div>
-  <div class='position-relative display__full-height'>
-    <% if @playlist.blank? %>
-      <%= empty_alert_tag %>
-    <% else %>
-      <%= render partial: 'playlist/list', locals: { songs: @songs, pagy: @pagy, next_url: pagy_next_url(@pagy) } %>
-    <% end %>
-  </div>
+  <% if @playlist.present? %>
+    <%= render partial: 'playlist/list', locals: { songs: @songs, pagy: @pagy, next_url: pagy_next_url(@pagy) } %>
+  <% end %>
 </div>

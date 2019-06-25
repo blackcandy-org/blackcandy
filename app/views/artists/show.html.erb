@@ -14,7 +14,7 @@
   </div>
 </div>
 <div class='line'></div>
-<div data-controller='infinite-scroll' data-infinite-scroll-container='.layout__main' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
+<div data-controller='infinite-scroll' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
   <div class='cards' id='js-albums-content'>
     <%= render partial: 'albums/albums', locals: { albums: @albums } %>
   </div>
