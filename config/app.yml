@@ -1,0 +1,12 @@
+# config/app.yml for rails-settings-cached
+defaults: &defaults
+  media_path: "<%= ENV['MEDIA_PATH'] %>"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

@@ -1,5 +1,6 @@
 DEV_APP_COMMAND = docker-compose -f docker-compose.development.yml run --rm app
 TEST_APP_COMMAND = docker-compose -f docker-compose.test.yml run --rm test_app
+PRODUCTION_APP_COMMAND = docker-compose run --rm app
 DOCKER_LOGIN_COMMAND = docker login -u $(DOCKER_USER) -p $(DOCKER_PASS)
 
 dev_run:
@@ -29,6 +30,13 @@ test_setup:
 	@$(TEST_APP_COMMAND) bundle install --without development
 	@$(TEST_APP_COMMAND) yarn
 	@$(TEST_APP_COMMAND) rails db:setup
+
+production_setup:
+	@$(PRODUCTION_APP_COMMAND) rails db:setup
+	@$(PRODUCTION_APP_COMMAND) rails db:seed
+
+production_run:
+	@docker-compose up -d
 
 build_base:
 	@docker build - < base.Dockerfile -t blackcandy/base

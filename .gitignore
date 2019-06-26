@@ -24,17 +24,11 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-
-/config/app.yml
-/config/database.yml
 /public/packs
 /public/packs-test
 /node_modules
 
 .DS_Store
 *.swp
-/public/packs
-/public/packs-test
-/node_modules
 yarn-debug.log*
 .yarn-integrity
