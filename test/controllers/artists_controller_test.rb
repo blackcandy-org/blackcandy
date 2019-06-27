@@ -16,15 +16,17 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should call artist image attach job when show artist unless artist do not need attach' do
+    Setting.discogs_token = 'fake_token'
     artist = artists(:artist1)
     mock = MiniTest::Mock.new
     mock.expect(:call, true, [artist.id])
 
+    assert_not artist.has_image?
+    assert_not artist.is_unknown?
+
     AttachArtistImageFromDiscogsJob.stub(:perform_later, mock) do
-      artist.stub(:need_attach_from_discogs?, true) do
-        assert_login_access(url: artist_url(artist)) do
-          mock.verify
-        end
+      assert_login_access(url: artist_url(artist)) do
+        mock.verify
       end
     end
   end

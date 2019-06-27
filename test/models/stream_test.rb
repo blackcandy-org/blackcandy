@@ -3,6 +3,14 @@
 require 'test_helper'
 
 class StreamTest < ActiveSupport::TestCase
+  test 'should check song if need transcode' do
+    assert Stream.new(songs(:flac_sample)).need_transcode?
+    assert Stream.new(songs(:wav_sample)).need_transcode?
+    assert_not Stream.new(songs(:mp3_sample)).need_transcode?
+    assert_not Stream.new(songs(:m4a_sample)).need_transcode?
+    assert_not Stream.new(songs(:ogg_sample)).need_transcode?
+  end
+
   test 'should transcode flac format' do
     create_tmp_file(format: 'mp3') do |tmp_file_path|
       stream = Stream.new(songs(:flac_sample))

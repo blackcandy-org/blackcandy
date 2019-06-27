@@ -16,15 +16,17 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should call album image attach job when show album unless album do not need attach' do
+    Setting.discogs_token = 'fake_token'
     album = albums(:album1)
     mock = MiniTest::Mock.new
     mock.expect(:call, true, [album.id])
 
+    assert_not album.has_image?
+    assert_not album.is_unknown?
+
     AttachAlbumImageFromDiscogsJob.stub(:perform_later, mock) do
-      album.stub(:need_attach_from_discogs?, true) do
-        assert_login_access(url: album_url(album)) do
-          mock.verify
-        end
+      assert_login_access(url: album_url(album)) do
+        mock.verify
       end
     end
   end
