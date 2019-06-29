@@ -6,6 +6,7 @@ const player = {
   currentIndex: 0,
   currentSong: {},
   isShuffle: false,
+  isPlaying: false,
 
   play(currentIndex) {
     if (this.playlist.length == 0) { return; }
@@ -13,6 +14,7 @@ const player = {
     const song = this.playlist[currentIndex];
     this.currentIndex = currentIndex;
     this.currentSong = song;
+    this.isPlaying = true;
 
     if (!song.howl) {
       ajax({
@@ -40,10 +42,12 @@ const player = {
   },
 
   pause() {
+    this.isPlaying = false;
     this.currentSong.howl && this.currentSong.howl.pause();
   },
 
   stop() {
+    this.isPlaying = false;
     this.currentSong.howl && this.currentSong.howl.stop();
   },
 
@@ -67,13 +71,8 @@ const player = {
     this.play(index);
   },
 
-  isPlaying() {
-    return this.currentSong.howl && this.currentSong.howl.playing();
-  },
-
   seek(percent) {
-    const sound = this.currentSong.howl;
-    sound.seek(sound.duration() * percent);
+    this.currentSong.howl.seek(this.currentSong.length * percent);
   },
 
   updateShuffleStatus(isShuffle) {

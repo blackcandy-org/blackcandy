@@ -151,12 +151,13 @@ export default class extends Controller {
   }
 
   _setProgress() {
-    const seek = this.currentSong.howl ? this.currentSong.howl.seek() : 0;
+    let currentTime = this.currentSong.howl ? this.currentSong.howl.seek() : 0;
+    currentTime = (typeof currentTime == 'number') ? Math.round(currentTime) : 0;
 
-    this.songTimerTarget.textContent = formatDuration(Math.round(seek));
-    this.progressTarget.value = (seek / this.currentSong.length) * 100 || 0;
+    this.songTimerTarget.textContent = formatDuration(currentTime);
+    this.progressTarget.value = (currentTime / this.currentSong.length) * 100 || 0;
 
-    if (this.player.isPlaying()) {
+    if (this.player.isPlaying) {
       window.requestAnimationFrame(this._setProgress.bind(this));
     }
   }
