@@ -20,6 +20,8 @@ import 'regenerator-runtime/runtime';
 import 'normalize.css';
 import '../stylesheets/application.css';
 
+require.context('../images', true);
+
 RailsUjs.start();
 Turbolinks.start();
 
