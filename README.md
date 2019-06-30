@@ -10,6 +10,17 @@ Black candy is a self hosted music streaming server built with Rails and Stimulu
 ## Screenshot
 ![screenshot](images/screenshot.png)
 
+## Demo
+
+Try the [demo](http://178.62.101.174/) (email: foo@bar.com, password: foobar)
+
+List for all music on the demo:
+
+- Kurt Vile - Live at WFMU on Talk's Cheap 8/11/2008 (licensed under a [Attribution-NonCommercial-ShareAlike 3.0 International License](https://creativecommons.org/licenses/by-nc-sa/3.0/))
+- Steve Gunn - Live at WFMU's Monty Hall: Oct 18, 2015 (licensed under a [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License](https://creativecommons.org/licenses/by-nc-nd/4.0/)) 
+
+If like their music, you can buy their albums to support them.
+
 ## Getting started
 
 Black candy use docker for simplify deployment, development and test process. So you should install docker and docker-compose first.
@@ -20,22 +31,41 @@ Black candy support mp3, m4a, ogg, flac and wav formats now.
 
 Black candy has built [docker images](https://hub.docker.com/r/blackcandy/blackcandy).
 
-First, you need copy `docker-compose.yml` from this project to your server. 
+First, you need clone this project to your server. 
 
-Second, set `BLACK_CANDY_MEDIA_PATH` environment variable on your sever and point to the readable directory on your server to store your music files.
+```
+$ git clone https://github.com/aidewoode/black_candy.git
+```
+
+Second, set `BLACK_CANDY_MEDIA_PATH` and `BLACK_CANDY_SECRET_KEY_BASE` environment variable on your sever and point `BLACK_CANDY_MEDIA_PATH` to the readable directory on your server to store your music files.
 
 ```shell
 # Like this
-$ export BLACK_CANDY_MEDIA_PATH="/data/example_media_path"
+$ export BLACK_CANDY_MEDIA_PATH="/example_media_path"
+$ export BLACK_CANDY_SECRET_KEY_BASE="your_secret_key"
+```
+
+Then, you should setup database
+
+```shell
+$ make production_setup 
 ```
 
 Finally run:
 
 ```shell
 $ docker-compose up -d
+
+# or
+
+$ make production_run
 ```
 
-That's all. You can also change `docker-compose.yml` for your own needs.
+That's all. 
+
+You can use initial admin user to login (email: admin@admin.com, password: foobar).
+
+You can also change `docker-compose.yml` for your own needs.
 
 ## Development
 
