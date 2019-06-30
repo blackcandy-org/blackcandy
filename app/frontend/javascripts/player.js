@@ -11,6 +11,8 @@ const player = {
   play(currentIndex) {
     if (this.playlist.length == 0) { return; }
 
+    App.dispatchEvent(document, 'set.beforePlayingStatus');
+
     const song = this.playlist[currentIndex];
     this.currentIndex = currentIndex;
     this.currentSong = song;

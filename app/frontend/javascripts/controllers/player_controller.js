@@ -16,7 +16,8 @@ export default class extends Controller {
     'playButton',
     'pauseButton',
     'favoriteButton',
-    'modeButton'
+    'modeButton',
+    'loader'
   ];
 
   initialize() {
@@ -24,6 +25,7 @@ export default class extends Controller {
     this._initPlaylist();
     this._initMode();
 
+    this._setBeforePlayingStatus = this._setBeforePlayingStatus.bind(this);
     this._setPlayingStatus = this._setPlayingStatus.bind(this);
     this._setPauseStatus = this._setPauseStatus.bind(this);
     this._setStopStatus = this._setStopStatus.bind(this);
@@ -31,6 +33,7 @@ export default class extends Controller {
   }
 
   connect() {
+    document.addEventListener('set.beforePlayingStatus', this._setBeforePlayingStatus);
     document.addEventListener('set.playingStatus', this._setPlayingStatus);
     document.addEventListener('set.pauseStatus', this._setPauseStatus);
     document.addEventListener('set.stopStatus', this._setStopStatus);
@@ -38,6 +41,7 @@ export default class extends Controller {
   }
 
   disconnect() {
+    document.removeEventListener('set.beforePlayingStatus', this._setBeforePlayingStatus);
     document.removeEventListener('set.playingStatus', this._setPlayingStatus);
     document.removeEventListener('set.pauseStatus', this._setPauseStatus);
     document.removeEventListener('set.stopStatus', this._setStopStatus);
@@ -111,6 +115,11 @@ export default class extends Controller {
     return this.modes[this.currentModeIndex];
   }
 
+  _setBeforePlayingStatus() {
+    this.headerTarget.classList.add('show');
+    this.loaderTarget.classList.remove('hidden');
+  }
+
   _setPlayingStatus() {
     const { currentSong } = this;
 
@@ -121,9 +130,9 @@ export default class extends Controller {
     this.songDurationTarget.textContent = formatDuration(currentSong.length);
 
     this.favoriteButtonTarget.classList.toggle('player__favorite', currentSong.is_favorited);
-    this.headerTarget.classList.add('show');
     this.pauseButtonTarget.classList.remove('hidden');
     this.playButtonTarget.classList.add('hidden');
+    this.loaderTarget.classList.add('hidden');
 
     window.requestAnimationFrame(this._setProgress.bind(this));
 

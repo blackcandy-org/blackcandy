@@ -109,3 +109,8 @@
   padding: 7px 0;
   background: var(--player-footer-bg-color);
 }
+
+.player .overlay {
+  background: var(--player-bg-color);
+  opacity: 0.9;
+}
