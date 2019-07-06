@@ -14,6 +14,8 @@ Black candy is a self hosted music streaming server built with Rails and Stimulu
 
 Try the [demo](http://178.62.101.174/) (email: foo@bar.com, password: foobar)
 
+Note: Please do not change the password on demo, avoid others can not visit it.
+
 List for all music on the demo:
 
 - Kurt Vile - Live at WFMU on Talk's Cheap 8/11/2008 (licensed under a [Attribution-NonCommercial-ShareAlike 3.0 International License](https://creativecommons.org/licenses/by-nc-sa/3.0/))
