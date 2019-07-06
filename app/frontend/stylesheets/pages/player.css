@@ -59,13 +59,19 @@
 
 .player__header {
   transition: max-height 0.2s ease-out;
-  visibility: hidden;
   max-height: 0;
 }
 
-.player__header.show {
+.player__header__content {
+  visibility: hidden;
+}
+
+.player__header.expand {
   max-height: 200px;
   overflow: auto;
+}
+
+.player__header__content.show {
   visibility: visible;
 }
 

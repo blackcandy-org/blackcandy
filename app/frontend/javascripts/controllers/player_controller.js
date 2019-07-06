@@ -6,6 +6,7 @@ import { formatDuration, toggleShow } from '../helper';
 export default class extends Controller {
   static targets = [
     'header',
+    'headerContent',
     'image',
     'songName',
     'artistName',
@@ -116,7 +117,7 @@ export default class extends Controller {
   }
 
   _setBeforePlayingStatus() {
-    this.headerTarget.classList.add('show');
+    this.headerTarget.classList.add('expand');
     this.loaderTarget.classList.remove('hidden');
   }
 
@@ -129,6 +130,7 @@ export default class extends Controller {
     this.albumNameTarget.textContent = currentSong.album_name;
     this.songDurationTarget.textContent = formatDuration(currentSong.length);
 
+    this.headerContentTarget.classList.add('show');
     this.favoriteButtonTarget.classList.toggle('player__favorite', currentSong.is_favorited);
     this.pauseButtonTarget.classList.remove('hidden');
     this.playButtonTarget.classList.add('hidden');
