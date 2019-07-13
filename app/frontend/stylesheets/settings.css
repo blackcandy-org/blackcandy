@@ -1,25 +1,4 @@
 :root {
-  /* Colors */
-  --purple-dark: #361e40;
-  --purple: #77428d;
-  --purple-light: #a15abf;
-
-  --black-dark: #000;
-  --black: #121212;
-  --black-light: #212121;
-  --black-lighter: #3b3b3b;
-
-  --grey: #8c8c8c;
-  --grey-light: #bfbfbf;
-  --grey-lighter: #ededed;
-
-  --white: #fffffb;
-  --red: #a61637;
-  --green: #23a650;
-
-  --box-shadow-color: var(--black-dark);
-  --link-active-color: var(--purple-light);
-
   /* Fonts */
   --font-size-sm: 12px;
   --font-size-md: 14px;
@@ -34,80 +13,29 @@
   --border-radius-lg: 8px;
   --border-radius-round: 50%;
 
-  /* Body */
-  --body-bg-color: var(--black-light);
-  --body-color: var(--white);
-
-  /* Layout */
-  --layout-sidebar-bg-color: var(--black);
-  --layout-header-bg-color: var(--black-light);
-  --layout-header-border-color: var(--black-dark);
-
-  /* Progress bar */
-  --progress-bar-bg-color: var(--purple);
-
   /* Button */
   --btn-border-radius: var(--border-radius-md);
-  --btn-color: var(--white);
-  --btn-primary-bg-color: var(--purple);
 
   /* Form */
   --form-input-border-radius: var(--border-radius-md);
 
   /* Noty flash message */
   --noty-bar-border-radius: var(--border-radius-md);
-  --noty-success-bg-color: var(--green);
-  --noty-error-bg-color: var(--red);
-
-  /* Tab */
-  --tab-color: var(--white);
-  --tab-active-color: var(--purple-light);
-
-  /* List */
-  --list-color: var(--grey);
-  --list-main-color: var(--grey-lighter);
-  --list-border-color: var(--black-light);
-  --list-active-color: var(--purple-light);
-  --list-border-dark-color: var(--black);
 
   /* Input */
-  --input-bg-color: var(--black-lighter);
   --input-border-radius: var(--border-radius-md);
-  --input-color: var(--white);
-  --input-icon-color: var(--black);
-
-  /* Card */
-  --card-title-color: var(--grey-lighter);
-  --card-text-color: var(--grey);
-
-  /* Loader */
-  --loader-bg-color: var(--purple);
 
   /* Dropdown */
-  --dropdown-bg-color: var(--black-lighter);
-  --dropdown-active-color: var(--grey);
-  --dropdown-color: var(--white);
   --dropdown-border-radius: var(--border-radius-md);
 
   /* Dialog */
-  --dialog-bg-color: var(--black);
-  --dialog-header-bg-color: var(--grey);
-  --dialog-header-color: var(--black);
   --dialog-border-radius: var(--border-radius-md);
   --dialog-title-font-size: var(--font-size-lg);
-
-  /* Overlay */
-  --overlay-bg-color: var(--black-light);
 
   /* Image */
   --image-border-radius: var(--border-radius-md);
 
-  /* Line */
-  --line-color: var(--black);
-
   /* Heading */
-  --heading-text-color: var(--grey-light);
-  --heading-text-main-color: var(--white);
   --heading-text-main-font-size: var(--font-size-lg);
 
   /* Avatar */
@@ -115,23 +43,10 @@
 
   /* Box */
   --box-border-radius: var(--border-radius-lg);
-  --box-bg-color: var(--black-light);
 
   /* Notice */
   --notice-text-main-font-size: var(--font-size-lg);
 
   /* Playlist page */
-  --playlist-bg-color: var(--black);
-  --playlist-heading-bg-color: var(--black-light);
   --playlist-heading-border-radius: var(--border-radius-md);
-
-  /* Player page */
-  --player-progress-bg-color: var(--black-light);
-  --player-progress-hover-bg-color: var(--black-lighter);
-  --player-progress-color: var(--purple);
-  --player-favorite-color: var(--red);
-  --player-color: var(--grey);
-  --player-bg-color: var(--black);
-  --player-footer-bg-color: var(--black-light);
-  --player-timer-color: var(--grey-lighter);
 }

@@ -59,3 +59,11 @@
 .layout__search-bar .input {
   width: 350px;
 }
+
+.layout__sidebar .input {
+  background: var(--layout-sidebar-input-bg-color);
+}
+
+.layout__sidebar .input input {
+  background: var(--layout-sidebar-input-bg-color);
+}

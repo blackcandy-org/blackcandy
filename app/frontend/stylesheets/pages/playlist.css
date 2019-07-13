@@ -6,7 +6,7 @@
 
 .playlist__nav {
   padding: 20px 20px 0;
-  border-bottom: 1px solid var(--black-dark);
+  border-bottom: 1px solid var(--playlist-nav-border-color);
   z-index: 10;
   background: var(--playlist-bg-color);
 }

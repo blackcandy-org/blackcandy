@@ -1,12 +1,16 @@
 <%= form_with url: session_path do |form| %>
   <div class='form__field'>
     <%= form.label :email %>
-    <%= form.email_field :email, value: params[:email], autofocus: true %>
+    <div class='input'>
+      <%= form.email_field :email, value: params[:email], autofocus: true %>
+    </div>
   </div>
 
   <div class='form__field'>
     <%= form.label :password %>
-    <%= form.password_field :password %>
+    <div class='input'>
+      <%= form.password_field :password %>
+    </div>
   </div>
 
   <div class='form__field form__field--submit'>
