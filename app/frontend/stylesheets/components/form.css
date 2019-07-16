@@ -23,7 +23,11 @@
 
 .form__field label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+.form__field > label {
+  font-weight: bold;
 }
 
 .form__field input {
@@ -31,4 +35,15 @@
   border: none;
   border-radius: var(--form-input-border-radius);
   padding: 6px 10px;
+}
+
+.form__radio {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.form__radio label {
+  margin-bottom: 0;
+  margin-left: 5px;
 }

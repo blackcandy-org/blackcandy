@@ -15,14 +15,14 @@ export default class extends Controller {
 
   _beforeSend({ target }) {
     if (target.dataset.showLoader) {
-      App.dispatchEvent(this.data.get('loader'), 'show.loader');
+      App.dispatchEvent(this.data.get('loader'), 'loader:show');
       target.addEventListener('ajax:success', this._success.bind(this), { once: true });
     }
   }
 
   _success({ target }) {
     if (target.dataset.showLoader) {
-      App.dispatchEvent(this.data.get('loader'), 'hide.loader');
+      App.dispatchEvent(this.data.get('loader'), 'loader:hide');
     }
   }
 }

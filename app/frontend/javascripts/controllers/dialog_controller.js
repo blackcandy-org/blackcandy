@@ -7,13 +7,13 @@ export default class extends Controller {
   }
 
   connect() {
-    this.element.addEventListener('hide.dialog', this.hide);
-    this.element.addEventListener('show.dialog', this.show);
+    this.element.addEventListener('dialog:hide', this.hide);
+    this.element.addEventListener('dialog:show', this.show);
   }
 
   disconnect() {
-    this.element.removeEventListener('hide.dialog', this.hide);
-    this.element.removeEventListener('show.dialog', this.show);
+    this.element.removeEventListener('dialog:hide', this.hide);
+    this.element.removeEventListener('dialog:show', this.show);
   }
 
   show() {

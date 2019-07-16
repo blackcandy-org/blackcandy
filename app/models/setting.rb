@@ -1,22 +1,17 @@
 # frozen_string_literal: true
 
 class Setting < RailsSettings::Base
-  AVAILABLE_SETTINGS = %w(media_path discogs_token)
+  include GlobalSetting
 
-  source Rails.root.join('config/app.yml')
+  field :media_path, default: ENV['MEDIA_PATH']
+  field :discogs_token
 
-  def self.media_path=(value)
-    self[:media_path] = value.to_s
-  end
-
-  def self.discogs_token=(value)
-    self[:discogs_token] = value.to_s
-  end
+  fields_force_to_string :media_path, :discogs_token
 
   def self.update(values)
     values.each do |key, value|
-      next unless key.in?(AVAILABLE_SETTINGS)
-      self[key.to_sym] = value if value != self[key.to_sym]
+      next unless key.to_sym.in?(AVAILABLE_SETTINGS)
+      send("#{key}=", value) if value != send(key)
     end
   end
 end

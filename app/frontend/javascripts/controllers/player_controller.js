@@ -34,19 +34,19 @@ export default class extends Controller {
   }
 
   connect() {
-    document.addEventListener('set.beforePlayingStatus', this._setBeforePlayingStatus);
-    document.addEventListener('set.playingStatus', this._setPlayingStatus);
-    document.addEventListener('set.pauseStatus', this._setPauseStatus);
-    document.addEventListener('set.stopStatus', this._setStopStatus);
-    document.addEventListener('set.endStatus', this._setEndStatus);
+    document.addEventListener('player:beforePlaying', this._setBeforePlayingStatus);
+    document.addEventListener('player:playing', this._setPlayingStatus);
+    document.addEventListener('player:pause', this._setPauseStatus);
+    document.addEventListener('player:stop', this._setStopStatus);
+    document.addEventListener('player:end', this._setEndStatus);
   }
 
   disconnect() {
-    document.removeEventListener('set.beforePlayingStatus', this._setBeforePlayingStatus);
-    document.removeEventListener('set.playingStatus', this._setPlayingStatus);
-    document.removeEventListener('set.pauseStatus', this._setPauseStatus);
-    document.removeEventListener('set.stopStatus', this._setStopStatus);
-    document.removeEventListener('set.endStatus', this._setEndStatus);
+    document.removeEventListener('player:beforePlaying', this._setBeforePlayingStatus);
+    document.removeEventListener('player:playing', this._setPlayingStatus);
+    document.removeEventListener('player:pause', this._setPauseStatus);
+    document.removeEventListener('player:stop', this._setStopStatus);
+    document.removeEventListener('player:end', this._setEndStatus);
   }
 
   play() {
@@ -139,7 +139,7 @@ export default class extends Controller {
     window.requestAnimationFrame(this._setProgress.bind(this));
 
     // let playlist can show current palying song
-    App.dispatchEvent(document, 'show.playingitem');
+    App.dispatchEvent(document, 'playlist:showPlaying');
   }
 
   _setPauseStatus() {

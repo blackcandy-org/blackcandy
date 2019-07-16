@@ -1,5 +1,27 @@
 <div class='heading heading--expand'>
   <div class='heading__body'>
+    <div class='heading__body__text heading__body__text--main'><%= t('text.personal') %></div>
+  </div>
+</div>
+<%= form_with model: [Current.user, Setting.new], method: :put, class: 'form' do |form| %>
+  <div class='form__field'>
+    <%= form.label :theme %>
+    <% User::AVAILABLE_THEME_OPTIONS.each do |option| %>
+      <div class='form__radio'>
+        <%= form.radio_button(:theme, option, checked: Current.user.theme == option) %>
+        <%= form.label("theme_#{option}", option) %>
+      </div>
+    <% end %>
+  </div>
+  <div class='form__field form__field--submit'>
+    <%= form.submit t('label.save'), class: 'button button--primary' %>
+  </div>
+<% end %>
+
+<div class='line'></div>
+
+<div class='heading heading--expand'>
+  <div class='heading__body'>
     <div class='heading__body__text heading__body__text--main'><%= t('text.media_path') %></div>
   </div>
 </div>

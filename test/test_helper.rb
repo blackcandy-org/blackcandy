@@ -115,4 +115,14 @@ class ActionDispatch::IntegrationTest
     send(method, url, **args)
     yield
   end
+
+  def assert_self_access(user:, method: :get, url:, **args)
+    login User.where.not(email: user.email).first
+    send(method, url, **args)
+    assert_response :forbidden
+
+    login user
+    send(method, url, **args)
+    yield user
+  end
 end

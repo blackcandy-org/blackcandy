@@ -11,7 +11,7 @@ const player = {
   play(currentIndex) {
     if (this.playlist.length == 0) { return; }
 
-    App.dispatchEvent(document, 'set.beforePlayingStatus');
+    App.dispatchEvent(document, 'player:beforePlaying');
 
     const song = this.playlist[currentIndex];
     this.currentIndex = currentIndex;
@@ -28,10 +28,10 @@ const player = {
             src: [response.url],
             format: [response.format],
             html5: true,
-            onplay: () => { App.dispatchEvent(document, 'set.playingStatus'); },
-            onpause: () => { App.dispatchEvent(document, 'set.pauseStatus'); },
-            onend: () => { App.dispatchEvent(document, 'set.endStatus'); },
-            onstop: () => { App.dispatchEvent(document, 'set.stopStatus'); }
+            onplay: () => { App.dispatchEvent(document, 'player:playing'); },
+            onpause: () => { App.dispatchEvent(document, 'player:pause'); },
+            onend: () => { App.dispatchEvent(document, 'player:end'); },
+            onstop: () => { App.dispatchEvent(document, 'player:stop'); }
           });
 
           Object.assign(song, response);

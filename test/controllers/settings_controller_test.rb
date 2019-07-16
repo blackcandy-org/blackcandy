@@ -9,7 +9,7 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'should update setting' do
+  test 'should update global setting' do
     Setting.discogs_token = 'token'
 
     assert_admin_access(method: :patch, url: setting_url, params: { setting: { discogs_token: 'updated_token' } }, xhr: true) do
@@ -27,6 +27,17 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
         assert_equal 'updated_path', Setting.media_path
         mock.verify
       end
+    end
+  end
+
+  test 'should update user settings' do
+    current_user = users(:visitor1)
+    setting_params = { setting: { theme: 'light' } }
+
+    assert_equal 'dark', current_user.theme
+
+    assert_self_access(user: current_user, method: :patch, url: user_settings_url(current_user), params: setting_params, xhr: true) do
+      assert_equal 'light', current_user.reload.theme
     end
   end
 end

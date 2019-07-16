@@ -1,2 +1,7 @@
 App.renderContent('#js-setting-form', '<%= j(render 'form') %>');
 <%= render_flash %>
+
+if ('<%= Current.user.theme %>' != document.documentElement.dataset.themeName) {
+  document.documentElement.dataset.themeName = '<%= Current.user.theme %>'
+  App.dispatchEvent('html', 'theme:update');
+}

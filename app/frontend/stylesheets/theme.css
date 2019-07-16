@@ -1,5 +1,5 @@
 /* Light theme */
-:root {
+html {
   /* Colors */
   --purple-dark: #361e40;
   --purple: #77428d;
@@ -107,110 +107,108 @@
 }
 
 /* Dark theme */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Colors */
-    --purple-dark: #361e40;
-    --purple: #77428d;
-    --purple-light: #a15abf;
+html[data-theme='dark'] {
+  /* Colors */
+  --purple-dark: #361e40;
+  --purple: #77428d;
+  --purple-light: #a15abf;
 
-    --black-dark: #000;
-    --black: #121212;
-    --black-light: #212121;
-    --black-lighter: #3b3b3b;
+  --black-dark: #000;
+  --black: #121212;
+  --black-light: #212121;
+  --black-lighter: #3b3b3b;
 
-    --grey: #8c8c8c;
-    --grey-light: #bfbfbf;
-    --grey-lighter: #ededed;
+  --grey: #8c8c8c;
+  --grey-light: #bfbfbf;
+  --grey-lighter: #ededed;
 
-    --white: #fffffb;
-    --red: #a61637;
-    --green: #23a650;
+  --white: #fffffb;
+  --red: #a61637;
+  --green: #23a650;
 
-    --link-active-color: var(--purple-light);
-    --gradient-bg-color: linear-gradient(rgb(1, 0, 0), rgba(0, 0, 0, 0.75)), linear-gradient(var(--purple-light), var(--purple-light));
+  --link-active-color: var(--purple-light);
+  --gradient-bg-color: linear-gradient(rgb(1, 0, 0), rgba(0, 0, 0, 0.75)), linear-gradient(var(--purple-light), var(--purple-light));
 
-    /* Body */
-    --body-bg-color: var(--black-light);
-    --body-color: var(--white);
+  /* Body */
+  --body-bg-color: var(--black-light);
+  --body-color: var(--white);
 
-    /* Layout */
-    --layout-sidebar-bg-color: var(--black);
-    --layout-sidebar-input-bg-color: var(--black-lighter);
-    --layout-header-bg-color: var(--black-light);
-    --layout-header-border-color: var(--black-dark);
+  /* Layout */
+  --layout-sidebar-bg-color: var(--black);
+  --layout-sidebar-input-bg-color: var(--black-lighter);
+  --layout-header-bg-color: var(--black-light);
+  --layout-header-border-color: var(--black-dark);
 
-    /* Progress bar */
-    --progress-bar-bg-color: var(--purple);
+  /* Progress bar */
+  --progress-bar-bg-color: var(--purple);
 
-    /* Button */
-    --btn-color: var(--white);
-    --btn-primary-bg-color: var(--purple);
+  /* Button */
+  --btn-color: var(--white);
+  --btn-primary-bg-color: var(--purple);
 
-    /* Noty flash message */
-    --noty-success-bg-color: var(--green);
-    --noty-error-bg-color: var(--red);
+  /* Noty flash message */
+  --noty-success-bg-color: var(--green);
+  --noty-error-bg-color: var(--red);
 
-    /* Tab */
-    --tab-color: var(--white);
-    --tab-active-color: var(--purple-light);
+  /* Tab */
+  --tab-color: var(--white);
+  --tab-active-color: var(--purple-light);
 
-    /* List */
-    --list-color: var(--grey);
-    --list-main-color: var(--grey-lighter);
-    --list-border-color: var(--black-light);
-    --list-active-color: var(--purple-light);
-    --list-border-dark-color: var(--black);
+  /* List */
+  --list-color: var(--grey);
+  --list-main-color: var(--grey-lighter);
+  --list-border-color: var(--black-light);
+  --list-active-color: var(--purple-light);
+  --list-border-dark-color: var(--black);
 
-    /* Input */
-    --input-bg-color: var(--black-lighter);
-    --input-color: var(--white);
-    --input-icon-color: var(--black);
+  /* Input */
+  --input-bg-color: var(--black-lighter);
+  --input-color: var(--white);
+  --input-icon-color: var(--black);
 
-    /* Card */
-    --card-title-color: var(--grey-lighter);
-    --card-text-color: var(--grey);
+  /* Card */
+  --card-title-color: var(--grey-lighter);
+  --card-text-color: var(--grey);
 
-    /* Loader */
-    --loader-bg-color: var(--purple);
+  /* Loader */
+  --loader-bg-color: var(--purple);
 
-    /* Dropdown */
-    --dropdown-bg-color: var(--black-lighter);
-    --dropdown-active-color: var(--grey);
-    --dropdown-color: var(--white);
+  /* Dropdown */
+  --dropdown-bg-color: var(--black-lighter);
+  --dropdown-active-color: var(--grey);
+  --dropdown-color: var(--white);
 
-    /* Dialog */
-    --dialog-bg-color: var(--black);
-    --dialog-header-bg-color: var(--grey);
-    --dialog-header-color: var(--black);
+  /* Dialog */
+  --dialog-bg-color: var(--black);
+  --dialog-header-bg-color: var(--grey);
+  --dialog-header-color: var(--black);
 
-    /* Overlay */
-    --overlay-bg-color: var(--black-light);
+  /* Overlay */
+  --overlay-bg-color: var(--black-light);
 
-    /* Line */
-    --line-color: var(--black);
+  /* Line */
+  --line-color: var(--black);
 
-    /* Heading */
-    --heading-text-color: var(--grey-light);
-    --heading-text-main-color: var(--white);
+  /* Heading */
+  --heading-text-color: var(--grey-light);
+  --heading-text-main-color: var(--white);
 
-    /* Box */
-    --box-bg-color: var(--black-light);
-    --box-shadow-color: var(--black-dark);
+  /* Box */
+  --box-bg-color: var(--black-light);
+  --box-shadow-color: var(--black-dark);
 
-    /* Playlist page */
-    --playlist-bg-color: var(--black);
-    --playlist-heading-bg-color: var(--black-light);
-    --playlist-nav-border-color: var(--black-dark);
+  /* Playlist page */
+  --playlist-bg-color: var(--black);
+  --playlist-heading-bg-color: var(--black-light);
+  --playlist-nav-border-color: var(--black-dark);
 
-    /* Player page */
-    --player-progress-bg-color: var(--black-light);
-    --player-progress-hover-bg-color: var(--black-lighter);
-    --player-progress-color: var(--purple);
-    --player-favorite-color: var(--red);
-    --player-color: var(--grey);
-    --player-bg-color: var(--black);
-    --player-footer-bg-color: var(--black-light);
-    --player-timer-color: var(--grey-lighter);
-  }
+  /* Player page */
+  --player-progress-bg-color: var(--black-light);
+  --player-progress-hover-bg-color: var(--black-lighter);
+  --player-progress-color: var(--purple);
+  --player-favorite-color: var(--red);
+  --player-color: var(--grey);
+  --player-bg-color: var(--black);
+  --player-footer-bg-color: var(--black-light);
+  --player-timer-color: var(--grey-lighter);
 }

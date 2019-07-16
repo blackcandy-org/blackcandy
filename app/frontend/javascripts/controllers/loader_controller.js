@@ -7,13 +7,13 @@ export default class extends Controller {
   }
 
   connect() {
-    this.element.addEventListener('hide.loader', this._hide);
-    this.element.addEventListener('show.loader', this._show);
+    this.element.addEventListener('loader:hide', this._hide);
+    this.element.addEventListener('loader:show', this._show);
   }
 
   disconnect() {
-    this.element.removeEventListener('hide.loader', this._hide);
-    this.element.removeEventListener('show.loader', this._show);
+    this.element.removeEventListener('loader:hide', this._hide);
+    this.element.removeEventListener('loader:show', this._show);
   }
 
   _show() {

@@ -16,7 +16,7 @@ gem 'bcrypt', '~> 3.1.11'
 # Get meta data from audio file
 gem 'taglib-ruby', '~> 0.7.1'
 # For settings
-gem 'rails-settings-cached', '~> 0.7.1'
+gem 'rails-settings-cached', '~> 2.1.0'
 # Use sidekiq for backgroud job
 gem 'sidekiq', '~> 5.1.3'
 # Server-side support for Turbolinks redirection

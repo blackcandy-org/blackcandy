@@ -11,15 +11,15 @@ export default class extends Controller {
   }
 
   connect() {
-    document.addEventListener('set.beforePlayingStatus', this._setBeforePlayingStatus);
-    document.addEventListener('set.playingStatus', this._setPlayingStatus);
-    document.addEventListener('set.pauseStatus', this._setPauseStatus);
+    document.addEventListener('player:beforePlaying', this._setBeforePlayingStatus);
+    document.addEventListener('player:playing', this._setPlayingStatus);
+    document.addEventListener('player:pause', this._setPauseStatus);
   }
 
   disconnect() {
-    document.removeEventListener('set.beforePlayingStatus', this._setBeforePlayingStatus);
-    document.removeEventListener('set.playingStatus', this._setPlayingStatus);
-    document.removeEventListener('set.pauseStatus', this._setPauseStatus);
+    document.removeEventListener('player:beforePlaying', this._setBeforePlayingStatus);
+    document.removeEventListener('player:playing', this._setPlayingStatus);
+    document.removeEventListener('player:pause', this._setPauseStatus);
   }
 
   play() {

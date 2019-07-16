@@ -12,13 +12,13 @@ export default class extends Controller {
 
   connect() {
     this.showPlayingItem();
-    document.addEventListener('show.playingitem', this.showPlayingItem);
-    this.element.addEventListener('updateCount', this._updateCount);
+    document.addEventListener('playlist:showPlaying', this.showPlayingItem);
+    this.element.addEventListener('playlist:updateCount', this._updateCount);
   }
 
   disconnect() {
-    document.removeEventListener('show.playingitem', this.showPlayingItem);
-    this.element.removeEventListener('updateCount', this._updateCount);
+    document.removeEventListener('playlist:showPlaying', this.showPlayingItem);
+    this.element.removeEventListener('playlist:updateCount', this._updateCount);
   }
 
   actionHandler({ target }) {
@@ -43,14 +43,14 @@ export default class extends Controller {
   }
 
   clear() {
-    App.dispatchEvent('#js-playlist-loader', 'show.loader');
+    App.dispatchEvent('#js-playlist-loader', 'loader:show');
 
     ajax({
       url: `/playlist/${this.id}`,
       type: 'delete',
       dataType: 'script',
       success: () => {
-        App.dispatchEvent('#js-playlist-loader', 'hide.loader');
+        App.dispatchEvent('#js-playlist-loader', 'loader:hide');
 
         if (this.isCurrent) {
           this.player.updatePlaylist([]);
@@ -108,15 +108,15 @@ export default class extends Controller {
   _showCollectionDialog(target) {
     const { songId } = target.closest('[data-song-id]').dataset;
 
-    App.dispatchEvent('#js-dialog', 'show.dialog');
-    App.dispatchEvent('#js-dialog-loader', 'show.loader');
+    App.dispatchEvent('#js-dialog', 'dialog:show');
+    App.dispatchEvent('#js-dialog-loader', 'loader:show');
 
     ajax({
       url: `/songs/${songId}/add`,
       type: 'get',
       dataType: 'script',
       success: () => {
-        App.dispatchEvent('#js-dialog-loader', 'hide.loader');
+        App.dispatchEvent('#js-dialog-loader', 'loader:hide');
       }
     });
   }
