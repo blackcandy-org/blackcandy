@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     end
 
     def auth_user
-      raise BlackCandyError::Forbidden unless @user == Current.user || Current.user.is_admin?
+      raise BlackCandyError::Forbidden unless @user == Current.user || is_admin?
     end
 
     def user_params

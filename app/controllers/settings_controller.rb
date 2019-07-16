@@ -2,7 +2,6 @@
 
 class SettingsController < ApplicationController
   before_action :require_login
-  before_action :require_admin, only: [:show]
 
   def show
   end

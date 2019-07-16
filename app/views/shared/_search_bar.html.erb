@@ -14,7 +14,7 @@
   <div data-controller='dropdown' class='dropdown'>
     <span data-action='click->dropdown#show'><%= avatar_tag Current.user %></span>
     <div data-target='dropdown.list' class='hidden dropdown__list'>
-      <%= link_to t('label.manage_users'), users_path, class: 'dropdown__item' if Current.user.is_admin? %>
+      <%= link_to t('label.manage_users'), users_path, class: 'dropdown__item' if is_admin? %>
       <%= link_to t('label.update_profile'), edit_user_path(Current.user), class: 'dropdown__item' %>
       <%= link_to t('label.logout'), session_path, method: :delete, class: 'dropdown__item' %>
     </div>

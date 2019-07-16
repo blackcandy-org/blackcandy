@@ -4,7 +4,7 @@ require 'test_helper'
 
 class SettingsControllerTest < ActionDispatch::IntegrationTest
   test 'should show setting' do
-    assert_admin_access(url: setting_url) do
+    assert_login_access(url: setting_url) do
       assert_response :success
     end
   end

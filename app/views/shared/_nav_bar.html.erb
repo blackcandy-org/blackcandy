@@ -9,10 +9,8 @@
     <li class='tab__item <%= 'tab__item--active' if is_active?(controller: 'songs') %>'>
       <%= link_to t('label.songs'), songs_path %>
     </li>
-    <% if Current.user.is_admin? %>
-      <li class='tab__item <%= 'tab__item--active' if is_active?(controller: 'settings') %>'>
-        <%= link_to t('label.settings'), setting_path %>
-      </li>
-    <% end %>
+    <li class='tab__item <%= 'tab__item--active' if is_active?(controller: 'settings') %>'>
+      <%= link_to t('label.settings'), setting_path %>
+    </li>
   </ul>
 </nav>
