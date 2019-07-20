@@ -55,6 +55,7 @@ group :development do
   # Security vulnerability scanner
   gem 'brakeman', require: false
   gem 'memory_profiler', require: false
+  gem 'logs'
 end
 
 group :test do
