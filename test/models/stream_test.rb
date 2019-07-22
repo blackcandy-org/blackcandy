@@ -9,9 +9,10 @@ class StreamTest < ActiveSupport::TestCase
     assert_not Stream.new(songs(:mp3_sample)).need_transcode?
     assert_not Stream.new(songs(:m4a_sample)).need_transcode?
     assert_not Stream.new(songs(:ogg_sample)).need_transcode?
+    assert_not Stream.new(songs(:opus_sample)).need_transcode?
   end
 
-  test 'should transcode flac format' do
+  test 'should can transcode flac format' do
     create_tmp_file(format: 'mp3') do |tmp_file_path|
       stream = Stream.new(songs(:flac_sample))
 
@@ -23,9 +24,33 @@ class StreamTest < ActiveSupport::TestCase
     end
   end
 
-  test 'should transcode wav format' do
+  test 'should can transcode wav format' do
     create_tmp_file(format: 'mp3') do |tmp_file_path|
       stream = Stream.new(songs(:wav_sample))
+
+      File.open(tmp_file_path, 'w') do |file|
+        stream.each { |data| file.write data }
+      end
+
+      assert_equal 128, audio_bitrate(tmp_file_path)
+    end
+  end
+
+  test 'should can transcode ogg format' do
+    create_tmp_file(format: 'mp3') do |tmp_file_path|
+      stream = Stream.new(songs(:ogg_sample))
+
+      File.open(tmp_file_path, 'w') do |file|
+        stream.each { |data| file.write data }
+      end
+
+      assert_equal 128, audio_bitrate(tmp_file_path)
+    end
+  end
+
+  test 'should can transcode opus format' do
+    create_tmp_file(format: 'mp3') do |tmp_file_path|
+      stream = Stream.new(songs(:opus_sample))
 
       File.open(tmp_file_path, 'w') do |file|
         stream.each { |data| file.write data }

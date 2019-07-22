@@ -27,7 +27,7 @@ If like their music, you can buy their albums to support them.
 
 Black candy use docker for simplify deployment, development and test process. So you should install docker and docker-compose first.
 
-Black candy support mp3, m4a, ogg, flac and wav formats now.
+Black candy support mp3, m4a, ogg, opus, flac and wav formats now.
 
 ## Installation
 

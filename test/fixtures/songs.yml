@@ -26,6 +26,13 @@ wav_sample:
   artist: 'artist2'
   album: 'album3'
 
+opus_sample:
+  name: 'opus_sample'
+  file_path: '/app/test/fixtures/files/artist2_album3.opus'
+  md5_hash: 'fake_md5'
+  artist: 'artist2'
+  album: 'album3'
+
 m4a_sample:
   name: 'm4a_sample'
   file_path: '/app/test/fixtures/files/artist1_album1.m4a'

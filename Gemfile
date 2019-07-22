@@ -32,6 +32,8 @@ gem 'redis-objects', '~> 1.4'
 gem 'mini_magick', '~> 4.8'
 # For API request
 gem 'httparty', '~> 0.16.4'
+# For browser detection
+gem 'browser', '~> 2.6.1', require: 'browser/browser'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -10,7 +10,7 @@ class StreamController < ApplicationController
   def new
     stream = Stream.new(@song)
 
-    if stream.need_transcode?
+    if need_transcode? stream
       send_stream stream
     else
       send_local_file stream.file_path
@@ -18,6 +18,11 @@ class StreamController < ApplicationController
   end
 
   private
+
+    def need_transcode?(stream)
+      # Because safari didn't support ogg and opus formats well, so transcoded it.
+      stream.need_transcode? || (is_safari? && stream.format.in?(['ogg', 'opus']))
+    end
 
     # Let nginx can get value of media_path dynamically in the nginx config,
     # when use X-Accel-Redirect header to send file.
@@ -37,6 +42,8 @@ class StreamController < ApplicationController
       stream.each do |data|
         response.stream.write data
       end
+    rescue ActionController::Live::ClientDisconnected
+      logger.info "[#{Time.now.utc}] Stream closed"
     ensure
       response.stream.close
     end

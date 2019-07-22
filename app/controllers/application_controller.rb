@@ -21,6 +21,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def browser
+    @browser ||= Browser.new(
+      request.headers['User-Agent'],
+      accept_language: request.headers['Accept-Language']
+    )
+  end
+
+  def is_safari?
+    browser.safari? || browser.core_media?
+  end
+
   private
 
     def find_current_user

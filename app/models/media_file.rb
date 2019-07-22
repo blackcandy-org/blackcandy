@@ -3,7 +3,7 @@
 class MediaFile
   require 'taglib'
 
-  SUPPORT_FORMATE = %w[mp3 ogg m4a flac wav].freeze
+  SUPPORT_FORMATE = %w[mp3 ogg opus m4a flac wav].freeze
 
   class << self
     def file_paths

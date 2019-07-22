@@ -53,6 +53,7 @@ GEM
     bootsnap (1.4.3)
       msgpack (~> 1.0)
     brakeman (4.5.0)
+    browser (2.6.1)
     builder (3.2.3)
     byebug (11.0.1)
     capybara (2.18.0)
@@ -234,6 +235,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.11)
   bootsnap (>= 1.1.0)
   brakeman
+  browser (~> 2.6.1)
   byebug
   capybara (~> 2.15)
   chromedriver-helper

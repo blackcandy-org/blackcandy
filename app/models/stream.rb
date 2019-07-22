@@ -12,8 +12,12 @@ class Stream
     @song.file_path
   end
 
+  def format
+    MediaFile.format(@song.file_path)
+  end
+
   def need_transcode?
-    MediaFile.format(@song.file_path).in? TRANSCODING_FORMATS
+    format.in? TRANSCODING_FORMATS
   end
 
   # let instance of Stream can respond to each() method.
