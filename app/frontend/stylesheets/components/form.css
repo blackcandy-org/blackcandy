@@ -30,7 +30,7 @@
   font-weight: bold;
 }
 
-.form__field input {
+.form__field input[type='text'] {
   width: 100%;
   border: none;
   border-radius: var(--form-input-border-radius);
@@ -45,5 +45,5 @@
 
 .form__radio label {
   margin-bottom: 0;
-  margin-left: 5px;
+  margin-left: 8px;
 }
