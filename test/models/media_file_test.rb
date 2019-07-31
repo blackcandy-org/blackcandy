@@ -128,7 +128,7 @@ class MediaFileTest < ActiveSupport::TestCase
   end
 
   test 'should get md5 hash from file' do
-    assert_equal '9AmrqHK6AFRyk0dDIy60rw==', MediaFile.file_info(file_fixture('artist1_album2.mp3'))[:md5_hash]
+    assert_equal 'AzCmk16psGSdrm0hPNT5Mg==', MediaFile.file_info(file_fixture('artist1_album2.mp3'))[:md5_hash]
   end
 
   test 'should raise error from file_info when file is not exist' do

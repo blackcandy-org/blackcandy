@@ -90,15 +90,7 @@ class MediaFile
       end
 
       def get_md5_hash(file_path)
-        io = File.open(file_path)
-
-        Digest::MD5.new.tap do |checksum|
-          while chunk = io.read(5.megabytes)
-            checksum << chunk
-          end
-
-          io.rewind
-        end.base64digest
+        Digest::MD5.base64digest(file_path.to_s + File.mtime(file_path).to_s)
       end
   end
 end

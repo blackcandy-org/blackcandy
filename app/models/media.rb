@@ -11,16 +11,14 @@ class Media
     artist = Artist.find_or_create_by(name: file_info[:artist_name])
     album = Album.find_or_create_by(artist: artist, name: file_info[:album_name])
 
-    song = Song.find_or_create_by(md5_hash: file_info[:md5_hash]) do |item|
-      item.attributes = song_info.merge(album: album, artist: artist)
-    end
-
     # Attach image from file to the album.
     AttachAlbumImageFromFileJob.perform_later(album.id, file_info[:file_path]) unless album.has_image?
 
-    return true unless song.file_path != file_info[:file_path]
-
-    song.update(file_path: file_info[:file_path])
+    Song.find_or_create_by(md5_hash: file_info[:md5_hash]) do |item|
+      item.attributes = song_info.merge(album: album, artist: artist)
+    end
+  rescue
+    false
   end
 
   def song_info
