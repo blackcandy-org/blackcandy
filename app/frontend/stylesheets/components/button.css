@@ -21,3 +21,7 @@ a.button:hover {
 .button--small {
   padding: 5px 6px;
 }
+
+.button--full-width {
+  width: 100%;
+}

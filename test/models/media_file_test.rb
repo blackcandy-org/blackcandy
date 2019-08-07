@@ -37,10 +37,10 @@ class MediaFileTest < ActiveSupport::TestCase
   test 'should raise error when media_path is unreadble' do
     Dir.mkdir 'test_files'
     File.chmod(100, 'test_files')
-    Setting.media_path = 'test_dir'
+    Setting.media_path = 'test_files'
 
     begin
-      assert_not File.readable? 'test_dir'
+      assert_not File.readable? 'test_files'
       assert_raises BlackCandyError::InvalidFilePath do
         MediaFile.file_paths
       end

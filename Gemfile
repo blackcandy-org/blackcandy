@@ -29,7 +29,7 @@ gem 'redis-objects', '~> 1.4'
 # gem 'redis', '~> 4.0'
 
 # Use ActiveStorage variant
-gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.9.5'
 # For API request
 gem 'httparty', '~> 0.16.4'
 # For browser detection
