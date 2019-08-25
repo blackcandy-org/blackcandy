@@ -34,22 +34,6 @@ class MediaFileTest < ActiveSupport::TestCase
     end
   end
 
-  test 'should raise error when media_path is unreadble' do
-    Dir.mkdir 'test_files'
-    File.chmod(100, 'test_files')
-    Setting.media_path = 'test_files'
-
-    begin
-      assert_not File.readable? 'test_files'
-      assert_raises BlackCandyError::InvalidFilePath do
-        MediaFile.file_paths
-      end
-    ensure
-      File.chmod(770, 'test_files')
-      FileUtils.remove_entry('test_files')
-    end
-  end
-
   test 'should get correct format' do
     assert_equal 'mp3', MediaFile.format(file_fixture('artist1_album2.mp3'))
     assert_equal 'flac', MediaFile.format(file_fixture('artist1_album1.flac'))

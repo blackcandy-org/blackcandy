@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DiscogsAPI
+class DiscogsApi
   include HTTParty
 
   base_uri 'https://api.discogs.com'

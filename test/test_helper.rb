@@ -101,7 +101,7 @@ class ActionDispatch::IntegrationTest
   end
 
   def assert_self_or_admin_access(method: :get, user:, url:, **args)
-    login User.where.not(email: user.email, is_admin: true).first
+    login User.where.not(email: user.email).where.not(is_admin: true).first
     send(method, url, **args)
     assert_response :forbidden
 

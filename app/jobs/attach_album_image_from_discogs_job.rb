@@ -5,7 +5,7 @@ class AttachAlbumImageFromDiscogsJob < ApplicationJob
 
   def perform(album_id)
     album = Album.find_by(id: album_id)
-    image_url = DiscogsAPI.album_image(album)
+    image_url = DiscogsApi.album_image(album)
 
     return unless image_url.present?
 

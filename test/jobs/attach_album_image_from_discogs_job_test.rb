@@ -9,7 +9,7 @@ class AttachAlbumImageFromDiscogsJobTest < ActiveJob::TestCase
     stub_request(:get, 'http://example.com/cover.jpg').
       to_return(body: file_fixture('cover_image.jpg').read, status: 200)
 
-    DiscogsAPI.stub(:album_image, 'http://example.com/cover.jpg') do
+    DiscogsApi.stub(:album_image, 'http://example.com/cover.jpg') do
       assert_not album.has_image?
 
       AttachAlbumImageFromDiscogsJob.perform_now(album.id)
