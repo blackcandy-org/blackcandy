@@ -29,8 +29,8 @@ gem 'redis-objects', '~> 1.4'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 
-# Use ActiveStorage variant
-gem 'mini_magick', '~> 4.9.5'
+# For image attachment
+gem 'carrierwave', '~> 2.0'
 # For API request
 gem 'httparty', '~> 0.17.0'
 # For browser detection

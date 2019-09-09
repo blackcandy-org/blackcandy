@@ -24,18 +24,10 @@ module ApplicationHelper
   end
 
   def image_url_for(object, size: '')
-    sizes_options = { small: 200, medium: 300, large: 400 }
-    size = sizes_options[size.to_sym] || sizes_options[:medium]
-    default_image_name = "default_#{object.class.name.downcase}"
+    sizes_options = %w(small medium large)
+    size = size.in?(sizes_options) ? size : 'medium'
 
-    if size
-      image_size = "#{size}x#{size}"
-      image_variant_options = { resize: "#{image_size}^", gravity: 'Center', extent: image_size }
-
-      object.image.attached? ? url_for(object.image.variant(image_variant_options)) : "/images/#{default_image_name}#{image_size}.png"
-    else
-      object.image.attached? ? url_for(object.image) : "/images/#{default_image_name}.png"
-    end
+    object.image.send(size).url
   end
 
   def loader_tag(size: '', expand: false)

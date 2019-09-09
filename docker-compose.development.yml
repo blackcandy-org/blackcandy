@@ -13,6 +13,7 @@ services:
       DB_HOST: postgres
       DB_USER: postgres
       REDIS_DATA_URL: redis://redis:6379/0
+      REDIS_SIDEKIQ_URL: redis://redis:6379/1
       MEDIA_PATH: /media_data
       WEBPACKER_DEV_SERVER_HOST: webpacker
     depends_on:
@@ -36,6 +37,19 @@ services:
       WEBPACKER_DEV_SERVER_HOST: webpacker
     ports:
       - 3035:3035
+  worker:
+    image: blackcandy/base
+    command: bundle exec sidekiq
+    volumes:
+      - .:/app
+      - bundler_data:/usr/local/bundle
+    environment:
+      DB_HOST: postgres
+      DB_USER: postgres
+      REDIS_SIDEKIQ_URL: redis://redis:6379/1
+    depends_on:
+      - postgres
+      - redis
 volumes:
   bundler_data:
   db_data:

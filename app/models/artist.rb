@@ -6,7 +6,7 @@ class Artist < ApplicationRecord
   has_many :albums, dependent: :destroy
   has_many :songs, dependent: :destroy
 
-  has_one_attached :image
+  mount_uploader :image, ImageUploader
 
   search_by :name
 
@@ -15,7 +15,7 @@ class Artist < ApplicationRecord
   end
 
   def has_image?
-    image.attached?
+    image.file.present?
   end
 
   def is_unknown?
