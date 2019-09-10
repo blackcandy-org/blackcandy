@@ -18,7 +18,7 @@ gem 'taglib-ruby', '~> 0.7.1'
 # For settings
 gem 'rails-settings-cached', '~> 2.1.0'
 # Use sidekiq for backgroud job
-gem 'sidekiq', '~> 5.2.0'
+gem 'sidekiq', '~> 6.0.0'
 # Server-side support for Turbolinks redirection.
 # Because turbolinks gem do not have new release to support rails 6.0, So bundle from GitHub.
 gem 'turbolinks', github: 'turbolinks/turbolinks-rails'

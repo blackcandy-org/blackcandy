@@ -57,6 +57,8 @@ class MediaFile
 
       def get_image_from_m4a_file(file_path)
         TagLib::MP4::File.open(file_path) do |file|
+          return unless file.tag
+
           tag_image = file.tag.item_list_map['covr'].to_cover_art_list.first
 
           {
