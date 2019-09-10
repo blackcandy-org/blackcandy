@@ -57,20 +57,38 @@ class MediaFile
 
       def get_image_from_m4a_file(file_path)
         TagLib::MP4::File.open(file_path) do |file|
-          file.tag.item_list_map['covr'].to_cover_art_list.first&.data
+          return unless file.tag
+
+          tag_image = file.tag.item_list_map['covr'].to_cover_art_list.first
+
+          {
+            data: tag_image.data,
+            format: tag_image.format == 0x0D ? 'jpeg' : 'png'
+          } if tag_image
         end
       end
 
       def get_image_from_flac_file(file_path)
         TagLib::FLAC::File.open(file_path) do |file|
-          file.picture_list.first&.data
+          tag_image = file.picture_list.first
+
+          {
+            data: tag_image.data,
+            format: MIME::Type.new(tag_image.mime_type).sub_type
+          } if tag_image
         end
       end
 
 
       def get_image_from_tag(tag)
         return unless tag
-        tag.frame_list('APIC').first&.picture
+
+        tag_image = tag.frame_list('APIC').first
+
+        {
+          data: tag_image.picture,
+          format: MIME::Type.new(tag_image.mime_type).sub_type
+        } if tag_image
       end
 
       def get_tag_info(file_path)

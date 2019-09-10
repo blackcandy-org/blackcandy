@@ -47,7 +47,8 @@ class MediaFileTest < ActiveSupport::TestCase
     cover_image_binary = file_fixture('cover_image.jpg').read.force_encoding('BINARY').strip
 
     %w(artist1_album2.mp3 artist1_album1.m4a artist1_album1.flac artist2_album3.wav).each do |file|
-      assert_equal cover_image_binary, MediaFile.image(file_fixture(file)).strip
+      assert_equal cover_image_binary, MediaFile.image(file_fixture(file))[:data].strip
+      assert_equal 'jpeg', MediaFile.image(file_fixture(file))[:format]
     end
   end
 

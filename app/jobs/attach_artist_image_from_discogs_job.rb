@@ -9,9 +9,7 @@ class AttachArtistImageFromDiscogsJob < ApplicationJob
 
     return unless image_url.present?
 
-    artist.image.attach(
-      io: open(image_url),
-      filename: 'cover'
-    )
+    artist.remote_image_url = image_url
+    artist.save
   end
 end

@@ -8,7 +8,7 @@ class Album < ApplicationRecord
   has_many :songs, dependent: :destroy
   belongs_to :artist
 
-  has_one_attached :image
+  mount_uploader :image, ImageUploader
 
   search_by :name, associations: :artist
 
@@ -17,7 +17,7 @@ class Album < ApplicationRecord
   end
 
   def has_image?
-    image.attached?
+    image.file.present?
   end
 
   def is_unknown?

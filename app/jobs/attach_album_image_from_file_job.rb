@@ -9,9 +9,7 @@ class AttachAlbumImageFromFileJob < ApplicationJob
 
     return unless album && file_image.present?
 
-    album.image.attach(
-      io: StringIO.new(file_image),
-      filename: 'cover'
-    )
+    album.image = CarrierWaveStringIO.new("cover.#{file_image[:format]}", file_image[:data])
+    album.save
   end
 end
