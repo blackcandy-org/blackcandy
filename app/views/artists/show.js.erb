@@ -1,1 +1,1 @@
-App.appedNextPageContentTo('#js-albums-content', '<%= j(render partial: 'albums/albums', locals: { albums: @albums }) %>', '<%= pagy_next_url(@pagy) %>')
+App.appedNextPageContentTo('#js-albums-content', '<%= j(render partial: 'albums/album', collection: @albums) %>', '<%= pagy_next_url(@pagy) %>')

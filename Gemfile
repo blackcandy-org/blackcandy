@@ -57,7 +57,10 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Security vulnerability scanner
   gem 'brakeman', require: false
+  # Memory profiler for ruby
   gem 'memory_profiler', require: false
+  # Help to kill N+1 queries and unused eager loading
+  gem 'bullet', '~> 6.0.2'
 end
 
 group :test do

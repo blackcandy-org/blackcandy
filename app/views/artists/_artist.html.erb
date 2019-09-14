@@ -1,0 +1,8 @@
+<div class='cards__item'>
+  <%= link_to artist_path(artist) do %>
+    <%= image_tag image_url_for(artist), class: 'image' %>
+  <% end %>
+  <div class='cards__item__body'>
+    <%= link_to artist.title, artist_path(artist), class: 'cards__item__title text-truncate' %>
+  </div>
+</div>

@@ -6,7 +6,7 @@ class SongsController < ApplicationController
   before_action :require_login
 
   def index
-    records = Song.includes(:artist, :album).search(params[:query]).order(:name)
+    records = Song.search(params[:query]).includes(:artist, :album).order(:name)
     @pagy, @songs = pagy_countless(records)
   end
 

@@ -73,6 +73,9 @@ GEM
     brakeman (4.5.0)
     browser (2.6.1)
     builder (3.2.3)
+    bullet (6.0.2)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (11.0.1)
     capybara (2.18.0)
       addressable
@@ -234,6 +237,7 @@ GEM
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     unicode-display_width (1.4.1)
+    uniform_notifier (1.12.1)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -266,6 +270,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   brakeman
   browser (~> 2.6.1)
+  bullet (~> 6.0.2)
   byebug
   capybara (~> 2.15)
   carrierwave (~> 2.0)
