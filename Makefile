@@ -23,6 +23,9 @@ test_run:
 test_run_lint:
 	@$(TEST_APP_COMMAND) rails lint:all
 
+test_run_brakeman:
+	@$(TEST_APP_COMMAND) brakeman
+
 test_shell:
 	@$(TEST_APP_COMMAND) bash
 

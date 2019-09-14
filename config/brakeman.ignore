@@ -1,0 +1,26 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "d8c77a382848664a4d90746a44057f263b854cbc7a1d7b013ef6cd25eed96961",
+      "check_name": "FileAccess",
+      "message": "Model attribute used in file name",
+      "file": "app/models/media_file.rb",
+      "line": 15,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "Dir.glob(\"#{File.expand_path(Setting.media_path)}/**/*.{#{\"mp3,ogg,opus,m4a,flac,wav\"}}\", File::FNM_CASEFOLD)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "MediaFile",
+        "method": "file_paths"
+      },
+      "user_input": "Setting.media_path",
+      "confidence": "Weak",
+      "note": ""
+    }
+  ],
+  "updated": "2019-09-14 10:20:20 +0000",
+  "brakeman_version": "4.6.1"
+}

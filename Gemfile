@@ -46,6 +46,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop', '~> 0.61.1', require: false
+  # Security vulnerability scanner
+  gem 'brakeman', '~> 4.6.1', require: false
 end
 
 group :development do
@@ -55,10 +57,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  # Security vulnerability scanner
-  gem 'brakeman', require: false
   # Memory profiler for ruby
-  gem 'memory_profiler', require: false
+  gem 'memory_profiler', '~> 0.9.13', require: false
   # Help to kill N+1 queries and unused eager loading
   gem 'bullet', '~> 6.0.2'
 end
