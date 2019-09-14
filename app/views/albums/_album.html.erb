@@ -1,0 +1,9 @@
+<div class='cards__item'>
+  <%= link_to album_path(album) do %>
+    <%= image_tag image_url_for(album), class: 'image' %>
+  <% end %>
+  <div class='cards__item__body'>
+    <%= link_to album.title, album_path(album), class: 'cards__item__title text-truncate' %>
+    <p class='cards__item__text text-truncate'><%= album.artist.title %></p>
+  </div>
+</div>

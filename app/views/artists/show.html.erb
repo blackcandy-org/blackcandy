@@ -16,7 +16,7 @@
 <div class='line'></div>
 <div data-controller='infinite-scroll' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
   <div class='cards' id='js-albums-content'>
-    <%= render partial: 'albums/albums', locals: { albums: @albums } %>
+    <%= render partial: 'albums/album', collection: @albums %>
   </div>
   <div data-target='infinite-scroll.trigger' class='display__justify-align-center'>
     <% if @pagy.next %>

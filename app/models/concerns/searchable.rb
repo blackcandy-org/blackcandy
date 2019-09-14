@@ -11,13 +11,15 @@ module Searchable
         associations = Array(options[:associations]).map(&:to_sym)
 
         if associations.blank?
-          where("#{attr} &@ ?", query)
+          where(sanitize_sql_for_conditions ["#{attr} &@ ?", query])
         else
           associations_query = associations.map do |association|
             "#{association.to_s.pluralize}.#{attr} &@ ?"
           end.join(' OR ')
 
-          joins(associations).where("#{self.table_name}.#{attr} &@ ? OR #{associations_query}", *Array.new(associations.length + 1, query))
+          query_conditions = sanitize_sql_for_conditions ["#{self.table_name}.#{attr} &@ ? OR #{associations_query}", *Array.new(associations.length + 1, query)]
+
+          joins(associations).where(query_conditions)
         end
       end
     end

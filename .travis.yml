@@ -9,3 +9,4 @@ before_script:
 script:
   - make test_run
   - make test_run_lint
+  - make test_run_brakeman
