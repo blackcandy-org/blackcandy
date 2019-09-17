@@ -1,4 +1,4 @@
-class AddNameIndexForPgroonga < ActiveRecord::Migration[5.2]
+class AddNameIndexForPgroonga < ActiveRecord::Migration[6.0]
   def change
     add_index 'songs', 'name', name: 'pgroonga_index_songs_on_name', using: :pgroonga, order: { name: :pgroonga_varchar_full_text_search_ops_v2 }
     add_index 'albums', 'name', name: 'pgroonga_index_albums_on_name', using: :pgroonga, order: { name: :pgroonga_varchar_full_text_search_ops_v2 }

@@ -1,4 +1,4 @@
-class InstallPgroongaExtension < ActiveRecord::Migration[5.2]
+class InstallPgroongaExtension < ActiveRecord::Migration[6.0]
   def up
     execute "CREATE EXTENSION IF NOT EXISTS pgroonga;"
   end
