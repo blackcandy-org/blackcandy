@@ -7,7 +7,7 @@
     "howler": "^2.1.2",
     "normalize.css": "^8.0.1",
     "noty": "^3.1.0",
-    "rails-ujs": "^5.2.3",
+    "@rails/ujs": "^6.0.1",
     "regenerator-runtime": "^0.13.2",
     "scrollmagic": "^2.0.6",
     "stimulus": "^1.1.0",

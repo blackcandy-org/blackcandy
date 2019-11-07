@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus';
-import { ajax } from 'rails-ujs';
+import { ajax } from '@rails/ujs';
 
 export default class extends Controller {
   static targets = ['item', 'count'];

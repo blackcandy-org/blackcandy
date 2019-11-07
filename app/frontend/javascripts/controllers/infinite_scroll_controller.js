@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus';
-import { ajax } from 'rails-ujs';
+import { ajax } from '@rails/ujs';
 import ScrollMagic from 'scrollmagic';
 
 export default class extends Controller {

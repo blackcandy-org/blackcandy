@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.0'
+gem 'rails', '~> 6.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1.3'
 # Use Puma as the app server
-gem 'puma', '~> 4.1.0'
+gem 'puma', '~> 4.2.0'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -20,8 +20,7 @@ gem 'rails-settings-cached', '~> 2.1.0'
 # Use sidekiq for backgroud job
 gem 'sidekiq', '~> 6.0.0'
 # Server-side support for Turbolinks redirection.
-# Because turbolinks gem do not have new release to support rails 6.0, So bundle from GitHub.
-gem 'turbolinks', github: 'turbolinks/turbolinks-rails'
+gem 'turbolinks', '~> 5.2.1'
 # Pagination
 gem 'pagy', '~> 3.5.0'
 # Map redis types directly to ruby objects
