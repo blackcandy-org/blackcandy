@@ -1,5 +1,5 @@
 import { Howl } from 'howler';
-import { ajax } from 'rails-ujs';
+import { ajax } from '@rails/ujs';
 import { shuffle } from './helper';
 
 const player = {

@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus';
-import { ajax } from 'rails-ujs';
+import { ajax } from '@rails/ujs';
 import { Howl } from 'howler';
 import { formatDuration, toggleShow } from '../helper';
 
