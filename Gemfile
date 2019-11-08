@@ -65,8 +65,8 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.15'
-  gem 'selenium-webdriver'
-  gem 'webdrivers'
+  gem 'selenium-webdriver', '~> 3.142.6'
+  gem 'webdrivers', '~> 4.1.3'
   gem 'webmock', '~> 3.6.2', require: false
   gem 'database_cleaner', '~> 1.7'
 end
