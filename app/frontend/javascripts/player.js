@@ -111,7 +111,7 @@ const player = {
   },
 
   playlistIndexOf(songId) {
-    return this.playlist.map(song => song.id).indexOf(Number(songId));
+    return this.playlist.map((song) => song.id).indexOf(Number(songId));
   }
 };
 
