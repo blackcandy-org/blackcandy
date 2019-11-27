@@ -107,7 +107,7 @@ html {
 }
 
 /* Dark theme */
-html[data-theme='dark'] {
+html[data-color-scheme='dark'] {
   /* Colors */
   --purple-dark: #361e40;
   --purple: #77428d;
