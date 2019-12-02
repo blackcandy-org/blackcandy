@@ -5,6 +5,8 @@
 /storage/*
 /node_modules
 /public/packs/
+/public/packs-test/
+/public/uploads/
 /test
 /images
 
