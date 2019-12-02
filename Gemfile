@@ -8,7 +8,7 @@ gem 'pg', '~> 1.1.3'
 # Use Puma as the app server
 gem 'puma', '~> 4.2.0'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.0.2'
+gem 'webpacker', '~> 4.2.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.9.1'
 # Use ActiveModel has_secure_password
@@ -46,7 +46,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop', '~> 0.61.1', require: false
   # Security vulnerability scanner
-  gem 'brakeman', '~> 4.6.1', require: false
+  gem 'brakeman', '~> 4.7.2', require: false
 end
 
 group :development do

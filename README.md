@@ -8,7 +8,9 @@
 Black candy is a self hosted music streaming server built with Rails and Stimulus. The goal of the project is to create a real personal music center.
 
 ## Screenshot
-![screenshot](images/screenshot.png)
+![screenshot theme dark](images/screenshot_theme_dark.png)
+
+![screenshot theme light](images/screenshot_theme_light.png)
 
 
 ## Getting started

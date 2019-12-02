@@ -21,7 +21,7 @@ export default class extends Controller {
     const theme = this.data.get('name');
 
     // set theme cookie to track theme when user didn't login
-    document.cookie = `theme=${theme}`;
+    document.cookie = `theme=${theme};path=/`;
 
     switch (theme) {
       case 'dark':
@@ -50,10 +50,10 @@ export default class extends Controller {
   }
 
   _setDarkTheme() {
-    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.setAttribute('data-color-scheme', 'dark');
   }
 
   _setLightTheme() {
-    document.documentElement.removeAttribute('data-theme');
+    document.documentElement.removeAttribute('data-color-scheme');
   }
 }

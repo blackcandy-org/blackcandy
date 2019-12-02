@@ -43,7 +43,9 @@ production_run:
 
 build_base:
 	@docker build - < base.Dockerfile -t blackcandy/base
+	@docker tag blackcandy/base blackcandy/base:$$(cat BASE_VERSION)
 	@$(DOCKER_LOGIN_COMMAND)
+	@docker push blackcandy/base:$$(cat BASE_VERSION)
 	@docker push blackcandy/base:latest
 
 build_web:

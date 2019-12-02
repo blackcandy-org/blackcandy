@@ -6,6 +6,7 @@ services:
       - .:/app
       - ${BLACK_CANDY_MEDIA_PATH}:/media_data
       - bundler_data:/usr/local/bundle
+    entrypoint: bin/entrypoint.sh
     command: ["bin/rails", "s", "-b", "0.0.0.0"]
     ports:
       - 3000:3000
