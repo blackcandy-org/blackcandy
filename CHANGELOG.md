@@ -1,3 +1,8 @@
+### 1.0.3
+
+- bug fixes
+  - keep pid directory on tmp to avoid puma loading error
+
 ### 1.0.2
 
 - new features
