@@ -1,7 +1,10 @@
 /log/*
 /tmp/*
+/tmp/pids/*
 !/log/.keep
 !/tmp/.keep
+!/tmp/pids
+!/tmp/pids/.keep
 /storage/*
 /node_modules
 /public/packs/
