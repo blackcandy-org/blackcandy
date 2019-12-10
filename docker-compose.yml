@@ -5,7 +5,7 @@ services:
     volumes:
       - ./log:/app/log
       - ${BLACK_CANDY_MEDIA_PATH}:/media_data
-      - production_storage_data:/app/storage
+      - production_public_data:/app/public
     environment:
       DB_HOST: postgres
       DB_USER: postgres
@@ -29,10 +29,13 @@ services:
     <<: *app_base
     command: bundle exec sidekiq
   web:
-    image: blackcandy/web
+    image: nginx:1.16-alpine
     volumes:
       - ./log:/var/www/black_candy/log
       - ${BLACK_CANDY_MEDIA_PATH}:/media_data
+      - ./config/nginx:/etc/nginx
+      - production_db_data:/var/www/black_candy/public
+    command: [ "nginx", "-g", "daemon off;" ]
     depends_on:
       - app
       - worker
@@ -41,4 +44,4 @@ services:
 volumes:
   production_db_data:
   production_redis_data:
-  production_storage_data:
+  production_public_data:
