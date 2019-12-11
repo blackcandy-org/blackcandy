@@ -1,3 +1,8 @@
+### 1.0.4
+
+- enhancements
+  - add ssl setup use lets encrypt 
+
 ### 1.0.3
 
 - bug fixes
