@@ -39,7 +39,22 @@ production_setup:
 	@$(PRODUCTION_APP_COMMAND) rails db:seed
 
 production_run:
+	docker/build_nginx_conf.sh
 	@docker-compose up -d
+
+production_stop:
+	@docker-compose down
+
+production_restart:
+	@make production_stop
+	@make production_run
+
+production_set_ssl:
+	docker/set_ssl.sh
+
+production_update:
+	@docker pull blackcandy/blackcandy
+	@make production_restart
 
 build_base:
 	@docker build - < base.Dockerfile -t blackcandy/base
@@ -47,13 +62,6 @@ build_base:
 	@$(DOCKER_LOGIN_COMMAND)
 	@docker push blackcandy/base:$$(cat BASE_VERSION)
 	@docker push blackcandy/base:latest
-
-build_web:
-	@docker build -f web.Dockerfile -t blackcandy/web .
-	@docker tag blackcandy/web blackcandy/web:$$(cat VERSION)
-	@$(DOCKER_LOGIN_COMMAND)
-	@docker push blackcandy/web:$$(cat VERSION)
-	@docker push blackcandy/web:latest
 
 build:
 	@docker build -t blackcandy/blackcandy .
