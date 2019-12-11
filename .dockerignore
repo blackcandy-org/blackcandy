@@ -12,6 +12,8 @@
 /public/uploads/
 /test
 /images
+/config/nginx/nginx.conf
+/docker
 
 yarn-error.log
 base.Dockerfile

@@ -39,7 +39,22 @@ production_setup:
 	@$(PRODUCTION_APP_COMMAND) rails db:seed
 
 production_run:
+	docker/build_nginx_conf.sh
 	@docker-compose up -d
+
+production_stop:
+	@docker-compose down
+
+production_restart:
+	@make production_stop
+	@make production_run
+
+production_set_ssl:
+	docker/set_ssl.sh
+
+production_update:
+	@docker pull blackcandy/blackcandy
+	@make production_restart
 
 build_base:
 	@docker build - < base.Dockerfile -t blackcandy/base

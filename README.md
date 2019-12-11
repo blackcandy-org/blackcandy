@@ -59,6 +59,35 @@ You can use initial admin user to login (email: admin@admin.com, password: fooba
 
 You can also change `docker-compose.yml` for your own needs.
 
+## Setup SSL
+
+Black candy can use Let’s Encrypt to get certificate. If you want to enable ssl, you sould make sure your server IP associate with your domain on DNS first.
+
+Then you need set `BLACK_CANDY_DOMAIN_NAME` and `BLACK_CANDY_DOMAIN_EMAIL` environment variable on your sever.
+
+```shell
+$ export BLACK_CANDY_DOMAIN_NAME="example.com"
+$ export BLACK_CANDY_DOMAIN_EMAIL="youremail@email.com"
+```
+
+Then set ssl certificate 
+
+```shell
+$ make production_set_ssl
+```
+
+After set ssl certificate successfully, you should set `BLACK_CANDY_USE_SSL` environment variable to true.
+
+```shell
+$ export BLACK_CANDY_USE_SSL="true"
+```
+
+Finally, restart Black candy
+
+```shell
+$ make production_restart
+```
+
 ## Development
 
 ```shell
