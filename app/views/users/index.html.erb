@@ -1,36 +1,38 @@
-<div class='display__small-width'>
-  <div class='heading heading--expand'>
-    <div class='heading__body'>
-      <div class='heading__body__text heading__body__text--main'><%= t('text.manage_users') %></div>
+<% cache @users do %>
+  <div class='display__small-width'>
+    <div class='heading heading--expand'>
+      <div class='heading__body'>
+        <div class='heading__body__text heading__body__text--main'><%= t('text.manage_users') %></div>
+      </div>
+      <div class='heading__footer'>
+        <%= link_to t('text.add_user'), new_user_path, class: 'button button--primary' %>
+      </div>
     </div>
-    <div class='heading__footer'>
-      <%= link_to t('text.add_user'), new_user_path, class: 'button button--primary' %>
-    </div>
-  </div>
-  <div class='line'></div>
-  <div class='position-relative'>
-    <% if @users.present? %>
-      <ul class='list list--dark-border'>
-        <% @users.each do |user| %>
-          <li class='list__item' data-user-id='<%= user.id %>'>
-            <span class='list__item__content'>
-              <%= avatar_tag user %>
-            </span>
-            <span class='list__item__content'>
-              <%= link_to user.email, edit_user_path(user), class: 'list__item__info list__item__info--main' %>
-            </span>
-            <span class='list__item__content list__item__content--minor'>
-              <span class='list__item__info'>
-                <%= link_to user_path(user), method: :delete, remote: true do %>
-                  <%= icon_tag 'delete', size: 'small', title: t('label.delete') %>
-                <% end %>
+    <div class='line'></div>
+    <div class='position-relative'>
+      <% if @users.present? %>
+        <ul class='list list--dark-border'>
+          <% @users.each do |user| %>
+            <li class='list__item' data-user-id='<%= user.id %>'>
+              <span class='list__item__content'>
+                <%= avatar_tag user %>
               </span>
-            </span>
-          </li>
-        <% end %>
-      </ul>
-    <% else %>
-      <%= empty_alert_tag %>
-    <% end %>
+              <span class='list__item__content'>
+                <%= link_to user.email, edit_user_path(user), class: 'list__item__info list__item__info--main' %>
+              </span>
+              <span class='list__item__content list__item__content--minor'>
+                <span class='list__item__info'>
+                  <%= link_to user_path(user), method: :delete, remote: true do %>
+                    <%= icon_tag 'delete', size: 'small', title: t('label.delete') %>
+                  <% end %>
+                </span>
+              </span>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <%= empty_alert_tag %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>

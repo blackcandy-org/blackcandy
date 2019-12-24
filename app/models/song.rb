@@ -5,8 +5,8 @@ class Song < ApplicationRecord
 
   validates :name, :file_path, :md5_hash, presence: true
 
-  belongs_to :album
-  belongs_to :artist
+  belongs_to :album, touch: true
+  belongs_to :artist, touch: true
 
   search_by :name, associations: [:artist, :album]
 

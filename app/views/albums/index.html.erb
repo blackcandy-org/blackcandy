@@ -3,7 +3,7 @@
 <% else %>
   <div data-controller='infinite-scroll' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
     <div class='cards' id='js-albums-content'>
-      <%= render partial: 'album', collection: @albums %>
+      <%= render partial: 'album', collection: @albums, cached: true %>
     </div>
     <div data-target='infinite-scroll.trigger' class='display__justify-align-center'>
       <% if @pagy.next %>
