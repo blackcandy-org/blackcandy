@@ -1,64 +1,26 @@
 # frozen_string_literal: true
 
-class Playlist
-  def initialize(song_ids)
-    self.song_ids = song_ids
+class Playlist < ApplicationRecord
+  validates :name, presence: true, if: :require_name?
+
+  has_and_belongs_to_many :songs, -> { order('playlists_songs.created_at') }
+  belongs_to :user
+
+  def buildin?
+    false
   end
 
-  def song_ids=(song_ids)
-    raise TypeError, 'Invalid song ids, expect Redis::List instance' unless song_ids.is_a? Redis::List
-    @song_ids = song_ids
+  def current?
+    type == 'CurrentPlaylist'
   end
 
-  def song_ids
-    @song_ids.uniq.map(&:to_i)
+  def favorite?
+    type == 'FavoritePlaylist'
   end
 
-  def songs
-    Song.includes(:artist).find_ordered(song_ids)
-  end
+  private
 
-  def push(*song_ids)
-    ids = song_ids.flatten
-    @song_ids.push(*ids) unless ids.blank?
-  end
-
-  def delete(*song_ids)
-    song_ids.flatten.each do |song_id|
-      @song_ids.delete(song_id)
+    def require_name?
+      true
     end
-  end
-
-  def toggle(song_id)
-    include?(song_id) ? delete(song_id) : push(song_id)
-  end
-
-  def update(attributes)
-    case attributes[:update_action]
-    when 'push'
-      push(attributes[:song_id])
-    when 'delete'
-      delete(attributes[:song_id])
-    end
-  end
-
-  def clear
-    @song_ids.clear
-  end
-
-  def empty?
-    @song_ids.empty?
-  end
-
-  def include?(song_id)
-    @song_ids.include? song_id.to_s
-  end
-
-  def count
-    song_ids.size
-  end
-
-  def replace(song_ids)
-    clear; push(song_ids)
-  end
 end

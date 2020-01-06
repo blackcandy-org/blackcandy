@@ -1,0 +1,6 @@
+<% if @pagy.page == 1 %>
+  // If it's first page just render whole list content, avoid to add old playlist content to the new one.
+  <%= render_playlist(render 'index') %>
+<% else %>
+  App.appedNextPageContentTo('#js-playlist-list', '<%= j(render partial: 'playlist', collection: @playlists, cached: true) %>', '<%= pagy_next_url(@pagy) %>')
+<% end %>

@@ -7,6 +7,7 @@ class Song < ApplicationRecord
 
   belongs_to :album, touch: true
   belongs_to :artist, touch: true
+  has_and_belongs_to_many :playlists
 
   search_by :name, associations: [:artist, :album]
 
@@ -16,7 +17,7 @@ class Song < ApplicationRecord
   end
 
   def favorited?
-    id.in? Current.user.favorite_playlist
+    Current.user.favorite_playlist.songs.exists? id
   end
 
   def self.find_ordered(ids)

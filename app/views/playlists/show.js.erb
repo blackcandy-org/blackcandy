@@ -1,0 +1,5 @@
+<% if @pagy.page == 1 %>
+  <%= render_playlist(render 'show') %>
+<% else %>
+  App.appedNextPageContentTo('#js-playlist-list-content', '<%= j(render partial: 'song', collection: @songs, cached: true) %>', '<%= pagy_next_url(@pagy) %>')
+<% end %>

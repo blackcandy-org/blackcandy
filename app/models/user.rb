@@ -3,7 +3,6 @@
 class User < ApplicationRecord
   AVAILABLE_THEME_OPTIONS = %w(dark light auto)
 
-  include Playlistable
   include ScopedSetting
 
   before_create :downcase_email
@@ -11,9 +10,11 @@ class User < ApplicationRecord
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
   validates :password, length: { minimum: 6 }
 
-  has_many :song_collections, dependent: :destroy
+  has_many :playlists, -> { where(type: nil) }, dependent: :destroy
+  has_one :current_playlist, dependent: :destroy
+  has_one :favorite_playlist, dependent: :destroy
+
   has_secure_password
-  has_playlists :current, :favorite
 
   scoped_field :theme, default: 'dark', available_options: AVAILABLE_THEME_OPTIONS
 
@@ -21,6 +22,18 @@ class User < ApplicationRecord
     settings.each do |key, value|
       send("#{key}=", value)
     end
+  end
+
+  def all_playlists
+    playlists.unscope(where: :type)
+  end
+
+  def current_playlist
+    super || create_current_playlist
+  end
+
+  def favorite_playlist
+    super || create_favorite_playlist
   end
 
   private

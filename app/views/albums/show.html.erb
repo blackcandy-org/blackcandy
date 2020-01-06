@@ -1,5 +1,5 @@
 <% cache @album do %>
-  <div class='display__medium-width' data-controller='playlist' data-playlist-play-path='<%= play_album_path(@album) %>'>
+  <div class='display__medium-width' data-controller='playlist'>
     <div class='heading heading--expand'>
       <div class='heading__image'>
         <%= image_tag image_url_for(@album), class: 'image' %>
@@ -13,7 +13,7 @@
           <span class='monospace-font'><%= formatDuration(@songs.sum(:length)) %></span>
         </div>
         <div class='heading__body__actions'>
-          <button data-action='playlist#playAll' class='button button--primary'><%= t('label.play_all') %></button>
+          <%= link_to t('label.play_all'), current_playlist_path(song_ids: @album.song_ids ), method: :post, remote: true, class: 'button button--primary' %>
         </div>
       </div>
     </div>
@@ -24,8 +24,8 @@
             <span class='list__item__info list__item__info--main'><%= song.name %></span>
           </span>
           <span class='list__item__content list__item__content--minor'>
-            <span class='list__item__info list__item__info--action' data-playlist-action='showCollectionDialog'>
-              <%= icon_tag 'playlist-add', size: 'small', title: t('text.add_to_collection') %>
+            <span class='list__item__info list__item__info--action' data-playlist-action='showPlaylistsDialog'>
+              <%= icon_tag 'playlist-add', size: 'small', title: t('text.add_to_playlist') %>
             </span>
             <span class='list__item__info list__item__info--minor monospace-font'><%= formatDuration(song.length) %></span>
           </span>

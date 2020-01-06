@@ -3,31 +3,24 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
   resource :setting, only: [:show, :update]
+  resource :current_playlist, only: [:show, :create]
+  resource :favorite_playlist, only: [:show]
+
   resources :artists, only: [:index, :show]
   resources :stream, only: [:new]
-  resources :song_collections, except: [:new, :edit, :show]
+  resources :songs, only: [:index, :show]
+  resources :albums, only: [:index, :show]
 
   resources :users, except: [:show] do
     resource :settings, only: [:update]
   end
 
-  resources :albums, only: [:index, :show] do
-    member do
-      post 'play'
-    end
+  resources :playlists, except: [:new, :edit] do
+    resource :song, only: [:create, :destroy], module: 'playlists'
   end
 
-  resources :songs, only: [:index, :show] do
-    member do
-      post 'favorite'
-      get 'add'
-    end
-  end
-
-  resources :playlist, only: [:show, :update, :destroy], constraints: { id: /(current|favorite|\d+)/ } do
-    member do
-      post 'play'
-    end
+  namespace :dialog do
+    resources :playlists, only: [:index]
   end
 
   get '/403', to: 'errors#forbidden', as: :forbidden

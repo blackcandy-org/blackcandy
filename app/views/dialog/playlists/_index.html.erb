@@ -1,0 +1,14 @@
+<% if @playlists.present? %>
+  <div data-controller='infinite-scroll playlist' data-infinite-scroll-container='.dialog__content' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
+    <ul id='js-dialog-playlists' data-action='click->playlist#add' class='list'>
+      <%= render partial: 'playlist', collection: @playlists, cached: true %>
+    </ul>
+    <div data-target='infinite-scroll.trigger' class='display__justify-align-center'>
+      <% if @pagy.next %>
+        <%= loader_tag %>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <%= empty_alert_tag %>
+<% end %>

@@ -54,6 +54,7 @@ production_set_ssl:
 
 production_update:
 	@docker pull blackcandy/blackcandy
+	@$(PRODUCTION_APP_COMMAND) rails db:migrate
 	@make production_restart
 
 build_base:

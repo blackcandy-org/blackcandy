@@ -2,7 +2,7 @@ import { Controller } from 'stimulus';
 import { ajax } from '@rails/ujs';
 
 export default class extends Controller {
-  static targets = ['item', 'count'];
+  static targets = ['item', 'count', 'name', 'nameInput'];
 
   initialize() {
     this.player = App.player;
@@ -26,29 +26,22 @@ export default class extends Controller {
       case 'delete':
         this._deleteSong(target);
         break;
-      case 'showCollectionDialog':
-        this._showCollectionDialog(target);
+      case 'showPlaylistsDialog':
+        this._showPlaylistsDialog(target);
         break;
       default:
         this._play(target);
     }
   }
 
-  playAll() {
-    ajax({
-      url: this.data.get('playPath'),
-      type: 'post',
-      dataType: 'script'
-    });
-  }
-
   clear() {
     App.dispatchEvent('#js-playlist-loader', 'loader:show');
 
     ajax({
-      url: `/playlist/${this.id}`,
+      url: `/playlists/${this.id}/song`,
       type: 'delete',
       dataType: 'script',
+      data: 'clear_all=true',
       success: () => {
         App.dispatchEvent('#js-playlist-loader', 'loader:hide');
 
@@ -66,6 +59,54 @@ export default class extends Controller {
     });
   }
 
+  rename() {
+    const name = this.nameTarget.innerText;
+
+    this.nameTarget.classList.add('hidden');
+    this.nameInputTarget.classList.remove('hidden');
+    this.nameInputTarget.value = name;
+    this.nameInputTarget.focus();
+    this.nameInputTarget.select();
+  }
+
+  updateName() {
+    const newName = this.nameInputTarget.value.trim();
+
+    if (newName != this.nameTarget.innerText && newName != '') {
+      this.nameTarget.innerText = newName;
+
+      ajax({
+        url: `/playlists/${this.id}`,
+        type: 'put',
+        data: `playlist[name]=${newName}`
+      });
+    }
+
+    this.nameTarget.classList.remove('hidden');
+    this.nameInputTarget.classList.add('hidden');
+  }
+
+  updateNameOnEnter(event) {
+    if (event.key == 'Enter') {
+      this.updateName();
+    }
+  }
+
+  add({ target }) {
+    const { playlistId } = target.closest('[data-playlist-id]').dataset;
+
+    App.dispatchEvent('#js-dialog-loader', 'loader:show');
+
+    ajax({
+      url: `/playlists/${playlistId}/song`,
+      type: 'post',
+      data: `song_ids[]=${this.player.selectedSongId}`,
+      success: () => {
+        App.dispatchEvent('#js-dialog', 'dialog:hide');
+      }
+    });
+  }
+
   _play(target) {
     const { songId } = target.closest('[data-song-id]').dataset;
     const playlistIndex = this.player.playlistIndexOf(songId);
@@ -74,9 +115,9 @@ export default class extends Controller {
       this.player.skipTo(playlistIndex);
     } else {
       ajax({
-        url: '/playlist/current',
-        type: 'put',
-        data: `update_action=push&song_id=${songId}`,
+        url: `/playlists/${this.player.currentPlaylistId}/song`,
+        type: 'post',
+        data: `song_ids[]=${songId}`,
         success: () => {
           this.player.skipTo(this.player.pushToPlaylist(songId));
         }
@@ -89,10 +130,10 @@ export default class extends Controller {
     const { songId } = playlistItemElement.dataset;
 
     ajax({
-      url: `/playlist/${this.id}`,
-      type: 'put',
+      url: `/playlists/${this.id}/song`,
+      type: 'delete',
       dataType: 'script',
-      data: `update_action=delete&song_id=${songId}`,
+      data: `song_ids[]=${songId}`,
       success: () => {
         if (this.isCurrent) { this.player.deleteFromPlaylist(songId); }
 
@@ -105,14 +146,15 @@ export default class extends Controller {
     });
   }
 
-  _showCollectionDialog(target) {
+  _showPlaylistsDialog(target) {
     const { songId } = target.closest('[data-song-id]').dataset;
+    this.player.selectedSongId = songId;
 
     App.dispatchEvent('#js-dialog', 'dialog:show');
     App.dispatchEvent('#js-dialog-loader', 'loader:show');
 
     ajax({
-      url: `/songs/${songId}/add`,
+      url: '/dialog/playlists',
       type: 'get',
       dataType: 'script',
       success: () => {
@@ -130,6 +172,6 @@ export default class extends Controller {
   }
 
   get isCurrent() {
-    return this.id == 'current';
+    return this.id == this.player.currentPlaylistId;
   }
 }

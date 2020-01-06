@@ -1,6 +1,0 @@
-App.player.updatePlaylist(JSON.parse('<%= j(render inline: @song_ids.to_json) %>'));
-App.player.skipTo(0);
-
-if (document.querySelector("[data-playlist-id='current']")) {
-  App.renderPlaylistContent('<%= j(render partial: 'playlist/show', locals: { next_url: "#{@pagy.next ? '/playlist/current?page=2' : ''}" , id: 'current' }) %>');
-}
