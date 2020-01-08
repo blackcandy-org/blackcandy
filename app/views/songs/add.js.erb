@@ -1,5 +1,0 @@
-<% if @pagy.page == 1 %>
-  App.renderContent('#js-dialog-content', '<%= j(render 'add') %>');
-<% else %>
-  App.appedNextPageContentTo('#js-dialog-song-collections', '<%= j(render 'song_collections') %>', '<%= pagy_next_url(@pagy) %>')
-<% end %>

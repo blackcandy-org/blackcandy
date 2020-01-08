@@ -1,5 +1,5 @@
 <% if @pagy.page == 1 %>
   <%= render_main_content(render template: 'artists/index.html.erb') %>
 <% else %>
-  App.appedNextPageContentTo('#js-artists-content', '<%= j render(partial: 'artist', collection: @artists) %>', '<%= pagy_next_url(@pagy) %>')
+  App.appedNextPageContentTo('#js-artists-content', '<%= j render(partial: 'artist', collection: @artists, cached: true) %>', '<%= pagy_next_url(@pagy) %>')
 <% end %>

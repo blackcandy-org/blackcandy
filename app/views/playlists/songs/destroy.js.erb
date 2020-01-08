@@ -1,0 +1,11 @@
+<% if @playlist.songs.empty? %>
+  (function() {
+    var playlistElement = document.querySelector("[data-controller='playlist']");
+
+    if (playlistElement && playlistElement.dataset.playlistId == '<%= @playlist.id %>') {
+      App.renderPlaylistContent("<%= j @playlist.buildin? ? render('playlists/show_buildin') : render('playlists/show') %>")
+    }
+  })();
+<% end %>
+
+<%= render_flash %>

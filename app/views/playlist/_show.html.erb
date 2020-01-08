@@ -1,7 +1,0 @@
-<% playlist_id = local_assigns[:id] || params[:id] %>
-
-<% if playlist_id.in?(%w(current favorite)) %>
-  <%= render 'playlist/single' %>
-<% else %>
-  <%= render 'playlist/collection' %>
-<% end %>

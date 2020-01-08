@@ -13,13 +13,4 @@ class SongsController < ApplicationController
   def show
     @song = Song.find(params[:id])
   end
-
-  def favorite
-    Current.user.favorite_playlist.toggle(params[:id])
-    head :ok
-  end
-
-  def add
-    @pagy, @song_collections = pagy_countless(Current.user.song_collections.order(created_at: :desc))
-  end
 end

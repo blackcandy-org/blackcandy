@@ -60,12 +60,15 @@ export default class extends Controller {
   toggleFavorite() {
     if (!this.currentSong.howl) { return; }
 
+    const isFavorited = this.currentSong.is_favorited;
+
     ajax({
-      url: `/songs/${this.currentSong.id}/favorite`,
-      type: 'post',
+      url: `/playlists/${this.player.favoritePlaylistId}/song`,
+      type: isFavorited ? 'delete' : 'post',
+      data: `song_ids[]=${this.currentSong.id}`,
       success: () => {
         this.favoriteButtonTarget.classList.toggle('player__favorite');
-        this.currentSong.is_favorited = true;
+        this.currentSong.is_favorited = !isFavorited;
       }
     });
   }
@@ -184,7 +187,7 @@ export default class extends Controller {
 
   _initPlaylist() {
     ajax({
-      url: '/playlist/current?init=true',
+      url: '/current_playlist?init=true',
       type: 'get',
       dataType: 'script'
     });

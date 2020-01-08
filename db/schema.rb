@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_08_054405) do
+ActiveRecord::Schema.define(version: 2020_01_02_034003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgroonga"
@@ -35,6 +35,24 @@ ActiveRecord::Schema.define(version: 2019_09_08_054405) do
     t.index ["name"], name: "pgroonga_index_artists_on_name", opclass: :pgroonga_varchar_full_text_search_ops, using: :pgroonga
   end
 
+  create_table "playlists", force: :cascade do |t|
+    t.string "name"
+    t.string "type"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_playlists_on_user_id"
+  end
+
+  create_table "playlists_songs", id: false, force: :cascade do |t|
+    t.bigint "song_id"
+    t.bigint "playlist_id"
+    t.datetime "created_at", null: false
+    t.index ["playlist_id"], name: "index_playlists_songs_on_playlist_id"
+    t.index ["song_id", "playlist_id"], name: "index_playlists_songs_on_song_id_and_playlist_id", unique: true
+    t.index ["song_id"], name: "index_playlists_songs_on_song_id"
+  end
+
   create_table "settings", force: :cascade do |t|
     t.string "var", null: false
     t.text "value"
@@ -43,14 +61,6 @@ ActiveRecord::Schema.define(version: 2019_09_08_054405) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["thing_type", "thing_id", "var"], name: "index_settings_on_thing_type_and_thing_id_and_var", unique: true
-  end
-
-  create_table "song_collections", force: :cascade do |t|
-    t.string "name"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_song_collections_on_user_id"
   end
 
   create_table "songs", force: :cascade do |t|

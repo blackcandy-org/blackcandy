@@ -1,4 +1,5 @@
 mp3_sample:
+  id: 1
   name: 'mp3_sample'
   file_path: '/app/test/fixtures/files/artist1_album2.mp3'
   md5_hash: 'fake_md5'
@@ -6,6 +7,7 @@ mp3_sample:
   album: 'album2'
 
 flac_sample:
+  id: 2
   name: 'flac_sample'
   file_path: '/app/test/fixtures/files/artist1_album1.flac'
   md5_hash: 'fake_md5'
@@ -13,6 +15,7 @@ flac_sample:
   album: 'album1'
 
 ogg_sample:
+  id: 3
   name: 'ogg_sample'
   file_path: '/app/test/fixtures/files/artist2_album3.ogg'
   md5_hash: 'fake_md5'
@@ -20,6 +23,7 @@ ogg_sample:
   album: 'album3'
 
 wav_sample:
+  id: 4
   name: 'wav_sample'
   file_path: '/app/test/fixtures/files/artist2_album3.wav'
   md5_hash: 'fake_md5'
@@ -27,6 +31,7 @@ wav_sample:
   album: 'album3'
 
 opus_sample:
+  id: 5
   name: 'opus_sample'
   file_path: '/app/test/fixtures/files/artist2_album3.opus'
   md5_hash: 'fake_md5'
@@ -34,6 +39,7 @@ opus_sample:
   album: 'album3'
 
 m4a_sample:
+  id: 6
   name: 'm4a_sample'
   file_path: '/app/test/fixtures/files/artist1_album1.m4a'
   md5_hash: 'fake_md5'

@@ -1,6 +1,7 @@
 version: '3.0'
 services:
   app: &app_base
+    container_name: 'blackcandy_app'
     image: blackcandy/blackcandy
     volumes:
       - ./log:/app/log
@@ -18,17 +19,21 @@ services:
       - postgres
       - redis
   postgres:
+    container_name: 'blackcandy_postgres'
     image: groonga/pgroonga:2.1.8-alpine-11.1
     volumes:
       - production_db_data:/var/lib/postgresql/data
   redis:
+    container_name: 'blackcandy_redis'
     image: redis:4.0-alpine
     volumes:
       - production_redis_data:/data
   worker:
+    container_name: 'blackcandy_worker'
     <<: *app_base
     command: bundle exec sidekiq
   web:
+    container_name: 'blackcandy_web'
     image: nginx:1.16-alpine
     volumes:
       - ./log:/var/www/black_candy/log
@@ -45,6 +50,7 @@ services:
       - 80:80
       - 443:443
   certbot:
+    container_name: 'blackcandy_certbot'
     image: certbot/certbot:v1.0.0
     volumes:
       - production_certbot_conf:/etc/letsencrypt

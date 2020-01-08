@@ -35,7 +35,7 @@ en:
     logout: 'Logout'
     users: 'Users'
     current: 'Current'
-    collections: 'Collections'
+    playlists: 'Playlists'
     favorites: 'Favorites'
     albums: 'Albums'
     artists: 'Artists'
@@ -60,6 +60,7 @@ en:
     not_found: "The page you were looking for doesn't exist"
     unprocessable_entity: 'The change you wanted was rejected'
     internal_server_error: "We're sorry, but something went wrong"
+    already_in_playlist: "Add to playlist fail, song already in playlist"
   success:
     delete: 'Delete successfully'
     create: 'Created successfully'
@@ -68,7 +69,7 @@ en:
     delete_from_playlist: 'Delete from playlist successfully'
   text:
     no_items: 'No items'
-    add_to_collection: 'Add to collection'
+    add_to_playlist: 'Add to playlist'
     update_profile: 'Update profile'
     manage_users: 'Manage users'
     add_user: 'Add user'

@@ -1,0 +1,18 @@
+<%= form_with model: Playlist.new, class: 'form form--inline' do |form| %>
+  <div class='input'>
+    <%= form.text_field :name %>
+  </div>
+  <%= form.submit t('label.create'), class: 'button button--primary button--small' %>
+<% end %>
+<div data-controller='infinite-scroll' data-infinite-scroll-container='.playlist__content' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
+  <ul id='js-playlist-list' class='list'>
+    <% if @playlists.present? %>
+      <%= render partial: 'playlist', collection: @playlists, cached: true %>
+    <% end %>
+  </ul>
+  <div data-target='infinite-scroll.trigger' class='display__justify-align-center'>
+    <% if @pagy.next %>
+      <%= loader_tag %>
+    <% end %>
+  </div>
+</div>

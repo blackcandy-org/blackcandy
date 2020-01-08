@@ -12,17 +12,9 @@ class AlbumsController < ApplicationController
   end
 
   def show
-    @songs = @album.songs.order(:tracknum)
+    @songs = @album.songs
 
     AttachAlbumImageFromDiscogsJob.perform_later(@album.id) if @album.need_attach_from_discogs?
-  end
-
-  def play
-    @song_ids = @album.songs.order(:tracknum).ids
-    @playlist = Current.user.current_playlist
-
-    @playlist.replace(@song_ids)
-    @pagy, @songs = pagy_countless(@playlist.songs, page: 1)
   end
 
   private

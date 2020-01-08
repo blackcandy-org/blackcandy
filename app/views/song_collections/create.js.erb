@@ -1,7 +1,0 @@
-<%= render_flash %>
-
-document.getElementById('song_collection_name').value = '';
-
-<% if @song_collection.valid? %>
-  document.querySelector('#js-song-collection-list').insertAdjacentHTML('afterbegin', '<%= j(render partial: 'song_collection', locals: { song_collection: @song_collection }) %>');
-<% end %>
