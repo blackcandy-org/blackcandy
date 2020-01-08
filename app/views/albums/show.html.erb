@@ -10,7 +10,7 @@
         <div class='heading__body__text'>
           <span><%= @songs.load.size %> <%= t('label.tracks') %></span>
           <span>,</span>
-          <span class='monospace-font'><%= formatDuration(@songs.sum(:length)) %></span>
+          <span class='monospace-font'><%= format_duration(@songs.sum(:length)) %></span>
         </div>
         <div class='heading__body__actions'>
           <%= link_to t('label.play_all'), current_playlist_path(song_ids: @album.song_ids ), method: :post, remote: true, class: 'button button--primary' %>
@@ -27,7 +27,7 @@
             <span class='list__item__info list__item__info--action' data-playlist-action='showPlaylistsDialog'>
               <%= icon_tag 'playlist-add', size: 'small', title: t('text.add_to_playlist') %>
             </span>
-            <span class='list__item__info list__item__info--minor monospace-font'><%= formatDuration(song.length) %></span>
+            <span class='list__item__info list__item__info--minor monospace-font'><%= format_duration(song.length) %></span>
           </span>
         </li>
       <% end %>

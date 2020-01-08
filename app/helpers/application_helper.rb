@@ -51,7 +51,7 @@ module ApplicationHelper
     render partial: 'shared/main.js.erb', locals: { html: html }
   end
 
-  def formatDuration(sec)
+  def format_duration(sec)
     time = Time.at(sec)
     sec > 1.hour ? time.strftime('%T') : time.strftime('%M:%S')
   end

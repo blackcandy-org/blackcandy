@@ -30,13 +30,4 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
       end
     end
   end
-
-  test 'should play songs from album' do
-    flush_redis
-    album = albums(:album1)
-
-    assert_login_access(method: :post, url: play_album_url(album), xhr: true) do |logged_user|
-      assert_equal album.songs.ids.sort, logged_user.current_playlist.song_ids.sort
-    end
-  end
 end

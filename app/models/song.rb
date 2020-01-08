@@ -15,13 +15,4 @@ class Song < ApplicationRecord
     file_format = MediaFile.format(file_path)
     file_format.in?(Stream::TRANSCODING_FORMATS) ? Stream::TRANSCODE_FORMAT : file_format
   end
-
-  def favorited?
-    Current.user.favorite_playlist.songs.exists? id
-  end
-
-  def self.find_ordered(ids)
-    order_clause = ids.map { |id| "id=#{id} desc" }.join(',')
-    where(id: ids).order(Arel.sql(order_clause))
-  end
 end
