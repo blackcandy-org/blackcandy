@@ -142,7 +142,7 @@ export default class extends Controller {
     window.requestAnimationFrame(this._setProgress.bind(this));
 
     // let playlist can show current palying song
-    App.dispatchEvent(document, 'playlist:showPlaying');
+    App.dispatchEvent(document, 'playlistSongs:showPlaying');
   }
 
   _setPauseStatus() {

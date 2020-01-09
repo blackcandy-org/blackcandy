@@ -1,11 +1,11 @@
-<div data-controller='playlist' data-playlist-id='<%= @playlist.id %>' class='display__full-height'>
+<div data-controller='playlist-songs' data-playlist-songs-playlist-id='<%= @playlist.id %>' class='display__full-height'>
   <% if @songs.empty? %>
     <%= empty_alert_tag %>
   <% else %>
     <div class='heading'>
       <div class='heading__body'>
         <div class='heading__body__text'>
-          <span data-target='playlist.count'><%= @playlist.songs.size %></span>
+          <span data-target='playlist-songs.count'><%= @playlist.songs.size %></span>
           <span> <%= t('label.tracks') %></span>
         </div>
       </div>
@@ -16,7 +16,7 @@
             <% unless @playlist.current? %>
               <%= link_to t('label.play_all'), current_playlist_path(song_ids: @playlist.song_ids), method: :post, remote: true, class: 'dropdown__item' %>
             <% end %>
-            <a class='dropdown__item' data-action='playlist#clear'><%= t('label.clear') %></a>
+            <a class='dropdown__item' data-action='playlist-songs#clear'><%= t('label.clear') %></a>
           </div>
         </div>
       </div>

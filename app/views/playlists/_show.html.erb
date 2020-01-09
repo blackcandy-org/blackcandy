@@ -1,5 +1,5 @@
-<div data-controller='playlist' data-playlist-id='<%= @playlist.id %>' class='display__full-height display__flex-vertical'>
-  <div class='heading'>
+<div data-controller='playlist-songs' data-playlist-songs-playlist-id='<%= @playlist.id %>' class='display__full-height display__flex-vertical'>
+  <div class='heading' data-controller='playlist' data-playlist-id='<%= @playlist.id %>'>
     <div class='heading__header'>
       <%= link_to playlists_path, remote: true, data: { show_loader: true } do %>
         <%= icon_tag 'chevron-left', title: t('text.go_back') %>
@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class='heading__body__text'>
-        <span data-target='playlist.count'><%= @playlist.songs.size %></span>
+        <span data-target='playlist-songs.count'><%= @playlist.songs.size %></span>
         <span> <%= t('label.tracks') %><span>
       </div>
     </div>
