@@ -1,4 +1,4 @@
-FROM node:10.15.0-slim as node
+FROM node:12.14.1-slim as node
 FROM ruby:2.6.0-slim as base
 
 MAINTAINER Aidewoode https://github.com/aidewoode
