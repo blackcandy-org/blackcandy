@@ -1,6 +1,9 @@
-version: '3.0'
+version: '3.4'
 services:
   app:
+    build:
+      context: .
+      target: base
     image: blackcandy/base
     volumes:
       - .:/app

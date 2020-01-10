@@ -4,7 +4,7 @@ PRODUCTION_APP_COMMAND = docker-compose run --rm app
 DOCKER_LOGIN_COMMAND = docker login -u $(DOCKER_USER) -p $(DOCKER_PASS)
 
 dev_run:
-	@docker-compose -f docker-compose.development.yml up
+	@docker-compose -f docker-compose.development.yml up --build
 
 dev_stop:
 	@docker-compose -f docker-compose.development.yml down
@@ -56,13 +56,6 @@ production_update:
 	@docker pull blackcandy/blackcandy
 	@$(PRODUCTION_APP_COMMAND) rails db:migrate
 	@make production_restart
-
-build_base:
-	@docker build - < base.Dockerfile -t blackcandy/base
-	@docker tag blackcandy/base blackcandy/base:$$(cat BASE_VERSION)
-	@$(DOCKER_LOGIN_COMMAND)
-	@docker push blackcandy/base:$$(cat BASE_VERSION)
-	@docker push blackcandy/base:latest
 
 build:
 	@docker build -t blackcandy/blackcandy .
