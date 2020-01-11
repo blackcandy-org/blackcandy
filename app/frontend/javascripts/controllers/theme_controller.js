@@ -2,8 +2,6 @@ import { Controller } from 'stimulus';
 
 export default class extends Controller {
   initialize() {
-    this._updateTheme = this._updateTheme.bind(this);
-    this._matchTheme = this._matchTheme.bind(this);
     this._updateTheme();
   }
 
@@ -15,7 +13,7 @@ export default class extends Controller {
     this.element.removeEventListener('theme:update', this._updateTheme);
   }
 
-  _updateTheme() {
+  _updateTheme = () => {
     if (this.colorSchemeQuery) { this.colorSchemeQuery.removeListener(this._matchTheme); }
 
     const theme = this.data.get('name');
@@ -35,7 +33,7 @@ export default class extends Controller {
     }
   }
 
-  _matchTheme(event) {
+  _matchTheme = (event) => {
     if (event.matches) {
       this._setDarkTheme();
     } else {

@@ -5,9 +5,6 @@ export default class extends Controller {
 
   initialize() {
     this._initPlayer();
-    this._setBeforePlayingStatus = this._setBeforePlayingStatus.bind(this);
-    this._setPlayingStatus = this._setPlayingStatus.bind(this);
-    this._setPauseStatus = this._setPauseStatus.bind(this);
   }
 
   connect() {
@@ -39,12 +36,12 @@ export default class extends Controller {
     document.body.classList.add('noscroll');
   }
 
-  _setBeforePlayingStatus() {
+  _setBeforePlayingStatus = () => {
     this.loaderTarget.classList.remove('hidden');
     this.songNameTarget.classList.add('hidden');
   }
 
-  _setPlayingStatus() {
+  _setPlayingStatus = () => {
     this.songNameTarget.textContent = this.player.currentSong.name;
     this.loaderTarget.classList.add('hidden');
     this.songNameTarget.classList.remove('hidden');
@@ -52,7 +49,7 @@ export default class extends Controller {
     this.playButtonTarget.classList.add('hidden');
   }
 
-  _setPauseStatus() {
+  _setPauseStatus = () => {
     this.pauseButtonTarget.classList.add('hidden');
     this.playButtonTarget.classList.remove('hidden');
   }

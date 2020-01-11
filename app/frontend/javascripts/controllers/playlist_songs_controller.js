@@ -6,18 +6,16 @@ export default class extends Controller {
 
   initialize() {
     this.player = App.player;
-    this.showPlayingItem = this.showPlayingItem.bind(this);
-    this._updateCount = this._updateCount.bind(this);
   }
 
   connect() {
-    this.showPlayingItem();
-    document.addEventListener('playlistSongs:showPlaying', this.showPlayingItem);
+    this._showPlayingItem();
+    document.addEventListener('playlistSongs:showPlaying', this._showPlayingItem);
     this.element.addEventListener('playlistSongs:updateCount', this._updateCount);
   }
 
   disconnect() {
-    document.removeEventListener('playlistSongs:showPlaying', this.showPlayingItem);
+    document.removeEventListener('playlistSongs:showPlaying', this._showPlayingItem);
     this.element.removeEventListener('playlistSongs:updateCount', this._updateCount);
   }
 
@@ -68,7 +66,7 @@ export default class extends Controller {
     });
   }
 
-  showPlayingItem() {
+  _showPlayingItem = () => {
     this.itemTargets.forEach((element) => {
       element.classList.toggle('list__item--active', element.dataset.songId == this.player.currentSong.id);
     });
@@ -130,7 +128,7 @@ export default class extends Controller {
     });
   }
 
-  _updateCount(event) {
+  _updateCount = (event) => {
     this.countTarget.innerText = event.detail;
   }
 
