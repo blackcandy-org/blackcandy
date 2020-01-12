@@ -22,8 +22,8 @@
         <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', title: t('label.more') %></span>
         <div data-target='dropdown.list' class='hidden dropdown__list'>
           <% unless @songs.blank? %>
-            <%= link_to t('label.play_all'), current_playlist_path(song_ids: @playlist.song_ids), method: :post, remote: true, class: 'dropdown__item' %>
-            <%= link_to t('label.clear'), playlist_song_path(@playlist), method: :delete, remote: true, class: 'dropdown__item', data: { show_loader: true } %>
+            <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @playlist.song_ids), method: :put, remote: true, class: 'dropdown__item' %>
+            <a class='dropdown__item' data-action='playlist-songs#clear'><%= t('label.clear') %></a>
           <% end %>
           <%= link_to t('label.delete'), playlist_path(@playlist), method: :delete, remote: true, class: 'dropdown__item', data: { show_loader: true } %>
           <a data-action='playlist#rename' class='dropdown__item'><%= t('label.rename') %></a>
@@ -32,6 +32,6 @@
     </div>
   </div>
   <% if @playlist.present? %>
-    <%= render partial: 'playlists/list', locals: { next_url: local_assigns[:next_url] || pagy_next_url(@pagy) } %>
+    <%= render partial: 'list', locals: { next_url: local_assigns[:next_url] || pagy_next_url(@pagy) } %>
   <% end %>
 </div>

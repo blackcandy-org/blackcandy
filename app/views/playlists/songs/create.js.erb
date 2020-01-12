@@ -7,11 +7,11 @@
 
     if (playlistElement && hasNoNextUrl) {
       App.dispatchEvent(playlistElement, 'playlistSongs:updateCount', '<%= @playlist.songs.size %>');
-      document.querySelector('#js-playlist-list-content').insertAdjacentHTML('beforeend', "<%= j(render partial: 'playlists/song', collection: @songs, cached: true)%>");
+      document.querySelector('#js-playlist-list-content').insertAdjacentHTML('beforeend', "<%= j(render partial: 'song', collection: @songs, cached: true)%>");
     }
   <% else %>
     if (playlistElement) {
-      App.renderPlaylistContent("<%= j @playlist.buildin? ? render('playlists/show_buildin') : render('playlists/show') %>")
+      App.renderPlaylistContent("<%= j @playlist.buildin? ? render('show_buildin') : render('show') %>")
     }
   <% end %>
 })();

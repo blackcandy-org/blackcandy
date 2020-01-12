@@ -57,7 +57,7 @@ export default class extends Controller {
     const isFavorited = this.currentSong.is_favorited;
 
     ajax({
-      url: `/playlists/${this.player.favoritePlaylistId}/song`,
+      url: '/favorite_playlist/songs',
       type: isFavorited ? 'delete' : 'post',
       data: `song_ids[]=${this.currentSong.id}`,
       success: () => {
@@ -181,7 +181,7 @@ export default class extends Controller {
 
   _initPlaylist() {
     ajax({
-      url: '/current_playlist?init=true',
+      url: '/current_playlist/songs?init=true',
       type: 'get',
       dataType: 'script'
     });

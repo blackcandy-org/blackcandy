@@ -1,4 +1,4 @@
-<div data-controller='playlist-songs' data-playlist-songs-playlist-id='<%= @playlist.id %>' class='display__full-height'>
+<div data-controller='playlist-songs' data-playlist-songs-playlist-id='<%= @playlist.id %>' data-playlist-songs-is-current='<%= @playlist.current? %>' class='display__full-height'>
   <% if @songs.empty? %>
     <%= empty_alert_tag %>
   <% else %>
@@ -14,13 +14,13 @@
           <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', title: t('label.more') %></span>
           <div data-target='dropdown.list' class='hidden dropdown__list'>
             <% unless @playlist.current? %>
-              <%= link_to t('label.play_all'), current_playlist_path(song_ids: @playlist.song_ids), method: :post, remote: true, class: 'dropdown__item' %>
+              <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @playlist.song_ids), method: :put, remote: true, class: 'dropdown__item' %>
             <% end %>
             <a class='dropdown__item' data-action='playlist-songs#clear'><%= t('label.clear') %></a>
           </div>
         </div>
       </div>
     </div>
-    <%= render partial: 'playlists/list', locals: { next_url: local_assigns[:next_url] || next_url_for_path(playlist_path(@playlist), @pagy) } %>
+    <%= render partial: 'list', locals: { next_url: local_assigns[:next_url] || next_url_for_path(playlist_path(@playlist), @pagy) } %>
   <% end %>
 </div>

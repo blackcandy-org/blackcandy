@@ -13,7 +13,7 @@
           <span class='monospace-font'><%= format_duration(@songs.sum(:length)) %></span>
         </div>
         <div class='heading__body__actions'>
-          <%= link_to t('label.play_all'), current_playlist_path(song_ids: @album.song_ids ), method: :post, remote: true, class: 'button button--primary' %>
+          <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @album.song_ids ), method: :put, remote: true, class: 'button button--primary' %>
         </div>
       </div>
     </div>

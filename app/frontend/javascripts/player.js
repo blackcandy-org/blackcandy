@@ -5,8 +5,6 @@ import { shuffle } from './helper';
 const player = {
   currentIndex: 0,
   currentSong: {},
-  currentPlaylistId: null,
-  favoritePlaylistId: null,
   selectedSongId: null,
   isShuffle: false,
   isPlaying: false,

@@ -3,8 +3,6 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
   resource :setting, only: [:show, :update]
-  resource :current_playlist, only: [:show, :create]
-  resource :favorite_playlist, only: [:show]
 
   resources :artists, only: [:index, :show]
   resources :stream, only: [:new]
@@ -15,8 +13,16 @@ Rails.application.routes.draw do
     resource :settings, only: [:update]
   end
 
-  resources :playlists, except: [:new, :edit] do
-    resource :song, only: [:create, :destroy], module: 'playlists'
+  resources :playlists, except: [:show, :new, :edit] do
+    resource :songs, only: [:show, :create, :destroy], module: 'playlists'
+  end
+
+  namespace :current_playlist do
+    resource :songs, only: [:show, :update, :create, :destroy]
+  end
+
+  namespace :favorite_playlist do
+    resource :songs, only: [:show, :create, :destroy]
   end
 
   namespace :dialog do

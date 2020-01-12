@@ -36,7 +36,7 @@ export default class extends Controller {
     App.dispatchEvent('#js-playlist-loader', 'loader:show');
 
     ajax({
-      url: `/playlists/${this.playlistId}/song`,
+      url: `/playlists/${this.playlistId}/songs`,
       type: 'delete',
       dataType: 'script',
       data: 'clear_all=true',
@@ -57,7 +57,7 @@ export default class extends Controller {
     App.dispatchEvent('#js-dialog-loader', 'loader:show');
 
     ajax({
-      url: `/playlists/${playlistId}/song`,
+      url: `/playlists/${playlistId}/songs`,
       type: 'post',
       data: `song_ids[]=${this.player.selectedSongId}`,
       success: () => {
@@ -80,7 +80,7 @@ export default class extends Controller {
       this.player.skipTo(playlistIndex);
     } else {
       ajax({
-        url: `/playlists/${this.player.currentPlaylistId}/song`,
+        url: '/current_playlist/songs',
         type: 'post',
         data: `song_ids[]=${songId}`,
         success: () => {
@@ -95,7 +95,7 @@ export default class extends Controller {
     const { songId } = playlistItemElement.dataset;
 
     ajax({
-      url: `/playlists/${this.playlistId}/song`,
+      url: `/playlists/${this.playlistId}/songs`,
       type: 'delete',
       dataType: 'script',
       data: `song_ids[]=${songId}`,
@@ -137,6 +137,6 @@ export default class extends Controller {
   }
 
   get isCurrent() {
-    return this.playlistId == this.player.currentPlaylistId;
+    return this.data.get('isCurrent') == 'true';
   }
 }

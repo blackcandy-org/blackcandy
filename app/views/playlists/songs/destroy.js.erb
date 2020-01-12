@@ -1,6 +1,6 @@
 <% if @playlist.songs.empty? %>
   if (App.playlistElement('<%= @playlist.id %>')) {
-    App.renderPlaylistContent("<%= j @playlist.buildin? ? render('playlists/show_buildin') : render('playlists/show') %>")
+    App.renderPlaylistContent("<%= j @playlist.buildin? ? render('show_buildin') : render('show') %>")
   }
 <% end %>
 

@@ -9,14 +9,6 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'should show playlist' do
-    playlist = playlists(:playlist1)
-
-    assert_login_access(user: playlist.user, url: playlist_url(playlist), xhr: true) do
-      assert_response :success
-    end
-  end
-
   test 'should create playlist' do
     playlists_count = Playlist.count
 
