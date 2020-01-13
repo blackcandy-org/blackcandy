@@ -79,8 +79,7 @@ export default class extends Controller {
 
   updateMode() {
     toggleShow(this.modeButtonTargets, this.modeButtonTargets[this.currentModeIndex]);
-
-    this.player.updateShuffleStatus(this.currentMode == 'shuffle');
+    this.player.playlist.isShuffled = (this.currentMode == 'shuffle');
   }
 
   next() {

@@ -20,4 +20,13 @@ function shuffle(a) {
   return a;
 }
 
-export { formatDuration, toggleShow, shuffle };
+function randomIndex(length) {
+  return Math.floor(Math.random() * (length - 1));
+}
+
+export {
+  formatDuration,
+  toggleShow,
+  shuffle,
+  randomIndex
+};

@@ -12,7 +12,7 @@ import Turbolinks from 'turbolinks';
 import { Application } from 'stimulus';
 import { definitionsFromContext } from 'stimulus/webpack-helpers';
 import App from '../javascripts/app';
-import player from '../javascripts/player';
+import Player from '../javascripts/player';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
@@ -31,4 +31,4 @@ const controllers = require.context('../javascripts/controllers', true, /\.js$/)
 application.load(definitionsFromContext(controllers));
 
 window.App = App;
-window.App.player = player;
+window.App.player = new Player();

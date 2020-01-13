@@ -44,7 +44,7 @@ export default class extends Controller {
         App.dispatchEvent('#js-playlist-loader', 'loader:hide');
 
         if (this.isCurrent) {
-          this.player.updatePlaylist([]);
+          this.player.playlist.update([]);
           this.player.stop();
         }
       }
@@ -74,7 +74,7 @@ export default class extends Controller {
 
   _play(target) {
     const { songId } = target.closest('[data-song-id]').dataset;
-    const playlistIndex = this.player.playlistIndexOf(songId);
+    const playlistIndex = this.player.playlist.indexOf(songId);
 
     if (playlistIndex != -1) {
       this.player.skipTo(playlistIndex);
@@ -84,7 +84,7 @@ export default class extends Controller {
         type: 'post',
         data: `song_ids[]=${songId}`,
         success: () => {
-          this.player.skipTo(this.player.pushToPlaylist(songId));
+          this.player.skipTo(this.player.playlist.pushSong(songId));
         }
       });
     }
@@ -100,7 +100,10 @@ export default class extends Controller {
       dataType: 'script',
       data: `song_ids[]=${songId}`,
       success: () => {
-        if (this.isCurrent) { this.player.deleteFromPlaylist(songId); }
+        if (this.isCurrent) {
+          const songIndex = this.player.playlist.deleteSong(songId);
+          if (this.player.currentSong.id == songId) { this.player.skipTo(songIndex); }
+        }
 
         // When already delete all playlist items, use rails ujs to render empty page,
         // avoid to remove item manually.

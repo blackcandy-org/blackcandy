@@ -1,4 +1,4 @@
-App.player.updatePlaylist(JSON.parse('<%= j(render inline: @playlist.song_ids.to_json) %>'));
+App.player.playlist.update(JSON.parse('<%= j(render inline: @playlist.song_ids.to_json) %>'));
 App.player.skipTo(0);
 
 if (App.playlistElement('<%= @playlist.id %>')) {

@@ -16,7 +16,8 @@ module.exports = {
     "class-methods-use-this": "off",
     "consistent-return": "off",
     "default-case": "off",
-    "operator-linebreak": ["error", "after"]
+    "operator-linebreak": ["error", "after"],
+    "lines-between-class-members": ["error", "always", { exceptAfterSingleLine: true }]
   },
   "globals": {
     "document": true,
