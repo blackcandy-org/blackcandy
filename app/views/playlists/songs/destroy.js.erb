@@ -1,7 +1,15 @@
-<% if @playlist.songs.empty? %>
-  if (App.playlistElement('<%= @playlist.id %>')) {
-    App.renderPlaylistContent("<%= j @playlist.buildin? ? render('show_buildin') : render('show') %>")
-  }
-<% end %>
+(function() {
+  var playlistElement = App.playlistElement('<%= @playlist.id %>')
+
+  <% if @playlist.songs.empty? %>
+    if (playlistElement) {
+      App.renderPlaylistContent("<%= j @playlist.buildin? ? render('show_buildin') : render('show') %>")
+    }
+  <% else %>
+    if (playlistElement) {
+      App.dispatchEvent(playlistElement, 'playlistSongs:updateCount', '<%= @playlist.songs.size %>');
+    }
+  <% end %>
+})();
 
 <%= render_flash %>
