@@ -22,7 +22,7 @@
         <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', title: t('label.more') %></span>
         <div data-target='dropdown.list' class='hidden dropdown__list'>
           <% unless @songs.blank? %>
-            <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @playlist.song_ids), method: :put, remote: true, class: 'dropdown__item' %>
+            <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @playlist.song_ids), method: :put, remote: true, data: { target: 'playlist-songs.playAllLink' }, class: 'dropdown__item' %>
             <a class='dropdown__item' data-action='playlist-songs#clear'><%= t('label.clear') %></a>
           <% end %>
           <%= link_to t('label.delete'), playlist_path(@playlist), method: :delete, remote: true, class: 'dropdown__item', data: { show_loader: true } %>

@@ -7,6 +7,7 @@
 
     if (playlistElement && hasNoNextUrl) {
       App.dispatchEvent(playlistElement, 'playlistSongs:updateCount', '<%= @playlist.songs.size %>');
+      App.dispatchEvent(playlistElement, 'playlistSongs:updatePlayAllLink', '<%= current_playlist_songs_path(song_ids: @playlist.song_ids) %>');
       document.querySelector('#js-playlist-list-content').insertAdjacentHTML('beforeend', "<%= j(render partial: 'song', collection: @songs, cached: true)%>");
     }
   <% else %>
