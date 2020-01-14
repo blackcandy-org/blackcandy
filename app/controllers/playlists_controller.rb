@@ -4,14 +4,10 @@ class PlaylistsController < ApplicationController
   include Pagy::Backend
 
   before_action :require_login
-  before_action :find_playlist, only: [:show, :destroy, :update]
+  before_action :find_playlist, only: [:destroy, :update]
 
   def index
     @pagy, @playlists = pagy_countless(Current.user.playlists.order(created_at: :desc))
-  end
-
-  def show
-    @pagy, @songs = pagy_countless(@playlist.songs.includes(:artist))
   end
 
   def create

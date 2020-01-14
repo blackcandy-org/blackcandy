@@ -29,5 +29,13 @@ export default {
       progressBar: false,
       container: '#js-flash'
     }).show();
+  },
+
+  playlistElement(playlistId) {
+    const playlistElement = document.querySelector("#js-playlist-content [data-controller='playlist-songs']");
+
+    if (playlistElement && playlistElement.dataset.playlistSongsPlaylistId == playlistId) {
+      return playlistElement;
+    }
   }
 };

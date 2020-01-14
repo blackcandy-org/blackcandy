@@ -1,0 +1,6 @@
+App.player.playlist.update(JSON.parse('<%= j(render inline: @playlist.song_ids.to_json) %>'));
+App.player.skipTo(0);
+
+if (App.playlistElement('<%= @playlist.id %>')) {
+  App.renderPlaylistContent('<%= j(render partial: 'show_buildin', locals: { next_url: next_url_for_path(current_playlist_songs_path, @pagy) }) %>');
+}

@@ -1,5 +1,5 @@
 <% cache @album do %>
-  <div class='display__medium-width' data-controller='playlist'>
+  <div class='display__medium-width' data-controller='playlist-songs'>
     <div class='heading heading--expand'>
       <div class='heading__image'>
         <%= image_tag image_url_for(@album), class: 'image' %>
@@ -13,18 +13,18 @@
           <span class='monospace-font'><%= format_duration(@songs.sum(:length)) %></span>
         </div>
         <div class='heading__body__actions'>
-          <%= link_to t('label.play_all'), current_playlist_path(song_ids: @album.song_ids ), method: :post, remote: true, class: 'button button--primary' %>
+          <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @album.song_ids ), method: :put, remote: true, class: 'button button--primary' %>
         </div>
       </div>
     </div>
-    <ul class='list list--dark-border' data-action='click->playlist#actionHandler'>
+    <ul class='list list--dark-border' data-action='click->playlist-songs#actionHandler'>
       <% @songs.each do |song| %>
-        <li class='list__item pointer-cursor' data-target='playlist.item' data-song-id='<%= song.id %>' data-playlist-action='play'>
+        <li class='list__item pointer-cursor' data-target='playlist-songs.item' data-song-id='<%= song.id %>' data-playlist-songs-action='play'>
           <span class='list__item__content'>
             <span class='list__item__info list__item__info--main'><%= song.name %></span>
           </span>
           <span class='list__item__content list__item__content--minor'>
-            <span class='list__item__info list__item__info--action' data-playlist-action='showPlaylistsDialog'>
+            <span class='list__item__info list__item__info--action' data-playlist-songs-action='showPlaylistsDialog'>
               <%= icon_tag 'playlist-add', size: 'small', title: t('text.add_to_playlist') %>
             </span>
             <span class='list__item__info list__item__info--minor monospace-font'><%= format_duration(song.length) %></span>

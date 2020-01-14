@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FavoritePlaylistsController < PlaylistsController
+class FavoritePlaylist::SongsController < Playlists::SongsController
   private
 
     def find_playlist

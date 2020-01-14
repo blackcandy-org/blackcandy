@@ -1,8 +1,15 @@
 # frozen_string_literal: true
 
-class Playlists::SongsController < PlaylistsController
+class Playlists::SongsController < ApplicationController
+  include Pagy::Backend
+
+  before_action :require_login
   before_action :find_playlist
-  before_action :find_songs
+  before_action :find_songs, only: [:create, :destroy]
+
+  def show
+    @pagy, @songs = pagy_countless(@playlist.songs.includes(:artist))
+  end
 
   def create
     @playlist.songs.push(@songs)

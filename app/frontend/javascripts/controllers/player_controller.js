@@ -25,12 +25,6 @@ export default class extends Controller {
     this._initPlayer();
     this._initPlaylist();
     this._initMode();
-
-    this._setBeforePlayingStatus = this._setBeforePlayingStatus.bind(this);
-    this._setPlayingStatus = this._setPlayingStatus.bind(this);
-    this._setPauseStatus = this._setPauseStatus.bind(this);
-    this._setStopStatus = this._setStopStatus.bind(this);
-    this._setEndStatus = this._setEndStatus.bind(this);
   }
 
   connect() {
@@ -63,7 +57,7 @@ export default class extends Controller {
     const isFavorited = this.currentSong.is_favorited;
 
     ajax({
-      url: `/playlists/${this.player.favoritePlaylistId}/song`,
+      url: '/favorite_playlist/songs',
       type: isFavorited ? 'delete' : 'post',
       data: `song_ids[]=${this.currentSong.id}`,
       success: () => {
@@ -85,8 +79,7 @@ export default class extends Controller {
 
   updateMode() {
     toggleShow(this.modeButtonTargets, this.modeButtonTargets[this.currentModeIndex]);
-
-    this.player.updateShuffleStatus(this.currentMode == 'shuffle');
+    this.player.playlist.isShuffled = (this.currentMode == 'shuffle');
   }
 
   next() {
@@ -119,12 +112,12 @@ export default class extends Controller {
     return this.modes[this.currentModeIndex];
   }
 
-  _setBeforePlayingStatus() {
+  _setBeforePlayingStatus = () => {
     this.headerTarget.classList.add('expand');
     this.loaderTarget.classList.remove('hidden');
   }
 
-  _setPlayingStatus() {
+  _setPlayingStatus = () => {
     const { currentSong } = this;
 
     this.imageTarget.src = currentSong.album_image_url;
@@ -142,21 +135,21 @@ export default class extends Controller {
     window.requestAnimationFrame(this._setProgress.bind(this));
 
     // let playlist can show current palying song
-    App.dispatchEvent(document, 'playlist:showPlaying');
+    App.dispatchEvent(document, 'playlistSongs:showPlaying');
   }
 
-  _setPauseStatus() {
+  _setPauseStatus = () => {
     this.pauseButtonTarget.classList.add('hidden');
     this.playButtonTarget.classList.remove('hidden');
   }
 
-  _setStopStatus() {
+  _setStopStatus = () => {
     if (!this.player.playlist.length) {
       this.headerTarget.classList.remove('show');
     }
   }
 
-  _setEndStatus() {
+  _setEndStatus = () => {
     if (this.currentMode == 'single') {
       this.player.play(this.currentIndex);
     } else {
@@ -187,7 +180,7 @@ export default class extends Controller {
 
   _initPlaylist() {
     ajax({
-      url: '/current_playlist?init=true',
+      url: '/current_playlist/songs?init=true',
       type: 'get',
       dataType: 'script'
     });

@@ -1,0 +1,5 @@
+<% if params[:init] %>
+  App.player.playlist.update(JSON.parse('<%= j(render inline: @playlist.song_ids.to_json) %>'));
+<% end %>
+
+<%= render template: 'playlists/songs/show' %>
