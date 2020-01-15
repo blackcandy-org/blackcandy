@@ -2,7 +2,7 @@ import { Controller } from 'stimulus';
 import { ajax } from '@rails/ujs';
 
 export default class extends Controller {
-  static targets = ['item', 'count'];
+  static targets = ['item', 'count', 'playAllLink'];
 
   initialize() {
     this.player = App.player;
@@ -12,11 +12,13 @@ export default class extends Controller {
     this._showPlayingItem();
     document.addEventListener('playlistSongs:showPlaying', this._showPlayingItem);
     this.element.addEventListener('playlistSongs:updateCount', this._updateCount);
+    this.element.addEventListener('playlistSongs:updatePlayAllLink', this._updatePlayAllLink);
   }
 
   disconnect() {
     document.removeEventListener('playlistSongs:showPlaying', this._showPlayingItem);
     this.element.removeEventListener('playlistSongs:updateCount', this._updateCount);
+    this.element.removeEventListener('playlistSongs:updatePlayAllLink', this._updatePlayAllLink);
   }
 
   actionHandler({ target }) {
@@ -133,6 +135,12 @@ export default class extends Controller {
 
   _updateCount = (event) => {
     this.countTarget.innerText = event.detail;
+  }
+
+  _updatePlayAllLink = (event) => {
+    if (this.playAllLinkTarget) {
+      this.playAllLinkTarget.href = event.detail;
+    }
   }
 
   get playlistId() {
