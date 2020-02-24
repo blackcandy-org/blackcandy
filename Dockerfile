@@ -1,6 +1,8 @@
 FROM node:12.14.1-slim as node
 FROM ruby:2.6.0-slim as base
 
+ENV LANG C.UTF-8
+
 MAINTAINER Aidewoode https://github.com/aidewoode
 
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
