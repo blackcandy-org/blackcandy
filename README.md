@@ -29,6 +29,14 @@ First, you need clone this project to your server.
 $ git clone https://github.com/aidewoode/black_candy.git
 ```
 
+And checkout to latest version.
+
+```
+$ git checkout v1.0.4
+```
+
+Notice, the git tag you checkout must match with the version that blackcandy docker image you use, otherwise will cause some unexpected issue.
+
 Second, set `BLACK_CANDY_MEDIA_PATH` and `BLACK_CANDY_SECRET_KEY_BASE` environment variable on your sever and point `BLACK_CANDY_MEDIA_PATH` to the readable directory on your server to store your music files.
 
 ```shell
@@ -86,6 +94,26 @@ Finally, restart Black candy
 
 ```shell
 $ make production_restart
+```
+
+## Update
+
+Pull new code from remote
+
+```shell
+$ git pull origin master
+```
+
+And checkout to new version
+
+```shell
+$ git checkout v1.0.4
+```
+
+Finally run:
+
+```shell
+$ make production_update 
 ```
 
 ## Development

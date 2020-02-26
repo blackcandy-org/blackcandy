@@ -1,4 +1,4 @@
-FROM blackcandy/blackcandy:latest as app
+FROM blackcandy/blackcandy:1.0.4 as app
 FROM nginx:1.16-alpine
 
 WORKDIR /var/www/black_candy
