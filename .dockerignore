@@ -16,6 +16,7 @@
 /docker
 
 yarn-error.log
+web.Dockerfile
 Dockerfile
 docker-compose.development.yml
 docker-compose.test.yml
