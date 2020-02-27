@@ -38,6 +38,7 @@ services:
     volumes:
       - ./log:/var/www/black_candy/log
       - ${BLACK_CANDY_MEDIA_PATH}:/media_data
+      - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
       - production_uploads_data:/var/www/black_candy/public/uploads
       - production_certbot_conf:/etc/letsencrypt
       - production_certbot_public:/var/www/certbot
