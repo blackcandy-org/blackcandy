@@ -2,7 +2,7 @@ version: '3.4'
 services:
   app: &app_base
     container_name: 'blackcandy_app'
-    image: blackcandy/blackcandy:1.0.4
+    image: blackcandy/blackcandy:1.0.5
     volumes:
       - ./log:/app/log
       - ${BLACK_CANDY_MEDIA_PATH}:/media_data
@@ -34,7 +34,7 @@ services:
     command: bundle exec sidekiq
   web:
     container_name: 'blackcandy_web'
-    image: blackcandy/web:1.0.4
+    image: blackcandy/web:1.0.5
     volumes:
       - ./log:/var/www/black_candy/log
       - ${BLACK_CANDY_MEDIA_PATH}:/media_data
