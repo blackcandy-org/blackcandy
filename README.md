@@ -32,7 +32,7 @@ $ git clone https://github.com/aidewoode/black_candy.git
 And checkout to latest version.
 
 ```
-$ git checkout v1.0.4
+$ git checkout v1.0.5
 ```
 
 Notice, the git tag you checkout must match with the version that blackcandy docker image you use, otherwise will cause some unexpected issue.
@@ -107,7 +107,7 @@ $ git pull origin master
 And checkout to new version
 
 ```shell
-$ git checkout v1.0.4
+$ git checkout v1.0.5
 ```
 
 Finally run:

@@ -1,3 +1,16 @@
+### 1.0.5
+  - enhancements
+    - update Rails to 6.0.2
+    - add page cache to boost performance 
+    - refactor code for playlist
+    - update node.js to 12.14.1
+
+  - bug fixes
+    - fix command not found issue for renew ssl script
+
+
+**Breaking change**: Beacuse the data structure for playlist changed, you will lost all playlist data. Sorry about this.
+
 ### 1.0.4
 
 - enhancements
