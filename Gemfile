@@ -34,6 +34,8 @@ gem 'carrierwave', '~> 2.0'
 gem 'httparty', '~> 0.17.0'
 # For browser detection
 gem 'browser', '~> 2.6.1', require: 'browser/browser'
+# For PostgreSQL's full text search
+gem 'pg_search', '~> 2.3.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
