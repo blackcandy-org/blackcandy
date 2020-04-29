@@ -20,7 +20,7 @@ services:
       - redis
   postgres:
     container_name: 'blackcandy_postgres'
-    image: groonga/pgroonga:2.1.8-alpine-11.1
+    image: postgres:11.1-alpine
     volumes:
       - production_db_data:/var/lib/postgresql/data
   redis:

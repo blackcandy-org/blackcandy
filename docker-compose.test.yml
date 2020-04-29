@@ -18,7 +18,7 @@ services:
       - test_postgres
       - test_redis
   test_postgres:
-    image: groonga/pgroonga:2.1.8-alpine-11.1
+    image: postgres:11.1-alpine
     volumes:
       - test_db_data:/var/lib/postgresql/data
   test_redis:

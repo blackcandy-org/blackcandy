@@ -15,7 +15,7 @@ dev_setup:
 	@$(DEV_APP_COMMAND) rails db:setup
 
 dev_shell:
-	@$(DEV_APP_COMMAND) bash
+	@$(DEV_APP_COMMAND) sh
 
 test_run:
 	@$(TEST_APP_COMMAND) rails test
