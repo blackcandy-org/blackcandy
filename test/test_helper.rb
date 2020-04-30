@@ -75,6 +75,10 @@ class ActiveSupport::TestCase
   def logout
     delete session_url
   end
+
+  def fixtures_file_path(file_name)
+    Rails.root.join('test', 'fixtures', 'files', file_name).to_s
+  end
 end
 
 class ActionDispatch::IntegrationTest

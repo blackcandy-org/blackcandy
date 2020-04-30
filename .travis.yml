@@ -1,12 +1,37 @@
-language: minimal
+dist: bionic
+
+language: ruby
+
+rvm:
+  - 2.6.6
+
+addons:
+  postgresql: "11"
 
 services:
-  - docker
+  - redis-server
+
+cache:
+  bundler: true
+  yarn: true
+
+env:
+  global:
+    - DB_HOST=localhost
+    - DB_USER=postgres
+    - REDIS_DATA_URL=redis://localhost:6379/0
+    - REDIS_SIDEKIQ_URL=redis://localhost:6379/1
+
+before_install:
+  - nvm install 12.15.0
+  - sudo apt-get update
+  - sudo apt-get -y install imagemagick libtag1-dev ffmpeg
+  - yarn install
 
 before_script:
-  - make test_setup
+  - RAILS_ENV=test bundle exec rake db:setup
 
 script:
-  - make test_run
-  - make test_run_lint
-  - make test_run_brakeman
+  - RAILS_ENV=test bundle exec rails test
+  - bundle exec rails lint:all
+  - bundle exec brakeman
