@@ -1,13 +1,13 @@
-DEV_APP_COMMAND = docker-compose -f docker-compose.development.yml run --rm app
+DEV_APP_COMMAND = docker-compose -f docker-compose.dev.yml run --rm app
 TEST_APP_COMMAND = docker-compose -f docker-compose.test.yml run --rm test_app
 PRODUCTION_APP_COMMAND = docker-compose run --rm app
 DOCKER_LOGIN_COMMAND = docker login -u $(DOCKER_USER) -p $(DOCKER_PASS)
 
 dev_run:
-	@docker-compose -f docker-compose.development.yml up --build
+	@docker-compose -f docker-compose.dev.yml up --build
 
 dev_stop:
-	@docker-compose -f docker-compose.development.yml down
+	@docker-compose -f docker-compose.dev.yml down
 
 dev_setup:
 	@$(DEV_APP_COMMAND) bundle
@@ -59,7 +59,7 @@ production_update:
 	@make production_restart
 
 build:
-	@docker build -t blackcandy/blackcandy .
+	@DOCKER_BUILDKIT=1 docker build --target production -t blackcandy/blackcandy .
 	@docker tag blackcandy/blackcandy blackcandy/blackcandy:$$(cat VERSION)
 	@$(DOCKER_LOGIN_COMMAND)
 	@docker push blackcandy/blackcandy:$$(cat VERSION)

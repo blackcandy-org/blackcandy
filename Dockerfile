@@ -4,8 +4,7 @@ ENV LANG C.UTF-8
 
 LABEL maintainer="Aidewoode@github.com/aidewoode"
 
-RUN apk add --update --no-cache \
-  build-base \
+RUN apk add --no-cache \
   tzdata \
   postgresql-dev \
   git \
@@ -17,6 +16,10 @@ RUN apk add --update --no-cache \
 
 WORKDIR /app
 
+FROM base AS dev
+
+RUN apk add --no-cache build-base
+
 FROM base AS production
 
 ENV RAILS_ENV production
@@ -24,8 +27,10 @@ ENV NODE_ENV production
 
 ADD . /app
 
-RUN bundle install --deployment --without development test \
-  && rm -rf /usr/local/bundle/cache/*.gem
+RUN apk add --no-cache --virtual .build-deps build-base \
+  && bundle install --without development test \
+  && rm -rf /usr/local/bundle/cache/*.gem \
+  && apk del --no-network .build-deps
 
 
 RUN bundle exec rails assets:precompile SECRET_KEY_BASE=fake_secure_for_compile \

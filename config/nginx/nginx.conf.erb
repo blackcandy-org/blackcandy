@@ -22,7 +22,7 @@ http {
   server {
     listen 80;
 
-    <% if ENV["BLACK_CANDY_DOMAIN_NAME"] %>
+    <% unless ENV["BLACK_CANDY_DOMAIN_NAME"].empty? %>
       server_name <%= ENV["BLACK_CANDY_DOMAIN_NAME"] %>;
     <% end%>
 

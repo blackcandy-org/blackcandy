@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: .
-      target: base
+      target: dev
     image: blackcandy/base
     volumes:
       - .:/app
