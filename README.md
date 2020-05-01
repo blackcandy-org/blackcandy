@@ -54,10 +54,6 @@ $ make production_setup
 Finally run:
 
 ```shell
-$ docker-compose up -d
-
-# or
-
 $ make production_run
 ```
 

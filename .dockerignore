@@ -16,10 +16,8 @@
 /docker
 
 yarn-error.log
-web.Dockerfile
 Dockerfile
-docker-compose.development.yml
-docker-compose.test.yml
+docker-compose.dev.yml
 docker-compose.yml
 .DS_Store
 *.swp

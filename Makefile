@@ -45,7 +45,6 @@ production_set_ssl:
 
 production_update:
 	@docker pull blackcandy/blackcandy:$$(cat VERSION)
-	@docker pull blackcandy/web:$$(cat VERSION)
 	@$(PRODUCTION_APP_COMMAND) rails db:migrate
 	@make production_restart
 
@@ -55,10 +54,3 @@ build:
 	@$(DOCKER_LOGIN_COMMAND)
 	@docker push blackcandy/blackcandy:$$(cat VERSION)
 	@docker push blackcandy/blackcandy:latest
-
-build_web:
-	@docker build -f web.Dockerfile -t blackcandy/web .
-	@docker tag blackcandy/web blackcandy/web:$$(cat VERSION)
-	@$(DOCKER_LOGIN_COMMAND)
-	@docker push blackcandy/web:$$(cat VERSION)
-	@docker push blackcandy/web:latest
