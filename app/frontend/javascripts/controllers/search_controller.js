@@ -6,7 +6,7 @@ export default class extends Controller {
 
   AVAILABLE_RESOURCES = ['albums', 'artists', 'songs'];
 
-  SEARCH_TIMEOUT = 600
+  SEARCH_TIMEOUT = 800
 
   query({ target }) {
     this.loaderTarget.classList.remove('hidden');

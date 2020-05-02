@@ -1,13 +1,12 @@
-DEV_APP_COMMAND = docker-compose -f docker-compose.development.yml run --rm app
-TEST_APP_COMMAND = docker-compose -f docker-compose.test.yml run --rm test_app
+DEV_APP_COMMAND = docker-compose -f docker-compose.dev.yml run --rm app
 PRODUCTION_APP_COMMAND = docker-compose run --rm app
 DOCKER_LOGIN_COMMAND = docker login -u $(DOCKER_USER) -p $(DOCKER_PASS)
 
 dev_run:
-	@docker-compose -f docker-compose.development.yml up --build
+	@docker-compose -f docker-compose.dev.yml up --build
 
 dev_stop:
-	@docker-compose -f docker-compose.development.yml down
+	@docker-compose -f docker-compose.dev.yml down
 
 dev_setup:
 	@$(DEV_APP_COMMAND) bundle
@@ -15,24 +14,16 @@ dev_setup:
 	@$(DEV_APP_COMMAND) rails db:setup
 
 dev_shell:
-	@$(DEV_APP_COMMAND) bash
+	@$(DEV_APP_COMMAND) sh
 
 test_run:
-	@$(TEST_APP_COMMAND) rails test
+	@$(DEV_APP_COMMAND) rails test RAILS_ENV=test
 
-test_run_lint:
-	@$(TEST_APP_COMMAND) rails lint:all
+lint_run:
+	@$(DEV_APP_COMMAND) rails lint:all
 
-test_run_brakeman:
-	@$(TEST_APP_COMMAND) brakeman
-
-test_shell:
-	@$(TEST_APP_COMMAND) bash
-
-test_setup:
-	@$(TEST_APP_COMMAND) bundle install --without development
-	@$(TEST_APP_COMMAND) yarn
-	@$(TEST_APP_COMMAND) rails db:setup
+brakeman_run:
+	@$(DEV_APP_COMMAND) brakeman
 
 production_setup:
 	@$(PRODUCTION_APP_COMMAND) rails db:setup
@@ -54,20 +45,12 @@ production_set_ssl:
 
 production_update:
 	@docker pull blackcandy/blackcandy:$$(cat VERSION)
-	@docker pull blackcandy/web:$$(cat VERSION)
 	@$(PRODUCTION_APP_COMMAND) rails db:migrate
 	@make production_restart
 
 build:
-	@docker build -t blackcandy/blackcandy .
+	@DOCKER_BUILDKIT=1 docker build --target production -t blackcandy/blackcandy .
 	@docker tag blackcandy/blackcandy blackcandy/blackcandy:$$(cat VERSION)
 	@$(DOCKER_LOGIN_COMMAND)
 	@docker push blackcandy/blackcandy:$$(cat VERSION)
 	@docker push blackcandy/blackcandy:latest
-
-build_web:
-	@docker build -f web.Dockerfile -t blackcandy/web .
-	@docker tag blackcandy/web blackcandy/web:$$(cat VERSION)
-	@$(DOCKER_LOGIN_COMMAND)
-	@docker push blackcandy/web:$$(cat VERSION)
-	@docker push blackcandy/web:latest

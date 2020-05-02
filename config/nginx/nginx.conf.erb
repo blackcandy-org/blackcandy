@@ -22,7 +22,7 @@ http {
   server {
     listen 80;
 
-    <% if ENV["BLACK_CANDY_DOMAIN_NAME"] %>
+    <% unless ENV["BLACK_CANDY_DOMAIN_NAME"].empty? %>
       server_name <%= ENV["BLACK_CANDY_DOMAIN_NAME"] %>;
     <% end%>
 
@@ -41,10 +41,10 @@ http {
       ssl_session_tickets off;
     <% end %>
 
-    root /var/www/black_candy/public;
+    root /app/public;
 
-    access_log /var/www/black_candy/log/nginx.access.log;
-    error_log /var/www/black_candy/log/nginx.error.log;
+    access_log /app/log/nginx.access.log;
+    error_log /app/log/nginx.error.log;
 
     location ~* ^.+\.(rb|log)$ {
       deny all;

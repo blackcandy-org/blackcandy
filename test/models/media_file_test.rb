@@ -5,12 +5,12 @@ require 'test_helper'
 class MediaFileTest < ActiveSupport::TestCase
   test 'should get file path array from media_path' do
     expect_file_paths = [
-      '/app/test/fixtures/files/artist1_album1.flac',
-      '/app/test/fixtures/files/artist2_album3.ogg',
-      '/app/test/fixtures/files/artist1_album2.mp3',
-      '/app/test/fixtures/files/artist2_album3.wav',
-      '/app/test/fixtures/files/artist2_album3.opus',
-      '/app/test/fixtures/files/artist1_album1.m4a'
+      fixtures_file_path('artist1_album1.flac'),
+      fixtures_file_path('artist2_album3.ogg'),
+      fixtures_file_path('artist1_album2.mp3'),
+      fixtures_file_path('artist2_album3.wav'),
+      fixtures_file_path('artist2_album3.opus'),
+      fixtures_file_path('artist1_album1.m4a')
     ]
 
     Setting.media_path = Rails.root.join('test', 'fixtures', 'files')
@@ -23,7 +23,7 @@ class MediaFileTest < ActiveSupport::TestCase
   test 'should ignore not supported files under media_path' do
     Setting.media_path = Rails.root.join('test', 'fixtures', 'files')
 
-    assert_not_includes MediaFile.file_paths, '/app/test/fixtures/files/not_supported_file.txt'
+    assert_not_includes MediaFile.file_paths, fixtures_file_path('not_supported_file.txt')
   end
 
   test 'should raise error when media_path is not exist' do

@@ -20,7 +20,7 @@ services:
       - redis
   postgres:
     container_name: 'blackcandy_postgres'
-    image: groonga/pgroonga:2.1.8-alpine-11.1
+    image: postgres:11.1-alpine
     volumes:
       - production_db_data:/var/lib/postgresql/data
   redis:
@@ -34,12 +34,12 @@ services:
     command: bundle exec sidekiq
   web:
     container_name: 'blackcandy_web'
-    image: blackcandy/web:1.0.5
+    image: blackcandy/blackcandy:1.0.5
     volumes:
-      - ./log:/var/www/black_candy/log
+      - ./log:/app/log
       - ${BLACK_CANDY_MEDIA_PATH}:/media_data
       - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - production_uploads_data:/var/www/black_candy/public/uploads
+      - production_uploads_data:/app/public/uploads
       - production_certbot_conf:/etc/letsencrypt
       - production_certbot_public:/var/www/certbot
     depends_on:
@@ -48,6 +48,7 @@ services:
     ports:
       - 80:80
       - 443:443
+    command: nginx -g 'pid /tmp/nginx.pid; daemon off;'
   certbot:
     container_name: 'blackcandy_certbot'
     image: certbot/certbot:v1.0.0

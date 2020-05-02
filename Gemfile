@@ -8,7 +8,7 @@ gem 'pg', '~> 1.1.3'
 # Use Puma as the app server
 gem 'puma', '~> 4.3.1'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.2.0'
+gem 'webpacker', '~> 5.1.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.9.1'
 # Use ActiveModel has_secure_password
@@ -34,6 +34,8 @@ gem 'carrierwave', '~> 2.0'
 gem 'httparty', '~> 0.17.0'
 # For browser detection
 gem 'browser', '~> 2.6.1', require: 'browser/browser'
+# For PostgreSQL's full text search
+gem 'pg_search', '~> 2.3.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

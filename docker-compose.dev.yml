@@ -3,10 +3,11 @@ services:
   app:
     build:
       context: .
-      target: base
+      target: dev
     image: blackcandy/base
     volumes:
       - .:/app
+      - /app/tmp
       - ${BLACK_CANDY_MEDIA_PATH}:/media_data
       - bundler_data:/usr/local/bundle
     entrypoint: docker/app_dev_entrypoint.sh
@@ -24,7 +25,7 @@ services:
       - postgres
       - redis
   postgres:
-    image: groonga/pgroonga:2.1.8-alpine-11.1
+    image: postgres:11.1-alpine
     volumes:
       - db_data:/var/lib/postgresql/data
   redis:

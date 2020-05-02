@@ -1,7 +1,7 @@
 mp3_sample:
   id: 1
   name: 'mp3_sample'
-  file_path: '/app/test/fixtures/files/artist1_album2.mp3'
+  file_path: <%= Rails.root.join('test', 'fixtures', 'files', 'artist1_album2.mp3') %>
   md5_hash: 'fake_md5'
   artist: 'artist1'
   album: 'album2'
@@ -9,7 +9,7 @@ mp3_sample:
 flac_sample:
   id: 2
   name: 'flac_sample'
-  file_path: '/app/test/fixtures/files/artist1_album1.flac'
+  file_path: <%= Rails.root.join('test', 'fixtures', 'files', 'artist1_album1.flac') %>
   md5_hash: 'fake_md5'
   artist: 'artist1'
   album: 'album1'
@@ -17,7 +17,7 @@ flac_sample:
 ogg_sample:
   id: 3
   name: 'ogg_sample'
-  file_path: '/app/test/fixtures/files/artist2_album3.ogg'
+  file_path: <%= Rails.root.join('test', 'fixtures', 'files', 'artist2_album3.ogg') %>
   md5_hash: 'fake_md5'
   artist: 'artist2'
   album: 'album3'
@@ -25,7 +25,7 @@ ogg_sample:
 wav_sample:
   id: 4
   name: 'wav_sample'
-  file_path: '/app/test/fixtures/files/artist2_album3.wav'
+  file_path: <%= Rails.root.join('test', 'fixtures', 'files', 'artist2_album3.wav') %>
   md5_hash: 'fake_md5'
   artist: 'artist2'
   album: 'album3'
@@ -33,7 +33,7 @@ wav_sample:
 opus_sample:
   id: 5
   name: 'opus_sample'
-  file_path: '/app/test/fixtures/files/artist2_album3.opus'
+  file_path: <%= Rails.root.join('test', 'fixtures', 'files', 'artist2_album3.opus') %>
   md5_hash: 'fake_md5'
   artist: 'artist2'
   album: 'album3'
@@ -41,7 +41,7 @@ opus_sample:
 m4a_sample:
   id: 6
   name: 'm4a_sample'
-  file_path: '/app/test/fixtures/files/artist1_album1.m4a'
+  file_path: <%= Rails.root.join('test', 'fixtures', 'files', 'artist1_album1.m4a') %>
   md5_hash: 'fake_md5'
   artist: 'artist1'
   album: 'album1'
