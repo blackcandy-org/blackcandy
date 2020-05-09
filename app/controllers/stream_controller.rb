@@ -1,19 +1,15 @@
 # frozen_string_literal: true
 
 class StreamController < ApplicationController
-  include ActionController::Live
-
   before_action :require_login
-  before_action :find_song
+  before_action :find_stream
   before_action :set_header
 
   def new
-    stream = Stream.new(@song)
-
-    if need_transcode? stream
-      send_stream stream
+    if need_transcode? @stream
+      redirect_to new_transcoded_stream_path(song_id: params[:song_id])
     else
-      send_local_file stream.file_path
+      send_local_file @stream.file_path
     end
   end
 
@@ -29,27 +25,13 @@ class StreamController < ApplicationController
     def set_header
       if nginx_senfile?
         response.headers['X-Media-Path'] = Setting.media_path
-        response.headers['X-Accel-Redirect'] = File.join('/private_media', @song.file_path.sub(Setting.media_path, ''))
+        response.headers['X-Accel-Redirect'] = File.join('/private_media', @stream.file_path.sub(Setting.media_path, ''))
       end
     end
 
-    # Similar to send_file in rails, but let response_body to be a stream object.
-    # The instance of Stream can respond to each() method. So the download can be streamed,
-    # instead of read whole data into memory.
-    def send_stream(stream)
-      response.headers['Content-Type'] = Mime[Stream::TRANSCODE_FORMAT]
-
-      stream.each do |data|
-        response.stream.write data
-      end
-    rescue ActionController::Live::ClientDisconnected
-      logger.info "[#{Time.now.utc}] Stream closed"
-    ensure
-      response.stream.close
-    end
-
-    def find_song
-      @song = Song.find(params[:song_id])
+    def find_stream
+      song = Song.find(params[:song_id])
+      @stream = Stream.new(song)
     end
 
     def nginx_senfile?
