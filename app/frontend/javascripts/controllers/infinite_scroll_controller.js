@@ -1,6 +1,5 @@
 import { Controller } from 'stimulus';
 import { ajax } from '@rails/ujs';
-import ScrollMagic from 'scrollmagic';
 
 export default class extends Controller {
   static targets = ['trigger']
@@ -8,48 +7,41 @@ export default class extends Controller {
   connect() {
     if (!this.hasNextPage) { return; }
 
-    const scene = this.createScene();
-    this.bindNextPageEvent(scene);
+    this.observer = new IntersectionObserver(this.handleNextPageLoad.bind(this), {
+      root: document.querySelector(this.data.get('container')),
+      rootMargin: '0px',
+      threshold: 1.0
+    });
+
+    this.observer.observe(this.triggerTarget);
   }
 
   disconnect() {
-    if (this.scrollController) {
-      this.scrollController.destroy(true);
+    if (this.observer) {
+      this.observer.disconnect();
     }
   }
 
-  createScene() {
-    this.scrollController = new ScrollMagic.Controller({
-      container: this.data.get('container') || window
-    });
-
-    return new ScrollMagic.Scene({
-      triggerElement: this.triggerTarget,
-      triggerHook: 'onEnter'
-    }).addTo(this.scrollController);
-  }
-
-  bindNextPageEvent(scene) {
-    let ajaxRequest;
-
-    scene.on('enter', () => {
-      if (ajaxRequest) {
-        // Abort previous ajax request.
-        ajaxRequest.abort();
-      }
+  handleNextPageLoad(entries) {
+    entries.forEach((entry) => {
+      if (!entry.intersectionRatio == 1) { return; }
 
       if (!this.hasNextPage) {
         this.triggerTarget.classList.add('hidden');
+        return;
       }
 
-      if (this.isTriggerHidden && !this.hasNextPage) { return; }
+      if (this.ajaxRequest) {
+        // Abort previous ajax request.
+        this.ajaxRequest.abort();
+      }
 
       ajax({
         url: this.nextUrl,
         type: 'get',
         dataType: 'script',
-        beforeSend(xhr) {
-          ajaxRequest = xhr;
+        beforeSend: (xhr) => {
+          this.ajaxRequest = xhr;
           return true;
         }
       });
@@ -62,9 +54,5 @@ export default class extends Controller {
 
   get nextUrl() {
     return this.data.get('nextUrl');
-  }
-
-  get isTriggerHidden() {
-    return this.triggerTarget.offsetParent == null;
   }
 }

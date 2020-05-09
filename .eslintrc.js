@@ -27,6 +27,7 @@ module.exports = {
     "Event": true,
     "App": true,
     "Turbolinks": true,
-    "CustomEvent": true
+    "CustomEvent": true,
+    "IntersectionObserver": true
   }
 };
