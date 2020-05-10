@@ -6,8 +6,6 @@
     "@rails/webpacker": "^5.1.1",
     "howler": "^2.1.2",
     "normalize.css": "^8.0.1",
-    "noty": "^3.1.0",
-    "scrollmagic": "^2.0.6",
     "stimulus": "^1.1.0",
     "turbolinks": "^5.2.0"
   },

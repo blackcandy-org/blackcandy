@@ -1,5 +1,3 @@
-import Noty from 'noty';
-
 export default {
   renderContent(selector, content) {
     document.querySelector(selector).innerHTML = content;
@@ -17,18 +15,6 @@ export default {
   dispatchEvent(element, type, data = null) {
     if (typeof element == 'string') { element = document.querySelector(element); }
     element.dispatchEvent(new CustomEvent(type, { detail: data }));
-  },
-
-  showNotification(text, type) {
-    const types = ['success', 'error'];
-
-    new Noty({
-      text,
-      type: types.includes(type) ? type : 'success',
-      timeout: 2500,
-      progressBar: false,
-      container: '#js-flash'
-    }).show();
   },
 
   playlistElement(playlistId) {

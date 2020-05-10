@@ -79,6 +79,10 @@ class ActiveSupport::TestCase
   def fixtures_file_path(file_name)
     Rails.root.join('test', 'fixtures', 'files', file_name).to_s
   end
+
+  def binary_data(file_path)
+    File.read(file_path).force_encoding('BINARY').strip
+  end
 end
 
 class ActionDispatch::IntegrationTest

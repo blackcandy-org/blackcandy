@@ -23,6 +23,7 @@
 @import 'components/avatar.css';
 @import 'components/notice.css';
 @import 'components/box.css';
+@import 'components/flash.css';
 
 @import 'pages/layout.css';
 @import 'pages/playlist.css';
@@ -30,4 +31,3 @@
 @import 'pages/songs.css';
 
 @import 'responsive.css';
-@import 'lib/noty.css';
