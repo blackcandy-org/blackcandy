@@ -1,0 +1,36 @@
+.flash {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  z-index: 9999999;
+  backface-visibility: hidden;
+  filter: blur(0);
+  max-width: 90%;
+  top: 5%;
+  left: 50%;
+  width: 325px;
+  transform: translate(calc(-50% - 0.5px)) translateZ(0) scale(1, 1);
+}
+
+.flash__body {
+  padding: 8px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: var(--flash-border-radius);
+  animation-duration: 0.25s;
+  animation-name: fadeInDown;
+}
+
+.flash__body--close {
+  animation-name: fadeOutUp;
+}
+
+.flash__body--error {
+  background-color: var(--flash-error-bg-color);
+  color: var(--white);
+}
+
+.flash__body--success {
+  background-color: var(--flash-success-bg-color);
+  color: var(--white);
+}

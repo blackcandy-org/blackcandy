@@ -19,8 +19,8 @@
   /* Form */
   --form-input-border-radius: var(--border-radius-md);
 
-  /* Noty flash message */
-  --noty-bar-border-radius: var(--border-radius-md);
+  /* Flash message */
+  --flash-border-radius: var(--border-radius-md);
 
   /* Input */
   --input-border-radius: var(--border-radius-md);

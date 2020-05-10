@@ -39,9 +39,9 @@ html {
   --btn-color: var(--white);
   --btn-primary-bg-color: var(--purple);
 
-  /* Noty flash message */
-  --noty-success-bg-color: var(--green);
-  --noty-error-bg-color: var(--red);
+  /* Flash message */
+  --flash-success-bg-color: var(--green);
+  --flash-error-bg-color: var(--red);
 
   /* Tab */
   --tab-color: var(--black);
@@ -146,9 +146,9 @@ html[data-color-scheme='dark'] {
   --btn-color: var(--white);
   --btn-primary-bg-color: var(--purple);
 
-  /* Noty flash message */
-  --noty-success-bg-color: var(--green);
-  --noty-error-bg-color: var(--red);
+  /* Flash message */
+  --flash-success-bg-color: var(--green);
+  --flash-error-bg-color: var(--red);
 
   /* Tab */
   --tab-color: var(--white);

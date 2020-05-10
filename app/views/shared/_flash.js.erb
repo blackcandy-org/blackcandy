@@ -1,3 +1,1 @@
-<% flash.each do |key, value| -%>
-  App.showNotification('<%= value %>', '<%= key.to_s %>');
-<% end %>
+App.renderContent('#js-flash', '<%= j(render 'shared/flash.html.erb') %>')

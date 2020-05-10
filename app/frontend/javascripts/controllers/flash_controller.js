@@ -1,10 +1,15 @@
 import { Controller } from 'stimulus';
 
 export default class extends Controller {
-  initialize() {
-    const type = this.data.get('type');
+  connect() {
+    setTimeout(this._removeFlash.bind(this), this.data.get('timeout'));
+  }
 
-    App.showNotification(this.element.textContent, type);
-    this.element.remove();
+  _removeFlash() {
+    this.element.addEventListener('animationend', function removeFlashElement() {
+      this.remove();
+    }, { once: true });
+
+    this.element.classList.add('flash__body--close');
   }
 }

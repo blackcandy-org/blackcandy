@@ -7,7 +7,7 @@ export default class extends Controller {
   connect() {
     if (!this.hasNextPage) { return; }
 
-    this.observer = new IntersectionObserver(this.handleNextPageLoad.bind(this), {
+    this.observer = new IntersectionObserver(this._handleNextPageLoad.bind(this), {
       root: document.querySelector(this.data.get('container')),
       rootMargin: '0px',
       threshold: 1.0
@@ -22,7 +22,7 @@ export default class extends Controller {
     }
   }
 
-  handleNextPageLoad(entries) {
+  _handleNextPageLoad(entries) {
     entries.forEach((entry) => {
       if (!entry.intersectionRatio == 1) { return; }
 
