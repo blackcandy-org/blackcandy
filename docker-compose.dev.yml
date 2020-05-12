@@ -7,7 +7,6 @@ services:
     image: blackcandy/base
     volumes:
       - .:/app
-      - /app/tmp
       - ${BLACK_CANDY_MEDIA_PATH}:/media_data
       - bundler_data:/usr/local/bundle
     entrypoint: docker/app_dev_entrypoint.sh
