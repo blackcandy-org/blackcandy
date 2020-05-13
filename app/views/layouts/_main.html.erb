@@ -4,11 +4,9 @@
       <%= render 'shared/flash' %>
     </div>
     <%= render 'shared/search_bar' %>
-    <div id='js-nav-bar'>
-      <%= render 'shared/nav_bar' %>
-    </div>
+    <%= render 'shared/nav_bar' %>
   </header>
-  <main id='js-layout-main' class='layout__main__content position-relative'>
+  <main class='layout__main__content position-relative'>
     <%= yield %>
   </main>
   <footer class='layout__main__footer hidden'>

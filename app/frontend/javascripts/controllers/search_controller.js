@@ -1,32 +1,40 @@
 import { Controller } from 'stimulus';
-import { ajax } from '@rails/ujs';
 
 export default class extends Controller {
-  static targets = ['loader'];
+  static targets = ['loader', 'input'];
 
   AVAILABLE_RESOURCES = ['albums', 'artists', 'songs'];
 
-  SEARCH_TIMEOUT = 800
+  connect() {
+    this.inputTarget.value = this.inputTarget.getAttribute('value');
+  }
 
-  query({ target }) {
+  disconnect() {
+    this.loaderTarget.classList.add('hidden');
+    this.inputTarget.value = '';
+  }
+
+  query(event) {
+    if (event.key != 'Enter') { return; }
+
     this.loaderTarget.classList.remove('hidden');
 
-    if (this.searchTimeout) {
-      clearTimeout(this.searchTimeout);
-    }
+    const baseUrl = this.AVAILABLE_RESOURCES.includes(this.resource) ? `/${this.resource}` : '/albums';
+    const query = event.target.value.trim();
+    const queryUrl = `${baseUrl}${query ? `?query=${query}` : ''}`;
 
-    this.searchTimeout = setTimeout(() => {
-      const queryUrl = this.AVAILABLE_RESOURCES.includes(this.resource) ? `/${this.resource}` : '/albums';
+    Turbolinks.visit(queryUrl);
+    this._focusInput();
+  }
 
-      ajax({
-        url: `${queryUrl}?query=${target.value.trim()}`,
-        type: 'get',
-        dataType: 'script',
-        success: () => {
-          this.loaderTarget.classList.add('hidden');
-        }
-      });
-    }, this.SEARCH_TIMEOUT);
+  _focusInput() {
+    document.addEventListener('turbolinks:load', () => {
+      const searchElement = document.querySelector('#js-search-input');
+      const searchValueLength = searchElement.value.length;
+
+      searchElement.focus();
+      searchElement.setSelectionRange(searchValueLength, searchValueLength);
+    }, { once: true });
   }
 
   get resource() {

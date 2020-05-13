@@ -1,5 +1,1 @@
-<% if @pagy.page == 1 %>
-  <%= render_main_content(render template: 'albums/index.html.erb') %>
-<% else %>
-  App.appedNextPageContentTo('#js-albums-content', '<%= j(render partial: 'album', collection: @albums, cached: true) %>', '<%= pagy_next_url(@pagy) %>')
-<% end %>
+App.appedNextPageContentTo('#js-albums-content', '<%= j(render partial: 'album', collection: @albums, cached: true) %>', '<%= pagy_next_url(@pagy) %>')
