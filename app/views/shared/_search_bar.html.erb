@@ -3,10 +3,10 @@
     <!-- Placeholder for search-bar layout to keep search bar input center -->
   </div>
   <div class='input' data-controller='search' data-search-resource='<%= params[:controller] %>'>
-    <div class='input__icon' data-action='click->search#focus'>
+    <div class='input__icon'>
       <%= icon_tag 'search', size: 'large' %>
     </div>
-    <input id='js-search-input' data-action='input->search#query' />
+    <input id='js-search-input' data-target='search.input' data-action='keydown->search#query' value='<%= params[:query] %>' />
     <div class='input__icon input__icon--right hidden' data-target='search.loader'>
       <%= loader_tag size: 'small' %>
     </div>

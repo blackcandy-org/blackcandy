@@ -17,9 +17,10 @@ export default class extends Controller {
     if (this.colorSchemeQuery) { this.colorSchemeQuery.removeListener(this._matchTheme); }
 
     const theme = this.data.get('name');
+    const oneYearFromNow = new Date(Date.now() + 365 * 864e5).toUTCString();
 
     // set theme cookie to track theme when user didn't login
-    document.cookie = `theme=${theme};path=/`;
+    document.cookie = `theme=${theme};path=/;samesite=lax;expires=${oneYearFromNow}`;
 
     switch (theme) {
       case 'dark':

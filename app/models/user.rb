@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
   AVAILABLE_THEME_OPTIONS = %w(dark light auto)
+  DEFAULT_THEME = 'dark'
 
   include ScopedSetting
 
@@ -17,7 +18,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  scoped_field :theme, default: 'dark', available_options: AVAILABLE_THEME_OPTIONS
+  scoped_field :theme, default: DEFAULT_THEME, available_options: AVAILABLE_THEME_OPTIONS
 
   def update_settings(settings)
     settings.each do |key, value|

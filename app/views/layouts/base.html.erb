@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-controller='theme' data-theme-name='<%= Current.user&.theme || cookies[:theme]  %>'>
+<html>
   <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
@@ -10,7 +10,7 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body data-controller='theme' data-theme-name='<%= Current.user&.theme || cookies[:theme].presence || User::DEFAULT_THEME  %>'>
     <%= content_for?(:body) ? yield(:body) : yield %>
     <%= render 'shared/icons.svg' %>
   </body>
