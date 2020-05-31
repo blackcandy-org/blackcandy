@@ -31,7 +31,6 @@
 /public/packs-test
 /public/uploads
 /node_modules
-/config/nginx/nginx.conf
 
 .DS_Store
 *.swp

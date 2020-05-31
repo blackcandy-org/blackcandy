@@ -37,8 +37,9 @@ RUN bundle exec rails assets:precompile SECRET_KEY_BASE=fake_secure_for_compile 
   && yarn cache clean \
   && rm -rf node_modules tmp/cache/* /tmp/*
 
-RUN apk add --no-cache nginx
+RUN apk add --no-cache nginx \
+  && cp config/nginx/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 3000
 
-CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+CMD ["docker/production_start.sh"]
