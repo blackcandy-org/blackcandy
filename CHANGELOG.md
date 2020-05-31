@@ -1,3 +1,15 @@
+### 1.1.0
+  - enhancements
+    - use pg full text search to replace pgroonga
+    - update webpacker to 5.0
+    - squash docker image size
+    - use intersection observer api to replace scrollmagic on infinite scroll
+
+  - bug fixes
+    - fix issue for can not set right theme when user first login 
+    - fix can not play song when use http range to send file on dev environment
+
+
 ### 1.0.5
   - enhancements
     - update Rails to 6.0.2

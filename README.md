@@ -25,7 +25,7 @@ Black candy has built [docker images](https://hub.docker.com/r/blackcandy/blackc
 
 First, you should create `docker-compose.yml` file for black candy. 
 
-Here is the example [docker-compose.yml](https://raw.githubusercontent.com/aidewoode/black_candy/v1.0.5/docker-compose.yml) you can use. You can also change the `docker-compose.yml` for your own needs.
+Here is the example [docker-compose.yml](https://raw.githubusercontent.com/aidewoode/black_candy/v1.1.0/docker-compose.yml) you can use. You can also change the `docker-compose.yml` for your own needs.
 
 Second, set `BLACK_CANDY_MEDIA_PATH` and `BLACK_CANDY_SECRET_KEY_BASE` environment variable on your sever and point `BLACK_CANDY_MEDIA_PATH` to the readable directory on your server to store your music files.
 
