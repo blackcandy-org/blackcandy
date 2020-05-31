@@ -1,0 +1,46 @@
+version: '3.4'
+services:
+  app: &app_base
+    image: blackcandy/blackcandy
+    volumes:
+      - production_music_data:/media_data
+      - production_uploads_data:/app/public/uploads
+    environment:
+      DB_HOST: postgres
+      DB_USER: postgres
+      REDIS_DATA_URL: redis://redis:6379/0
+      REDIS_CACHE_URL: redis://redis:6379/1
+      REDIS_SIDEKIQ_URL: redis://redis:6379/2
+      MEDIA_PATH: /media_data
+      SECRET_KEY_BASE: example_secure_key_base
+    depends_on:
+      - postgres
+      - redis
+  postgres:
+    image: postgres:11.1-alpine
+    volumes:
+      - production_db_data:/var/lib/postgresql/data
+  redis:
+    image: redis:4.0-alpine
+    volumes:
+      - production_redis_data:/data
+  worker:
+    <<: *app_base
+    command: bundle exec sidekiq
+  web:
+    <<: *app_base
+    depends_on:
+      - app
+      - worker
+    ports:
+      - 80:80
+    command: nginx -g 'pid /tmp/nginx.pid; daemon off;'
+  music:
+    image: blackcandy/sample-music
+    volumes:
+      - production_music_data:/music
+volumes:
+  production_db_data:
+  production_redis_data:
+  production_uploads_data:
+  production_music_data:
