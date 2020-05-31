@@ -12,8 +12,8 @@
 /public/uploads/
 /test
 /images
-/config/nginx/nginx.conf
-/docker
+/docker/dev_entrypoint.sh
+/.github
 
 yarn-error.log
 Dockerfile
