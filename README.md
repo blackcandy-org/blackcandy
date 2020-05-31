@@ -45,6 +45,30 @@ That's all.
 
 You can use initial admin user to login (email: admin@admin.com, password: foobar).
 
+## Try in PWD
+
+You can try black candy on [Play with Docker](https://labs.play-with-docker.com)
+
+[![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](http://play-with-docker.com/?stack=https://raw.githubusercontent.com/aidewoode/black_candy/master/docker-compose.pwd.yml)
+
+When the service is ready, access black candy from port 80. Then use initial admin user to login (email: admin@admin.com, password: foobar). This demo already contains some sample music file. You can go to the setting page and click the sync button of the media path to import the sample music into the database.
+
+And feel free to try it.
+
+
+### List for all sample music for the demo:
+
+- Kurt Vile - Live at WFMU on Talk's Cheap 8/11/2008 (licensed under [Attribution-NonCommercial-ShareAlike 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/))		
+
+- Wooden Shjips - Live at ATP NY 2008 (licensed under [Attribution-Noncommercial-No Derivative Works 3.0 United States](http://creativecommons.org/licenses/by-nc-nd/3.0/us/))
+
+- Ty Segall - Live at WFMU on The Cherry Blossom Clinic with Terre T June 25, 2011 (licensed under [Attribution-Noncommercial-No Derivative Works 3.0 United States](http://creativecommons.org/licenses/by-nc-nd/3.0/us/))
+
+- Thee Oh Sees - Peanut Butter Oven EP (licensed under [Attribution-Noncommercial-Share Alike 3.0 United States](http://creativecommons.org/licenses/by-nc-sa/3.0/us/)) 
+
+If like their music, you can buy their albums to support them.
+
+
 ## Update
 
 Pull new image from remote
