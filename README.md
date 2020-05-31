@@ -69,7 +69,7 @@ And feel free to try it.
 If like their music, you can buy their albums to support them.
 
 
-## Update
+## Upgrade
 
 Pull new image from remote
 
