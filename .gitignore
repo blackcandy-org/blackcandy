@@ -36,3 +36,5 @@
 *.swp
 yarn-debug.log*
 .yarn-integrity
+tags
+tags.*
