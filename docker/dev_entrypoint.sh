@@ -5,4 +5,4 @@ if [ -f tmp/pids/server.pid ]; then
   rm tmp/pids/server.pid
 fi
 
-exec "$@"
+/usr/local/bin/entrypoint "$@"
