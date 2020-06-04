@@ -1,4 +1,7 @@
+.PHONY= dev_run dev_stop dev_setup dev_shell test_run lint_run brakeman_run
 APP_COMMAND = docker-compose -f docker-compose.dev.yml run --rm app
+
+export LOCAL_USER_ID ?= $(shell id -u $$USER)
 
 dev_run:
 	@docker-compose -f docker-compose.dev.yml up --build

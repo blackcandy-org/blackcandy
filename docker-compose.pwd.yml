@@ -6,6 +6,7 @@ services:
       - production_music_data:/media_data
       - production_uploads_data:/app/public/uploads
     environment:
+      LOCAL_USER_ID: "${LOCAL_USER_ID}"
       DB_HOST: postgres
       DB_USER: postgres
       REDIS_DATA_URL: redis://redis:6379/0

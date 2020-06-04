@@ -14,6 +14,7 @@ services:
     ports:
       - 3000:3000
     environment:
+      LOCAL_USER_ID: ${LOCAL_USER_ID}
       DB_HOST: postgres
       DB_USER: postgres
       REDIS_DATA_URL: redis://redis:6379/0
