@@ -1,5 +1,6 @@
 FROM ruby:2.6.6-alpine AS base
 
+ENV APP_USER user
 ENV LANG C.UTF-8
 
 LABEL maintainer="Aidewoode@github.com/aidewoode"
@@ -12,7 +13,24 @@ RUN apk add --no-cache \
   yarn \
   imagemagick \
   taglib-dev \
-  ffmpeg
+  ffmpeg \
+  curl
+
+# Tool to propagate singals from the container to the app
+# Repo: https://github.com/fpco/pid1
+# Explanation: https://www.fpcomplete.com/blog/2016/10/docker-demons-pid1-orphans-zombies-signals
+ENV PID1_VERSION=0.1.2.0
+RUN curl -sSL "https://github.com/fpco/pid1/releases/download/v${PID1_VERSION}/pid1-${PID1_VERSION}-linux-x86_64.tar.gz" | tar xzf - -C /usr/local \
+    && chown root:root /usr/local/sbin \
+    && chown root:root /usr/local/sbin/pid1
+
+# Disable documentation for Ruby gems
+RUN echo 'gem: --no-rdoc --no-ri' > /etc/gemrc
+
+# Set the entrypoint
+COPY ./docker/entrypoint.sh /usr/local/bin/entrypoint
+RUN chmod +x /usr/local/bin/entrypoint
+ENTRYPOINT ["/usr/local/bin/entrypoint"]
 
 WORKDIR /app
 
