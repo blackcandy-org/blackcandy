@@ -14,6 +14,7 @@ mkdir -p "$GEM_HOME/gems/bin"
 chown -R "$USER_NAME:$USER_NAME" /usr/local/bundle
 chown -R "$USER_NAME:$USER_NAME" "$GEM_HOME/bin"
 chown -R "$USER_NAME:$USER_NAME" "$GEM_HOME/gems/bin"
+chown -R "$USER_NAME:$USER_NAME" /app
 
 # Fake home direcotry
 export HOME=/home/$USER_NAME
