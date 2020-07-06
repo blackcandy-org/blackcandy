@@ -33,10 +33,7 @@ class MediaTest < ActiveSupport::TestCase
   end
 
   test 'should change associations when modify album info on file' do
-    create_tmp_dir(from: Setting.media_path) do |tmp_dir|
-      Setting.media_path = tmp_dir
-      update_media_tag File.join(tmp_dir, 'artist1_album2.mp3'), album: 'album1'
-
+    MediaFile.stub(:file_info, media_file_info_stub(file_fixture('artist1_album2.mp3'), album_name: 'album1')) do
       Media.sync
 
       assert_equal Album.where(name: 'album1').ids.sort, Artist.find_by_name('artist1').albums.ids.sort
@@ -45,10 +42,7 @@ class MediaTest < ActiveSupport::TestCase
   end
 
   test 'should change associations when modify artist info on file' do
-    create_tmp_dir(from: Setting.media_path) do |tmp_dir|
-      Setting.media_path = tmp_dir
-      update_media_tag File.join(tmp_dir, 'artist1_album2.mp3'), artist: 'artist2'
-
+    MediaFile.stub(:file_info, media_file_info_stub(file_fixture('artist1_album2.mp3'), artist_name: 'artist2')) do
       Media.sync
 
       assert_equal Album.where(name: %w(album2 album3)).ids.sort, Artist.find_by_name('artist2').albums.ids.sort
@@ -57,10 +51,7 @@ class MediaTest < ActiveSupport::TestCase
   end
 
   test 'should change song attribute when modify song info on file' do
-    create_tmp_dir(from: Setting.media_path) do |tmp_dir|
-      Setting.media_path = tmp_dir
-      update_media_tag File.join(tmp_dir, 'artist1_album2.mp3'), track: 2
-
+    MediaFile.stub(:file_info, media_file_info_stub(file_fixture('artist1_album2.mp3'), tracknum: 2)) do
       assert_changes -> { Song.find_by_name('mp3_sample').tracknum }, from: 1, to: 2 do
         Media.sync
       end

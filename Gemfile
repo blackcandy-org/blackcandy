@@ -14,7 +14,7 @@ gem 'jbuilder', '~> 2.9.1'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.11'
 # Get meta data from audio file
-gem 'taglib-ruby', '~> 0.7.1'
+gem 'wahwah', '~> 1.0.0'
 # For settings
 gem 'rails-settings-cached', '~> 2.1.0'
 # Use sidekiq for backgroud job

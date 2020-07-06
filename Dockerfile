@@ -11,7 +11,6 @@ RUN apk add --no-cache \
   nodejs \
   yarn \
   imagemagick \
-  taglib-dev \
   ffmpeg
 
 WORKDIR /app

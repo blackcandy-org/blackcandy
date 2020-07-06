@@ -226,7 +226,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    taglib-ruby (0.7.1)
     thor (1.0.1)
     thread_safe (0.3.6)
     turbolinks (5.2.1)
@@ -236,6 +235,7 @@ GEM
       thread_safe (~> 0.1)
     unicode-display_width (1.4.1)
     uniform_notifier (1.12.1)
+    wahwah (1.0.0)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -290,9 +290,9 @@ DEPENDENCIES
   sidekiq (~> 6.0.0)
   spring
   spring-watcher-listen (~> 2.0.0)
-  taglib-ruby (~> 0.7.1)
   turbolinks (~> 5.2.1)
   tzinfo-data
+  wahwah (~> 1.0.0)
   web-console (>= 3.3.0)
   webdrivers (~> 4.1.3)
   webmock (~> 3.6.2)

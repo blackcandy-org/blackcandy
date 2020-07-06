@@ -4,7 +4,6 @@ require_relative '../config/environment'
 require 'rails/test_help'
 require 'webmock/minitest'
 require 'minitest/mock'
-require 'taglib'
 require 'database_cleaner'
 
 DatabaseCleaner.strategy = :transaction
@@ -25,26 +24,8 @@ class ActiveSupport::TestCase
     Song.destroy_all
   end
 
-  def update_media_tag(file_path, attributes = {})
-    TagLib::FileRef.open(file_path.to_s) do |file|
-      unless file.null?
-        tag = file.tag
-
-        attributes.each do |key, value|
-          tag.send("#{key}=", value)
-        end
-
-        file.save
-      end
-    end
-  end
-
   def audio_bitrate(file_path)
-    TagLib::FileRef.open(file_path.to_s) do |file|
-      raise if file.null?
-
-      file.audio_properties.bitrate
-    end
+    WahWah.open(file_path).bitrate
   end
 
   def create_tmp_dir(from: '')
@@ -82,6 +63,13 @@ class ActiveSupport::TestCase
 
   def binary_data(file_path)
     File.read(file_path).force_encoding('BINARY').strip
+  end
+
+  def media_file_info_stub(file_path, attributes = {})
+    Proc.new do |media_file_path|
+      file_info = MediaFile.send(:get_tag_info, media_file_path).merge(file_path: media_file_path, md5_hash: MediaFile.send(:get_md5_hash, media_file_path))
+      media_file_path.to_s == file_path.to_s ? file_info.merge(**attributes, md5_hash: 'new_md5_hash') : file_info
+    end
   end
 end
 
