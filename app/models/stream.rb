@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Stream
-  TRANSCODING_FORMATS = %w[flac wav].freeze
+  TRANSCODING_FORMATS = %w[flac wav oga wma].freeze
   TRANSCODE_FORMAT = 'mp3'
 
   def initialize(song)
