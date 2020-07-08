@@ -3,13 +3,13 @@
     {
       "warning_type": "File Access",
       "warning_code": 16,
-      "fingerprint": "d8c77a382848664a4d90746a44057f263b854cbc7a1d7b013ef6cd25eed96961",
+      "fingerprint": "1195dbf0b2e5b599c118d69b48e9cd88f3a5f7a10979b5d95b4c14480a941931",
       "check_name": "FileAccess",
       "message": "Model attribute used in file name",
       "file": "app/models/media_file.rb",
-      "line": 15,
+      "line": 13,
       "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
-      "code": "Dir.glob(\"#{File.expand_path(Setting.media_path)}/**/*.{#{\"mp3,ogg,opus,m4a,flac,wav\"}}\", File::FNM_CASEFOLD)",
+      "code": "Dir.glob(\"#{File.expand_path(Setting.media_path)}/**/*.{#{WahWah.support_formats.join(\",\")}}\", File::FNM_CASEFOLD)",
       "render_path": null,
       "location": {
         "type": "method",
@@ -21,6 +21,6 @@
       "note": ""
     }
   ],
-  "updated": "2019-09-14 10:20:20 +0000",
-  "brakeman_version": "4.6.1"
+  "updated": "2020-07-07 03:22:31 +0000",
+  "brakeman_version": "4.7.2"
 }

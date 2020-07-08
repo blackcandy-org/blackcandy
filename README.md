@@ -17,7 +17,7 @@ Black candy is a self hosted music streaming server built with Rails and Stimulu
 
 Black candy use docker for simplify deployment, development and test process. So you should install docker and docker-compose first.
 
-Black candy support mp3, m4a, ogg, opus, flac and wav formats now.
+Black candy support mp3, m4a, ogg, oga, opus, flac, wma and wav formats now.
 
 ## Installation
 

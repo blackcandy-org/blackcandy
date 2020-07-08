@@ -45,3 +45,19 @@ m4a_sample:
   md5_hash: 'fake_md5'
   artist: 'artist1'
   album: 'album1'
+
+oga_sample:
+  id: 7
+  name: 'oga_sample'
+  file_path: <%= Rails.root.join('test', 'fixtures', 'files', 'artist2_album3.oga') %>
+  md5_hash: 'fake_md5'
+  artist: 'artist2'
+  album: 'album3'
+
+wma_sample:
+  id: 8
+  name: 'wma_sample'
+  file_path: <%= Rails.root.join('test', 'fixtures', 'files', 'artist2_album3.wma') %>
+  md5_hash: 'fake_md5'
+  artist: 'artist2'
+  album: 'album3'

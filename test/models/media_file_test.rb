@@ -10,6 +10,8 @@ class MediaFileTest < ActiveSupport::TestCase
       fixtures_file_path('artist1_album2.mp3'),
       fixtures_file_path('artist2_album3.wav'),
       fixtures_file_path('artist2_album3.opus'),
+      fixtures_file_path('artist2_album3.wma'),
+      fixtures_file_path('artist2_album3.oga'),
       fixtures_file_path('artist1_album1.m4a')
     ]
 
@@ -40,6 +42,8 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 'ogg', MediaFile.format(file_fixture('artist2_album3.ogg'))
     assert_equal 'wav', MediaFile.format(file_fixture('artist2_album3.wav'))
     assert_equal 'opus', MediaFile.format(file_fixture('artist2_album3.opus'))
+    assert_equal 'oga', MediaFile.format(file_fixture('artist2_album3.oga'))
+    assert_equal 'wma', MediaFile.format(file_fixture('artist2_album3.wma'))
     assert_equal 'm4a', MediaFile.format(file_fixture('artist1_album1.m4a'))
   end
 
@@ -108,6 +112,26 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 'm4a_sample', tag_info[:name]
     assert_equal 'album1', tag_info[:album_name]
     assert_equal 'artist1', tag_info[:artist_name]
+    assert_equal 1, tag_info[:tracknum]
+    assert_equal 8, tag_info[:length]
+  end
+
+  test 'should get tag info from oga file' do
+    tag_info = MediaFile.send(:get_tag_info, file_fixture('artist2_album3.oga'))
+
+    assert_equal 'oga_sample', tag_info[:name]
+    assert_equal 'album3', tag_info[:album_name]
+    assert_equal 'artist2', tag_info[:artist_name]
+    assert_equal 1, tag_info[:tracknum]
+    assert_equal 8, tag_info[:length]
+  end
+
+  test 'should get tag info from wma file' do
+    tag_info = MediaFile.send(:get_tag_info, file_fixture('artist2_album3.wma'))
+
+    assert_equal 'wma_sample', tag_info[:name]
+    assert_equal 'album3', tag_info[:album_name]
+    assert_equal 'artist2', tag_info[:artist_name]
     assert_equal 1, tag_info[:tracknum]
     assert_equal 8, tag_info[:length]
   end
