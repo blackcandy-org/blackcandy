@@ -14,6 +14,7 @@
 /images
 /docker/dev_entrypoint.sh
 /.github
+/config/master.key
 
 yarn-error.log
 Dockerfile

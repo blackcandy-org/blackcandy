@@ -7,7 +7,7 @@ services:
     image: blackcandy/base
     volumes:
       - .:/app
-      - ${BLACK_CANDY_MEDIA_PATH}:/media_data
+      - ~/media_data:/media_data
       - bundler_data:/usr/local/bundle
     entrypoint: docker/dev_entrypoint.sh
     command: ["bin/rails", "s", "-b", "0.0.0.0"]
@@ -27,10 +27,14 @@ services:
     image: postgres:11.1-alpine
     volumes:
       - db_data:/var/lib/postgresql/data
+    logging:
+      driver: none
   redis:
     image: redis:4.0-alpine
     volumes:
       - redis_data:/data
+    logging:
+      driver: none
   webpacker:
     image: blackcandy/base
     command: ./bin/webpack-dev-server
@@ -46,7 +50,7 @@ services:
     command: bundle exec sidekiq
     volumes:
       - .:/app
-      - ${BLACK_CANDY_MEDIA_PATH}:/media_data
+      - ~/media_data:/media_data
       - bundler_data:/usr/local/bundle
     environment:
       DB_HOST: postgres

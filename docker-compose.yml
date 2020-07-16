@@ -5,7 +5,7 @@ services:
     image: blackcandy/blackcandy
     volumes:
       - ./log:/app/log
-      - ${BLACK_CANDY_MEDIA_PATH}:/media_data
+      - /media_data:/media_data
       - production_uploads_data:/app/public/uploads
     environment:
       DB_HOST: postgres
@@ -14,7 +14,6 @@ services:
       REDIS_CACHE_URL: redis://redis:6379/1
       REDIS_SIDEKIQ_URL: redis://redis:6379/2
       MEDIA_PATH: /media_data
-      SECRET_KEY_BASE: ${BLACK_CANDY_SECRET_KEY_BASE}
     depends_on:
       - postgres
       - redis

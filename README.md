@@ -17,33 +17,26 @@ Black candy is a self hosted music streaming server built with Rails and Stimulu
 
 Black candy use docker for simplify deployment, development and test process. So you should install docker and docker-compose first.
 
-Black candy support mp3, m4a, ogg, opus, flac and wav formats now.
+Black candy support mp3, m4a, ogg, oga, opus, flac, wma and wav formats now.
 
 ## Installation
 
 Black candy has built [docker images](https://hub.docker.com/r/blackcandy/blackcandy). You can use docker compose to run all services.
 
-First, you should create `docker-compose.yml` file for black candy. 
+First, you should ensure your music files stored under "/media_data" 
 
-Here is the example [docker-compose.yml](https://raw.githubusercontent.com/aidewoode/black_candy/v1.1.0/docker-compose.yml) you can use. You can also change the `docker-compose.yml` for your own needs.
-
-Second, set `BLACK_CANDY_MEDIA_PATH` and `BLACK_CANDY_SECRET_KEY_BASE` environment variable on your sever and point `BLACK_CANDY_MEDIA_PATH` to the readable directory on your server to store your music files.
+Then run: 
 
 ```shell
-# Like this
-$ export BLACK_CANDY_MEDIA_PATH="/example_media_path"
-$ export BLACK_CANDY_SECRET_KEY_BASE="your_secret_key"
-```
-
-Finally run:
-
-```shell
+$ curl https://raw.githubusercontent.com/aidewoode/black_candy/v1.1.1/docker-compose.yml > docker-compose.yml
 $ docker-compose up -d
 ```
+That's all. Now, you can use initial admin user to login (email: admin@admin.com, password: foobar).
 
-That's all. 
+You can also change the `docker-compose.yml` for your own needs.
 
-You can use initial admin user to login (email: admin@admin.com, password: foobar).
+> **Note:** When the SECRET_KEY_BASE environment variable is not set, Black candy will generate SECRET_KEY_BASE environment variable every time when service start up. 
+> This will cause old sessions invalid, You can set your own SECRET_KEY_BASE environment variable on docker service to avoid it.
 
 ## Try in PWD
 
