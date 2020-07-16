@@ -7,7 +7,7 @@ services:
     image: blackcandy/base
     volumes:
       - .:/app
-      - ${BLACK_CANDY_MEDIA_PATH}:/media_data
+      - ~/media_data:/media_data
       - bundler_data:/usr/local/bundle
     entrypoint: docker/dev_entrypoint.sh
     command: ["bin/rails", "s", "-b", "0.0.0.0"]
@@ -46,7 +46,7 @@ services:
     command: bundle exec sidekiq
     volumes:
       - .:/app
-      - ${BLACK_CANDY_MEDIA_PATH}:/media_data
+      - ~/media_data:/media_data
       - bundler_data:/usr/local/bundle
     environment:
       DB_HOST: postgres
