@@ -1,3 +1,11 @@
+### 1.1.1
+  - new features
+    - add support for oga and wma formats 
+
+  - enhancements
+    - use wahwah to replace taglib-ruby
+    - remove the environment variables required for installation 
+  
 ### 1.1.0
   - enhancements
     - use pg full text search to replace pgroonga
