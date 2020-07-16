@@ -27,10 +27,14 @@ services:
     image: postgres:11.1-alpine
     volumes:
       - db_data:/var/lib/postgresql/data
+    logging:
+      driver: none
   redis:
     image: redis:4.0-alpine
     volumes:
       - redis_data:/data
+    logging:
+      driver: none
   webpacker:
     image: blackcandy/base
     command: ./bin/webpack-dev-server
