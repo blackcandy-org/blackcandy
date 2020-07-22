@@ -52,6 +52,7 @@ en:
     integration: 'Integration'
     close: 'Close'
     more: 'More'
+    appears_on: 'Appears On'
   error:
     login: 'Wrong email or password'
     media_path_blank: 'Media path is not exist'
@@ -75,6 +76,7 @@ en:
     add_user: 'Add user'
     create_user: 'Create User'
     media_path: 'Media path'
+    various_artists: 'Various Artists'
     unknown_artist: 'Unknown Artist'
     unknown_album: 'Unknown Album'
     go_back: 'Go back'
@@ -89,3 +91,4 @@ en:
     expand_player: 'Expand player'
     collapse_player: 'Collapse player'
     personal: 'Personal'
+    see_all: 'See All'

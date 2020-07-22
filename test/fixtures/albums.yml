@@ -7,3 +7,6 @@ album2:
 album3:
   name: 'album3'
   artist: 'artist2'
+album4:
+  name: 'album4'
+  artist: 'various_artists'

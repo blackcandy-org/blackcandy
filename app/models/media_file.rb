@@ -40,6 +40,7 @@ class MediaFile
           name: tag.title.presence || File.basename(file_path),
           album_name: tag.album.presence,
           artist_name: tag.artist.presence,
+          albumartist_name: tag.albumartist.presence,
           tracknum: tag.track,
           length: tag.duration
         }

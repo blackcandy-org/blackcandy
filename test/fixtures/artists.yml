@@ -3,3 +3,6 @@ artist1:
 
 artist2:
   name: 'artist2'
+
+various_artists:
+  is_various: true

@@ -1,0 +1,17 @@
+<% if albums.present? %>
+  <div class='cards'>
+    <div class='heading heading--expand display__space-between display__full-width display__align-center'>
+      <div class='heading__body'>
+        <div class='heading__body__text heading__body__text--main'>
+          <%= title %>
+        </div>
+      </div>
+      <% if local_assigns[:all_albums_link] && all_albums_link.present? %>
+        <%= link_to t('text.see_all'), all_albums_link %>
+      <% end %>
+    </div>
+  </div>
+  <div class='cards'>
+    <%= render partial: 'albums/album', collection: albums, cached: true %>
+  </div>
+<% end %>

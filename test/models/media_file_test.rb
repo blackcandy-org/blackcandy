@@ -12,7 +12,8 @@ class MediaFileTest < ActiveSupport::TestCase
       fixtures_file_path('artist2_album3.opus'),
       fixtures_file_path('artist2_album3.wma'),
       fixtures_file_path('artist2_album3.oga'),
-      fixtures_file_path('artist1_album1.m4a')
+      fixtures_file_path('artist1_album1.m4a'),
+      fixtures_file_path('various_artists.mp3')
     ]
 
     Setting.media_path = Rails.root.join('test', 'fixtures', 'files')
@@ -62,6 +63,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 'mp3_sample', tag_info[:name]
     assert_equal 'album2', tag_info[:album_name]
     assert_equal 'artist1', tag_info[:artist_name]
+    assert_equal 'artist1', tag_info[:albumartist_name]
     assert_equal 1, tag_info[:tracknum]
     assert_equal 8, tag_info[:length]
   end
@@ -72,6 +74,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 'flac_sample', tag_info[:name]
     assert_equal 'album1', tag_info[:album_name]
     assert_equal 'artist1', tag_info[:artist_name]
+    assert_equal 'artist1', tag_info[:albumartist_name]
     assert_equal 1, tag_info[:tracknum]
     assert_equal 8, tag_info[:length]
   end
@@ -82,6 +85,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 'ogg_sample', tag_info[:name]
     assert_equal 'album3', tag_info[:album_name]
     assert_equal 'artist2', tag_info[:artist_name]
+    assert_equal 'artist2', tag_info[:albumartist_name]
     assert_equal 1, tag_info[:tracknum]
     assert_equal 8, tag_info[:length]
   end
@@ -92,6 +96,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 'wav_sample', tag_info[:name]
     assert_equal 'album3', tag_info[:album_name]
     assert_equal 'artist2', tag_info[:artist_name]
+    assert_equal 'artist2', tag_info[:albumartist_name]
     assert_equal 1, tag_info[:tracknum]
     assert_equal 8, tag_info[:length]
   end
@@ -102,6 +107,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 'opus_sample', tag_info[:name]
     assert_equal 'album3', tag_info[:album_name]
     assert_equal 'artist2', tag_info[:artist_name]
+    assert_equal 'artist2', tag_info[:albumartist_name]
     assert_equal 1, tag_info[:tracknum]
     assert_equal 8, tag_info[:length]
   end
@@ -112,6 +118,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 'm4a_sample', tag_info[:name]
     assert_equal 'album1', tag_info[:album_name]
     assert_equal 'artist1', tag_info[:artist_name]
+    assert_equal 'artist1', tag_info[:albumartist_name]
     assert_equal 1, tag_info[:tracknum]
     assert_equal 8, tag_info[:length]
   end
@@ -122,6 +129,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 'oga_sample', tag_info[:name]
     assert_equal 'album3', tag_info[:album_name]
     assert_equal 'artist2', tag_info[:artist_name]
+    assert_equal 'artist2', tag_info[:albumartist_name]
     assert_equal 1, tag_info[:tracknum]
     assert_equal 8, tag_info[:length]
   end
@@ -132,6 +140,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 'wma_sample', tag_info[:name]
     assert_equal 'album3', tag_info[:album_name]
     assert_equal 'artist2', tag_info[:artist_name]
+    assert_equal 'artist2', tag_info[:albumartist_name]
     assert_equal 1, tag_info[:tracknum]
     assert_equal 8, tag_info[:length]
   end

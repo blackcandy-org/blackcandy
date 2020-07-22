@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resource :setting, only: [:show, :update]
 
-  resources :artists, only: [:index, :show]
+  resources :artists, only: [:index, :show] do
+    resources :albums, only: [:index], module: 'artists'
+    resources :appears_on_albums, only: [:index], module: 'artists'
+  end
+
   resources :stream, only: [:new]
   resources :transcoded_stream, only: [:new]
   resources :songs, only: [:index, :show]

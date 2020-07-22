@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :find_current_user
 
-  rescue_from ActiveRecord::RecordNotFound do |exception|
+  rescue_from ActiveRecord::RecordNotFound, BlackCandyError::NotFound do |exception|
     respond_to do |format|
       format.js { head :not_found }
       format.json { head :not_found }

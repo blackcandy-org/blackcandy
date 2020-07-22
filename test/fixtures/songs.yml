@@ -61,3 +61,11 @@ wma_sample:
   md5_hash: 'fake_md5'
   artist: 'artist2'
   album: 'album3'
+
+various_artists_sample:
+  id: 9
+  name: 'various_artists_sample'
+  file_path: <%= Rails.root.join('test', 'fixtures', 'files', 'various_artists.mp3') %>
+  md5_hash: 'fake_md5'
+  artist: 'artist1'
+  album: 'album4'

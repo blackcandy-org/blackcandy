@@ -13,7 +13,6 @@ class AlbumsController < ApplicationController
 
   def show
     @songs = @album.songs
-
     AttachAlbumImageFromDiscogsJob.perform_later(@album.id) if @album.need_attach_from_discogs?
   end
 
