@@ -5,11 +5,11 @@ class ApplicationController < ActionController::Base
 
   before_action :find_current_user
 
-  rescue_from ActiveRecord::RecordNotFound, BlackCandyError::NotFound do |exception|
+  rescue_from BlackCandyError::NotFound do |exception|
     respond_to do |format|
       format.js { head :not_found }
       format.json { head :not_found }
-      format.html { redirect_to not_found_path, status: :not_found }
+      format.html { render template: 'errors/not_found', layout: 'error', status: :not_found }
     end
   end
 
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.js { head :forbidden }
       format.json { head :forbidden }
-      format.html { redirect_to forbidden_path, status: :forbidden }
+      format.html { render template: 'errors/forbidden', layout: 'error', status: :forbidden }
     end
   end
 
