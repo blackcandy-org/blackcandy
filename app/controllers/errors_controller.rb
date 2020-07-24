@@ -3,6 +3,8 @@
 class ErrorsController < ApplicationController
   layout 'error'
 
+  skip_before_action :require_login
+
   def forbidden
     render status: :forbidden
   end

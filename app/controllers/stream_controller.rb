@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class StreamController < ApplicationController
-  before_action :require_login
   before_action :find_stream
   before_action :set_header
 

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Artists::AlbumsController < ApplicationController
-  before_action :require_login
   before_action :find_artist
   before_action :find_albums
 

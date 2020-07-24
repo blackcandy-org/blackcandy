@@ -3,7 +3,6 @@
 class PlaylistsController < ApplicationController
   include Pagy::Backend
 
-  before_action :require_login
   before_action :find_playlist, only: [:destroy, :update]
 
   def index

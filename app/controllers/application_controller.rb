@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   before_action :find_current_user
+  before_action :require_login
 
   rescue_from BlackCandyError::NotFound do |exception|
     respond_to do |format|
