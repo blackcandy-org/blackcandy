@@ -45,10 +45,6 @@ class ActiveSupport::TestCase
     tmp_file.unlink
   end
 
-  def flush_redis
-    Redis::Objects.redis.flushdb
-  end
-
   def login(user)
     post session_url, params: { email: user.email, password: 'foobar' }
   end
