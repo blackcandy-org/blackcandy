@@ -3,7 +3,6 @@
 class AlbumsController < ApplicationController
   include Pagy::Backend
 
-  before_action :require_login
   before_action :find_album, except: [:index]
 
   def index
@@ -13,7 +12,6 @@ class AlbumsController < ApplicationController
 
   def show
     @songs = @album.songs
-
     AttachAlbumImageFromDiscogsJob.perform_later(@album.id) if @album.need_attach_from_discogs?
   end
 

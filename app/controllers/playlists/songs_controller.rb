@@ -3,7 +3,6 @@
 class Playlists::SongsController < ApplicationController
   include Pagy::Backend
 
-  before_action :require_login
   before_action :find_playlist
   before_action :find_songs, only: [:create, :destroy]
 

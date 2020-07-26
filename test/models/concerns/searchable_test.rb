@@ -41,7 +41,8 @@ class SearchableTest < ActiveSupport::TestCase
 
     album_serach_song_ids = Album.find_by_name('album1').songs.ids +
       Album.find_by_name('album2').songs.ids +
-      Album.find_by_name('album3').songs.ids
+      Album.find_by_name('album3').songs.ids +
+      Album.find_by_name('album4').songs.ids
 
     assert_equal album_serach_song_ids.sort, Song.search('album').ids.sort
   end

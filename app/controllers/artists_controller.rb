@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class ArtistsController < ApplicationController
-  include Pagy::Backend
+  ALBUMS_COUNT = 10
 
-  before_action :require_login
+  include Pagy::Backend
 
   def index
     records = Artist.search(params[:query]).order(:name)
@@ -12,7 +12,8 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find(params[:id])
-    @pagy, @albums = pagy_countless(@artist.albums)
+    @albums_pagy, @albums = pagy_countless(@artist.albums, items: ALBUMS_COUNT)
+    @appears_on_albums_pagy, @appears_on_albums = pagy_countless(@artist.appears_on_albums, items: ALBUMS_COUNT)
 
     AttachArtistImageFromDiscogsJob.perform_later(@artist.id) if @artist.need_attach_from_discogs?
   end

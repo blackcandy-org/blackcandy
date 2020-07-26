@@ -11,25 +11,28 @@ class MediaTest < ActiveSupport::TestCase
   end
 
   test 'should create all records in database when synced' do
-    assert_equal 2, Artist.count
-    assert_equal 3, Album.count
-    assert_equal 8, Song.count
+    assert_equal 3, Artist.count
+    assert_equal 4, Album.count
+    assert_equal 9, Song.count
   end
 
   test 'should create associations between artists and albums' do
     assert_equal Album.where(name: %w(album1 album2)).ids.sort, Artist.find_by_name('artist1').albums.ids.sort
     assert_equal Album.where(name: 'album3').ids.sort, Artist.find_by_name('artist2').albums.ids.sort
+    assert_equal Album.where(name: 'album4').ids.sort, Artist.find_by_is_various(true).albums.ids.sort
   end
 
   test 'should create associations between albums and songs' do
     assert_equal Song.where(name: %w(flac_sample m4a_sample)).ids.sort, Album.find_by_name('album1').songs.ids.sort
     assert_equal Song.where(name: 'mp3_sample').ids.sort, Album.find_by_name('album2').songs.ids.sort
     assert_equal Song.where(name: %w(ogg_sample wav_sample opus_sample oga_sample wma_sample)).ids.sort, Album.find_by_name('album3').songs.ids.sort
+    assert_equal Song.where(name: %w(various_artists_sample)).ids.sort, Album.find_by_name('album4').songs.ids.sort
   end
 
   test 'should create associations between artists and songs' do
-    assert_equal Song.where(name: %w(flac_sample mp3_sample m4a_sample)).ids.sort, Artist.find_by_name('artist1').songs.ids.sort
+    assert_equal Song.where(name: %w(flac_sample mp3_sample m4a_sample various_artists_sample)).ids.sort, Artist.find_by_name('artist1').songs.ids.sort
     assert_equal Song.where(name: %w(ogg_sample wav_sample opus_sample oga_sample wma_sample)).ids.sort, Artist.find_by_name('artist2').songs.ids.sort
+    assert_equal [], Artist.find_by_is_various(true).songs.ids.sort
   end
 
   test 'should change associations when modify album info on file' do
@@ -42,7 +45,7 @@ class MediaTest < ActiveSupport::TestCase
   end
 
   test 'should change associations when modify artist info on file' do
-    MediaFile.stub(:file_info, media_file_info_stub(file_fixture('artist1_album2.mp3'), artist_name: 'artist2')) do
+    MediaFile.stub(:file_info, media_file_info_stub(file_fixture('artist1_album2.mp3'), artist_name: 'artist2', albumartist_name: 'artist2')) do
       Media.sync
 
       assert_equal Album.where(name: %w(album2 album3)).ids.sort, Artist.find_by_name('artist2').albums.ids.sort

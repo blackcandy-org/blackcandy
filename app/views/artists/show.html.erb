@@ -1,28 +1,11 @@
-<% cache @artist do %>
-  <div class='cards'>
-    <div class='heading heading--expand'>
-      <div class='heading__image'>
-        <%= image_tag image_url_for(@artist), class: 'image' %>
-      </div>
-      <div class='heading__body'>
-        <div class='heading__body__text heading__body__text--main'><%= @artist.title %></div>
-        <div class='heading__body__text'>
-          <span><%= @albums.size %> <%= t('label.albums') %></span>
-          <span>,</span>
-          <span><%= @artist.songs.size %> <%= t('label.songs')%></span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class='line'></div>
-<% end %>
-<div data-controller='infinite-scroll' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
-  <div class='cards' id='js-albums-content'>
-    <%= render partial: 'albums/album', collection: @albums, cached: true %>
-  </div>
-  <div data-target='infinite-scroll.trigger' class='display__justify-align-center'>
-    <% if @pagy.next %>
-      <%= loader_tag %>
-    <% end %>
-  </div>
-</div>
+<%= render partial: 'info', locals: { artist: @artist} %>
+
+<%= render partial: 'albums', locals: {
+  title: t('label.albums'),
+  albums: @albums,
+  all_albums_link: @albums_pagy.next.present? ? artist_albums_path(@artist) : '' } %>
+
+<%= render partial: 'albums', locals: {
+  title: t('label.appears_on'),
+  albums: @appears_on_albums,
+  all_albums_link: @appears_on_albums_pagy.next.present? ? artist_appears_on_albums_path(@artist) : '' }  %>

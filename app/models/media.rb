@@ -9,7 +9,13 @@ class Media
 
   def attach
     artist = Artist.find_or_create_by(name: file_info[:artist_name])
-    album = Album.find_or_create_by(artist: artist, name: file_info[:album_name])
+
+    if various_artists?
+      various_artist = Artist.find_or_create_by(is_various: true)
+      album = Album.find_or_create_by(artist: various_artist, name: file_info[:album_name])
+    else
+      album = Album.find_or_create_by(artist: artist, name: file_info[:album_name])
+    end
 
     # Attach image from file to the album.
     AttachAlbumImageFromFileJob.perform_later(album.id, file_info[:file_path]) unless album.has_image?
@@ -23,6 +29,11 @@ class Media
 
   def song_info
     file_info.slice(:name, :tracknum, :length, :file_path)
+  end
+
+  def various_artists?
+    albumartist = file_info[:albumartist_name]
+    albumartist.present? && (albumartist.downcase == 'various artists' || albumartist != file_info[:artist_name])
   end
 
   class << self
@@ -46,7 +57,7 @@ class Media
 
         # Clean up no content albums and artist.
         Album.left_outer_joins(:songs).where('songs.id is null').destroy_all
-        Artist.left_outer_joins(:songs).where('songs.id is null').destroy_all
+        Artist.left_outer_joins(:songs, :albums).where('songs.album_id is null').where('albums.id is null').destroy_all
       end
   end
 end

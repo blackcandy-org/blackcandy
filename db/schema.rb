@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_25_023906) do
+ActiveRecord::Schema.define(version: 2020_07_21_071945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_04_25_023906) do
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_various", default: false
     t.index ["name"], name: "index_artists_on_name", unique: true
   end
 
