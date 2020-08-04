@@ -14,3 +14,15 @@
   text-align: center;
   margin-bottom: 40px;
 }
+
+@media (--narrow) {
+  .box--large {
+    max-width: 325px;
+  }
+}
+
+@media (--extra-narrow) {
+  .box {
+    max-width: 290px;
+  }
+}

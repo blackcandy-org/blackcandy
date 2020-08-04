@@ -1,9 +1,17 @@
-@import 'settings.css';
-@import 'theme.css';
-@import 'reset.css';
-@import 'display.css';
-@import 'helper.css';
-@import 'animations.css';
+@import 'settings/global.css';
+@import 'settings/theme.css';
+@import 'settings/media_query.css';
+
+@import 'generic/normalize.css';
+@import 'generic/reset.css';
+@import 'generic/box_sizing.css';
+
+@import 'elements/page.css';
+@import 'elements/link.css';
+
+@import 'objects/animations.css';
+@import 'objects/grid.css';
+@import 'objects/layout.css';
 
 @import 'components/form.css';
 @import 'components/logo.css';
@@ -24,10 +32,12 @@
 @import 'components/notice.css';
 @import 'components/box.css';
 @import 'components/flash.css';
+@import 'components/playlist.css';
+@import 'components/player.css';
+@import 'components/songs.css';
 
-@import 'pages/layout.css';
-@import 'pages/playlist.css';
-@import 'pages/player.css';
-@import 'pages/songs.css';
-
-@import 'responsive.css';
+@import 'utilities/display.css';
+@import 'utilities/flex.css';
+@import 'utilities/spacing.css';
+@import 'utilities/sizing.css';
+@import 'utilities/helper.css';

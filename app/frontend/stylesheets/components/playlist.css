@@ -29,3 +29,13 @@
   border-radius: var(--playlist-heading-border-radius);
   padding: 12px 6px 12px 8px;
 }
+
+@media (--narrow) {
+  .playlist__nav {
+    padding: 15px 15px 0;
+  }
+
+  .playlist__content {
+    margin: 15px;
+  }
+}

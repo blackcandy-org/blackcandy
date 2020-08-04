@@ -18,3 +18,10 @@
   width: 200px;
   height: 200px;
 }
+
+@media (--extra-narrow) {
+  .image {
+    width: 135px;
+    height: 135px;
+  }
+}

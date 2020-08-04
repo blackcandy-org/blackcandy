@@ -51,3 +51,19 @@
 .heading__footer {
   margin-left: auto;
 }
+
+@media (--narrow) {
+  .heading--expand {
+    margin: 30px 0 20px;
+  }
+}
+
+@media (--extra-narrow) {
+  .heading__body__text--main {
+    margin-bottom: 10px;
+  }
+
+  .heading__body__text {
+    margin-bottom: 5px;
+  }
+}

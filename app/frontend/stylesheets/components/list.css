@@ -75,3 +75,9 @@
 .list__item__info--action .icon:hover {
   color: var(--list-active-color);
 }
+
+@media (--narrow) {
+  .list__item {
+    padding: 10px 0;
+  }
+}

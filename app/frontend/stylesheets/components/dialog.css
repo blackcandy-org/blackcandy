@@ -36,3 +36,15 @@
 .dialog .overlay {
   background: var(--dialog-bg-color);
 }
+
+@media (--narrow) {
+  .dialog {
+    max-width: 325px;
+  }
+}
+
+@media (--extra-narrow) {
+  .dialog {
+    max-width: 290px;
+  }
+}

@@ -61,3 +61,23 @@
   max-width: 650px;
   margin: auto;
 }
+
+@media (--extra-small) {
+  .display__medium-width {
+    max-width: 500px;
+  }
+}
+
+@media (--narrow) {
+  .display__medium-width,
+  .display__small-width {
+    max-width: 325px;
+  }
+}
+
+@media (--extra-narrow) {
+  .display__medium-width,
+  .display__small-width {
+    max-width: 290px;
+  }
+}

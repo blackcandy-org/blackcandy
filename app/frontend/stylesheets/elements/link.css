@@ -1,0 +1,8 @@
+a {
+  text-decoration: none;
+  color: var(--body-color);
+}
+
+a:hover {
+  color: var(--link-active-color);
+}

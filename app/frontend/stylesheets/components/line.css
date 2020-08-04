@@ -3,3 +3,9 @@
   border-top: 1px solid var(--line-color);
   margin: 40px 0;
 }
+
+@media (--narrow) {
+  .line {
+    margin: 30px 0;
+  }
+}
