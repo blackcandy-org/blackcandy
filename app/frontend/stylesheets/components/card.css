@@ -1,11 +1,10 @@
 .cards {
-  display: flex;
-  flex-wrap: wrap;
   margin: auto;
 }
 
 .cards__item {
   margin: 0 15px 50px;
+  width: 150px;
 }
 
 .cards__item__body {
@@ -29,6 +28,7 @@
   margin-right: 15px;
 }
 
+/*
 @media (--extra-wide) {
   .cards {
     max-width: 1260px;
@@ -121,3 +121,4 @@
     margin-bottom: 30px;
   }
 }
+*/

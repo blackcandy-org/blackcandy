@@ -32,7 +32,7 @@ export default class extends Controller {
   }
 
   expand() {
-    document.querySelector('#js-sidebar').classList.add('show');
+    document.querySelector('#js-sidebar').classList.add('c-sidebar--show');
     document.body.classList.add('noscroll');
   }
 

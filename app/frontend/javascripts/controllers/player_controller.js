@@ -96,7 +96,7 @@ export default class extends Controller {
   }
 
   collapse() {
-    document.querySelector('#js-sidebar').classList.remove('show');
+    document.querySelector('#js-sidebar').classList.remove('c-sidebar--show');
     document.body.classList.remove('noscroll');
   }
 

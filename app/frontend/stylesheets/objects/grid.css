@@ -1,0 +1,66 @@
+/* Base on Raster grid subsystem (rsms.me/raster) */
+
+.o-grid {
+  display: grid !important;
+  --grid-tc: repeat(4, 1fr);
+  grid-template-columns: var(--grid-tc);
+  --grid-cs: 1; /* column start */
+  --grid-ce: -1 /* column end */
+}
+
+/* o-cell -- cell or column */
+.o-grid > .o-grid__item {
+  display: block;
+  appearance: none;
+  overflow: hidden
+}
+
+.o-grid--justify-items-center {
+  justify-items: center;
+}
+
+.o-grid--align-items-center {
+  align-items: center;
+}
+
+.o-grid__item--justify-end {
+  justify-self: end;
+}
+
+@mixin grid;
+
+@media (--extra-wide) {
+  @mixin grid -extra-wide;
+}
+
+@media (--wide) {
+  @mixin grid -wide;
+}
+
+@media (--extra-large) {
+  @mixin grid -extra-large;
+}
+
+@media (--large) {
+  @mixin grid -large;
+}
+
+@media (--medium) {
+  @mixin grid -medium;
+}
+
+@media (--small) {
+  @mixin grid -small;
+}
+
+@media (--extra-small) {
+  @mixin grid -extra-small;
+}
+
+@media (--narrow) {
+  @mixin grid -narrow;
+}
+
+@media (--extra-narrow) {
+  @mixin grid -extra-narrow;
+}

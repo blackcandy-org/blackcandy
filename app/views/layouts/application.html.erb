@@ -1,9 +1,13 @@
 <% content_for :body do %>
-  <div class='layout'>
-    <%= render 'layouts/sidebar' %>
-    <%= render 'layouts/main' do %>
-      <%= yield %>
-    <% end %>
+  <div class='o-flex u-vw-100 u-vh-100'>
+    <aside id='js-sidebar' class='o-flex__item o-flex__item--shrink-0 o-flex o-flex--column-reverse c-sidebar' data-turbolinks-permanent>
+      <%= render 'layouts/sidebar' %>
+    </aside>
+    <div class='o-flex__item o-flex__item--grow-1 o-flex o-flex--column'>
+      <%= render 'layouts/main' do %>
+        <%= yield %>
+      <% end %>
+    </div>
   </div>
   <div id='js-overlay' class='overlay overlay--fixed hidden'></div>
   <div id='js-global-loader' class='overlay overlay--fixed overlay--dark hidden' data-controller='loader'>

@@ -17,12 +17,6 @@
   font-size: 14px;
   text-align: center;
   border-radius: var(--flash-border-radius);
-  animation-duration: 0.25s;
-  animation-name: fadeInDown;
-}
-
-.flash__body--close {
-  animation-name: fadeOutUp;
 }
 
 .flash__body--error {

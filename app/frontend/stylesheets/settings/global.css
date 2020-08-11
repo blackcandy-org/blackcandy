@@ -7,6 +7,14 @@
   --sans-serif-fonts: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "Wenquanyi Micro Hei", sans-serif;
   --monospace-fonts: 'Menlo', 'Monaco', 'Consolas', "Courier New", monospace;
 
+  /* Spacing */
+  --spacing-tiny: 6px;
+  --spacing-narrow: 12px;
+  --spacing-small: 18px;
+  --spacing-medium: 24px;
+  --spacing-large: 36px;
+  --spacing-wide: 48px;
+
   /* Border radius */
   --border-radius-md: 4px;
   --border-radius-sm: 2px;

@@ -4,7 +4,6 @@
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  animation: spin 0.9s linear infinite;
 }
 
 .loader--small {

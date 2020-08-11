@@ -27,10 +27,12 @@ html {
   --body-color: var(--black);
 
   /* Layout */
-  --layout-sidebar-bg-color: var(--grey-lightest);
   --layout-sidebar-input-bg-color: var(--grey-light);
   --layout-header-bg-color: var(--white);
   --layout-header-border-color: var(--grey-lighter);
+
+  /* Sidebar */
+  --sidebar-bg-color: var(--grey-lightest);
 
   /* Progress bar */
   --progress-bar-bg-color: var(--purple);
@@ -134,10 +136,13 @@ html[data-color-scheme='dark'] {
   --body-color: var(--white);
 
   /* Layout */
-  --layout-sidebar-bg-color: var(--black);
   --layout-sidebar-input-bg-color: var(--black-lighter);
   --layout-header-bg-color: var(--black-light);
   --layout-header-border-color: var(--black-dark);
+
+  /* Sidebar */
+  --sidebar-bg-color: var(--black);
+
 
   /* Progress bar */
   --progress-bar-bg-color: var(--purple);

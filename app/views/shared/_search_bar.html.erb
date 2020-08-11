@@ -1,7 +1,4 @@
-<div class='layout__search-bar display__space-between'>
-  <div class='avatar'>
-    <!-- Placeholder for search-bar layout to keep search bar input center -->
-  </div>
+<div class='o-grid__item' span-medium='2-6' span='3-5'>
   <div class='input' data-controller='search' data-search-resource='<%= params[:controller] %>'>
     <div class='input__icon'>
       <%= icon_tag 'search', size: 'large' %>
@@ -11,6 +8,8 @@
       <%= loader_tag size: 'small' %>
     </div>
   </div>
+</div>
+<div class='o-grid__item o-grid__item--justify-end' span-medium='7-7' span='6-7'>
   <div data-controller='dropdown' class='dropdown'>
     <span data-action='click->dropdown#show'><%= avatar_tag Current.user %></span>
     <div data-target='dropdown.list' class='hidden dropdown__list'>
