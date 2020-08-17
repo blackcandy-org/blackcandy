@@ -26,6 +26,10 @@ html {
   --body-bg-color: var(--white);
   --body-color: var(--black);
 
+  /* Text */
+  --text-primary-color: var(--black);
+  --text-secondary-color: var(--black-lighter);
+
   /* Layout */
   --layout-sidebar-input-bg-color: var(--grey-light);
   --layout-header-bg-color: var(--white);
@@ -84,18 +88,18 @@ html {
   /* Line */
   --line-color: var(--grey-lightest);
 
-  /* Heading */
-  --heading-text-color: var(--black-lighter);
-  --heading-text-main-color: var(--black);
-
   /* Box */
   --box-bg-color: var(--white);
   --box-shadow-color: var(--grey-light);
 
   /* Playlist page */
   --playlist-bg-color: var(--grey-lightest);
-  --playlist-heading-bg-color: var(--grey-lighter);
-  --playlist-nav-border-color: var(--grey-light);
+
+  /* Action bar */
+  --action-bar-bg-color: var(--grey-lighter);
+
+  /* Nav */
+  --nav-border-color: var(--grey-light);
 
   /* Player page */
   --player-progress-bg-color: var(--grey-lighter);
@@ -134,6 +138,10 @@ html[data-color-scheme='dark'] {
   /* Body */
   --body-bg-color: var(--black-light);
   --body-color: var(--white);
+
+  /* Text */
+  --text-primary-color: var(--white);
+  --text-secondary-color: var(--grey-light);
 
   /* Layout */
   --layout-sidebar-input-bg-color: var(--black-lighter);
@@ -194,18 +202,18 @@ html[data-color-scheme='dark'] {
   /* Line */
   --line-color: var(--black);
 
-  /* Heading */
-  --heading-text-color: var(--grey-light);
-  --heading-text-main-color: var(--white);
-
   /* Box */
   --box-bg-color: var(--black-light);
   --box-shadow-color: var(--black-dark);
 
   /* Playlist page */
   --playlist-bg-color: var(--black);
-  --playlist-heading-bg-color: var(--black-light);
-  --playlist-nav-border-color: var(--black-dark);
+
+  /* Action bar */
+  --action-bar-bg-color: var(--black-light);
+
+  /* Nav */
+  --nav-border-color: var(--black-dark);
 
   /* Player page */
   --player-progress-bg-color: var(--black-light);

@@ -1,6 +1,6 @@
 a {
   text-decoration: none;
-  color: var(--body-color);
+  color: var(--text-primary-color);
 }
 
 a:hover {

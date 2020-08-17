@@ -12,7 +12,6 @@
 .o-grid > .o-grid__item {
   display: block;
   appearance: none;
-  overflow: hidden
 }
 
 .o-grid--justify-items-center {

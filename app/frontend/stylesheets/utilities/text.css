@@ -1,0 +1,21 @@
+.u-text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.u-text-weight-bold {
+  font-weight: bold !important;
+}
+
+.u-text-color-primary {
+  color: var(--text-primary-color) !important;
+}
+
+.u-text-monospace {
+  font-family: var(--monospace-fonts);
+}
+
+.u-text-align-center {
+  text-align: center !important;
+}

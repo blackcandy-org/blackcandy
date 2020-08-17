@@ -2,22 +2,18 @@
   <% if @songs.empty? %>
     <%= empty_alert_tag %>
   <% else %>
-    <div class='heading'>
-      <div class='heading__body'>
-        <div class='heading__body__text'>
-          <span data-target='playlist-songs.count'><%= @playlist.songs.size %></span>
-          <span> <%= t('label.tracks') %></span>
-        </div>
-      </div>
-      <div class='heading__footer'>
-        <div data-controller='dropdown' class='dropdown'>
-          <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', title: t('label.more') %></span>
-          <div data-target='dropdown.list' class='hidden dropdown__list'>
-            <% unless @playlist.current? %>
-              <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @playlist.song_ids), method: :put, remote: true, data: { target: 'playlist-songs.playAllLink' }, class: 'dropdown__item' %>
-            <% end %>
-            <a class='dropdown__item' data-action='playlist-songs#clear'><%= t('label.clear') %></a>
-          </div>
+    <div class='c-action-bar o-flex o-flex--justify-between o-flex--align-center'>
+      <p>
+        <span data-target='playlist-songs.count'><%= @playlist.songs.size %></span>
+        <span><%= t('label.tracks') %></span>
+      </p>
+      <div data-controller='dropdown' class='dropdown'>
+        <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', title: t('label.more') %></span>
+        <div data-target='dropdown.list' class='hidden dropdown__list'>
+          <% unless @playlist.current? %>
+            <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @playlist.song_ids), method: :put, remote: true, data: { target: 'playlist-songs.playAllLink' }, class: 'dropdown__item' %>
+          <% end %>
+          <a class='dropdown__item' data-action='playlist-songs#clear'><%= t('label.clear') %></a>
         </div>
       </div>
     </div>

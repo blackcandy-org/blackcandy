@@ -79,14 +79,6 @@
   color: var(--player-favorite-color);
 }
 
-.player .heading {
-  padding: 25px 20px;
-}
-
-.player .heading__body__text {
-  color: var(--player-color);
-}
-
 .player--mini {
   display: flex;
   align-items: center;
@@ -126,8 +118,7 @@
     display: block !important;
   }
 
-  .player__control,
-  .player .heading {
+  .player__control {
     padding: 20px;
   }
 }
@@ -138,22 +129,8 @@
     height: 50px;
   }
 
-  .player .heading {
-    display: flex;
-    align-items: center;
-  }
-
-  .player .heading,
   .player__control {
     padding: 12px 15px;
-  }
-
-  .player .heading__body__text {
-    display: none;
-  }
-
-  .player .heading__body__text.heading__body__text--main {
-    display: block;
   }
 
   .player__timer__item {

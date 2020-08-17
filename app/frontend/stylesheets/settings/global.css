@@ -40,11 +40,8 @@
   --dialog-border-radius: var(--border-radius-md);
   --dialog-title-font-size: var(--font-size-lg);
 
-  /* Image */
-  --image-border-radius: var(--border-radius-md);
-
-  /* Heading */
-  --heading-text-main-font-size: var(--font-size-lg);
+  /* Card */
+  --card-image-border-radius: var(--border-radius-md);
 
   /* Avatar */
   --avatar-border-radius: var(--border-radius-round);
@@ -55,6 +52,6 @@
   /* Notice */
   --notice-text-main-font-size: var(--font-size-lg);
 
-  /* Playlist page */
-  --playlist-heading-border-radius: var(--border-radius-md);
+  /* Action bar */
+  --action-bar-border-radius: var(--border-radius-md);
 }

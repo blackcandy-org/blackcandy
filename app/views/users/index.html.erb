@@ -1,12 +1,8 @@
 <% cache @users do %>
   <div class='display__small-width'>
-    <div class='heading heading--expand'>
-      <div class='heading__body'>
-        <div class='heading__body__text heading__body__text--main'><%= t('text.manage_users') %></div>
-      </div>
-      <div class='heading__footer'>
-        <%= link_to t('text.add_user'), new_user_path, class: 'button button--primary' %>
-      </div>
+    <div class='o-flex o-flex--justify-between o-flex--align-center'>
+      <h1><%= t('text.manage_users') %></h1>
+      <%= link_to t('text.add_user'), new_user_path, class: 'button button--primary' %>
     </div>
     <div class='line'></div>
     <div class='position-relative'>

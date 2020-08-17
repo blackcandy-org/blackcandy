@@ -1,18 +1,8 @@
 <% cache artist do %>
-  <div class='cards'>
-    <div class='heading heading--expand'>
-      <div class='heading__image'>
-        <%= image_tag image_url_for(artist), class: 'image' %>
-      </div>
-      <div class='heading__body'>
-        <div class='heading__body__text heading__body__text--main'><%= artist.title %></div>
-        <div class='heading__body__text'>
-          <span><%= artist.all_albums.size %> <%= t('label.albums') %></span>
-          <span>,</span>
-          <span><%= artist.songs.size %> <%= t('label.songs')%></span>
-        </div>
-      </div>
+  <div class='o-flex o-flex--column o-flex--justify-center o-flex--align-center'>
+    <div class='c-card'>
+      <%= image_tag image_url_for(artist), class: 'c-card__image u-border-circle' %>
     </div>
+    <h1 class='u-mt-narrow'><%= artist.title %></h1>
   </div>
-  <div class='line'></div>
 <% end %>

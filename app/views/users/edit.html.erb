@@ -1,10 +1,6 @@
 <% cache @user do %>
   <div class='display__small-width'>
-    <div class='heading heading--expand'>
-      <div class='heading__body'>
-        <div class='heading__body__text heading__body__text--main'><%= t('text.update_profile') %></div>
-      </div>
-    </div>
+    <h1><%= t('text.update_profile') %></h1>
     <div class='line'></div>
     <div id='js-user-form'>
       <%= render 'form' %>

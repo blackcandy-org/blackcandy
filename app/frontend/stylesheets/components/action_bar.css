@@ -1,0 +1,5 @@
+.c-action-bar {
+  padding: var(--spacing-narrow);
+  border-radius: var(--action-bar-border-radius);
+  background: var(--action-bar-bg-color);
+}

@@ -1,11 +1,15 @@
-<%= render partial: 'info', locals: { artist: @artist} %>
+<div class='o-container o-container--wide'>
+  <%= render partial: 'info', locals: { artist: @artist} %>
 
-<%= render partial: 'albums', locals: {
-  title: t('label.albums'),
-  albums: @albums,
-  all_albums_link: @albums_pagy.next.present? ? artist_albums_path(@artist) : '' } %>
+  <div class='line'></div>
 
-<%= render partial: 'albums', locals: {
-  title: t('label.appears_on'),
-  albums: @appears_on_albums,
-  all_albums_link: @appears_on_albums_pagy.next.present? ? artist_appears_on_albums_path(@artist) : '' }  %>
+  <%= render partial: 'albums', locals: {
+    title: t('label.albums'),
+    albums: @albums,
+    all_albums_link: @albums_pagy.next.present? ? artist_albums_path(@artist) : '' } %>
+
+  <%= render partial: 'albums', locals: {
+    title: t('label.appears_on'),
+    albums: @appears_on_albums,
+    all_albums_link: @appears_on_albums_pagy.next.present? ? artist_appears_on_albums_path(@artist) : '' }  %>
+</div>
