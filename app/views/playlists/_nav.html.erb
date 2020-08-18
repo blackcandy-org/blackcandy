@@ -1,11 +1,11 @@
 <ul class='tab'>
-  <li class='tab__item <%= 'tab__item--active' if is_active?(path: current_playlist_songs_path) %>'>
+  <li class='tab__item <%= 'is-active' if is_active?(path: current_playlist_songs_path) %>'>
     <%= link_to t('label.current'), current_playlist_songs_path, remote: true, data: { show_loader: true } %>
   </li>
-  <li class='tab__item <%= 'tab__item--active' if is_active?(controller: ['playlists', 'playlists/songs']) %>'>
+  <li class='tab__item <%= 'is-active' if is_active?(controller: ['playlists', 'playlists/songs']) %>'>
     <%= link_to t('label.playlists'), playlists_path, remote: true, data: { show_loader: true } %>
   </li>
-  <li class='tab__item <%= 'tab__item--active' if is_active?(path: favorite_playlist_songs_path) %>'>
+  <li class='tab__item <%= 'is-active' if is_active?(path: favorite_playlist_songs_path) %>'>
     <%= link_to t('label.favorites'), favorite_playlist_songs_path, remote: true, data: { show_loader: true } %>
   </li>
 </ul>

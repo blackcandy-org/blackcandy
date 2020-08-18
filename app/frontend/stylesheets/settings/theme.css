@@ -60,6 +60,10 @@ html {
   --list-active-color: var(--purple);
   --list-border-dark-color: var(--grey-lighter);
 
+  /* Table */
+  --table-border-color: var(--grey-lighter);
+  --table-active-color: var(--purple);
+
   /* Input */
   --input-bg-color: var(--grey-lighter);
   --input-color: var(--black);
@@ -173,6 +177,10 @@ html[data-color-scheme='dark'] {
   --list-border-color: var(--black-light);
   --list-active-color: var(--purple-light);
   --list-border-dark-color: var(--black);
+
+  /* Table */
+  --table-border-color: var(--black);
+  --table-active-color: var(--purple-light);
 
   /* Input */
   --input-bg-color: var(--black-lighter);

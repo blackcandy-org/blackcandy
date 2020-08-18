@@ -49,7 +49,7 @@
 }
 
 .list__item a:hover,
-.list__item--active .list__item__info--main,
+.is-active .list__item__info--main,
 .list__item:hover .list__item__info--main {
   color: var(--list-active-color);
 }

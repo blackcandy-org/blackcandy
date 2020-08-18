@@ -1,0 +1,19 @@
+.c-table {
+  width: 100%;
+  table-layout: fixed;
+  text-align: left;
+}
+
+.c-table tr {
+  border-bottom: 1px solid var(--table-border-color);
+}
+
+.c-table th,
+.c-table td {
+  padding: var(--spacing-narrow);
+}
+
+.c-table tbody tr:hover,
+.c-table tbody tr.is-active {
+  color: var(--table-active-color);
+}

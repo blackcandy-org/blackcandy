@@ -1,19 +1,37 @@
-.u-vw-100 {
-  width: 100vw !important;
+@mixin sizing;
+
+@media (--extra-wide) {
+  @mixin sizing \@extra-wide;
 }
 
-.u-vh-100 {
-  height: 100vh !important;
+@media (--wide) {
+  @mixin sizing \@wide;
 }
 
-.u-w-100 {
-  width: 100% !important;
+@media (--extra-large) {
+  @mixin sizing \@extra-large;
 }
 
-.u-h-100 {
-  height: 100% !important;
+@media (--large) {
+  @mixin sizing \@large;
 }
 
-.u-h-0 {
-  height: 0 !important;
+@media (--medium) {
+  @mixin sizing \@medium;
+}
+
+@media (--small) {
+  @mixin sizing \@small;
+}
+
+@media (--extra-small) {
+  @mixin sizing \@extra-small;
+}
+
+@media (--narrow) {
+  @mixin sizing \@narrow;
+}
+
+@media (--extra-narrow) {
+  @mixin sizing \@extra-narrow;
 }

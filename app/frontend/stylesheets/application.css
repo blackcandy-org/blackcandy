@@ -5,6 +5,7 @@
 @import 'tools/grid.css';
 @import 'tools/spacing.css';
 @import 'tools/display.css';
+@import 'tools/sizing.css';
 
 @import 'generic/normalize.css';
 @import 'generic/reset.css';
@@ -38,10 +39,10 @@
 @import 'components/flash.css';
 @import 'components/playlist.css';
 @import 'components/player.css';
-@import 'components/songs.css';
 @import 'components/sidebar.css';
 @import 'components/nav.css';
 @import 'components/action_bar.css';
+@import 'components/table.css';
 
 @import 'utilities/display.css';
 @import 'utilities/spacing.css';

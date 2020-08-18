@@ -70,7 +70,7 @@ export default class extends Controller {
 
   _showPlayingItem = () => {
     this.itemTargets.forEach((element) => {
-      element.classList.toggle('list__item--active', element.dataset.songId == this.player.currentSong.id);
+      element.classList.toggle('is-active', element.dataset.songId == this.player.currentSong.id);
     });
   }
 
