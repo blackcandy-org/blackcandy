@@ -1,0 +1,7 @@
+.u-bg-primary {
+  background: var(--primary-bg-color) !important;
+}
+
+.u-bg-gradient {
+  background: var(--gradient-bg-color) !important;
+}

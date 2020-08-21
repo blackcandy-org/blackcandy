@@ -34,8 +34,6 @@
 @import 'components/list.css';
 @import 'components/line.css';
 @import 'components/avatar.css';
-@import 'components/notice.css';
-@import 'components/box.css';
 @import 'components/flash.css';
 @import 'components/playlist.css';
 @import 'components/player.css';
@@ -52,3 +50,4 @@
 @import 'utilities/position.css';
 @import 'utilities/text.css';
 @import 'utilities/border.css';
+@import 'utilities/background.css';

@@ -22,6 +22,8 @@ html {
   --link-active-color: var(--purple);
   --gradient-bg-color: linear-gradient(rgb(255, 255, 255, 0.85), rgba(255, 255, 255, 0.65)), linear-gradient(var(--purple), var(--purple));
 
+  --primary-bg-color: var(--white);
+
   /* Body */
   --body-bg-color: var(--white);
   --body-color: var(--black);
@@ -93,7 +95,6 @@ html {
   --line-color: var(--grey-lightest);
 
   /* Box */
-  --box-bg-color: var(--white);
   --box-shadow-color: var(--grey-light);
 
   /* Playlist page */
@@ -138,6 +139,8 @@ html[data-color-scheme='dark'] {
 
   --link-active-color: var(--purple-light);
   --gradient-bg-color: linear-gradient(rgb(1, 0, 0), rgba(0, 0, 0, 0.75)), linear-gradient(var(--purple-light), var(--purple-light));
+
+  --primary-bg-color: var(--black-light);
 
   /* Body */
   --body-bg-color: var(--black-light);
@@ -211,7 +214,6 @@ html[data-color-scheme='dark'] {
   --line-color: var(--black);
 
   /* Box */
-  --box-bg-color: var(--black-light);
   --box-shadow-color: var(--black-dark);
 
   /* Playlist page */

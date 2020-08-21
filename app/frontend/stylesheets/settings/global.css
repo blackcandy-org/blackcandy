@@ -1,8 +1,8 @@
 :root {
   /* Fonts */
-  --font-size-sm: 12px;
-  --font-size-md: 14px;
-  --font-size-lg: 16px;
+  --font-size-small: 12px;
+  --font-size-medium: 14px;
+  --font-size-large: 16px;
 
   --sans-serif-fonts: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "Wenquanyi Micro Hei", sans-serif;
   --monospace-fonts: 'Menlo', 'Monaco', 'Consolas', "Courier New", monospace;
@@ -16,42 +16,32 @@
   --spacing-wide: 48px;
 
   /* Border radius */
-  --border-radius-md: 4px;
-  --border-radius-sm: 2px;
-  --border-radius-lg: 8px;
-  --border-radius-round: 50%;
+  --border-radius-medium: 4px;
+  --border-radius-small: 2px;
+  --border-radius-large: 8px;
 
   /* Button */
-  --btn-border-radius: var(--border-radius-md);
+  --btn-border-radius: var(--border-radius-medium);
 
   /* Form */
-  --form-input-border-radius: var(--border-radius-md);
+  --form-input-border-radius: var(--border-radius-medium);
 
   /* Flash message */
-  --flash-border-radius: var(--border-radius-md);
+  --flash-border-radius: var(--border-radius-medium);
 
   /* Input */
-  --input-border-radius: var(--border-radius-md);
+  --input-border-radius: var(--border-radius-medium);
 
   /* Dropdown */
-  --dropdown-border-radius: var(--border-radius-md);
+  --dropdown-border-radius: var(--border-radius-medium);
 
   /* Dialog */
-  --dialog-border-radius: var(--border-radius-md);
-  --dialog-title-font-size: var(--font-size-lg);
+  --dialog-border-radius: var(--border-radius-medium);
+  --dialog-title-font-size: var(--font-size-large);
 
   /* Card */
-  --card-image-border-radius: var(--border-radius-md);
-
-  /* Avatar */
-  --avatar-border-radius: var(--border-radius-round);
-
-  /* Box */
-  --box-border-radius: var(--border-radius-lg);
-
-  /* Notice */
-  --notice-text-main-font-size: var(--font-size-lg);
+  --card-image-border-radius: var(--border-radius-medium);
 
   /* Action bar */
-  --action-bar-border-radius: var(--border-radius-md);
+  --action-bar-border-radius: var(--border-radius-medium);
 }

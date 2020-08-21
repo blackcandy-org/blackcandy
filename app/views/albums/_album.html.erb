@@ -1,11 +1,9 @@
-<div class='o-grid__item'>
-  <div class='c-card u-mb-large'>
-    <%= link_to album_path(album), class: 'c-card__image' do %>
-      <%= image_tag image_url_for(album) %>
-    <% end %>
-    <div class='c-card__body'>
-      <p class='c-card__body__text u-text-truncate u-text-weight-bold'><%= link_to album.title, album_path(album) %></p>
-      <p class='c-card__body__text u-text-truncate'><%= album.artist.title %></p>
-    </div>
+<div class='o-grid__item c-card u-mb-large'>
+  <%= link_to album_path(album), class: 'c-card__image' do %>
+    <%= image_tag image_url_for(album) %>
+  <% end %>
+  <div class='c-card__body'>
+    <p class='c-card__body__text u-text-truncate u-text-weight-bold'><%= link_to album.title, album_path(album) %></p>
+    <p class='c-card__body__text u-text-truncate'><%= album.artist.title %></p>
   </div>
 </div>

@@ -26,4 +26,12 @@
   .u-w-25$(responsivePostfix) {
     width: 25% !important;
   }
+
+  .u-w-50$(responsivePostfix) {
+    width: 50% !important;
+  }
+
+  .u-w-75$(responsivePostfix) {
+    width: 75% !important;
+  }
 }

@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.js { head :not_found }
       format.json { head :not_found }
-      format.html { render template: 'errors/not_found', layout: 'error', status: :not_found }
+      format.html { render template: 'errors/not_found', layout: 'plain', status: :not_found }
     end
   end
 
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.js { head :forbidden }
       format.json { head :forbidden }
-      format.html { render template: 'errors/forbidden', layout: 'error', status: :forbidden }
+      format.html { render template: 'errors/forbidden', layout: 'plain', status: :forbidden }
     end
   end
 

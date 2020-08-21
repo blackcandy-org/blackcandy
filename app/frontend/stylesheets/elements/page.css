@@ -2,5 +2,5 @@ body {
   font-family: var(--sans-serif-fonts);
   background-color: var(--body-bg-color);
   color: var(--text-secondary-color);
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-medium);
 }

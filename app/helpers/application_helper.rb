@@ -5,7 +5,7 @@ module ApplicationHelper
 
   def avatar_tag(user)
     hash = Digest::MD5.hexdigest(user.email)
-    image_tag "https://www.gravatar.com/avatar/#{hash}", class: 'avatar'
+    image_tag "https://www.gravatar.com/avatar/#{hash}", class: 'c-avatar'
   end
 
   def icon_tag(name, options = {})
