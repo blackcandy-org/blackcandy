@@ -19,3 +19,10 @@
 .u-text-align-center {
   text-align: center !important;
 }
+
+.u-text-line-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2 !important;
+  overflow: hidden;
+}

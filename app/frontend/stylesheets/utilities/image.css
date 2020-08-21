@@ -1,0 +1,14 @@
+.u-image-medium {
+  width: 150px;
+  height: 150px;
+}
+
+.u-image-small {
+  width: 100px;
+  height: 100px;
+}
+
+.u-image-fluid {
+  max-width: 100%;
+  height: auto;
+}

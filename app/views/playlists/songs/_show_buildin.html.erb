@@ -1,4 +1,4 @@
-<div data-controller='playlist-songs' data-playlist-songs-playlist-id='<%= @playlist.id %>' data-playlist-songs-is-current='<%= @playlist.current? %>' class='display__full-height'>
+<div data-controller='playlist-songs' data-playlist-songs-playlist-id='<%= @playlist.id %>' data-playlist-songs-is-current='<%= @playlist.current? %>'>
   <% if @songs.empty? %>
     <%= empty_alert_tag %>
   <% else %>

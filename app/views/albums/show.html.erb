@@ -1,7 +1,7 @@
 <% cache @album do %>
-  <div class='display__medium-width' data-controller='playlist-songs'>
+  <div class='o-container o-container--narrow' data-controller='playlist-songs'>
     <div class='c-card c-card--horizontal u-my-large'>
-      <%= image_tag image_url_for(@album), class: 'c-card__image' %>
+      <%= image_tag image_url_for(@album), class: 'c-card__image u-image-medium' %>
       <div class='c-card__body'>
         <h1 class='c-card__body__title'><%= @album.title %></h1>
         <p class='c-card__body__text'><%= @album.artist.title %></p>

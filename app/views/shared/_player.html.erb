@@ -2,11 +2,11 @@
   <div data-target='player.header' class='player__header position-relative'>
     <div data-target='player.headerContent' class='player__header__content'>
       <div class='c-card c-card--horizontal u-p-medium'>
-        <img data-target='player.image' class='c-card__image c-card__image--small' />
-        <div class='c-card__body'>
-          <h1 class='c-card__body__title u-text-truncate' data-target='player.songName'></h1>
-          <p class='c-card__body__text u-text-truncate' data-target='player.albumName'></p>
-          <p class='c-card__body__text u-text-truncate' data-target='player.artistName'></p>
+        <img data-target='player.image' class='c-card__image u-image-small' />
+        <div class='c-card__body u-text-truncate'>
+          <h1 class='c-card__body__title' data-target='player.songName'></h1>
+          <p class='c-card__body__text' data-target='player.albumName'></p>
+          <p class='c-card__body__text' data-target='player.artistName'></p>
           <div class='c-card__body__text monospace-font u-mt-narrow'>
             <span class='u-text-color-primary' data-target='player.songTimer'></span>
             <span class='u-mx-narrow'>/</span>
@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class='player__progress pointer-cursor'>
-        <progress data-target='player.progress' data-action='click->player#seek' class='display__full-width display__flex' max='100'></progress>
+        <progress data-target='player.progress' data-action='click->player#seek' class='u-w-100' max='100'></progress>
       </div>
     </div>
     <div data-target='player.loader' class='overlay hidden'>
@@ -38,7 +38,7 @@
       <%= icon_tag 'heart', title: t('text.toggle_favorite') %>
     </div>
   </div>
-  <div class='player__footer display__text-center u-display-none u-display-block@extra-small' data-action='click->player#collapse'>
+  <div class='player__footer u-text-align-center u-display-none u-display-block@extra-small' data-action='click->player#collapse'>
     <%= icon_tag 'expand-more', size: 'large', title: t('text.collapse_player') %>
   </div>
 </div>

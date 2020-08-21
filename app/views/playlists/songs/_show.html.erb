@@ -1,4 +1,4 @@
-<div data-controller='playlist-songs' data-playlist-songs-playlist-id='<%= @playlist.id %>' class='display__full-height display__flex-vertical'>
+<div data-controller='playlist-songs' data-playlist-songs-playlist-id='<%= @playlist.id %>'>
   <div class='c-action-bar o-flex o-flex--justify-between o-flex--align-center' data-controller='playlist' data-playlist-id='<%= @playlist.id %>'>
     <div class='o-flex o-flex--align-center'>
       <%= link_to playlists_path, remote: true, data: { show_loader: true } do %>
