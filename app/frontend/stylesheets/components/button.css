@@ -2,7 +2,7 @@
   display: inline-block;
   border-radius: var(--btn-border-radius);
   border: none;
-  padding: 6px 13px;
+  padding: var(--spacing-tiny) var(--spacing-narrow);
   color: var(--btn-color);
   cursor: pointer;
 }
@@ -20,7 +20,7 @@ a.button:hover {
 }
 
 .button--small {
-  padding: 5px 6px;
+  padding: var(--spacing-tiny);
 }
 
 .button--full-width {

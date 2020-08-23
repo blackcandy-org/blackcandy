@@ -138,7 +138,7 @@ export default class extends Controller {
   }
 
   _updatePlayAllLink = (event) => {
-    if (this.playAllLinkTarget) {
+    if (this.hasPlayAllLinkTarget) {
       this.playAllLinkTarget.href = event.detail;
     }
   }

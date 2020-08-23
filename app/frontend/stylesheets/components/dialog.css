@@ -1,50 +1,24 @@
-.dialog {
-  display: flex;
-  flex-direction: column;
+.c-dialog {
   position: fixed;
   top: 100px;
   left: 0;
   right: 0;
-  margin: auto;
-  max-width: 400px;
   z-index: 1000;
   background: var(--dialog-bg-color);
   border-radius: var(--dialog-border-radius);
 }
 
-.dialog__header {
-  padding: 12px 20px;
+.c-dialog__header {
+  padding: var(--spacing-narrow) var(--spacing-small);
   background: var(--dialog-header-bg-color);
   color: var(--dialog-header-color);
   border-top-left-radius: var(--dialog-border-radius);
   border-top-right-radius: var(--dialog-border-radius);
 }
 
-.dialog__title {
-  margin: 0;
-  margin-right: 15px;
-  font-size: var(--dialog-title-font-size);
-}
-
-.dialog__content {
-  padding: 12px 20px;
+.c-dialog__content {
+  padding: var(--spacing-narrow) var(--spacing-small);
   overflow-y: auto;
   min-height: 50px;
   max-height: calc(100vh - 300px);
-}
-
-.dialog .overlay {
-  background: var(--dialog-bg-color);
-}
-
-@media (--narrow) {
-  .dialog {
-    max-width: 325px;
-  }
-}
-
-@media (--extra-narrow) {
-  .dialog {
-    max-width: 290px;
-  }
 }

@@ -10,7 +10,7 @@
     </div>
   </div>
   <div id='js-overlay' class='overlay overlay--fixed hidden'></div>
-  <div id='js-global-loader' class='overlay overlay--fixed overlay--dark hidden' data-controller='loader'>
+  <div id='js-global-loader' class='overlay overlay--fixed overlay--dark hidden' data-controller='loader' data-target='loader.indicator'>
     <%= loader_tag size: 'large' %>
   </div>
   <%= render 'shared/dialog' %>
