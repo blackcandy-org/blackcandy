@@ -7,13 +7,13 @@
         <span data-target='playlist-songs.count'><%= @playlist.songs.size %></span>
         <span><%= t('label.tracks') %></span>
       </p>
-      <div data-controller='dropdown' class='dropdown'>
+      <div data-controller='dropdown' class='c-dropdown'>
         <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', title: t('label.more') %></span>
-        <div data-target='dropdown.list' class='hidden dropdown__list'>
+        <div data-target='dropdown.list' class='hidden c-dropdown__list'>
           <% unless @playlist.current? %>
-            <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @playlist.song_ids), method: :put, remote: true, data: { target: 'playlist-songs.playAllLink' }, class: 'dropdown__item' %>
+            <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @playlist.song_ids), method: :put, remote: true, data: { target: 'playlist-songs.playAllLink' }, class: 'c-dropdown__item' %>
           <% end %>
-          <a class='dropdown__item' data-action='playlist-songs#clear'><%= t('label.clear') %></a>
+          <a class='c-dropdown__item' data-action='playlist-songs#clear'><%= t('label.clear') %></a>
         </div>
       </div>
     </div>

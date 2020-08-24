@@ -1,4 +1,4 @@
-.loader {
+.c-loader {
   border: 5px solid color-mod(var(--loader-bg-color) a(30%));
   border-top: 5px solid var(--loader-bg-color);
   border-radius: 50%;
@@ -6,18 +6,14 @@
   height: 40px;
 }
 
-.loader--small {
+.c-loader--small {
   height: 22px;
   width: 22px;
   border-width: 3px;
 }
 
-.loader--large {
+.c-loader--large {
   height: 55px;
   width: 55px;
   border-width: 7px;
-}
-
-.loader--expand {
-  margin: 15px 0;
 }

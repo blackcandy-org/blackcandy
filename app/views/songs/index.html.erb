@@ -16,7 +16,7 @@
         <%= render partial: 'song', collection: @songs, cached: true %>
       </tbody>
     </table>
-    <div data-target='infinite-scroll.trigger' class='display__justify-align-center'>
+    <div data-target='infinite-scroll.trigger' class='o-flex o-flex--justify-center u-my-small'>
       <% if @pagy.next %>
         <%= loader_tag %>
       <% end %>

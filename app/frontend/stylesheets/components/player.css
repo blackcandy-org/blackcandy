@@ -95,7 +95,7 @@
   margin: 0 20px;
 }
 
-.player--mini .player__info .icon {
+.player--mini .player__info .c-icon {
   margin-right: 10px;
 }
 
@@ -106,11 +106,6 @@
 .player__footer {
   padding: 7px 0;
   background: var(--player-footer-bg-color);
-}
-
-.player .overlay {
-  background: var(--player-bg-color);
-  opacity: 0.9;
 }
 
 @media (--extra-small) {

@@ -1,42 +1,38 @@
 <h2 class='u-mb-medium'><%= t('text.personal') %></h2>
-<%= form_with model: [Current.user, Setting.new], method: :put, class: 'form' do |form| %>
-  <div class='form__field'>
+<%= form_with model: [Current.user, Setting.new], method: :put, class: 'c-form' do |form| %>
+  <div class='c-form__field'>
     <%= form.label :theme %>
     <% User::AVAILABLE_THEME_OPTIONS.each do |option| %>
-      <div class='form__radio'>
+      <div class='c-form__radio'>
         <%= form.radio_button(:theme, option, checked: Current.user.theme == option) %>
         <%= form.label("theme_#{option}", option) %>
       </div>
     <% end %>
   </div>
-  <div class='form__field form__field--submit'>
-    <%= form.submit t('label.save'), class: 'button button--primary button--full-width' %>
+  <div class='c-form__field c-form__field--submit'>
+    <%= form.submit t('label.save'), class: 'c-button c-button--primary c-button--full-width' %>
   </div>
 <% end %>
 
 <% if is_admin? %>
-  <div class='line'></div>
+  <hr />
 
   <h2 class='u-mb-medium'><%= t('text.media_path') %></h2>
-  <%= form_with model: Setting, url: setting_path, method: :put, class: 'form form--inline', data: { show_loader: true } do |form| %>
-    <div class='input'>
-      <%= form.text_field :media_path, value: Setting.media_path %>
-    </div>
-    <%= form.submit t('label.sync'), class: 'button button--primary' %>
+  <%= form_with model: Setting, url: setting_path, method: :put, class: 'c-form o-flex o-flex--justify-between', data: { show_loader: true } do |form| %>
+    <%= form.text_field :media_path, value: Setting.media_path, class: 'c-input u-mr-narrow' %>
+    <%= form.submit t('label.sync'), class: 'c-button c-button--primary' %>
   <% end %>
 
-  <div class='line'></div>
+  <hr />
 
   <h2 class='u-mb-medium'><%= t('label.integration') %></h2>
-  <%= form_with model: Setting, url: setting_path, method: :put, class: 'form' do |form| %>
-    <div class='form__field'>
+  <%= form_with model: Setting, url: setting_path, method: :put, class: 'c-form' do |form| %>
+    <div class='c-form__field'>
       <%= form.label :discogs_token %>
-      <div class='input'>
-        <%= form.text_field :discogs_token, value: Setting.discogs_token %>
-      </div>
+      <%= form.text_field :discogs_token, value: Setting.discogs_token, class: 'c-input' %>
     </div>
-    <div class='form__field form__field--submit'>
-      <%= form.submit t('label.save'), class: 'button button--primary button--full-width' %>
+    <div class='c-form__field c-form__field--submit'>
+      <%= form.submit t('label.save'), class: 'c-button c-button--primary c-button--full-width' %>
     </div>
   <% end %>
 <% end %>

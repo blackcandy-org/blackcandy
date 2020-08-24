@@ -72,7 +72,7 @@
   margin-right: 0;
 }
 
-.list__item__info--action .icon:hover {
+.list__item__info--action .c-icon:hover {
   color: var(--list-active-color);
 }
 

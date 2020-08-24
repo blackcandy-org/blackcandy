@@ -5,7 +5,7 @@
     <div class='o-grid o-grid--gap-medium o-container o-container--large' id='js-artists-content' cols@narrow='2' cols@extra-small='3' cols@small='2' cols@medium='3' cols@large='4' cols@extra-large='5' cols@wide='6' cols@extra-wide='7'>
       <%= render partial: 'artist', collection: @artists, cached: true %>
     </div>
-    <div data-target='infinite-scroll.trigger' class='display__justify-align-center'>
+    <div data-target='infinite-scroll.trigger' class='o-flex o-flex--justify-center u-my-small'>
       <% if @pagy.next %>
         <%= loader_tag %>
       <% end %>

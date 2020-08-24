@@ -1,4 +1,4 @@
-.button {
+.c-button {
   display: inline-block;
   border-radius: var(--btn-border-radius);
   border: none;
@@ -7,22 +7,22 @@
   cursor: pointer;
 }
 
-.button:hover {
+.c-button:hover {
   filter: brightness(0.9);
 }
 
-a.button:hover {
+a.c-button:hover {
   color: var(--btn-color);
 }
 
-.button--primary {
+.c-button--primary {
   background: var(--btn-primary-bg-color);
 }
 
-.button--small {
+.c-button--small {
   padding: var(--spacing-tiny);
 }
 
-.button--full-width {
+.c-button--full-width {
   width: 100%;
 }

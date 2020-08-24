@@ -3,7 +3,7 @@
     <ul id='js-dialog-playlists' data-action='click->playlist-songs#add' class='list'>
       <%= render partial: 'playlist', collection: @playlists, cached: true %>
     </ul>
-    <div data-target='infinite-scroll.trigger' class='display__justify-align-center'>
+    <div data-target='infinite-scroll.trigger' class='o-flex o-flex--justify-center u-my-small'>
       <% if @pagy.next %>
         <%= loader_tag %>
       <% end %>

@@ -1,0 +1,6 @@
+hr {
+  color: var(--hr-color);
+  border-color: var(--hr-color);
+  border-bottom: 0;
+  margin: var(--spacing-large) 0;
+}

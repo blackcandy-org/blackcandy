@@ -2,9 +2,9 @@
   <div class='o-container o-container--extra-narrow'>
     <div class='o-flex o-flex--justify-between o-flex--align-center'>
       <h1><%= t('text.manage_users') %></h1>
-      <%= link_to t('text.add_user'), new_user_path, class: 'button button--primary' %>
+      <%= link_to t('text.add_user'), new_user_path, class: 'c-button c-button--primary' %>
     </div>
-    <div class='line'></div>
+    <hr />
     <div class='position-relative'>
       <% if @users.present? %>
         <ul class='list list--dark-border'>

@@ -89,10 +89,10 @@ html {
   --dialog-header-color: var(--black);
 
   /* Overlay */
-  --overlay-bg-color: var(--black);
+  --overlay-bg-color: var(--grey-lightest);
 
-  /* Line */
-  --line-color: var(--grey-lightest);
+  /* Hr */
+  --hr-color: var(--grey-lightest);
 
   /* Box */
   --box-shadow-color: var(--grey-light);
@@ -208,10 +208,10 @@ html[data-color-scheme='dark'] {
   --dialog-header-color: var(--black);
 
   /* Overlay */
-  --overlay-bg-color: var(--black-light);
+  --overlay-bg-color: var(--black);
 
-  /* Line */
-  --line-color: var(--black);
+  /* Hr */
+  --hr-color: var(--black);
 
   /* Box */
   --box-shadow-color: var(--black-dark);

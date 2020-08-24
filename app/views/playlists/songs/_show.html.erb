@@ -7,9 +7,7 @@
       <div class='u-ml-narrow'>
         <div class='u-mb-tiny'>
           <span data-target='playlist.name'><%= @playlist.name %></span>
-          <div class='input'>
-            <input data-target='playlist.nameInput' data-action='blur->playlist#updateName keydown->playlist#updateNameOnEnter' class='hidden' />
-          </div>
+          <input data-target='playlist.nameInput' data-action='blur->playlist#updateName keydown->playlist#updateNameOnEnter' class='hidden c-input' />
         </div>
         <p>
           <span data-target='playlist-songs.count'><%= @playlist.songs.size %></span>
@@ -17,15 +15,15 @@
         </p>
       </div>
     </div>
-    <div data-controller='dropdown' class='dropdown'>
+    <div data-controller='dropdown' class='c-dropdown'>
       <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', title: t('label.more') %></span>
-      <div data-target='dropdown.list' class='hidden dropdown__list'>
+      <div data-target='dropdown.list' class='hidden c-dropdown__list'>
         <% unless @songs.blank? %>
-          <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @playlist.song_ids), method: :put, remote: true, data: { target: 'playlist-songs.playAllLink' }, class: 'dropdown__item' %>
-          <a class='dropdown__item' data-action='playlist-songs#clear'><%= t('label.clear') %></a>
+          <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @playlist.song_ids), method: :put, remote: true, data: { target: 'playlist-songs.playAllLink' }, class: 'c-dropdown__item' %>
+          <a class='c-dropdown__item' data-action='playlist-songs#clear'><%= t('label.clear') %></a>
         <% end %>
-        <%= link_to t('label.delete'), playlist_path(@playlist), method: :delete, remote: true, class: 'dropdown__item', data: { show_loader: true } %>
-        <a data-action='playlist#rename' class='dropdown__item'><%= t('label.rename') %></a>
+        <%= link_to t('label.delete'), playlist_path(@playlist), method: :delete, remote: true, class: 'c-dropdown__item', data: { show_loader: true } %>
+        <a data-action='playlist#rename' class='c-dropdown__item'><%= t('label.rename') %></a>
       </div>
     </div>
   </div>

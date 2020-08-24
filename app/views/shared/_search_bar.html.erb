@@ -1,21 +1,19 @@
-<div class='o-grid__item' span@medium='2-6' span='3-5'>
-  <div class='input' data-controller='search' data-search-resource='<%= params[:controller] %>'>
-    <div class='input__icon'>
-      <%= icon_tag 'search', size: 'large' %>
-    </div>
-    <input id='js-search-input' data-target='search.input' data-action='keydown->search#query' value='<%= params[:query] %>' />
-    <div class='input__icon input__icon--right hidden' data-target='search.loader'>
-      <%= loader_tag size: 'small' %>
-    </div>
+<div class='c-input-group o-grid__item' data-controller='search' data-search-resource='<%= params[:controller] %>' span@medium='2-6' span='3-5'>
+  <div class='c-input-group__icon'>
+    <%= icon_tag 'search', size: 'large' %>
+  </div>
+  <input id='js-search-input' class='c-input' data-target='search.input' data-action='keydown->search#query' value='<%= params[:query] %>' />
+  <div class='c-input-group__icon hidden' data-target='search.loader'>
+    <%= loader_tag size: 'small' %>
   </div>
 </div>
 <div class='o-grid__item o-grid__item--justify-end' span@medium='7-7' span='6-7'>
-  <div data-controller='dropdown' class='dropdown'>
+  <div data-controller='dropdown' class='c-dropdown'>
     <span data-action='click->dropdown#show'><%= avatar_tag Current.user %></span>
-    <div data-target='dropdown.list' class='hidden dropdown__list'>
-      <%= link_to t('label.manage_users'), users_path, class: 'dropdown__item' if is_admin? %>
-      <%= link_to t('label.update_profile'), edit_user_path(Current.user), class: 'dropdown__item' %>
-      <%= link_to t('label.logout'), session_path, method: :delete, class: 'dropdown__item' %>
+    <div data-target='dropdown.list' class='hidden c-dropdown__list'>
+      <%= link_to t('label.manage_users'), users_path, class: 'c-dropdown__item' if is_admin? %>
+      <%= link_to t('label.update_profile'), edit_user_path(Current.user), class: 'c-dropdown__item' %>
+      <%= link_to t('label.logout'), session_path, method: :delete, class: 'c-dropdown__item' %>
     </div>
   </div>
 </div>

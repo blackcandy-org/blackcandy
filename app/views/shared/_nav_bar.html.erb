@@ -1,15 +1,15 @@
 <nav class='o-grid__item u-mt-medium' span@extra-narrow='row' span@medium='2-6' span='3-5'>
-  <ul class='tab'>
-    <li class='tab__item <%= 'is-active' if is_active?(controller: 'albums') %>'>
+  <ul class='c-tab'>
+    <li class='c-tab__item <%= 'is-active' if is_active?(controller: 'albums') %>'>
       <%= link_to t('label.albums'), albums_path %>
     </li>
-    <li class='tab__item <%= 'is-active' if is_active?(controller: 'artists') %>'>
+    <li class='c-tab__item <%= 'is-active' if is_active?(controller: 'artists') %>'>
       <%= link_to t('label.artists'), artists_path %>
     </li>
-    <li class='tab__item <%= 'is-active' if is_active?(controller: 'songs') %>'>
+    <li class='c-tab__item <%= 'is-active' if is_active?(controller: 'songs') %>'>
       <%= link_to t('label.songs'), songs_path %>
     </li>
-    <li class='tab__item <%= 'is-active' if is_active?(controller: 'settings') %>'>
+    <li class='c-tab__item <%= 'is-active' if is_active?(controller: 'settings') %>'>
       <%= link_to t('label.settings'), setting_path %>
     </li>
   </ul>
