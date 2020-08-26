@@ -106,15 +106,11 @@ html {
   /* Nav */
   --nav-border-color: var(--grey-light);
 
-  /* Player page */
+  /* Player */
+  --player-bg-color: var(--grey-lighter);
   --player-progress-bg-color: var(--grey-lighter);
-  --player-progress-hover-bg-color: var(--grey-lighter);
+  --player-progress-hover-bg-color: var(--grey-lightest);
   --player-progress-color: var(--purple);
-  --player-favorite-color: var(--red);
-  --player-color: var(--black-lighter);
-  --player-bg-color: var(--grey-lightest);
-  --player-footer-bg-color: var(--white);
-  --player-timer-color: var(--black-lighter);
 }
 
 /* Dark theme */
@@ -157,7 +153,6 @@ html[data-color-scheme='dark'] {
 
   /* Sidebar */
   --sidebar-bg-color: var(--black);
-
 
   /* Progress bar */
   --progress-bar-bg-color: var(--purple);
@@ -225,13 +220,9 @@ html[data-color-scheme='dark'] {
   /* Nav */
   --nav-border-color: var(--black-dark);
 
-  /* Player page */
-  --player-progress-bg-color: var(--black-light);
-  --player-progress-hover-bg-color: var(--black-lighter);
+  /* Player */
+  --player-bg-color: var(--black-dark);
+  --player-progress-bg-color: var(--black-dark);
+  --player-progress-hover-bg-color: var(--black-light);
   --player-progress-color: var(--purple);
-  --player-favorite-color: var(--red);
-  --player-color: var(--grey);
-  --player-bg-color: var(--black);
-  --player-footer-bg-color: var(--black-light);
-  --player-timer-color: var(--grey-lighter);
 }

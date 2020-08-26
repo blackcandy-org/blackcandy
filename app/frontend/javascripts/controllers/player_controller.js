@@ -6,7 +6,6 @@ import { formatDuration, toggleShow } from '../helper';
 export default class extends Controller {
   static targets = [
     'header',
-    'headerContent',
     'image',
     'songName',
     'artistName',
@@ -61,7 +60,7 @@ export default class extends Controller {
       type: isFavorited ? 'delete' : 'post',
       data: `song_ids[]=${this.currentSong.id}`,
       success: () => {
-        this.favoriteButtonTarget.classList.toggle('player__favorite');
+        this.favoriteButtonTarget.classList.toggle('u-text-color-red');
         this.currentSong.is_favorited = !isFavorited;
       }
     });
@@ -96,8 +95,7 @@ export default class extends Controller {
   }
 
   collapse() {
-    document.querySelector('#js-sidebar').classList.remove('c-sidebar--show');
-    document.body.classList.remove('noscroll');
+    document.querySelector('#js-sidebar').classList.remove('is-expanded');
   }
 
   get currentIndex() {
@@ -113,8 +111,8 @@ export default class extends Controller {
   }
 
   _setBeforePlayingStatus = () => {
-    this.headerTarget.classList.add('expand');
-    this.loaderTarget.classList.remove('hidden');
+    this.headerTarget.classList.remove('u-display-none');
+    this.loaderTarget.classList.remove('u-display-none');
   }
 
   _setPlayingStatus = () => {
@@ -126,11 +124,10 @@ export default class extends Controller {
     this.albumNameTarget.textContent = currentSong.album_name;
     this.songDurationTarget.textContent = formatDuration(currentSong.length);
 
-    this.headerContentTarget.classList.add('show');
-    this.favoriteButtonTarget.classList.toggle('player__favorite', currentSong.is_favorited);
-    this.pauseButtonTarget.classList.remove('hidden');
-    this.playButtonTarget.classList.add('hidden');
-    this.loaderTarget.classList.add('hidden');
+    this.favoriteButtonTarget.classList.toggle('u-text-color-red', currentSong.is_favorited);
+    this.pauseButtonTarget.classList.remove('u-display-none');
+    this.playButtonTarget.classList.add('u-display-none');
+    this.loaderTarget.classList.add('u-display-none');
 
     window.requestAnimationFrame(this._setProgress.bind(this));
 
@@ -139,13 +136,13 @@ export default class extends Controller {
   }
 
   _setPauseStatus = () => {
-    this.pauseButtonTarget.classList.add('hidden');
-    this.playButtonTarget.classList.remove('hidden');
+    this.pauseButtonTarget.classList.add('u-display-none');
+    this.playButtonTarget.classList.remove('u-display-none');
   }
 
   _setStopStatus = () => {
     if (!this.player.playlist.length) {
-      this.headerTarget.classList.remove('show');
+      this.headerTarget.classList.add('u-display-none');
     }
   }
 

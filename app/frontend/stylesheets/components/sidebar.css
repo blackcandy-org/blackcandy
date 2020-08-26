@@ -44,7 +44,7 @@
     opacity: 0;
   }
 
-  .c-sidebar--show {
+  .c-sidebar.is-expanded {
     z-index: 100;
     visibility: visible;
     height: 100%;

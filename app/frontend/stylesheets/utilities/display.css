@@ -35,20 +35,3 @@
 @media (--extra-narrow) {
   @mixin display \@extra-narrow;
 }
-
-.display__space-between {
-  display: flex !important;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.display__align-center {
-  display: flex !important;
-  align-items: center;
-}
-
-.display__justify-align-center {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-}

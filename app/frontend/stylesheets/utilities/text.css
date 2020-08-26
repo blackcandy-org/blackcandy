@@ -12,6 +12,10 @@
   color: var(--text-primary-color) !important;
 }
 
+.u-text-color-red {
+  color: var(--red) !important;
+}
+
 .u-text-monospace {
   font-family: var(--monospace-fonts);
 }

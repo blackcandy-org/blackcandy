@@ -1,4 +1,4 @@
-<li class='list__item pointer-cursor' data-target='playlist-songs.item' data-song-id='<%= song.id %>' data-playlist-songs-action='play'>
+<li class='list__item u-cursor-pointer' data-target='playlist-songs.item' data-song-id='<%= song.id %>' data-playlist-songs-action='play'>
   <span class='list__item__content'>
     <span class='list__item__info list__item__info--main'><%= song.name %></span>
     <span class='list__item__info'><%= song.artist.title %></span>
@@ -8,6 +8,6 @@
       <span data-playlist-songs-action='showPlaylistsDialog'><%= icon_tag 'playlist-add', size: 'small', title: t('text.add_to_playlist') %></span>
       <span data-playlist-songs-action='delete'><%= icon_tag 'delete', size: 'small', title: t('label.delete') %></span>
     </span>
-    <span class='list__item__info list__item__info--minor monospace-font'><%= format_duration(song.length) %></span>
+    <span class='list__item__info list__item__info--minor u-text-monospace'><%= format_duration(song.length) %></span>
   </span>
 </li>

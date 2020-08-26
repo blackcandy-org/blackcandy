@@ -19,6 +19,10 @@
     height: 0 !important;
   }
 
+  .u-w-0$(responsivePostfix) {
+    width: 0 !important;
+  }
+
   .u-w-15$(responsivePostfix) {
     width: 15% !important;
   }

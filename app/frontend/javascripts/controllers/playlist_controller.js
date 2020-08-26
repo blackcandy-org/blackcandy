@@ -7,8 +7,8 @@ export default class extends Controller {
   rename() {
     const name = this.nameTarget.innerText;
 
-    this.nameTarget.classList.add('hidden');
-    this.nameInputTarget.classList.remove('hidden');
+    this.nameTarget.classList.add('u-display-none');
+    this.nameInputTarget.classList.remove('u-display-none');
     this.nameInputTarget.value = name;
     this.nameInputTarget.focus();
     this.nameInputTarget.select();
@@ -27,8 +27,8 @@ export default class extends Controller {
       });
     }
 
-    this.nameTarget.classList.remove('hidden');
-    this.nameInputTarget.classList.add('hidden');
+    this.nameTarget.classList.remove('u-display-none');
+    this.nameInputTarget.classList.add('u-display-none');
   }
 
   updateNameOnEnter(event) {

@@ -15,21 +15,21 @@ export default class extends Controller {
 
   _show = () => {
     if (this.hasContentTarget) {
-      this.contentTarget.classList.add('hidden');
+      this.contentTarget.classList.add('u-display-none');
     }
 
     if (this.hasIndicatorTarget) {
-      this.indicatorTarget.classList.remove('hidden');
+      this.indicatorTarget.classList.remove('u-display-none');
     }
   }
 
   _hide = () => {
     if (this.hasContentTarget) {
-      this.contentTarget.classList.remove('hidden');
+      this.contentTarget.classList.remove('u-display-none');
     }
 
     if (this.hasIndicatorTarget) {
-      this.indicatorTarget.classList.add('hidden');
+      this.indicatorTarget.classList.add('u-display-none');
     }
   }
 }

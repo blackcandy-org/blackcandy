@@ -3,14 +3,14 @@
     <%= icon_tag 'search', size: 'large' %>
   </div>
   <input id='js-search-input' class='c-input' data-target='search.input' data-action='keydown->search#query' value='<%= params[:query] %>' />
-  <div class='c-input-group__icon hidden' data-target='search.loader'>
+  <div class='c-input-group__icon u-display-none' data-target='search.loader'>
     <%= loader_tag size: 'small' %>
   </div>
 </div>
 <div class='o-grid__item o-grid__item--justify-end' span@medium='7-7' span='6-7'>
   <div data-controller='dropdown' class='c-dropdown'>
     <span data-action='click->dropdown#show'><%= avatar_tag Current.user %></span>
-    <div data-target='dropdown.list' class='hidden c-dropdown__list'>
+    <div data-target='dropdown.list' class='u-display-none c-dropdown__list'>
       <%= link_to t('label.manage_users'), users_path, class: 'c-dropdown__item' if is_admin? %>
       <%= link_to t('label.update_profile'), edit_user_path(Current.user), class: 'c-dropdown__item' %>
       <%= link_to t('label.logout'), session_path, method: :delete, class: 'c-dropdown__item' %>

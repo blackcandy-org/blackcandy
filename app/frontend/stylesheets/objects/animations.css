@@ -21,19 +21,36 @@
   }
 }
 
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    max-height: 0;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    max-height: 200px;
+  }
+}
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
 .o-animation-fadeInDown {
-  animation-duration: 0.25s;
   animation-name: fadeInDown;
+  animation-duration: 0.25s;
 }
 
 .o-animation-fadeOutUp {
-  animation-duration: 0.25s;
   animation-name: fadeOutUp;
+  animation-duration: 0.25s;
+}
+
+.o-animation-slideInUp {
+  animation-name: slideInUp;
+  animation-duration: 0.25s;
 }
 
 .o-animation-spin {

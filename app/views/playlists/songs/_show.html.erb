@@ -7,7 +7,7 @@
       <div class='u-ml-narrow'>
         <div class='u-mb-tiny'>
           <span data-target='playlist.name'><%= @playlist.name %></span>
-          <input data-target='playlist.nameInput' data-action='blur->playlist#updateName keydown->playlist#updateNameOnEnter' class='hidden c-input' />
+          <input data-target='playlist.nameInput' data-action='blur->playlist#updateName keydown->playlist#updateNameOnEnter' class='u-display-none c-input' />
         </div>
         <p>
           <span data-target='playlist-songs.count'><%= @playlist.songs.size %></span>
@@ -17,7 +17,7 @@
     </div>
     <div data-controller='dropdown' class='c-dropdown'>
       <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', title: t('label.more') %></span>
-      <div data-target='dropdown.list' class='hidden c-dropdown__list'>
+      <div data-target='dropdown.list' class='u-display-none c-dropdown__list'>
         <% unless @songs.blank? %>
           <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @playlist.song_ids), method: :put, remote: true, data: { target: 'playlist-songs.playAllLink' }, class: 'c-dropdown__item' %>
           <a class='c-dropdown__item' data-action='playlist-songs#clear'><%= t('label.clear') %></a>
