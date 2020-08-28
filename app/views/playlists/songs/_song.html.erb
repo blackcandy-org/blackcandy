@@ -1,13 +1,16 @@
-<li class='list__item u-cursor-pointer' data-target='playlist-songs.item' data-song-id='<%= song.id %>' data-playlist-songs-action='play'>
-  <span class='list__item__content'>
-    <span class='list__item__info list__item__info--main'><%= song.name %></span>
-    <span class='list__item__info'><%= song.artist.title %></span>
-  </span>
-  <span class='list__item__content list__item__content--minor'>
-    <span class='list__item__info list__item__info--action'>
-      <span data-playlist-songs-action='showPlaylistsDialog'><%= icon_tag 'playlist-add', size: 'small', title: t('text.add_to_playlist') %></span>
-      <span data-playlist-songs-action='delete'><%= icon_tag 'delete', size: 'small', title: t('label.delete') %></span>
-    </span>
-    <span class='list__item__info list__item__info--minor u-text-monospace'><%= format_duration(song.length) %></span>
-  </span>
+<li class='c-list__item o-flex o-flex--justify-between u-cursor-pointer' data-target='playlist-songs.item' data-song-id='<%= song.id %>' data-playlist-songs-action='play'>
+  <div class='u-mr-narrow'>
+    <div class='u-mb-tiny u-text-weight-bold u-text-line-clamp-2'><%= song.name %></div>
+    <%= song.artist.title %>
+  </div>
+  <div class='o-flex o-flex--align-center'>
+    <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.length) %></div>
+    <div class='c-dropdown js-playlist-songs-menu'>
+      <span data-playlist-songs-action='showMenu'><%= icon_tag 'more-vertical', size: 'small', title: t('label.more') %></span>
+      <div class='u-display-none c-dropdown__list js-playlist-songs-menu-list'>
+        <a class='c-dropdown__item' data-playlist-songs-action='showPlaylistsDialog'><%= t('text.add_to_playlist') %></a>
+        <a class='c-dropdown__item' data-playlist-songs-action='delete'><%= t('label.delete') %></a>
+      </div>
+    </div>
+  </div>
 </li>

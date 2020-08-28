@@ -29,6 +29,9 @@ export default class extends Controller {
       case 'showPlaylistsDialog':
         this._showPlaylistsDialog(target);
         break;
+      case 'showMenu':
+        this._showMenu(target);
+        break;
       default:
         this._play(target);
     }
@@ -131,6 +134,13 @@ export default class extends Controller {
         App.dispatchEvent('#js-dialog-loader', 'loader:hide');
       }
     });
+  }
+
+  _showMenu(target) {
+    const menuListElement = target.closest('.js-playlist-songs-menu').querySelector('.js-playlist-songs-menu-list');
+
+    menuListElement.classList.remove('u-display-none');
+    App.dismissOnClick(menuListElement);
   }
 
   _updateCount = (event) => {

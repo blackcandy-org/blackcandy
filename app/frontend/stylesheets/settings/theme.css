@@ -56,11 +56,8 @@ html {
   --tab-active-color: var(--purple);
 
   /* List */
-  --list-color: var(--black-lightest);
-  --list-main-color: var(--black);
   --list-border-color: var(--grey-lighter);
   --list-active-color: var(--purple);
-  --list-border-dark-color: var(--grey-lighter);
 
   /* Table */
   --table-border-color: var(--grey-lighter);
@@ -170,11 +167,8 @@ html[data-color-scheme='dark'] {
   --tab-active-color: var(--purple-light);
 
   /* List */
-  --list-color: var(--grey);
-  --list-main-color: var(--grey-lighter);
-  --list-border-color: var(--black-light);
+  --list-border-color: var(--black-lighter);
   --list-active-color: var(--purple-light);
-  --list-border-dark-color: var(--black);
 
   /* Table */
   --table-border-color: var(--black);

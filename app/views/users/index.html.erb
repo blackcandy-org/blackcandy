@@ -7,22 +7,16 @@
     <hr />
     <div class='u-position-relative'>
       <% if @users.present? %>
-        <ul class='list list--dark-border'>
+        <ul class='c-list'>
           <% @users.each do |user| %>
-            <li class='list__item' data-user-id='<%= user.id %>'>
-              <span class='list__item__content'>
-                <%= avatar_tag user %>
-              </span>
-              <span class='list__item__content'>
-                <%= link_to user.email, edit_user_path(user), class: 'list__item__info list__item__info--main' %>
-              </span>
-              <span class='list__item__content list__item__content--minor'>
-                <span class='list__item__info'>
-                  <%= link_to user_path(user), method: :delete, remote: true do %>
-                    <%= icon_tag 'delete', size: 'small', title: t('label.delete') %>
-                  <% end %>
-                </span>
-              </span>
+            <li class='c-list__item o-flex o-flex--justify-between o-flex--align-center' data-user-id='<%= user.id %>'>
+              <%= link_to edit_user_path(user), class: 'o-flex o-flex--align-center' do %>
+                <span class='u-mr-tiny'><%= avatar_tag user %></span>
+                <%= user.email %>
+              <% end %>
+              <%= link_to user_path(user), method: :delete, remote: true do %>
+                <%= icon_tag 'delete', size: 'small', title: t('label.delete') %>
+              <% end %>
             </li>
           <% end %>
         </ul>

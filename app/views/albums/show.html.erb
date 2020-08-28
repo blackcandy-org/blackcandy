@@ -15,18 +15,16 @@
         </div>
       </div>
     </div>
-    <ul class='list list--dark-border' data-action='click->playlist-songs#actionHandler'>
+    <ul class='c-list' data-action='click->playlist-songs#actionHandler'>
       <% @songs.each do |song| %>
-        <li class='list__item u-cursor-pointer' data-target='playlist-songs.item' data-song-id='<%= song.id %>' data-playlist-songs-action='play'>
-          <span class='list__item__content'>
-            <span class='list__item__info list__item__info--main'><%= song.name %></span>
-          </span>
-          <span class='list__item__content list__item__content--minor'>
-            <span class='list__item__info list__item__info--action' data-playlist-songs-action='showPlaylistsDialog'>
+        <li class='c-list__item o-flex o-flex--justify-between u-cursor-pointer' data-target='playlist-songs.item' data-song-id='<%= song.id %>' data-playlist-songs-action='play'>
+          <%= song.name %>
+          <div class='o-flex o-flex--align-center'>
+            <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.length) %></div>
+            <div data-playlist-songs-action='showPlaylistsDialog'>
               <%= icon_tag 'playlist-add', size: 'small', title: t('text.add_to_playlist') %>
-            </span>
-            <span class='list__item__info list__item__info--minor u-text-monospace'><%= format_duration(song.length) %></span>
-          </span>
+            </div>
+          </div>
         </li>
       <% end %>
     </ul>

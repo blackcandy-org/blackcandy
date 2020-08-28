@@ -23,5 +23,9 @@ export default {
     if (playlistElement && playlistElement.dataset.playlistSongsPlaylistId == playlistId) {
       return playlistElement;
     }
+  },
+
+  dismissOnClick(element) {
+    document.addEventListener('click', () => { element.classList.add('u-display-none') }, { once: true, capture: true });
   }
 };
