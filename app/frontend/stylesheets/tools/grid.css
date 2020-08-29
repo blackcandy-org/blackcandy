@@ -1,0 +1,92 @@
+@define-mixin grid $responsivePostfix {
+  .o-grid[cols$(responsivePostfix)="1"] { --grid-tc: repeat(1, 1fr); }
+  .o-grid[cols$(responsivePostfix)="2"] { --grid-tc: repeat(2, 1fr); }
+  .o-grid[cols$(responsivePostfix)="3"] { --grid-tc: repeat(3, 1fr); }
+  .o-grid[cols$(responsivePostfix)="4"] { --grid-tc: repeat(4, 1fr); }
+  .o-grid[cols$(responsivePostfix)="5"] { --grid-tc: repeat(5, 1fr); }
+  .o-grid[cols$(responsivePostfix)="6"] { --grid-tc: repeat(6, 1fr); }
+  .o-grid[cols$(responsivePostfix)="7"] { --grid-tc: repeat(7, 1fr); }
+  .o-grid[cols$(responsivePostfix)="8"] { --grid-tc: repeat(8, 1fr); }
+
+  /* span=start... */
+  .o-grid > .o-grid__item[span$(responsivePostfix)^="1"] { --grid-cs: 1; }
+  .o-grid > .o-grid__item[span$(responsivePostfix)^="2"] { --grid-cs: 2; }
+  .o-grid > .o-grid__item[span$(responsivePostfix)^="3"] { --grid-cs: 3; }
+  .o-grid > .o-grid__item[span$(responsivePostfix)^="4"] { --grid-cs: 4; }
+  .o-grid > .o-grid__item[span$(responsivePostfix)^="5"] { --grid-cs: 5; }
+  .o-grid > .o-grid__item[span$(responsivePostfix)^="6"] { --grid-cs: 6; }
+  .o-grid > .o-grid__item[span$(responsivePostfix)^="7"] { --grid-cs: 7; }
+  .o-grid > .o-grid__item[span$(responsivePostfix)^="8"] { --grid-cs: 8; }
+
+  /* span=...+width, span=...-end */
+  .o-grid > .o-grid__item[span$(responsivePostfix)$="+1"],
+  .o-grid > .o-grid__item[span$(responsivePostfix)="1"] {
+    --grid-ce: 1;
+  }
+
+  .o-grid > .o-grid__item[span$(responsivePostfix)$="+2"],
+  .o-grid > .o-grid__item[span$(responsivePostfix)$="-1"],
+  .o-grid > .o-grid__item[span$(responsivePostfix)="2"] {
+    --grid-ce: 2;
+  }
+
+  .o-grid > .o-grid__item[span$(responsivePostfix)$="+3"],
+  .o-grid > .o-grid__item[span$(responsivePostfix)$="-2"],
+  .o-grid > .o-grid__item[span$(responsivePostfix)="3"] {
+    --grid-ce: 3;
+  }
+
+  .o-grid > .o-grid__item[span$(responsivePostfix)$="+4"],
+  .o-grid > .o-grid__item[span$(responsivePostfix)$="-3"],
+  .o-grid > .o-grid__item[span$(responsivePostfix)="4"] {
+    --grid-ce: 4;
+  }
+
+  .o-grid > .o-grid__item[span$(responsivePostfix)$="+5"],
+  .o-grid > .o-grid__item[span$(responsivePostfix)$="-4"],
+  .o-grid > .o-grid__item[span$(responsivePostfix)="5"] {
+    --grid-ce: 5;
+  }
+
+  .o-grid > .o-grid__item[span$(responsivePostfix)$="+6"],
+  .o-grid > .o-grid__item[span$(responsivePostfix)$="-5"],
+  .o-grid > .o-grid__item[span$(responsivePostfix)="6"] {
+    --grid-ce: 6;
+  }
+
+  .o-grid > .o-grid__item[span$(responsivePostfix)$="+7"],
+  .o-grid > .o-grid__item[span$(responsivePostfix)$="-6"],
+  .o-grid > .o-grid__item[span$(responsivePostfix)="7"] {
+    --grid-ce: 7;
+  }
+
+  .o-grid > .o-grid__item[span$(responsivePostfix)$="+8"],
+  .o-grid > .o-grid__item[span$(responsivePostfix)$="-7"],
+  .o-grid > .o-grid__item[span$(responsivePostfix)="8"] {
+    --grid-ce: 8;
+  }
+
+  .o-grid > .o-grid__item[span$(responsivePostfix)$="-8"] {
+    --grid-ce: 9;
+  }
+
+  /* connect vars */
+  .o-grid > .o-grid__item[span$(responsivePostfix)] {
+    grid-column-end: span var(--grid-ce);
+  }
+
+  .o-grid > .o-grid__item[span$(responsivePostfix)*="+"],
+  .o-grid > .o-grid__item[span$(responsivePostfix)*="-"],
+  .o-grid > .o-grid__item[span$(responsivePostfix)*=".."] {
+    grid-column-start: var(--grid-cs);
+  }
+
+  .o-grid > .o-grid__item[span$(responsivePostfix)*="-"],
+  .o-grid > .o-grid__item[span$(responsivePostfix)*=".."] {
+    grid-column-end: var(--grid-ce);
+  }
+
+  .o-grid > .o-grid__item[span$(responsivePostfix)="row"] {
+    grid-column: 1 / -1;
+  }
+}

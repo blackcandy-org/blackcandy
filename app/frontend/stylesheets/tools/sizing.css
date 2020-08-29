@@ -1,0 +1,41 @@
+@define-mixin sizing $responsivePostfix {
+  .u-vw-100$(responsivePostfix) {
+    width: 100vw !important;
+  }
+
+  .u-vh-100$(responsivePostfix) {
+    height: 100vh !important;
+  }
+
+  .u-w-100$(responsivePostfix) {
+    width: 100% !important;
+  }
+
+  .u-h-100$(responsivePostfix) {
+    height: 100% !important;
+  }
+
+  .u-h-0$(responsivePostfix) {
+    height: 0 !important;
+  }
+
+  .u-w-0$(responsivePostfix) {
+    width: 0 !important;
+  }
+
+  .u-w-15$(responsivePostfix) {
+    width: 15% !important;
+  }
+
+  .u-w-25$(responsivePostfix) {
+    width: 25% !important;
+  }
+
+  .u-w-50$(responsivePostfix) {
+    width: 50% !important;
+  }
+
+  .u-w-75$(responsivePostfix) {
+    width: 75% !important;
+  }
+}

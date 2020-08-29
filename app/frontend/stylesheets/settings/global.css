@@ -1,0 +1,22 @@
+:root {
+  /* Fonts */
+  --font-size-small: 12px;
+  --font-size-medium: 14px;
+  --font-size-large: 16px;
+
+  --sans-serif-fonts: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "Wenquanyi Micro Hei", sans-serif;
+  --monospace-fonts: 'Menlo', 'Monaco', 'Consolas', "Courier New", monospace;
+
+  /* Spacing */
+  --spacing-tiny: 6px;
+  --spacing-narrow: 12px;
+  --spacing-small: 18px;
+  --spacing-medium: 24px;
+  --spacing-large: 36px;
+  --spacing-wide: 48px;
+
+  /* Border radius */
+  --border-radius-medium: 4px;
+  --border-radius-small: 2px;
+  --border-radius-large: 8px;
+}

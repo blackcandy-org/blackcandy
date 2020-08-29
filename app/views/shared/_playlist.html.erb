@@ -1,12 +1,10 @@
-<div id='js-playlist' class='playlist display__full-height' data-controller='ajax' data-ajax-loader='#js-playlist-loader'>
-  <div id='js-playlist-nav' class='playlist__nav'>
+<div class='u-h-100 o-flex o-flex--column' data-controller='ajax' data-ajax-loader='#js-playlist-loader'>
+  <div id='js-playlist-nav' class='c-nav'>
     <%= render 'playlists/nav' %>
   </div>
-  <div class='display__full-height noscroll position-relative'>
-    <div class='playlist__container'>
-      <div class='playlist__content' id='js-playlist-content'></div>
-    </div>
-    <div id='js-playlist-loader' class='overlay hidden' data-controller='loader'>
+  <div class='u-position-relative o-flex__item o-flex__item--grow-1 u-h-0 u-overflow-auto' id='js-playlist-loader' data-controller='loader'>
+    <div class='u-m-small' id='js-playlist-content' data-target='loader.content'></div>
+    <div class='c-overlay u-display-none' data-target='loader.indicator'>
       <%= loader_tag %>
     </div>
   </div>

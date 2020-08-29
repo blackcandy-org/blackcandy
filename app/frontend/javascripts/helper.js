@@ -8,7 +8,7 @@ function formatDuration(secs) {
 
 function toggleShow(elements, currentElement) {
   elements.forEach((element) => {
-    element.classList.toggle('hidden', element != currentElement);
+    element.classList.toggle('u-display-none', element != currentElement);
   });
 }
 

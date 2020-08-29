@@ -1,23 +1,17 @@
-<%= form_with model: @user, class: 'form' do |form| %>
-  <div class='form__field'>
+<%= form_with model: @user, class: 'c-form' do |form| %>
+  <div class='c-form__field'>
     <%= form.label :email %>
-    <div class='input'>
-      <%= form.email_field :email %>
-    </div>
+    <%= form.email_field :email, class: 'c-input' %>
   </div>
-  <div class='form__field'>
+  <div class='c-form__field'>
     <%= form.label :password %>
-    <div class='input'>
-      <%= form.password_field :password %>
-    </div>
+    <%= form.password_field :password, class: 'c-input' %>
   </div>
-  <div class='form__field'>
+  <div class='c-form__field'>
     <%= form.label :password_confirmation %>
-    <div class='input'>
-      <%= form.password_field :password_confirmation %>
-    </div>
+    <%= form.password_field :password_confirmation, class: 'c-input' %>
   </div>
-  <div class='form__field form__field--submit'>
-    <%= form.submit t('label.save'), class: 'button button--primary button--full-width' %>
+  <div class='c-form__field c-form__field--submit'>
+    <%= form.submit t('label.save'), class: 'c-button c-button--primary c-button--full-width' %>
   </div>
 <% end %>

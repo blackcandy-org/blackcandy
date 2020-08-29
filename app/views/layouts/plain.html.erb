@@ -1,0 +1,15 @@
+<% content_for :body do %>
+  <div id='js-flash' class='c-flash'>
+    <%= render 'shared/flash' %>
+  </div>
+  <div class='o-flex o-flex--justify-center o-flex--align-center u-vh-100 u-bg-gradient'>
+    <div class='o-container o-container--extra-narrow u-w-25 u-w-50@medium u-w-75@narrow u-bg-primary u-px-small u-py-large u-border-shadow u-border-radius-large'>
+      <div class='u-mb-large u-text-align-center'>
+        <span class='c-logo'></span>
+      </div>
+      <%= yield %>
+    </div>
+  </div>
+<% end %>
+
+<%= render template: 'layouts/base' %>

@@ -1,0 +1,32 @@
+.u-text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.u-text-weight-bold {
+  font-weight: bold !important;
+}
+
+.u-text-color-primary {
+  color: var(--text-primary-color) !important;
+}
+
+.u-text-color-red {
+  color: var(--red) !important;
+}
+
+.u-text-monospace {
+  font-family: var(--monospace-fonts);
+}
+
+.u-text-align-center {
+  text-align: center !important;
+}
+
+.u-text-line-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2 !important;
+  overflow: hidden;
+}

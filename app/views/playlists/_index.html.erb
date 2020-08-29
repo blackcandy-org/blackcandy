@@ -1,18 +1,16 @@
-<%= form_with model: Playlist.new, class: 'form form--inline' do |form| %>
-  <div class='input'>
-    <%= form.text_field :name %>
-  </div>
-  <%= form.submit t('label.create'), class: 'button button--primary button--small' %>
+<%= form_with model: Playlist.new, class: 'c-form o-flex o-flex--justify-between' do |form| %>
+  <%= form.text_field :name, class: 'c-input u-mr-narrow' %>
+  <%= form.submit t('label.create'), class: 'c-button c-button--primary c-button--small' %>
 <% end %>
-<div data-controller='infinite-scroll' data-infinite-scroll-container='.playlist__container' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
-  <ul id='js-playlist-list' class='list'>
+<div data-controller='infinite-scroll' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
+  <ul id='js-playlist-list' class='c-list'>
     <% if @playlists.present? %>
       <%= render partial: 'playlist', collection: @playlists, cached: true %>
     <% end %>
   </ul>
-  <div data-target='infinite-scroll.trigger' class='display__justify-align-center'>
+  <div data-target='infinite-scroll.trigger' class='o-flex o-flex--justify-center u-my-small'>
     <% if @pagy.next %>
-      <%= loader_tag expand: true %>
+      <%= loader_tag %>
     <% end %>
   </div>
 </div>

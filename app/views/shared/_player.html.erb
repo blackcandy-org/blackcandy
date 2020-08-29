@@ -1,46 +1,42 @@
-<div class='player' data-controller='player'>
-  <div data-target='player.header' class='player__header position-relative'>
-    <div data-target='player.headerContent' class='player__header__content'>
-      <div class='heading'>
-        <div class='heading__image'>
-          <img data-target='player.image' class='image image--small' />
+<div class='c-player u-h-100' data-controller='player'>
+  <div data-target='player.header' class='c-player__header u-position-relative'>
+    <div class='c-card c-card--horizontal u-p-medium'>
+      <img data-target='player.image' class='c-card__image u-image-small' />
+      <div class='c-card__body'>
+        <h1 class='c-card__body__title u-text-truncate' data-target='player.songName'></h1>
+        <p class='c-card__body__text u-text-truncate' data-target='player.albumName'></p>
+        <p class='c-card__body__text u-text-truncate' data-target='player.artistName'></p>
+        <div class='c-card__body__text u-text-monospace u-mt-narrow'>
+          <span class='u-text-color-primary' data-target='player.songTimer'></span>
+          <span class='u-mx-narrow'>/</span>
+          <span data-target='player.songDuration'></span>
         </div>
-        <div class='heading__body'>
-          <div class='heading__body__text heading__body__text--main text-truncate' data-target='player.songName'></div>
-          <div class='heading__body__text text-truncate' data-target='player.albumName'></div>
-          <div class='heading__body__text text-truncate' data-target='player.artistName'></div>
-          <div class='player__timer monospace-font'>
-            <span class='player__timer__item player__timer__item--main' data-target='player.songTimer'></span>
-            <span class='player__timer__item'>/</span>
-            <span class='player__timer__item' data-target='player.songDuration'></span>
-          </div>
-        </div>
-      </div>
-      <div class='player__progress pointer-cursor'>
-        <progress data-target='player.progress' data-action='click->player#seek' class='display__full-width display__flex' max='100'></progress>
       </div>
     </div>
-    <div data-target='player.loader' class='overlay hidden'>
+    <div class='c-player__progress u-cursor-pointer'>
+      <progress data-target='player.progress' data-action='click->player#seek' class='u-w-100' max='100'></progress>
+    </div>
+    <div data-target='player.loader' class='c-overlay c-overlay--blur u-display-none'>
       <%= loader_tag %>
     </div>
   </div>
-  <div class='player__control display__space-between'>
-    <div class='player__control__minor pointer-cursor' data-action='click->player#nextMode'>
+  <div class='u-px-small u-py-medium o-flex o-flex--justify-between o-flex--align-center c-player__control'>
+    <div class='u-cursor-pointer' data-action='click->player#nextMode'>
       <span data-target='player.modeButton'><%= icon_tag 'repeat', title: t('text.repeat_mode') %></span>
       <span data-target='player.modeButton'><%= icon_tag 'repeat-one', title: t('text.single_mode') %></span>
       <span data-target='player.modeButton'><%= icon_tag 'shuffle', title: t('text.shuffle_mode') %></span>
     </div>
     <div>
-      <span class='pointer-cursor' data-action='click->player#previous'><%= icon_tag 'rewind', size: 'large', title: t('text.previous_song') %></span>
-      <span data-action='click->player#play' class='player__control__main pointer-cursor' data-target='player.playButton'><%= icon_tag 'play', size: 'large', title: t('text.play_song') %></span>
-      <span data-action='click->player#pause' class='player__control__main pointer-cursor hidden' data-target='player.pauseButton'><%= icon_tag 'pause', size: 'large', title: t('text.pause_song') %></span>
-      <span data-action='click->player#next' class='pointer-cursor'><%= icon_tag 'fast-forward', size: 'large', title: t('text.next_song') %></span>
+      <span class='u-text-color-primary u-cursor-pointer' data-action='click->player#previous'><%= icon_tag 'rewind', size: 'large', title: t('text.previous_song') %></span>
+      <span class='u-mx-medium u-text-color-primary u-cursor-pointer' data-action='click->player#play' data-target='player.playButton'><%= icon_tag 'play', size: 'large', title: t('text.play_song') %></span>
+      <span class='u-mx-medium  u-text-color-primary u-cursor-pointer u-display-none' data-action='click->player#pause' data-target='player.pauseButton'><%= icon_tag 'pause', size: 'large', title: t('text.pause_song') %></span>
+      <span class='u-text-color-primary u-cursor-pointer' data-action='click->player#next'><%= icon_tag 'fast-forward', size: 'large', title: t('text.next_song') %></span>
     </div>
-    <div data-target='player.favoriteButton' data-action='click->player#toggleFavorite' class='player__control__minor pointer-cursor'>
+    <div class='u-cursor-pointer'data-target='player.favoriteButton' data-action='click->player#toggleFavorite'>
       <%= icon_tag 'heart', title: t('text.toggle_favorite') %>
     </div>
   </div>
-  <div class='player__footer display__text-center hidden' data-action='click->player#collapse'>
+  <div class='u-py-tiny u-bg-primary u-text-align-center u-display-none u-display-block@extra-small' data-action='click->player#collapse'>
     <%= icon_tag 'expand-more', size: 'large', title: t('text.collapse_player') %>
   </div>
 </div>

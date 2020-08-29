@@ -10,14 +10,14 @@ export default class extends Controller {
   }
 
   disconnect() {
-    this.loaderTarget.classList.add('hidden');
+    this.loaderTarget.classList.add('u-display-none');
     this.inputTarget.value = '';
   }
 
   query(event) {
     if (event.key != 'Enter') { return; }
 
-    this.loaderTarget.classList.remove('hidden');
+    this.loaderTarget.classList.remove('u-display-none');
 
     const baseUrl = this.AVAILABLE_RESOURCES.includes(this.resource) ? `/${this.resource}` : '/albums';
     const query = event.target.value.trim();

@@ -1,33 +1,29 @@
-<div data-controller='playlist-songs' data-playlist-songs-playlist-id='<%= @playlist.id %>' class='display__full-height display__flex-vertical'>
-  <div class='heading' data-controller='playlist' data-playlist-id='<%= @playlist.id %>'>
-    <div class='heading__header'>
+<div data-controller='playlist-songs' data-playlist-songs-playlist-id='<%= @playlist.id %>'>
+  <div class='c-action-bar o-flex o-flex--justify-between o-flex--align-center' data-controller='playlist' data-playlist-id='<%= @playlist.id %>'>
+    <div class='o-flex o-flex--align-center'>
       <%= link_to playlists_path, remote: true, data: { show_loader: true } do %>
         <%= icon_tag 'chevron-left', title: t('text.go_back') %>
       <% end %>
-    </div>
-    <div class='heading__body'>
-      <div class='heading__body__text'>
-        <span data-target='playlist.name'><%= @playlist.name %></span>
-        <div class='input'>
-          <input data-target='playlist.nameInput' data-action='blur->playlist#updateName keydown->playlist#updateNameOnEnter' class='hidden' />
+      <div class='u-ml-narrow'>
+        <div class='u-mb-tiny'>
+          <span data-target='playlist.name'><%= @playlist.name %></span>
+          <input data-target='playlist.nameInput' data-action='blur->playlist#updateName keydown->playlist#updateNameOnEnter' class='u-display-none c-input' />
         </div>
-      </div>
-      <div class='heading__body__text'>
-        <span data-target='playlist-songs.count'><%= @playlist.songs.size %></span>
-        <span> <%= t('label.tracks') %><span>
+        <p>
+          <span data-target='playlist-songs.count'><%= @playlist.songs.size %></span>
+          <span> <%= t('label.tracks') %><span>
+        </p>
       </div>
     </div>
-    <div class='heading__footer'>
-      <div data-controller='dropdown' class='dropdown'>
-        <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', title: t('label.more') %></span>
-        <div data-target='dropdown.list' class='hidden dropdown__list'>
-          <% unless @songs.blank? %>
-            <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @playlist.song_ids), method: :put, remote: true, data: { target: 'playlist-songs.playAllLink' }, class: 'dropdown__item' %>
-            <a class='dropdown__item' data-action='playlist-songs#clear'><%= t('label.clear') %></a>
-          <% end %>
-          <%= link_to t('label.delete'), playlist_path(@playlist), method: :delete, remote: true, class: 'dropdown__item', data: { show_loader: true } %>
-          <a data-action='playlist#rename' class='dropdown__item'><%= t('label.rename') %></a>
-        </div>
+    <div data-controller='dropdown' class='c-dropdown'>
+      <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', title: t('label.more') %></span>
+      <div data-target='dropdown.list' class='u-display-none c-dropdown__list'>
+        <% unless @songs.blank? %>
+          <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @playlist.song_ids), method: :put, remote: true, data: { target: 'playlist-songs.playAllLink' }, class: 'c-dropdown__item' %>
+          <a class='c-dropdown__item' data-action='playlist-songs#clear'><%= t('label.clear') %></a>
+        <% end %>
+        <%= link_to t('label.delete'), playlist_path(@playlist), method: :delete, remote: true, class: 'c-dropdown__item', data: { show_loader: true } %>
+        <a data-action='playlist#rename' class='c-dropdown__item'><%= t('label.rename') %></a>
       </div>
     </div>
   </div>

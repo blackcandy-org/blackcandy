@@ -10,6 +10,6 @@ export default class extends Controller {
       this.remove();
     }, { once: true });
 
-    this.element.classList.add('flash__body--close');
+    this.element.classList.add('o-animation-fadeOutUp');
   }
 }

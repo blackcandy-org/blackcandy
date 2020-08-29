@@ -1,34 +1,30 @@
 <% cache @album do %>
-  <div class='display__medium-width' data-controller='playlist-songs'>
-    <div class='heading heading--expand'>
-      <div class='heading__image'>
-        <%= image_tag image_url_for(@album), class: 'image' %>
-      </div>
-      <div class='heading__body'>
-        <div class='heading__body__text heading__body__text--main'><%= @album.title %></div>
-        <div class='heading__body__text'><%= @album.artist.title %></div>
-        <div class='heading__body__text'>
+  <div class='o-container o-container--narrow' data-controller='playlist-songs'>
+    <div class='c-card c-card--horizontal u-my-large'>
+      <%= image_tag image_url_for(@album), class: 'c-card__image u-image-medium' %>
+      <div class='c-card__body'>
+        <h1 class='c-card__body__title'><%= @album.title %></h1>
+        <p class='c-card__body__text'><%= @album.artist.title %></p>
+        <div class='c-card__body__text'>
           <span><%= @songs.load.size %> <%= t('label.tracks') %></span>
           <span>,</span>
-          <span class='monospace-font'><%= format_duration(@songs.sum(:length)) %></span>
+          <span class='u-text-monospace'><%= format_duration(@songs.sum(:length)) %></span>
         </div>
-        <div class='heading__body__actions'>
-          <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @album.song_ids ), method: :put, remote: true, class: 'button button--primary' %>
+        <div class='u-mt-large'>
+          <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @album.song_ids ), method: :put, remote: true, class: 'c-button c-button--primary' %>
         </div>
       </div>
     </div>
-    <ul class='list list--dark-border' data-action='click->playlist-songs#actionHandler'>
+    <ul class='c-list' data-action='click->playlist-songs#actionHandler'>
       <% @songs.each do |song| %>
-        <li class='list__item pointer-cursor' data-target='playlist-songs.item' data-song-id='<%= song.id %>' data-playlist-songs-action='play'>
-          <span class='list__item__content'>
-            <span class='list__item__info list__item__info--main'><%= song.name %></span>
-          </span>
-          <span class='list__item__content list__item__content--minor'>
-            <span class='list__item__info list__item__info--action' data-playlist-songs-action='showPlaylistsDialog'>
+        <li class='c-list__item o-flex o-flex--justify-between u-cursor-pointer' data-target='playlist-songs.item' data-song-id='<%= song.id %>' data-playlist-songs-action='play'>
+          <%= song.name %>
+          <div class='o-flex o-flex--align-center'>
+            <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.length) %></div>
+            <div data-playlist-songs-action='showPlaylistsDialog'>
               <%= icon_tag 'playlist-add', size: 'small', title: t('text.add_to_playlist') %>
-            </span>
-            <span class='list__item__info list__item__info--minor monospace-font'><%= format_duration(song.length) %></span>
-          </span>
+            </div>
+          </div>
         </li>
       <% end %>
     </ul>

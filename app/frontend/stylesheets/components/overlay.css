@@ -1,4 +1,4 @@
-.overlay {
+.c-overlay {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -9,14 +9,12 @@
   justify-content: center;
 }
 
-.overlay--fixed {
-  background: var(--overlay-bg-color);
+.c-overlay--fixed {
   z-index: 101;
   position: fixed;
-  opacity: 0.75;
 }
 
-.overlay--dark {
+.c-overlay--blur {
   background: var(--overlay-bg-color);
-  opacity: 0.95;
+  opacity: 0.92;
 }

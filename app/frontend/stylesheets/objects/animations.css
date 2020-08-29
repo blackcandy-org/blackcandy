@@ -25,3 +25,17 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.o-animation-fadeInDown {
+  animation-name: fadeInDown;
+  animation-duration: 0.25s;
+}
+
+.o-animation-fadeOutUp {
+  animation-name: fadeOutUp;
+  animation-duration: 0.25s;
+}
+
+.o-animation-spin {
+  animation: spin 0.9s linear infinite;
+}

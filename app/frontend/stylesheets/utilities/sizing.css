@@ -1,0 +1,37 @@
+@mixin sizing;
+
+@media (--extra-wide) {
+  @mixin sizing \@extra-wide;
+}
+
+@media (--wide) {
+  @mixin sizing \@wide;
+}
+
+@media (--extra-large) {
+  @mixin sizing \@extra-large;
+}
+
+@media (--large) {
+  @mixin sizing \@large;
+}
+
+@media (--medium) {
+  @mixin sizing \@medium;
+}
+
+@media (--small) {
+  @mixin sizing \@small;
+}
+
+@media (--extra-small) {
+  @mixin sizing \@extra-small;
+}
+
+@media (--narrow) {
+  @mixin sizing \@narrow;
+}
+
+@media (--extra-narrow) {
+  @mixin sizing \@extra-narrow;
+}

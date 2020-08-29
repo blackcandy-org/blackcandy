@@ -1,8 +1,8 @@
-<div class='cards__item'>
-  <%= link_to artist_path(artist) do %>
-    <%= image_tag image_url_for(artist), class: 'image' %>
+<div class='o-grid__item c-card u-mb-medium'>
+  <%= link_to artist_path(artist), class: 'c-card__image' do %>
+    <%= image_tag image_url_for(artist), class: 'u-border-circle u-image-fluid' %>
   <% end %>
-  <div class='cards__item__body'>
-    <%= link_to artist.title, artist_path(artist), class: 'cards__item__title text-truncate' %>
+  <div class='c-card__body u-text-align-center'>
+    <p class='c-card__body__text u-text-weight-bold u-text-line-clamp-2'><%= link_to artist.title, artist_path(artist) %></p>
   </div>
 </div>

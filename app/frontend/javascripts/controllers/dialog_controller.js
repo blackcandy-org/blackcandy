@@ -12,12 +12,12 @@ export default class extends Controller {
   }
 
   show = () => {
-    document.querySelector('#js-overlay').classList.remove('hidden');
-    this.element.classList.remove('hidden');
+    document.querySelector('#js-overlay').classList.remove('u-display-none');
+    this.element.classList.remove('u-display-none');
   }
 
   hide = () => {
-    document.querySelector('#js-overlay').classList.add('hidden');
-    this.element.classList.add('hidden');
+    document.querySelector('#js-overlay').classList.add('u-display-none');
+    this.element.classList.add('u-display-none');
   }
 }

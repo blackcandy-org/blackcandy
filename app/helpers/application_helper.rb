@@ -5,14 +5,14 @@ module ApplicationHelper
 
   def avatar_tag(user)
     hash = Digest::MD5.hexdigest(user.email)
-    image_tag "https://www.gravatar.com/avatar/#{hash}", class: 'avatar'
+    image_tag "https://www.gravatar.com/avatar/#{hash}", class: 'c-avatar'
   end
 
   def icon_tag(name, options = {})
     return if name.blank?
 
-    size_class = options[:size].blank? ? '' : "icon--#{options[:size]}"
-    icon_class = ['icon', size_class, options[:class]].join(' ')
+    size_class = options[:size].blank? ? '' : "c-icon--#{options[:size]}"
+    icon_class = ['c-icon', size_class, options[:class]].join(' ')
 
     raw "<svg fill='currentColor'
       stroke-width='2'
@@ -30,9 +30,9 @@ module ApplicationHelper
     object.image.send(size).url
   end
 
-  def loader_tag(size: '', expand: false)
-    size_class = size.blank? ? '' : "loader--#{size}"
-    raw "<div class='loader #{size_class} #{'loader--expand' if expand}'></div>"
+  def loader_tag(size: '')
+    size_class = size.blank? ? '' : "c-loader--#{size}"
+    raw "<div class='o-animation-spin c-loader #{size_class}'></div>"
   end
 
   def empty_alert_tag(has_icon: false)

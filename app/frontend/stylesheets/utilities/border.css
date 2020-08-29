@@ -1,0 +1,19 @@
+.u-border-circle {
+  border-radius: 50% !important;
+}
+
+.u-border-shadow {
+  box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 1px rgba(9, 30, 66, 0.31) !important;
+}
+
+.u-border-radius-medium {
+  border-radius: var(--border-radius-medium) !important;
+}
+
+.u-border-radius-small {
+  border-radius: var(--border-radius-small) !important;
+}
+
+.u-border-radius-large {
+  border-radius: var(--border-radius-large) !important;
+}

@@ -1,0 +1,61 @@
+@define-mixin spacing $name, $size {
+  .u-m-$(name) {
+    margin: $size !important;
+  }
+
+  .u-mt-$(name) {
+    margin-top: $size !important;
+  }
+
+  .u-mb-$(name) {
+    margin-bottom: $size !important;
+  }
+
+  .u-ml-$(name) {
+    margin-left: $size !important;
+  }
+
+  .u-mr-$(name) {
+    margin-right: $size !important;
+  }
+
+  .u-mx-$(name) {
+    margin-left: $size !important;
+    margin-right: $size !important;
+  }
+
+  .u-my-$(name) {
+    margin-top: $size !important;
+    margin-bottom: $size !important;
+  }
+
+  .u-p-$(name) {
+    padding: $size !important;
+  }
+
+  .u-pt-$(name) {
+    padding-top: $size !important;
+  }
+
+  .u-pb-$(name) {
+    padding-bottom: $size !important;
+  }
+
+  .u-pl-$(name) {
+    padding-left: $size !important;
+  }
+
+  .u-pr-$(name) {
+    padding-right: $size !important;
+  }
+
+  .u-px-$(name) {
+    padding-left: $size !important;
+    padding-right: $size !important;
+  }
+
+  .u-py-$(name) {
+    padding-top: $size !important;
+    padding-bottom: $size !important;
+  }
+}

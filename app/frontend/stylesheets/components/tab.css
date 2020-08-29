@@ -1,4 +1,4 @@
-.tab {
+.c-tab {
   display: flex;
   justify-content: space-between;
   list-style: none;
@@ -6,24 +6,21 @@
   padding: 0;
 }
 
-.tab__item {
-  padding-bottom: 13px;
+.c-tab__item {
+  padding-bottom: var(--spacing-narrow);
   border-bottom: 2px solid transparent;
 }
 
-.tab__item a {
+.c-tab__item a {
   color: var(--tab-color);
   text-decoration: none;
 }
 
-.tab__item--active a {
+.c-tab__item.is-active a,
+.c-tab__item a:hover {
   color: var(--tab-active-color);
 }
 
-.tab__item a:hover {
-  color: var(--tab-active-color);
-}
-
-.tab__item--active {
+.c-tab__item.is-active {
   border-color: var(--tab-active-color);
 }

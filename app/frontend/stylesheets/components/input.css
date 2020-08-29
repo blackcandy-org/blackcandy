@@ -1,40 +1,32 @@
-.input {
-  display: flex;
-  align-items: center;
-  background: var(--input-bg-color);
-  border-radius: var(--input-border-radius);
-  padding: 0 8px;
-}
-
-.input input {
+input.c-input {
   width: 100%;
   background: var(--input-bg-color);
   border: none;
   color: var(--input-color);
-  padding: 7px 2px;
+  padding: var(--spacing-tiny);
+  border-radius: var(--input-border-radius);
   filter: none;
 }
 
-.input form {
-  width: 100%;
+.c-input-group {
+  display: flex !important;
+  align-items: center;
+  background: var(--input-bg-color);
+  border-radius: var(--input-border-radius);
+  padding: 0 var(--spacing-tiny);
 }
 
-.input__icon {
+.c-input-group input {
+  width: 0 !important;
+  flex-grow: 1;
+}
+
+.c-input-group__icon {
   display: flex;
-  color: var(--input-icon-color);
-  margin-right: 6px;
-}
-
-.input__icon a {
+  align-items: center;
   color: var(--input-icon-color);
 }
 
-.input__icon--right {
-  margin-left: auto;
-  margin-right: 0;
-}
-
-.input .loader {
-  border-color: transparent;
-  border-top-color: var(--input-icon-color);
+.c-input-group__icon a {
+  color: var(--input-icon-color);
 }

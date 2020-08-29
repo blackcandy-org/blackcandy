@@ -1,0 +1,9 @@
+@define-mixin display $responsivePostfix {
+  .u-display-none$(responsivePostfix) {
+    display: none !important;
+  }
+
+  .u-display-block$(responsivePostfix) {
+    display: block !important;
+  }
+}

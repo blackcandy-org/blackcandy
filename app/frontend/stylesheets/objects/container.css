@@ -1,0 +1,36 @@
+.o-container {
+  max-width: 1130px;
+  margin: auto;
+}
+
+.o-container--extra-wide {
+  max-width: 2130px;
+}
+
+.o-container--wide {
+  max-width: 1880px;
+}
+
+.o-container--extra-large {
+  max-width: 1630px;
+}
+
+.o-container--large {
+  max-width: 1380px;
+}
+
+.o-container--small {
+  max-width: 930px;
+}
+
+.o-container--extra-small {
+  max-width: 730px;
+}
+
+.o-container--narrow {
+  max-width: 560px;
+}
+
+.o-container--extra-narrow {
+  max-width: 360px;
+}

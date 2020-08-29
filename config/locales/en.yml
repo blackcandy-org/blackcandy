@@ -53,6 +53,10 @@ en:
     close: 'Close'
     more: 'More'
     appears_on: 'Appears On'
+    name: 'Name'
+    artist: 'Artist'
+    duration: 'Duration'
+    actions: 'Actions'
   error:
     login: 'Wrong email or password'
     media_path_blank: 'Media path is not exist'

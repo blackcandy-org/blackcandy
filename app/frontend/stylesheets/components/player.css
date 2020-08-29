@@ -1,0 +1,47 @@
+.c-player {
+  background: var(--player-bg-color);
+}
+
+.c-player__control {
+  background: var(--player-bg-color);
+  z-index: 100;
+  position: relative;
+}
+
+.c-player__header {
+  transition: max-height 0.2s ease-out;
+  max-height: 0;
+}
+
+.c-player__header.is-expanded {
+  max-height: 200px;
+}
+
+.c-player__progress {
+  display: flex;
+  align-items: center;
+  height: 4px;
+}
+
+.c-player__progress progress {
+  height: 2px;
+  border: 0 none;
+  background: var(--player-progress-bg-color);
+}
+
+.c-player__progress progress::-moz-progress-bar {
+  background: var(--player-progress-color);
+}
+
+.c-player__progress progress::-webkit-progress-bar {
+  background: transparent;
+}
+
+.c-player__progress progress::-webkit-progress-value {
+  background: var(--player-progress-color);
+}
+
+.c-player__progress:hover progress {
+  height: 4px;
+  background: var(--player-progress-hover-bg-color);
+}

@@ -27,7 +27,7 @@ export default class extends Controller {
       if (!entry.intersectionRatio == 1) { return; }
 
       if (!this.hasNextPage) {
-        this.triggerTarget.classList.add('hidden');
+        this.triggerTarget.classList.add('u-display-none');
         return;
       }
 

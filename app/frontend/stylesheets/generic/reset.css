@@ -1,0 +1,45 @@
+blockquote,
+dd,
+dl,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+pre {
+  margin: 0;
+}
+
+button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+ol,
+ul {
+  margin: 0;
+  padding-left: 0;
+}
+
+li > ol,
+li > ul {
+  margin-bottom: 0;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Reset style for turbolinks progress bar */
+.turbolinks-progress-bar {
+  background-color: var(--progress-bar-bg-color);
+}

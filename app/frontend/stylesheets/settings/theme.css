@@ -21,25 +21,28 @@ html {
 
   --link-active-color: var(--purple);
   --gradient-bg-color: linear-gradient(rgb(255, 255, 255, 0.85), rgba(255, 255, 255, 0.65)), linear-gradient(var(--purple), var(--purple));
+  --primary-bg-color: var(--white);
 
   /* Body */
   --body-bg-color: var(--white);
-  --body-color: var(--black);
 
-  /* Layout */
-  --layout-sidebar-bg-color: var(--grey-lightest);
-  --layout-sidebar-input-bg-color: var(--grey-light);
-  --layout-header-bg-color: var(--white);
-  --layout-header-border-color: var(--grey-lighter);
+  /* Text */
+  --text-primary-color: var(--black);
+  --text-secondary-color: var(--black-lighter);
+
+  /* Sidebar */
+  --sidebar-bg-color: var(--grey-lightest);
 
   /* Progress bar */
   --progress-bar-bg-color: var(--purple);
 
   /* Button */
+  --btn-border-radius: var(--border-radius-medium);
   --btn-color: var(--white);
   --btn-primary-bg-color: var(--purple);
 
   /* Flash message */
+  --flash-border-radius: var(--border-radius-medium);
   --flash-success-bg-color: var(--green);
   --flash-error-bg-color: var(--red);
 
@@ -48,62 +51,56 @@ html {
   --tab-active-color: var(--purple);
 
   /* List */
-  --list-color: var(--black-lightest);
-  --list-main-color: var(--black);
   --list-border-color: var(--grey-lighter);
   --list-active-color: var(--purple);
-  --list-border-dark-color: var(--grey-lighter);
+
+  /* Table */
+  --table-border-color: var(--grey-lighter);
+  --table-active-color: var(--purple);
 
   /* Input */
+  --input-border-radius: var(--border-radius-medium);
   --input-bg-color: var(--grey-lighter);
   --input-color: var(--black);
   --input-icon-color: var(--black-lightest);
 
   /* Card */
-  --card-title-color: var(--black);
-  --card-text-color: var(--black-lightest);
+  --card-image-border-radius: var(--border-radius-medium);
 
   /* Loader */
   --loader-bg-color: var(--purple);
 
   /* Dropdown */
+  --dropdown-border-radius: var(--border-radius-medium);
   --dropdown-bg-color: var(--white);
   --dropdown-active-color: var(--grey-light);
   --dropdown-color: var(--black);
+  --dropdown-shadow-color: var(--grey-light);
 
   /* Dialog */
+  --dialog-border-radius: var(--border-radius-medium);
   --dialog-bg-color: var(--white);
   --dialog-header-bg-color: var(--grey-lighter);
   --dialog-header-color: var(--black);
 
   /* Overlay */
-  --overlay-bg-color: var(--black);
+  --overlay-bg-color: var(--grey-lightest);
 
-  /* Line */
-  --line-color: var(--grey-lightest);
+  /* Hr */
+  --hr-color: var(--grey-lightest);
 
-  /* Heading */
-  --heading-text-color: var(--black-lighter);
-  --heading-text-main-color: var(--black);
+  /* Action bar */
+  --action-bar-border-radius: var(--border-radius-medium);
+  --action-bar-bg-color: var(--grey-lighter);
 
-  /* Box */
-  --box-bg-color: var(--white);
-  --box-shadow-color: var(--grey-light);
+  /* Nav */
+  --nav-border-color: var(--grey-light);
 
-  /* Playlist page */
-  --playlist-bg-color: var(--grey-lightest);
-  --playlist-heading-bg-color: var(--grey-lighter);
-  --playlist-nav-border-color: var(--grey-light);
-
-  /* Player page */
+  /* Player */
+  --player-bg-color: var(--grey-lighter);
   --player-progress-bg-color: var(--grey-lighter);
-  --player-progress-hover-bg-color: var(--grey-lighter);
+  --player-progress-hover-bg-color: var(--grey-lightest);
   --player-progress-color: var(--purple);
-  --player-favorite-color: var(--red);
-  --player-color: var(--black-lighter);
-  --player-bg-color: var(--grey-lightest);
-  --player-footer-bg-color: var(--white);
-  --player-timer-color: var(--black-lighter);
 }
 
 /* Dark theme */
@@ -128,16 +125,17 @@ html[data-color-scheme='dark'] {
 
   --link-active-color: var(--purple-light);
   --gradient-bg-color: linear-gradient(rgb(1, 0, 0), rgba(0, 0, 0, 0.75)), linear-gradient(var(--purple-light), var(--purple-light));
+  --primary-bg-color: var(--black-light);
 
   /* Body */
   --body-bg-color: var(--black-light);
-  --body-color: var(--white);
 
-  /* Layout */
-  --layout-sidebar-bg-color: var(--black);
-  --layout-sidebar-input-bg-color: var(--black-lighter);
-  --layout-header-bg-color: var(--black-light);
-  --layout-header-border-color: var(--black-dark);
+  /* Text */
+  --text-primary-color: var(--white);
+  --text-secondary-color: var(--grey-light);
+
+  /* Sidebar */
+  --sidebar-bg-color: var(--black);
 
   /* Progress bar */
   --progress-bar-bg-color: var(--purple);
@@ -155,20 +153,17 @@ html[data-color-scheme='dark'] {
   --tab-active-color: var(--purple-light);
 
   /* List */
-  --list-color: var(--grey);
-  --list-main-color: var(--grey-lighter);
-  --list-border-color: var(--black-light);
+  --list-border-color: var(--black-lighter);
   --list-active-color: var(--purple-light);
-  --list-border-dark-color: var(--black);
+
+  /* Table */
+  --table-border-color: var(--black);
+  --table-active-color: var(--purple-light);
 
   /* Input */
   --input-bg-color: var(--black-lighter);
   --input-color: var(--white);
   --input-icon-color: var(--black);
-
-  /* Card */
-  --card-title-color: var(--grey-lighter);
-  --card-text-color: var(--grey);
 
   /* Loader */
   --loader-bg-color: var(--purple);
@@ -177,6 +172,7 @@ html[data-color-scheme='dark'] {
   --dropdown-bg-color: var(--black-lighter);
   --dropdown-active-color: var(--grey);
   --dropdown-color: var(--white);
+  --dropdown-shadow-color: var(--black-dark);
 
   /* Dialog */
   --dialog-bg-color: var(--black);
@@ -184,31 +180,20 @@ html[data-color-scheme='dark'] {
   --dialog-header-color: var(--black);
 
   /* Overlay */
-  --overlay-bg-color: var(--black-light);
+  --overlay-bg-color: var(--black);
 
-  /* Line */
-  --line-color: var(--black);
+  /* Hr */
+  --hr-color: var(--black);
 
-  /* Heading */
-  --heading-text-color: var(--grey-light);
-  --heading-text-main-color: var(--white);
+  /* Action bar */
+  --action-bar-bg-color: var(--black-light);
 
-  /* Box */
-  --box-bg-color: var(--black-light);
-  --box-shadow-color: var(--black-dark);
+  /* Nav */
+  --nav-border-color: var(--black-dark);
 
-  /* Playlist page */
-  --playlist-bg-color: var(--black);
-  --playlist-heading-bg-color: var(--black-light);
-  --playlist-nav-border-color: var(--black-dark);
-
-  /* Player page */
-  --player-progress-bg-color: var(--black-light);
-  --player-progress-hover-bg-color: var(--black-lighter);
+  /* Player */
+  --player-bg-color: var(--black-dark);
+  --player-progress-bg-color: var(--black-dark);
+  --player-progress-hover-bg-color: var(--black-light);
   --player-progress-color: var(--purple);
-  --player-favorite-color: var(--red);
-  --player-color: var(--grey);
-  --player-bg-color: var(--black);
-  --player-footer-bg-color: var(--black-light);
-  --player-timer-color: var(--grey-lighter);
 }

@@ -32,26 +32,25 @@ export default class extends Controller {
   }
 
   expand() {
-    document.querySelector('#js-sidebar').classList.add('show');
-    document.body.classList.add('noscroll');
+    document.querySelector('#js-sidebar').classList.add('is-expanded');
   }
 
   _setBeforePlayingStatus = () => {
-    this.loaderTarget.classList.remove('hidden');
-    this.songNameTarget.classList.add('hidden');
+    this.loaderTarget.classList.remove('u-display-none');
+    this.songNameTarget.classList.add('u-display-none');
   }
 
   _setPlayingStatus = () => {
     this.songNameTarget.textContent = this.player.currentSong.name;
-    this.loaderTarget.classList.add('hidden');
-    this.songNameTarget.classList.remove('hidden');
-    this.pauseButtonTarget.classList.remove('hidden');
-    this.playButtonTarget.classList.add('hidden');
+    this.loaderTarget.classList.add('u-display-none');
+    this.songNameTarget.classList.remove('u-display-none');
+    this.pauseButtonTarget.classList.remove('u-display-none');
+    this.playButtonTarget.classList.add('u-display-none');
   }
 
   _setPauseStatus = () => {
-    this.pauseButtonTarget.classList.add('hidden');
-    this.playButtonTarget.classList.remove('hidden');
+    this.pauseButtonTarget.classList.add('u-display-none');
+    this.playButtonTarget.classList.remove('u-display-none');
   }
 
   _initPlayer() {

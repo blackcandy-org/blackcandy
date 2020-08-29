@@ -3,6 +3,8 @@
   "rules": {
     "selector-pseudo-element-colon-notation": "single",
     "custom-property-empty-line-before": null,
-    "at-rule-empty-line-before": null
+    "at-rule-empty-line-before": null,
+    "at-rule-no-unknown": [true, { "ignoreAtRules": ["mixin", "define-mixin"] }],
+    "value-keyword-case": ["lower", { "ignoreKeywords": ["BlinkMacSystemFont"] }]
   }
 }

@@ -1,30 +1,35 @@
-.cards {
+.c-card {
+  width: 100%;
+}
+
+.c-card--horizontal {
   display: flex;
-  flex-wrap: wrap;
-  margin: auto;
 }
 
-.cards__item {
-  margin: 0 15px 50px;
+.c-card__image,
+.c-card__image img {
+  border-radius: var(--card-image-border-radius);
 }
 
-.cards__item__body {
-  margin-top: 12px;
+.c-card__body {
+  margin-top: var(--spacing-narrow);
 }
 
-.cards__item__title {
-  display: block;
-  margin: 0 0 6px;
-  font-weight: normal;
-  color: var(--card-title-color);
+.c-card--horizontal .c-card__body {
+  margin-top: 0;
+  margin-left: var(--spacing-medium);
+  flex-grow: 1;
+  width: 0;
 }
 
-.cards__item__text {
-  color: var(--card-text-color);
-  margin: 0;
+.c-card__body__title {
+  margin-bottom: var(--spacing-narrow);
 }
 
-.cards .heading {
-  margin-left: 15px;
-  margin-right: 15px;
+.c-card__body__text {
+  margin-bottom: var(--spacing-tiny);
+}
+
+.c-card__body__text:last-child {
+  margin-bottom: 0;
 }

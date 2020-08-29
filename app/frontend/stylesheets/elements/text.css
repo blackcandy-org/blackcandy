@@ -1,0 +1,10 @@
+h1,
+h2 {
+  font-size: var(--font-size-large);
+  color: var(--text-primary-color);
+}
+
+p {
+  font-size: var(--font-size-medium);
+  color: var(--text-secondary-color);
+}

@@ -29,6 +29,9 @@ export default class extends Controller {
       case 'showPlaylistsDialog':
         this._showPlaylistsDialog(target);
         break;
+      case 'showMenu':
+        this._showMenu(target);
+        break;
       default:
         this._play(target);
     }
@@ -70,7 +73,7 @@ export default class extends Controller {
 
   _showPlayingItem = () => {
     this.itemTargets.forEach((element) => {
-      element.classList.toggle('list__item--active', element.dataset.songId == this.player.currentSong.id);
+      element.classList.toggle('is-active', element.dataset.songId == this.player.currentSong.id);
     });
   }
 
@@ -133,12 +136,19 @@ export default class extends Controller {
     });
   }
 
+  _showMenu(target) {
+    const menuListElement = target.closest('.js-playlist-songs-menu').querySelector('.js-playlist-songs-menu-list');
+
+    menuListElement.classList.remove('u-display-none');
+    App.dismissOnClick(menuListElement);
+  }
+
   _updateCount = (event) => {
     this.countTarget.innerText = event.detail;
   }
 
   _updatePlayAllLink = (event) => {
-    if (this.playAllLinkTarget) {
+    if (this.hasPlayAllLinkTarget) {
       this.playAllLinkTarget.href = event.detail;
     }
   }

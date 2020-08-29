@@ -1,0 +1,37 @@
+@mixin display;
+
+@media (--extra-wide) {
+  @mixin display \@extra-wide;
+}
+
+@media (--wide) {
+  @mixin display \@wide;
+}
+
+@media (--extra-large) {
+  @mixin display \@extra-large;
+}
+
+@media (--large) {
+  @mixin display \@large;
+}
+
+@media (--medium) {
+  @mixin display \@medium;
+}
+
+@media (--small) {
+  @mixin display \@small;
+}
+
+@media (--extra-small) {
+  @mixin display \@extra-small;
+}
+
+@media (--narrow) {
+  @mixin display \@narrow;
+}
+
+@media (--extra-narrow) {
+  @mixin display \@extra-narrow;
+}
