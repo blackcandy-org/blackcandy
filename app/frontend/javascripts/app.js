@@ -26,6 +26,6 @@ export default {
   },
 
   dismissOnClick(element) {
-    document.addEventListener('click', () => { element.classList.add('u-display-none') }, { once: true, capture: true });
+    document.addEventListener('click', () => { element.classList.add('u-display-none'); }, { once: true, capture: true });
   }
 };

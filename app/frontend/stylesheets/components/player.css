@@ -8,6 +8,15 @@
   position: relative;
 }
 
+.c-player__header {
+  transition: max-height 0.2s ease-out;
+  max-height: 0;
+}
+
+.c-player__header.is-expanded {
+  max-height: 200px;
+}
+
 .c-player__progress {
   display: flex;
   align-items: center;

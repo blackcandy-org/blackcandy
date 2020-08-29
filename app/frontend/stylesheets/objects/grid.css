@@ -2,8 +2,8 @@
 
 .o-grid {
   display: grid !important;
-  --grid-tc: repeat(4, 1fr);
   grid-template-columns: var(--grid-tc);
+  --grid-tc: repeat(4, 1fr);
   --grid-cs: 1; /* column start */
   --grid-ce: -1 /* column end */
 }

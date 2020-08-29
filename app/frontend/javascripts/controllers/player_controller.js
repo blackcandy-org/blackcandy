@@ -111,7 +111,7 @@ export default class extends Controller {
   }
 
   _setBeforePlayingStatus = () => {
-    this.headerTarget.classList.remove('u-display-none');
+    this.headerTarget.classList.add('is-expanded');
     this.loaderTarget.classList.remove('u-display-none');
   }
 

@@ -18,6 +18,8 @@
 .c-card--horizontal .c-card__body {
   margin-top: 0;
   margin-left: var(--spacing-medium);
+  flex-grow: 1;
+  width: 0;
 }
 
 .c-card__body__title {
