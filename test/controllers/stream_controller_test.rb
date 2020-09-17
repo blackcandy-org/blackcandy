@@ -16,7 +16,7 @@ class StreamControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should set header for nginx send file' do
-    Setting.media_path = Rails.root.join('test', 'fixtures', 'files')
+    Setting.update(media_path: Rails.root.join('test', 'fixtures', 'files'))
 
     assert_login_access(url: new_stream_url(song_id: songs(:mp3_sample).id)) do
       assert_equal Setting.media_path, @response.get_header('X-Media-Path')

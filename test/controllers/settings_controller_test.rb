@@ -10,7 +10,7 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update global setting' do
-    Setting.discogs_token = 'token'
+    Setting.update(discogs_token: 'token')
 
     assert_admin_access(method: :patch, url: setting_url, params: { setting: { discogs_token: 'updated_token' } }, xhr: true) do
       assert_equal 'updated_token', Setting.discogs_token
@@ -18,7 +18,7 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should sync media when media_path setting updated' do
-    Setting.media_path = 'path'
+    Setting.update(media_path: 'path')
     mock = MiniTest::Mock.new
     mock.expect(:call, true)
 

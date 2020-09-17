@@ -16,7 +16,7 @@ class MediaFileTest < ActiveSupport::TestCase
       fixtures_file_path('various_artists.mp3')
     ]
 
-    Setting.media_path = Rails.root.join('test', 'fixtures', 'files')
+    Setting.update(media_path: Rails.root.join('test', 'fixtures', 'files'))
 
     MediaFile.file_paths.each do |file_path|
       assert_includes expect_file_paths, file_path
@@ -24,13 +24,13 @@ class MediaFileTest < ActiveSupport::TestCase
   end
 
   test 'should ignore not supported files under media_path' do
-    Setting.media_path = Rails.root.join('test', 'fixtures', 'files')
+    Setting.update(media_path: Rails.root.join('test', 'fixtures', 'files'))
 
     assert_not_includes MediaFile.file_paths, fixtures_file_path('not_supported_file.txt')
   end
 
   test 'should raise error when media_path is not exist' do
-    Setting.media_path = '/not_exist'
+    Setting.update(media_path: '/not_exist')
 
     assert_raises BlackCandyError::InvalidFilePath  do
       MediaFile.file_paths
