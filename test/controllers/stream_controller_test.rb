@@ -3,6 +3,10 @@
 require 'test_helper'
 
 class StreamControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    Setting.update(media_path: Rails.root.join('test', 'fixtures', 'files'))
+  end
+
   test 'should get new stream' do
     assert_login_access(url: new_stream_url(song_id: songs(:mp3_sample).id)) do
       assert_response :success
@@ -16,8 +20,6 @@ class StreamControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should set header for nginx send file' do
-    Setting.update(media_path: Rails.root.join('test', 'fixtures', 'files'))
-
     assert_login_access(url: new_stream_url(song_id: songs(:mp3_sample).id)) do
       assert_equal Setting.media_path, @response.get_header('X-Media-Path')
       assert_equal '/private_media/artist1_album2.mp3', @response.get_header('X-Accel-Redirect')
