@@ -3,6 +3,10 @@
 require 'test_helper'
 
 class TranscodedStreamControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    Setting.update(media_path: Rails.root.join('test', 'fixtures', 'files'))
+  end
+
   test 'should get new stream for transcode format' do
     assert_login_access(url: new_transcoded_stream_url(song_id: songs(:flac_sample).id)) do
       assert_response :success

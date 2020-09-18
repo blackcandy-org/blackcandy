@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_21_071945) do
+ActiveRecord::Schema.define(version: 2020_09_15_090637) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
 
@@ -52,13 +53,9 @@ ActiveRecord::Schema.define(version: 2020_07_21_071945) do
   end
 
   create_table "settings", force: :cascade do |t|
-    t.string "var", null: false
-    t.text "value"
-    t.integer "thing_id"
-    t.string "thing_type", limit: 30
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["thing_type", "thing_id", "var"], name: "index_settings_on_thing_type_and_thing_id_and_var", unique: true
+    t.hstore "values"
+    t.integer "singleton_guard"
+    t.index ["singleton_guard"], name: "index_settings_on_singleton_guard", unique: true
   end
 
   create_table "songs", force: :cascade do |t|
@@ -82,6 +79,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_071945) do
     t.boolean "is_admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.hstore "settings"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

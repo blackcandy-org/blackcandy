@@ -4,7 +4,7 @@ require 'test_helper'
 
 class DiscogsApiTest < ActiveSupport::TestCase
   setup do
-    Setting.discogs_token = 'fake_token'
+    Setting.update(discogs_token: 'fake_token')
     @api_response = { results: [{ cover_image: 'image_url' }] }
   end
 

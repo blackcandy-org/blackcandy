@@ -6,7 +6,7 @@ class MediaTest < ActiveSupport::TestCase
   setup do
     clear_media_data
 
-    Setting.media_path = Rails.root.join('test', 'fixtures', 'files')
+    Setting.update(media_path: Rails.root.join('test', 'fixtures', 'files'))
     Media.sync
   end
 
@@ -63,7 +63,7 @@ class MediaTest < ActiveSupport::TestCase
 
   test 'should clear records on database when delete file' do
     create_tmp_dir(from: Setting.media_path) do |tmp_dir|
-      Setting.media_path = tmp_dir
+      Setting.update(media_path: tmp_dir)
 
       File.delete File.join(tmp_dir, 'artist2_album3.ogg')
       File.delete File.join(tmp_dir, 'artist2_album3.wav')

@@ -34,7 +34,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update user' do
     current_user = users(:visitor1)
-    user_params = { user: { email: 'visitor_updated@blackcandy.com', password: 'foobar' } }
+    user_params = { user: { email: 'visitor_updated@blackcandy.com' } }
 
     assert_self_or_admin_access(user: current_user, method: :patch, url: user_url(current_user), params: user_params, xhr: true) do
       assert_equal 'visitor_updated@blackcandy.com', current_user.reload.email

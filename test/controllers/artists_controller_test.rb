@@ -16,7 +16,7 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should call artist image attach job when show artist unless artist do not need attach' do
-    Setting.discogs_token = 'fake_token'
+    Setting.update(discogs_token: 'fake_token')
     artist = artists(:artist1)
     mock = MiniTest::Mock.new
     mock.expect(:call, true, [artist.id])

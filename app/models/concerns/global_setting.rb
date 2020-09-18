@@ -5,32 +5,30 @@ module GlobalSetting
 
   included do
     AVAILABLE_SETTINGS = []
-    FORCE_STRING_SETTINGS = []
 
-    singleton_class.prepend(PrependClassMethods)
+    # Ensures only one Settings row is created
+    validates_inclusion_of :singleton_guard, in: [0]
   end
 
   class_methods do
-    def fields_force_to_string(*keys)
-      FORCE_STRING_SETTINGS.push(*keys)
-      singleton_class.prepend(ForceStringMethods)
+    def instance
+      first_or_create!(singleton_guard: 0)
     end
-  end
 
-  module ForceStringMethods
-    def self.prepended(base)
-      # Overwrite setting read method let method force return to a string
-      FORCE_STRING_SETTINGS.each do |key|
-        define_method(key) { super().to_s }
+    def update(attributes)
+      instance.update(attributes)
+    end
+
+    def has_settings(*settings)
+      AVAILABLE_SETTINGS.push(*settings)
+
+      store_accessor :values, *settings
+
+      settings.each do |setting|
+        define_singleton_method(setting) do
+          instance.send(setting) || ENV[setting.to_s.upcase]
+        end
       end
-    end
-  end
-
-  module PrependClassMethods
-    # Overwrite field method on setting to track available settings
-    def field(key, **opts)
-      AVAILABLE_SETTINGS.push(key)
-      super(key, **opts)
     end
   end
 end

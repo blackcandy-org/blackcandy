@@ -34,7 +34,7 @@ class SettingsController < ApplicationController
       user = User.find(params[:user_id])
       raise BlackCandyError::Forbidden unless user == Current.user
 
-      user.update_settings(user_setting_params)
+      user.update(user_setting_params)
     end
 
     def setting_params

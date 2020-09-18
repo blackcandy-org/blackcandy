@@ -10,7 +10,6 @@ class User < ApplicationRecord
   after_create :create_buildin_playlists
 
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
-  validates :password, length: { minimum: 6 }
 
   has_many :playlists, -> { where(type: nil) }, dependent: :destroy
   has_one :current_playlist, dependent: :destroy
@@ -18,7 +17,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  scoped_field :theme, default: DEFAULT_THEME, available_options: AVAILABLE_THEME_OPTIONS
+  has_setting :theme, default: DEFAULT_THEME, available_options: AVAILABLE_THEME_OPTIONS
 
   def update_settings(settings)
     settings.each do |key, value|

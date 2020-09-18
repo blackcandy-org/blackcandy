@@ -4,28 +4,21 @@ module ScopedSetting
   extend ActiveSupport::Concern
 
   included do
-    has_many :settings, as: :thing
     AVAILABLE_SETTINGS = []
   end
 
   class_methods do
-    def scoped_field(name, default: nil, available_options: nil)
-      AVAILABLE_SETTINGS.push(name)
+    def has_setting(setting, default: nil, available_options: nil)
+      AVAILABLE_SETTINGS.push(setting)
 
-      define_method(name) do
-        setting = settings.where(var: name).take || settings.new(var: name, value: default)
-        setting.value
+      store_accessor :settings, setting
+
+      if available_options
+        validates_inclusion_of setting, in: available_options
       end
 
-      define_method("#{name}=") do |value|
-        setting = settings.where(var: name).take || settings.new(var: name)
-
-        if available_options.blank? || available_options&.include?(value)
-          setting.value = value
-          setting.save!
-        end
-
-        value
+      define_method(setting) do
+        super() || default
       end
     end
   end

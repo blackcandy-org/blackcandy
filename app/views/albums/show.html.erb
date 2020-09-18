@@ -18,7 +18,12 @@
     <ul class='c-list' data-action='click->playlist-songs#actionHandler'>
       <% @songs.each do |song| %>
         <li class='c-list__item o-flex o-flex--justify-between u-cursor-pointer' data-target='playlist-songs.item' data-song-id='<%= song.id %>' data-playlist-songs-action='play'>
-          <%= song.name %>
+          <div>
+            <h4 class='u-mb-tiny u-text-weight-normal'><%= song.name %></h4>
+            <% if @album.artist.is_various? %>
+              <%= song.artist.title %>
+            <% end %>
+          </div>
           <div class='o-flex o-flex--align-center'>
             <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.length) %></div>
             <div data-playlist-songs-action='showPlaylistsDialog'>

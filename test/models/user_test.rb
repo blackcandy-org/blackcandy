@@ -25,10 +25,6 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-  test 'the length of password should more than 6' do
-    assert_not new_user(email: 'test1@test.com', password: 'foo').valid?
-  end
-
   test 'should downcase email when create' do
     assert_equal 'test1@test.com', User.create(email: 'TEST1@test.com', password: 'foobar').email
   end
