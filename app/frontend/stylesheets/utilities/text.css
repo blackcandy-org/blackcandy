@@ -8,6 +8,10 @@
   font-weight: bold !important;
 }
 
+.u-text-weight-normal {
+  font-weight: normal !important;
+}
+
 .u-text-color-primary {
   color: var(--text-primary-color) !important;
 }

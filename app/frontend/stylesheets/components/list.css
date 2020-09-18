@@ -14,7 +14,7 @@
   border-bottom: none;
 }
 
-.c-list__item:hover,
-.c-list__item.is-active {
+.c-list__item:hover *,
+.c-list__item.is-active * {
   color: var(--list-active-color);
 }
