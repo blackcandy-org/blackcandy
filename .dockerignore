@@ -29,3 +29,8 @@ docker-compose.yml
 .stylelintrc
 .travis.yml
 Makefile
+.envrc
+/.direnv
+/.gems
+/.pg_data
+/.redis_data

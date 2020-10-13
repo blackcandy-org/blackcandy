@@ -25,7 +25,7 @@ env:
 before_install:
   - nvm install 12.15.0
   - sudo apt-get update
-  - sudo apt-get -y install imagemagick libtag1-dev ffmpeg
+  - sudo apt-get -y install imagemagick ffmpeg
   - yarn install
 
 before_script:
