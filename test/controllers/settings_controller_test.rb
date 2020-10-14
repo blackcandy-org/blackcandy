@@ -29,15 +29,4 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
       end
     end
   end
-
-  test 'should update user settings' do
-    current_user = users(:visitor1)
-    setting_params = { setting: { theme: 'light' } }
-
-    assert_equal 'dark', current_user.theme
-
-    assert_self_access(user: current_user, method: :patch, url: user_settings_url(current_user), params: setting_params, xhr: true) do
-      assert_equal 'light', current_user.reload.theme
-    end
-  end
 end

@@ -1,2 +1,12 @@
-App.renderContent('#js-user-form', '<%= j(render 'form') %>');
 <%= render_flash %>
+
+<% if !(params[:user].keys.map(&:to_sym) & User::AVAILABLE_SETTINGS).empty? # If user settings updated %>
+  App.renderContent('#js-user-settings', '<%= j(render partial: 'settings', locals: { user: @user }) %>');
+
+  if ('<%= @user.theme %>' != document.body.dataset.themeName) {
+    document.body.dataset.themeName = '<%= @user.theme %>'
+    App.dispatchEvent('body', 'theme:update');
+  }
+<% else %>
+  App.renderContent('#js-user-form', '<%= j(render 'form') %>');
+<% end %>
