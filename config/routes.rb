@@ -13,10 +13,7 @@ Rails.application.routes.draw do
   resources :transcoded_stream, only: [:new]
   resources :songs, only: [:index, :show]
   resources :albums, only: [:index, :show]
-
-  resources :users, except: [:show] do
-    resource :settings, only: [:update]
-  end
+  resources :users, except: [:show]
 
   resources :playlists, except: [:show, :new, :edit] do
     resource :songs, only: [:show, :create, :destroy], module: 'playlists'

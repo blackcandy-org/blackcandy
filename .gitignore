@@ -36,3 +36,8 @@
 *.swp
 yarn-debug.log*
 .yarn-integrity
+.envrc
+/.direnv
+/.gems
+/.pg_data
+/.redis_data

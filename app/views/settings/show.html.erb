@@ -1,3 +1,8 @@
-<div id='js-setting-form' class='o-container o-container--extra-narrow' data-controller='ajax' data-ajax-loader='#js-global-loader'>
-  <%= render 'form' %>
+<div class='o-container o-container--extra-narrow' data-controller='ajax' data-ajax-loader='#js-global-loader'>
+  <div id='js-user-settings'>
+    <%= render partial: 'users/settings', locals: { user: @user } %>
+  </div>
+  <div id='js-global-settings'>
+    <%= render 'form' %>
+  </div>
 </div>

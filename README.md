@@ -78,31 +78,55 @@ $ docker-compose restart
 
 ## Development
 
+### Requirements
+
+- Ruby 2.6
+- Postgres 11
+- Redis 6.0 
+- Nodejs 12
+- Yarn 1.22
+- Imagemagick 7
+- ffmpeg 4.3
+
+You can use [nix](https://nixos.org) to setup dev environment easily. 
+
 ```shell
-# Clone the repo
+# First, install nix. You can check out the nix doc for more details.
+$ curl -L https://nixos.org/nix/install | sh
+
+# Then clone the repo.
 $ git clone https://github.com/aidewoode/black_candy.git
 
-# Setup development environment
-$ make dev_setup
+# Change to the directory.
+$ cd black_candy
 
-# Runing development server
-$ make dev_run
+# Go into nix shell, the nix shell will auto setup all dev requirements you need.
+$ nix-shell 
 
-# Stop development server
-$ make dev_stop
+# Install foreman.
+$ gem install foreman 
 
-# Into development shell
-$ make dev_shell
+# Install requirement gems.
+$ bundle
+
+# Install npm packages.
+$ yarn
+
+# Setup database.
+$ rails db:setup
+
+# Finally, start all services.
+$ foreman start -f Procfile.dev 
 ```
 
 ## Test
 
 ```shell
 # Runing test
-$ make test_run
+$ rails test RAILS_ENV=test 
 
 # Runing lint
-$ make lint_run
+$ rails lint:all 
 ```
 
 ## Integrations

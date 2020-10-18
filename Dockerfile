@@ -1,6 +1,10 @@
-FROM ruby:2.6.6-alpine AS base
+FROM ruby:2.6.6-alpine
 
 ENV LANG C.UTF-8
+
+ENV RAILS_ENV production
+
+ENV NODE_ENV production
 
 LABEL maintainer="Aidewoode@github.com/aidewoode"
 
@@ -11,18 +15,10 @@ RUN apk add --no-cache \
   nodejs \
   yarn \
   imagemagick \
-  ffmpeg
+  ffmpeg \
+  nginx
 
 WORKDIR /app
-
-FROM base AS dev
-
-RUN apk add --no-cache build-base
-
-FROM base AS production
-
-ENV RAILS_ENV production
-ENV NODE_ENV production
 
 ADD . /app
 
@@ -36,8 +32,7 @@ RUN bundle exec rails assets:precompile SECRET_KEY_BASE=fake_secure_for_compile 
   && yarn cache clean \
   && rm -rf node_modules tmp/cache/* /tmp/*
 
-RUN apk add --no-cache nginx \
-  && cp config/nginx/nginx.conf /etc/nginx/nginx.conf
+RUN cp config/nginx/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 3000
 

@@ -4,7 +4,7 @@
   "dependencies": {
     "@rails/ujs": "^6.0.1",
     "@rails/webpacker": "^5.1.1",
-    "howler": "^2.1.2",
+    "howler": "^2.2.0",
     "stimulus": "^1.1.0",
     "turbolinks": "^5.2.0"
   },

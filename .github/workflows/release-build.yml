@@ -45,4 +45,3 @@ jobs:
          password: ${{ secrets.DOCKER_PASSWORD }}
          repository: blackcandy/blackcandy
          tags: ${{ env.VERSION }}, latest
-         target: production

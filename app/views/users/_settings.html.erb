@@ -1,0 +1,15 @@
+<h2 class='u-mb-medium'><%= t('text.personal') %></h2>
+<%= form_with model: user, method: :put, class: 'c-form' do |form| %>
+  <div class='c-form__field'>
+    <%= form.label :theme %>
+    <% User::AVAILABLE_THEME_OPTIONS.each do |option| %>
+      <div class='c-form__radio'>
+        <%= form.radio_button(:theme, option, checked: user.theme == option) %>
+        <%= form.label("theme_#{option}", option) %>
+      </div>
+    <% end %>
+  </div>
+  <div class='c-form__field c-form__field--submit'>
+    <%= form.submit t('label.save'), class: 'c-button c-button--primary c-button--full-width' %>
+  </div>
+<% end %>
