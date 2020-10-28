@@ -13,11 +13,11 @@
 }
 
 .u-text-color-primary {
-  color: var(--text-primary-color) !important;
+  color: rgb(var(--text-primary-color)) !important;
 }
 
 .u-text-color-red {
-  color: var(--red) !important;
+  color: rgb(var(--red)) !important;
 }
 
 .u-text-monospace {

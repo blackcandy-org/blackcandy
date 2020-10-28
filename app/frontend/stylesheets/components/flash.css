@@ -19,11 +19,11 @@
 }
 
 .c-flash__body--error {
-  background-color: var(--flash-error-bg-color);
-  color: var(--white);
+  background-color: rgb(var(--flash-error-bg-color));
+  color: rgb(var(--white));
 }
 
 .c-flash__body--success {
-  background-color: var(--flash-success-bg-color);
-  color: var(--white);
+  background-color: rgb(var(--flash-success-bg-color));
+  color: rgb(var(--white));
 }

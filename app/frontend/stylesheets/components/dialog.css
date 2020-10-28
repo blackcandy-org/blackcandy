@@ -4,14 +4,14 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: var(--dialog-bg-color);
+  background: rgb(var(--dialog-bg-color));
   border-radius: var(--dialog-border-radius);
 }
 
 .c-dialog__header {
   padding: var(--spacing-narrow) var(--spacing-small);
-  background: var(--dialog-header-bg-color);
-  color: var(--dialog-header-color);
+  background: rgb(var(--dialog-header-bg-color));
+  color: rgb(var(--dialog-header-color));
   border-top-left-radius: var(--dialog-border-radius);
   border-top-right-radius: var(--dialog-border-radius);
 }

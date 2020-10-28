@@ -1,15 +1,18 @@
 <div class='c-player u-h-100' data-controller='player'>
   <div data-target='player.header' class='c-player__header u-position-relative'>
-    <div class='c-card c-card--horizontal u-p-medium'>
-      <img data-target='player.image' class='c-card__image u-image-small' />
-      <div class='c-card__body'>
-        <h1 class='c-card__body__title u-text-truncate' data-target='player.songName'></h1>
-        <p class='c-card__body__text u-text-truncate' data-target='player.albumName'></p>
-        <p class='c-card__body__text u-text-truncate' data-target='player.artistName'></p>
-        <div class='c-card__body__text u-text-monospace u-mt-narrow'>
-          <span class='u-text-color-primary' data-target='player.songTimer'></span>
-          <span class='u-mx-narrow'>/</span>
-          <span data-target='player.songDuration'></span>
+    <div class='u-position-relative u-overflow-hidden'>
+      <div class='c-player__header__background' data-target='player.backgroundImage'></div>
+      <div class='c-player__header__content c-card c-card--horizontal u-p-medium u-position-relative'>
+        <img data-target='player.image' class='c-card__image u-image-small' />
+        <div class='c-card__body'>
+          <h1 class='c-card__body__title u-text-truncate' data-target='player.songName'></h1>
+          <p class='c-card__body__text u-text-truncate' data-target='player.albumName'></p>
+          <p class='c-card__body__text u-text-truncate' data-target='player.artistName'></p>
+          <div class='c-card__body__text u-text-monospace u-mt-narrow'>
+            <span class='u-text-color-primary' data-target='player.songTimer'></span>
+            <span class='u-mx-narrow'>/</span>
+            <span data-target='player.songDuration'></span>
+          </div>
         </div>
       </div>
     </div>

@@ -1,26 +1,26 @@
 /* Light theme */
 html {
   /* Colors */
-  --purple-dark: #361e40;
-  --purple: #77428d;
-  --purple-light: #a15abf;
+  --purple-dark: 54, 30, 64;
+  --purple: 119, 66, 141;
+  --purple-light: 161, 90, 191;
 
-  --black: #121212;
-  --black-light: #3b3b3b;
-  --black-lighter: #595959;
-  --black-lightest: #8c8c8c;
+  --black: 18, 18, 18;
+  --black-light: 59, 59, 59;
+  --black-lighter: 89, 89, 89;
+  --black-lightest: 140, 140, 140;
 
-  --grey: #a6a6a6;
-  --grey-light: #bfbfbf;
-  --grey-lighter: #d9d9d9;
-  --grey-lightest: #ededed;
+  --grey: 166, 166, 166;
+  --grey-light: 191, 191, 191;
+  --grey-lighter: 217, 217, 217;
+  --grey-lightest: 237, 237, 237;
 
-  --white: #fffffb;
-  --red: #a61637;
-  --green: #23a650;
+  --white: 255, 255, 251;
+  --red: 166, 22, 55;
+  --green: 35, 166, 80;
 
   --link-active-color: var(--purple);
-  --gradient-bg-color: linear-gradient(rgb(255, 255, 255, 0.85), rgba(255, 255, 255, 0.65)), linear-gradient(var(--purple), var(--purple));
+  --gradient-bg-color: linear-gradient(rgba(var(--white), 0.85), rgba(var(--white), 0.65)), linear-gradient(rgb(var(--purple)), rgb(var(--purple)));
   --primary-bg-color: var(--white);
 
   /* Body */
@@ -106,25 +106,25 @@ html {
 /* Dark theme */
 html[data-color-scheme='dark'] {
   /* Colors */
-  --purple-dark: #361e40;
-  --purple: #77428d;
-  --purple-light: #a15abf;
+  --purple-dark: 54, 30, 64;
+  --purple: 119, 66, 141;
+  --purple-light: 161, 90, 191;
 
-  --black-dark: #000;
-  --black: #121212;
-  --black-light: #212121;
-  --black-lighter: #3b3b3b;
+  --black-dark: 0, 0, 0;
+  --black: 18, 18, 18;
+  --black-light: 33, 33, 33;
+  --black-lighter: 59, 59, 59;
 
-  --grey: #8c8c8c;
-  --grey-light: #bfbfbf;
-  --grey-lighter: #ededed;
+  --grey: 140, 140, 140;
+  --grey-light: 191, 191, 191;
+  --grey-lighter: 237, 237, 237;
 
-  --white: #fffffb;
-  --red: #a61637;
-  --green: #23a650;
+  --white: 255, 255, 251;
+  --red: 166, 22, 55;
+  --green: 35, 166, 80;
 
   --link-active-color: var(--purple-light);
-  --gradient-bg-color: linear-gradient(rgb(1, 0, 0), rgba(0, 0, 0, 0.75)), linear-gradient(var(--purple-light), var(--purple-light));
+  --gradient-bg-color: linear-gradient(rgb(var(--black-dark)), rgba(var(--black-dark), 0.75)), linear-gradient(rgb(var(--purple-light)), rgb(var(--purple-light)));
   --primary-bg-color: var(--black-light);
 
   /* Body */

@@ -1,8 +1,8 @@
 input.c-input {
   width: 100%;
-  background: var(--input-bg-color);
+  background: rgb(var(--input-bg-color));
   border: none;
-  color: var(--input-color);
+  color: rgb(var(--input-color));
   padding: var(--spacing-tiny);
   border-radius: var(--input-border-radius);
   filter: none;
@@ -11,7 +11,7 @@ input.c-input {
 .c-input-group {
   display: flex !important;
   align-items: center;
-  background: var(--input-bg-color);
+  background: rgb(var(--input-bg-color));
   border-radius: var(--input-border-radius);
   padding: 0 var(--spacing-tiny);
 }
@@ -24,9 +24,9 @@ input.c-input {
 .c-input-group__icon {
   display: flex;
   align-items: center;
-  color: var(--input-icon-color);
+  color: rgb(var(--input-icon-color));
 }
 
 .c-input-group__icon a {
-  color: var(--input-icon-color);
+  color: rgb(var(--input-icon-color));
 }

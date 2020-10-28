@@ -3,7 +3,7 @@
   border-radius: var(--btn-border-radius);
   border: none;
   padding: var(--spacing-tiny) var(--spacing-narrow);
-  color: var(--btn-color);
+  color: rgb(var(--btn-color));
   cursor: pointer;
 }
 
@@ -12,11 +12,11 @@
 }
 
 a.c-button:hover {
-  color: var(--btn-color);
+  color: rgb(var(--btn-color));
 }
 
 .c-button--primary {
-  background: var(--btn-primary-bg-color);
+  background: rgb(var(--btn-primary-bg-color));
 }
 
 .c-button--small {
