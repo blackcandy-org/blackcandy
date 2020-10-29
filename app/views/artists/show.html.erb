@@ -1,8 +1,6 @@
 <div class='o-container o-container--wide'>
   <%= render partial: 'info', locals: { artist: @artist} %>
 
-  <hr />
-
   <%= render partial: 'albums', locals: {
     title: t('label.albums'),
     albums: @albums,

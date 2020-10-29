@@ -1,6 +1,15 @@
 <% cache artist do %>
-  <div class='u-text-align-center'>
-    <%= image_tag image_url_for(artist), class: 'u-border-circle u-image-large' %>
-    <h1 class='u-mt-narrow'><%= artist.title %></h1>
+  <div class='o-grid o-grid--gap-medium u-pb-wide' cols@narrow='2' cols@extra-small='3' cols@small='2' cols@medium='3' cols@large='4' cols@extra-large='5' cols@wide='6' cols@extra-wide='7'>
+    <div class='o-grid__item c-card u-mb-medium'>
+      <%= image_tag image_url_for(artist), class: 'u-image-fluid c-card__image' %>
+    </div>
+    <div class='o-grid__item'>
+      <h1 class='u-mb-narrow'><%= artist.title %></h1>
+      <p>
+        <span><%= artist.all_albums.size %> <%= t('label.albums') %></span>
+        <span>,</span>
+        <span><%= artist.songs.size %> <%= t('label.songs')%></span>
+      </p>
+    </div>
   </div>
 <% end %>

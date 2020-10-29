@@ -11,6 +11,7 @@
 .c-player__header {
   transition: max-height 0.2s ease-out;
   max-height: 0;
+  visibility: hidden;
 }
 
 .c-player__header__content {
@@ -31,6 +32,7 @@
 
 .c-player__header.is-expanded {
   max-height: 200px;
+  visibility: visible;
 }
 
 .c-player__progress {

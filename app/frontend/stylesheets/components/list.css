@@ -10,6 +10,10 @@
   border-bottom: 1px solid rgb(var(--list-border-color));
 }
 
+.c-list--border-none .c-list__item {
+  border-bottom: none;
+}
+
 .c-list__item:last-child {
   border-bottom: none;
 }

@@ -95,6 +95,7 @@ html {
 
   /* Nav */
   --nav-border-color: var(--grey-light);
+  --nav-primary-bg-color: var(--white);
 
   /* Player */
   --player-bg-color: var(--grey-lighter);
@@ -190,6 +191,7 @@ html[data-color-scheme='dark'] {
 
   /* Nav */
   --nav-border-color: var(--black-dark);
+  --nav-primary-bg-color: var(--black-light);
 
   /* Player */
   --player-bg-color: var(--black-dark);

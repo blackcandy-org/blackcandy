@@ -1,3 +1,13 @@
 .u-position-relative {
   position: relative !important;
 }
+
+.u-position-sticky-top {
+  position: sticky !important;
+  top: 0;
+}
+
+.u-position-sticky-bottom {
+  position: sticky !important;
+  bottom: 0;
+}

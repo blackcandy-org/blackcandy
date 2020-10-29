@@ -1,13 +1,15 @@
-<header class='c-nav o-grid o-grid--align-items-center u-position-relative' cols='7'>
-  <div id='js-flash' class='c-flash'>
-    <%= render 'shared/flash' %>
-  </div>
-  <%= render 'shared/search_bar' %>
-  <%= render 'shared/nav_bar' %>
-</header>
-<main class='o-flex__item o-flex__item--grow-1 u-h-0 u-overflow-auto u-p-large u-position-relative'>
-  <%= yield %>
-</main>
-<footer class='u-display-none u-display-block@extra-small'>
-  <%= render 'shared/mini_player' %>
-</footer>
+<div>
+  <header class='c-nav c-nav--primary o-grid o-grid--align-items-center u-position-sticky-top' cols='7'>
+    <div id='js-flash' class='c-flash'>
+      <%= render 'shared/flash' %>
+    </div>
+    <%= render 'shared/search_bar' %>
+    <%= render 'shared/nav_bar' %>
+  </header>
+  <main class='u-p-large'>
+    <%= yield %>
+  </main>
+  <footer class='u-display-none u-display-block@extra-small u-position-sticky-bottom'>
+    <%= render 'shared/mini_player' %>
+  </footer>
+</div>
