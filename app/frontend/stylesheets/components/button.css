@@ -19,6 +19,11 @@ a.c-button:hover {
   background: rgb(var(--btn-primary-bg-color));
 }
 
+.c-button--secondary {
+  background: rgba(var(--btn-primary-bg-color), 0.25);
+  color: rgb(var(--btn-secondary-color));
+}
+
 .c-button--small {
   padding: var(--spacing-tiny);
 }

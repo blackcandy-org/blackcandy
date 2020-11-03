@@ -57,6 +57,7 @@ en:
     artist: 'Artist'
     duration: 'Duration'
     actions: 'Actions'
+    edit: 'Edit'
   error:
     login: 'Wrong email or password'
     media_path_blank: 'Media path is not exist'
@@ -96,3 +97,7 @@ en:
     collapse_player: 'Collapse player'
     personal: 'Personal'
     see_all: 'See All'
+    edit_album: 'Edit Album'
+    edit_artist: 'Edit Artist'
+    album_cover: 'Album cover'
+    artist_cover: 'Artist cover'

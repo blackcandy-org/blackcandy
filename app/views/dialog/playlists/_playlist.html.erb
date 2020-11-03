@@ -1,3 +1,1 @@
-<li class='c-list__item u-cursor-pointer' data-playlist-id='<%= playlist.id %>'>
-  <%= playlist.name %>
-</li>
+<%= link_to playlist.name, playlist_songs_path(playlist, song_ids: [params[:song_id]]), method: :post, remote: true, class: 'c-list__item' %>

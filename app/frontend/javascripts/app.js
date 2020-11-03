@@ -27,5 +27,11 @@ export default {
 
   dismissOnClick(element) {
     document.addEventListener('click', () => { element.classList.add('u-display-none'); }, { once: true, capture: true });
+  },
+
+  renderToDialog(dialogTitle, content) {
+    this.renderContent('#js-dialog-content', content);
+    this.dispatchEvent('#js-dialog', 'dialog:updateTitle', dialogTitle);
+    this.dispatchEvent('#js-dialog', 'dialog:show');
   }
 };

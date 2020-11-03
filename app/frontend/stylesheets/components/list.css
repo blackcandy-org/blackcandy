@@ -5,6 +5,8 @@
 }
 
 .c-list__item {
+  display: inline-block;
+  width: 100%;
   padding: var(--spacing-narrow) 0;
   text-decoration: none;
   border-bottom: 1px solid rgb(var(--list-border-color));

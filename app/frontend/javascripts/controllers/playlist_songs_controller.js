@@ -26,14 +26,14 @@ export default class extends Controller {
       case 'delete':
         this._deleteSong(target);
         break;
-      case 'showPlaylistsDialog':
-        this._showPlaylistsDialog(target);
-        break;
       case 'showMenu':
         this._showMenu(target);
         break;
-      default:
+      case 'play':
         this._play(target);
+        break;
+      case 'none':
+        break;
     }
   }
 
@@ -52,21 +52,6 @@ export default class extends Controller {
           this.player.playlist.update([]);
           this.player.stop();
         }
-      }
-    });
-  }
-
-  add({ target }) {
-    const { playlistId } = target.closest('[data-playlist-id]').dataset;
-
-    App.dispatchEvent('#js-dialog-loader', 'loader:show');
-
-    ajax({
-      url: `/playlists/${playlistId}/songs`,
-      type: 'post',
-      data: `song_ids[]=${this.player.selectedSongId}`,
-      success: () => {
-        App.dispatchEvent('#js-dialog', 'dialog:hide');
       }
     });
   }
@@ -115,23 +100,6 @@ export default class extends Controller {
         if (playlistItemElement) {
           playlistItemElement.remove();
         }
-      }
-    });
-  }
-
-  _showPlaylistsDialog(target) {
-    const { songId } = target.closest('[data-song-id]').dataset;
-    this.player.selectedSongId = songId;
-
-    App.dispatchEvent('#js-dialog', 'dialog:show');
-    App.dispatchEvent('#js-dialog-loader', 'loader:show');
-
-    ajax({
-      url: '/dialog/playlists',
-      type: 'get',
-      dataType: 'script',
-      success: () => {
-        App.dispatchEvent('#js-dialog-loader', 'loader:hide');
       }
     });
   }

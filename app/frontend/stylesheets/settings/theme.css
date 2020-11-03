@@ -40,6 +40,7 @@ html {
   --btn-border-radius: var(--border-radius-medium);
   --btn-color: var(--white);
   --btn-primary-bg-color: var(--purple);
+  --btn-secondary-color: var(--purple-light);
 
   /* Flash message */
   --flash-border-radius: var(--border-radius-medium);
@@ -144,6 +145,7 @@ html[data-color-scheme='dark'] {
   /* Button */
   --btn-color: var(--white);
   --btn-primary-bg-color: var(--purple);
+  --btn-secondary-color: var(--purple-light);
 
   /* Flash message */
   --flash-success-bg-color: var(--green);
@@ -181,7 +183,7 @@ html[data-color-scheme='dark'] {
   --dialog-header-color: var(--black);
 
   /* Overlay */
-  --overlay-bg-color: var(--black);
+  --overlay-bg-color: var(--black-light);
 
   /* Hr */
   --hr-color: var(--black);

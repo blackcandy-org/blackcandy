@@ -12,6 +12,7 @@
         </div>
         <div class='u-mt-large'>
           <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @album.song_ids ), method: :put, remote: true, class: 'c-button c-button--primary' %>
+          <%= link_to t('label.edit'), edit_album_path(@album), remote: true, class: 'c-button c-button--secondary u-ml-small' if is_admin? %>
         </div>
       </div>
     </div>
@@ -26,9 +27,9 @@
           </div>
           <div class='o-flex o-flex--align-center'>
             <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.length) %></div>
-            <div data-playlist-songs-action='showPlaylistsDialog'>
+            <%= link_to dialog_playlists_path(song_id: song.id), remote: true, data: { playlist_songs_action: 'none' } do %>
               <%= icon_tag 'playlist-add', size: 'small', title: t('text.add_to_playlist') %>
-            </div>
+            <% end %>
           </div>
         </li>
       <% end %>

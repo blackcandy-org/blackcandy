@@ -5,7 +5,6 @@ import Playlist from './playlist';
 class Player {
   currentIndex = 0;
   currentSong = {};
-  selectedSongId = null;
   isPlaying = false;
   playlist = new Playlist();
 
