@@ -1,10 +1,5 @@
 <% if albums.present? %>
-  <div class='o-flex o-flex--justify-between u-mb-medium'>
-    <h1><%= title %></h1>
-    <% if local_assigns[:all_albums_link] && all_albums_link.present? %>
-      <%= link_to t('text.see_all'), all_albums_link %>
-    <% end %>
-  </div>
+  <h1 class='u-mb-medium'><%= title %></h1>
   <div class='o-grid o-grid--gap-medium' cols@narrow='2' cols@extra-small='3' cols@small='2' cols@medium='3' cols@large='4' cols@extra-large='5' cols@wide='6' cols@extra-wide='7'>
     <%= render partial: 'albums/album', collection: albums, cached: true %>
   </div>
