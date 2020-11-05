@@ -35,8 +35,8 @@ module ApplicationHelper
     raw "<div class='o-animation-spin c-loader #{size_class}'></div>"
   end
 
-  def empty_alert_tag(has_icon: false)
-    render partial: 'shared/empty_alert', locals: { has_icon: has_icon }
+  def empty_alert_tag(has_icon: false, has_overlay: true)
+    render partial: 'shared/empty_alert', locals: { has_icon: has_icon, has_overlay: has_overlay }
   end
 
   def render_flash
