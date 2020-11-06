@@ -5,14 +5,11 @@ on:
     tags:
       - v*
 
-env:
-   DOCKER_BUILDKIT: 1
-
 jobs:
   create_release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v2
       - name: Create release
         id: create_release
@@ -29,7 +26,7 @@ jobs:
     needs: create_release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v2
       - name: Get version
         run: |
@@ -37,11 +34,23 @@ jobs:
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           # Strip "v" prefix from tag name
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-          echo "::set-env name=VERSION::$VERSION"
-      - name: Build and push image
-        uses: docker/build-push-action@v1.1.0
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
         with:
-         username: ${{ secrets.DOCKER_USERNAME }}
-         password: ${{ secrets.DOCKER_PASSWORD }}
-         repository: blackcandy/blackcandy
-         tags: ${{ env.VERSION }}, latest
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64,linux/arm
+          push: true
+          tags: |
+            blackcandy/blackcandy:latest
+            blackcandy/blackcandy:${{ env.VERSION }}
