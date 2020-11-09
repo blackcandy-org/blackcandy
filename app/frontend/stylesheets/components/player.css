@@ -12,6 +12,7 @@
   transition: max-height 0.2s ease-out;
   max-height: 0;
   visibility: hidden;
+  background: inherit;
 }
 
 .c-player__header__content {
