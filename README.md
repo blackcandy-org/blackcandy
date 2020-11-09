@@ -1,5 +1,5 @@
 <p align='center'>
-  <img alt='Black candy logo' width='200' src='app/frontend/images/logo.svg'>
+  <img alt='Black candy logo' width='200' src='https://raw.githubusercontent.com/aidewoode/black_candy/master/app/frontend/images/logo.svg'>
 </p>
 
 # Black candy
@@ -8,9 +8,9 @@
 Black candy is a self hosted music streaming server built with Rails and Stimulus. The goal of the project is to create a real personal music center.
 
 ## Screenshot
-![screenshot theme dark](images/screenshot_theme_dark.png)
+![screenshot theme dark](https://raw.githubusercontent.com/aidewoode/black_candy/master/screenshots/screenshot_theme_dark.png)
 
-![screenshot theme light](images/screenshot_theme_light.png)
+![screenshot theme light](https://raw.githubusercontent.com/aidewoode/black_candy/master/screenshots/screenshot_theme_light.png)
 
 
 ## Getting started
@@ -28,7 +28,7 @@ First, you should ensure your music files stored under "/media_data"
 Then run: 
 
 ```shell
-$ curl https://raw.githubusercontent.com/aidewoode/black_candy/v1.1.1/docker-compose.yml > docker-compose.yml
+$ curl https://raw.githubusercontent.com/aidewoode/black_candy/v1.2.0/docker-compose.yml > docker-compose.yml
 $ docker-compose up -d
 ```
 That's all. Now, you can use initial admin user to login (email: admin@admin.com, password: foobar).
