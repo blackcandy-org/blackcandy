@@ -9,7 +9,6 @@ module.exports = {
       },
       stage: 3,
       features: {
-        'color-mod-function': true,
         'custom-media-queries': true
       }
     }

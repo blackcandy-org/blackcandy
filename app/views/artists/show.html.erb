@@ -1,15 +1,20 @@
 <div class='o-container o-container--wide'>
-  <%= render partial: 'info', locals: { artist: @artist} %>
-
-  <hr />
-
-  <%= render partial: 'albums', locals: {
-    title: t('label.albums'),
-    albums: @albums,
-    all_albums_link: @albums_pagy.next.present? ? artist_albums_path(@artist) : '' } %>
-
-  <%= render partial: 'albums', locals: {
-    title: t('label.appears_on'),
-    albums: @appears_on_albums,
-    all_albums_link: @appears_on_albums_pagy.next.present? ? artist_appears_on_albums_path(@artist) : '' }  %>
+  <% cache @artist do %>
+    <div class='o-grid o-grid--gap-medium u-pb-wide' cols@narrow='2' cols@extra-small='3' cols@small='2' cols@medium='3' cols@large='4' cols@extra-large='5' cols@wide='6' cols@extra-wide='7'>
+      <div class='o-grid__item c-card u-mb-medium'>
+        <%= image_tag image_url_for(@artist), class: 'u-image-fluid c-card__image' %>
+      </div>
+      <div class='o-grid__item'>
+        <h1 class='u-mb-narrow'><%= @artist.title %></h1>
+        <p>
+          <span><%= @artist.all_albums.size %> <%= t('label.albums') %></span>
+          <span>,</span>
+          <span><%= @artist.songs.size %> <%= t('label.songs')%></span>
+        </p>
+        <%= link_to t('label.edit'), edit_artist_path(@artist), remote: true, class: 'c-button c-button--secondary u-mt-large' if is_admin? %>
+      </div>
+    </div>
+  <% end %>
+  <%= render partial: 'albums', locals: { title: t('label.albums'), albums: @albums } %>
+  <%= render partial: 'albums', locals: { title: t('label.appears_on'), albums: @appears_on_albums } %>
 </div>

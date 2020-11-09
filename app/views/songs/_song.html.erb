@@ -3,9 +3,9 @@
   <td class='u-text-truncate u-display-none@medium'><%= song.artist.title %></td>
   <td class='u-text-truncate u-display-none@medium'><%= song.album.title %></td>
   <td class='u-text-truncate u-display-none@small'><%= format_duration(song.length) %></td>
-  <td>
-    <span data-playlist-songs-action='showPlaylistsDialog'>
+  <td data-playlist-songs-action='none'>
+    <%= link_to dialog_playlists_path(song_id: song.id), remote: true do %>
       <%= icon_tag 'playlist-add', size: 'small', title: t('text.add_to_playlist') %>
-    </span>
+    <% end %>
   </td>
 </tr>

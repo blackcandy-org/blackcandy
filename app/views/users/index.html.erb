@@ -7,7 +7,7 @@
     <hr />
     <div class='u-position-relative'>
       <% if @users.present? %>
-        <ul class='c-list'>
+        <ul class='c-list c-list--border-none'>
           <% @users.each do |user| %>
             <li class='c-list__item o-flex o-flex--justify-between o-flex--align-center' data-user-id='<%= user.id %>'>
               <%= link_to edit_user_path(user), class: 'o-flex o-flex--align-center' do %>

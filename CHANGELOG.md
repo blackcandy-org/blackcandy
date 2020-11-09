@@ -1,3 +1,18 @@
+### 1.2.0
+  - new features
+    - add support for various artists album
+    - add blurry album image as background on player
+    - add support for set artist and album image manually
+
+  - enhancements
+    - use ITCSS structure to refactor all css code
+    - replace gem rails-settings-cached with pg hstore
+    - use nix to build dev environment
+    - support docker multi-platform builds
+
+  - bug fixes
+    - fix redirect issue for 404 and 403 page
+
 ### 1.1.1
   - new features
     - add support for oga and wma formats 

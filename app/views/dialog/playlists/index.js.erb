@@ -1,5 +1,5 @@
 <% if @pagy.page == 1 %>
-  App.renderContent('#js-dialog-content', '<%= j(render 'index') %>');
+  App.renderToDialog('<%= t('text.add_to_playlist') %>', '<%= j(render 'index') %>');
 <% else %>
   App.appedNextPageContentTo('#js-dialog-playlists', '<%= j(render partial: 'playlist', collection: @playlists, cached: true ) %>', '<%= pagy_next_url(@pagy) %>')
 <% end %>

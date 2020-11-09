@@ -5,6 +5,7 @@
     "@rails/ujs": "^6.0.1",
     "@rails/webpacker": "^5.1.1",
     "howler": "^2.2.0",
+    "postcss-mixins": "^6.2.3",
     "stimulus": "^1.1.0",
     "turbolinks": "^5.2.0"
   },
@@ -13,7 +14,6 @@
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "postcss-mixins": "^6.2.3",
     "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0",
     "webpack-dev-server": "^3.10.3"

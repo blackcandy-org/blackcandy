@@ -8,7 +8,7 @@
     <div class='c-dropdown js-playlist-songs-menu'>
       <span data-playlist-songs-action='showMenu'><%= icon_tag 'more-vertical', size: 'small', title: t('label.more') %></span>
       <div class='u-display-none c-dropdown__list js-playlist-songs-menu-list'>
-        <a class='c-dropdown__item' data-playlist-songs-action='showPlaylistsDialog'><%= t('text.add_to_playlist') %></a>
+        <%= link_to t('text.add_to_playlist'), dialog_playlists_path(song_id: song.id), remote: true, data: { playlist_songs_action: 'none' }, class: 'c-dropdown__item' %>
         <a class='c-dropdown__item' data-playlist-songs-action='delete'><%= t('label.delete') %></a>
       </div>
     </div>

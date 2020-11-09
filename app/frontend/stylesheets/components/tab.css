@@ -12,15 +12,15 @@
 }
 
 .c-tab__item a {
-  color: var(--tab-color);
+  color: rgb(var(--tab-color));
   text-decoration: none;
 }
 
 .c-tab__item.is-active a,
 .c-tab__item a:hover {
-  color: var(--tab-active-color);
+  color: rgb(var(--tab-active-color));
 }
 
 .c-tab__item.is-active {
-  border-color: var(--tab-active-color);
+  border-color: rgb(var(--tab-active-color));
 }

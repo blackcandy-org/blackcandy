@@ -41,5 +41,5 @@ textarea {
 
 /* Reset style for turbolinks progress bar */
 .turbolinks-progress-bar {
-  background-color: var(--progress-bar-bg-color);
+  background-color: rgb(var(--progress-bar-bg-color));
 }

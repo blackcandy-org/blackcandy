@@ -2,17 +2,17 @@ h1,
 h2,
 h3 {
   font-size: var(--font-size-large);
-  color: var(--text-primary-color);
+  color: rgb(var(--text-primary-color));
 }
 
 h4,
 h5,
 h6 {
   font-size: var(--font-size-medium);
-  color: var(--text-primary-color);
+  color: rgb(var(--text-primary-color));
 }
 
 p {
   font-size: var(--font-size-medium);
-  color: var(--text-secondary-color);
+  color: rgb(var(--text-secondary-color));
 }

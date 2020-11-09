@@ -1,0 +1,8 @@
+<div class='o-grid__item c-card u-mb-medium'>
+  <%= link_to album_path(album), class: 'c-card__image' do %>
+    <%= image_tag image_url_for(album), class: 'u-image-fluid' %>
+  <% end %>
+  <div class='c-card__body'>
+    <p class='c-card__body__text u-text-weight-bold u-text-line-clamp-2'><%= link_to album.title, album_path(album) %></p>
+  </div>
+</div>

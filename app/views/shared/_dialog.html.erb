@@ -1,15 +1,12 @@
 <section id='js-dialog' class='c-dialog o-container o-container--extra-narrow u-display-none' data-controller='dialog'>
   <header class='c-dialog__header o-flex o-flex--justify-between'>
-    <h2><%= t('text.add_to_playlist') %></h2>
+    <h2 data-target='dialog.title'></h2>
     <span class='u-cursor-pointer' data-action='click->dialog#hide'>
       <%= icon_tag 'close', title: t('label.close') %>
     </span>
   </header>
-  <div class='c-dialog__content u-position-relative' id='js-dialog-loader' data-controller='loader'>
-    <div id='js-dialog-content' data-target='loader.content'>
-    </div>
-    <div class='c-overlay u-display-none' data-target='loader.indicator'>
-      <%= loader_tag size: 'small' %>
+  <div class='c-dialog__content u-position-relative'>
+    <div id='js-dialog-content'>
     </div>
   </div>
 </section>

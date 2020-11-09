@@ -1,5 +1,7 @@
 <% if @songs.empty? %>
-  <%= empty_alert_tag has_icon: true %>
+  <div class='u-mt-wide'>
+    <%= empty_alert_tag has_icon: true, has_overlay: false %>
+  </div>
 <% else %>
   <div class='o-container o-container--small' data-controller='playlist-songs infinite-scroll' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
     <table class='c-table'>

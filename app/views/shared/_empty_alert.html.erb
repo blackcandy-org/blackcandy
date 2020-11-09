@@ -1,4 +1,4 @@
-<div class='c-overlay'>
+<% if has_overlay %><div class='c-overlay'><% end %>
   <div class='u-text-align-center'>
     <% if has_icon %>
       <div class='u-mb-narrow'>
@@ -7,4 +7,4 @@
     <% end %>
     <p><%= t('text.no_items') %></p>
   </div>
-</div>
+<% if has_overlay %></div><% end %>

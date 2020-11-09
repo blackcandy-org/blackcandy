@@ -3,7 +3,7 @@
   <%= form.submit t('label.create'), class: 'c-button c-button--primary c-button--small' %>
 <% end %>
 <div data-controller='infinite-scroll' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
-  <ul id='js-playlist-list' class='c-list'>
+  <ul id='js-playlist-list' class='c-list c-list--border-none'>
     <% if @playlists.present? %>
       <%= render partial: 'playlist', collection: @playlists, cached: true %>
     <% end %>

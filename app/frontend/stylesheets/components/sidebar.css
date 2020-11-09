@@ -1,6 +1,6 @@
 .c-sidebar {
   width: 360px;
-  background: var(--sidebar-bg-color);
+  background: rgb(var(--sidebar-bg-color));
 }
 
 @media (--extra-wide) {

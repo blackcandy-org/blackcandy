@@ -15,6 +15,22 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'should edit album' do
+    assert_admin_access(url: edit_album_url(albums :album1), xhr: true) do
+      assert_response :success
+    end
+  end
+
+  test 'should update image for album' do
+    album = albums(:album1)
+    album_params = { album: { image: fixture_file_upload('files/cover_image.jpg', 'image/jpeg') } }
+    album_original_image_url = album.image.url
+
+    assert_admin_access(url: album_url(album), method: :patch, params: album_params) do
+      assert_not_equal album_original_image_url, album.reload.image.url
+    end
+  end
+
   test 'should call album image attach job when show album unless album do not need attach' do
     Setting.update(discogs_token: 'fake_token')
     album = albums(:album1)

@@ -5,7 +5,7 @@
 }
 
 .c-table tr {
-  border-bottom: 1px solid var(--table-border-color);
+  border-bottom: 1px solid rgb(var(--table-border-color));
 }
 
 .c-table th,
@@ -13,7 +13,7 @@
   padding: var(--spacing-narrow);
 }
 
-.c-table tbody tr:hover,
-.c-table tbody tr.is-active {
-  color: var(--table-active-color);
+.c-table tbody tr:hover *,
+.c-table tbody tr.is-active * {
+  color: rgb(var(--table-active-color));
 }

@@ -7,6 +7,7 @@ export default class extends Controller {
   static targets = [
     'header',
     'image',
+    'backgroundImage',
     'songName',
     'artistName',
     'albumName',
@@ -119,6 +120,7 @@ export default class extends Controller {
     const { currentSong } = this;
 
     this.imageTarget.src = currentSong.album_image_url;
+    this.backgroundImageTarget.style.backgroundImage = `url(${currentSong.album_image_url})`;
     this.songNameTarget.textContent = currentSong.name;
     this.artistNameTarget.textContent = currentSong.artist_name;
     this.albumNameTarget.textContent = currentSong.album_name;
