@@ -1,0 +1,53 @@
+name: Test Lint
+
+on: [push, pull_request]
+
+jobs:
+  test_lint:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:11
+        ports: ['5432:5432']
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:6
+        ports: ['6379:6379']
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.6
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.15.0
+      - name: Test and Lint
+        env:
+          DB_HOST: localhost
+          DB_USER: postgres
+          REDIS_DATA_URL: redis://localhost:6379/0
+          REDIS_SIDEKIredisQ_URL: redis://localhost:6379/1
+          PGPASSWORD: postgres
+          RAILS_ENV: test
+        run: |
+          sudo apt-get -yqq install libpq-dev imagemagick ffmpeg
+          yarn install
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rails db:setup
+          bundle exec rails test
+          bundle exec rails lint:all
+          bundle exec brakeman
