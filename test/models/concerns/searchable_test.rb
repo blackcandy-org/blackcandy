@@ -10,39 +10,39 @@ class SearchableTest < ActiveSupport::TestCase
   end
 
   test 'should support search by model attribute' do
-    assert_equal Artist.where(name: %w(artist1 artist2)).ids.sort, Artist.search('artist1').ids.sort
+    assert_equal Artist.where(name: %w[artist1 artist2]).ids.sort, Artist.search('artist1').ids.sort
   end
 
   test 'should support fuzzy search by model attribute' do
-    assert_equal Artist.where(name: %w(artist1 artist2)).ids.sort, Artist.search('artist').ids.sort
+    assert_equal Artist.where(name: %w[artist1 artist2]).ids.sort, Artist.search('artist').ids.sort
   end
 
   test 'should support search by model attribute with association' do
-    album_ids = Artist.find_by_name('artist1').albums.ids +
-      Artist.find_by_name('artist2').albums.ids
+    album_ids = Artist.find_by(name: 'artist1').albums.ids +
+                Artist.find_by(name: 'artist2').albums.ids
     assert_equal album_ids.sort, Album.search('artist1').ids.sort
   end
 
   test 'should support fuzzy search by model attribute with association' do
-    album_ids = Artist.find_by_name('artist1').albums.ids +
-      Artist.find_by_name('artist2').albums.ids
+    album_ids = Artist.find_by(name: 'artist1').albums.ids +
+                Artist.find_by(name: 'artist2').albums.ids
     assert_equal album_ids.sort, Album.search('artist').ids.sort
   end
 
   test 'should support search by model attribute with multiple associations' do
-    assert_equal Artist.find_by_name('artist1').songs.ids.sort, Song.search('artist1').ids.sort
-    assert_equal Album.find_by_name('album1').songs.ids.sort, Song.search('album1').ids.sort
+    assert_equal Artist.find_by(name: 'artist1').songs.ids.sort, Song.search('artist1').ids.sort
+    assert_equal Album.find_by(name: 'album1').songs.ids.sort, Song.search('album1').ids.sort
   end
 
   test 'should support fuzzy search by model attribute with multiple associations' do
-    artist_serach_song_ids = Artist.find_by_name('artist1').songs.ids +
-      Artist.find_by_name('artist2').songs.ids
+    artist_serach_song_ids = Artist.find_by(name: 'artist1').songs.ids +
+                             Artist.find_by(name: 'artist2').songs.ids
     assert_equal artist_serach_song_ids.sort, Song.search('artist').ids.sort
 
-    album_serach_song_ids = Album.find_by_name('album1').songs.ids +
-      Album.find_by_name('album2').songs.ids +
-      Album.find_by_name('album3').songs.ids +
-      Album.find_by_name('album4').songs.ids
+    album_serach_song_ids = Album.find_by(name: 'album1').songs.ids +
+                            Album.find_by(name: 'album2').songs.ids +
+                            Album.find_by(name: 'album3').songs.ids +
+                            Album.find_by(name: 'album4').songs.ids
 
     assert_equal album_serach_song_ids.sort, Song.search('album').ids.sort
   end

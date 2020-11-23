@@ -12,7 +12,12 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
   test 'should update global setting' do
     Setting.update(discogs_token: 'token')
 
-    assert_admin_access(method: :patch, url: setting_url, params: { setting: { discogs_token: 'updated_token' } }, xhr: true) do
+    assert_admin_access(
+      method: :patch,
+      url: setting_url,
+      params: { setting: { discogs_token: 'updated_token' } },
+      xhr: true
+    ) do
       assert_equal 'updated_token', Setting.discogs_token
     end
   end
@@ -23,7 +28,12 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     mock.expect(:call, true)
 
     Media.stub(:sync, mock) do
-      assert_admin_access(method: :patch, url: setting_url, params: { setting: { media_path: 'updated_path' } }, xhr: true) do
+      assert_admin_access(
+        method: :patch,
+        url: setting_url,
+        params: { setting: { media_path: 'updated_path' } },
+        xhr: true
+      ) do
         assert_equal 'updated_path', Setting.media_path
         mock.verify
       end

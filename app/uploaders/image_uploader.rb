@@ -22,20 +22,20 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def content_type_whitelist
-    %w(image/jpeg image/png)
+    %w[image/jpeg image/png]
   end
 
   def extension_whitelist
-    %w(jpg jpeg png)
+    %w[jpg jpeg png]
   end
 
   def filename
-    if original_filename.present?
-      "#{Digest::MD5.hexdigest(original_filename)}.#{file.extension}"
-    end
+    return if original_filename.blank?
+
+    "#{Digest::MD5.hexdigest(original_filename)}.#{file.extension}"
   end
 
-  def default_url(*args)
+  def default_url
     default_image_name = ['default', model.class.name.downcase, version_name.presence].compact.join('_')
     "/images/#{default_image_name}.png"
   end

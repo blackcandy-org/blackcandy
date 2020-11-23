@@ -7,21 +7,19 @@ unless Rails.env.production?
     RuboCop::RakeTask.new
 
     task :js do
-      unless system("yarn run eslint 'app/frontend/**/*.js'")
-        abort('rails lint:js failed')
-      end
+      abort('rails lint:js failed') unless system("yarn run eslint 'app/frontend/**/*.js'")
     end
 
     task :css do
-      unless system("yarn run stylelint 'app/frontend/**/*.css'")
-        abort('rails lint:css failed')
-      end
+      abort('rails lint:css failed') unless system("yarn run stylelint 'app/frontend/**/*.css'")
     end
 
     task :all do
+      require 'English'
+
       status = 0
 
-      %w(rubocop js css).each do |task|
+      %w[rubocop js css].each do |task|
         pid = Process.fork do
           rd_out, wr_out = IO.pipe
           rd_err, wr_err = IO.pipe
@@ -44,7 +42,7 @@ unless Rails.env.production?
         end
 
         Process.waitpid(pid)
-        status += $?.exitstatus
+        status += $CHILD_STATUS.exitstatus
       end
 
       exit(status)

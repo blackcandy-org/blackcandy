@@ -21,10 +21,7 @@ class MediaFile
       tag = WahWah.open(file_path)
       image = tag.images.first
 
-      {
-        data: image[:data],
-        format: MIME::Type.new(image[:mime_type]).sub_type
-      } if image
+      { data: image[:data], format: MIME::Type.new(image[:mime_type]).sub_type } if image
     end
 
     def file_info(file_path)
@@ -33,6 +30,7 @@ class MediaFile
     end
 
     private
+
       def get_tag_info(file_path)
         tag = WahWah.open(file_path)
 

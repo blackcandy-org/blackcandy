@@ -7,7 +7,7 @@ class AttachAlbumImageFromDiscogsJob < ApplicationJob
     album = Album.find_by(id: album_id)
     image_url = DiscogsApi.album_image(album)
 
-    return unless image_url.present?
+    return if image_url.blank?
 
     album.remote_image_url = image_url
     album.save

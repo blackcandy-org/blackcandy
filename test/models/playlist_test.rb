@@ -8,8 +8,8 @@ class PlaylistTest < ActiveSupport::TestCase
   end
 
   test 'should raise error when song already in playlist' do
-    assert_raises do
-      playlists(:playlist1).push songs(:mp3_sample)
+    assert_raises(ActiveRecord::RecordNotUnique) do
+      playlists(:playlist1).songs.push songs(:mp3_sample)
     end
   end
 
@@ -19,6 +19,6 @@ class PlaylistTest < ActiveSupport::TestCase
     playlist.songs.push songs(:opus_sample)
     playlist.songs.push songs(:m4a_sample)
 
-    assert_equal ['flac_sample', 'opus_sample', 'm4a_sample'], playlist.reload.songs.pluck(:name)
+    assert_equal %w[flac_sample opus_sample m4a_sample], playlist.reload.songs.pluck(:name)
   end
 end

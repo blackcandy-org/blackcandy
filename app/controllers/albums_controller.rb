@@ -16,8 +16,7 @@ class AlbumsController < ApplicationController
     AttachAlbumImageFromDiscogsJob.perform_later(@album.id) if @album.need_attach_from_discogs?
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @album.update(album_params)

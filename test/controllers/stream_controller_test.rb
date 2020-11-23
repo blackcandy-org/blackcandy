@@ -4,7 +4,7 @@ require 'test_helper'
 
 class StreamControllerTest < ActionDispatch::IntegrationTest
   setup do
-    Setting.update(media_path: Rails.root.join('test', 'fixtures', 'files'))
+    Setting.update(media_path: Rails.root.join('test/fixtures/files'))
   end
 
   test 'should get new stream' do

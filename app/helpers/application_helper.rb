@@ -14,17 +14,19 @@ module ApplicationHelper
     size_class = options[:size].blank? ? '' : "c-icon--#{options[:size]}"
     icon_class = ['c-icon', size_class, options[:class]].join(' ')
 
-    raw "<svg fill='currentColor'
-      stroke-width='2'
-      stroke-linecap='round'
-      stroke-linejoin='round'
-      class='#{icon_class}'>
-      <title>#{options[:title]}</title>
-      <use xlink:href='##{name}'/></svg>"
+    tag.svg(
+      fill: 'currentColor',
+      stroke_width: '2',
+      stroke_linecap: 'round',
+      stroke_linejoin: 'round',
+      class: icon_class
+    ) do
+      tag.title(options[:title]) + tag.use('xlink:href': "##{name}")
+    end
   end
 
   def image_url_for(object, size: '')
-    sizes_options = %w(small medium large)
+    sizes_options = %w[small medium large]
     size = size.in?(sizes_options) ? size : 'medium'
 
     object.image.send(size).url
@@ -32,7 +34,7 @@ module ApplicationHelper
 
   def loader_tag(size: '')
     size_class = size.blank? ? '' : "c-loader--#{size}"
-    raw "<div class='o-animation-spin c-loader #{size_class}'></div>"
+    tag.div class: "o-animation-spin c-loader #{size_class}"
   end
 
   def empty_alert_tag(has_icon: false, has_overlay: true)

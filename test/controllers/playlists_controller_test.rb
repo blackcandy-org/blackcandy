@@ -21,7 +21,13 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
     playlist = playlists(:playlist1)
     user = playlist.user
 
-    assert_login_access(user: user, method: :patch, url: playlist_url(playlist), params: { playlist: { name: 'updated_playlist' } }, xhr: true) do
+    assert_login_access(
+      user: user,
+      method: :patch,
+      url: playlist_url(playlist),
+      params: { playlist: { name: 'updated_playlist' } },
+      xhr: true
+    ) do
       assert_equal 'updated_playlist', playlist.reload.name
     end
   end

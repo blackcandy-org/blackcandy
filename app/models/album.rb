@@ -5,7 +5,7 @@ class Album < ApplicationRecord
 
   validates :name, uniqueness: { scope: :artist }
 
-  has_many :songs, -> { order(:tracknum) }, dependent: :destroy
+  has_many :songs, -> { order(:tracknum) }, inverse_of: :album, dependent: :destroy
   belongs_to :artist, touch: true
 
   mount_uploader :image, ImageUploader

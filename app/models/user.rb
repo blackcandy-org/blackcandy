@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  AVAILABLE_THEME_OPTIONS = %w(dark light auto)
+  AVAILABLE_THEME_OPTIONS = %w[dark light auto].freeze
   DEFAULT_THEME = 'dark'
 
   include ScopedSetting
@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
 
-  has_many :playlists, -> { where(type: nil) }, dependent: :destroy
+  has_many :playlists, -> { where(type: nil) }, inverse_of: :user, dependent: :destroy
   has_one :current_playlist, dependent: :destroy
   has_one :favorite_playlist, dependent: :destroy
 

@@ -10,8 +10,8 @@ class AttachArtistImageFromDiscogsJobTest < ActiveJob::TestCase
   test 'should attach image to artist' do
     artist = artists(:artist1)
 
-    stub_request(:get, 'http://example.com/cover.jpg').
-      to_return(body: file_fixture('cover_image.jpg').read, status: 200, headers: { 'Content-Type' => 'image/jpeg' })
+    stub_request(:get, 'http://example.com/cover.jpg')
+      .to_return(body: file_fixture('cover_image.jpg').read, status: 200, headers: { 'Content-Type' => 'image/jpeg' })
 
     DiscogsApi.stub(:artist_image, 'http://example.com/cover.jpg') do
       assert_not artist.has_image?

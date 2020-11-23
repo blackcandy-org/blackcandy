@@ -4,23 +4,19 @@ module GlobalSetting
   extend ActiveSupport::Concern
 
   included do
-    AVAILABLE_SETTINGS = []
-
     # Ensures only one Settings row is created
-    validates_inclusion_of :singleton_guard, in: [0]
+    validates :singleton_guard, inclusion: { in: [0] }
   end
 
   class_methods do
+    delegate :update, to: :instance
+
     def instance
       first_or_create!(singleton_guard: 0)
     end
 
-    def update(attributes)
-      instance.update(attributes)
-    end
-
     def has_settings(*settings)
-      AVAILABLE_SETTINGS.push(*settings)
+      const_set(:AVAILABLE_SETTINGS, settings)
 
       store_accessor :values, *settings
 

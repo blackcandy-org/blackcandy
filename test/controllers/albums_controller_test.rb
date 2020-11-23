@@ -10,13 +10,13 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show album' do
-    assert_login_access(url: album_url(albums :album1)) do
+    assert_login_access(url: album_url(albums(:album1))) do
       assert_response :success
     end
   end
 
   test 'should edit album' do
-    assert_admin_access(url: edit_album_url(albums :album1), xhr: true) do
+    assert_admin_access(url: edit_album_url(albums(:album1)), xhr: true) do
       assert_response :success
     end
   end

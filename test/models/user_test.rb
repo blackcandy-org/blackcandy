@@ -10,7 +10,7 @@ class UserTest < ActiveSupport::TestCase
     'just"not"right@example.com',
     'this is"not\allowed@example.com',
     'this\ still\"not\\allowed@example.com'
-  ]
+  ].freeze
 
   setup do
     @user = User.create(email: 'test@test.com', password: 'foobar')
@@ -43,8 +43,10 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'should retutn all playlists' do
+    all_playlists = @user.all_playlists.map { |playlist| playlist.class.name }.uniq.sort
+
     assert_equal 3, @user.all_playlists.count
-    assert_equal ['CurrentPlaylist', 'FavoritePlaylist', 'Playlist'], @user.all_playlists.map { |playlist| playlist.class.name }.uniq.sort
+    assert_equal %w[CurrentPlaylist FavoritePlaylist Playlist], all_playlists
   end
 
   test 'should always have current playlist' do

@@ -23,7 +23,7 @@ class Media
     Song.find_or_create_by(md5_hash: file_info[:md5_hash]) do |item|
       item.attributes = song_info.merge(album: album, artist: artist)
     end
-  rescue
+  rescue StandardError
     false
   end
 
@@ -33,18 +33,16 @@ class Media
 
   def various_artists?
     albumartist = file_info[:albumartist_name]
-    albumartist.present? && (albumartist.downcase == 'various artists' || albumartist != file_info[:artist_name])
+    albumartist.present? && (albumartist.casecmp('various artists').zero? || albumartist != file_info[:artist_name])
   end
 
   class << self
     def sync
       media_hashes = MediaFile.file_paths.map do |file_path|
-        begin
-          media = new(file_path)
-          media.file_info[:md5_hash] if media.attach
-        rescue
-          next
-        end
+        media = new(file_path)
+        media.file_info[:md5_hash] if media.attach
+      rescue StandardError
+        next
       end.compact
 
       clean_up(media_hashes)
