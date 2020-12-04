@@ -54,6 +54,9 @@ html {
   /* List */
   --list-border-color: var(--grey-lighter);
   --list-active-color: var(--purple);
+  --list-dragging-placeholder-bg-color: var(--grey-lighter);
+  --list-dragging-bg-color: var(--white);
+  --list-dragging-shadow-color: var(--black-lighter);
 
   /* Table */
   --table-border-color: var(--grey-lighter);
@@ -158,6 +161,9 @@ html[data-color-scheme='dark'] {
   /* List */
   --list-border-color: var(--black-lighter);
   --list-active-color: var(--purple-light);
+  --list-dragging-placeholder-bg-color: var(--black-light);
+  --list-dragging-bg-color: var(--black-dark);
+  --list-dragging-shadow-color: var(--grey);
 
   /* Table */
   --table-border-color: var(--black);

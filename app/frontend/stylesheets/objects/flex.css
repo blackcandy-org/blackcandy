@@ -1,9 +1,8 @@
 .o-flex {
-  display: flex !important;
+  display: flex;
 }
 
 .o-flex > .o-flex__item {
-  display: block;
   appearance: none;
 }
 

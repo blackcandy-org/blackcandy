@@ -22,7 +22,11 @@ export default class extends Controller {
   }
 
   actionHandler({ target }) {
-    switch (target.closest('[data-playlist-songs-action]').dataset.playlistSongsAction) {
+    const actionElement = target.closest('[data-playlist-songs-action]');
+
+    if (!actionElement) { return; }
+
+    switch (actionElement.dataset.playlistSongsAction) {
       case 'delete':
         this._deleteSong(target);
         break;

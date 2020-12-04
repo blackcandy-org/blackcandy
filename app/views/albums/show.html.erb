@@ -18,18 +18,20 @@
     </div>
     <ul class='c-list' data-action='click->playlist-songs#actionHandler'>
       <% @songs.each do |song| %>
-        <li class='c-list__item o-flex o-flex--justify-between u-cursor-pointer' data-target='playlist-songs.item' data-song-id='<%= song.id %>' data-playlist-songs-action='play'>
-          <div>
-            <h4 class='u-mb-tiny u-text-weight-normal'><%= song.name %></h4>
-            <% if @album.artist.is_various? %>
-              <%= song.artist.title %>
-            <% end %>
-          </div>
-          <div class='o-flex o-flex--align-center'>
-            <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.length) %></div>
-            <%= link_to dialog_playlists_path(song_id: song.id), remote: true, data: { playlist_songs_action: 'none' } do %>
-              <%= icon_tag 'playlist-add', size: 'small', title: t('text.add_to_playlist') %>
-            <% end %>
+        <li class='c-list__item u-cursor-pointer' data-target='playlist-songs.item' data-song-id='<%= song.id %>' data-playlist-songs-action='play'>
+          <div class='o-flex o-flex--justify-between'>
+            <div>
+              <h4 class='u-mb-tiny u-text-weight-normal'><%= song.name %></h4>
+              <% if @album.artist.is_various? %>
+                <%= song.artist.title %>
+              <% end %>
+            </div>
+            <div class='o-flex o-flex--align-center'>
+              <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.length) %></div>
+              <%= link_to dialog_playlists_path(song_id: song.id), remote: true, data: { playlist_songs_action: 'none' } do %>
+                <%= icon_tag 'playlist-add', size: 'small', title: t('text.add_to_playlist') %>
+              <% end %>
+            </div>
           </div>
         </li>
       <% end %>
