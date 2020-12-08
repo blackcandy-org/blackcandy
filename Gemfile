@@ -32,6 +32,8 @@ gem 'httparty', '~> 0.17.0'
 gem 'browser', '~> 2.6.1', require: 'browser/browser'
 # For PostgreSQL's full text search
 gem 'pg_search', '~> 2.3.2'
+# For sortable list
+gem 'acts_as_list', '~> 1.0.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

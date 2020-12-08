@@ -3,7 +3,8 @@
 class Playlist < ApplicationRecord
   validates :name, presence: true, if: :require_name?
 
-  has_and_belongs_to_many :songs, -> { order('playlists_songs.created_at') }
+  has_many :playlists_songs
+  has_many :songs, -> { order 'playlists_songs.position' }, through: :playlists_songs
   belongs_to :user
 
   def buildin?

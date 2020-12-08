@@ -56,6 +56,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2)
+    acts_as_list (1.0.2)
+      activerecord (>= 4.2)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
     ast (2.4.1)
@@ -270,6 +272,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_list (~> 1.0.2)
   bcrypt (~> 3.1.11)
   bootsnap (>= 1.1.0)
   brakeman (~> 4.7.2)
