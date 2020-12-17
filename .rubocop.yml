@@ -56,3 +56,6 @@ Rails/RakeEnvironment:
 
 Metrics/ClassLength:
   Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false

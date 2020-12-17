@@ -11,7 +11,7 @@
           <span class='u-text-monospace'><%= format_duration(@songs.sum(:length)) %></span>
         </div>
         <div class='u-mt-large'>
-          <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @album.song_ids ), method: :put, remote: true, class: 'c-button c-button--primary' %>
+          <%= link_to t('label.play_all'), play_album_path(@album), method: :post, remote: true, class: 'c-button c-button--primary' %>
           <%= link_to t('label.edit'), edit_album_path(@album), remote: true, class: 'c-button c-button--secondary u-ml-small' if is_admin? %>
         </div>
       </div>

@@ -46,4 +46,19 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
       end
     end
   end
+
+  test 'should play whole album' do
+    user = users(:visitor1)
+
+    assert_not_equal albums(:album1).song_ids, user.current_playlist.song_ids
+
+    assert_login_access(
+      user: user,
+      method: :post,
+      url: play_album_url(albums(:album1)),
+      xhr: true
+    ) do
+      assert_equal albums(:album1).song_ids, user.current_playlist.reload.song_ids
+    end
+  end
 end

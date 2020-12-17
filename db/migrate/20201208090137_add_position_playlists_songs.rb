@@ -25,6 +25,6 @@ class AddPositionPlaylistsSongs < ActiveRecord::Migration[6.0]
     remove_column :playlists_songs, :id
     remove_column :playlists_songs, :position
 
-    add_column :playlists_songs, :created_at, :datetime, null: false
+    add_column :playlists_songs, :created_at, :datetime
   end
 end

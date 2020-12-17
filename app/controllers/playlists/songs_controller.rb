@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class Playlists::SongsController < ApplicationController
-  include Pagy::Backend
-
   before_action :find_playlist
   before_action :find_songs, only: [:create, :destroy]
+
+  include Pagy::Backend
+  include Playable
 
   def show
     @pagy, @songs = pagy_countless(@playlist.songs.includes(:artist))
@@ -21,7 +22,7 @@ class Playlists::SongsController < ApplicationController
   end
 
   def destroy
-    if songs_params[:clear_all]
+    if playlists_songs_params[:clear_all]
       @playlist.songs.clear
     else
       @playlist.songs.destroy(@songs)
@@ -32,17 +33,29 @@ class Playlists::SongsController < ApplicationController
     show if @playlist.songs.empty?
   end
 
+  def update
+    from_position = Integer(playlists_songs_params[:from_position])
+    to_position = Integer(playlists_songs_params[:to_position])
+
+    playlists_song = @playlist.playlists_songs.find_by(position: from_position)
+    playlists_song.update(position: to_position)
+  end
+
   private
 
     def find_playlist
-      @playlist = Current.user.all_playlists.find(songs_params[:playlist_id])
+      @playlist = Current.user.all_playlists.find(params[:playlist_id])
     end
 
     def find_songs
-      @songs = Song.find(songs_params[:song_ids]) unless songs_params[:clear_all]
+      @songs = Song.find(playlists_songs_params[:song_ids]) unless playlists_songs_params[:clear_all]
     end
 
-    def songs_params
-      params.permit(:playlist_id, :clear_all, song_ids: [])
+    def find_all_song_ids
+      @song_ids = @playlist.song_ids
+    end
+
+    def playlists_songs_params
+      params.permit(:from_position, :to_position, :clear_all, song_ids: [])
     end
 end

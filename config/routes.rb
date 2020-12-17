@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  concern :playable do
+    member do
+      post 'play'
+    end
+  end
+
   root 'home#index'
 
   resource :session, only: [:new, :create, :destroy]
@@ -8,19 +14,19 @@ Rails.application.routes.draw do
   resources :stream, only: [:new]
   resources :transcoded_stream, only: [:new]
   resources :songs, only: [:index, :show]
-  resources :albums, only: [:index, :show, :edit, :update]
+  resources :albums, only: [:index, :show, :edit, :update], concerns: :playable
   resources :users, except: [:show]
 
   resources :playlists, except: [:show, :new, :edit] do
-    resource :songs, only: [:show, :create, :destroy], module: 'playlists'
+    resource :songs, only: [:show, :create, :destroy, :update], module: 'playlists', concerns: :playable
   end
 
   namespace :current_playlist do
-    resource :songs, only: [:show, :update, :create, :destroy]
+    resource :songs, only: [:show, :create, :destroy, :update]
   end
 
   namespace :favorite_playlist do
-    resource :songs, only: [:show, :create, :destroy]
+    resource :songs, only: [:show, :create, :destroy, :update]
   end
 
   namespace :dialog do

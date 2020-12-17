@@ -1,11 +1,12 @@
 import { Controller } from 'stimulus';
 import { Sortable, Plugins } from '@shopify/draggable';
+import { ajax } from '@rails/ujs';
 
 export default class extends Controller {
   connect() {
     this.sortable = new Sortable(this.element, {
-      draggable: '.js-sortable-item',
-      handle: '.js-sortable-item-handle',
+      draggable: '.js-playlist-sortable-item',
+      handle: '.js-playlist-sortable-item-handle',
       swapAnimation: {
         duration: 150,
         easingFunction: 'ease-in-out',
@@ -23,11 +24,27 @@ export default class extends Controller {
 
       plugins: [Plugins.SwapAnimation]
     });
+
+    this.sortable.on('sortable:stop', this._reorderPlaylist);
   }
 
   disconnect() {
     if (this.sortable) {
       this.sortable.destroy();
     }
+  }
+
+  _reorderPlaylist = (event) => {
+    App.player.playlist.move(event.oldIndex, event.newIndex);
+
+    ajax({
+      url: `/playlists/${this.playlistId}/songs`,
+      type: 'put',
+      data: `from_position=${event.oldIndex + 1}&to_position=${event.newIndex + 1}`
+    });
+  }
+
+  get playlistId() {
+    return this.data.get('playlistId');
   }
 }
