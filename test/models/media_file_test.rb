@@ -16,7 +16,7 @@ class MediaFileTest < ActiveSupport::TestCase
       fixtures_file_path('various_artists.mp3')
     ]
 
-    Setting.update(media_path: Rails.root.join('test', 'fixtures', 'files'))
+    Setting.update(media_path: Rails.root.join('test/fixtures/files'))
 
     MediaFile.file_paths.each do |file_path|
       assert_includes expect_file_paths, file_path
@@ -24,7 +24,7 @@ class MediaFileTest < ActiveSupport::TestCase
   end
 
   test 'should ignore not supported files under media_path' do
-    Setting.update(media_path: Rails.root.join('test', 'fixtures', 'files'))
+    Setting.update(media_path: Rails.root.join('test/fixtures/files'))
 
     assert_not_includes MediaFile.file_paths, fixtures_file_path('not_supported_file.txt')
   end
@@ -32,7 +32,7 @@ class MediaFileTest < ActiveSupport::TestCase
   test 'should raise error when media_path is not exist' do
     Setting.update(media_path: '/not_exist')
 
-    assert_raises BlackCandyError::InvalidFilePath  do
+    assert_raises BlackCandyError::InvalidFilePath do
       MediaFile.file_paths
     end
   end
@@ -51,7 +51,7 @@ class MediaFileTest < ActiveSupport::TestCase
   test 'should get image from media file' do
     cover_image_binary = file_fixture('cover_image.jpg').read.force_encoding('BINARY').strip
 
-    %w(artist1_album2.mp3 artist1_album1.m4a artist1_album1.flac artist2_album3.wav).each do |file|
+    %w[artist1_album2.mp3 artist1_album1.m4a artist1_album1.flac artist2_album3.wav].each do |file|
       assert_equal cover_image_binary, MediaFile.image(file_fixture(file))[:data].strip
       assert_equal 'jpeg', MediaFile.image(file_fixture(file))[:format]
     end
@@ -150,7 +150,7 @@ class MediaFileTest < ActiveSupport::TestCase
   end
 
   test 'should raise error from file_info when file is not exist' do
-    assert_raises do
+    assert_raises(StandardError) do
       MediaFile.file_info('/not_exist')
     end
   end

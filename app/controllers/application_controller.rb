@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :find_current_user
   before_action :require_login
 
-  rescue_from BlackCandyError::NotFound do |exception|
+  rescue_from BlackCandyError::NotFound do
     respond_to do |format|
       format.js { head :not_found }
       format.json { head :not_found }
@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  rescue_from BlackCandyError::Forbidden do |exception|
+  rescue_from BlackCandyError::Forbidden do
     respond_to do |format|
       format.js { head :forbidden }
       format.json { head :forbidden }

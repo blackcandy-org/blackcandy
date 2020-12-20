@@ -37,6 +37,10 @@ class Playlist {
     return this._indexOfSongs(this.songs, songId);
   }
 
+  move(fromIndex, toIndex) {
+    this.orderedSongs.splice(toIndex, 0, this.orderedSongs.splice(fromIndex, 1)[0]);
+  }
+
   _indexOfSongs(songs, songId) {
     return songs.map((song) => song.id).indexOf(Number(songId));
   }

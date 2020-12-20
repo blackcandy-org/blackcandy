@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_15_090637) do
+ActiveRecord::Schema.define(version: 2020_12_08_090137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2020_09_15_090637) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "artist_id"
+    t.index ["artist_id", "name"], name: "index_albums_on_artist_id_and_name", unique: true
     t.index ["artist_id"], name: "index_albums_on_artist_id"
     t.index ["name"], name: "index_albums_on_name"
   end
@@ -45,10 +46,10 @@ ActiveRecord::Schema.define(version: 2020_09_15_090637) do
     t.index ["user_id"], name: "index_playlists_on_user_id"
   end
 
-  create_table "playlists_songs", id: false, force: :cascade do |t|
+  create_table "playlists_songs", force: :cascade do |t|
     t.bigint "playlist_id", null: false
     t.bigint "song_id", null: false
-    t.datetime "created_at", null: false
+    t.integer "position"
     t.index ["song_id", "playlist_id"], name: "index_playlists_songs_on_song_id_and_playlist_id", unique: true
   end
 

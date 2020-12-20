@@ -18,8 +18,7 @@ class ArtistsController < ApplicationController
     AttachArtistImageFromDiscogsJob.perform_later(@artist.id) if @artist.need_attach_from_discogs?
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @artist.update(artist_params)

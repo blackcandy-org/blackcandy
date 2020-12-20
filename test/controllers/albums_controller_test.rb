@@ -10,13 +10,13 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show album' do
-    assert_login_access(url: album_url(albums :album1)) do
+    assert_login_access(url: album_url(albums(:album1))) do
       assert_response :success
     end
   end
 
   test 'should edit album' do
-    assert_admin_access(url: edit_album_url(albums :album1), xhr: true) do
+    assert_admin_access(url: edit_album_url(albums(:album1)), xhr: true) do
       assert_response :success
     end
   end
@@ -44,6 +44,21 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
       assert_login_access(url: album_url(album)) do
         mock.verify
       end
+    end
+  end
+
+  test 'should play whole album' do
+    user = users(:visitor1)
+
+    assert_not_equal albums(:album1).song_ids, user.current_playlist.song_ids
+
+    assert_login_access(
+      user: user,
+      method: :post,
+      url: play_album_url(albums(:album1)),
+      xhr: true
+    ) do
+      assert_equal albums(:album1).song_ids, user.current_playlist.reload.song_ids
     end
   end
 end

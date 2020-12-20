@@ -16,12 +16,14 @@ class AlbumTest < ActiveSupport::TestCase
     artist = artists(:artist1)
     album = artist.albums.create
 
-    album.songs.create!([
-      { name: 'test_song_1', file_path: 'fake_path', md5_hash: 'fake_md5', tracknum: 2, artist: artist  },
-      { name: 'test_song_2', file_path: 'fake_path', md5_hash: 'fake_md5', tracknum: 3, artist: artist },
-      { name: 'test_song_3', file_path: 'fake_path', md5_hash: 'fake_md5', tracknum: 1, artist: artist }
-    ])
+    album.songs.create!(
+      [
+        { name: 'test_song_1', file_path: 'fake_path', md5_hash: 'fake_md5', tracknum: 2, artist: artist },
+        { name: 'test_song_2', file_path: 'fake_path', md5_hash: 'fake_md5', tracknum: 3, artist: artist },
+        { name: 'test_song_3', file_path: 'fake_path', md5_hash: 'fake_md5', tracknum: 1, artist: artist }
+      ]
+    )
 
-    assert_equal ['test_song_3', 'test_song_1', 'test_song_2'], album.songs.pluck(:name)
+    assert_equal %w[test_song_3 test_song_1 test_song_2], album.songs.pluck(:name)
   end
 end

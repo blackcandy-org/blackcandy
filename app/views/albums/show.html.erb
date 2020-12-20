@@ -11,25 +11,27 @@
           <span class='u-text-monospace'><%= format_duration(@songs.sum(:length)) %></span>
         </div>
         <div class='u-mt-large'>
-          <%= link_to t('label.play_all'), current_playlist_songs_path(song_ids: @album.song_ids ), method: :put, remote: true, class: 'c-button c-button--primary' %>
-          <%= link_to t('label.edit'), edit_album_path(@album), remote: true, class: 'c-button c-button--secondary u-ml-small' if is_admin? %>
+          <%= link_to t('label.play_all'), play_album_path(@album), method: :post, remote: true, class: 'c-button c-button--primary' %>
+          <%= link_to t('label.edit'), edit_album_path(@album), remote: true, class: 'c-button c-button--secondary u-ml-tiny' if is_admin? %>
         </div>
       </div>
     </div>
     <ul class='c-list' data-action='click->playlist-songs#actionHandler'>
       <% @songs.each do |song| %>
-        <li class='c-list__item o-flex o-flex--justify-between u-cursor-pointer' data-target='playlist-songs.item' data-song-id='<%= song.id %>' data-playlist-songs-action='play'>
-          <div>
-            <h4 class='u-mb-tiny u-text-weight-normal'><%= song.name %></h4>
-            <% if @album.artist.is_various? %>
-              <%= song.artist.title %>
-            <% end %>
-          </div>
-          <div class='o-flex o-flex--align-center'>
-            <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.length) %></div>
-            <%= link_to dialog_playlists_path(song_id: song.id), remote: true, data: { playlist_songs_action: 'none' } do %>
-              <%= icon_tag 'playlist-add', size: 'small', title: t('text.add_to_playlist') %>
-            <% end %>
+        <li class='c-list__item u-cursor-pointer' data-target='playlist-songs.item' data-song-id='<%= song.id %>' data-playlist-songs-action='play'>
+          <div class='o-flex o-flex--justify-between'>
+            <div>
+              <h4 class='u-mb-tiny u-text-weight-normal'><%= song.name %></h4>
+              <% if @album.artist.is_various? %>
+                <%= song.artist.title %>
+              <% end %>
+            </div>
+            <div class='o-flex o-flex--align-center'>
+              <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.length) %></div>
+              <%= link_to dialog_playlists_path(song_id: song.id), remote: true, data: { playlist_songs_action: 'none' } do %>
+                <%= icon_tag 'playlist-add', size: 'small', title: t('text.add_to_playlist') %>
+              <% end %>
+            </div>
           </div>
         </li>
       <% end %>

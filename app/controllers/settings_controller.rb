@@ -13,8 +13,8 @@ class SettingsController < ApplicationController
     if setting_params[:media_path]
       begin
         Media.sync
-      rescue BlackCandyError::InvalidFilePath => error
-        flash.now[:error] = error.message; return
+      rescue BlackCandyError::InvalidFilePath => e
+        flash.now[:error] = e.message; return
       end
     end
 

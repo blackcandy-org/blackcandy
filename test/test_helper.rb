@@ -62,8 +62,12 @@ class ActiveSupport::TestCase
   end
 
   def media_file_info_stub(file_path, attributes = {})
-    Proc.new do |media_file_path|
-      file_info = MediaFile.send(:get_tag_info, media_file_path).merge(file_path: media_file_path, md5_hash: MediaFile.send(:get_md5_hash, media_file_path))
+    proc do |media_file_path|
+      file_info = MediaFile.send(:get_tag_info, media_file_path).merge(
+        file_path: media_file_path,
+        md5_hash: MediaFile.send(:get_md5_hash, media_file_path)
+      )
+
       media_file_path.to_s == file_path.to_s ? file_info.merge(**attributes, md5_hash: 'new_md5_hash') : file_info
     end
   end
@@ -72,7 +76,7 @@ end
 class ActionDispatch::IntegrationTest
   include Turbolinks::Assertions
 
-  def assert_admin_access(method: :get, url:, **args)
+  def assert_admin_access(url:, method: :get, **args)
     login users(:visitor1)
     send(method, url, **args)
     assert_response :forbidden
@@ -82,7 +86,7 @@ class ActionDispatch::IntegrationTest
     yield users(:admin)
   end
 
-  def assert_login_access(user: users(:visitor1), method: :get, url:, **args)
+  def assert_login_access(url:, user: users(:visitor1), method: :get, **args)
     logout
     send(method, url, **args)
     assert_redirected_to new_session_url
@@ -92,7 +96,7 @@ class ActionDispatch::IntegrationTest
     yield user
   end
 
-  def assert_self_or_admin_access(method: :get, user:, url:, **args)
+  def assert_self_or_admin_access(url:, user:, method: :get, **args)
     login User.where.not(email: user.email).where.not(is_admin: true).first
     send(method, url, **args)
     assert_response :forbidden
@@ -108,7 +112,7 @@ class ActionDispatch::IntegrationTest
     yield
   end
 
-  def assert_self_access(user:, method: :get, url:, **args)
+  def assert_self_access(url:, user:, method: :get, **args)
     login User.where.not(email: user.email).first
     send(method, url, **args)
     assert_response :forbidden

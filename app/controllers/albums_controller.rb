@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class AlbumsController < ApplicationController
-  include Pagy::Backend
-
   before_action :require_admin, only: [:edit, :update]
   before_action :find_album, except: [:index]
+
+  include Pagy::Backend
+  include Playable
 
   def index
     records = Album.search(params[:query]).includes(:artist).order(:name)
@@ -16,8 +17,7 @@ class AlbumsController < ApplicationController
     AttachAlbumImageFromDiscogsJob.perform_later(@album.id) if @album.need_attach_from_discogs?
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @album.update(album_params)
@@ -37,5 +37,9 @@ class AlbumsController < ApplicationController
 
     def find_album
       @album = Album.find(params[:id])
+    end
+
+    def find_all_song_ids
+      @song_ids = @album.song_ids
     end
 end

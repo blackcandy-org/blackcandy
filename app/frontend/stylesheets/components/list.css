@@ -24,3 +24,18 @@
 .c-list__item.is-active * {
   color: rgb(var(--list-active-color));
 }
+
+.c-list__item.is-dragging-placeholder {
+  background: rgb(var(--list-dragging-placeholder-bg-color));
+  color: transparent;
+}
+
+.c-list__item.is-dragging-placeholder * {
+  color: transparent;
+}
+
+.c-list__item.is-dragging {
+  background: rgb(var(--list-dragging-bg-color));
+  border-radius: var(--border-radius-medium);
+  box-shadow: 0 4px 8px 0 rgba(var(--list-dragging-shadow-color), 0.1), 0 10px 13px 0 rgba(var(--list-dragging-shadow-color), 0.11);
+}

@@ -7,7 +7,9 @@
   top: 0;
 }
 
-.u-position-sticky-bottom {
-  position: sticky !important;
+.u-position-fixed-bottom {
+  position: fixed !important;
+  left: 0;
+  right: 0;
   bottom: 0;
 }

@@ -3,19 +3,13 @@
 module ScopedSetting
   extend ActiveSupport::Concern
 
-  included do
-    AVAILABLE_SETTINGS = []
-  end
-
   class_methods do
     def has_setting(setting, default: nil, available_options: nil)
-      AVAILABLE_SETTINGS.push(setting)
+      const_set(:AVAILABLE_SETTINGS, [setting])
 
       store_accessor :settings, setting
 
-      if available_options
-        validates_inclusion_of setting, in: available_options
-      end
+      validates setting, inclusion: { in: available_options } if available_options
 
       define_method(setting) do
         super() || default

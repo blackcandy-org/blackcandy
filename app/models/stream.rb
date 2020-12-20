@@ -26,7 +26,7 @@ class Stream
     command = ['ffmpeg', '-i', file_path, '-map', '0:0', '-v', '0', '-ab', '128k', '-f', TRANSCODE_FORMAT, '-']
     # need add error raise when can not found ffmpeg command.
     IO.popen(command) do |io|
-      while line = io.gets do
+      while (line = io.gets)
         yield line
       end
     end

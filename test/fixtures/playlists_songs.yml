@@ -1,9 +1,9 @@
 playlist1_mp3_sample:
   playlist_id: 1
   song_id: 1
-  created_at: <%= DateTime.now  %>
+  position: 1
 
 playlist1_flac_sample:
   playlist_id: 1
   song_id: 2
-  created_at: <%= DateTime.now  %>
+  position: 2

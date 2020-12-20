@@ -29,6 +29,7 @@ class DiscogsApi
 
     def get_image(response)
       return if response.blank? || response[:results].blank?
+
       response[:results].first[:cover_image]
     end
   end
