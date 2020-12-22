@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.2.1'
+gem 'rails', '~> 6.1.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1.3'
 # Use Puma as the app server
@@ -16,7 +16,7 @@ gem 'bcrypt', '~> 3.1.11'
 # Get meta data from audio file
 gem 'wahwah', '~> 1.1.1'
 # Use sidekiq for backgroud job
-gem 'sidekiq', '~> 6.0.0'
+gem 'sidekiq', '~> 6.1.2'
 # Server-side support for Turbolinks redirection.
 gem 'turbolinks', '~> 5.2.1'
 # Pagination
@@ -62,7 +62,7 @@ group :development do
   # Memory profiler for ruby
   gem 'memory_profiler', '~> 0.9.13', require: false
   # Help to kill N+1 queries and unused eager loading
-  gem 'bullet', '~> 6.0.2'
+  gem 'bullet', '~> 6.1.2'
 end
 
 group :test do

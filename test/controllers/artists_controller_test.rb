@@ -23,7 +23,7 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update image for album' do
     artist = artists(:artist1)
-    artist_params = { artist: { image: fixture_file_upload('files/cover_image.jpg', 'image/jpeg') } }
+    artist_params = { artist: { image: fixture_file_upload('cover_image.jpg', 'image/jpeg') } }
     artist_original_image_url = artist.image.url
 
     assert_admin_access(url: artist_url(artist), method: :patch, params: artist_params) do

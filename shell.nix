@@ -1,4 +1,4 @@
-with import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/72b9660dc18ba347f7cd41a9504fc181a6d87dc3.tar.gz") {};
+with import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/e55f77277b59fabd3c220f4870a44de705b1babb.tar.gz") {};
 
 mkShell {
   buildInputs = [
