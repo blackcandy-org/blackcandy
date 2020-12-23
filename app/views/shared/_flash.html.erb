@@ -1,5 +1,5 @@
 <% flash.each do |key, value| %>
-  <div class='o-animation-fadeInDown c-flash__body <%= "c-flash__body--#{key}" %>' data-controller='flash' data-flash-timeout='2500'>
+  <div class='o-animation-fadeInDown c-flash__body <%= "c-flash__body--#{key}" %>' data-controller='flash' data-flash-timeout-value='2500'>
     <%= h value %>
   </div>
 <% end %>

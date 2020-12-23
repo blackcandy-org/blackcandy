@@ -1,6 +1,10 @@
 import { Controller } from 'stimulus';
 
 export default class extends Controller {
+  static values = {
+    loader: String
+  }
+
   connect() {
     this.element.addEventListener('ajax:beforeSend', this._beforeSend);
   }
@@ -11,14 +15,14 @@ export default class extends Controller {
 
   _beforeSend = ({ target }) => {
     if (target.dataset.showLoader) {
-      App.dispatchEvent(this.data.get('loader'), 'loader:show');
+      App.dispatchEvent(this.loaderValue, 'loader:show');
       target.addEventListener('ajax:success', this._success.bind(this), { once: true });
     }
   }
 
   _success({ target }) {
     if (target.dataset.showLoader) {
-      App.dispatchEvent(this.data.get('loader'), 'loader:hide');
+      App.dispatchEvent(this.loaderValue, 'loader:hide');
     }
   }
 }

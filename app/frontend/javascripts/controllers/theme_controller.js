@@ -1,28 +1,27 @@
 import { Controller } from 'stimulus';
 
 export default class extends Controller {
+  static values = {
+    name: String
+  }
+
   initialize() {
     this._updateTheme();
   }
 
-  connect() {
-    this.element.addEventListener('theme:update', this._updateTheme);
-  }
-
-  disconnect() {
-    this.element.removeEventListener('theme:update', this._updateTheme);
+  nameValueChanged() {
+    this._updateTheme();
   }
 
   _updateTheme = () => {
     if (this.colorSchemeQuery) { this.colorSchemeQuery.removeListener(this._matchTheme); }
 
-    const theme = this.data.get('name');
     const oneYearFromNow = new Date(Date.now() + 365 * 864e5).toUTCString();
 
     // set theme cookie to track theme when user didn't login
-    document.cookie = `theme=${theme};path=/;samesite=lax;expires=${oneYearFromNow}`;
+    document.cookie = `theme=${this.nameValue};path=/;samesite=lax;expires=${oneYearFromNow}`;
 
-    switch (theme) {
+    switch (this.nameValue) {
       case 'dark':
         this._setDarkTheme();
         break;

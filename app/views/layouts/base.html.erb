@@ -10,7 +10,7 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class='u-overflow-hidden' data-controller='theme' data-theme-name='<%= Current.user&.theme || cookies[:theme].presence || User::DEFAULT_THEME  %>'>
+  <body class='u-overflow-hidden' data-controller='theme' data-theme-name-value='<%= Current.user&.theme || cookies[:theme].presence || User::DEFAULT_THEME  %>'>
     <%= content_for?(:body) ? yield(:body) : yield %>
     <%= render 'shared/icons' %>
   </body>

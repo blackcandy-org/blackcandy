@@ -4,11 +4,16 @@ import { ajax } from '@rails/ujs';
 export default class extends Controller {
   static targets = ['trigger']
 
+  static values = {
+    container: String,
+    nextUrl: String
+  }
+
   connect() {
     if (!this.hasNextPage) { return; }
 
     this.observer = new IntersectionObserver(this._handleNextPageLoad.bind(this), {
-      root: document.querySelector(this.data.get('container')),
+      root: this.hasContainerValue ? document.querySelector(this.containerValue) : document,
       rootMargin: '0px',
       threshold: 1.0
     });
@@ -37,7 +42,7 @@ export default class extends Controller {
       }
 
       ajax({
-        url: this.nextUrl,
+        url: this.nextUrlValue,
         type: 'get',
         dataType: 'script',
         beforeSend: (xhr) => {
@@ -49,10 +54,6 @@ export default class extends Controller {
   }
 
   get hasNextPage() {
-    return !!this.nextUrl;
-  }
-
-  get nextUrl() {
-    return this.data.get('nextUrl');
+    return !!this.nextUrlValue;
   }
 }

@@ -3,11 +3,11 @@
     <%= empty_alert_tag has_icon: true, has_overlay: false %>
   </div>
 <% else %>
-  <div data-controller='infinite-scroll' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
+  <div data-controller='infinite-scroll' data-infinite-scroll-next-url-value='<%= pagy_next_url(@pagy) %>'>
     <div class='o-grid o-grid--gap-medium o-container o-container--large' id='js-albums-content' cols@narrow='2' cols@extra-small='3' cols@small='2' cols@medium='3' cols@large='4' cols@extra-large='5' cols@wide='6' cols@extra-wide='7'>
       <%= render partial: 'album', collection: @albums, cached: true %>
     </div>
-    <div data-target='infinite-scroll.trigger' class='o-flex o-flex--justify-center u-my-small'>
+    <div data-infinite-scroll-target='trigger' class='o-flex o-flex--justify-center u-my-small'>
       <% if @pagy.next %>
         <%= loader_tag %>
       <% end %>

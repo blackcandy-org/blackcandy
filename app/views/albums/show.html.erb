@@ -18,7 +18,7 @@
     </div>
     <ul class='c-list' data-action='click->playlist-songs#actionHandler'>
       <% @songs.each do |song| %>
-        <li class='c-list__item u-cursor-pointer' data-target='playlist-songs.item' data-song-id='<%= song.id %>' data-playlist-songs-action='play'>
+        <li class='c-list__item u-cursor-pointer' data-playlist-songs-target='item' data-song-id='<%= song.id %>' data-playlist-songs-action='play'>
           <div class='o-flex o-flex--justify-between'>
             <div>
               <h4 class='u-mb-tiny u-text-weight-normal'><%= song.name %></h4>

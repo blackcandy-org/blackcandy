@@ -4,6 +4,11 @@ import { ajax } from '@rails/ujs';
 export default class extends Controller {
   static targets = ['item', 'count', 'playAllLink'];
 
+  static values = {
+    playlistId: Number,
+    isCurrent: Boolean
+  }
+
   initialize() {
     this.player = App.player;
   }
@@ -45,14 +50,14 @@ export default class extends Controller {
     App.dispatchEvent('#js-playlist-loader', 'loader:show');
 
     ajax({
-      url: `/playlists/${this.playlistId}/songs`,
+      url: `/playlists/${this.playlistIdValue}/songs`,
       type: 'delete',
       dataType: 'script',
       data: 'clear_all=true',
       success: () => {
         App.dispatchEvent('#js-playlist-loader', 'loader:hide');
 
-        if (this.isCurrent) {
+        if (this.isCurrentValue) {
           this.player.playlist.update([]);
           this.player.stop();
         }
@@ -89,12 +94,12 @@ export default class extends Controller {
     const { songId } = playlistItemElement.dataset;
 
     ajax({
-      url: `/playlists/${this.playlistId}/songs`,
+      url: `/playlists/${this.playlistIdValue}/songs`,
       type: 'delete',
       dataType: 'script',
       data: `song_ids[]=${songId}`,
       success: () => {
-        if (this.isCurrent) {
+        if (this.isCurrentValue) {
           const songIndex = this.player.playlist.deleteSong(songId);
           if (this.player.currentSong.id == songId) { this.player.skipTo(songIndex); }
         }
@@ -123,13 +128,5 @@ export default class extends Controller {
     if (this.hasPlayAllLinkTarget) {
       this.playAllLinkTarget.href = event.detail;
     }
-  }
-
-  get playlistId() {
-    return this.data.get('playlistId');
-  }
-
-  get isCurrent() {
-    return this.data.get('isCurrent') == 'true';
   }
 }

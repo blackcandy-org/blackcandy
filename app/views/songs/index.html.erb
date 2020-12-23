@@ -3,7 +3,7 @@
     <%= empty_alert_tag has_icon: true, has_overlay: false %>
   </div>
 <% else %>
-  <div class='o-container o-container--small' data-controller='playlist-songs infinite-scroll' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
+  <div class='o-container o-container--small' data-controller='playlist-songs infinite-scroll' data-infinite-scroll-next-url-value='<%= pagy_next_url(@pagy) %>'>
     <table class='c-table'>
       <thead>
         <tr>
@@ -18,7 +18,7 @@
         <%= render partial: 'song', collection: @songs, cached: true %>
       </tbody>
     </table>
-    <div data-target='infinite-scroll.trigger' class='o-flex o-flex--justify-center u-my-small'>
+    <div data-infinite-scroll-target='trigger' class='o-flex o-flex--justify-center u-my-small'>
       <% if @pagy.next %>
         <%= loader_tag %>
       <% end %>

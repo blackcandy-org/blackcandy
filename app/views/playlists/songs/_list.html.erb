@@ -1,8 +1,8 @@
-<div data-controller='infinite-scroll' data-infinite-scroll-next-url='<%= next_url %>'>
-  <ul data-controller='playlist-sortable' class='c-list c-list--border-none' id='js-playlist-list-content' data-action='click->playlist-songs#actionHandler' data-playlist-sortable-playlist-id='<%= @playlist.id %>'>
+<div data-controller='infinite-scroll' data-infinite-scroll-next-url-value='<%= next_url %>'>
+  <ul data-controller='playlist-sortable' class='c-list c-list--border-none' id='js-playlist-list-content' data-action='click->playlist-songs#actionHandler' data-playlist-sortable-playlist-id-value='<%= @playlist.id %>'>
     <%= render partial: 'playlists/songs/song', collection: @songs, cached: true %>
   </ul>
-  <div data-target='infinite-scroll.trigger' class='o-flex o-flex--justify-center u-my-small'>
+  <div data-infinite-scroll-target='trigger' class='o-flex o-flex--justify-center u-my-small'>
     <% if @pagy.next %>
       <%= loader_tag %>
     <% end %>
