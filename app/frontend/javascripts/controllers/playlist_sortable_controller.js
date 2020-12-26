@@ -3,6 +3,10 @@ import { Sortable, Plugins } from '@shopify/draggable';
 import { ajax } from '@rails/ujs';
 
 export default class extends Controller {
+  static values = {
+    playlistId: Number
+  }
+
   connect() {
     this.sortable = new Sortable(this.element, {
       draggable: '.js-playlist-sortable-item',
@@ -38,13 +42,9 @@ export default class extends Controller {
     App.player.playlist.move(event.oldIndex, event.newIndex);
 
     ajax({
-      url: `/playlists/${this.playlistId}/songs`,
+      url: `/playlists/${this.playlistIdValue}/songs`,
       type: 'put',
       data: `from_position=${event.oldIndex + 1}&to_position=${event.newIndex + 1}`
     });
-  }
-
-  get playlistId() {
-    return this.data.get('playlistId');
   }
 }

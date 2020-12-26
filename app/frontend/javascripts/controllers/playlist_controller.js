@@ -4,6 +4,10 @@ import { ajax } from '@rails/ujs';
 export default class extends Controller {
   static targets = ['name', 'nameInput'];
 
+  static values = {
+    id: Number
+  }
+
   rename() {
     const name = this.nameTarget.innerText;
 
@@ -21,7 +25,7 @@ export default class extends Controller {
       this.nameTarget.innerText = newName;
 
       ajax({
-        url: `/playlists/${this.data.get('id')}`,
+        url: `/playlists/${this.idValue}`,
         type: 'put',
         data: `playlist[name]=${newName}`
       });

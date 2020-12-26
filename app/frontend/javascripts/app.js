@@ -9,7 +9,7 @@ export default {
 
   appedNextPageContentTo(selector, newContent, nextUrl) {
     document.querySelector(selector).insertAdjacentHTML('beforeend', newContent);
-    document.querySelector(selector).closest('[data-infinite-scroll-next-url]').dataset.infiniteScrollNextUrl = nextUrl;
+    document.querySelector(selector).closest('[data-infinite-scroll-next-url-value]').dataset.infiniteScrollNextUrlValue = nextUrl;
   },
 
   dispatchEvent(element, type, data = null) {
@@ -20,7 +20,7 @@ export default {
   playlistElement(playlistId) {
     const playlistElement = document.querySelector("#js-playlist-content [data-controller='playlist-songs']");
 
-    if (playlistElement && playlistElement.dataset.playlistSongsPlaylistId == playlistId) {
+    if (playlistElement && playlistElement.dataset.playlistSongsPlaylistIdValue == playlistId) {
       return playlistElement;
     }
   },

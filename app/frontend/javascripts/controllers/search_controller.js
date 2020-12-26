@@ -3,6 +3,10 @@ import { Controller } from 'stimulus';
 export default class extends Controller {
   static targets = ['loader', 'input'];
 
+  static values = {
+    resource: String
+  }
+
   AVAILABLE_RESOURCES = ['albums', 'artists', 'songs'];
 
   connect() {
@@ -19,7 +23,7 @@ export default class extends Controller {
 
     this.loaderTarget.classList.remove('u-display-none');
 
-    const baseUrl = this.AVAILABLE_RESOURCES.includes(this.resource) ? `/${this.resource}` : '/albums';
+    const baseUrl = this.AVAILABLE_RESOURCES.includes(this.resourceValue) ? `/${this.resourceValue}` : '/albums';
     const query = event.target.value.trim();
     const queryUrl = `${baseUrl}${query ? `?query=${query}` : ''}`;
 
@@ -35,9 +39,5 @@ export default class extends Controller {
       searchElement.focus();
       searchElement.setSelectionRange(searchValueLength, searchValueLength);
     }, { once: true });
-  }
-
-  get resource() {
-    return this.data.get('resource');
   }
 }

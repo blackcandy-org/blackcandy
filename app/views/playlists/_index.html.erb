@@ -2,13 +2,13 @@
   <%= form.text_field :name, class: 'c-input u-mr-narrow' %>
   <%= form.submit t('label.create'), class: 'c-button c-button--primary c-button--small' %>
 <% end %>
-<div data-controller='infinite-scroll' data-infinite-scroll-next-url='<%= pagy_next_url(@pagy) %>'>
+<div data-controller='infinite-scroll' data-infinite-scroll-next-url-value='<%= pagy_next_url(@pagy) %>'>
   <ul id='js-playlist-list' class='c-list c-list--border-none'>
     <% if @playlists.present? %>
       <%= render partial: 'playlist', collection: @playlists, cached: true %>
     <% end %>
   </ul>
-  <div data-target='infinite-scroll.trigger' class='o-flex o-flex--justify-center u-my-small'>
+  <div data-infinite-scroll-target='trigger' class='o-flex o-flex--justify-center u-my-small'>
     <% if @pagy.next %>
       <%= loader_tag %>
     <% end %>

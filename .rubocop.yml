@@ -7,6 +7,7 @@ AllCops:
   NewCops: enable
   TargetRubyVersion: 2.6
   Exclude:
+    - 'config.ru'
     - 'tmp/**/*'
     - 'vendor/**/*'
     - 'node_modules/**/*'
@@ -58,4 +59,7 @@ Metrics/ClassLength:
   Enabled: false
 
 Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/RenderInline:
   Enabled: false

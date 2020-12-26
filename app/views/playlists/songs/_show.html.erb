@@ -1,23 +1,23 @@
-<div data-controller='playlist-songs' data-playlist-songs-playlist-id='<%= @playlist.id %>'>
-  <div class='c-action-bar o-flex o-flex--justify-between o-flex--align-center' data-controller='playlist' data-playlist-id='<%= @playlist.id %>'>
+<div data-controller='playlist-songs' data-playlist-songs-playlist-id-value='<%= @playlist.id %>'>
+  <div class='c-action-bar o-flex o-flex--justify-between o-flex--align-center' data-controller='playlist' data-playlist-id-value='<%= @playlist.id %>'>
     <div class='o-flex o-flex--align-center'>
       <%= link_to playlists_path, remote: true, data: { show_loader: true } do %>
         <%= icon_tag 'chevron-left', title: t('text.go_back') %>
       <% end %>
       <div class='u-ml-narrow'>
         <div class='u-mb-tiny'>
-          <span data-target='playlist.name'><%= @playlist.name %></span>
-          <input data-target='playlist.nameInput' data-action='blur->playlist#updateName keydown->playlist#updateNameOnEnter' class='u-display-none c-input' />
+          <span data-playlist-target='name'><%= @playlist.name %></span>
+          <input data-playlist-target='nameInput' data-action='blur->playlist#updateName keydown->playlist#updateNameOnEnter' class='u-display-none c-input' />
         </div>
         <p>
-          <span data-target='playlist-songs.count'><%= @playlist.songs.size %></span>
+          <span data-playlist-songs-target='count'><%= @playlist.songs.size %></span>
           <span> <%= t('label.tracks') %><span>
         </p>
       </div>
     </div>
     <div data-controller='dropdown' class='c-dropdown'>
       <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', title: t('label.more') %></span>
-      <div data-target='dropdown.list' class='u-display-none c-dropdown__list'>
+      <div data-dropdown-target='list' class='u-display-none c-dropdown__list'>
         <% unless @songs.blank? %>
           <%= link_to t('label.play_all'), play_playlist_songs_path(@playlist), method: :post, remote: true, data: { target: 'playlist-songs.playAllLink' }, class: 'c-dropdown__item' %>
           <a class='c-dropdown__item' data-action='playlist-songs#clear'><%= t('label.clear') %></a>

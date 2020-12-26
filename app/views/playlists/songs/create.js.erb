@@ -3,7 +3,7 @@
 
   <% if @playlist.songs.size > 1 %>
     var infiniteScrollElement = document.querySelector("#js-playlist-content [data-controller='infinite-scroll']");
-    var hasNoNextUrl = infiniteScrollElement && !infiniteScrollElement.dataset.infiniteScrollNextUrl
+    var hasNoNextUrl = infiniteScrollElement && !infiniteScrollElement.dataset.infiniteScrollNextUrlValue
 
     if (playlistElement && hasNoNextUrl) {
       App.dispatchEvent(playlistElement, 'playlistSongs:updateCount', '<%= @playlist.songs.size %>');

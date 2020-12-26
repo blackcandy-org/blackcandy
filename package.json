@@ -7,7 +7,7 @@
     "@shopify/draggable": "^1.0.0-beta.12",
     "howler": "^2.2.0",
     "postcss-mixins": "^6.2.3",
-    "stimulus": "^1.1.0",
+    "stimulus": "^2.0.0",
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {

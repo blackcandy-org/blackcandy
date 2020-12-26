@@ -1,8 +1,12 @@
 import { Controller } from 'stimulus';
 
 export default class extends Controller {
+  static values = {
+    timeout: Number
+  }
+
   connect() {
-    setTimeout(this._removeFlash.bind(this), this.data.get('timeout'));
+    setTimeout(this._removeFlash.bind(this), this.timeoutValue);
   }
 
   _removeFlash() {

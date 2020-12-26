@@ -42,11 +42,11 @@ module ApplicationHelper
   end
 
   def render_flash
-    render 'shared/flash.js.erb'
+    render inline: "App.renderContent('#js-flash', '#{j(render(partial: 'shared/flash'))}')"
   end
 
   def render_playlist(html)
-    render partial: 'shared/playlist.js.erb', locals: { html: html }
+    render partial: 'shared/playlist', locals: { html: html }
   end
 
   def format_duration(sec)
