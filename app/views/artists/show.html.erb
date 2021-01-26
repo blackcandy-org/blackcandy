@@ -15,6 +15,6 @@
       </div>
     </div>
   <% end %>
-  <%= render partial: 'albums', locals: { title: t('label.albums'), albums: @albums } %>
-  <%= render partial: 'albums', locals: { title: t('label.appears_on'), albums: @appears_on_albums } %>
+  <%= render partial: 'artists/albums', locals: { title: t('label.albums'), albums: @albums } %>
+  <%= render partial: 'artists/albums', locals: { title: t('label.appears_on'), albums: @appears_on_albums } %>
 </div>

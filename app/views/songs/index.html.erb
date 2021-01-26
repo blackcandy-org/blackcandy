@@ -15,7 +15,7 @@
         </tr>
       </thead>
       <tbody id='js-songs-content' data-action='click->playlist-songs#actionHandler'>
-        <%= render partial: 'song', collection: @songs, cached: true %>
+        <%= render partial: 'songs/song', collection: @songs, cached: true %>
       </tbody>
     </table>
     <div data-infinite-scroll-target='trigger' class='o-flex o-flex--justify-center u-my-small'>

@@ -1,5 +1,7 @@
 <% if @pagy.page == 1 %>
-  <%= render_playlist(render 'show') %>
+  <%= render_playlist(@playlist.buildin? ?
+    render(partial: 'playlists/songs/show_buildin', locals: { playlist: @playlist, pagy: @pagy, songs: @songs }) :
+    render(partial: 'playlists/songs/show', locals: { playlist: @playlist, pagy: @pagy, songs: @songs })) %>
 <% else %>
-  App.appedNextPageContentTo('#js-playlist-list-content', '<%= j(render partial: 'song', collection: @songs, cached: true) %>', '<%= pagy_next_url(@pagy) %>')
+  App.appedNextPageContentTo('#js-playlist-list-content', '<%= j(render partial: 'playlists/songs/song', collection: @songs, cached: true) %>', '<%= next_url_for_path(playlist_songs_path(@playlist), @pagy) %>')
 <% end %>

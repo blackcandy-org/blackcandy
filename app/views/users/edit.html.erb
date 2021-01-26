@@ -3,7 +3,7 @@
     <h1><%= t('text.update_profile') %></h1>
     <hr />
     <div id='js-user-form'>
-      <%= render 'form' %>
+      <%= render partial: 'users/form', locals: { user: @user } %>
     </div>
   </div>
 <% end %>
