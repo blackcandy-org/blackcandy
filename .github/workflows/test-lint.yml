@@ -43,6 +43,7 @@ jobs:
           PGPASSWORD: postgres
           RAILS_ENV: test
         run: |
+          sudo apt-get update
           sudo apt-get -yqq install libpq-dev imagemagick ffmpeg
           yarn install
           gem install bundler
