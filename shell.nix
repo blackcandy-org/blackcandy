@@ -2,7 +2,7 @@ with import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/e55f77277b59
 
 mkShell {
   buildInputs = [
-    ruby
+    ruby_2_7
     postgresql_11
     redis
     nodejs-12_x
