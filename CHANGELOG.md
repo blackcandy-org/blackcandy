@@ -1,3 +1,17 @@
+### 1.3.0
+  - new features
+    - add sortable playlist
+
+  - enhancements
+    - update ruby to 2.7
+    - update rails to 6.1
+    - update stimulus to 2.0
+    - update rubocop style config
+    - avoid use instance variable in partial view and use full path in render
+
+  - bug fixes
+    - fix mini player position not fixed at the bottom in small screens with sort content
+
 ### 1.2.0
   - new features
     - add support for various artists album

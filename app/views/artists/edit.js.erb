@@ -1,1 +1,1 @@
-App.renderToDialog('<%= t('text.edit_artist') %>', '<%= j(render 'edit') %>');
+App.renderToDialog('<%= t('text.edit_artist') %>', '<%= j(render partial: 'artists/edit', locals: { artist: @artist }) %>');

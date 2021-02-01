@@ -1,2 +1,2 @@
-App.renderContent('#js-user-form', '<%= j(render 'form') %>');
+App.renderContent('#js-user-form', '<%= j(render partial: 'users/form', locals: { user: @user }) %>');
 <%= render_flash %>

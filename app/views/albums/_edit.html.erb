@@ -1,4 +1,4 @@
-<%= form_with model: @album, class: 'c-form' do |form| %>
+<%= form_with model: album, class: 'c-form' do |form| %>
   <div class='c-form__field'>
     <%= form.label :image, t('text.album_cover') %>
     <%= form.file_field :image, accept: 'image/png, image/jpeg', class: 'c-input' %>
