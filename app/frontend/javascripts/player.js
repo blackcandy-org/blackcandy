@@ -73,8 +73,8 @@ class Player {
     this.play(index);
   }
 
-  seek(percent) {
-    this.currentSong.howl.seek(this.currentSong.length * percent);
+  seek(seconds) {
+    this.currentSong.howl.seek(seconds);
   }
 }
 

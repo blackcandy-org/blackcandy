@@ -28,6 +28,8 @@ module.exports = {
     "App": true,
     "Turbolinks": true,
     "CustomEvent": true,
-    "IntersectionObserver": true
+    "IntersectionObserver": true,
+    "MediaMetadata": true,
+    "navigator": true
   }
 };
