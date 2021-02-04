@@ -27,12 +27,12 @@ export default class extends Controller {
     const query = event.target.value.trim();
     const queryUrl = `${baseUrl}${query ? `?query=${query}` : ''}`;
 
-    Turbolinks.visit(queryUrl);
+    Turbo.visit(queryUrl);
     this._focusInput();
   }
 
   _focusInput() {
-    document.addEventListener('turbolinks:load', () => {
+    document.addEventListener('turbo:load', () => {
       const searchElement = document.querySelector('#js-search-input');
       const searchValueLength = searchElement.value.length;
 

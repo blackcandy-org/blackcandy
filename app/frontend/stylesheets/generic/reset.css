@@ -39,7 +39,7 @@ textarea {
   resize: vertical;
 }
 
-/* Reset style for turbolinks progress bar */
-.turbolinks-progress-bar {
+/* Reset style for turbo progress bar */
+.turbo-progress-bar {
   background-color: rgb(var(--progress-bar-bg-color));
 }

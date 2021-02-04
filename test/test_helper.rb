@@ -74,8 +74,6 @@ class ActiveSupport::TestCase
 end
 
 class ActionDispatch::IntegrationTest
-  include Turbolinks::Assertions
-
   def assert_admin_access(url:, method: :get, **args)
     login users(:visitor1)
     send(method, url, **args)

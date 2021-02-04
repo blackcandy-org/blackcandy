@@ -6,8 +6,8 @@
     <title>Black Candy</title>
     <%= csrf_meta_tags %>
     <%= favicon_pack_tag 'link_icon.png', type: 'image/png' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
   </head>
 
   <body class='u-overflow-hidden' data-controller='theme' data-theme-name-value='<%= Current.user&.theme || cookies[:theme].presence || User::DEFAULT_THEME  %>'>
