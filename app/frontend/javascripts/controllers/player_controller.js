@@ -91,7 +91,7 @@ export default class extends Controller {
   }
 
   seek(event) {
-    this.player.seek(event.offsetX / event.target.offsetWidth);
+    this.player.seek((event.offsetX / event.target.offsetWidth) * this.currentSong.length);
     window.requestAnimationFrame(this._setProgress.bind(this));
   }
 
@@ -119,8 +119,8 @@ export default class extends Controller {
   _setPlayingStatus = () => {
     const { currentSong } = this;
 
-    this.imageTarget.src = currentSong.album_image_url;
-    this.backgroundImageTarget.style.backgroundImage = `url(${currentSong.album_image_url})`;
+    this.imageTarget.src = currentSong.album_image_url.small;
+    this.backgroundImageTarget.style.backgroundImage = `url(${currentSong.album_image_url.small})`;
     this.songNameTarget.textContent = currentSong.name;
     this.artistNameTarget.textContent = currentSong.artist_name;
     this.albumNameTarget.textContent = currentSong.album_name;
