@@ -1,4 +1,4 @@
-<%= form_with url: session_path do |form| %>
+<%= form_with url: session_path, id: 'turbo-session-form' do |form| %>
   <div class='c-form__field'>
     <%= form.label :email %>
     <%= form.email_field :email, value: params[:email], autofocus: true, class: 'c-input' %>

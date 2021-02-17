@@ -42,7 +42,7 @@ module ApplicationHelper
   end
 
   def render_flash
-    render inline: "App.renderContent('#js-flash', '#{j(render(partial: 'shared/flash'))}')"
+    turbo_stream.update 'turbo-flash', partial: 'shared/flash'
   end
 
   def render_playlist(html)
