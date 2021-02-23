@@ -24,9 +24,31 @@ function randomIndex(length) {
   return Math.floor(Math.random() * (length - 1));
 }
 
+async function fetchTurboStream(request, options = {}, successCallback = () => {}) {
+  const turboStreamHeader = {
+    Accept: 'text/vnd.turbo-stream.html'
+  };
+
+  options.headers = ('headers' in options) ?
+    { ...options.headers, ...turboStreamHeader } :
+    turboStreamHeader;
+
+  try {
+    const response = await fetch(request, options);
+
+    if (response.ok) {
+      const streamMessage = await response.text();
+
+      Turbo.renderStreamMessage(streamMessage);
+      successCallback();
+    }
+  } catch (_) { /* ignore error */ }
+}
+
 export {
   formatDuration,
   toggleShow,
   shuffle,
-  randomIndex
+  randomIndex,
+  fetchTurboStream
 };

@@ -30,6 +30,7 @@ module.exports = {
     "CustomEvent": true,
     "IntersectionObserver": true,
     "MediaMetadata": true,
-    "navigator": true
+    "navigator": true,
+    "AbortController": true
   }
 };
