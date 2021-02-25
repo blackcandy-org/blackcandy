@@ -1,11 +1,13 @@
-<ul class='c-tab'>
-  <li class='c-tab__item <%= 'is-active' if is_active?(path: current_playlist_songs_path) %>'>
-    <%= link_to t('label.current'), current_playlist_songs_path, remote: true, data: { show_loader: true } %>
-  </li>
-  <li class='c-tab__item <%= 'is-active' if is_active?(controller: ['playlists', 'playlists/songs']) %>'>
-    <%= link_to t('label.playlists'), playlists_path, remote: true, data: { show_loader: true } %>
-  </li>
-  <li class='c-tab__item <%= 'is-active' if is_active?(path: favorite_playlist_songs_path) %>'>
-    <%= link_to t('label.favorites'), favorite_playlist_songs_path, remote: true, data: { show_loader: true } %>
-  </li>
-</ul>
+<div class='c-nav'>
+  <ul class='c-tab'>
+    <li class='c-tab__item <%= 'is-active' if is_active?(path: current_playlist_songs_path) %>'>
+      <%= link_to t('label.current'), current_playlist_songs_path %>
+    </li>
+    <li class='c-tab__item <%= 'is-active' if is_active?(controller: ['playlists', 'playlists/songs']) %>'>
+      <%= link_to t('label.playlists'), playlists_path %>
+    </li>
+    <li class='c-tab__item <%= 'is-active' if is_active?(path: favorite_playlist_songs_path) %>'>
+      <%= link_to t('label.favorites'), favorite_playlist_songs_path %>
+    </li>
+  </ul>
+</div>

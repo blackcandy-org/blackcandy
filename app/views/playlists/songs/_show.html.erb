@@ -28,6 +28,6 @@
     </div>
   </div>
   <% if playlist.present? %>
-    <%= render partial: 'playlists/songs/list', locals: { next_url: pagy_next_url(pagy), playlist: playlist, songs: songs, pagy: pagy } %>
+    <%= render partial: 'playlists/songs/list', locals: { playlist: playlist, songs: songs, pagy: pagy } %>
   <% end %>
 </div>

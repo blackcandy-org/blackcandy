@@ -5,7 +5,7 @@ class SongsController < ApplicationController
 
   def index
     records = Song.search(params[:query]).includes(:artist, :album).order(:name)
-    @pagy, @songs = pagy_countless(records)
+    @pagy, @songs = pagy(records)
   end
 
   def show

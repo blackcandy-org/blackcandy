@@ -1,4 +1,4 @@
-<div data-controller='infinite-scroll' data-infinite-scroll-next-url-value='<%= next_url %>'>
+<div data-controller='infinite-scroll' data-infinite-scroll-url-value='<%= playlist_songs_path(playlist) %>' data-infinite-scroll-total-pages-value='<%= @pagy.pages %>'>
   <ul data-controller='playlist-sortable' class='c-list c-list--border-none' id='js-playlist-list-content' data-action='click->playlist-songs#actionHandler' data-playlist-sortable-playlist-id-value='<%= playlist.id %>'>
     <%= render partial: 'playlists/songs/song', collection: songs, cached: true %>
   </ul>

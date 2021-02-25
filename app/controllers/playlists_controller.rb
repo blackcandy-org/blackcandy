@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PlaylistsController < ApplicationController
+  layout 'sidebar'
+
   include Pagy::Backend
 
   before_action :find_playlist, only: [:destroy, :update]

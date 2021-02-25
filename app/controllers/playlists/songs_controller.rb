@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Playlists::SongsController < ApplicationController
+  layout 'sidebar'
+
   before_action :find_playlist
   before_action :find_songs, only: [:create, :destroy]
 
@@ -8,7 +10,7 @@ class Playlists::SongsController < ApplicationController
   include Playable
 
   def show
-    @pagy, @songs = pagy_countless(@playlist.songs.includes(:artist))
+    @pagy, @songs = pagy(@playlist.songs.includes(:artist))
   end
 
   def create

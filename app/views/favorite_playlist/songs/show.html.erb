@@ -1,0 +1,20 @@
+<div data-controller='playlist-songs' data-playlist-songs-playlist-id-value='<%= @playlist.id %>'>
+  <% if @songs.empty? %>
+    <%= empty_alert_tag %>
+  <% else %>
+    <div class='c-action-bar o-flex o-flex--justify-between o-flex--align-center'>
+      <p>
+        <span data-playlist-songs-target='count'><%= @playlist.songs.count %></span>
+        <span><%= t('label.tracks') %></span>
+      </p>
+      <div data-controller='dropdown' class='c-dropdown'>
+        <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', title: t('label.more') %></span>
+        <div data-dropdown-target='list' class='u-display-none c-dropdown__list'>
+          <%= link_to t('label.play_all'), play_playlist_songs_path(@playlist), method: :post, remote: true, data: { target: 'playlist-songs.playAllLink' }, class: 'c-dropdown__item' %>
+          <a class='c-dropdown__item' data-action='playlist-songs#clear'><%= t('label.clear') %></a>
+        </div>
+      </div>
+    </div>
+    <%= render partial: 'playlists/songs/list', locals: { playlist: @playlist, songs: @songs, pagy: @pagy } %>
+  <% end %>
+</div>

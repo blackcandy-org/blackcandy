@@ -3,7 +3,7 @@
     <%= empty_alert_tag has_icon: true, has_overlay: false %>
   </div>
 <% else %>
-  <div class='o-container o-container--small' data-controller='playlist-songs infinite-scroll' data-infinite-scroll-next-url-value='<%= pagy_next_url(@pagy) %>'>
+  <div class='o-container o-container--small' data-controller='playlist-songs infinite-scroll' data-infinite-scroll-url-value='<%= songs_path %>' data-infinite-scroll-total-pages-value='<%= @pagy.pages %>'>
     <table class='c-table'>
       <thead>
         <tr>
@@ -14,7 +14,7 @@
           <th class='u-w-15 u-w-25@narrow'><%= t('label.actions') %></th>
         </tr>
       </thead>
-      <tbody id='js-songs-content' data-action='click->playlist-songs#actionHandler'>
+      <tbody id='turbo-songs-content' data-action='click->playlist-songs#actionHandler'>
         <%= render partial: 'songs/song', collection: @songs, cached: true %>
       </tbody>
     </table>

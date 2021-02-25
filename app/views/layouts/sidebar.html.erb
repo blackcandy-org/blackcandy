@@ -1,0 +1,6 @@
+<%= turbo_frame_tag 'turbo-sidebar' do %>
+  <%= render 'shared/playlist_nav' %>
+  <div class='u-position-relative o-flex__item o-flex__item--grow-1 u-h-0 u-overflow-auto u-m-small'>
+    <%= yield %>
+  </div>
+<% end %>

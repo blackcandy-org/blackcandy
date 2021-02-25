@@ -6,11 +6,16 @@ export default class extends Controller {
 
   static values = {
     playlistId: Number,
-    isCurrent: Boolean
+    isCurrent: Boolean,
+    playlistSongs: Array
   }
 
   initialize() {
     this.player = App.player;
+
+    if (this.isCurrentValue && this.hasPlaylistSongsValue) {
+      this.player.playlist.update(this.playlistSongsValue);
+    }
   }
 
   connect() {

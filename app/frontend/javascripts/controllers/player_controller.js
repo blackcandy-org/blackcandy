@@ -23,7 +23,6 @@ export default class extends Controller {
 
   initialize() {
     this._initPlayer();
-    this._initPlaylist();
     this._initMode();
   }
 
@@ -175,14 +174,6 @@ export default class extends Controller {
     new Howl({ src: [''], format: ['mp3'] });
 
     this.player = App.player;
-  }
-
-  _initPlaylist() {
-    ajax({
-      url: '/current_playlist/songs?init=true',
-      type: 'get',
-      dataType: 'script'
-    });
   }
 
   _initMode() {
