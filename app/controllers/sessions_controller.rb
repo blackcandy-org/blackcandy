@@ -17,7 +17,6 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
       flash.now[:error] = t('error.login')
-      render 'new'
     end
   end
 

@@ -8,7 +8,7 @@ class PlaylistsController < ApplicationController
   before_action :find_playlist, only: [:destroy, :update]
 
   def index
-    @pagy, @playlists = pagy_countless(Current.user.playlists.order(created_at: :desc))
+    @pagy, @playlists = pagy(Current.user.playlists.order(created_at: :desc))
   end
 
   def create

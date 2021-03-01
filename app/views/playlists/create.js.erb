@@ -1,7 +1,0 @@
-<%= render_flash %>
-
-document.getElementById('playlist_name').value = '';
-
-<% if @playlist.valid? %>
-  document.querySelector('#js-playlist-list').insertAdjacentHTML('afterbegin', '<%= j(render partial: 'playlists/playlist', locals: { playlist: @playlist }) %>');
-<% end %>

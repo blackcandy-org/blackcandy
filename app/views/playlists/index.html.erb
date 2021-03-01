@@ -1,9 +1,9 @@
-<%= form_with model: Playlist.new, class: 'c-form o-flex o-flex--justify-between' do |form| %>
+<%= form_with model: Playlist.new, class: 'c-form o-flex o-flex--justify-between', data: { controller: 'form', action: 'turbo:submit-end->form#reset' } do |form| %>
   <%= form.text_field :name, class: 'c-input u-mr-narrow' %>
   <%= form.submit t('label.create'), class: 'c-button c-button--primary c-button--small' %>
 <% end %>
-<div data-controller='infinite-scroll' data-infinite-scroll-next-url-value='<%= pagy_next_url(@pagy) %>'>
-  <ul id='js-playlist-list' class='c-list c-list--border-none'>
+<div data-controller='infinite-scroll' data-infinite-scroll-url-value='<%= playlists_path %>' data-infinite-scroll-total-pages-value='<%= @pagy.pages %>'>
+  <ul id='turbo-playlist-list' class='c-list c-list--border-none'>
     <% if @playlists.present? %>
       <%= render partial: 'playlists/playlist', collection: @playlists, cached: true %>
     <% end %>

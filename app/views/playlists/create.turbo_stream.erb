@@ -1,0 +1,5 @@
+<%= render_flash %>
+
+<% if @playlist.valid? %>
+  <%= turbo_stream.prepend 'turbo-playlist-list', partial: 'playlists/playlist', locals: { playlist: @playlist } %>
+<% end %>
