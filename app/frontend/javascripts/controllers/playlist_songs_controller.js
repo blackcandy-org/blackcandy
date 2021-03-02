@@ -14,6 +14,7 @@ export default class extends Controller {
     this.player = App.player;
 
     if (this.isCurrentValue && this.hasPlaylistSongsValue) {
+      this.player.stop();
       this.player.playlist.update(this.playlistSongsValue);
     }
   }
@@ -49,25 +50,6 @@ export default class extends Controller {
       case 'none':
         break;
     }
-  }
-
-  clear() {
-    App.dispatchEvent('#js-playlist-loader', 'loader:show');
-
-    ajax({
-      url: `/playlists/${this.playlistIdValue}/songs`,
-      type: 'delete',
-      dataType: 'script',
-      data: 'clear_all=true',
-      success: () => {
-        App.dispatchEvent('#js-playlist-loader', 'loader:hide');
-
-        if (this.isCurrentValue) {
-          this.player.playlist.update([]);
-          this.player.stop();
-        }
-      }
-    });
   }
 
   _showPlayingItem = () => {

@@ -11,6 +11,11 @@ class Playlists::SongsController < ApplicationController
 
   def show
     @pagy, @songs = pagy(@playlist.songs.includes(:artist))
+
+    respond_to do |format|
+      format.turbo_stream if params[:page].to_i > 1
+      format.html
+    end
   end
 
   def create
@@ -32,7 +37,7 @@ class Playlists::SongsController < ApplicationController
     end
 
     # for refresh playlist content, when remove last song from playlist
-    show if @playlist.songs.empty?
+    redirect_to action: 'show', init: true if @playlist.songs.empty?
   end
 
   def update
