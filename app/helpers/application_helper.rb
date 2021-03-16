@@ -58,13 +58,10 @@ module ApplicationHelper
     params[:controller].in?(Array(controller)) || (path.is_a?(Regexp) ? (path =~ request.path) : (path == request.path))
   end
 
-  # Because pagy gem method pagy_next_url return url base on request url,
-  # but sometime we want specify base url. So this is what this method doing.
-  def next_url_for_path(path, pagy)
-    return unless pagy.next
+  def playlist_songs_for_path(playlist, options = {})
+    return current_playlist_songs_path(options) if playlist.current?
+    return favorite_playlist_songs_path(options) if playlist.favorite?
 
-    url = URI.parse(path); url_query = Rack::Utils.parse_query url.query
-    url.query = Rack::Utils.build_query url_query.merge(pagy.vars[:page_param].to_s => pagy.next)
-    url.to_s
+    playlist_songs_path(playlist, options)
   end
 end

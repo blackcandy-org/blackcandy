@@ -51,7 +51,7 @@ class Playlists::SongsController < ApplicationController
   private
 
     def find_playlist
-      @playlist = Current.user.all_playlists.find(params[:playlist_id])
+      @playlist = Current.user.playlists.find(params[:playlist_id])
     end
 
     def find_songs

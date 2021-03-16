@@ -1,0 +1,7 @@
+<%= turbo_stream.update 'turbo-playlist-songs-count', @playlist.songs.size %>
+
+<% @songs.each do |song| %>
+  <%= turbo_stream.remove song %>
+<% end %>
+
+<%= render_flash %>

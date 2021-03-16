@@ -4,7 +4,7 @@
   <% else %>
     <div class='c-action-bar o-flex o-flex--justify-between o-flex--align-center'>
       <p>
-        <span data-playlist-songs-target='count'><%= @playlist.songs.count %></span>
+        <span id='turbo-playlist-songs-count'><%= @playlist.songs.count %></span>
         <span><%= t('label.tracks') %></span>
       </p>
       <div data-controller='dropdown' class='c-dropdown'>

@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   end
 
   namespace :favorite_playlist do
-    resource :songs, only: [:show, :create, :destroy, :update]
+    resource :songs, only: [:show, :create, :destroy, :update], concerns: :playable
   end
 
   namespace :dialog do
