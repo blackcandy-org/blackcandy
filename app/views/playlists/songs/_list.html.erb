@@ -1,5 +1,5 @@
 <div data-controller='infinite-scroll' data-infinite-scroll-url-value='<%= playlist_songs_for_path(playlist) %>' data-infinite-scroll-total-pages-value='<%= @pagy.pages %>'>
-  <ul data-controller='playlist-sortable' class='c-list c-list--border-none' id='turbo-playlist-list-content' data-action='turbo:submit-end->playlist-songs#actionHandler' data-playlist-sortable-playlist-id-value='<%= playlist.id %>'>
+  <ul data-controller='playlist-sortable' class='c-list c-list--border-none' id='turbo-playlist-list-content' data-action='turbo:submit-end->playlist-songs#submitEndHandle turbo:submit-start->playlist-songs#submitStartHandle' data-playlist-sortable-playlist-id-value='<%= playlist.id %>'>
     <%= render partial: 'playlists/songs/song', collection: songs, locals: { playlist: playlist }, cached: true %>
   </ul>
   <div data-infinite-scroll-target='trigger' class='o-flex o-flex--justify-center u-my-small'>

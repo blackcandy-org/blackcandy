@@ -1,5 +1,4 @@
 import { Controller } from 'stimulus';
-import { ajax } from '@rails/ujs';
 
 export default class extends Controller {
   static targets = ['item'];
@@ -28,19 +27,29 @@ export default class extends Controller {
     document.removeEventListener('playlistSongs:showPlaying', this._showPlayingItem);
   }
 
-  actionHandler({ target }) {
-    const actionElement = target.closest('[data-playlist-songs-action]');
+  submitStartHandle(event) {
+    const actionElement = event.target.closest('[data-submit-start-action]');
 
     if (!actionElement) { return; }
 
-    switch (actionElement.dataset.playlistSongsAction) {
+    switch (actionElement.dataset.submitStartAction) {
+      case 'check_before_playing':
+        this._checkBeforePlaying(event);
+        break;
+    }
+  }
+
+  submitEndHandle(event) {
+    const actionElement = event.target.closest('[data-submit-end-action]');
+
+    if (!actionElement || !event.detail.success) { return; }
+
+    switch (actionElement.dataset.submitEndAction) {
       case 'delete':
-        this._delete(target);
+        this._delete(event.target);
         break;
       case 'play':
-        this._play(target);
-        break;
-      case 'none':
+        this._play(event.target);
         break;
     }
   }
@@ -51,22 +60,20 @@ export default class extends Controller {
     });
   }
 
-  _play(target) {
-    const { songId } = target.closest('[data-song-id]').dataset;
+  _checkBeforePlaying(event) {
+    const { songId } = event.target.closest('[data-song-id]').dataset;
     const playlistIndex = this.player.playlist.indexOf(songId);
 
     if (playlistIndex != -1) {
+      event.detail.formSubmission.stop();
       this.player.skipTo(playlistIndex);
-    } else {
-      ajax({
-        url: '/current_playlist/songs',
-        type: 'post',
-        data: `song_ids[]=${songId}`,
-        success: () => {
-          this.player.skipTo(this.player.playlist.pushSong(songId));
-        }
-      });
     }
+  }
+
+  _play(target) {
+    const { songId } = target.closest('[data-song-id]').dataset;
+
+    this.player.skipTo(this.player.playlist.pushSong(songId));
   }
 
   _delete(target) {

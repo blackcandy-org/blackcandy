@@ -3,8 +3,6 @@ import { ajax } from '@rails/ujs';
 import Playlist from './playlist';
 
 class Player {
-  currentIndex = 0;
-  currentSong = {};
   isPlaying = false;
   playlist = new Playlist();
 
@@ -13,18 +11,16 @@ class Player {
 
     App.dispatchEvent(document, 'player:beforePlaying');
 
-    const song = this.playlist.songs[currentIndex];
-    this.currentIndex = currentIndex;
-    this.currentSong = song;
+    this.playlist.currentIndex = currentIndex;
     this.isPlaying = true;
 
-    if (!song.howl) {
+    if (!this.currentSong.howl) {
       ajax({
-        url: `/songs/${song.id}`,
+        url: `/songs/${this.currentSong.id}`,
         type: 'get',
         dataType: 'json',
         success: (response) => {
-          song.howl = new Howl({
+          this.currentSong.howl = new Howl({
             src: [response.url],
             format: [response.format],
             html5: true,
@@ -34,13 +30,16 @@ class Player {
             onstop: () => { App.dispatchEvent(document, 'player:stop'); }
           });
 
-          Object.assign(song, response);
-          song.howl.play();
+          Object.assign(this.currentSong, response);
+          this.currentSong.howl.play();
         }
       });
     } else {
-      song.howl.play();
+      this.currentSong.howl.play();
     }
+
+    // keep track id of the current playing song
+    document.cookie = `current_song_id=${this.currentSong.id};path=/;samesite=lax;`;
   }
 
   pause() {
@@ -54,11 +53,11 @@ class Player {
   }
 
   next() {
-    this.skipTo(this.currentIndex + 1);
+    this.skipTo(this.playlist.currentIndex + 1);
   }
 
   previous() {
-    this.skipTo(this.currentIndex - 1);
+    this.skipTo(this.playlist.currentIndex - 1);
   }
 
   skipTo(index) {
@@ -75,6 +74,10 @@ class Player {
 
   seek(seconds) {
     this.currentSong.howl.seek(seconds);
+  }
+
+  get currentSong() {
+    return this.playlist.currentSong;
   }
 }
 

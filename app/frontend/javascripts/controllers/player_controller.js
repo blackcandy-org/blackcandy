@@ -99,7 +99,7 @@ export default class extends Controller {
   }
 
   get currentIndex() {
-    return this.player.currentIndex;
+    return this.player.playlist.currentIndex;
   }
 
   get currentSong() {

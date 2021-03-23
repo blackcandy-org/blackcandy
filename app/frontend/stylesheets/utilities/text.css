@@ -16,6 +16,10 @@
   color: rgb(var(--text-primary-color)) !important;
 }
 
+.u-text-color-secondary {
+  color: rgb(var(--text-secondary-color)) !important;
+}
+
 .u-text-color-red {
   color: rgb(var(--red)) !important;
 }
@@ -26,6 +30,10 @@
 
 .u-text-align-center {
   text-align: center !important;
+}
+
+.u-text-align-left {
+  text-align: left !important;
 }
 
 .u-text-line-clamp-2 {

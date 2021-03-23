@@ -16,22 +16,23 @@
         </div>
       </div>
     </div>
-    <ul class='c-list' data-action='click->playlist-songs#actionHandler'>
+    <ul class='c-list' data-action='turbo:submit-end->playlist-songs#submitEndHandle turbo:submit-start->playlist-songs#submitStartHandle'>
       <% @songs.each do |song| %>
-        <li class='c-list__item u-cursor-pointer' data-playlist-songs-target='item' data-song-id='<%= song.id %>' data-playlist-songs-action='play'>
-          <div class='o-flex o-flex--justify-between'>
-            <div>
-              <h4 class='u-mb-tiny u-text-weight-normal'><%= song.name %></h4>
-              <% if @album.artist.is_various? %>
-                <%= song.artist.title %>
-              <% end %>
-            </div>
-            <div class='o-flex o-flex--align-center'>
+        <li class='c-list__item u-cursor-pointer' data-playlist-songs-target='item' data-song-id='<%= song.id %>'>
+          <div class='o-flex o-flex--justify-between o-flex--align-center'>
+            <%= button_to current_playlist_songs_path(song_id: song.id), class: 'u-w-100 u-text-align-left u-text-color-secondary o-flex o-flex--justify-between o-flex--align-center', form_class: 'o-flex__item--grow-1', form: { 'data-submit-start-action' => 'check_before_playing', 'data-submit-end-action' => 'play', 'data-turbo-frame' => 'turbo-sidebar' } do  %>
+              <div>
+                <h4 class='u-mb-tiny u-text-weight-normal'><%= song.name %></h4>
+                <% if @album.artist.is_various? %>
+                  <%= song.artist.title %>
+                <% end %>
+              </div>
               <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.length) %></div>
-              <%= link_to dialog_playlists_path(song_id: song.id), remote: true, data: { playlist_songs_action: 'none' } do %>
-                <%= icon_tag 'playlist-add', size: 'small', title: t('text.add_to_playlist') %>
-              <% end %>
-            </div>
+            <% end %>
+
+            <%= link_to dialog_playlists_path(song_id: song.id), remote: true do %>
+              <%= icon_tag 'playlist-add', size: 'small', title: t('text.add_to_playlist') %>
+            <% end %>
           </div>
         </li>
       <% end %>
