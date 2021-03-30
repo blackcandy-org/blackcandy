@@ -61,6 +61,7 @@ html {
   /* Table */
   --table-border-color: var(--grey-lighter);
   --table-active-color: var(--purple);
+  --table-color: var(--black-lighter);
 
   /* Input */
   --input-border-radius: var(--border-radius-medium);
@@ -168,6 +169,7 @@ html[data-color-scheme='dark'] {
   /* Table */
   --table-border-color: var(--black);
   --table-active-color: var(--purple-light);
+  --table-color: var(--grey-light);
 
   /* Input */
   --input-bg-color: var(--black-lighter);
