@@ -13,7 +13,6 @@ export default class extends Controller {
     this.player = App.player;
 
     if (this.isCurrentValue && this.hasPlaylistSongsValue) {
-      this.player.stop();
       this.player.playlist.update(this.playlistSongsValue);
     }
   }
@@ -79,9 +78,10 @@ export default class extends Controller {
   _delete(target) {
     const { songId } = target.closest('[data-song-id]').dataset;
 
-    if (this.isCurrentValue) {
-      const songIndex = this.player.playlist.deleteSong(songId);
-      if (this.player.currentSong.id == songId) { this.player.skipTo(songIndex); }
+    if (!this.isCurrentValue) { return; }
+
+    if (this.player.currentSong.id == songId) {
+      this.player.skipTo(this.player.playlist.deleteSong(songId));
     }
   }
 }

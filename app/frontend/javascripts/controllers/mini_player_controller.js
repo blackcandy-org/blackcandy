@@ -58,6 +58,6 @@ export default class extends Controller {
   }
 
   get currentIndex() {
-    return this.player.playlist.currentIndex;
+    return this.player.currentIndex;
   }
 }

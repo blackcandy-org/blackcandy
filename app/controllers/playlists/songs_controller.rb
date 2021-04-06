@@ -23,7 +23,7 @@ class Playlists::SongsController < ApplicationController
     flash.now[:success] = t('success.add_to_playlist')
 
     # for refresh playlist content, when first song add to playlist
-    redirect_to action: 'show', init: true if @playlist.songs.size == 1
+    redirect_to action: 'show' if @playlist.songs.size == 1
   rescue ActiveRecord::RecordNotUnique
     flash.now[:error] = t('error.already_in_playlist')
   end
@@ -37,7 +37,7 @@ class Playlists::SongsController < ApplicationController
     end
 
     # for refresh playlist content, when remove last song from playlist
-    redirect_to action: 'show', init: true if @playlist.songs.empty?
+    redirect_to action: 'show' if @playlist.songs.empty?
   end
 
   def update

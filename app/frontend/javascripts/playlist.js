@@ -4,7 +4,6 @@ class Playlist {
   orderedSongs = [];
   shuffledSongs = [];
   isShuffled = false;
-  currentIndex = 0;
 
   update(songIds) {
     this.orderedSongs = songIds.map((songId) => {
@@ -18,7 +17,7 @@ class Playlist {
   pushSong(songId) {
     const song = { id: Number(songId) };
 
-    this.orderedSongs.splice(this.currentIndex + 1, 0, song);
+    this.orderedSongs.splice(App.player.currentIndex + 1, 0, song);
     this.shuffledSongs.splice(randomIndex(this.shuffledSongs.length), 0, song);
 
     return this.indexOf(songId);
@@ -52,10 +51,6 @@ class Playlist {
 
   get length() {
     return this.songs.length;
-  }
-
-  get currentSong() {
-    return this.songs[this.currentIndex] || {};
   }
 }
 

@@ -98,8 +98,12 @@ export default class extends Controller {
     document.querySelector('#js-sidebar').classList.remove('is-expanded');
   }
 
+  get player() {
+    return App.player;
+  }
+
   get currentIndex() {
-    return this.player.playlist.currentIndex;
+    return this.player.currentIndex;
   }
 
   get currentSong() {
@@ -172,8 +176,6 @@ export default class extends Controller {
     // So call Howl init function manually let document have audio unlock event when click or touch.
     // When first time user interact page the audio will be unlocked.
     new Howl({ src: [''], format: ['mp3'] });
-
-    this.player = App.player;
   }
 
   _initMode() {
