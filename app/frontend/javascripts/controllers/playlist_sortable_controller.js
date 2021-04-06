@@ -1,10 +1,10 @@
 import { Controller } from 'stimulus';
 import { Sortable, Plugins } from '@shopify/draggable';
-import { ajax } from '@rails/ujs';
+import { fetchRequest } from '../helper';
 
 export default class extends Controller {
   static values = {
-    playlistId: Number
+    url: String
   }
 
   connect() {
@@ -41,10 +41,12 @@ export default class extends Controller {
   _reorderPlaylist = (event) => {
     App.player.playlist.move(event.oldIndex, event.newIndex);
 
-    ajax({
-      url: `/playlists/${this.playlistIdValue}/songs`,
-      type: 'put',
-      data: `from_position=${event.oldIndex + 1}&to_position=${event.newIndex + 1}`
+    fetchRequest(this.urlValue, {
+      method: 'put',
+      body: JSON.stringify({
+        from_position: event.oldIndex + 1,
+        to_position: event.newIndex + 1,
+      })
     });
   }
 }

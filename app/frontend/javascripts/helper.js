@@ -24,7 +24,25 @@ function randomIndex(length) {
   return Math.floor(Math.random() * (length - 1));
 }
 
-async function fetchTurboStream(request, options = {}, successCallback = () => {}) {
+async function fetchRequest(url, options = {}) {
+  const headers = {
+    'Content-Type': 'application/json'
+  };
+
+  options.headers = ('headers' in options) ?
+    { ...options.headers, ...headers } :
+    headers;
+
+  const request = new Request(url, options);
+
+  if (request.method != 'GET') {
+    options.headers['X-CSRF-Token'] = document.head.querySelector("[name='csrf-token']").content;
+  }
+
+  return fetch(request, options);
+}
+
+async function fetchTurboStream(url, options = {}, successCallback = () => {}) {
   const turboStreamHeader = {
     Accept: 'text/vnd.turbo-stream.html'
   };
@@ -33,8 +51,9 @@ async function fetchTurboStream(request, options = {}, successCallback = () => {
     { ...options.headers, ...turboStreamHeader } :
     turboStreamHeader;
 
+
   try {
-    const response = await fetch(request, options);
+    const response = await fetchRequest(url, options);
 
     if (response.ok) {
       const streamMessage = await response.text();
@@ -50,5 +69,6 @@ export {
   toggleShow,
   shuffle,
   randomIndex,
+  fetchRequest,
   fetchTurboStream
 };

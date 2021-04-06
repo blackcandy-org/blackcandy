@@ -31,6 +31,7 @@ module.exports = {
     "IntersectionObserver": true,
     "MediaMetadata": true,
     "navigator": true,
-    "AbortController": true
+    "AbortController": true,
+    "Request": true
   }
 };
