@@ -8,8 +8,8 @@ class CurrentPlaylist::SongsController < Playlists::SongsController
     end
 
     def add_to_playlist
-      @current_song = Song.find(cookies[:current_song_id])
-      current_song_position = @playlist.playlists_songs.find_by(song_id: @current_song.id)&.position.to_i
+      @current_song = Song.find_by(id: cookies[:current_song_id])
+      current_song_position = @current_song.nil? ? 0 : @playlist.playlists_songs.find_by(song_id: @current_song.id)&.position.to_i
 
       @playlist.playlists_songs.create(song_id: @song.id, position: current_song_position + 1)
     end
