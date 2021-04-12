@@ -13,6 +13,8 @@ module Playable
     @playlist = Current.user.current_playlist
     @playlist.replace(@song_ids)
     @pagy, @songs = pagy_countless(@playlist.songs.includes(:artist))
+
+    redirect_to current_playlist_songs_path(init: true, playable: true)
   end
 
   private

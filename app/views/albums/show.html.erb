@@ -11,7 +11,7 @@
           <span class='u-text-monospace'><%= format_duration(@songs.sum(:length)) %></span>
         </div>
         <div class='u-mt-large'>
-          <%= link_to t('label.play_all'), play_album_path(@album), method: :post, remote: true, class: 'c-button c-button--primary' %>
+          <%= button_to t('label.play_all'), play_album_path(@album), form_class: 'u-display-inline-block', class: 'c-button c-button--primary', form: { 'data-turbo-frame' => 'turbo-sidebar' } %>
           <%= link_to t('label.edit'), edit_album_path(@album), remote: true, class: 'c-button c-button--secondary u-ml-tiny' if is_admin? %>
         </div>
       </div>

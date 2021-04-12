@@ -1,4 +1,4 @@
-<div data-controller='playlist-songs' data-playlist-songs-playlist-id-value='<%= @playlist.id %>' data-playlist-songs-is-current-value='true' <%= "data-playlist-songs-playlist-songs-value=#{@playlist.song_ids.to_json}" if params[:init] %>>
+<div data-controller='playlist-songs' data-playlist-songs-playlist-id-value='<%= @playlist.id %>' data-playlist-songs-is-current-value='true' <%= "data-playlist-songs-playlist-songs-value=#{@playlist.song_ids.to_json}" if params[:init] %> <%= "data-playlist-songs-is-playable-value='true'" if params[:playable] %>>
   <% if @songs.empty? %>
     <%= empty_alert_tag %>
   <% else %>

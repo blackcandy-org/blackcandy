@@ -6,14 +6,19 @@ export default class extends Controller {
   static values = {
     playlistId: Number,
     isCurrent: Boolean,
+    isPlayable: Boolean,
     playlistSongs: Array
   }
 
   initialize() {
-    this.player = App.player;
+    if (!this.isCurrentValue) { return; }
 
-    if (this.isCurrentValue && this.hasPlaylistSongsValue) {
+    if (this.hasPlaylistSongsValue) {
       this.player.playlist.update(this.playlistSongsValue);
+    }
+
+    if (this.isPlayableValue) {
+      this.player.skipTo(0);
     }
   }
 
@@ -83,5 +88,9 @@ export default class extends Controller {
     if (this.player.currentSong.id == songId) {
       this.player.skipTo(this.player.playlist.deleteSong(songId));
     }
+  }
+
+  get player() {
+    return App.player;
   }
 }
