@@ -35,8 +35,13 @@
       <span class='u-mx-medium  u-text-color-primary u-cursor-pointer u-display-none' data-action='click->player#pause' data-player-target='pauseButton'><%= icon_tag 'pause', size: 'large', title: t('text.pause_song') %></span>
       <span class='u-text-color-primary u-cursor-pointer' data-action='click->player#next'><%= icon_tag 'fast-forward', size: 'large', title: t('text.next_song') %></span>
     </div>
-    <div class='u-cursor-pointer' data-player-target='favoriteButton' data-action='click->player#toggleFavorite'>
-      <%= icon_tag 'heart', title: t('text.toggle_favorite') %>
+    <div data-action='turbo:submit-end->player#toggleFavorite'>
+      <%= button_to favorite_playlist_songs_path, form_class: 'u-visibility-hidden', form: { 'data-player-target' => 'favoriteButton', 'data-turbo-frame' => 'turbo-sidebar' } do %>
+        <%= icon_tag 'heart', title: t('text.toggle_favorite') %>
+      <% end %>
+      <%= button_to favorite_playlist_songs_path, method: :delete, form_class: 'u-display-none', form: { 'data-player-target' => 'unFavoriteButton', 'data-turbo-frame' => 'turbo-sidebar' }, class: 'u-text-color-red' do %>
+        <%= icon_tag 'heart', title: t('text.toggle_favorite') %>
+      <% end %>
     </div>
   </div>
   <div class='u-py-tiny u-bg-primary u-text-align-center u-display-none u-display-block@extra-small' data-action='click->player#collapse'>

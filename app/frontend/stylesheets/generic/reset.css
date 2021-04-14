@@ -39,6 +39,12 @@ textarea {
   resize: vertical;
 }
 
+/* Reset element style generate from button_to */
+[type="submit"] {
+  text-align: left;
+  color: currentColor;
+}
+
 /* Reset style for turbo progress bar */
 .turbo-progress-bar {
   background-color: rgb(var(--progress-bar-bg-color));

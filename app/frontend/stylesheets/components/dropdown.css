@@ -33,9 +33,7 @@ form.c-dropdown__item {
 form.c-dropdown__item input[type='submit'] {
   padding: var(--spacing-narrow);
   width: 100%;
-  text-align: left;
   background: rgb(var(--dropdown-bg-color));
-  color: rgb(var(--dropdown-color));
   border: none;
 }
 

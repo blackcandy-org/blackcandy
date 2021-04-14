@@ -20,7 +20,7 @@
       <% @songs.each do |song| %>
         <li class='c-list__item u-cursor-pointer' data-playlist-songs-target='item' data-song-id='<%= song.id %>'>
           <div class='o-flex o-flex--justify-between o-flex--align-center'>
-            <%= button_to current_playlist_songs_path(song_id: song.id), class: 'u-w-100 u-text-align-left u-text-color-secondary o-flex o-flex--justify-between o-flex--align-center', form_class: 'o-flex__item--grow-1', form: { 'data-submit-start-action' => 'check_before_playing', 'data-submit-end-action' => 'play', 'data-turbo-frame' => 'turbo-sidebar' } do  %>
+            <%= button_to current_playlist_songs_path(song_id: song.id), class: 'u-w-100 o-flex o-flex--justify-between o-flex--align-center', form_class: 'o-flex__item--grow-1', form: { 'data-submit-start-action' => 'check_before_playing', 'data-submit-end-action' => 'play', 'data-turbo-frame' => 'turbo-sidebar' } do  %>
               <div>
                 <h4 class='u-mb-tiny u-text-weight-normal'><%= song.name %></h4>
                 <% if @album.artist.is_various? %>

@@ -45,10 +45,6 @@ module ApplicationHelper
     turbo_stream.update 'turbo-flash', partial: 'shared/flash'
   end
 
-  def render_playlist(html)
-    render partial: 'shared/playlist', locals: { html: html }
-  end
-
   def format_duration(sec)
     time = Time.at(sec).utc
     sec > 1.hour ? time.strftime('%T') : time.strftime('%M:%S')

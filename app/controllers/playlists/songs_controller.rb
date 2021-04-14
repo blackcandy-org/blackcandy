@@ -19,7 +19,7 @@ class Playlists::SongsController < ApplicationController
   end
 
   def create
-    add_to_playlist
+    @playlist.playlists_songs.create(song_id: @song.id, position: 1)
     flash.now[:success] = t('success.add_to_playlist')
 
     # for refresh playlist content, when first song add to playlist
@@ -60,10 +60,6 @@ class Playlists::SongsController < ApplicationController
 
     def find_all_song_ids
       @song_ids = @playlist.song_ids
-    end
-
-    def add_to_playlist
-      @playlist.songs.push(@song)
     end
 
     def playlists_songs_params

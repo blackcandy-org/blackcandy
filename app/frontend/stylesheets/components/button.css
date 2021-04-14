@@ -1,4 +1,5 @@
 .c-button {
+  text-align: center;
   display: inline-block;
   border-radius: var(--btn-border-radius);
   border: none;
