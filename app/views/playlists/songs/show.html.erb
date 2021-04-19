@@ -22,7 +22,7 @@
           <%= button_to t('label.play_all'), play_playlist_songs_path(@playlist), form_class: 'c-dropdown__item' %>
           <%= button_to t('label.clear'), playlist_songs_path(@playlist, clear_all: true), method: :delete, form_class: 'c-dropdown__item' %>
         <% end %>
-        <%= link_to t('label.delete'), playlist_path(@playlist), method: :delete, remote: true, class: 'c-dropdown__item'  %>
+        <%= button_to t('label.delete'), playlist_path(@playlist), method: :delete, form_class: 'c-dropdown__item'  %>
         <a data-action='playlist#rename' class='c-dropdown__item'><%= t('label.rename') %></a>
       </div>
     </div>

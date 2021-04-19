@@ -1,5 +1,5 @@
 import { Howl } from 'howler';
-import { ajax } from '@rails/ujs';
+import { fetchRequest } from './helper';
 import Playlist from './playlist';
 
 class Player {
@@ -19,14 +19,14 @@ class Player {
     this.isPlaying = true;
 
     if (!song.howl) {
-      ajax({
-        url: `/songs/${song.id}`,
-        type: 'get',
-        dataType: 'json',
-        success: (response) => {
+      fetchRequest(`/songs/${song.id}`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
           song.howl = new Howl({
-            src: [response.url],
-            format: [response.format],
+            src: [data.url],
+            format: [data.format],
             html5: true,
             onplay: () => { App.dispatchEvent(document, 'player:playing'); },
             onpause: () => { App.dispatchEvent(document, 'player:pause'); },
@@ -34,10 +34,9 @@ class Player {
             onstop: () => { App.dispatchEvent(document, 'player:stop'); }
           });
 
-          Object.assign(song, response);
+          Object.assign(song, data);
           song.howl.play();
-        }
-      });
+        });
     } else {
       song.howl.play();
     }

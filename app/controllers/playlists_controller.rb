@@ -9,6 +9,11 @@ class PlaylistsController < ApplicationController
 
   def index
     @pagy, @playlists = pagy(Current.user.playlists.order(created_at: :desc))
+
+    respond_to do |format|
+      format.turbo_stream if params[:page].to_i > 1
+      format.html
+    end
   end
 
   def create
@@ -27,7 +32,8 @@ class PlaylistsController < ApplicationController
 
   def destroy
     @playlist.destroy
-    index; render 'index'
+
+    redirect_to action: 'index'
   end
 
   private
