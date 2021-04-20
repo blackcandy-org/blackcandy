@@ -12,7 +12,9 @@
         </div>
         <div class='u-mt-large'>
           <%= button_to t('label.play_all'), play_album_path(@album), form_class: 'u-display-inline-block', class: 'c-button c-button--primary', form: { 'data-turbo-frame' => 'turbo-sidebar' } %>
-          <%= link_to t('label.edit'), edit_album_path(@album), remote: true, class: 'c-button c-button--secondary u-ml-tiny' if is_admin? %>
+          <% if is_admin? %>
+            <%= link_to t('label.edit'), edit_album_path(@album), data: { turbo_frame: 'turbo-dialog' }, class: 'c-button c-button--secondary u-ml-tiny' %>
+          <% end %>
         </div>
       </div>
     </div>

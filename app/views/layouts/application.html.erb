@@ -31,7 +31,7 @@
   <div id='js-global-loader' class='c-overlay c-overlay--fixed c-overlay--blur u-display-none' data-controller='loader' data-loader-target='indicator'>
     <%= loader_tag size: 'large' %>
   </div>
-  <%= render 'shared/dialog' %>
+  <%= turbo_frame_tag 'turbo-dialog' %>
 <% end %>
 
 <%= render template: 'layouts/base' %>

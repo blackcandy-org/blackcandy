@@ -1,5 +1,5 @@
 <li class='c-list__item'>
-  <%= link_to playlist_songs_path(playlist), remote: true, class: 'o-flex o-flex--justify-between o-flex--align-center', data: { show_loader: true } do %>
+  <%= link_to playlist_songs_path(playlist), class: 'o-flex o-flex--justify-between o-flex--align-center', data: { show_loader: true } do %>
     <span class='u-text-truncate u-mr-narrow'><%= playlist.name %></span>
     <span><%= icon_tag('chevron-right') %></span>
   <% end %>

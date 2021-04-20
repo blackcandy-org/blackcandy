@@ -1,0 +1,13 @@
+<%= turbo_frame_tag 'turbo-dialog' do %>
+  <section class='c-dialog o-container o-container--extra-narrow u-display-none' data-controller='dialog' data-dialog-is-shown-value='true'>
+    <header class='c-dialog__header o-flex o-flex--justify-between'>
+      <h2><%= yield(:title) %></h2>
+      <span class='u-cursor-pointer' data-action='click->dialog#hide'>
+        <%= icon_tag 'close', title: t('label.close') %>
+      </span>
+    </header>
+    <div id='js-dialog-content' class='c-dialog__content u-position-relative'>
+      <%= yield %>
+    </div>
+  </section>
+<% end %>

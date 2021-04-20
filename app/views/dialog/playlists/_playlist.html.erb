@@ -1,1 +1,3 @@
-<%= link_to playlist.name, playlist_songs_path(playlist, song_ids: [params[:song_id]]), method: :post, remote: true, class: 'c-list__item' %>
+<%= button_to playlist_songs_path(playlist, song_id: params[:song_id]), method: :post, class: 'c-list__item', form: { 'data-turbo-frame': 'turbo-sidebar' } do %>
+  <%= playlist.name %>
+<% end %>

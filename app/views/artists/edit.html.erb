@@ -1,6 +1,10 @@
-<%= form_with model: album, class: 'c-form' do |form| %>
+<% content_for :title do %>
+  <%= t('text.edit_artist') %>
+<% end %>
+
+<%= form_with model: @artist, data: { turbo_frame: '_top' }, class: 'c-form' do |form| %>
   <div class='c-form__field'>
-    <%= form.label :image, t('text.album_cover') %>
+    <%= form.label :image, t('text.artist_cover') %>
     <%= form.file_field :image, accept: 'image/png, image/jpeg', class: 'c-input' %>
   </div>
   <div class='c-form__field c-form__field--submit'>
