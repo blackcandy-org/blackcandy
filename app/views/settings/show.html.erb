@@ -1,8 +1,7 @@
 <div class='o-container o-container--extra-narrow' data-controller='ajax' data-ajax-loader-value='#js-global-loader'>
-  <div id='js-user-settings'>
-    <%= render partial: 'users/settings', locals: { user: @user } %>
-  </div>
-  <div id='js-global-settings'>
+  <%= render partial: 'users/settings/form', locals: { user: @user } %>
+  <% if is_admin? %>
+    <hr />
     <%= render 'settings/form' %>
-  </div>
+  <% end %>
 </div>

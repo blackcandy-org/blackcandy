@@ -1,0 +1,209 @@
+@define-mixin light-theme {
+  /* Colors */
+  --purple-dark: 54, 30, 64;
+  --purple: 119, 66, 141;
+  --purple-light: 161, 90, 191;
+
+  --black: 18, 18, 18;
+  --black-light: 59, 59, 59;
+  --black-lighter: 89, 89, 89;
+  --black-lightest: 140, 140, 140;
+
+  --grey: 166, 166, 166;
+  --grey-light: 191, 191, 191;
+  --grey-lighter: 217, 217, 217;
+  --grey-lightest: 237, 237, 237;
+
+  --white: 255, 255, 251;
+  --red: 166, 22, 55;
+  --green: 35, 166, 80;
+
+  --link-active-color: var(--purple);
+  --gradient-bg-color: linear-gradient(rgba(var(--white), 0.85), rgba(var(--white), 0.65)), linear-gradient(rgb(var(--purple)), rgb(var(--purple)));
+  --primary-bg-color: var(--white);
+
+  /* Body */
+  --body-bg-color: var(--white);
+
+  /* Text */
+  --text-primary-color: var(--black);
+  --text-secondary-color: var(--black-lighter);
+
+  /* Sidebar */
+  --sidebar-bg-color: var(--grey-lightest);
+
+  /* Progress bar */
+  --progress-bar-bg-color: var(--purple);
+
+  /* Button */
+  --btn-border-radius: var(--border-radius-medium);
+  --btn-color: var(--white);
+  --btn-primary-bg-color: var(--purple);
+  --btn-secondary-color: var(--purple-light);
+
+  /* Flash message */
+  --flash-border-radius: var(--border-radius-medium);
+  --flash-success-bg-color: var(--green);
+  --flash-error-bg-color: var(--red);
+
+  /* Tab */
+  --tab-color: var(--black);
+  --tab-active-color: var(--purple);
+
+  /* List */
+  --list-border-color: var(--grey-lighter);
+  --list-active-color: var(--purple);
+  --list-dragging-placeholder-bg-color: var(--grey-lighter);
+  --list-dragging-bg-color: var(--white);
+  --list-dragging-shadow-color: var(--black-lighter);
+
+  /* Table */
+  --table-border-color: var(--grey-lighter);
+  --table-active-color: var(--purple);
+  --table-color: var(--black-lighter);
+
+  /* Input */
+  --input-border-radius: var(--border-radius-medium);
+  --input-bg-color: var(--grey-lighter);
+  --input-color: var(--black);
+  --input-icon-color: var(--black-lightest);
+
+  /* Card */
+  --card-image-border-radius: var(--border-radius-medium);
+
+  /* Loader */
+  --loader-bg-color: var(--purple);
+
+  /* Dropdown */
+  --dropdown-border-radius: var(--border-radius-medium);
+  --dropdown-bg-color: var(--white);
+  --dropdown-active-color: var(--grey-light);
+  --dropdown-color: var(--black);
+  --dropdown-shadow-color: var(--grey-light);
+
+  /* Dialog */
+  --dialog-border-radius: var(--border-radius-medium);
+  --dialog-bg-color: var(--white);
+  --dialog-header-bg-color: var(--grey-lighter);
+  --dialog-header-color: var(--black);
+
+  /* Overlay */
+  --overlay-bg-color: var(--grey-lightest);
+
+  /* Hr */
+  --hr-color: var(--grey-lightest);
+
+  /* Action bar */
+  --action-bar-border-radius: var(--border-radius-medium);
+  --action-bar-bg-color: var(--grey-lighter);
+
+  /* Nav */
+  --nav-border-color: var(--grey-light);
+  --nav-primary-bg-color: var(--white);
+
+  /* Player */
+  --player-bg-color: var(--grey-lighter);
+  --player-progress-bg-color: var(--grey-lighter);
+  --player-progress-hover-bg-color: var(--grey-lightest);
+  --player-progress-color: var(--purple);
+}
+
+@define-mixin dark-theme {
+  /* Colors */
+  --purple-dark: 54, 30, 64;
+  --purple: 119, 66, 141;
+  --purple-light: 161, 90, 191;
+
+  --black-dark: 0, 0, 0;
+  --black: 18, 18, 18;
+  --black-light: 33, 33, 33;
+  --black-lighter: 59, 59, 59;
+
+  --grey: 140, 140, 140;
+  --grey-light: 191, 191, 191;
+  --grey-lighter: 237, 237, 237;
+
+  --white: 255, 255, 251;
+  --red: 166, 22, 55;
+  --green: 35, 166, 80;
+
+  --link-active-color: var(--purple-light);
+  --gradient-bg-color: linear-gradient(rgb(var(--black-dark)), rgba(var(--black-dark), 0.75)), linear-gradient(rgb(var(--purple-light)), rgb(var(--purple-light)));
+  --primary-bg-color: var(--black-light);
+
+  /* Body */
+  --body-bg-color: var(--black-light);
+
+  /* Text */
+  --text-primary-color: var(--white);
+  --text-secondary-color: var(--grey-light);
+
+  /* Sidebar */
+  --sidebar-bg-color: var(--black);
+
+  /* Progress bar */
+  --progress-bar-bg-color: var(--purple);
+
+  /* Button */
+  --btn-color: var(--white);
+  --btn-primary-bg-color: var(--purple);
+  --btn-secondary-color: var(--purple-light);
+
+  /* Flash message */
+  --flash-success-bg-color: var(--green);
+  --flash-error-bg-color: var(--red);
+
+  /* Tab */
+  --tab-color: var(--white);
+  --tab-active-color: var(--purple-light);
+
+  /* List */
+  --list-border-color: var(--black-lighter);
+  --list-active-color: var(--purple-light);
+  --list-dragging-placeholder-bg-color: var(--black-light);
+  --list-dragging-bg-color: var(--black-dark);
+  --list-dragging-shadow-color: var(--grey);
+
+  /* Table */
+  --table-border-color: var(--black);
+  --table-active-color: var(--purple-light);
+  --table-color: var(--grey-light);
+
+  /* Input */
+  --input-bg-color: var(--black-lighter);
+  --input-color: var(--white);
+  --input-icon-color: var(--black);
+
+  /* Loader */
+  --loader-bg-color: var(--purple);
+
+  /* Dropdown */
+  --dropdown-bg-color: var(--black-lighter);
+  --dropdown-active-color: var(--grey);
+  --dropdown-color: var(--white);
+  --dropdown-shadow-color: var(--black-dark);
+
+  /* Dialog */
+  --dialog-bg-color: var(--black);
+  --dialog-header-bg-color: var(--grey);
+  --dialog-header-color: var(--black);
+
+  /* Overlay */
+  --overlay-bg-color: var(--black-light);
+
+  /* Hr */
+  --hr-color: var(--black);
+
+  /* Action bar */
+  --action-bar-bg-color: var(--black-light);
+
+  /* Nav */
+  --nav-border-color: var(--black-dark);
+  --nav-primary-bg-color: var(--black-light);
+
+  /* Player */
+  --player-bg-color: var(--black-dark);
+  --player-progress-bg-color: var(--black-dark);
+  --player-progress-hover-bg-color: var(--black-light);
+  --player-progress-color: var(--purple);
+}

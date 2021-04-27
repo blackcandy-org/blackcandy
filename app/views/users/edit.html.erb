@@ -2,8 +2,6 @@
   <div class='o-container o-container--extra-narrow'>
     <h1><%= t('text.update_profile') %></h1>
     <hr />
-    <div id='js-user-form'>
-      <%= render partial: 'users/form', locals: { user: @user } %>
-    </div>
+    <%= render partial: 'users/form', locals: { user: @user } %>
   </div>
 <% end %>

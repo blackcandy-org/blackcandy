@@ -1,11 +1,12 @@
-@import 'settings/global.css';
-@import 'settings/theme.css';
-@import 'settings/media_query.css';
-
 @import 'tools/grid.css';
 @import 'tools/spacing.css';
 @import 'tools/display.css';
 @import 'tools/sizing.css';
+@import 'tools/theme.css';
+
+@import 'settings/global.css';
+@import 'settings/theme.css';
+@import 'settings/media_query.css';
 
 @import 'generic/normalize.css';
 @import 'generic/reset.css';
