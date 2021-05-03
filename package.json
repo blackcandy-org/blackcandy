@@ -3,7 +3,6 @@
   "private": true,
   "dependencies": {
     "@hotwired/turbo-rails": "^7.0.0-beta.5",
-    "@rails/ujs": "^6.0.1",
     "@rails/webpacker": "^5.1.1",
     "@shopify/draggable": "^1.0.0-beta.12",
     "howler": "^2.2.0",

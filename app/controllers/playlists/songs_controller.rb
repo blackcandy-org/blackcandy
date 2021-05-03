@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Playlists::SongsController < ApplicationController
-  layout 'sidebar'
+  layout 'playlist'
 
   before_action :find_playlist
   before_action :find_song, only: [:create, :destroy]

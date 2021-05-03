@@ -1,5 +1,5 @@
 import { Howl } from 'howler';
-import { fetchRequest } from './helper';
+import { fetchRequest, dispatchEvent } from './helper';
 import Playlist from './playlist';
 
 class Player {
@@ -11,7 +11,7 @@ class Player {
   play(currentIndex) {
     if (this.playlist.length == 0) { return; }
 
-    App.dispatchEvent(document, 'player:beforePlaying');
+    dispatchEvent(document, 'player:beforePlaying');
 
     const song = this.playlist.songs[currentIndex];
     this.currentIndex = currentIndex;
@@ -28,10 +28,10 @@ class Player {
             src: [data.url],
             format: [data.format],
             html5: true,
-            onplay: () => { App.dispatchEvent(document, 'player:playing'); },
-            onpause: () => { App.dispatchEvent(document, 'player:pause'); },
-            onend: () => { App.dispatchEvent(document, 'player:end'); },
-            onstop: () => { App.dispatchEvent(document, 'player:stop'); }
+            onplay: () => { dispatchEvent(document, 'player:playing'); },
+            onpause: () => { dispatchEvent(document, 'player:pause'); },
+            onend: () => { dispatchEvent(document, 'player:end'); },
+            onstop: () => { dispatchEvent(document, 'player:stop'); }
           });
 
           Object.assign(song, data);

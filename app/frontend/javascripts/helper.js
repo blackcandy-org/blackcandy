@@ -6,12 +6,6 @@ function formatDuration(secs) {
   return secs > 60 * 60 ? dateString.substring(11, 19) : dateString.substring(14, 19);
 }
 
-function toggleShow(elements, currentElement) {
-  elements.forEach((element) => {
-    element.classList.toggle('u-display-none', element != currentElement);
-  });
-}
-
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i -= 1) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -64,11 +58,16 @@ async function fetchTurboStream(url, options = {}, successCallback = () => {}) {
   } catch (_) { /* ignore error */ }
 }
 
+function dispatchEvent(element, type, data = null) {
+  if (typeof element == 'string') { element = document.querySelector(element); }
+  element.dispatchEvent(new CustomEvent(type, { detail: data }));
+}
+
 export {
   formatDuration,
-  toggleShow,
   shuffle,
   randomIndex,
   fetchRequest,
-  fetchTurboStream
+  fetchTurboStream,
+  dispatchEvent
 };

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PlaylistsController < ApplicationController
-  layout 'sidebar'
+  layout 'playlist'
 
   include Pagy::Backend
 

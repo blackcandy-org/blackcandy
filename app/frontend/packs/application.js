@@ -10,7 +10,6 @@
 import { Turbo } from '@hotwired/turbo-rails';
 import { Application } from 'stimulus';
 import { definitionsFromContext } from 'stimulus/webpack-helpers';
-import App from '../javascripts/app';
 import Player from '../javascripts/player';
 
 import 'core-js/stable';
@@ -24,5 +23,4 @@ const controllers = require.context('../javascripts/controllers', true, /\.js$/)
 application.load(definitionsFromContext(controllers));
 
 window.Turbo = Turbo;
-window.App = App;
-window.App.player = new Player();
+window.App = { player: new Player() };

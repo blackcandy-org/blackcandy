@@ -36,10 +36,10 @@
       <span class='u-text-color-primary u-cursor-pointer' data-action='click->player#next'><%= icon_tag 'fast-forward', size: 'large', title: t('text.next_song') %></span>
     </div>
     <div data-action='turbo:submit-end->player#toggleFavorite'>
-      <%= button_to favorite_playlist_songs_path, form_class: 'u-visibility-hidden', form: { 'data-player-target' => 'favoriteButton', 'data-turbo-frame' => 'turbo-sidebar' } do %>
+      <%= button_to favorite_playlist_songs_path, form_class: 'u-visibility-hidden', form: { 'data-player-target' => 'favoriteButton', 'data-turbo-frame' => 'turbo-playlist' } do %>
         <%= icon_tag 'heart', title: t('text.toggle_favorite') %>
       <% end %>
-      <%= button_to favorite_playlist_songs_path, method: :delete, form_class: 'u-display-none', form: { 'data-player-target' => 'unFavoriteButton', 'data-turbo-frame' => 'turbo-sidebar' }, class: 'u-text-color-red' do %>
+      <%= button_to favorite_playlist_songs_path, method: :delete, form_class: 'u-display-none', form: { 'data-player-target' => 'unFavoriteButton', 'data-turbo-frame' => 'turbo-playlist' }, class: 'u-text-color-red' do %>
         <%= icon_tag 'heart', title: t('text.toggle_favorite') %>
       <% end %>
     </div>

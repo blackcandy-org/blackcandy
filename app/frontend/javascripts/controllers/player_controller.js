@@ -1,6 +1,6 @@
 import { Controller } from 'stimulus';
 import { Howl } from 'howler';
-import { formatDuration, toggleShow } from '../helper';
+import { formatDuration, dispatchEvent } from '../helper';
 
 export default class extends Controller {
   static targets = [
@@ -71,7 +71,10 @@ export default class extends Controller {
   }
 
   updateMode() {
-    toggleShow(this.modeButtonTargets, this.modeButtonTargets[this.currentModeIndex]);
+    this.modeButtonTargets.forEach((element) => {
+      element.classList.toggle('u-display-none', element != this.modeButtonTargets[this.currentModeIndex]);
+    });
+
     this.player.playlist.isShuffled = (this.currentMode == 'shuffle');
   }
 
@@ -139,7 +142,7 @@ export default class extends Controller {
     window.requestAnimationFrame(this._setProgress.bind(this));
 
     // let playlist can show current palying song
-    App.dispatchEvent(document, 'playlistSongs:showPlaying');
+    dispatchEvent(document, 'playlistSongs:showPlaying');
   }
 
   _setPauseStatus = () => {

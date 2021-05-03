@@ -36,13 +36,11 @@
   --progress-bar-bg-color: var(--purple);
 
   /* Button */
-  --btn-border-radius: var(--border-radius-medium);
   --btn-color: var(--white);
   --btn-primary-bg-color: var(--purple);
   --btn-secondary-color: var(--purple-light);
 
   /* Flash message */
-  --flash-border-radius: var(--border-radius-medium);
   --flash-success-bg-color: var(--green);
   --flash-error-bg-color: var(--red);
 
@@ -63,26 +61,20 @@
   --table-color: var(--black-lighter);
 
   /* Input */
-  --input-border-radius: var(--border-radius-medium);
   --input-bg-color: var(--grey-lighter);
   --input-color: var(--black);
   --input-icon-color: var(--black-lightest);
-
-  /* Card */
-  --card-image-border-radius: var(--border-radius-medium);
 
   /* Loader */
   --loader-bg-color: var(--purple);
 
   /* Dropdown */
-  --dropdown-border-radius: var(--border-radius-medium);
   --dropdown-bg-color: var(--white);
   --dropdown-active-color: var(--grey-light);
   --dropdown-color: var(--black);
   --dropdown-shadow-color: var(--grey-light);
 
   /* Dialog */
-  --dialog-border-radius: var(--border-radius-medium);
   --dialog-bg-color: var(--white);
   --dialog-header-bg-color: var(--grey-lighter);
   --dialog-header-color: var(--black);
@@ -94,7 +86,6 @@
   --hr-color: var(--grey-lightest);
 
   /* Action bar */
-  --action-bar-border-radius: var(--border-radius-medium);
   --action-bar-bg-color: var(--grey-lighter);
 
   /* Nav */
