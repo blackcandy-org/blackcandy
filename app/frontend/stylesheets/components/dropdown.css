@@ -26,17 +26,31 @@ a.c-dropdown__item {
   color: rgb(var(--dropdown-color));
 }
 
-.c-dropdown__item:first-child {
+form.c-dropdown__item {
+  padding: 0;
+}
+
+form.c-dropdown__item input[type='submit'] {
+  padding: var(--spacing-narrow);
+  width: 100%;
+  background: rgb(var(--dropdown-bg-color));
+  border: none;
+}
+
+.c-dropdown__item:first-child,
+form.c-dropdown__item:first-child input[type='submit'] {
   border-top-left-radius: var(--dropdown-border-radius);
   border-top-right-radius: var(--dropdown-border-radius);
 }
 
-.c-dropdown__item:last-child {
+.c-dropdown__item:last-child,
+form.c-dropdown__item:last-child input[type='submit'] {
   border-bottom-left-radius: var(--dropdown-border-radius);
   border-bottom-right-radius: var(--dropdown-border-radius);
 }
 
 a.c-dropdown__item:hover,
+form.c-dropdown__item:hover input[type='submit'],
 .c-dropdown__item:hover {
   background: rgb(var(--dropdown-active-color));
   color: rgb(var(--dropdown-color));

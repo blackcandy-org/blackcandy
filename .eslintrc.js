@@ -26,10 +26,12 @@ module.exports = {
     "localStorage": true,
     "Event": true,
     "App": true,
-    "Turbolinks": true,
+    "Turbo": true,
     "CustomEvent": true,
     "IntersectionObserver": true,
     "MediaMetadata": true,
-    "navigator": true
+    "navigator": true,
+    "AbortController": true,
+    "Request": true
   }
 };

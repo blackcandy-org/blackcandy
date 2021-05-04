@@ -20,7 +20,7 @@ export default class extends Controller {
   }
 
   play() {
-    this.player.play(this.player.currentIndex);
+    this.player.play(this.currentIndex);
   }
 
   pause() {
@@ -55,5 +55,9 @@ export default class extends Controller {
 
   _initPlayer() {
     this.player = App.player;
+  }
+
+  get currentIndex() {
+    return this.player.currentIndex;
   }
 }

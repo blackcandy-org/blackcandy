@@ -1,9 +1,9 @@
 import { Howl } from 'howler';
-import { ajax } from '@rails/ujs';
+import { fetchRequest, dispatchEvent } from './helper';
 import Playlist from './playlist';
 
 class Player {
-  currentIndex = 0;
+  urrentIndex = 0;
   currentSong = {};
   isPlaying = false;
   playlist = new Playlist();
@@ -11,7 +11,7 @@ class Player {
   play(currentIndex) {
     if (this.playlist.length == 0) { return; }
 
-    App.dispatchEvent(document, 'player:beforePlaying');
+    dispatchEvent(document, 'player:beforePlaying');
 
     const song = this.playlist.songs[currentIndex];
     this.currentIndex = currentIndex;
@@ -19,28 +19,30 @@ class Player {
     this.isPlaying = true;
 
     if (!song.howl) {
-      ajax({
-        url: `/songs/${song.id}`,
-        type: 'get',
-        dataType: 'json',
-        success: (response) => {
+      fetchRequest(`/songs/${song.id}`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
           song.howl = new Howl({
-            src: [response.url],
-            format: [response.format],
+            src: [data.url],
+            format: [data.format],
             html5: true,
-            onplay: () => { App.dispatchEvent(document, 'player:playing'); },
-            onpause: () => { App.dispatchEvent(document, 'player:pause'); },
-            onend: () => { App.dispatchEvent(document, 'player:end'); },
-            onstop: () => { App.dispatchEvent(document, 'player:stop'); }
+            onplay: () => { dispatchEvent(document, 'player:playing'); },
+            onpause: () => { dispatchEvent(document, 'player:pause'); },
+            onend: () => { dispatchEvent(document, 'player:end'); },
+            onstop: () => { dispatchEvent(document, 'player:stop'); }
           });
 
-          Object.assign(song, response);
+          Object.assign(song, data);
           song.howl.play();
-        }
-      });
+        });
     } else {
       song.howl.play();
     }
+
+    // keep track id of the current playing song
+    document.cookie = `current_song_id=${song.id};path=/;samesite=lax;`;
   }
 
   pause() {

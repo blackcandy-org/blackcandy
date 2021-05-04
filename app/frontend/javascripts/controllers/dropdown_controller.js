@@ -5,6 +5,9 @@ export default class extends Controller {
 
   show() {
     this.listTarget.classList.remove('u-display-none');
-    App.dismissOnClick(this.listTarget);
+
+    document.addEventListener('click', () => {
+      this.listTarget.classList.add('u-display-none');
+    }, { once: true, capture: true });
   }
 }

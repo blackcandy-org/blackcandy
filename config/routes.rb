@@ -15,7 +15,10 @@ Rails.application.routes.draw do
   resources :transcoded_stream, only: [:new]
   resources :songs, only: [:index, :show]
   resources :albums, only: [:index, :show, :edit, :update], concerns: :playable
-  resources :users, except: [:show]
+
+  resources :users, except: [:show] do
+    resource :setting, only: [:update], module: 'users'
+  end
 
   resources :playlists, except: [:show, :new, :edit] do
     resource :songs, only: [:show, :create, :destroy, :update], module: 'playlists', concerns: :playable
@@ -26,7 +29,7 @@ Rails.application.routes.draw do
   end
 
   namespace :favorite_playlist do
-    resource :songs, only: [:show, :create, :destroy, :update]
+    resource :songs, only: [:show, :create, :destroy, :update], concerns: :playable
   end
 
   namespace :dialog do

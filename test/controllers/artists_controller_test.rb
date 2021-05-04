@@ -16,7 +16,7 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should edit album' do
-    assert_admin_access(url: edit_artist_url(artists(:artist1)), xhr: true) do
+    assert_admin_access(url: edit_artist_url(artists(:artist1))) do
       assert_response :success
     end
   end

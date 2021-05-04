@@ -1,0 +1,3 @@
+<%= turbo_stream.prepend dom_id(@playlist), partial: 'playlists/songs/song', locals: { song: @song, playlist: @playlist } %>
+<%= turbo_stream.update dom_id(@playlist, :songs_count), @playlist.songs.size %>
+<%= render_flash %>

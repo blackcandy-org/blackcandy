@@ -1,7 +1,6 @@
 import { Controller } from 'stimulus';
-import { ajax } from '@rails/ujs';
 import { Howl } from 'howler';
-import { formatDuration, toggleShow } from '../helper';
+import { formatDuration, dispatchEvent } from '../helper';
 
 export default class extends Controller {
   static targets = [
@@ -17,13 +16,13 @@ export default class extends Controller {
     'playButton',
     'pauseButton',
     'favoriteButton',
+    'unFavoriteButton',
     'modeButton',
     'loader'
   ];
 
   initialize() {
     this._initPlayer();
-    this._initPlaylist();
     this._initMode();
   }
 
@@ -51,20 +50,14 @@ export default class extends Controller {
     this.player.pause();
   }
 
-  toggleFavorite() {
-    if (!this.currentSong.howl) { return; }
+  toggleFavorite(event) {
+    if (!event.detail.success) { return; }
 
     const isFavorited = this.currentSong.is_favorited;
 
-    ajax({
-      url: '/favorite_playlist/songs',
-      type: isFavorited ? 'delete' : 'post',
-      data: `song_ids[]=${this.currentSong.id}`,
-      success: () => {
-        this.favoriteButtonTarget.classList.toggle('u-text-color-red');
-        this.currentSong.is_favorited = !isFavorited;
-      }
-    });
+    this.currentSong.is_favorited = !isFavorited;
+    this.favoriteButtonTarget.classList.toggle('u-display-none', !isFavorited);
+    this.unFavoriteButtonTarget.classList.toggle('u-display-none', isFavorited);
   }
 
   nextMode() {
@@ -78,7 +71,10 @@ export default class extends Controller {
   }
 
   updateMode() {
-    toggleShow(this.modeButtonTargets, this.modeButtonTargets[this.currentModeIndex]);
+    this.modeButtonTargets.forEach((element) => {
+      element.classList.toggle('u-display-none', element != this.modeButtonTargets[this.currentModeIndex]);
+    });
+
     this.player.playlist.isShuffled = (this.currentMode == 'shuffle');
   }
 
@@ -99,6 +95,10 @@ export default class extends Controller {
     document.querySelector('#js-sidebar').classList.remove('is-expanded');
   }
 
+  get player() {
+    return App.player;
+  }
+
   get currentIndex() {
     return this.player.currentIndex;
   }
@@ -114,10 +114,14 @@ export default class extends Controller {
   _setBeforePlayingStatus = () => {
     this.headerTarget.classList.add('is-expanded');
     this.loaderTarget.classList.remove('u-display-none');
+    this.favoriteButtonTarget.classList.remove('u-visibility-hidden');
   }
 
   _setPlayingStatus = () => {
     const { currentSong } = this;
+    const favoriteSongUrl = new URL(this.favoriteButtonTarget.action);
+
+    favoriteSongUrl.searchParams.set('song_id', currentSong.id);
 
     this.imageTarget.src = currentSong.album_image_url.small;
     this.backgroundImageTarget.style.backgroundImage = `url(${currentSong.album_image_url.small})`;
@@ -126,15 +130,19 @@ export default class extends Controller {
     this.albumNameTarget.textContent = currentSong.album_name;
     this.songDurationTarget.textContent = formatDuration(currentSong.length);
 
-    this.favoriteButtonTarget.classList.toggle('u-text-color-red', currentSong.is_favorited);
     this.pauseButtonTarget.classList.remove('u-display-none');
     this.playButtonTarget.classList.add('u-display-none');
     this.loaderTarget.classList.add('u-display-none');
 
+    this.favoriteButtonTarget.classList.toggle('u-display-none', currentSong.is_favorited);
+    this.unFavoriteButtonTarget.classList.toggle('u-display-none', !currentSong.is_favorited);
+    this.favoriteButtonTarget.action = favoriteSongUrl;
+    this.unFavoriteButtonTarget.action = favoriteSongUrl;
+
     window.requestAnimationFrame(this._setProgress.bind(this));
 
     // let playlist can show current palying song
-    App.dispatchEvent(document, 'playlistSongs:showPlaying');
+    dispatchEvent(document, 'playlistSongs:showPlaying');
   }
 
   _setPauseStatus = () => {
@@ -173,16 +181,6 @@ export default class extends Controller {
     // So call Howl init function manually let document have audio unlock event when click or touch.
     // When first time user interact page the audio will be unlocked.
     new Howl({ src: [''], format: ['mp3'] });
-
-    this.player = App.player;
-  }
-
-  _initPlaylist() {
-    ajax({
-      url: '/current_playlist/songs?init=true',
-      type: 'get',
-      dataType: 'script'
-    });
   }
 
   _initMode() {

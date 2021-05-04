@@ -1,12 +1,19 @@
 # frozen_string_literal: true
 
 class PlaylistsController < ApplicationController
+  layout 'playlist'
+
   include Pagy::Backend
 
   before_action :find_playlist, only: [:destroy, :update]
 
   def index
-    @pagy, @playlists = pagy_countless(Current.user.playlists.order(created_at: :desc))
+    @pagy, @playlists = pagy(Current.user.playlists.order(created_at: :desc))
+
+    respond_to do |format|
+      format.turbo_stream if params[:page].to_i > 1
+      format.html
+    end
   end
 
   def create
@@ -25,7 +32,8 @@ class PlaylistsController < ApplicationController
 
   def destroy
     @playlist.destroy
-    index; render 'index'
+
+    redirect_to action: 'index'
   end
 
   private

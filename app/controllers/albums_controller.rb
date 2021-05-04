@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AlbumsController < ApplicationController
+  layout 'dialog', only: :edit
+
   before_action :require_admin, only: [:edit, :update]
   before_action :find_album, except: [:index]
 
@@ -9,7 +11,12 @@ class AlbumsController < ApplicationController
 
   def index
     records = Album.search(params[:query]).includes(:artist).order(:name)
-    @pagy, @albums = pagy_countless(records)
+    @pagy, @albums = pagy(records)
+
+    respond_to do |format|
+      format.turbo_stream if params[:page].to_i > 1
+      format.html
+    end
   end
 
   def show

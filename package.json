@@ -2,13 +2,12 @@
   "name": "black_candy",
   "private": true,
   "dependencies": {
-    "@rails/ujs": "^6.0.1",
+    "@hotwired/turbo-rails": "^7.0.0-beta.5",
     "@rails/webpacker": "^5.1.1",
     "@shopify/draggable": "^1.0.0-beta.12",
     "howler": "^2.2.0",
     "postcss-mixins": "^6.2.3",
-    "stimulus": "^2.0.0",
-    "turbolinks": "^5.2.0"
+    "stimulus": "^2.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",

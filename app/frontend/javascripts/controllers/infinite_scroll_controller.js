@@ -1,12 +1,17 @@
 import { Controller } from 'stimulus';
-import { ajax } from '@rails/ujs';
+import { fetchTurboStream } from '../helper';
 
 export default class extends Controller {
   static targets = ['trigger']
 
   static values = {
     container: String,
-    nextUrl: String
+    url: String,
+    totalPages: Number
+  }
+
+  initialize() {
+    this.page = 2;
   }
 
   connect() {
@@ -36,24 +41,22 @@ export default class extends Controller {
         return;
       }
 
-      if (this.ajaxRequest) {
-        // Abort previous ajax request.
-        this.ajaxRequest.abort();
+      if (this.abortController) {
+        // Abort previous fetch request.
+        this.abortController.abort();
       }
 
-      ajax({
-        url: this.nextUrlValue,
-        type: 'get',
-        dataType: 'script',
-        beforeSend: (xhr) => {
-          this.ajaxRequest = xhr;
-          return true;
-        }
+      this.abortController = new AbortController();
+
+      const nextUrl = `${this.urlValue}?page=${this.page}`;
+
+      fetchTurboStream(nextUrl, { signal: this.abortController.signal }, () => {
+        this.page += 1;
       });
     });
   }
 
   get hasNextPage() {
-    return !!this.nextUrlValue;
+    return this.page <= this.totalPagesValue;
   }
 }

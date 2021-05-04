@@ -1,22 +1,29 @@
 # frozen_string_literal: true
 
 class Playlists::SongsController < ApplicationController
+  layout 'playlist'
+
   before_action :find_playlist
-  before_action :find_songs, only: [:create, :destroy]
+  before_action :find_song, only: [:create, :destroy]
 
   include Pagy::Backend
   include Playable
 
   def show
-    @pagy, @songs = pagy_countless(@playlist.songs.includes(:artist))
+    @pagy, @songs = pagy(@playlist.songs.includes(:artist))
+
+    respond_to do |format|
+      format.turbo_stream if params[:page].to_i > 1
+      format.html
+    end
   end
 
   def create
-    @playlist.songs.push(@songs)
+    @playlist.playlists_songs.create(song_id: @song.id, position: 1)
     flash.now[:success] = t('success.add_to_playlist')
 
     # for refresh playlist content, when first song add to playlist
-    show if @playlist.songs.size == 1
+    redirect_to action: 'show' if @playlist.songs.size == 1
   rescue ActiveRecord::RecordNotUnique
     flash.now[:error] = t('error.already_in_playlist')
   end
@@ -25,12 +32,12 @@ class Playlists::SongsController < ApplicationController
     if playlists_songs_params[:clear_all]
       @playlist.songs.clear
     else
-      @playlist.songs.destroy(@songs)
+      @playlist.songs.destroy(@song)
       flash.now[:success] = t('success.delete_from_playlist')
     end
 
     # for refresh playlist content, when remove last song from playlist
-    show if @playlist.songs.empty?
+    redirect_to action: 'show' if @playlist.songs.empty?
   end
 
   def update
@@ -44,11 +51,11 @@ class Playlists::SongsController < ApplicationController
   private
 
     def find_playlist
-      @playlist = Current.user.all_playlists.find(params[:playlist_id])
+      @playlist = Current.user.playlists.find(params[:playlist_id])
     end
 
-    def find_songs
-      @songs = Song.find(playlists_songs_params[:song_ids]) unless playlists_songs_params[:clear_all]
+    def find_song
+      @song = Song.find(playlists_songs_params[:song_id]) unless playlists_songs_params[:clear_all]
     end
 
     def find_all_song_ids
@@ -56,6 +63,6 @@ class Playlists::SongsController < ApplicationController
     end
 
     def playlists_songs_params
-      params.permit(:from_position, :to_position, :clear_all, song_ids: [])
+      params.permit(:from_position, :to_position, :clear_all, :song_id)
     end
 end

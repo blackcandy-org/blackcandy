@@ -1,68 +1,61 @@
 import { Controller } from 'stimulus';
-import { ajax } from '@rails/ujs';
 
 export default class extends Controller {
-  static targets = ['item', 'count', 'playAllLink'];
+  static targets = ['item'];
 
   static values = {
     playlistId: Number,
-    isCurrent: Boolean
+    isCurrent: Boolean,
+    isPlayable: Boolean,
+    playlistSongs: Array
   }
 
   initialize() {
-    this.player = App.player;
+    if (!this.isCurrentValue) { return; }
+
+    if (this.hasPlaylistSongsValue) {
+      this.player.playlist.update(this.playlistSongsValue);
+    }
+
+    if (this.isPlayableValue) {
+      this.player.skipTo(0);
+    }
   }
 
   connect() {
     this._showPlayingItem();
     document.addEventListener('playlistSongs:showPlaying', this._showPlayingItem);
-    this.element.addEventListener('playlistSongs:updateCount', this._updateCount);
-    this.element.addEventListener('playlistSongs:updatePlayAllLink', this._updatePlayAllLink);
   }
 
   disconnect() {
     document.removeEventListener('playlistSongs:showPlaying', this._showPlayingItem);
-    this.element.removeEventListener('playlistSongs:updateCount', this._updateCount);
-    this.element.removeEventListener('playlistSongs:updatePlayAllLink', this._updatePlayAllLink);
   }
 
-  actionHandler({ target }) {
-    const actionElement = target.closest('[data-playlist-songs-action]');
+  submitStartHandle(event) {
+    const actionElement = event.target.closest('[data-submit-start-action]');
 
     if (!actionElement) { return; }
 
-    switch (actionElement.dataset.playlistSongsAction) {
-      case 'delete':
-        this._deleteSong(target);
-        break;
-      case 'showMenu':
-        this._showMenu(target);
-        break;
-      case 'play':
-        this._play(target);
-        break;
-      case 'none':
+    switch (actionElement.dataset.submitStartAction) {
+      case 'check_before_playing':
+        this._checkBeforePlaying(event);
         break;
     }
   }
 
-  clear() {
-    App.dispatchEvent('#js-playlist-loader', 'loader:show');
+  submitEndHandle(event) {
+    const actionElement = event.target.closest('[data-submit-end-action]');
 
-    ajax({
-      url: `/playlists/${this.playlistIdValue}/songs`,
-      type: 'delete',
-      dataType: 'script',
-      data: 'clear_all=true',
-      success: () => {
-        App.dispatchEvent('#js-playlist-loader', 'loader:hide');
+    if (!actionElement || !event.detail.success) { return; }
 
-        if (this.isCurrentValue) {
-          this.player.playlist.update([]);
-          this.player.stop();
-        }
-      }
-    });
+    switch (actionElement.dataset.submitEndAction) {
+      case 'delete':
+        this._delete(event.target);
+        break;
+      case 'play':
+        this._play(event.target);
+        break;
+    }
   }
 
   _showPlayingItem = () => {
@@ -71,62 +64,33 @@ export default class extends Controller {
     });
   }
 
-  _play(target) {
-    const { songId } = target.closest('[data-song-id]').dataset;
+  _checkBeforePlaying(event) {
+    const { songId } = event.target.closest('[data-song-id]').dataset;
     const playlistIndex = this.player.playlist.indexOf(songId);
 
     if (playlistIndex != -1) {
+      event.detail.formSubmission.stop();
       this.player.skipTo(playlistIndex);
-    } else {
-      ajax({
-        url: '/current_playlist/songs',
-        type: 'post',
-        data: `song_ids[]=${songId}`,
-        success: () => {
-          this.player.skipTo(this.player.playlist.pushSong(songId));
-        }
-      });
     }
   }
 
-  _deleteSong(target) {
-    const playlistItemElement = target.closest('[data-song-id]');
-    const { songId } = playlistItemElement.dataset;
+  _play(target) {
+    const { songId } = target.closest('[data-song-id]').dataset;
 
-    ajax({
-      url: `/playlists/${this.playlistIdValue}/songs`,
-      type: 'delete',
-      dataType: 'script',
-      data: `song_ids[]=${songId}`,
-      success: () => {
-        if (this.isCurrentValue) {
-          const songIndex = this.player.playlist.deleteSong(songId);
-          if (this.player.currentSong.id == songId) { this.player.skipTo(songIndex); }
-        }
-
-        // When already delete all playlist items, use rails ujs to render empty page,
-        // avoid to remove item manually.
-        if (playlistItemElement) {
-          playlistItemElement.remove();
-        }
-      }
-    });
+    this.player.skipTo(this.player.playlist.pushSong(songId));
   }
 
-  _showMenu(target) {
-    const menuListElement = target.closest('.js-playlist-songs-menu').querySelector('.js-playlist-songs-menu-list');
+  _delete(target) {
+    const { songId } = target.closest('[data-song-id]').dataset;
 
-    menuListElement.classList.remove('u-display-none');
-    App.dismissOnClick(menuListElement);
-  }
+    if (!this.isCurrentValue) { return; }
 
-  _updateCount = (event) => {
-    this.countTarget.innerText = event.detail;
-  }
-
-  _updatePlayAllLink = (event) => {
-    if (this.hasPlayAllLinkTarget) {
-      this.playAllLinkTarget.href = event.detail;
+    if (this.player.currentSong.id == songId) {
+      this.player.skipTo(this.player.playlist.deleteSong(songId));
     }
+  }
+
+  get player() {
+    return App.player;
   }
 }

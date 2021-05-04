@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus';
-import { ajax } from '@rails/ujs';
+import { fetchRequest } from '../helper';
 
 export default class extends Controller {
   static targets = ['name', 'nameInput'];
@@ -24,10 +24,13 @@ export default class extends Controller {
     if (newName != this.nameTarget.innerText && newName != '') {
       this.nameTarget.innerText = newName;
 
-      ajax({
-        url: `/playlists/${this.idValue}`,
-        type: 'put',
-        data: `playlist[name]=${newName}`
+      fetchRequest(`/playlists/${this.idValue}`, {
+        method: 'put',
+        body: JSON.stringify({
+          playlist: {
+            name: newName
+          }
+        })
       });
     }
 

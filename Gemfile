@@ -17,12 +17,12 @@ gem 'bcrypt', '~> 3.1.11'
 gem 'wahwah', '~> 1.1.1'
 # Use sidekiq for backgroud job
 gem 'sidekiq', '~> 6.1.2'
-# Server-side support for Turbolinks redirection.
-gem 'turbolinks', '~> 5.2.1'
+# Install turbo on rails
+gem 'turbo-rails'
 # Pagination
 gem 'pagy', '~> 3.5.0'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 
 # For image attachment
 gem 'carrierwave', '~> 2.0'
@@ -71,7 +71,6 @@ group :test do
   gem 'selenium-webdriver', '~> 3.142.6'
   gem 'webdrivers', '~> 4.1.3'
   gem 'webmock', '~> 3.6.2', require: false
-  gem 'database_cleaner', '~> 1.7'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

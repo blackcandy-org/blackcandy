@@ -9,7 +9,7 @@ class Playlists::SongsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show playlist songs' do
-    assert_login_access(user: @user, url: playlist_songs_url(@playlist), xhr: true) do
+    assert_login_access(user: @user, url: playlist_songs_url(@playlist)) do
       assert_response :success
     end
   end
@@ -19,20 +19,10 @@ class Playlists::SongsControllerTest < ActionDispatch::IntegrationTest
       user: @user,
       method: :post,
       url: playlist_songs_url(@playlist),
-      params: { song_ids: [3] },
+      params: { song_id: 3 },
       xhr: true
     ) do
-      assert_equal [1, 2, 3], @playlist.reload.song_ids
-    end
-
-    assert_login_access(
-      user: @user,
-      method: :post,
-      url: playlist_songs_url(@playlist),
-      params: { song_ids: [4, 5] },
-      xhr: true
-    ) do
-      assert_equal [1, 2, 3, 4, 5], @playlist.reload.song_ids
+      assert_equal [3, 1, 2], @playlist.reload.song_ids
     end
   end
 
@@ -41,7 +31,7 @@ class Playlists::SongsControllerTest < ActionDispatch::IntegrationTest
       user: @user,
       method: :delete,
       url: playlist_songs_url(@playlist),
-      params: { song_ids: [1] },
+      params: { song_id: 1 },
       xhr: true
     ) do
       assert_equal [2], @playlist.reload.song_ids
@@ -51,7 +41,7 @@ class Playlists::SongsControllerTest < ActionDispatch::IntegrationTest
       user: @user,
       method: :delete,
       url: playlist_songs_url(@playlist),
-      params: { song_ids: [2, 3] },
+      params: { song_id: 2 },
       xhr: true
     ) do
       assert_equal [], @playlist.reload.song_ids
@@ -63,8 +53,7 @@ class Playlists::SongsControllerTest < ActionDispatch::IntegrationTest
       user: @user,
       method: :delete,
       url: playlist_songs_url(@playlist),
-      params: { clear_all: true },
-      xhr: true
+      params: { clear_all: true }
     ) do
       assert_equal [], @playlist.reload.song_ids
     end
@@ -77,8 +66,7 @@ class Playlists::SongsControllerTest < ActionDispatch::IntegrationTest
       user: @user,
       method: :put,
       url: playlist_songs_url(@playlist),
-      params: { from_position: 1, to_position: 2 },
-      xhr: true
+      params: { from_position: 1, to_position: 2 }
     ) do
       assert_equal [2, 1], @playlist.reload.song_ids
     end
@@ -90,8 +78,7 @@ class Playlists::SongsControllerTest < ActionDispatch::IntegrationTest
     assert_login_access(
       user: @user,
       method: :post,
-      url: play_playlist_songs_url(@playlist),
-      xhr: true
+      url: play_playlist_songs_url(@playlist)
     ) do
       assert_equal @playlist.song_ids, @user.current_playlist.reload.song_ids
     end

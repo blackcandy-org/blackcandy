@@ -45,7 +45,7 @@
 # Rails.application.config.active_record.legacy_connection_handling = false
 
 # Make `form_with` generate non-remote forms by default.
-Rails.application.config.action_view.form_with_generates_remote_forms = true
+# Rails.application.config.action_view.form_with_generates_remote_forms = false
 
 # Set the default queue name for the analysis job to the queue adapter default.
 # Rails.application.config.active_storage.queues.analysis = nil

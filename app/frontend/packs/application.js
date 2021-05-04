@@ -7,11 +7,9 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-import RailsUjs from '@rails/ujs';
-import Turbolinks from 'turbolinks';
+import { Turbo } from '@hotwired/turbo-rails';
 import { Application } from 'stimulus';
 import { definitionsFromContext } from 'stimulus/webpack-helpers';
-import App from '../javascripts/app';
 import Player from '../javascripts/player';
 
 import 'core-js/stable';
@@ -19,13 +17,10 @@ import 'regenerator-runtime/runtime';
 
 require.context('../images', true);
 
-RailsUjs.start();
-Turbolinks.start();
-
 const application = Application.start();
 const controllers = require.context('../javascripts/controllers', true, /\.js$/);
 
 application.load(definitionsFromContext(controllers));
 
-window.App = App;
-window.App.player = new Player();
+window.Turbo = Turbo;
+window.App = { player: new Player() };

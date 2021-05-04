@@ -1,0 +1,1 @@
+<%= turbo_stream.append dom_id(@playlist), partial: 'playlists/songs/song', collection: @songs, locals: { playlist: @playlist }, cached: true %>

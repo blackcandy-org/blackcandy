@@ -16,7 +16,7 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should edit album' do
-    assert_admin_access(url: edit_album_url(albums(:album1)), xhr: true) do
+    assert_admin_access(url: edit_album_url(albums(:album1))) do
       assert_response :success
     end
   end
@@ -55,8 +55,7 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
     assert_login_access(
       user: user,
       method: :post,
-      url: play_album_url(albums(:album1)),
-      xhr: true
+      url: play_album_url(albums(:album1))
     ) do
       assert_equal albums(:album1).song_ids, user.current_playlist.reload.song_ids
     end

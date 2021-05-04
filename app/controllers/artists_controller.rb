@@ -3,12 +3,14 @@
 class ArtistsController < ApplicationController
   include Pagy::Backend
 
+  layout 'dialog', only: :edit
+
   before_action :require_admin, only: [:edit, :update]
   before_action :find_artist, except: [:index]
 
   def index
     records = Artist.search(params[:query]).order(:name)
-    @pagy, @artists = pagy_countless(records)
+    @pagy, @artists = pagy(records)
   end
 
   def show

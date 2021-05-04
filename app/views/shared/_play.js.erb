@@ -1,6 +1,0 @@
-App.player.playlist.update(JSON.parse('<%= j(render inline: song_ids.to_json) %>'));
-App.player.skipTo(0);
-
-if (App.playlistElement('<%= playlist.id %>')) {
-  App.renderPlaylistContent('<%= j(render partial: 'playlists/songs/show_buildin', locals: { playlist: playlist, pagy: pagy, songs: songs }) %>');
-}

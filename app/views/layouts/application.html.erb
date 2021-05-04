@@ -1,19 +1,37 @@
 <% content_for :body do %>
   <div class='o-flex u-vw-100 u-vh-100'>
-    <aside id='js-sidebar' class='o-flex__item o-flex__item--shrink-0 o-flex o-flex--column-reverse c-sidebar' data-turbolinks-permanent>
-      <%= render 'layouts/sidebar' %>
+    <aside id='js-sidebar' class='o-flex__item o-flex__item--shrink-0 o-flex o-flex--column-reverse c-sidebar' data-turbo-permanent>
+      <div class='o-flex__item o-flex__item--shrink-0'>
+        <%= render 'shared/player' %>
+      </div>
+      <div class='o-flex__item o-flex__item--grow-1 u-h-0'>
+        <%= turbo_frame_tag 'turbo-playlist', src: current_playlist_songs_path(init: true), class: 'u-h-100 o-flex o-flex--column' %>
+      </div>
     </aside>
     <div class='o-flex__item o-flex__item--grow-1 u-overflow-auto'>
-      <%= render 'layouts/main' do %>
-        <%= yield %>
-      <% end %>
+      <div>
+        <header class='c-nav c-nav--primary o-grid o-grid--align-items-center u-position-sticky-top' cols='7'>
+          <div id='turbo-flash' class='c-flash'>
+            <%= render 'shared/flash' %>
+          </div>
+          <%= render 'shared/search_bar' %>
+          <%= render 'shared/nav_bar' %>
+        </header>
+        <main class='u-p-large'>
+          <%= yield %>
+        </main>
+        <footer class='u-display-none u-display-block@extra-small u-position-fixed-bottom'>
+          <%= render 'shared/mini_player' %>
+        </footer>
+      </div>
     </div>
   </div>
+
   <div id='js-overlay' class='c-overlay c-overlay--fixed c-overlay--blur u-display-none'></div>
   <div id='js-global-loader' class='c-overlay c-overlay--fixed c-overlay--blur u-display-none' data-controller='loader' data-loader-target='indicator'>
     <%= loader_tag size: 'large' %>
   </div>
-  <%= render 'shared/dialog' %>
+  <%= turbo_frame_tag 'turbo-dialog' %>
 <% end %>
 
 <%= render template: 'layouts/base' %>
