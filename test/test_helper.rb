@@ -4,10 +4,6 @@ require_relative '../config/environment'
 require 'rails/test_help'
 require 'webmock/minitest'
 require 'minitest/mock'
-require 'database_cleaner'
-
-DatabaseCleaner.strategy = :transaction
-DatabaseCleaner.orm = :active_record
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
@@ -99,11 +95,9 @@ class ActionDispatch::IntegrationTest
     send(method, url, **args)
     assert_response :forbidden
 
-    DatabaseCleaner.cleaning do
-      login users(:admin)
-      send(method, url, **args)
-      yield
-    end
+    login users(:admin)
+    send(method, url, **args)
+    yield
 
     login user
     send(method, url, **args)

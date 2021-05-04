@@ -71,7 +71,6 @@ group :test do
   gem 'selenium-webdriver', '~> 3.142.6'
   gem 'webdrivers', '~> 4.1.3'
   gem 'webmock', '~> 3.6.2', require: false
-  gem 'database_cleaner', '~> 1.7'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

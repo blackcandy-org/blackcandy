@@ -4,7 +4,7 @@ require 'test_helper'
 
 class PlaylistsControllerTest < ActionDispatch::IntegrationTest
   test 'should get index' do
-    assert_login_access(url: playlists_url, xhr: true) do
+    assert_login_access(url: playlists_url) do
       assert_response :success
     end
   end
@@ -25,8 +25,7 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
       user: user,
       method: :patch,
       url: playlist_url(playlist),
-      params: { playlist: { name: 'updated_playlist' } },
-      xhr: true
+      params: { playlist: { name: 'updated_playlist' } }
     ) do
       assert_equal 'updated_playlist', playlist.reload.name
     end
@@ -37,7 +36,7 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
     user = playlist.user
     playlists_count = Playlist.count
 
-    assert_login_access(user: user, method: :delete, url: playlist_url(playlist), xhr: true) do
+    assert_login_access(user: user, method: :delete, url: playlist_url(playlist)) do
       assert_equal playlists_count - 1, Playlist.count
     end
   end

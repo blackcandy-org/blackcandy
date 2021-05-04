@@ -60,21 +60,4 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       assert_response :forbidden
     end
   end
-
-  test 'should update user settings' do
-    current_user = users(:visitor1)
-    setting_params = { user: { theme: 'light' } }
-
-    assert_equal 'dark', current_user.theme
-
-    assert_self_or_admin_access(
-      user: current_user,
-      method: :patch,
-      url: user_url(current_user),
-      params: setting_params,
-      xhr: true
-    ) do
-      assert_equal 'light', current_user.reload.theme
-    end
-  end
 end
