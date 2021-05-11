@@ -41,3 +41,4 @@ yarn-debug.log*
 /.gems
 /.pg_data
 /.redis_data
+/.idea
