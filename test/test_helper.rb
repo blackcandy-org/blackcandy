@@ -5,6 +5,12 @@ require 'rails/test_help'
 require 'webmock/minitest'
 require 'minitest/mock'
 
+allowed_sites_for_webmock = [
+  'chromedriver.storage.googleapis.com'
+]
+
+WebMock.disable_net_connect!(allow_localhost: true, allow: allowed_sites_for_webmock)
+
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
