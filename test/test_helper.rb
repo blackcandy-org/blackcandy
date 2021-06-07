@@ -48,7 +48,7 @@ class ActiveSupport::TestCase
   end
 
   def login(user)
-    post session_url, params: { email: user.email, password: 'foobar' }
+    post session_url, params: { user_session: { email: user.email, password: 'foobar' } }
   end
 
   def logout

@@ -6,6 +6,11 @@
   margin-top: var(--spacing-small);
 }
 
+.c-form__field--inline {
+  display: flex;
+  align-items: center;
+}
+
 .c-form__field--submit {
   margin-top: var(--spacing-medium);
 }
@@ -13,6 +18,11 @@
 .c-form__field label {
   display: block;
   margin-bottom: var(--spacing-narrow);
+}
+
+.c-form__field--inline label {
+  margin-bottom: 0;
+  margin-right: var(--spacing-tiny);
 }
 
 .c-form__field > label {

@@ -11,8 +11,6 @@ gem 'puma', '~> 4.3.1'
 gem 'webpacker', '~> 5.1.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.9.1'
-# Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.11'
 # Get meta data from audio file
 gem 'wahwah', '~> 1.1.1'
 # Use sidekiq for backgroud job
@@ -23,7 +21,6 @@ gem 'turbo-rails'
 gem 'pagy', '~> 3.5.0'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
-
 # For image attachment
 gem 'carrierwave', '~> 2.0'
 # For API request
@@ -34,6 +31,9 @@ gem 'browser', '~> 2.6.1', require: 'browser/browser'
 gem 'pg_search', '~> 2.3.2'
 # For sortable list
 gem 'acts_as_list', '~> 1.0.2'
+# For authentication
+gem 'authlogic', '~> 6.4.1'
+gem 'bcrypt', '~> 3.1.11'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -65,6 +65,11 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.1)
+    authlogic (6.4.1)
+      activemodel (>= 5.2, < 6.2)
+      activerecord (>= 5.2, < 6.2)
+      activesupport (>= 5.2, < 6.2)
+      request_store (~> 1.0)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.5.1)
@@ -190,6 +195,8 @@ GEM
       ffi (~> 1.0)
     redis (4.2.5)
     regexp_parser (2.0.1)
+    request_store (1.5.0)
+      rack (>= 1.4)
     rexml (3.2.4)
     rubocop (1.3.1)
       parallel (~> 1.10)
@@ -273,6 +280,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list (~> 1.0.2)
+  authlogic (~> 6.4.1)
   bcrypt (~> 3.1.11)
   bootsnap (>= 1.1.0)
   brakeman (~> 4.7.2)

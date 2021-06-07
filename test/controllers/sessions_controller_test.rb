@@ -20,17 +20,17 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create session' do
-    post session_url, params: { email: @user.email, password: 'foobar' }
+    post session_url, params: { user_session: { email: @user.email, password: 'foobar' } }
 
     assert_redirected_to root_url
-    assert_equal @user.id, session[:user_id]
+    assert_not_nil session[:user_credentials]
   end
 
   test 'should destroy session' do
     login @user
     delete session_url
 
-    assert_nil session[:user_id]
+    assert_nil session[:user_credentials]
     assert_redirected_to new_session_url
   end
 end
