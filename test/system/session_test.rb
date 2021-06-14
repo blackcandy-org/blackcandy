@@ -29,4 +29,12 @@ class SessionTest < ApplicationSystemTestCase
     # assert have error flash message
     assert_text('Wrong email or password')
   end
+
+  test 'logout' do
+    login_as users(:visitor1)
+    find('#test-main-content header .c-avatar').click
+    click_on 'Logout'
+
+    assert_current_path(new_session_url)
+  end
 end
