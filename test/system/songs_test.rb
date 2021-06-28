@@ -31,4 +31,32 @@ class SongsTest < ApplicationSystemTestCase
 
     assert_selector('#turbo-songs-content > .o-grid', count: Pagy::VARS[:items] * 2)
   end
+
+  test 'play song from songs list' do
+    Setting.update(media_path: Rails.root.join('test/fixtures/files'))
+    visit songs_url
+
+    first_song_element = find('#turbo-songs-content > .o-grid:first-child')
+    first_song_name = first_song_element.find('.test-song-name').text
+    first_song_element.click
+
+    # when click song to play, the current playlist and player sould list current playing song
+    assert_selector('#turbo-playlist .c-list .c-list__item:first-child', text: first_song_name)
+    assert_selector('.c-player__header__content', text: first_song_name)
+  end
+
+  test 'add song to playlist' do
+    Playlist.create(name: 'test-playlist', user_id: users(:visitor1).id)
+    visit songs_url
+
+    first_song_element = find('#turbo-songs-content > .o-grid:first-child')
+    first_song_name = first_song_element.find('.test-song-name').text
+
+    first_song_element.find('.test-add-playlist').click
+    assert_selector('#turbo-dialog .c-dialog', visible: true)
+
+    find('#turbo-dialog-playlists > form:first-child').click
+    # assert the song added to the playlist
+    assert_selector('#turbo-playlist .c-list .c-list__item:first-child', text: first_song_name)
+  end
 end

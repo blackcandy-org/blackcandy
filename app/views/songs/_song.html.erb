@@ -1,14 +1,14 @@
 <div role='row' class='o-grid' cols='8' cols@medium='6' cols@small='5' cols@narrow='4' data-playlist-songs-target='item' data-song-id='<%= song.id %>'>
   <%= button_to current_playlist_songs_path(song_id: song.id), form_class: 'o-grid__item', class: 'u-w-100', form: { 'span' => '1-7', 'span@medium' => '1-5', 'span@small' => '1-4', 'span@narrow' => '1-3', 'data-submit-start-action' => 'check_before_playing', 'data-submit-end-action' => 'play', 'data-turbo-frame' => 'turbo-playlist' } do %>
     <div class='o-grid' cols='7' cols@medium='5' cols@small='4' cols@narrow='3'>
-      <span role='cell' class='o-grid__item u-text-truncate' span='2' span@medium='4' span@narrow='3'><%= song.name %></span>
+      <span role='cell' class='test-song-name o-grid__item u-text-truncate' span='2' span@medium='4' span@narrow='3'><%= song.name %></span>
       <span role='cell' class='o-grid__item u-text-truncate u-display-none@medium' span='2'><%= song.artist.title %></span>
       <span role='cell' class='o-grid__item u-text-truncate u-display-none@medium' span='2'><%= song.album.title %></span>
       <span role='cell' class='o-grid__item u-text-truncate u-display-none@small'><%= format_duration(song.length) %></span>
     </div>
   <% end %>
   <span role='cell' class='o-grid__item'>
-    <%= link_to dialog_playlists_path(song_id: song.id), data: { turbo_frame: 'turbo-dialog' } do %>
+    <%= link_to dialog_playlists_path(song_id: song.id), class: 'test-add-playlist', data: { turbo_frame: 'turbo-dialog' } do %>
       <%= icon_tag 'playlist-add', size: 'small', title: t('text.add_to_playlist') %>
     <% end %>
   </span>
