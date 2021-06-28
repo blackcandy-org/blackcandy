@@ -2,7 +2,7 @@
   <h2 class='u-mb-medium'><%= t('text.media_path') %></h2>
   <%= form_with model: Setting, url: setting_path, method: :put, class: 'c-form o-flex o-flex--justify-between', data: { controller: 'form', form_loader_value: '#js-global-loader' } do |form| %>
     <%= form.text_field :media_path, value: Setting.media_path, class: 'c-input u-mr-narrow' %>
-    <%= form.submit t('label.sync'), class: 'c-button c-button--primary' %>
+    <%= form.submit t('label.sync'), class: 'c-button c-button--primary', id: 'test-setting-theme-save' %>
   <% end %>
 
   <hr />
@@ -14,7 +14,7 @@
       <%= form.text_field :discogs_token, value: Setting.discogs_token, class: 'c-input' %>
     </div>
     <div class='c-form__field c-form__field--submit'>
-      <%= form.submit t('label.save'), class: 'c-button c-button--primary c-button--full-width' %>
+      <%= form.submit t('label.save'), class: 'c-button c-button--primary c-button--full-width', id: 'test-setting-discogs-token-save' %>
     </div>
   <% end %>
 </div>

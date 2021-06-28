@@ -2,7 +2,7 @@
   <% cache @artist do %>
     <div class='o-grid o-grid--gap-medium u-pb-wide' cols@narrow='2' cols@extra-small='3' cols@small='2' cols@medium='3' cols@large='4' cols@extra-large='5' cols@wide='6' cols@extra-wide='7'>
       <div class='o-grid__item c-card u-mb-medium'>
-        <%= image_tag image_url_for(@artist), class: 'u-image-fluid c-card__image' %>
+        <%= image_tag image_url_for(@artist), class: 'u-image-fluid c-card__image test-artist-image' %>
       </div>
       <div class='o-grid__item'>
         <h1 class='u-mb-narrow'><%= @artist.title %></h1>
