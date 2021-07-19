@@ -3,7 +3,7 @@ import { fetchRequest, dispatchEvent } from './helper';
 import Playlist from './playlist';
 
 class Player {
-  urrentIndex = 0;
+  currentIndex = 0;
   currentSong = {};
   isPlaying = false;
   playlist = new Playlist();

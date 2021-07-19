@@ -30,12 +30,12 @@
       <span data-player-target='modeButton'><%= icon_tag 'shuffle', title: t('text.shuffle_mode') %></span>
     </div>
     <div>
-      <span class='u-text-color-primary u-cursor-pointer' data-action='click->player#previous'><%= icon_tag 'rewind', size: 'large', title: t('text.previous_song') %></span>
-      <span class='u-mx-medium u-text-color-primary u-cursor-pointer' data-action='click->player#play' data-player-target='playButton'><%= icon_tag 'play', size: 'large', title: t('text.play_song') %></span>
-      <span class='u-mx-medium  u-text-color-primary u-cursor-pointer u-display-none' data-action='click->player#pause' data-player-target='pauseButton'><%= icon_tag 'pause', size: 'large', title: t('text.pause_song') %></span>
-      <span class='u-text-color-primary u-cursor-pointer' data-action='click->player#next'><%= icon_tag 'fast-forward', size: 'large', title: t('text.next_song') %></span>
+      <span id='test-player-previous-button' class='u-text-color-primary u-cursor-pointer' data-action='click->player#previous'><%= icon_tag 'rewind', size: 'large', title: t('text.previous_song') %></span>
+      <span id='test-player-play-button' class='u-mx-medium u-text-color-primary u-cursor-pointer' data-action='click->player#play' data-player-target='playButton'><%= icon_tag 'play', size: 'large', title: t('text.play_song') %></span>
+      <span id='test-player-pause-button' class='u-mx-medium  u-text-color-primary u-cursor-pointer u-display-none' data-action='click->player#pause' data-player-target='pauseButton'><%= icon_tag 'pause', size: 'large', title: t('text.pause_song') %></span>
+      <span id='test-player-next-button' class='u-text-color-primary u-cursor-pointer' data-action='click->player#next'><%= icon_tag 'fast-forward', size: 'large', title: t('text.next_song') %></span>
     </div>
-    <div data-action='turbo:submit-end->player#toggleFavorite'>
+    <div id='test-player-favorite-button' data-action='turbo:submit-end->player#toggleFavorite'>
       <%= button_to favorite_playlist_songs_path, form_class: 'u-visibility-hidden', form: { 'data-player-target' => 'favoriteButton', 'data-turbo-frame' => 'turbo-playlist' } do %>
         <%= icon_tag 'heart', title: t('text.toggle_favorite') %>
       <% end %>
