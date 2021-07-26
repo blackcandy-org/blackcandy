@@ -8,7 +8,9 @@ export default class extends Controller {
     id: Number
   }
 
-  rename() {
+  rename(event) {
+    event.preventDefault();
+
     const name = this.nameTarget.innerText;
 
     this.nameTarget.classList.add('u-display-none');
