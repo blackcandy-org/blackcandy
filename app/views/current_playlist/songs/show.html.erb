@@ -10,7 +10,7 @@
       <div data-controller='dropdown' class='c-dropdown'>
         <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', title: t('label.more') %></span>
         <div data-dropdown-target='list' class='u-display-none c-dropdown__list'>
-          <%= button_to t('label.clear'), current_playlist_songs_path(clear_all: true), method: :delete, form_class: 'c-dropdown__item' %>
+          <%= button_to t('label.clear'), current_playlist_songs_path(clear_all: true), method: :delete, form_class: 'c-dropdown__item', form: { data: { action: 'turbo:submit-end->playlist-songs#clear' } } %>
         </div>
       </div>
     </div>

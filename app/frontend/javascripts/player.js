@@ -8,13 +8,13 @@ class Player {
   isPlaying = false;
   playlist = new Playlist();
 
-  play(currentIndex) {
+  playOn(index) {
     if (this.playlist.length == 0) { return; }
 
     dispatchEvent(document, 'player:beforePlaying');
 
-    const song = this.playlist.songs[currentIndex];
-    this.currentIndex = currentIndex;
+    const song = this.playlist.songs[index];
+    this.currentIndex = index;
     this.currentSong = song;
     this.isPlaying = true;
 
@@ -45,6 +45,16 @@ class Player {
     document.cookie = `current_song_id=${song.id};path=/;samesite=lax;`;
   }
 
+  play() {
+    this.isPlaying = true;
+
+    if (!this.currentSong.howl) {
+      this.playOn(this.currentIndex);
+    } else {
+      this.currentSong.howl.play();
+    }
+  }
+
   pause() {
     this.isPlaying = false;
     this.currentSong.howl && this.currentSong.howl.pause();
@@ -53,6 +63,12 @@ class Player {
   stop() {
     this.isPlaying = false;
     this.currentSong.howl && this.currentSong.howl.stop();
+
+    if (this.playlist.length == 0) {
+      // reset current song
+      this.currentIndex = 0;
+      this.currentSong = {};
+    }
   }
 
   next() {
@@ -72,7 +88,7 @@ class Player {
       index = this.playlist.length - 1;
     }
 
-    this.play(index);
+    this.playOn(index);
   }
 
   seek(seconds) {

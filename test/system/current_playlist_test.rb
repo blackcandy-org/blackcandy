@@ -25,6 +25,14 @@ class CurrentPlaylistTest < ApplicationSystemTestCase
     assert_text('No items')
   end
 
+  test 'player is stopped after clear current playlist' do
+    find('#turbo-playlist .c-action-bar .c-dropdown').click
+    click_on 'Clear'
+
+    find('#test-player-next-button').click
+    assert_selector('.c-player__header', visible: false)
+  end
+
   test 'play song in playlist' do
     find('#turbo-playlist .c-list .c-list__item:first-child').click
 
