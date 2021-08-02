@@ -1,4 +1,4 @@
-<%= form_with url: session_path, class: 'c-form', data: { controller: 'form', action: 'turbo:submit-end->form#reset' } do |form| %>
+<%= form_with model: UserSession.new, url: session_path, class: 'c-form', data: { controller: 'form', action: 'turbo:submit-end->form#reset' } do |form| %>
   <div class='c-form__field'>
     <%= form.label :email %>
     <%= form.email_field :email, value: params[:email], autofocus: true, class: 'c-input' %>
@@ -7,6 +7,11 @@
   <div class='c-form__field'>
     <%= form.label :password %>
     <%= form.password_field :password, class: 'c-input' %>
+  </div>
+
+  <div class='c-form__field c-form__field--inline'>
+    <%= form.label :remember_me %>
+    <%= form.check_box :remember_me %>
   </div>
 
   <div class='c-form__field c-form__field--submit'>

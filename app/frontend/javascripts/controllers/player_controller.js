@@ -43,7 +43,7 @@ export default class extends Controller {
   }
 
   play() {
-    this.player.play(this.currentIndex);
+    this.player.play();
   }
 
   pause() {
@@ -151,14 +151,15 @@ export default class extends Controller {
   }
 
   _setStopStatus = () => {
-    if (!this.player.playlist.length) {
-      this.headerTarget.classList.add('u-display-none');
+    if (this.player.playlist.length == 0) {
+      this.headerTarget.classList.remove('is-expanded');
+      this._setPauseStatus();
     }
   }
 
   _setEndStatus = () => {
     if (this.currentMode == 'single') {
-      this.player.play(this.currentIndex);
+      this.player.play();
     } else {
       this.next();
     }

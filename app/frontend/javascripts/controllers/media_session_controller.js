@@ -53,7 +53,7 @@ export default class extends Controller {
   }
 
   _play = () => {
-    this.player.play(this.currentIndex);
+    this.player.play();
   }
 
   _pause = () => {

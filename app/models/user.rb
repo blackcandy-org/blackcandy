@@ -9,13 +9,16 @@ class User < ApplicationRecord
   before_create :downcase_email
   after_create :create_buildin_playlists
 
-  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: { case_sensitive: false }
+  validates :password, confirmation: { if: :require_password? }, length: { minimum: 6, if: :require_password? }
 
   has_many :playlists, -> { where(type: nil) }, inverse_of: :user, dependent: :destroy
   has_one :current_playlist, dependent: :destroy
   has_one :favorite_playlist, dependent: :destroy
 
-  has_secure_password
+  acts_as_authentic do |config|
+    config.crypto_provider = ::Authlogic::CryptoProviders::BCrypt
+  end
 
   has_setting :theme, default: DEFAULT_THEME, available_options: AVAILABLE_THEME_OPTIONS
 

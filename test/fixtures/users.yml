@@ -1,12 +1,18 @@
 admin:
   email: 'admin@blackcandy.com'
   is_admin: true
-  password_digest: <%= BCrypt::Password.create('foobar') %>
+  password_salt: <%= salt = Authlogic::Random.hex_token %>
+  crypted_password: <%= Authlogic::CryptoProviders::BCrypt.encrypt("foobar" + salt) %>
+  persistence_token: <%= Authlogic::Random.hex_token %>
 
 visitor1:
   email: 'visitor1@blackcandy.com'
-  password_digest: <%= BCrypt::Password.create('foobar') %>
+  password_salt: <%= salt = Authlogic::Random.hex_token %>
+  crypted_password: <%= Authlogic::CryptoProviders::BCrypt.encrypt("foobar" + salt) %>
+  persistence_token: <%= Authlogic::Random.hex_token %>
 
 visitor2:
   email: 'visitor2@blackcandy.com'
-  password_digest: <%= BCrypt::Password.create('foobar') %>
+  password_salt: <%= salt = Authlogic::Random.hex_token %>
+  crypted_password: <%= Authlogic::CryptoProviders::BCrypt.encrypt("foobar" + salt) %>
+  persistence_token: <%= Authlogic::Random.hex_token %>

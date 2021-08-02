@@ -58,6 +58,11 @@ export default class extends Controller {
     }
   }
 
+  clear(event) {
+    if (!event.detail.success) { return; }
+    this.player.playlist.update([]);
+  }
+
   _showPlayingItem = () => {
     this.itemTargets.forEach((element) => {
       element.classList.toggle('is-active', element.dataset.songId == this.player.currentSong.id);

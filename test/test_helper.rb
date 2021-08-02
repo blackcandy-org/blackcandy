@@ -5,6 +5,12 @@ require 'rails/test_help'
 require 'webmock/minitest'
 require 'minitest/mock'
 
+allowed_sites_for_webmock = [
+  'chromedriver.storage.googleapis.com'
+]
+
+WebMock.disable_net_connect!(allow_localhost: true, allow: allowed_sites_for_webmock)
+
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
@@ -42,7 +48,7 @@ class ActiveSupport::TestCase
   end
 
   def login(user)
-    post session_url, params: { email: user.email, password: 'foobar' }
+    post session_url, params: { user_session: { email: user.email, password: 'foobar' } }
   end
 
   def logout

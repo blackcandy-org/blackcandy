@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   private
 
     def find_current_user
-      Current.user = User.find_by(id: session[:user_id])
+      Current.user = UserSession.find&.user
     end
 
     def require_login
