@@ -20,9 +20,9 @@
     </div>
     <ul id='test-album-songs-list' class='c-list' data-action='turbo:submit-end->playlist-songs#submitEndHandle turbo:submit-start->playlist-songs#submitStartHandle'>
       <% @songs.each do |song| %>
-        <li class='c-list__item u-cursor-pointer' data-playlist-songs-target='item' data-song-id='<%= song.id %>'>
+        <li class='c-list__item' data-playlist-songs-target='item' data-song-id='<%= song.id %>'>
           <div class='o-flex o-flex--justify-between o-flex--align-center'>
-            <%= button_to current_playlist_songs_path(song_id: song.id), class: 'u-w-100 o-flex o-flex--justify-between o-flex--align-center', form_class: 'o-flex__item--grow-1', form: { 'data-submit-start-action' => 'check_before_playing', 'data-submit-end-action' => 'play', 'data-turbo-frame' => 'turbo-playlist' } do  %>
+            <%= button_to current_playlist_songs_path(song_id: song.id), class: 'u-w-100 o-flex o-flex--justify-between o-flex--align-center u-cursor-pointer', form_class: 'o-flex__item--grow-1', form: { 'data-submit-start-action' => 'check_before_playing', 'data-submit-end-action' => 'play', 'data-turbo-frame' => 'turbo-playlist' } do  %>
               <div>
                 <h4 class='u-mb-tiny u-text-weight-normal test-song-name'><%= song.name %></h4>
                 <% if @album.artist.is_various? %>
