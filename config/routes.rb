@@ -36,6 +36,14 @@ Rails.application.routes.draw do
     resources :playlists, only: [:index]
   end
 
+  get '/search', to: 'search#index', as: 'search'
+
+  namespace :search do
+    resources :artists, only: [:index]
+    resources :songs, only: [:index]
+    resources :albums, only: [:index]
+  end
+
   get '/403', to: 'errors#forbidden', as: :forbidden
   get '/404', to: 'errors#not_found', as: :not_found
   get '/422', to: 'errors#unprocessable_entity', as: :unprocessable_entity

@@ -1,14 +1,24 @@
-h1,
+h1 {
+  font-size: var(--font-size-wide);
+}
+
 h2,
 h3 {
   font-size: var(--font-size-large);
-  color: rgb(var(--text-primary-color));
 }
 
 h4,
 h5,
 h6 {
   font-size: var(--font-size-medium);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: rgb(var(--text-primary-color));
 }
 

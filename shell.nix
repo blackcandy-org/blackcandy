@@ -22,7 +22,6 @@ mkShell {
     export DB_USER=postgres
     export DB_HOST=localhost
     export REDIS_SIDEKIQ_URL=redis://localhost:6379/1
-    export REDIS_CABLE_URL=redis://localhost:6379/2
 
     bundle config build.nokogiri --use-system-libraries
 

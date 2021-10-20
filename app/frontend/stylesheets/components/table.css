@@ -18,6 +18,13 @@
   color: rgb(var(--table-color));
 }
 
+.c-table th:first-child,
+.c-table td:first-child,
+.c-table [role=columnheader]:first-child,
+.c-table [role=cell]:first-child {
+  padding-left: 0;
+}
+
 .c-table tbody tr:hover *,
 .c-table tbody tr.is-active *,
 .c-table [role=row]:hover [role=cell],

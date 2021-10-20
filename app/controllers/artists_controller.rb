@@ -9,7 +9,7 @@ class ArtistsController < ApplicationController
   before_action :find_artist, except: [:index]
 
   def index
-    records = Artist.search(params[:query]).order(:name)
+    records = Artist.order(:name)
     @pagy, @artists = pagy(records)
   end
 

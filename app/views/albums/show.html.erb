@@ -3,7 +3,7 @@
     <div class='c-card c-card--horizontal u-my-large'>
       <%= image_tag image_url_for(@album), class: 'c-card__image u-image-medium test-album-image' %>
       <div class='c-card__body'>
-        <h1 class='c-card__body__title'><%= @album.title %></h1>
+        <h1 class='c-card__body__title u-text-size-large'><%= @album.title %></h1>
         <p class='c-card__body__text'><%= @album.artist.title %></p>
         <div class='c-card__body__text'>
           <span><%= @songs.load.size %> <%= t('label.tracks') %></span>

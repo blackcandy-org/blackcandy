@@ -10,7 +10,7 @@ class AlbumsController < ApplicationController
   include Playable
 
   def index
-    records = Album.search(params[:query]).includes(:artist).order(:name)
+    records = Album.includes(:artist).order(:name)
     @pagy, @albums = pagy(records)
 
     respond_to do |format|
