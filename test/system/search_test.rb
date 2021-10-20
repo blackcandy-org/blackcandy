@@ -11,14 +11,14 @@ class SearchTest < ApplicationSystemTestCase
     fill_in 'js-search-input', with: 'artist'
     find('#js-search-input').send_keys(:enter)
 
-    assert_text('Search results for \"artist\"')
+    assert_text('Search results for "artist"')
   end
 
   test 'can not request search when query text is empty' do
     fill_in 'js-search-input', with: ''
     find('#js-search-input').send_keys(:enter)
 
-    assert_no_text('Search results for \"artist\"')
+    assert_no_text('Search results for "artist"')
     assert_no_current_path(search_url)
   end
 end
