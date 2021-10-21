@@ -50,5 +50,12 @@ jobs:
           bundle install --jobs 4 --retry 3
           bundle exec rails db:setup
           bundle exec rails lint:all
-          bundle exec rails test:all
+          bundle exec rails test
+          bundle exec rails test:system
           bundle exec brakeman
+
+      - name: Push coverage data to Coveralls
+         uses: coverallsapp/github-action@v1
+         with:
+           github-token: ${{ secrets.GITHUB_TOKEN }}
+
