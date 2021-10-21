@@ -42,3 +42,19 @@
   -webkit-line-clamp: 2 !important;
   overflow: hidden;
 }
+
+.u-text-size-small {
+  font-size: var(--font-size-small);
+}
+
+.u-text-size-medium {
+  font-size: var(--font-size-medium);
+}
+
+.u-text-size-large {
+  font-size: var(--font-size-large);
+}
+
+.u-text-size-wide {
+  font-size: var(--font-size-wide);
+}

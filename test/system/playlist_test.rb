@@ -2,7 +2,7 @@
 
 require 'application_system_test_case'
 
-class PlaylistTest < ApplicationSystemTestCase
+class PlaylistSystemTest < ApplicationSystemTestCase
   setup do
     Setting.update(media_path: Rails.root.join('test/fixtures/files'))
     login_as users(:admin)

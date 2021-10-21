@@ -1,4 +1,4 @@
-name: Test Lint
+name: CI
 
 on: [push, pull_request]
 
@@ -49,7 +49,13 @@ jobs:
           gem install bundler
           bundle install --jobs 4 --retry 3
           bundle exec rails db:setup
+          bundle exec rails lint:all
           bundle exec rails test
           bundle exec rails test:system
-          bundle exec rails lint:all
           bundle exec brakeman
+
+      - name: Push coverage data to Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+

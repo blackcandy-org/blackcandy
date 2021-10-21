@@ -3,34 +3,49 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.0'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1.3'
+
 # Use Puma as the app server
 gem 'puma', '~> 4.3.1'
+
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.1.1'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.9.1'
+
 # Get meta data from audio file
 gem 'wahwah', '~> 1.1.1'
+
 # Use sidekiq for backgroud job
 gem 'sidekiq', '~> 6.1.2'
+
 # Install turbo on rails
 gem 'turbo-rails'
+
 # Pagination
 gem 'pagy', '~> 3.5.0'
-# Use Redis adapter to run Action Cable in production
+
+# Use redis on cache and sidekiq
 gem 'redis', '~> 4.0'
+
 # For image attachment
 gem 'carrierwave', '~> 2.0'
+
 # For API request
 gem 'httparty', '~> 0.17.0'
+
 # For browser detection
 gem 'browser', '~> 2.6.1', require: 'browser/browser'
+
 # For PostgreSQL's full text search
 gem 'pg_search', '~> 2.3.2'
+
 # For sortable list
 gem 'acts_as_list', '~> 1.0.2'
+
 # For authentication
 gem 'authlogic', '~> 6.4.1'
 gem 'bcrypt', '~> 3.1.11'
@@ -71,6 +86,8 @@ group :test do
   gem 'selenium-webdriver', '~> 3.142.6'
   gem 'webdrivers', '~> 4.6.0'
   gem 'webmock', '~> 3.13.0', require: false
+  gem 'simplecov', '~> 0.21.2', require: false
+  gem 'simplecov-lcov', '~> 0.8.0', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

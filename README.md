@@ -3,7 +3,8 @@
 </p>
 
 # Black candy
-![Test Lint](https://github.com/aidewoode/black_candy/workflows/Test%20Lint/badge.svg)
+[![CI](https://github.com/aidewoode/black_candy/actions/workflows/ci.yml/badge.svg)](https://github.com/aidewoode/black_candy/actions/workflows/ci.yml)
+[![Coverage Status](https://coveralls.io/repos/github/aidewoode/black_candy/badge.svg?branch=master)](https://coveralls.io/github/aidewoode/black_candy?branch=master)
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/aidewoode/black_candy/blob/master/.rubocop.yml)
 ![Docker Pulls](https://img.shields.io/docker/pulls/blackcandy/blackcandy)
 

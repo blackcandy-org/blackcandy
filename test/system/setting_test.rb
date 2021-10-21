@@ -2,7 +2,7 @@
 
 require 'application_system_test_case'
 
-class SettingTest < ApplicationSystemTestCase
+class SettingSystemTest < ApplicationSystemTestCase
   setup do
     login_as users(:admin)
   end

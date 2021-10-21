@@ -6,3 +6,7 @@ a {
 a:hover {
   color: rgb(var(--link-active-color));
 }
+
+a.is-active {
+  color: rgb(var(--link-active-color));
+}

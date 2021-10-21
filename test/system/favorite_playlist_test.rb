@@ -2,7 +2,7 @@
 
 require 'application_system_test_case'
 
-class FavoritePlaylistTest < ApplicationSystemTestCase
+class FavoritePlaylistSystemTest < ApplicationSystemTestCase
   setup do
     Setting.update(media_path: Rails.root.join('test/fixtures/files'))
     users(:visitor1).favorite_playlist.replace(Song.ids)

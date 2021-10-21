@@ -2,7 +2,7 @@
 
 require 'application_system_test_case'
 
-class AlbumTest < ApplicationSystemTestCase
+class AlbumSystemTest < ApplicationSystemTestCase
   setup do
     @album = albums(:album1)
   end

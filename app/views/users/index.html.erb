@@ -1,7 +1,7 @@
 <% cache @users do %>
   <div class='o-container o-container--extra-narrow'>
     <div class='o-flex o-flex--justify-between o-flex--align-center'>
-      <h1><%= t('text.manage_users') %></h1>
+      <h1 class='u-text-size-large'><%= t('text.manage_users') %></h1>
       <%= link_to t('text.add_user'), new_user_path, class: 'c-button c-button--primary' %>
     </div>
     <hr />

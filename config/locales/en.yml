@@ -101,3 +101,5 @@ en:
     edit_artist: 'Edit Artist'
     album_cover: 'Album cover'
     artist_cover: 'Artist cover'
+    search_results: "Search results for \"%{query}\""
+    no_search_results: "No search results for \"%{query}\""

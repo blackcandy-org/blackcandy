@@ -2,7 +2,7 @@
 
 require 'application_system_test_case'
 
-class ArtistsTest < ApplicationSystemTestCase
+class ArtistsSystemTest < ApplicationSystemTestCase
   setup do
     # create many record to test infinite scroll
     (Pagy::VARS[:items] * 2).times do |n|

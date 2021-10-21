@@ -2,7 +2,7 @@
 
 require 'application_system_test_case'
 
-class ArtistTest < ApplicationSystemTestCase
+class ArtistSystemTest < ApplicationSystemTestCase
   setup do
     @artist = artists(:artist1)
   end

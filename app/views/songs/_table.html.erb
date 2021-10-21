@@ -1,0 +1,14 @@
+<div class='c-table' role='table' data-controller='playlist-songs'>
+  <div role='rowgroup'>
+    <div role='row' class='o-grid' cols='8' cols@medium='6' cols@small='5' cols@narrow='4'>
+      <span role='columnheader' class='o-grid__item' span='2' span@medium='4' span@narrow='3'><%= t('label.name') %></span>
+      <span role='columnheader' class='o-grid__item u-display-none@medium' span='2'><%= t('label.artist') %></span>
+      <span role='columnheader' class='o-grid__item u-display-none@medium' span='2'><%= t('label.album') %></span>
+      <span role='columnheader' class='o-grid__item u-display-none@small'><%= t('label.duration') %></span>
+      <span role='columnheader' class='o-grid__item'><%= t('label.actions') %></span>
+    </div>
+  </div>
+  <div role='rowgroup' id='turbo-songs-content' data-action='turbo:submit-end->playlist-songs#submitEndHandle turbo:submit-start->playlist-songs#submitStartHandle'>
+    <%= render partial: 'songs/song', collection: songs, cached: true %>
+  </div>
+</div>
