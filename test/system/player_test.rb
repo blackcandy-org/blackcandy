@@ -2,7 +2,7 @@
 
 require 'application_system_test_case'
 
-class PlayerTest < ApplicationSystemTestCase
+class PlayerSystemTest < ApplicationSystemTestCase
   setup do
     Setting.update(media_path: Rails.root.join('test/fixtures/files'))
     users(:visitor1).current_playlist.replace(Song.ids)

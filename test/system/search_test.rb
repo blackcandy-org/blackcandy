@@ -2,7 +2,7 @@
 
 require 'application_system_test_case'
 
-class SearchTest < ApplicationSystemTestCase
+class SearchSystemTest < ApplicationSystemTestCase
   setup do
     login_as users(:visitor1)
   end

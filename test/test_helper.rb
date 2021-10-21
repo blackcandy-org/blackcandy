@@ -1,17 +1,18 @@
 # frozen_string_literal: true
 
+require 'coveralls'
+Coveralls.wear!('rails')
+
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'webmock/minitest'
 require 'minitest/mock'
-require 'coveralls'
 
 allowed_sites_for_webmock = [
   'chromedriver.storage.googleapis.com'
 ]
 
 WebMock.disable_net_connect!(allow_localhost: true, allow: allowed_sites_for_webmock)
-Coveralls.wear!('rails')
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
