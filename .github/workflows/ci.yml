@@ -55,7 +55,7 @@ jobs:
           bundle exec brakeman
 
       - name: Push coverage data to Coveralls
-         uses: coverallsapp/github-action@v1
-         with:
-           github-token: ${{ secrets.GITHUB_TOKEN }}
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
