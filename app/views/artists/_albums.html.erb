@@ -1,6 +1,6 @@
 <% if albums.present? %>
   <h2 class='u-mb-medium'><%= title %></h2>
-  <div class='o-grid o-grid--gap-medium u-mb-large' cols@narrow='2' cols@extra-small='3' cols@small='2' cols@medium='3' cols@large='4' cols@extra-large='5' cols@wide='6' cols@extra-wide='7'>
+  <%= shelf_grid_tag class: 'u-mb-large' do %>
     <%= render partial: 'artists/album', collection: albums, cached: true %>
-  </div>
+  <% end %>
 <% end %>

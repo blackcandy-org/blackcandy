@@ -60,4 +60,21 @@ module ApplicationHelper
 
     playlist_songs_path(playlist, options)
   end
+
+  def shelf_grid_tag(**options, &block)
+    class_option = "o-grid o-grid--gap-medium #{options[:class]}"
+    tag_options = options.merge(
+      class: class_option,
+      'cols@narrow' => 2,
+      'cols@extra-small' => 3,
+      'cols@small' => 2,
+      'cols@medium' => 3,
+      'cols@large' => 4,
+      'cols@extra-large' => 5,
+      'cols@wide' => 6,
+      'cols@extra-wide' => 7
+    )
+
+    tag.div(**tag_options, &block)
+  end
 end
