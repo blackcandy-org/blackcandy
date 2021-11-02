@@ -23,7 +23,7 @@ gem 'wahwah', '~> 1.1.1'
 gem 'sidekiq', '~> 6.1.2'
 
 # Install turbo on rails
-gem 'turbo-rails'
+gem 'turbo-rails', '~> 7.1.1'
 
 # Pagination
 gem 'pagy', '~> 3.5.0'
