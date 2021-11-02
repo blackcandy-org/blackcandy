@@ -1,3 +1,4 @@
+<h2><%= t('text.personal') %></h2>
 <%= form_with model: user, url: user_setting_path(user), method: :put, class: 'c-form', data: { controller: 'theme', action: 'turbo:submit-end->theme#update' } do |form| %>
   <div class='c-form__field'>
     <%= form.label :theme %>

@@ -1,5 +1,5 @@
 <div id='turbo-settings'>
-  <h2 class='u-mb-medium'><%= t('text.media_path') %></h2>
+  <h2><%= t('text.media_path') %></h2>
   <%= form_with model: Setting, url: setting_path, method: :put, class: 'c-form o-flex o-flex--justify-between', data: { controller: 'form', form_loader_value: '#js-global-loader' } do |form| %>
     <%= form.text_field :media_path, value: Setting.media_path, class: 'c-input u-mr-narrow' %>
     <%= form.submit t('label.sync'), class: 'c-button c-button--primary', id: 'test-setting-theme-save' %>
@@ -7,7 +7,7 @@
 
   <hr />
 
-  <h2 class='u-mb-medium'><%= t('label.integration') %></h2>
+  <h2><%= t('label.integration') %></h2>
   <%= form_with model: Setting, url: setting_path, method: :put, class: 'c-form' do |form| %>
     <div class='c-form__field'>
       <%= form.label :discogs_token %>

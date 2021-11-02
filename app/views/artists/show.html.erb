@@ -5,7 +5,7 @@
         <%= image_tag image_url_for(@artist), class: 'u-image-fluid c-card__image test-artist-image' %>
       </div>
       <div class='o-grid__item'>
-        <h1 class='u-mb-narrow u-text-size-large'><%= @artist.title %></h1>
+        <h2 class='u-mb-narrow'><%= @artist.title %></h2>
         <p>
           <span><%= @artist.all_albums.size %> <%= t('label.albums') %></span>
           <span>,</span>

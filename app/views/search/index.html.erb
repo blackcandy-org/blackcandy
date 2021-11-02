@@ -1,9 +1,9 @@
 <% if [@albums, @artists, @songs].any?(&:present?) %>
-  <h1 class='u-mb-wide'><%= t('text.search_results', query: params[:query]) %></h1>
+  <h1><%= t('text.search_results', query: params[:query]) %></h1>
 
   <% if @albums.present? %>
     <div class='o-flex o-flex--justify-between o-flex--align-center u-mb-medium'>
-      <h2><%= t('label.albums') %></h2>
+      <h2 class='u-mb-0'><%= t('label.albums') %></h2>
 
       <% if @albums_pagy.next %>
         <%= link_to t('text.see_all'), search_albums_path(query: params[:query]), class: 'is-active' %>
@@ -16,7 +16,7 @@
 
   <% if @artists.present? %>
     <div class='o-flex o-flex--justify-between o-flex--align-center u-mb-medium'>
-      <h2><%= t('label.artists') %></h2>
+      <h2 class='u-mb-0'><%= t('label.artists') %></h2>
 
       <% if @albums_pagy.next %>
         <%= link_to t('text.see_all'), search_artists_path(query: params[:query]), class: 'is-active' %>
@@ -29,7 +29,7 @@
 
   <% if @songs.present? %>
     <div class='o-flex o-flex--justify-between o-flex--align-center u-mb-medium'>
-      <h2><%= t('label.songs') %></h2>
+      <h2 class='u-mb-0'><%= t('label.songs') %></h2>
 
       <% if @albums_pagy.next %>
         <%= link_to t('text.see_all'), search_songs_path(query: params[:query]), class: 'is-active' %>
@@ -38,5 +38,5 @@
     <%= render partial: 'songs/table', locals: { songs: @songs } %>
   <% end %>
 <% else %>
-  <h1 class='u-mb-wide'><%= t('text.no_search_results', query: params[:query]) %></h1>
+  <h1><%= t('text.no_search_results', query: params[:query]) %></h1>
 <% end %>

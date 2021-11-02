@@ -1,10 +1,12 @@
 h1 {
   font-size: var(--font-size-wide);
+  margin-bottom: var(--spacing-wide);
 }
 
 h2,
 h3 {
   font-size: var(--font-size-large);
+  margin-bottom: var(--spacing-medium);
 }
 
 h4,
