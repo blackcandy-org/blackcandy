@@ -74,7 +74,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.5.1)
       msgpack (~> 1.0)
-    brakeman (4.7.2)
+    brakeman (5.1.2)
     browser (2.6.1)
     builder (3.2.4)
     bullet (6.1.2)
@@ -291,7 +291,7 @@ DEPENDENCIES
   authlogic (~> 6.4.1)
   bcrypt (~> 3.1.11)
   bootsnap (>= 1.1.0)
-  brakeman (~> 4.7.2)
+  brakeman (~> 5.1.2)
   browser (~> 2.6.1)
   bullet (~> 6.1.2)
   byebug

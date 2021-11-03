@@ -64,7 +64,7 @@ group :development, :test do
   gem 'rubocop-performance', '~> 1.8.0', require: false
   gem 'rubocop-minitest', '~> 0.10.0', require: false
   # Security vulnerability scanner
-  gem 'brakeman', '~> 4.7.2', require: false
+  gem 'brakeman', '~> 5.1.2', require: false
 end
 
 group :development do
