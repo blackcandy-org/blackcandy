@@ -4,7 +4,7 @@
     <%= form.label :theme %>
     <% User::AVAILABLE_THEME_OPTIONS.each do |option| %>
       <div class='c-form__radio'>
-        <%= form.radio_button :theme, option, checked: user.theme == option, data: { theme: option, action: 'click->theme#select'} %>
+        <%= form.radio_button :theme, option, checked: user.theme == option, data: { theme_option_param: option, action: 'click->theme#select'} %>
         <%= form.label "theme_#{option}", option %>
       </div>
     <% end %>

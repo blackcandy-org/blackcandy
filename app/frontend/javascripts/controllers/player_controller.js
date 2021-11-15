@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus';
+import { Controller } from '@hotwired/stimulus';
 import { Howl } from 'howler';
 import { formatDuration, dispatchEvent } from '../helper';
 

@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus';
+import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
   update(event) {
@@ -7,7 +7,7 @@ export default class extends Controller {
     document.documentElement.setAttribute('data-color-scheme', this.theme);
   }
 
-  select(event) {
-    this.theme = event.target.dataset.theme;
+  select({ params }) {
+    this.theme = params.option;
   }
 }

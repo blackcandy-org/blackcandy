@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus';
+import { Controller } from '@hotwired/stimulus';
 import { Sortable, Plugins } from '@shopify/draggable';
 import { fetchRequest } from '../helper';
 
