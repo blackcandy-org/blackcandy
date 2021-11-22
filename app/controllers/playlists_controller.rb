@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PlaylistsController < ApplicationController
-  layout 'playlist'
+  layout "playlist"
 
   include Pagy::Backend
 
@@ -20,9 +20,9 @@ class PlaylistsController < ApplicationController
     @playlist = Current.user.playlists.new playlist_params
 
     if @playlist.save
-      flash.now[:success] = t('success.create')
+      flash.now[:success] = t("success.create")
     else
-      flash.now[:error] = @playlist.errors.full_messages.join(' ')
+      flash.now[:error] = @playlist.errors.full_messages.join(" ")
     end
   end
 
@@ -33,16 +33,16 @@ class PlaylistsController < ApplicationController
   def destroy
     @playlist.destroy
 
-    redirect_to action: 'index'
+    redirect_to action: "index"
   end
 
   private
 
-    def find_playlist
-      @playlist = Current.user.playlists.find(params[:id])
-    end
+  def find_playlist
+    @playlist = Current.user.playlists.find(params[:id])
+  end
 
-    def playlist_params
-      params.require(:playlist).permit(:name)
-    end
+  def playlist_params
+    params.require(:playlist).permit(:name)
+  end
 end

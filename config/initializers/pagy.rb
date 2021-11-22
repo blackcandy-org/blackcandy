@@ -1,13 +1,10 @@
-# encoding: utf-8
 # frozen_string_literal: true
 
 # Pagy initializer file
 # Customize only what you really need and notice that Pagy works also without any of the following lines.
 
-
 # Extras
 # See https://ddnexus.github.io/pagy/extras
-
 
 # Backend Extras
 
@@ -17,7 +14,7 @@
 
 # Countless extra: Paginate without any count, saving one query per rendering
 # See https://ddnexus.github.io/pagy/extras/countless
-require 'pagy/extras/countless'
+require "pagy/extras/countless"
 # Pagy::VARS[:cycle] = false    # default
 
 # Elasticsearch Rails extra: Paginate `ElasticsearchRails::Results` objects
@@ -27,7 +24,6 @@ require 'pagy/extras/countless'
 # Searchkick extra: Paginate `Searchkick::Results` objects
 # See https://ddnexus.github.io/pagy/extras/searchkick
 # require 'pagy/extras/searchkick'
-
 
 # Frontend Extras
 
@@ -61,12 +57,11 @@ require 'pagy/extras/countless'
 # See https://ddnexus.github.io/pagy/extras/plain#breakpoints
 # Pagy::VARS[:breakpoints] = { 0 => [1,2,2,1], 350 => [2,3,3,2], 550 => [3,4,4,3] }    # example of width/size pairs
 
-
 # Feature Extras
 
 # Support extra: Extra support for features like: incremental, infinite, auto-scroll pagination
 # See https://ddnexus.github.io/pagy/extras/support
-require 'pagy/extras/support'
+require "pagy/extras/support"
 
 # Items extra: Allow the client to request a custom number of items per page with an optional selector UI
 # See https://ddnexus.github.io/pagy/extras/items
@@ -82,19 +77,15 @@ require 'pagy/extras/support'
 # See https://ddnexus.github.io/pagy/extras/trim
 # require 'pagy/extras/trim'
 
-
-
 # Pagy Variables
 # See https://ddnexus.github.io/pagy/api/pagy#variables
 # All the Pagy::VARS are set for all the Pagy instances but can be overridden
 # per instance by just passing them to Pagy.new or the #pagy controller method
 
-
 # Instance variables
 # See https://ddnexus.github.io/pagy/api/pagy#instance-variables
 # Pagy::VARS[:items] = 20                                   # default
 Pagy::VARS[:items] = 30
-
 
 # Other Variables
 # See https://ddnexus.github.io/pagy/api/pagy#other-variables
@@ -105,13 +96,11 @@ Pagy::VARS[:items] = 30
 # Pagy::VARS[:link_extra] = 'data-remote="true"'            # example
 # Pagy::VARS[:item_path]  = 'activerecord.models.product'   # example
 
-
 # Rails
 
 # Rails: extras assets path required by the compact and responsive navs, and the items extra
 # See https://ddnexus.github.io/pagy/extras#javascript
 # Rails.application.config.assets.paths << Pagy.root.join('javascripts')
-
 
 # I18n
 
@@ -140,7 +129,6 @@ Pagy::VARS[:items] = 30
 #                 {locale: 'xyz',  # not built-in
 #                  filepath: 'path/to/pagy-xyz.yml',
 #                  pluralize: lambda{|count| ... } )
-
 
 # I18n extra: uses the standard i18n gem which is ~18x slower using ~10x more memory
 # than the default pagy internal i18n (see above)

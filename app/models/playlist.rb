@@ -4,7 +4,7 @@ class Playlist < ApplicationRecord
   validates :name, presence: true, if: :require_name?
 
   has_many :playlists_songs
-  has_many :songs, -> { order 'playlists_songs.position' }, through: :playlists_songs
+  has_many :songs, -> { order "playlists_songs.position" }, through: :playlists_songs
   belongs_to :user
 
   def buildin?
@@ -12,11 +12,11 @@ class Playlist < ApplicationRecord
   end
 
   def current?
-    type == 'CurrentPlaylist'
+    type == "CurrentPlaylist"
   end
 
   def favorite?
-    type == 'FavoritePlaylist'
+    type == "FavoritePlaylist"
   end
 
   def replace(song_ids)
@@ -24,7 +24,7 @@ class Playlist < ApplicationRecord
 
     PlaylistsSong.acts_as_list_no_update do
       playlist_songs = song_ids.map.with_index do |song_id, index|
-        { song_id: song_id, playlist_id: id, position: index + 1 }
+        {song_id: song_id, playlist_id: id, position: index + 1}
       end
 
       PlaylistsSong.insert_all(playlist_songs)
@@ -33,7 +33,7 @@ class Playlist < ApplicationRecord
 
   private
 
-    def require_name?
-      true
-    end
+  def require_name?
+    true
+  end
 end

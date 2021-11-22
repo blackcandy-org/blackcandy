@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 class Playlists::SongsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -8,30 +8,30 @@ class Playlists::SongsControllerTest < ActionDispatch::IntegrationTest
     @user = @playlist.user
   end
 
-  test 'should show playlist songs' do
+  test "should show playlist songs" do
     assert_login_access(user: @user, url: playlist_songs_url(@playlist)) do
       assert_response :success
     end
   end
 
-  test 'should add songs to playlist' do
+  test "should add songs to playlist" do
     assert_login_access(
       user: @user,
       method: :post,
       url: playlist_songs_url(@playlist),
-      params: { song_id: 3 },
+      params: {song_id: 3},
       xhr: true
     ) do
       assert_equal [3, 1, 2], @playlist.reload.song_ids
     end
   end
 
-  test 'should remove songs from playlist' do
+  test "should remove songs from playlist" do
     assert_login_access(
       user: @user,
       method: :delete,
       url: playlist_songs_url(@playlist),
-      params: { song_id: 1 },
+      params: {song_id: 1},
       xhr: true
     ) do
       assert_equal [2], @playlist.reload.song_ids
@@ -41,38 +41,38 @@ class Playlists::SongsControllerTest < ActionDispatch::IntegrationTest
       user: @user,
       method: :delete,
       url: playlist_songs_url(@playlist),
-      params: { song_id: 2 },
+      params: {song_id: 2},
       xhr: true
     ) do
       assert_equal [], @playlist.reload.song_ids
     end
   end
 
-  test 'should clear all songs from playlist' do
+  test "should clear all songs from playlist" do
     assert_login_access(
       user: @user,
       method: :delete,
       url: playlist_songs_url(@playlist),
-      params: { clear_all: true }
+      params: {clear_all: true}
     ) do
       assert_equal [], @playlist.reload.song_ids
     end
   end
 
-  test 'should reorder songs from playlist' do
+  test "should reorder songs from playlist" do
     assert_equal [1, 2], @playlist.song_ids
 
     assert_login_access(
       user: @user,
       method: :put,
       url: playlist_songs_url(@playlist),
-      params: { from_position: 1, to_position: 2 }
+      params: {from_position: 1, to_position: 2}
     ) do
       assert_equal [2, 1], @playlist.reload.song_ids
     end
   end
 
-  test 'should play whole playlist' do
+  test "should play whole playlist" do
     assert_not_equal @playlist.song_ids, @user.current_playlist.song_ids
 
     assert_login_access(

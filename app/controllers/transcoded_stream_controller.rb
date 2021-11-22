@@ -7,7 +7,7 @@ class TranscodedStreamController < StreamController
   # The instance of Stream can respond to each() method. So the download can be streamed,
   # instead of read whole data into memory.
   def new
-    response.headers['Content-Type'] = Mime[Stream::TRANSCODE_FORMAT]
+    response.headers["Content-Type"] = Mime[Stream::TRANSCODE_FORMAT]
 
     @stream.each do |data|
       response.stream.write data

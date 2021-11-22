@@ -15,7 +15,7 @@ module Searchable
       search_options = {}.tap do |option|
         option[:against] = attr
         option[:using] = {
-          tsearch: { prefix: true },
+          tsearch: {prefix: true},
           trigram: {}
         }
         option[:associated_against] = associated_against if associations.present?

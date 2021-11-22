@@ -5,7 +5,7 @@ module GlobalSetting
 
   included do
     # Ensures only one Settings row is created
-    validates :singleton_guard, inclusion: { in: [0] }
+    validates :singleton_guard, inclusion: {in: [0]}
   end
 
   class_methods do

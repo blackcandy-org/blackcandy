@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AlbumsController < ApplicationController
-  layout 'dialog', only: :edit
+  layout "dialog", only: :edit
 
   before_action :require_admin, only: [:edit, :update]
   before_action :find_album, except: [:index]
@@ -24,13 +24,14 @@ class AlbumsController < ApplicationController
     AttachAlbumImageFromDiscogsJob.perform_later(@album.id) if @album.need_attach_from_discogs?
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @album.update(album_params)
-      flash[:success] = t('success.update')
+      flash[:success] = t("success.update")
     else
-      flash[:error] = @album.errors.full_messages.join(' ')
+      flash[:error] = @album.errors.full_messages.join(" ")
     end
 
     redirect_to @album
@@ -38,15 +39,15 @@ class AlbumsController < ApplicationController
 
   private
 
-    def album_params
-      params.require(:album).permit(:image)
-    end
+  def album_params
+    params.require(:album).permit(:image)
+  end
 
-    def find_album
-      @album = Album.find(params[:id])
-    end
+  def find_album
+    @album = Album.find(params[:id])
+  end
 
-    def find_all_song_ids
-      @song_ids = @album.song_ids
-    end
+  def find_all_song_ids
+    @song_ids = @album.song_ids
+  end
 end

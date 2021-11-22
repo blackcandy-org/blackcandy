@@ -23,7 +23,7 @@ class Media
     Song.find_or_create_by(md5_hash: file_info[:md5_hash]) do |item|
       item.attributes = song_info.merge(album: album, artist: artist)
     end
-  rescue StandardError
+  rescue
     false
   end
 
@@ -33,7 +33,7 @@ class Media
 
   def various_artists?
     albumartist = file_info[:albumartist_name]
-    albumartist.present? && (albumartist.casecmp('various artists').zero? || albumartist != file_info[:artist_name])
+    albumartist.present? && (albumartist.casecmp("various artists").zero? || albumartist != file_info[:artist_name])
   end
 
   class << self
@@ -41,7 +41,7 @@ class Media
       media_hashes = MediaFile.file_paths.map do |file_path|
         media = new(file_path)
         media.file_info[:md5_hash] if media.attach
-      rescue StandardError
+      rescue
         next
       end.compact
 
@@ -50,12 +50,12 @@ class Media
 
     private
 
-      def clean_up(media_hashes)
-        Song.where.not(md5_hash: media_hashes).destroy_all
+    def clean_up(media_hashes)
+      Song.where.not(md5_hash: media_hashes).destroy_all
 
-        # Clean up no content albums and artist.
-        Album.left_outer_joins(:songs).where('songs.id is null').destroy_all
-        Artist.left_outer_joins(:songs, :albums).where('songs.album_id is null').where('albums.id is null').destroy_all
-      end
+      # Clean up no content albums and artist.
+      Album.left_outer_joins(:songs).where("songs.id is null").destroy_all
+      Artist.left_outer_joins(:songs, :albums).where("songs.album_id is null").where("albums.id is null").destroy_all
+    end
   end
 end

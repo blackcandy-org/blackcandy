@@ -1,6 +1,6 @@
 class UseHstoreForSettings < ActiveRecord::Migration[6.0]
   def up
-    enable_extension 'hstore' unless extension_enabled?('hstore')
+    enable_extension "hstore" unless extension_enabled?("hstore")
     add_column :settings, :values, :hstore
     add_column :settings, :singleton_guard, :integer
     add_column :users, :settings, :hstore
@@ -73,6 +73,6 @@ class UseHstoreForSettings < ActiveRecord::Migration[6.0]
     remove_column :settings, :values
     remove_column :settings, :singleton_guard
     remove_column :users, :settings
-    disable_extension 'hstore' if extension_enabled?('hstore')
+    disable_extension "hstore" if extension_enabled?("hstore")
   end
 end

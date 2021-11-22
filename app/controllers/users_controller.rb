@@ -13,24 +13,25 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def edit; end
+  def edit
+  end
 
   def create
     @user = User.new user_params
 
     if @user.save
-      flash[:success] = t('success.create')
+      flash[:success] = t("success.create")
       redirect_to users_path
     else
-      flash.now[:error] = @user.errors.full_messages.join(' ')
+      flash.now[:error] = @user.errors.full_messages.join(" ")
     end
   end
 
   def update
     if @user.update(user_params)
-      flash.now[:success] = t('success.update')
+      flash.now[:success] = t("success.update")
     else
-      flash.now[:error] = @user.errors.full_messages.join(' ')
+      flash.now[:error] = @user.errors.full_messages.join(" ")
     end
   end
 
@@ -39,20 +40,20 @@ class UsersController < ApplicationController
     raise BlackCandyError::Forbidden if @user == Current.user
 
     @user.destroy
-    flash.now[:success] = t('success.delete')
+    flash.now[:success] = t("success.delete")
   end
 
   private
 
-    def find_user
-      @user = User.find(params[:id])
-    end
+  def find_user
+    @user = User.find(params[:id])
+  end
 
-    def auth_user
-      raise BlackCandyError::Forbidden unless @user == Current.user || is_admin?
-    end
+  def auth_user
+    raise BlackCandyError::Forbidden unless @user == Current.user || is_admin?
+  end
 
-    def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
+  end
 end

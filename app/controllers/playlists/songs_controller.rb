@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Playlists::SongsController < ApplicationController
-  layout 'playlist'
+  layout "playlist"
 
   before_action :find_playlist
   before_action :find_song, only: [:create, :destroy]
@@ -20,12 +20,12 @@ class Playlists::SongsController < ApplicationController
 
   def create
     @playlist.playlists_songs.create(song_id: @song.id, position: 1)
-    flash.now[:success] = t('success.add_to_playlist')
+    flash.now[:success] = t("success.add_to_playlist")
 
     # for refresh playlist content, when first song add to playlist
-    redirect_to action: 'show' if @playlist.songs.size == 1
+    redirect_to action: "show" if @playlist.songs.size == 1
   rescue ActiveRecord::RecordNotUnique
-    flash.now[:error] = t('error.already_in_playlist')
+    flash.now[:error] = t("error.already_in_playlist")
   end
 
   def destroy
@@ -33,11 +33,11 @@ class Playlists::SongsController < ApplicationController
       @playlist.songs.clear
     else
       @playlist.songs.destroy(@song)
-      flash.now[:success] = t('success.delete_from_playlist')
+      flash.now[:success] = t("success.delete_from_playlist")
     end
 
     # for refresh playlist content, when remove last song from playlist
-    redirect_to action: 'show' if @playlist.songs.empty?
+    redirect_to action: "show" if @playlist.songs.empty?
   end
 
   def update
@@ -50,19 +50,19 @@ class Playlists::SongsController < ApplicationController
 
   private
 
-    def find_playlist
-      @playlist = Current.user.playlists.find(params[:playlist_id])
-    end
+  def find_playlist
+    @playlist = Current.user.playlists.find(params[:playlist_id])
+  end
 
-    def find_song
-      @song = Song.find(playlists_songs_params[:song_id]) unless playlists_songs_params[:clear_all]
-    end
+  def find_song
+    @song = Song.find(playlists_songs_params[:song_id]) unless playlists_songs_params[:clear_all]
+  end
 
-    def find_all_song_ids
-      @song_ids = @playlist.song_ids
-    end
+  def find_all_song_ids
+    @song_ids = @playlist.song_ids
+  end
 
-    def playlists_songs_params
-      params.permit(:from_position, :to_position, :clear_all, :song_id)
-    end
+  def playlists_songs_params
+    params.permit(:from_position, :to_position, :clear_all, :song_id)
+  end
 end

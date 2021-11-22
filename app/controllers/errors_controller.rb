@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ErrorsController < ApplicationController
-  layout 'plain'
+  layout "plain"
 
   skip_before_action :require_login
 

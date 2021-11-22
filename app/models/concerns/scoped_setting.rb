@@ -9,7 +9,7 @@ module ScopedSetting
 
       store_accessor :settings, setting
 
-      validates setting, inclusion: { in: available_options } if available_options
+      validates setting, inclusion: {in: available_options} if available_options
 
       define_method(setting) do
         super() || default
