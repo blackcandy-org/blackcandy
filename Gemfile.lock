@@ -62,7 +62,7 @@ GEM
       zeitwerk (~> 2.3)
     acts_as_list (1.0.2)
       activerecord (>= 4.2)
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
     authlogic (6.4.1)
