@@ -2,7 +2,7 @@
   <%= turbo_stream.prepend dom_id(@playlist), partial: 'playlists/songs/song', locals: { song: @song, playlist: @playlist } %>
 <% else %>
   <%# add song next to the current_song %>
-  <%= turbo_stream.replace "#{dom_id(@playlist)}_#{dom_id(@current_song)}", partial: 'playlists/songs/song', collection: [@current_song, @song], locals: { playlist: @playlist }, cached: true %>
+  <%= turbo_stream.after "#{dom_id(@playlist)}_#{dom_id(@current_song)}", partial: 'playlists/songs/song', locals: { song: @song, playlist: @playlist } %>
 <% end %>
 
 <%= turbo_stream.update dom_id(@playlist, :songs_count), @playlist.songs.size %>

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  layout 'plain'
+  layout "plain"
 
   skip_before_action :require_login
 
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
     if session.save
       redirect_to root_path
     else
-      flash.now[:error] = t('error.login')
+      flash.now[:error] = t("error.login")
     end
   end
 
@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
 
   private
 
-    def session_params
-      params.require(:user_session).permit(:email, :password, :remember_me)
-    end
+  def session_params
+    params.require(:user_session).permit(:email, :password, :remember_me)
+  end
 end

@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   concern :playable do
     member do
-      post 'play'
+      post "play"
     end
   end
 
-  root 'home#index'
+  root "home#index"
 
   resource :session, only: [:new, :create, :destroy]
   resource :setting, only: [:show, :update]
@@ -17,11 +17,11 @@ Rails.application.routes.draw do
   resources :albums, only: [:index, :show, :edit, :update], concerns: :playable
 
   resources :users, except: [:show] do
-    resource :setting, only: [:update], module: 'users'
+    resource :setting, only: [:update], module: "users"
   end
 
   resources :playlists, except: [:show, :new, :edit] do
-    resource :songs, only: [:show, :create, :destroy, :update], module: 'playlists', concerns: :playable
+    resource :songs, only: [:show, :create, :destroy, :update], module: "playlists", concerns: :playable
   end
 
   namespace :current_playlist do
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     resources :playlists, only: [:index]
   end
 
-  get '/search', to: 'search#index', as: 'search'
+  get "/search", to: "search#index", as: "search"
 
   namespace :search do
     resources :artists, only: [:index]
@@ -44,8 +44,8 @@ Rails.application.routes.draw do
     resources :albums, only: [:index]
   end
 
-  get '/403', to: 'errors#forbidden', as: :forbidden
-  get '/404', to: 'errors#not_found', as: :not_found
-  get '/422', to: 'errors#unprocessable_entity', as: :unprocessable_entity
-  get '/500', to: 'errors#internal_server_error', as: :internal_server_error
+  get "/403", to: "errors#forbidden", as: :forbidden
+  get "/404", to: "errors#not_found", as: :not_found
+  get "/422", to: "errors#unprocessable_entity", as: :unprocessable_entity
+  get "/500", to: "errors#internal_server_error", as: :internal_server_error
 end

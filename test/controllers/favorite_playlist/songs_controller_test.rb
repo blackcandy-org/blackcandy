@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 class FavoritePlaylistSongsControllerTest < ActionDispatch::IntegrationTest
-  test 'should show favorite playlist songs' do
+  test "should show favorite playlist songs" do
     assert_login_access(url: favorite_playlist_songs_url) do
       assert_response :success
     end
   end
 
-  test 'should play favorite playlist' do
+  test "should play favorite playlist" do
     user = users(:visitor1)
     playlist = user.favorite_playlist
     playlist.song_ids = [1, 2]

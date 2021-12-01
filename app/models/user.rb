@@ -2,15 +2,15 @@
 
 class User < ApplicationRecord
   AVAILABLE_THEME_OPTIONS = %w[dark light auto].freeze
-  DEFAULT_THEME = 'dark'
+  DEFAULT_THEME = "dark"
 
   include ScopedSetting
 
   before_create :downcase_email
   after_create :create_buildin_playlists
 
-  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: { case_sensitive: false }
-  validates :password, confirmation: { if: :require_password? }, length: { minimum: 6, if: :require_password? }
+  validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}, uniqueness: {case_sensitive: false}
+  validates :password, confirmation: {if: :require_password?}, length: {minimum: 6, if: :require_password?}
 
   has_many :playlists, -> { where(type: nil) }, inverse_of: :user, dependent: :destroy
   has_one :current_playlist, dependent: :destroy
@@ -48,12 +48,12 @@ class User < ApplicationRecord
 
   private
 
-    def create_buildin_playlists
-      create_current_playlist
-      create_favorite_playlist
-    end
+  def create_buildin_playlists
+    create_current_playlist
+    create_favorite_playlist
+  end
 
-    def downcase_email
-      self.email = email.downcase
-    end
+  def downcase_email
+    self.email = email.downcase
+  end
 end

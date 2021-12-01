@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus';
+import { Controller } from '@hotwired/stimulus';
 import { dispatchEvent } from '../helper';
 
 export default class extends Controller {

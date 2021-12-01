@@ -3,7 +3,7 @@ class CarrierWaveStringIO < StringIO
   attr_accessor :filepath
 
   def initialize(*args)
-    super(*args[1..-1])
+    super(*args[1..])
     @filepath = args[0]
   end
 

@@ -2,7 +2,7 @@
 
 class Stream
   TRANSCODING_FORMATS = %w[flac wav oga wma].freeze
-  TRANSCODE_FORMAT = 'mp3'
+  TRANSCODE_FORMAT = "mp3"
 
   def initialize(song)
     @song = song
@@ -23,7 +23,7 @@ class Stream
   # let instance of Stream can respond to each() method.
   # So the download can be streamed, instead of read whole data into memory.
   def each
-    command = ['ffmpeg', '-i', file_path, '-map', '0:0', '-v', '0', '-ab', '128k', '-f', TRANSCODE_FORMAT, '-']
+    command = ["ffmpeg", "-i", file_path, "-map", "0:0", "-v", "0", "-ab", "128k", "-f", TRANSCODE_FORMAT, "-"]
     # need add error raise when can not found ffmpeg command.
     IO.popen(command) do |io|
       while (line = io.gets)

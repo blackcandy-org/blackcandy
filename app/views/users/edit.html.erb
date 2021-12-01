@@ -1,6 +1,6 @@
 <% cache @user do %>
   <div class='o-container o-container--extra-narrow'>
-    <h1 class='u-text-size-large'><%= t('text.update_profile') %></h1>
+    <h2 class='u-mb-0'><%= t('text.update_profile') %></h2>
     <hr />
     <%= render partial: 'users/form', locals: { user: @user } %>
   </div>

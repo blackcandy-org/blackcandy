@@ -1,3 +1,3 @@
-<h1 class='u-mb-wide'><%= t('text.search_results', query: params[:query]) %></h1>
-<h2 class='u-mb-medium'><%= t('label.songs') %></h2>
+<h1><%= t('text.search_results', query: params[:query]) %></h1>
+<h2><%= t('label.songs') %></h2>
 <%= render partial: 'songs/table', locals: { songs: @songs } %>

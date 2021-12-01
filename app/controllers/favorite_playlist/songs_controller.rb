@@ -3,7 +3,7 @@
 class FavoritePlaylist::SongsController < Playlists::SongsController
   private
 
-    def find_playlist
-      @playlist = Current.user.favorite_playlist
-    end
+  def find_playlist
+    @playlist = Current.user.favorite_playlist
+  end
 end

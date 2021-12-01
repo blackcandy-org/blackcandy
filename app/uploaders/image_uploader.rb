@@ -36,7 +36,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    default_image_name = ['default', model.class.name.downcase, version_name.presence].compact.join('_')
+    default_image_name = ["default", model.class.name.downcase, version_name.presence].compact.join("_")
     "/images/#{default_image_name}.png"
   end
 end

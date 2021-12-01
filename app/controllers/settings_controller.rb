@@ -14,16 +14,17 @@ class SettingsController < ApplicationController
       begin
         Media.sync
       rescue BlackCandyError::InvalidFilePath => e
-        flash.now[:error] = e.message; return
+        flash.now[:error] = e.message
+        return
       end
     end
 
-    flash.now[:success] = t('success.update')
+    flash.now[:success] = t("success.update")
   end
 
   private
 
-    def setting_params
-      params.require(:setting).permit(Setting::AVAILABLE_SETTINGS)
-    end
+  def setting_params
+    params.require(:setting).permit(Setting::AVAILABLE_SETTINGS)
+  end
 end

@@ -1,25 +1,23 @@
 # frozen_string_literal: true
 
 unless Rails.env.production?
-  require 'rubocop/rake_task'
+  require "standard/rake"
 
   namespace :lint do
-    RuboCop::RakeTask.new
-
     task :js do
-      abort('rails lint:js failed') unless system("yarn run eslint 'app/frontend/**/*.js'")
+      abort("rails lint:js failed") unless system("yarn run eslint 'app/frontend/**/*.js'")
     end
 
     task :css do
-      abort('rails lint:css failed') unless system("yarn run stylelint 'app/frontend/**/*.css'")
+      abort("rails lint:css failed") unless system("yarn run stylelint 'app/frontend/**/*.css'")
     end
 
     task :all do
-      require 'English'
+      require "English"
 
       status = 0
 
-      %w[rubocop js css].each do |task|
+      %w[standard lint:js lint:css].each do |task|
         pid = Process.fork do
           rd_out, wr_out = IO.pipe
           rd_err, wr_err = IO.pipe
@@ -29,7 +27,7 @@ unless Rails.env.production?
           $stderr.reopen(wr_err)
 
           begin
-            Rake::Task["lint:#{task}"].invoke
+            Rake::Task[task].invoke
           ensure
             $stdout.reopen(stdout)
             $stderr.reopen(stderr)

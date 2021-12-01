@@ -5,7 +5,7 @@
 # Black candy
 [![CI](https://github.com/aidewoode/black_candy/actions/workflows/ci.yml/badge.svg)](https://github.com/aidewoode/black_candy/actions/workflows/ci.yml)
 [![Coverage Status](https://coveralls.io/repos/github/aidewoode/black_candy/badge.svg?branch=master)](https://coveralls.io/github/aidewoode/black_candy?branch=master)
-[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/aidewoode/black_candy/blob/master/.rubocop.yml)
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
 ![Docker Pulls](https://img.shields.io/docker/pulls/blackcandy/blackcandy)
 
 Black candy is a self hosted music streaming server built with Rails and Stimulus. The goal of the project is to create a real personal music center.

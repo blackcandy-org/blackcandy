@@ -7,7 +7,7 @@ class FavoritePlaylist < Playlist
 
   private
 
-    def require_name?
-      false
-    end
+  def require_name?
+    false
+  end
 end

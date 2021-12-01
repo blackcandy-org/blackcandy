@@ -3,7 +3,7 @@
 class ArtistsController < ApplicationController
   include Pagy::Backend
 
-  layout 'dialog', only: :edit
+  layout "dialog", only: :edit
 
   before_action :require_admin, only: [:edit, :update]
   before_action :find_artist, except: [:index]
@@ -20,13 +20,14 @@ class ArtistsController < ApplicationController
     AttachArtistImageFromDiscogsJob.perform_later(@artist.id) if @artist.need_attach_from_discogs?
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @artist.update(artist_params)
-      flash[:success] = t('success.update')
+      flash[:success] = t("success.update")
     else
-      flash[:error] = @artist.errors.full_messages.join(' ')
+      flash[:error] = @artist.errors.full_messages.join(" ")
     end
 
     redirect_to @artist
@@ -34,11 +35,11 @@ class ArtistsController < ApplicationController
 
   private
 
-    def artist_params
-      params.require(:artist).permit(:image)
-    end
+  def artist_params
+    params.require(:artist).permit(:image)
+  end
 
-    def find_artist
-      @artist = Artist.find(params[:id])
-    end
+  def find_artist
+    @artist = Artist.find(params[:id])
+  end
 end
