@@ -4,13 +4,13 @@ require "test_helper"
 
 class GlobalSettingTest < ActiveSupport::TestCase
   test "should have AVAILABLE_SETTINGS constant" do
-    assert_equal [:media_path, :discogs_token], Setting::AVAILABLE_SETTINGS
+    assert_equal [:media_path, :discogs_token, :transcode_bitrate, :allow_transcoding], Setting::AVAILABLE_SETTINGS
   end
 
   test "should get env default value when setting value did not set" do
     ENV["MEDIA_PATH"] = "/test_media_path"
 
-    assert_nil Setting.instance.values&.fetch("media_path")
+    assert_nil Setting.instance.values&.[]("media_path")
     assert_equal "/test_media_path", Setting.media_path
   end
 
