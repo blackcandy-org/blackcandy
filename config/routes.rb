@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :artists, only: [:index, :show, :edit, :update]
   resources :stream, only: [:new]
   resources :transcoded_stream, only: [:new]
+  resources :cached_transcoded_stream, only: [:new]
   resources :songs, only: [:index, :show]
   resources :albums, only: [:index, :show, :edit, :update], concerns: :playable
 

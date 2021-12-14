@@ -7,5 +7,5 @@ class Setting < ApplicationRecord
 
   has_settings :media_path, :discogs_token
   has_setting :transcode_bitrate, default: "128", available_options: AVAILABLE_BITRATE_OPTIONS
-  has_setting :allow_transcoding, default: false
+  has_setting :allow_lossless_transcoding, default: false
 end

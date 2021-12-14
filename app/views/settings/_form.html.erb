@@ -23,6 +23,11 @@
   <h2><%= t('label.transcoding') %></h2>
   <%= form_with model: Setting, url: setting_path, method: :put, class: 'c-form' do |form| %>
     <div class='c-form__field c-form__field--inline'>
+      <%= form.label :allow_lossless_transcoding %>
+      <%= form.check_box :allow_lossless_transcoding %>
+    </div>
+
+    <div class='c-form__field c-form__field--inline'>
       <%= form.label :transcode_bitrate %>
       <%= form.select :transcode_bitrate, Setting::AVAILABLE_BITRATE_OPTIONS.map { |option| ["#{option} kbps", option]}, selected: Setting.transcode_bitrate, class: 'c-input' %>
     </div>

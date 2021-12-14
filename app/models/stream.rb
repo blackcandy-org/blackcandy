@@ -3,6 +3,7 @@
 class Stream
   TRANSCODING_FORMATS = %w[flac wav oga wma].freeze
   TRANSCODE_FORMAT = "mp3"
+  TRANSCODE_CACHE_DIRECTORY = Rails.root.join("tmp/cache/media_file")
 
   def initialize(song)
     @song = song
@@ -12,12 +13,23 @@ class Stream
     @song.file_path
   end
 
+  def file_duration
+    @song.length
+  end
+
   def format
     MediaFile.format(@song.file_path)
   end
 
   def need_transcode?
     format.in? TRANSCODING_FORMATS
+  end
+
+  def transcode_cache_file_path
+    file_directory = "#{TRANSCODE_CACHE_DIRECTORY}/#{@song.id}"
+    FileUtils.mkdir_p(file_directory)
+
+    "#{file_directory}/#{Base64.urlsafe_encode64(@song.md5_hash)}_#{Setting.transcode_bitrate}.#{TRANSCODE_FORMAT}"
   end
 
   # let instance of Stream can respond to each() method.

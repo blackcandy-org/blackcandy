@@ -25,7 +25,7 @@ class StreamController < ApplicationController
     return unless nginx_senfile?
 
     response.headers["X-Media-Path"] = Setting.media_path
-    response.headers["X-Accel-Redirect"] = File.join("/private_media", @stream.file_path.sub(Setting.media_path, ""))
+    response.headers["X-Accel-Redirect"] = File.join("/private_media", @stream.file_path.sub(File.expand_path(Setting.media_path), ""))
   end
 
   def find_stream
