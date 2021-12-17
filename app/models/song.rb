@@ -10,10 +10,20 @@ class Song < ApplicationRecord
   has_many :playlists_songs
   has_many :playlists, through: :playlists_songs
 
+  before_destroy :remove_transcode_cache
+
   search_by :name, associations: [:artist, :album]
 
   def format
-    file_format = MediaFile.format(file_path)
-    file_format.in?(Stream::TRANSCODING_FORMATS) ? Stream::TRANSCODE_FORMAT : file_format
+    MediaFile.format(file_path)
+  end
+
+  private
+
+  def remove_transcode_cache
+    cache_directory = "#{Stream::TRANSCODE_CACHE_DIRECTORY}/#{id}"
+
+    return unless Dir.exist?(cache_directory)
+    FileUtils.remove_dir(cache_directory)
   end
 end

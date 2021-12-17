@@ -8,7 +8,7 @@ module ScopedSetting
   end
 
   class_methods do
-    def has_setting(setting, default: nil, available_options: nil)
+    def has_setting(setting, type: :string, default: nil, available_options: nil)
       self::AVAILABLE_SETTINGS.push(setting)
 
       store_accessor :settings, setting
@@ -16,9 +16,24 @@ module ScopedSetting
       validates setting, inclusion: {in: available_options}, allow_nil: true if available_options
 
       define_method(setting) do
-        setting_value = super()
+        value = super()
+        setting_value = ScopedSetting.convert_setting_value(type, value)
+
         !setting_value.nil? ? setting_value : default
       end
+    end
+  end
+
+  def self.convert_setting_value(type, value)
+    case type
+    when :boolean
+      ["true", "1", 1, true].include?(value)
+    when :integer
+      value.to_i
+    when :float
+      value.to_f
+    else
+      value
     end
   end
 end

@@ -29,15 +29,22 @@ module GlobalSetting
       end
     end
 
-    def has_setting(setting, default: nil, available_options: nil)
+    def has_setting(setting, type: :string, default: nil, available_options: nil)
       self::AVAILABLE_SETTINGS.push(setting)
 
       store_accessor :values, setting
 
       validates setting, inclusion: {in: available_options}, allow_nil: true if available_options
 
+      define_method("#{setting}=") do |value|
+        setting_value = ScopedSetting.convert_setting_value(type, value)
+        super(setting_value)
+      end
+
       define_singleton_method(setting) do
-        setting_value = instance.send(setting)
+        value = instance.send(setting)
+        setting_value = ScopedSetting.convert_setting_value(type, value)
+
         !setting_value.nil? ? setting_value : default
       end
     end

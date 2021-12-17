@@ -33,6 +33,13 @@ class ApplicationController < ActionController::Base
     browser.safari? || browser.core_media?
   end
 
+  def need_transcode?(format)
+    return true if format.in?(Stream::UNSUPPORTED_FORMATS)
+    return true if is_safari? && format.in?(Stream::SAFARI_UNSUPPORTED_FORMATS)
+
+    Setting.allow_transcode_lossless ? format.in?(Stream::LOSSLESS_FORMATS) : false
+  end
+
   private
 
   def find_current_user

@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class Stream
-  TRANSCODING_FORMATS = %w[flac wav oga wma].freeze
+  LOSSLESS_FORMATS = %w[flac wav].freeze
+  UNSUPPORTED_FORMATS = %w[wma].freeze
+  SAFARI_UNSUPPORTED_FORMATS = %w[ogg opus oga].freeze
   TRANSCODE_FORMAT = "mp3"
   TRANSCODE_CACHE_DIRECTORY = Rails.root.join("tmp/cache/media_file")
 
@@ -18,11 +20,7 @@ class Stream
   end
 
   def format
-    MediaFile.format(@song.file_path)
-  end
-
-  def need_transcode?
-    format.in? TRANSCODING_FORMATS
+    @song.format
   end
 
   def transcode_cache_file_path

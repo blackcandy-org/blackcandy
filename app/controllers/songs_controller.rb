@@ -10,5 +10,6 @@ class SongsController < ApplicationController
 
   def show
     @song = Song.find(params[:id])
+    @song_format = need_transcode?(@song.format) ? Stream::TRANSCODE_FORMAT : @song.format
   end
 end

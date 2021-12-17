@@ -58,6 +58,7 @@ en:
     duration: 'Duration'
     actions: 'Actions'
     edit: 'Edit'
+    transcoding: 'Transcoding'
   error:
     login: 'Wrong email or password'
     media_path_blank: 'Media path is not exist'
@@ -103,3 +104,5 @@ en:
     artist_cover: 'Artist cover'
     search_results: "Search results for \"%{query}\""
     no_search_results: "No search results for \"%{query}\""
+    transcoding: "Black candy will transcode formats that are not supported by the browser by default."
+    allow_transcode_lossless: "Will transcode lossless format to mp3 to reduce bandwidth."

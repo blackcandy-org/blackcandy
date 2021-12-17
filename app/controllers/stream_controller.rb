@@ -5,7 +5,7 @@ class StreamController < ApplicationController
   before_action :set_header
 
   def new
-    if need_transcode? @stream
+    if need_transcode? @stream.format
       redirect_to new_transcoded_stream_path(song_id: params[:song_id])
     else
       send_local_file @stream.file_path
@@ -13,11 +13,6 @@ class StreamController < ApplicationController
   end
 
   private
-
-  def need_transcode?(stream)
-    # Because safari didn't support ogg and opus formats well, so transcoded it.
-    stream.need_transcode? || (is_safari? && stream.format.in?(%w[ogg opus]))
-  end
 
   # Let nginx can get value of media_path dynamically in the nginx config,
   # when use X-Accel-Redirect header to send file.
@@ -50,7 +45,7 @@ class StreamController < ApplicationController
 
       headers.each { |name, value| response.headers[name] = value }
 
-      response.headers["Content-Type"] = Mime[MediaFile.format(file_path)]
+      response.headers["Content-Type"] = Mime[@stream.format]
       response.headers["Content-Disposition"] = "attachment"
     end
   end
