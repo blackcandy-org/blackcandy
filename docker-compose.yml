@@ -5,6 +5,7 @@ services:
     image: blackcandy/blackcandy
     volumes:
       - ./log:/app/log
+      - ./media_cache_data:/app/tmp/cache/media_file
       - /media_data:/media_data
       - production_uploads_data:/app/public/uploads
     environment:

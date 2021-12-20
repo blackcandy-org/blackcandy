@@ -19,7 +19,7 @@ module ScopedSetting
         value = super()
         setting_value = ScopedSetting.convert_setting_value(type, value)
 
-        !setting_value.nil? ? setting_value : default
+        !value.nil? ? setting_value : default
       end
     end
   end
