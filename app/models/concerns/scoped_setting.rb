@@ -3,17 +3,37 @@
 module ScopedSetting
   extend ActiveSupport::Concern
 
+  included do
+    const_set(:AVAILABLE_SETTINGS, [])
+  end
+
   class_methods do
-    def has_setting(setting, default: nil, available_options: nil)
-      const_set(:AVAILABLE_SETTINGS, [setting])
+    def has_setting(setting, type: :string, default: nil, available_options: nil)
+      self::AVAILABLE_SETTINGS.push(setting)
 
       store_accessor :settings, setting
 
-      validates setting, inclusion: {in: available_options} if available_options
+      validates setting, inclusion: {in: available_options}, allow_nil: true if available_options
 
       define_method(setting) do
-        super() || default
+        value = super()
+        setting_value = ScopedSetting.convert_setting_value(type, value)
+
+        !value.nil? ? setting_value : default
       end
+    end
+  end
+
+  def self.convert_setting_value(type, value)
+    case type
+    when :boolean
+      ["true", "1", 1, true].include?(value)
+    when :integer
+      value.to_i
+    when :float
+      value.to_f
+    else
+      value
     end
   end
 end

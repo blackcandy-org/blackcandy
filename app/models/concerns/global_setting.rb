@@ -6,6 +6,7 @@ module GlobalSetting
   included do
     # Ensures only one Settings row is created
     validates :singleton_guard, inclusion: {in: [0]}
+    const_set(:AVAILABLE_SETTINGS, [])
   end
 
   class_methods do
@@ -16,14 +17,35 @@ module GlobalSetting
     end
 
     def has_settings(*settings)
-      const_set(:AVAILABLE_SETTINGS, settings)
+      self::AVAILABLE_SETTINGS.push(*settings)
 
       store_accessor :values, *settings
 
       settings.each do |setting|
         define_singleton_method(setting) do
-          instance.send(setting) || ENV[setting.to_s.upcase]
+          setting_value = instance.send(setting)
+          !setting_value.nil? ? setting_value : ENV[setting.to_s.upcase]
         end
+      end
+    end
+
+    def has_setting(setting, type: :string, default: nil, available_options: nil)
+      self::AVAILABLE_SETTINGS.push(setting)
+
+      store_accessor :values, setting
+
+      validates setting, inclusion: {in: available_options}, allow_nil: true if available_options
+
+      define_method("#{setting}=") do |value|
+        setting_value = ScopedSetting.convert_setting_value(type, value)
+        super(setting_value)
+      end
+
+      define_singleton_method(setting) do
+        value = instance.send(setting)
+        setting_value = ScopedSetting.convert_setting_value(type, value)
+
+        !value.nil? ? setting_value : default
       end
     end
   end

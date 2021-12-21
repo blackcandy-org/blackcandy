@@ -3,17 +3,6 @@
 require "test_helper"
 
 class StreamTest < ActiveSupport::TestCase
-  test "should check song if need transcode" do
-    assert Stream.new(songs(:flac_sample)).need_transcode?
-    assert Stream.new(songs(:wav_sample)).need_transcode?
-    assert Stream.new(songs(:oga_sample)).need_transcode?
-    assert Stream.new(songs(:wma_sample)).need_transcode?
-    assert_not Stream.new(songs(:mp3_sample)).need_transcode?
-    assert_not Stream.new(songs(:m4a_sample)).need_transcode?
-    assert_not Stream.new(songs(:ogg_sample)).need_transcode?
-    assert_not Stream.new(songs(:opus_sample)).need_transcode?
-  end
-
   test "should can transcode flac format" do
     create_tmp_file(format: "mp3") do |tmp_file_path|
       stream = Stream.new(songs(:flac_sample))
@@ -84,5 +73,34 @@ class StreamTest < ActiveSupport::TestCase
 
       assert_equal 128, audio_bitrate(tmp_file_path)
     end
+  end
+
+  test "should can transcode with different bitrate" do
+    Setting.update(transcode_bitrate: 192)
+
+    create_tmp_file(format: "mp3") do |tmp_file_path|
+      stream = Stream.new(songs(:flac_sample))
+
+      File.open(tmp_file_path, "w") do |file|
+        stream.each { |data| file.write data }
+      end
+
+      assert_equal 192, audio_bitrate(tmp_file_path)
+    end
+  end
+
+  test "should get transcode cache file path" do
+    stream = Stream.new(songs(:flac_sample))
+    assert_equal "#{Stream::TRANSCODE_CACHE_DIRECTORY}/2/ZmFrZV9tZDU=_128.mp3", stream.transcode_cache_file_path
+  end
+
+  test "should get file duration" do
+    stream = Stream.new(songs(:flac_sample))
+    assert_equal 8.0, stream.file_duration
+  end
+
+  test "should get file format" do
+    stream = Stream.new(songs(:flac_sample))
+    assert_equal "flac", stream.format
   end
 end

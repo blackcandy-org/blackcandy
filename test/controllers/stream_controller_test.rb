@@ -13,9 +13,25 @@ class StreamControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "should redirect to transcoded stream path for transcode format" do
+  test "should redirect to transcoded stream path for unsupported format" do
+    assert_login_access(url: new_stream_url(song_id: songs(:wma_sample).id)) do
+      assert_redirected_to new_transcoded_stream_url(song_id: songs(:wma_sample).id)
+    end
+  end
+
+  test "should redirect to transcoded stream path for lossless formats when allow transcode lossless format" do
+    Setting.update(allow_transcode_lossless: true)
+
     assert_login_access(url: new_stream_url(song_id: songs(:flac_sample).id)) do
       assert_redirected_to new_transcoded_stream_url(song_id: songs(:flac_sample).id)
+    end
+  end
+
+  test "should not redirect to transcoded stream path for lossless formats when don't allow transcode lossless format" do
+    Setting.update(allow_transcode_lossless: false)
+
+    assert_login_access(url: new_stream_url(song_id: songs(:flac_sample).id)) do
+      assert_response :success
     end
   end
 

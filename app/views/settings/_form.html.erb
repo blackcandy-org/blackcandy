@@ -17,4 +17,24 @@
       <%= form.submit t('label.save'), class: 'c-button c-button--primary c-button--full-width', id: 'test-setting-discogs-token-save' %>
     </div>
   <% end %>
+
+  <hr />
+
+  <h2><%= t('label.transcoding') %></h2>
+  <p><%= t('text.transcoding')%></p>
+  <%= form_with model: Setting, url: setting_path, method: :put, class: 'c-form' do |form| %>
+    <div class='c-form__field c-form__field--inline'>
+      <%= form.label :allow_transcode_lossless %>
+      <%= form.check_box :allow_transcode_lossless %>
+    </div>
+    <small><%= t('text.allow_transcode_lossless')%></small>
+
+    <div class='c-form__field c-form__field--inline'>
+      <%= form.label :transcode_bitrate %>
+      <%= form.select :transcode_bitrate, Setting::AVAILABLE_BITRATE_OPTIONS.map { |option| ["#{option} kbps", option]}, selected: Setting.transcode_bitrate, class: 'c-input' %>
+    </div>
+    <div class='c-form__field c-form__field--submit'>
+      <%= form.submit t('label.save'), class: 'c-button c-button--primary c-button--full-width' %>
+    </div>
+  <% end %>
 </div>
