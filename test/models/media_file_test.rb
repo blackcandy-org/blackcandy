@@ -65,7 +65,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal "artist1", tag_info[:artist_name]
     assert_equal "artist1", tag_info[:albumartist_name]
     assert_equal 1, tag_info[:tracknum]
-    assert_equal 8, tag_info[:length]
+    assert_equal 8, tag_info[:duration]
   end
 
   test "should get tag info from flac file" do
@@ -76,7 +76,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal "artist1", tag_info[:artist_name]
     assert_equal "artist1", tag_info[:albumartist_name]
     assert_equal 1, tag_info[:tracknum]
-    assert_equal 8, tag_info[:length]
+    assert_equal 8, tag_info[:duration]
   end
 
   test "should get tag info from ogg file" do
@@ -87,7 +87,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal "artist2", tag_info[:artist_name]
     assert_equal "artist2", tag_info[:albumartist_name]
     assert_equal 1, tag_info[:tracknum]
-    assert_equal 8, tag_info[:length]
+    assert_equal 8, tag_info[:duration]
   end
 
   test "should get tag info from wav file" do
@@ -98,7 +98,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal "artist2", tag_info[:artist_name]
     assert_equal "artist2", tag_info[:albumartist_name]
     assert_equal 1, tag_info[:tracknum]
-    assert_equal 8, tag_info[:length]
+    assert_equal 8, tag_info[:duration]
   end
 
   test "should get tag info from opus file" do
@@ -109,7 +109,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal "artist2", tag_info[:artist_name]
     assert_equal "artist2", tag_info[:albumartist_name]
     assert_equal 1, tag_info[:tracknum]
-    assert_equal 8, tag_info[:length]
+    assert_equal 8, tag_info[:duration]
   end
 
   test "should get tag info from m4a file" do
@@ -120,7 +120,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal "artist1", tag_info[:artist_name]
     assert_equal "artist1", tag_info[:albumartist_name]
     assert_equal 1, tag_info[:tracknum]
-    assert_equal 8, tag_info[:length]
+    assert_equal 8, tag_info[:duration]
   end
 
   test "should get tag info from oga file" do
@@ -131,7 +131,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal "artist2", tag_info[:artist_name]
     assert_equal "artist2", tag_info[:albumartist_name]
     assert_equal 1, tag_info[:tracknum]
-    assert_equal 8, tag_info[:length]
+    assert_equal 8, tag_info[:duration]
   end
 
   test "should get tag info from wma file" do
@@ -142,7 +142,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal "artist2", tag_info[:artist_name]
     assert_equal "artist2", tag_info[:albumartist_name]
     assert_equal 1, tag_info[:tracknum]
-    assert_equal 8, tag_info[:length]
+    assert_equal 8, tag_info[:duration]
   end
 
   test "should get md5 hash from file" do

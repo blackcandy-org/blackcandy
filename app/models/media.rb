@@ -28,7 +28,7 @@ class Media
   end
 
   def song_info
-    file_info.slice(:name, :tracknum, :length, :file_path)
+    file_info.slice(:name, :tracknum, :duration, :file_path)
   end
 
   def various_artists?

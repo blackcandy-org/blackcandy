@@ -46,7 +46,7 @@ export default class extends Controller {
     if (!('setPositionState' in navigator.mediaSession)) { return; }
 
     navigator.mediaSession.setPositionState({
-      duration: this.currentSong.length,
+      duration: this.currentSong.duration,
       playbackRate: this.currentSong.howl.rate(),
       position: this.currentSong.howl.seek()
     });

@@ -87,7 +87,7 @@ export default class extends Controller {
   }
 
   seek(event) {
-    this.player.seek((event.offsetX / event.target.offsetWidth) * this.currentSong.length);
+    this.player.seek((event.offsetX / event.target.offsetWidth) * this.currentSong.duration);
     window.requestAnimationFrame(this._setProgress.bind(this));
   }
 
@@ -128,7 +128,7 @@ export default class extends Controller {
     this.songNameTarget.textContent = currentSong.name;
     this.artistNameTarget.textContent = currentSong.artist_name;
     this.albumNameTarget.textContent = currentSong.album_name;
-    this.songDurationTarget.textContent = formatDuration(currentSong.length);
+    this.songDurationTarget.textContent = formatDuration(currentSong.duration);
 
     this.pauseButtonTarget.classList.remove('u-display-none');
     this.playButtonTarget.classList.add('u-display-none');
@@ -170,7 +170,7 @@ export default class extends Controller {
     currentTime = (typeof currentTime == 'number') ? Math.round(currentTime) : 0;
 
     this.songTimerTarget.textContent = formatDuration(currentTime);
-    this.progressTarget.value = (currentTime / this.currentSong.length) * 100 || 0;
+    this.progressTarget.value = (currentTime / this.currentSong.duration) * 100 || 0;
 
     if (this.player.isPlaying) {
       window.requestAnimationFrame(this._setProgress.bind(this));

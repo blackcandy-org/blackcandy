@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_030347) do
+ActiveRecord::Schema.define(version: 2021_12_21_081317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2021_06_07_030347) do
     t.string "name", null: false
     t.string "file_path", null: false
     t.string "md5_hash", null: false
-    t.float "length", default: 0.0, null: false
+    t.float "duration", default: 0.0, null: false
     t.integer "tracknum"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -16,7 +16,7 @@ class Stream
   end
 
   def file_duration
-    @song.length
+    @song.duration
   end
 
   def format
