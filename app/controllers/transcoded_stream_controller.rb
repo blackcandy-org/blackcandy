@@ -38,6 +38,6 @@ class TranscodedStreamController < StreamController
     # Because the different format of the file, the duration will have a little difference,
     # so the duration difference in two seconds are considered no problem.
     cache_file_tag = WahWah.open(@stream.transcode_cache_file_path)
-    (@stream.file_duration - cache_file_tag.duration).abs <= 2
+    (@stream.duration - cache_file_tag.duration).abs <= 2
   end
 end
