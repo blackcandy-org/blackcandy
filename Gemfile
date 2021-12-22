@@ -2,7 +2,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 6.1.0"
+gem "rails", "~> 7.0.0"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1.3"
@@ -14,7 +14,7 @@ gem "puma", "~> 4.3.1"
 gem "webpacker", "~> 5.1.1"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem "jbuilder", "~> 2.9.1"
+gem "jbuilder", "~> 2.11.5"
 
 # Get meta data from audio file
 gem "wahwah", "~> 1.1.1"
@@ -32,7 +32,7 @@ gem "pagy", "~> 3.5.0"
 gem "redis", "~> 4.0"
 
 # For image attachment
-gem "carrierwave", "~> 2.0"
+gem "carrierwave", "~> 2.1.0"
 
 # For API request
 gem "httparty", "~> 0.17.0"
@@ -58,8 +58,8 @@ gem "bootsnap", ">= 1.1.0", require: false
 
 group :development, :test do
   gem "standard", "~> 1.4.0"
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[mri mingw x64_mingw]
   # Security vulnerability scanner
   gem "brakeman", "~> 5.1.2", require: false
 end
@@ -67,22 +67,18 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem "web-console", ">= 3.3.0"
-  gem "listen", ">= 3.0.5", "< 3.2"
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem "spring"
-  gem "spring-watcher-listen", "~> 2.0.0"
   # Memory profiler for ruby
   gem "memory_profiler", "~> 0.9.13", require: false
   # Help to kill N+1 queries and unused eager loading
-  gem "bullet", "~> 6.1.2"
+  gem "bullet", "~> 7.0.0"
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem "capybara", "~> 3.35.0"
-  gem "selenium-webdriver", "~> 3.142.6"
-  gem "webdrivers", "~> 4.6.0"
-  gem "webmock", "~> 3.13.0", require: false
+  gem "capybara", "~> 3.36.0"
+  gem "selenium-webdriver", "~> 4.1.0"
+  gem "webdrivers", "~> 5.0.0"
+  gem "webmock", "~> 3.14.0", require: false
   gem "simplecov", "~> 0.21.2", require: false
   gem "simplecov-lcov", "~> 0.8.0", require: false
 end
