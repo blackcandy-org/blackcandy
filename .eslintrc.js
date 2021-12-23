@@ -8,6 +8,8 @@ module.exports = {
     "import/first": "off",
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": "off",
+    "import/no-unresolved" : "off",
+    "import/extensions": "off",
     "arrow-body-style": "off",
     "no-useless-escape": "off",
     "no-underscore-dangle": "off",
@@ -16,6 +18,7 @@ module.exports = {
     "class-methods-use-this": "off",
     "consistent-return": "off",
     "default-case": "off",
+    "max-len": "off",
     "operator-linebreak": ["error", "after"],
     "lines-between-class-members": ["error", "always", { exceptAfterSingleLine: true }]
   },

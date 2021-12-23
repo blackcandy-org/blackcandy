@@ -4,14 +4,26 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 7.0.0"
 
+# The original asset pipeline for Rails
+gem "sprockets-rails", "~> 3.4.2"
+
+# Use JavaScript with ESM import maps
+gem "importmap-rails", "~> 1.0.0"
+
+# Install Turbo on Rails
+gem "turbo-rails", "~> 1.0.0"
+
+# Install Stimulus on Rails
+gem "stimulus-rails", "~> 1.0.2"
+
+# Bundle and process CSS in Rails
+gem "cssbundling-rails", "~> 1.0.0"
+
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1.3"
 
 # Use Puma as the app server
 gem "puma", "~> 4.3.1"
-
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem "webpacker", "~> 5.1.1"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.11.5"
@@ -21,9 +33,6 @@ gem "wahwah", "~> 1.1.1"
 
 # Use sidekiq for backgroud job
 gem "sidekiq", "~> 6.1.2"
-
-# Install turbo on rails
-gem "turbo-rails", "~> 0.8.3"
 
 # Pagination
 gem "pagy", "~> 3.5.0"

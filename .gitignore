@@ -10,10 +10,10 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
-/tmp/pids/*
 !/log/.keep
 !/tmp/.keep
-!/tmp/pids
+
+/tmp/pids/*
 !/tmp/pids/.keep
 
 # Ignore uploaded files in development
@@ -30,6 +30,7 @@
 /public/packs
 /public/packs-test
 /public/uploads
+/public/assets
 /node_modules
 
 .DS_Store
@@ -43,3 +44,6 @@ yarn-debug.log*
 /.redis_data
 /.idea
 /coverage
+
+/app/assets/builds/*
+!/app/assets/builds/.keep

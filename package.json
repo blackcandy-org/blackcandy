@@ -2,13 +2,14 @@
   "name": "black_candy",
   "private": true,
   "dependencies": {
-    "@hotwired/stimulus": "^3.0.1",
-    "@hotwired/stimulus-webpack-helpers": "^1.0.1",
-    "@hotwired/turbo-rails": "^7.0.1",
-    "@rails/webpacker": "^5.1.1",
-    "@shopify/draggable": "^1.0.0-beta.12",
-    "howler": "^2.2.0",
-    "postcss-mixins": "^6.2.3"
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.5",
+    "postcss-cli": "^9.1.0",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^14.0.2",
+    "postcss-mixins": "^6.2.3",
+    "postcss-nesting": "^10.1.0",
+    "postcss-preset-env": "^7.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
@@ -16,7 +17,9 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "stylelint": "^13.6.1",
-    "stylelint-config-standard": "^20.0.0",
-    "webpack-dev-server": "^3.10.3"
+    "stylelint-config-standard": "^20.0.0"
+  },
+  "scripts": {
+    "build:css": "postcss ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css"
   }
 }
