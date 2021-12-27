@@ -35,7 +35,7 @@ gem "wahwah", "~> 1.1.1"
 gem "sidekiq", "~> 6.1.2"
 
 # Pagination
-gem "pagy", "~> 3.5.0"
+gem "pagy", "~> 5.6.6"
 
 # Use redis on cache and sidekiq
 gem "redis", "~> 4.0"
