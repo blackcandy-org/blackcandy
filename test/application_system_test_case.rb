@@ -20,6 +20,6 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
 end
 
 Capybara.configure do |config|
-  config.default_max_wait_time = 5
+  config.default_max_wait_time = 10
   config.default_normalize_ws = true
 end

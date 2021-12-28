@@ -5,7 +5,7 @@ require "application_system_test_case"
 class ArtistsSystemTest < ApplicationSystemTestCase
   setup do
     # create many record to test infinite scroll
-    (Pagy::VARS[:items] * 2).times do |n|
+    (Pagy::DEFAULT[:items] * 2).times do |n|
       Artist.create(name: "artist_test_#{n}")
     end
 
@@ -16,13 +16,13 @@ class ArtistsSystemTest < ApplicationSystemTestCase
     visit artists_url
 
     assert_selector("#test-main-content .c-tab__item.is-active a", text: "Artists")
-    assert_selector("#turbo-artists-content > .c-card", count: Pagy::VARS[:items])
+    assert_selector("#turbo-artists-content > .c-card", count: Pagy::DEFAULT[:items])
   end
 
   test "show next page artists when scroll to the bottom" do
     visit artists_url
     find("#test-main-content").scroll_to :bottom
 
-    assert_selector("#turbo-artists-content > .c-card", count: Pagy::VARS[:items] * 2)
+    assert_selector("#turbo-artists-content > .c-card", count: Pagy::DEFAULT[:items] * 2)
   end
 end

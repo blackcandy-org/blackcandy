@@ -5,7 +5,7 @@ require "application_system_test_case"
 class SongsSystemTest < ApplicationSystemTestCase
   setup do
     # create many record to test infinite scroll
-    (Pagy::VARS[:items] * 2).times do |n|
+    (Pagy::DEFAULT[:items] * 2).times do |n|
       Song.create(
         name: "song_test_#{n}",
         file_path: Rails.root.join("test/fixtures/files/artist1_album2.mp3"),
@@ -22,14 +22,14 @@ class SongsSystemTest < ApplicationSystemTestCase
     visit songs_url
 
     assert_selector("#test-main-content .c-tab__item.is-active a", text: "Songs")
-    assert_selector("#turbo-songs-content > .o-grid", count: Pagy::VARS[:items])
+    assert_selector("#turbo-songs-content > .o-grid", count: Pagy::DEFAULT[:items])
   end
 
   test "show next page songs when scroll to the bottom" do
     visit songs_url
     find("#test-main-content").scroll_to :bottom
 
-    assert_selector("#turbo-songs-content > .o-grid", count: Pagy::VARS[:items] * 2)
+    assert_selector("#turbo-songs-content > .o-grid", count: Pagy::DEFAULT[:items] * 2)
   end
 
   test "play song from songs list" do
