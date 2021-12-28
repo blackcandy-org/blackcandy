@@ -11,16 +11,14 @@ class TranscodedStreamController < StreamController
   def new
     response.headers["Content-Type"] = Mime[Stream::TRANSCODE_FORMAT]
 
-    File.open(@stream.transcode_cache_file_path, "w") do |file|
-      @stream.each do |data|
-        response.stream.write data
-        file.write data
+    send_stream(filename: "#{@stream.name}.mp3") do |stream_response|
+      File.open(@stream.transcode_cache_file_path, "w") do |file|
+        @stream.each do |data|
+          stream_response.write data
+          file.write data
+        end
       end
     end
-  rescue ActionController::Live::ClientDisconnected
-    logger.info "[#{Time.now.utc}] Stream closed"
-  ensure
-    response.stream.close
   end
 
   private

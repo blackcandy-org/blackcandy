@@ -9,7 +9,7 @@ class Stream
   TRANSCODE_FORMAT = "mp3"
   TRANSCODE_CACHE_DIRECTORY = Rails.root.join("tmp/cache/media_file")
 
-  def_delegators :@song, :file_path, :duration, :format
+  def_delegators :@song, :file_path, :duration, :format, :name
 
   def initialize(song)
     @song = song
