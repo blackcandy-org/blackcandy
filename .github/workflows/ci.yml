@@ -48,6 +48,7 @@ jobs:
           yarn install
           gem install bundler
           bundle install --jobs 4 --retry 3
+          yarn build:css
           bundle exec rails db:setup
           bundle exec rails lint:all
           bundle exec rails test
@@ -58,4 +59,3 @@ jobs:
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-
