@@ -1,6 +1,6 @@
 .c-logo {
   display: inline-block;
-  background: url(/assets/logo.svg) no-repeat top left;
+  background: url(logo.svg) no-repeat top left;
   background-size: contain;
   width: 70px;
   height: 70px;
