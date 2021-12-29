@@ -7,9 +7,6 @@ gem "rails", "~> 7.0.0"
 # The original asset pipeline for Rails
 gem "sprockets-rails", "~> 3.4.2"
 
-# Use JavaScript with ESM import maps
-gem "importmap-rails", "~> 1.0.0"
-
 # Install Turbo on Rails
 gem "turbo-rails", "~> 1.0.0"
 
@@ -18,6 +15,9 @@ gem "stimulus-rails", "~> 1.0.2"
 
 # Bundle and process CSS in Rails
 gem "cssbundling-rails", "~> 1.0.0"
+
+# Bundle and transpile JavaScript in Rails
+gem "jsbundling-rails", "~> 1.0.0"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1.3"

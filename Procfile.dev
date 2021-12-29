@@ -3,3 +3,4 @@ redis: redis-server --dir .redis_data
 web: rails s -p 3000
 sidekiq: sidekiq
 css: yarn build:css --watch
+js: yarn build --watch

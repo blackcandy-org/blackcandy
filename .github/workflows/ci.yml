@@ -48,9 +48,9 @@ jobs:
           yarn install
           gem install bundler
           bundle install --jobs 4 --retry 3
-          yarn build:css
           bundle exec rails db:setup
           bundle exec rails lint:all
+          bundle exec rails test:prepare
           bundle exec rails test
           bundle exec rails test:system
           bundle exec brakeman
