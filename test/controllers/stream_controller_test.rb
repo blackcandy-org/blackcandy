@@ -55,4 +55,66 @@ class StreamControllerTest < ActionDispatch::IntegrationTest
       end
     end
   end
+
+  test "should set correct content type header" do
+    assert_login_access(url: new_stream_url(song_id: songs(:mp3_sample).id)) do
+      assert_equal "audio/mpeg", @response.get_header("Content-Type")
+    end
+
+    assert_login_access(url: new_stream_url(song_id: songs(:flac_sample).id)) do
+      assert_equal "audio/flac", @response.get_header("Content-Type")
+    end
+
+    assert_login_access(url: new_stream_url(song_id: songs(:ogg_sample).id)) do
+      assert_equal "audio/ogg", @response.get_header("Content-Type")
+    end
+
+    assert_login_access(url: new_stream_url(song_id: songs(:wav_sample).id)) do
+      assert_equal "audio/wav", @response.get_header("Content-Type")
+    end
+
+    assert_login_access(url: new_stream_url(song_id: songs(:opus_sample).id)) do
+      assert_equal "audio/ogg", @response.get_header("Content-Type")
+    end
+
+    assert_login_access(url: new_stream_url(song_id: songs(:m4a_sample).id)) do
+      assert_equal "audio/aac", @response.get_header("Content-Type")
+    end
+
+    assert_login_access(url: new_stream_url(song_id: songs(:oga_sample).id)) do
+      assert_equal "audio/ogg", @response.get_header("Content-Type")
+    end
+  end
+
+  test "should set correct content type header when not set nginx send file header" do
+    Rails.configuration.action_dispatch.stub(:x_sendfile_header, "") do
+      assert_login_access(url: new_stream_url(song_id: songs(:mp3_sample).id)) do
+        assert_equal "audio/mpeg", @response.get_header("Content-Type")
+      end
+
+      assert_login_access(url: new_stream_url(song_id: songs(:flac_sample).id)) do
+        assert_equal "audio/flac", @response.get_header("Content-Type")
+      end
+
+      assert_login_access(url: new_stream_url(song_id: songs(:ogg_sample).id)) do
+        assert_equal "audio/ogg", @response.get_header("Content-Type")
+      end
+
+      assert_login_access(url: new_stream_url(song_id: songs(:wav_sample).id)) do
+        assert_equal "audio/wav", @response.get_header("Content-Type")
+      end
+
+      assert_login_access(url: new_stream_url(song_id: songs(:opus_sample).id)) do
+        assert_equal "audio/ogg", @response.get_header("Content-Type")
+      end
+
+      assert_login_access(url: new_stream_url(song_id: songs(:m4a_sample).id)) do
+        assert_equal "audio/aac", @response.get_header("Content-Type")
+      end
+
+      assert_login_access(url: new_stream_url(song_id: songs(:oga_sample).id)) do
+        assert_equal "audio/ogg", @response.get_header("Content-Type")
+      end
+    end
+  end
 end

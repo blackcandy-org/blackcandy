@@ -19,4 +19,10 @@ class CachedTranscodedStreamControllerTest < ActionDispatch::IntegrationTest
       assert_equal "/private_cache_media/2/ZmFrZV9tZDU=_128.mp3", @response.get_header("X-Accel-Redirect")
     end
   end
+
+  test "should set correct content type header" do
+    assert_login_access(url: new_cached_transcoded_stream_url(song_id: songs(:flac_sample).id)) do
+      assert_equal "audio/mpeg", @response.get_header("Content-Type")
+    end
+  end
 end
