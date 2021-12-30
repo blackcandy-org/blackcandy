@@ -28,7 +28,7 @@ class Media
   end
 
   def song_info
-    file_info.slice(:name, :tracknum, :length, :file_path)
+    file_info.slice(:name, :tracknum, :duration, :file_path)
   end
 
   def various_artists?
@@ -54,8 +54,8 @@ class Media
       Song.where.not(md5_hash: media_hashes).destroy_all
 
       # Clean up no content albums and artist.
-      Album.left_outer_joins(:songs).where("songs.id is null").destroy_all
-      Artist.left_outer_joins(:songs, :albums).where("songs.album_id is null").where("albums.id is null").destroy_all
+      Album.where.missing(:songs).destroy_all
+      Artist.where.missing(:songs, :albums).destroy_all
     end
   end
 end

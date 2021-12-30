@@ -1,5 +1,6 @@
 postgres: postgres
 redis: redis-server --dir .redis_data
 web: rails s -p 3000
-webpacker: ./bin/webpack-dev-server
 sidekiq: sidekiq
+css: yarn build:css --watch
+js: yarn build --watch

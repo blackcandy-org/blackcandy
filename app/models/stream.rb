@@ -1,26 +1,18 @@
 # frozen_string_literal: true
 
 class Stream
+  extend Forwardable
+
   LOSSLESS_FORMATS = %w[flac wav].freeze
   UNSUPPORTED_FORMATS = %w[wma].freeze
   SAFARI_UNSUPPORTED_FORMATS = %w[ogg opus oga].freeze
   TRANSCODE_FORMAT = "mp3"
   TRANSCODE_CACHE_DIRECTORY = Rails.root.join("tmp/cache/media_file")
 
+  def_delegators :@song, :file_path, :duration, :format, :name
+
   def initialize(song)
     @song = song
-  end
-
-  def file_path
-    @song.file_path
-  end
-
-  def file_duration
-    @song.length
-  end
-
-  def format
-    @song.format
   end
 
   def transcode_cache_file_path

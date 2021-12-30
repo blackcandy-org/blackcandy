@@ -8,7 +8,7 @@
         <div class='c-card__body__text'>
           <span><%= @songs.load.size %> <%= t('label.tracks') %></span>
           <span>,</span>
-          <span class='u-text-monospace'><%= format_duration(@songs.sum(:length)) %></span>
+          <span class='u-text-monospace'><%= format_duration(@songs.sum(:duration)) %></span>
         </div>
         <div class='u-mt-large'>
           <%= button_to t('label.play_all'), play_album_path(@album), form_class: 'u-display-inline-block', class: 'c-button c-button--primary', form: { 'data-turbo-frame' => 'turbo-playlist' } %>
@@ -29,7 +29,7 @@
                   <%= song.artist.title %>
                 <% end %>
               </div>
-              <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.length) %></div>
+              <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
             <% end %>
 
             <%= link_to dialog_playlists_path(song_id: song.id), class: 'test-add-playlist', data: { turbo_frame: 'turbo-dialog' } do %>

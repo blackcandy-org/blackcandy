@@ -5,9 +5,9 @@
     <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
     <title>Black Candy</title>
     <%= csrf_meta_tags %>
-    <%= favicon_pack_tag 'link_icon.png', type: 'image/png' %>
-    <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= favicon_link_tag 'link_icon.png', type: 'image/png' %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body class='u-overflow-hidden'>

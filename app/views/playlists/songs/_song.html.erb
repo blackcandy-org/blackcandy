@@ -6,7 +6,7 @@
           <h4 class='u-mb-tiny u-text-weight-normal u-text-line-clamp-2'><%= song.name %></h4>
           <%= song.artist.title %>
         </div>
-        <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.length) %></div>
+        <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
     <% end %>
     <div data-controller='dropdown' class='c-dropdown'>
       <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', size: 'small', title: t('label.more') %></span>

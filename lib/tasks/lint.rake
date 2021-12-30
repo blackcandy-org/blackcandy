@@ -5,11 +5,11 @@ unless Rails.env.production?
 
   namespace :lint do
     task :js do
-      abort("rails lint:js failed") unless system("yarn run eslint 'app/frontend/**/*.js'")
+      abort("rails lint:js failed") unless system("yarn run eslint 'app/javascript/**/*.js'")
     end
 
     task :css do
-      abort("rails lint:css failed") unless system("yarn run stylelint 'app/frontend/**/*.css'")
+      abort("rails lint:css failed") unless system("yarn run stylelint 'app/assets/stylesheets/**/*.css'")
     end
 
     task :all do

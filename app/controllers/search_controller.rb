@@ -6,8 +6,17 @@ class SearchController < ApplicationController
   include Pagy::Backend
 
   def index
-    @albums_pagy, @albums = pagy(Album.search(params[:query]).includes(:artist), items: SEARCH_RESULT_MAX_AMOUNT)
-    @artists_pagy, @artists = pagy(Artist.search(params[:query]), items: SEARCH_RESULT_MAX_AMOUNT)
-    @songs_pagy, @songs = pagy(Song.search(params[:query]).includes(:artist, :album), items: SEARCH_RESULT_MAX_AMOUNT)
+    searched_albums = Album.search(params[:query]).includes(:artist)
+    searched_artists = Artist.search(params[:query])
+    searched_songs = Song.search(params[:query]).includes(:artist, :album)
+
+    @albums = searched_albums.limit(SEARCH_RESULT_MAX_AMOUNT).load_async
+    @is_all_albums = searched_albums.count <= SEARCH_RESULT_MAX_AMOUNT
+
+    @artists = searched_artists.limit(SEARCH_RESULT_MAX_AMOUNT).load_async
+    @is_all_artists = searched_artists.count <= SEARCH_RESULT_MAX_AMOUNT
+
+    @songs = searched_songs.limit(SEARCH_RESULT_MAX_AMOUNT).load_async
+    @is_all_songs = searched_songs.count <= SEARCH_RESULT_MAX_AMOUNT
   end
 end

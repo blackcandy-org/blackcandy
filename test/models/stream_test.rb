@@ -96,7 +96,7 @@ class StreamTest < ActiveSupport::TestCase
 
   test "should get file duration" do
     stream = Stream.new(songs(:flac_sample))
-    assert_equal 8.0, stream.file_duration
+    assert_equal 8.0, stream.duration
   end
 
   test "should get file format" do

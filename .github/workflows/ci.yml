@@ -33,7 +33,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v1
         with:
-          node-version: 12.15.0
+          node-version: 12.20.0
       - name: Test and Lint
         env:
           DB_HOST: localhost
@@ -50,6 +50,7 @@ jobs:
           bundle install --jobs 4 --retry 3
           bundle exec rails db:setup
           bundle exec rails lint:all
+          bundle exec rails test:prepare
           bundle exec rails test
           bundle exec rails test:system
           bundle exec brakeman
@@ -58,4 +59,3 @@ jobs:
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-

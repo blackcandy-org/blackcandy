@@ -5,7 +5,7 @@
     <div class='o-flex o-flex--justify-between o-flex--align-center u-mb-medium'>
       <h2 class='u-mb-0'><%= t('label.albums') %></h2>
 
-      <% if @albums_pagy.next %>
+      <% unless @is_all_albums %>
         <%= link_to t('text.see_all'), search_albums_path(query: params[:query]), class: 'is-active' %>
       <% end %>
     </div>
@@ -18,7 +18,7 @@
     <div class='o-flex o-flex--justify-between o-flex--align-center u-mb-medium'>
       <h2 class='u-mb-0'><%= t('label.artists') %></h2>
 
-      <% if @albums_pagy.next %>
+      <% unless @is_all_artists %>
         <%= link_to t('text.see_all'), search_artists_path(query: params[:query]), class: 'is-active' %>
       <% end %>
     </div>
@@ -31,7 +31,7 @@
     <div class='o-flex o-flex--justify-between o-flex--align-center u-mb-medium'>
       <h2 class='u-mb-0'><%= t('label.songs') %></h2>
 
-      <% if @albums_pagy.next %>
+      <% unless @is_all_songs %>
         <%= link_to t('text.see_all'), search_songs_path(query: params[:query]), class: 'is-active' %>
       <% end %>
     </div>

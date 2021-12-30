@@ -61,7 +61,7 @@ class TranscodedStreamControllerTest < ActionDispatch::IntegrationTest
 
     # Make the duration of the song different from the duration of the cache,
     # so that the cache will be treated as invalid
-    songs(:flac_sample).update(length: 12.0)
+    songs(:flac_sample).update(duration: 12.0)
 
     assert_login_access(url: new_transcoded_stream_url(song_id: songs(:flac_sample).id)) do
       assert_response :success

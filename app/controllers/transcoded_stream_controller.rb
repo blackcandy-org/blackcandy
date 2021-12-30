@@ -11,16 +11,14 @@ class TranscodedStreamController < StreamController
   def new
     response.headers["Content-Type"] = Mime[Stream::TRANSCODE_FORMAT]
 
-    File.open(@stream.transcode_cache_file_path, "w") do |file|
-      @stream.each do |data|
-        response.stream.write data
-        file.write data
+    send_stream(filename: "#{@stream.name}.mp3") do |stream_response|
+      File.open(@stream.transcode_cache_file_path, "w") do |file|
+        @stream.each do |data|
+          stream_response.write data
+          file.write data
+        end
       end
     end
-  rescue ActionController::Live::ClientDisconnected
-    logger.info "[#{Time.now.utc}] Stream closed"
-  ensure
-    response.stream.close
   end
 
   private
@@ -38,6 +36,6 @@ class TranscodedStreamController < StreamController
     # Because the different format of the file, the duration will have a little difference,
     # so the duration difference in two seconds are considered no problem.
     cache_file_tag = WahWah.open(@stream.transcode_cache_file_path)
-    (@stream.file_duration - cache_file_tag.duration).abs <= 2
+    (@stream.duration - cache_file_tag.duration).abs <= 2
   end
 end

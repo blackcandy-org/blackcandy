@@ -5,7 +5,7 @@ mp3_sample:
   md5_hash: 'fake_md5'
   artist: 'artist1'
   album: 'album2'
-  length: 8.0
+  duration: 8.0
 
 flac_sample:
   id: 2
@@ -14,7 +14,7 @@ flac_sample:
   md5_hash: 'fake_md5'
   artist: 'artist1'
   album: 'album1'
-  length: 8.0
+  duration: 8.0
 
 ogg_sample:
   id: 3
@@ -23,7 +23,7 @@ ogg_sample:
   md5_hash: 'fake_md5'
   artist: 'artist2'
   album: 'album3'
-  length: 8.0
+  duration: 8.0
 
 wav_sample:
   id: 4
@@ -32,7 +32,7 @@ wav_sample:
   md5_hash: 'fake_md5'
   artist: 'artist2'
   album: 'album3'
-  length: 8.0
+  duration: 8.0
 
 opus_sample:
   id: 5
@@ -41,7 +41,7 @@ opus_sample:
   md5_hash: 'fake_md5'
   artist: 'artist2'
   album: 'album3'
-  length: 8.0
+  duration: 8.0
 
 m4a_sample:
   id: 6
@@ -50,7 +50,7 @@ m4a_sample:
   md5_hash: 'fake_md5'
   artist: 'artist1'
   album: 'album1'
-  length: 8.0
+  duration: 8.0
 
 oga_sample:
   id: 7
@@ -59,7 +59,7 @@ oga_sample:
   md5_hash: 'fake_md5'
   artist: 'artist2'
   album: 'album3'
-  length: 8.0
+  duration: 8.0
 
 wma_sample:
   id: 8
@@ -68,7 +68,7 @@ wma_sample:
   md5_hash: 'fake_md5'
   artist: 'artist2'
   album: 'album3'
-  length: 8.0
+  duration: 8.0
 
 various_artists_sample:
   id: 9
@@ -77,4 +77,4 @@ various_artists_sample:
   md5_hash: 'fake_md5'
   artist: 'artist1'
   album: 'album4'
-  length: 8.0
+  duration: 8.0

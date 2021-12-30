@@ -4,7 +4,7 @@
       <span role='cell' class='test-song-name o-grid__item u-text-truncate' span='2' span@medium='4' span@narrow='3'><%= song.name %></span>
       <span role='cell' class='o-grid__item u-text-truncate u-display-none@medium' span='2'><%= song.artist.title %></span>
       <span role='cell' class='o-grid__item u-text-truncate u-display-none@medium' span='2'><%= song.album.title %></span>
-      <span role='cell' class='o-grid__item u-text-truncate u-display-none@small'><%= format_duration(song.length) %></span>
+      <span role='cell' class='o-grid__item u-text-truncate u-display-none@small'><%= format_duration(song.duration) %></span>
     </div>
   <% end %>
   <span role='cell' class='o-grid__item'>
