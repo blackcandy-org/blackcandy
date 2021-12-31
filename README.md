@@ -8,7 +8,7 @@
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
 ![Docker Pulls](https://img.shields.io/docker/pulls/blackcandy/blackcandy)
 
-Black candy is a self hosted music streaming server built with Rails and Stimulus. The goal of the project is to create a real personal music center.
+Black candy is a self hosted music streaming server built with [Rails](https://rubyonrails.org) and [Hotwire](https://hotwired.dev). The goal of the project is to create a real personal music center.
 
 ## Screenshot
 ![screenshot theme dark](https://raw.githubusercontent.com/aidewoode/black_candy/master/screenshots/screenshot_theme_dark.png)
@@ -31,7 +31,7 @@ First, you should ensure your music files stored under "/media_data"
 Then run: 
 
 ```shell
-$ curl https://raw.githubusercontent.com/aidewoode/black_candy/v1.3.0/docker-compose.yml > docker-compose.yml
+$ curl https://raw.githubusercontent.com/aidewoode/black_candy/v2.0.0/docker-compose.yml > docker-compose.yml
 $ docker-compose up -d
 ```
 That's all. Now, you can use initial admin user to login (email: admin@admin.com, password: foobar).
@@ -43,14 +43,13 @@ You can also change the `docker-compose.yml` for your own needs.
 
 ## Try in PWD
 
-You can try black candy on [Play with Docker](https://labs.play-with-docker.com)
-
 [![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](http://play-with-docker.com/?stack=https://raw.githubusercontent.com/aidewoode/black_candy/master/docker-compose.pwd.yml)
+
+Click the button above, then you can try black candy on [Play with Docker](https://labs.play-with-docker.com).
 
 When the service is ready, access black candy from port 80. Then use initial admin user to login (email: admin@admin.com, password: foobar). This demo already contains some sample music file. You can go to the setting page and click the sync button of the media path to import the sample music into the database.
 
 And feel free to try it.
-
 
 ### List for all sample music for the demo:
 
@@ -106,9 +105,6 @@ $ cd black_candy
 # Go into nix shell, the nix shell will auto setup all dev requirements you need.
 $ nix-shell 
 
-# Install foreman.
-$ gem install foreman 
-
 # Install requirement gems.
 $ bundle
 
@@ -119,7 +115,7 @@ $ yarn
 $ rails db:setup
 
 # Finally, start all services.
-$ foreman start -f Procfile.dev 
+$ ./bin/dev 
 ```
 
 ## Test

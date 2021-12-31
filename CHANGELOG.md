@@ -1,3 +1,21 @@
+### 2.0.0
+  - New features
+    - Add support for Media Session API.
+    - Add new search page.
+    - Add setting of transcode bitrate.
+    - Add support for cache of transcode.
+    - Add setting of allow transcode lossless format media.
+
+  - Enhancements
+    - Replce Turbolink to Turbo, and adopt Hotwire approach.
+    - Add system test and increase test coverage.
+    - Upgrade Stimulus to 3.0.
+    - Use Standard Ruby style guide for code.
+    - Upgrade Rails to 7.0.
+
+  - Bug fixes
+    - Fix wrong mime type for flac and wav formats.
+
 ### 1.3.0
   - new features
     - add sortable playlist
