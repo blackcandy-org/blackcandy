@@ -46,7 +46,7 @@ class PlayerSystemTest < ApplicationSystemTestCase
 
   test "favorite toggle" do
     find("#test-player-play-button").click
-    assert_selector("#turbo-playlist .c-list .c-list__item:first-child", text: Song.first.name)
+    assert_selector(".c-player__header__content", text: Song.first.name)
 
     find("#test-player-favorite-button").click
     assert_selector("#turbo-playlist .c-nav .c-tab__item.is-active", text: "Favorites")

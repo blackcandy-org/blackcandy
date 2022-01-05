@@ -22,12 +22,12 @@ class SessionSystemTest < ApplicationSystemTestCase
 
     click_on "Login"
 
-    # after login failed, cleanup login form
-    assert_field "Email", text: ""
-    assert_field "Password", text: ""
-
     # assert have error flash message
     assert_text("Wrong email or password")
+
+    # after login failed, cleanup login form
+    assert_field "Email", with: ""
+    assert_field "Password", with: ""
   end
 
   test "logout" do
