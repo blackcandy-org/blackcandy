@@ -2,7 +2,7 @@
   <% cache @artist do %>
     <%= shelf_grid_tag class: 'u-pb-wide' do %>
       <div class='o-grid__item c-card u-mb-medium'>
-        <%= image_tag image_url_for(@artist), class: 'u-image-fluid c-card__image test-artist-image' %>
+        <%= image_tag image_url_for(@artist), class: 'u-image-fluid c-card__image', data: { test_id: 'artist_image' } %>
       </div>
       <div class='o-grid__item'>
         <h2 class='u-mb-narrow'><%= @artist.title %></h2>

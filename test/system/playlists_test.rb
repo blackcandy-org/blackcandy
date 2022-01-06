@@ -10,9 +10,8 @@ class PlaylistsSystemTest < ApplicationSystemTestCase
   test "show playlist" do
     click_on "Playlists"
 
-    assert_selector("#turbo-playlist .c-nav .c-tab__item.is-active", text: "Playlists")
     users(:admin).playlists.each do |playlist|
-      assert_selector("#turbo-playlist .c-list .c-list__item", text: playlist.name)
+      assert_selector(:test_id, "playlist_name", text: playlist.name)
     end
   end
 
@@ -21,6 +20,6 @@ class PlaylistsSystemTest < ApplicationSystemTestCase
     fill_in "playlist_name", with: "test-playlist"
     click_on "Create"
 
-    assert_selector("#turbo-playlist .c-list .c-list__item:first-child", text: "test-playlist")
+    assert_equal "test-playlist", first(:test_id, "playlist_name").text
   end
 end

@@ -1,14 +1,14 @@
-<li id='<%= "#{dom_id(playlist)}_#{dom_id(song)}" %>'class='js-playlist-sortable-item c-list__item u-p-0' data-playlist-songs-target='item' data-song-id='<%= song.id %>'>
+<li id='<%= "#{dom_id(playlist)}_#{dom_id(song)}" %>'class='js-playlist-sortable-item c-list__item u-p-0' data-playlist-songs-target='item' data-song-id='<%= song.id %>' data-test-id='playlist_song'>
   <div class='o-flex o-flex--align-center u-py-narrow'>
-    <div class='js-playlist-sortable-item-handle u-mr-narrow'><%= icon_tag 'drag-indicator', size: 'small' %></div>
+    <div class='js-playlist-sortable-item-handle u-mr-narrow' data-test-id='playlist_song_sortable_handle'><%= icon_tag 'drag-indicator', size: 'small' %></div>
     <%= button_to current_playlist_songs_path(song_id: song.id), class: 'u-w-100 o-flex o-flex--justify-between o-flex--align-center u-cursor-pointer', form_class: 'o-flex__item--grow-1', form: { 'data-submit-start-action' => 'check_before_playing', 'data-submit-end-action' => 'play' } do  %>
         <div class='u-mr-narrow'>
-          <h4 class='u-mb-tiny u-text-weight-normal u-text-line-clamp-2'><%= song.name %></h4>
+          <h4 class='u-mb-tiny u-text-weight-normal u-text-line-clamp-2' data-test-id='playlist_song_name'><%= song.name %></h4>
           <%= song.artist.title %>
         </div>
         <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
     <% end %>
-    <div data-controller='dropdown' class='c-dropdown'>
+    <div data-controller='dropdown' class='c-dropdown' data-test-id='playlist_song_menu'>
       <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', size: 'small', title: t('label.more') %></span>
       <div data-dropdown-target='list' class='u-display-none c-dropdown__list'>
         <%= link_to t('text.add_to_playlist'), dialog_playlists_path(song_id: song.id), data: { turbo_frame: 'turbo-dialog' }, class: 'c-dropdown__item' %>

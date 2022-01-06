@@ -32,7 +32,7 @@ class SessionSystemTest < ApplicationSystemTestCase
 
   test "logout" do
     login_as users(:visitor1)
-    find("#test-main-content header .c-avatar").click
+    find(:test_id, "search_bar_menu").click
     click_on "Logout"
 
     assert_current_path(new_session_url)

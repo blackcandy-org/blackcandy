@@ -7,7 +7,7 @@ class ArtistSystemTest < ApplicationSystemTestCase
     @artist = artists(:artist1)
   end
 
-  test "show album" do
+  test "show artist" do
     login_as users(:visitor1)
     visit artist_url(@artist)
 
@@ -22,15 +22,15 @@ class ArtistSystemTest < ApplicationSystemTestCase
     login_as users(:admin)
     visit artist_url(@artist)
 
-    artist_original_image_url = find(".test-artist-image")[:src]
+    artist_original_image_url = find(:test_id, "artist_image")[:src]
 
     click_on "Edit"
-    assert_selector("#turbo-dialog .c-dialog", visible: true)
+    assert_selector(:test_id, "artist_edit_form", visible: true)
 
     attach_file("artist_image", fixtures_file_path("cover_image.jpg"))
     click_on "Save"
 
     assert_text("Updated successfully")
-    assert_not_equal artist_original_image_url, find(".test-artist-image")[:src]
+    assert_not_equal artist_original_image_url, find(:test_id, "artist_image")[:src]
   end
 end
