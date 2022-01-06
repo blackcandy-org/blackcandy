@@ -10,53 +10,50 @@ class PlayerSystemTest < ApplicationSystemTestCase
   end
 
   test "play song" do
-    find("#test-player-play-button").click
+    find(:test_id, "player_play_button").click
 
-    assert_selector("#test-player-play-button", visible: false)
-    assert_selector("#test-player-pause-button", visible: true)
-    assert_selector(".c-player__header", visible: true)
-    assert_selector(".c-player__header__content", text: Song.first.name)
+    assert_selector(:test_id, "player_play_button", visible: false)
+    assert_selector(:test_id, "player_pause_button", visible: true)
+    assert_selector(:test_id, "player_header", visible: true)
+    assert_selector(:test_id, "player_song_name", text: Song.first.name)
   end
 
   test "pause song" do
-    find("#test-player-play-button").click
-    assert_selector("#test-player-play-button", visible: false)
-    assert_selector("#test-player-pause-button", visible: true)
+    find(:test_id, "player_play_button").click
+    assert_selector(:test_id, "player_play_button", visible: false)
+    assert_selector(:test_id, "player_pause_button", visible: true)
 
-    find("#test-player-pause-button").click
-    assert_selector("#test-player-play-button", visible: true)
-    assert_selector("#test-player-pause-button", visible: false)
+    find(:test_id, "player_pause_button").click
+    assert_selector(:test_id, "player_play_button", visible: true)
+    assert_selector(:test_id, "player_pause_button", visible: false)
   end
 
   test "play next song" do
-    find("#test-player-play-button").click
-    find("#test-player-next-button").click
+    find(:test_id, "player_play_button").click
+    find(:test_id, "player_next_button").click
 
-    assert_selector(".c-player__header", visible: true)
-    assert_selector(".c-player__header__content", text: Song.second.name)
+    assert_selector(:test_id, "player_header", visible: true)
+    assert_selector(:test_id, "player_song_name", text: Song.second.name)
   end
 
   test "play previous song" do
-    find("#test-player-play-button").click
-    find("#test-player-previous-button").click
+    find(:test_id, "player_play_button").click
+    find(:test_id, "player_previous_button").click
 
-    assert_selector(".c-player__header", visible: true)
-    assert_selector(".c-player__header__content", text: Song.last.name)
+    assert_selector(:test_id, "player_header", visible: true)
+    assert_selector(:test_id, "player_song_name", text: Song.last.name)
   end
 
   test "favorite toggle" do
-    find("#test-player-play-button").click
-    assert_selector("#turbo-playlist .c-list .c-list__item:first-child", text: Song.first.name)
+    find(:test_id, "player_play_button").click
+    assert_selector(:test_id, "player_song_name", text: Song.first.name)
 
-    find("#test-player-favorite-button").click
-    assert_selector("#turbo-playlist .c-nav .c-tab__item.is-active", text: "Favorites")
-    assert_selector(
-      "#favorite_playlist_#{users(:visitor1).favorite_playlist.id} .c-list__item:first-child",
-      text: Song.first.name
-    )
+    find(:test_id, "player_favorite_button").click
+    assert_selector(:test_id, "favorite_playlist", visible: true)
+    assert_equal Song.first.name, all(:test_id, "playlist_song_name").first.text
 
-    find("#test-player-favorite-button").click
-    assert_selector("#turbo-playlist .c-nav .c-tab__item.is-active", text: "Favorites")
+    find(:test_id, "player_favorite_button").click
+    assert_selector(:test_id, "favorite_playlist", visible: true)
     assert_text("No items")
   end
 end

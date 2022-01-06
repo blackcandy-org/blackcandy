@@ -1,4 +1,4 @@
-<div data-controller='playlist-songs' data-playlist-songs-playlist-id-value='<%= @playlist.id %>'>
+<div data-controller='playlist-songs' data-playlist-songs-playlist-id-value='<%= @playlist.id %>' data-test-id='favorite_playlist'>
   <% if @songs.empty? %>
     <%= empty_alert_tag %>
   <% else %>
@@ -7,7 +7,7 @@
         <span id='<%= dom_id(@playlist, :songs_count) %>'><%= @playlist.songs.count %></span>
         <span><%= t('label.tracks') %></span>
       </p>
-      <div data-controller='dropdown' class='c-dropdown'>
+      <div data-controller='dropdown' class='c-dropdown' data-test-id='playlist_menu'>
         <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', title: t('label.more') %></span>
         <div data-dropdown-target='list' class='u-display-none c-dropdown__list'>
           <%= button_to t('label.play_all'), play_favorite_playlist_songs_path, form_class: 'c-dropdown__item' %>

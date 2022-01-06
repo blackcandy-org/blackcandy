@@ -21,42 +21,38 @@ class SongsSystemTest < ApplicationSystemTestCase
   test "show songs" do
     visit songs_url
 
-    assert_selector("#test-main-content .c-tab__item.is-active a", text: "Songs")
-    assert_selector("#turbo-songs-content > .o-grid", count: Pagy::DEFAULT[:items])
+    assert_selector(:test_id, "song_item", count: Pagy::DEFAULT[:items])
   end
 
   test "show next page songs when scroll to the bottom" do
     visit songs_url
-    find("#test-main-content").scroll_to :bottom
+    find(:test_id, "main_content").scroll_to :bottom
 
-    assert_selector("#turbo-songs-content > .o-grid", count: Pagy::DEFAULT[:items] * 2)
+    assert_selector(:test_id, "song_item", count: Pagy::DEFAULT[:items] * 2)
   end
 
   test "play song from songs list" do
     Setting.update(media_path: Rails.root.join("test/fixtures/files"))
     visit songs_url
 
-    first_song_element = find("#turbo-songs-content > .o-grid:first-child")
-    first_song_name = first_song_element.find(".test-song-name").text
-    first_song_element.click
+    first_song_name = first(:test_id, "song_name").text
+    first(:test_id, "song_item").click
 
     # when click song to play, the current playlist and player sould list current playing song
-    assert_selector("#turbo-playlist .c-list .c-list__item:first-child", text: first_song_name)
-    assert_selector(".c-player__header__content", text: first_song_name)
+    assert_equal first_song_name, first(:test_id, "playlist_song_name").text
+    assert_selector(:test_id, "player_song_name", text: first_song_name)
   end
 
   test "add song to playlist" do
     Playlist.create(name: "test-playlist", user_id: users(:visitor1).id)
     visit songs_url
 
-    first_song_element = find("#turbo-songs-content > .o-grid:first-child")
-    first_song_name = first_song_element.find(".test-song-name").text
+    first_song_name = first(:test_id, "song_name").text
 
-    first_song_element.find(".test-add-playlist").click
-    assert_selector("#turbo-dialog .c-dialog", visible: true)
+    first(:test_id, "song_add_playlist").click
+    first(:test_id, "dialog_playlist").click
 
-    find("#turbo-dialog-playlists > form:first-child").click
     # assert the song added to the playlist
-    assert_selector("#turbo-playlist .c-list .c-list__item:first-child", text: first_song_name)
+    assert_equal first_song_name, first(:test_id, "playlist_song_name").text
   end
 end

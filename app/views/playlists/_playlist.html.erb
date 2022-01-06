@@ -1,6 +1,6 @@
-<li class='c-list__item'>
+<li class='c-list__item' data-test-id='playlist'>
   <%= link_to playlist_songs_path(playlist), class: 'o-flex o-flex--justify-between o-flex--align-center' do %>
-    <span class='u-text-truncate u-mr-narrow'><%= playlist.name %></span>
+    <span class='u-text-truncate u-mr-narrow' data-test-id='playlist_name'><%= playlist.name %></span>
     <span><%= icon_tag('chevron-right') %></span>
   <% end %>
 </li>
