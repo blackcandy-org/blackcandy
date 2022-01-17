@@ -34,6 +34,8 @@ RUN bundle exec rails assets:precompile SECRET_KEY_BASE=fake_secure_for_compile 
 
 RUN cp config/nginx/nginx.conf /etc/nginx/nginx.conf
 
+ENTRYPOINT ["docker/entrypoint.sh"]
+
 EXPOSE 3000
 
 CMD ["docker/production_start.sh"]
