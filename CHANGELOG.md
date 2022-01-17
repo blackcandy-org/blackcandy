@@ -1,3 +1,7 @@
+### 2.0.1
+  - Bug fixes
+    - Fix error of can not found SECRET_KEY_BASE on worker.
+
 ### 2.0.0
   - New features
     - Add support for Media Session API.
