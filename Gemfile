@@ -41,7 +41,7 @@ gem "pagy", "~> 5.6.6"
 gem "redis", "~> 4.0"
 
 # For image attachment
-gem "carrierwave", "~> 2.1.0"
+gem "carrierwave", "~> 2.2.0"
 
 # For API request
 gem "httparty", "~> 0.17.0"
