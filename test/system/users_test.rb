@@ -35,7 +35,7 @@ class UsersSystemTest < ApplicationSystemTestCase
     delete_user_button = find("#user_#{delete_user.id}").find("button")
     delete_user_button.click
 
-    assert_text("Delete successfully")
+    assert_text("Deleted successfully")
     assert_no_text(delete_user.email)
   end
 
