@@ -61,19 +61,19 @@ en:
     transcoding: 'Transcoding'
   error:
     login: 'Wrong email or password'
-    media_path_blank: 'Media path is not exist'
+    media_path_blank: 'Media path does not exist'
     media_path_unreadable: 'Media path is unreadable'
-    forbidden: "Sorry, you do not have permission to visit it"
+    forbidden: "Sorry, you do not have permission to visit that"
     not_found: "The page you were looking for doesn't exist"
     unprocessable_entity: 'The change you wanted was rejected'
     internal_server_error: "We're sorry, but something went wrong"
-    already_in_playlist: "Add to playlist fail, song already in playlist"
+    already_in_playlist: "Add to playlist failed, song is already in playlist"
   success:
-    delete: 'Delete successfully'
+    delete: 'Deleted successfully'
     create: 'Created successfully'
     update: 'Updated successfully'
-    add_to_playlist: 'Add to playlist successfully'
-    delete_from_playlist: 'Delete from playlist successfully'
+    add_to_playlist: 'Added to playlist successfully'
+    delete_from_playlist: 'Deleted from playlist successfully'
   text:
     no_items: 'No items'
     add_to_playlist: 'Add to playlist'
