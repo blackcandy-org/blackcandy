@@ -23,7 +23,7 @@ gem "jsbundling-rails", "~> 1.0.0"
 gem "pg", "~> 1.1.3"
 
 # Use Puma as the app server
-gem "puma", "~> 4.3.1"
+gem "puma", "~> 5.6.2"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.11.5"
