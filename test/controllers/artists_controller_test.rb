@@ -35,7 +35,7 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
     Setting.update(discogs_token: "fake_token")
     artist = artists(:artist1)
     mock = MiniTest::Mock.new
-    mock.expect(:call, true, [artist.id])
+    mock.expect(:call, true, [artist])
 
     assert_not artist.has_image?
     assert_not artist.is_unknown?

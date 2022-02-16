@@ -3,8 +3,7 @@
 class AttachAlbumImageFromDiscogsJob < ApplicationJob
   queue_as :default
 
-  def perform(album_id)
-    album = Album.find_by(id: album_id)
+  def perform(album)
     image_url = DiscogsApi.album_image(album)
 
     return if image_url.blank?

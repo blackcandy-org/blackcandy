@@ -17,7 +17,7 @@ class ArtistsController < ApplicationController
     @albums = @artist.albums.load_async
     @appears_on_albums = @artist.appears_on_albums.load_async
 
-    AttachArtistImageFromDiscogsJob.perform_later(@artist.id) if @artist.need_attach_from_discogs?
+    AttachArtistImageFromDiscogsJob.perform_later(@artist) if @artist.need_attach_from_discogs?
   end
 
   def edit

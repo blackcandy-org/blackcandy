@@ -16,7 +16,7 @@ class AttachArtistImageFromDiscogsJobTest < ActiveJob::TestCase
     DiscogsApi.stub(:artist_image, "http://example.com/cover.jpg") do
       assert_not artist.has_image?
 
-      AttachArtistImageFromDiscogsJob.perform_now(artist.id)
+      AttachArtistImageFromDiscogsJob.perform_now(artist)
       assert artist.reload.has_image?
     end
   end

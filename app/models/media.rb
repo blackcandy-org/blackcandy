@@ -18,7 +18,7 @@ class Media
     end
 
     # Attach image from file to the album.
-    AttachAlbumImageFromFileJob.perform_later(album.id, file_info[:file_path]) unless album.has_image?
+    AttachAlbumImageFromFileJob.perform_later(album, file_info[:file_path]) unless album.has_image?
 
     Song.find_or_create_by(md5_hash: file_info[:md5_hash]) do |item|
       item.attributes = song_info.merge(album: album, artist: artist)

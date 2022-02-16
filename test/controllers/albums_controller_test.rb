@@ -35,7 +35,7 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
     Setting.update(discogs_token: "fake_token")
     album = albums(:album1)
     mock = MiniTest::Mock.new
-    mock.expect(:call, true, [album.id])
+    mock.expect(:call, true, [album])
 
     assert_not album.has_image?
     assert_not album.is_unknown?

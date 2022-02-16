@@ -3,8 +3,7 @@
 class AttachAlbumImageFromFileJob < ApplicationJob
   queue_as :default
 
-  def perform(album_id, file_path)
-    album = Album.find_by(id: album_id)
+  def perform(album, file_path)
     file_image = MediaFile.image(file_path)
 
     return unless album && file_image.present?
