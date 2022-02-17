@@ -40,7 +40,7 @@ class MediaFile
         artist_name: tag.artist.presence,
         albumartist_name: tag.albumartist.presence,
         tracknum: tag.track,
-        duration: tag.duration
+        duration: tag.duration.round
       }
     end
 
