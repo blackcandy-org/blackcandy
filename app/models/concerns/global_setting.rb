@@ -24,7 +24,7 @@ module GlobalSetting
       settings.each do |setting|
         define_singleton_method(setting) do
           setting_value = instance.send(setting)
-          !setting_value.nil? ? setting_value : ENV[setting.to_s.upcase]
+          setting_value || ENV[setting.to_s.upcase]
         end
       end
     end
@@ -41,11 +41,13 @@ module GlobalSetting
         super(setting_value)
       end
 
-      define_singleton_method(setting) do
-        value = instance.send(setting)
-        setting_value = ScopedSetting.convert_setting_value(type, value)
+      define_method(setting) do
+        ScopedSetting.convert_setting_value(type, super())
+      end
 
-        !value.nil? ? setting_value : default
+      define_singleton_method(setting) do
+        setting_value = instance.send(setting)
+        setting_value || default
       end
     end
   end

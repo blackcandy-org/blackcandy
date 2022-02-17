@@ -16,15 +16,16 @@ module ScopedSetting
       validates setting, inclusion: {in: available_options}, allow_nil: true if available_options
 
       define_method(setting) do
-        value = super()
-        setting_value = ScopedSetting.convert_setting_value(type, value)
+        setting_value = ScopedSetting.convert_setting_value(type, super())
 
-        !value.nil? ? setting_value : default
+        setting_value || default
       end
     end
   end
 
   def self.convert_setting_value(type, value)
+    return value if value.nil?
+
     case type
     when :boolean
       ["true", "1", 1, true].include?(value)

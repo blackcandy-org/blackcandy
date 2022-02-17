@@ -26,6 +26,22 @@ class GlobalSettingTest < ActiveSupport::TestCase
     assert_equal "token", Setting.discogs_token
   end
 
+  test "should update multiple settings" do
+    Setting.update(discogs_token: "token", transcode_bitrate: 192, allow_transcode_lossless: true)
+
+    assert_equal "token", Setting.discogs_token
+    assert_equal 192, Setting.transcode_bitrate
+    assert Setting.allow_transcode_lossless
+  end
+
+  test "should update setting when alreay have others settings" do
+    Setting.update(transcode_bitrate: 192)
+    Setting.update(discogs_token: "token")
+
+    assert_equal 192, Setting.transcode_bitrate
+    assert_equal "token", Setting.discogs_token
+  end
+
   test "should get default value when setting value did not set" do
     assert_nil Setting.instance.values&.[]("transcode_bitrate")
     assert_equal 128, Setting.transcode_bitrate
