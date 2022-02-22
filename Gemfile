@@ -20,7 +20,7 @@ gem "cssbundling-rails", "~> 1.0.0"
 gem "jsbundling-rails", "~> 1.0.0"
 
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.1.3"
+gem "pg", "~> 1.3.2"
 
 # Use Puma as the app server
 gem "puma", "~> 5.6.2"
@@ -63,7 +63,7 @@ gem "bcrypt", "~> 3.1.11"
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", ">= 1.1.0", require: false
+gem "bootsnap", "~> 1.10.3", require: false
 
 group :development, :test do
   gem "standard", "~> 1.4.0"
