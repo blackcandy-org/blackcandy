@@ -82,7 +82,7 @@ $ docker-compose restart
 
 ### Requirements
 
-- Ruby 2.7
+- Ruby 3.1 
 - Postgres 11
 - Redis 6.0 
 - Nodejs 12
