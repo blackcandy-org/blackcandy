@@ -1,3 +1,5 @@
+<% page_title_tag t('label.settings') %>
+
 <div class='o-container o-container--extra-narrow'>
   <%= render partial: 'users/settings/form', locals: { user: @user } %>
   <% if is_admin? %>

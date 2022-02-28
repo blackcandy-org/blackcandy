@@ -3,14 +3,14 @@
   <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
-    <title>Black Candy</title>
+    <title><%= content_for?(:title) ? yield(:title) : "Black Candy" %></title>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'link_icon.png', type: 'image/png' %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body class='u-overflow-hidden'>
+  <body class="<%= 'u-overflow-hidden' unless turbo_native? %>">
     <%= content_for?(:body) ? yield(:body) : yield %>
     <%= render 'shared/icons' %>
   </body>
