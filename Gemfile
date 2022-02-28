@@ -29,7 +29,7 @@ gem "puma", "~> 5.6.2"
 gem "jbuilder", "~> 2.11.5"
 
 # Get meta data from audio file
-gem "wahwah", "~> 1.2.0"
+gem "wahwah", "~> 1.3.0"
 
 # Use sidekiq for backgroud job
 gem "sidekiq", "~> 6.1.2"
