@@ -32,7 +32,7 @@ gem "jbuilder", "~> 2.11.5"
 gem "wahwah", "~> 1.3.0"
 
 # Use sidekiq for backgroud job
-gem "sidekiq", "~> 6.1.2"
+gem "sidekiq", "~> 6.4.0"
 
 # Pagination
 gem "pagy", "~> 5.6.6"
