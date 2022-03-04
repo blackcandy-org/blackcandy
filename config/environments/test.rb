@@ -48,5 +48,7 @@ Rails.application.configure do
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
 
+  config.action_controller.action_on_unpermitted_parameters = :raise
+
   config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 end

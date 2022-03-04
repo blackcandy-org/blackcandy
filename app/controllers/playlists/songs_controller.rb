@@ -29,7 +29,7 @@ class Playlists::SongsController < ApplicationController
   end
 
   def destroy
-    if playlists_songs_params[:clear_all]
+    if params[:clear_all]
       @playlist.songs.clear
     else
       @playlist.songs.destroy(@song)
@@ -41,8 +41,8 @@ class Playlists::SongsController < ApplicationController
   end
 
   def update
-    from_position = Integer(playlists_songs_params[:from_position])
-    to_position = Integer(playlists_songs_params[:to_position])
+    from_position = Integer(params[:from_position])
+    to_position = Integer(params[:to_position])
 
     playlists_song = @playlist.playlists_songs.find_by(position: from_position)
     playlists_song.update(position: to_position)
@@ -55,14 +55,10 @@ class Playlists::SongsController < ApplicationController
   end
 
   def find_song
-    @song = Song.find(playlists_songs_params[:song_id]) unless playlists_songs_params[:clear_all]
+    @song = Song.find(params[:song_id]) unless params[:clear_all]
   end
 
   def find_all_song_ids
     @song_ids = @playlist.song_ids
-  end
-
-  def playlists_songs_params
-    params.permit(:from_position, :to_position, :clear_all, :song_id)
   end
 end
