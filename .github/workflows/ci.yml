@@ -26,14 +26,15 @@ jobs:
           --health-retries 5
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1
-      - name: Set up Node
-        uses: actions/setup-node@v1
+          bundler-cache: true
+      - uses: actions/setup-node@v2
         with:
           node-version: 12.20.0
+          cache: 'yarn'
+      - run: yarn install
       - name: Test and Lint
         env:
           DB_HOST: localhost
@@ -45,9 +46,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get -yqq install libpq-dev imagemagick ffmpeg
-          yarn install
-          gem install bundler
-          bundle install --jobs 4 --retry 3
           bundle exec rails db:setup
           bundle exec rails lint:all
           bundle exec rails test:all
