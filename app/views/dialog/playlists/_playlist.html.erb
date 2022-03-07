@@ -1,3 +1,4 @@
-<%= button_to playlist_songs_path(playlist, song_id: params[:song_id]), method: :post, class: 'c-list__item u-cursor-pointer', form: { 'data-turbo-frame': 'turbo-playlist', 'data-test-id': 'dialog_playlist' } do %>
+<button type="submit" class='c-list__item u-cursor-pointer'
+        formaction="<%= playlist_songs_path(playlist) %>" data-test-id="dialog_playlist">
   <%= playlist.name %>
-<% end %>
+</button>
