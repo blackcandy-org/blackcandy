@@ -6,10 +6,6 @@ class MediaFile
   class << self
     def file_paths
       media_path = File.expand_path(Setting.media_path)
-
-      raise BlackCandyError::InvalidFilePath, I18n.t("error.media_path_blank") unless File.exist?(media_path)
-      raise BlackCandyError::InvalidFilePath, I18n.t("error.media_path_unreadable") unless File.readable?(media_path)
-
       Dir.glob("#{media_path}/**/*.{#{SUPPORT_FORMATE.join(",")}}", File::FNM_CASEFOLD)
     end
 
