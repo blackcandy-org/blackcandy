@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       flash[:success] = t("success.create")
       redirect_to users_path
     else
-      flash.now[:error] = @user.errors.full_messages.join(" ")
+      flash_errors_message(@user, now: true)
     end
   end
 
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       flash.now[:success] = t("success.update")
     else
-      flash.now[:error] = @user.errors.full_messages.join(" ")
+      flash_errors_message(@user, now: true)
     end
   end
 

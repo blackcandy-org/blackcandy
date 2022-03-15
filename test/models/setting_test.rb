@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class GlobalSettingTest < ActiveSupport::TestCase
+class SettingTest < ActiveSupport::TestCase
   test "should have AVAILABLE_SETTINGS constant" do
     assert_equal [:media_path, :discogs_token, :transcode_bitrate, :allow_transcode_lossless], Setting::AVAILABLE_SETTINGS
   end
@@ -47,17 +47,24 @@ class GlobalSettingTest < ActiveSupport::TestCase
     assert_equal 128, Setting.transcode_bitrate
   end
 
-  test "should avoid others option value when set available_options" do
-    assert_equal 128, Setting.transcode_bitrate
-    Setting.update(transcode_bitrate: 10)
-
-    assert_equal 128, Setting.transcode_bitrate
-  end
-
   test "should get right type value when set type option" do
     assert_not Setting.allow_transcode_lossless
     Setting.update(allow_transcode_lossless: 1)
 
     assert Setting.allow_transcode_lossless
+  end
+
+  test "should validate transcode_bitrate options" do
+    setting = Setting.instance
+    setting.update(transcode_bitrate: 10)
+
+    assert_not setting.valid?
+  end
+
+  test "should validate media_path" do
+    setting = Setting.instance
+    setting.update(media_path: "/not_exist")
+
+    assert_not setting.valid?
   end
 end

@@ -61,8 +61,6 @@ en:
     transcoding: 'Transcoding'
   error:
     login: 'Wrong email or password'
-    media_path_blank: 'Media path does not exist'
-    media_path_unreadable: 'Media path is unreadable'
     forbidden: "Sorry, you do not have permission to visit that"
     not_found: "The page you were looking for doesn't exist"
     unprocessable_entity: 'The change you wanted was rejected'
@@ -106,3 +104,12 @@ en:
     no_search_results: "No search results for \"%{query}\""
     transcoding: "Black candy will transcode formats that are not supported by the browser by default."
     allow_transcode_lossless: "Will transcode lossless format to mp3 to reduce bandwidth."
+
+  activerecord:
+    errors:
+      models:
+        setting:
+          attributes:
+            media_path:
+              not_exist: 'does not exist'
+              unreadable: 'is unreadable'

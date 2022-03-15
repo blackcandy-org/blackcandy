@@ -40,6 +40,16 @@ class ApplicationController < ActionController::Base
     Setting.allow_transcode_lossless ? format.in?(Stream::LOSSLESS_FORMATS) : false
   end
 
+  def flash_errors_message(object, now: false)
+    errors_message = object.errors.full_messages.join(". ")
+
+    if now
+      flash.now[:error] = errors_message
+    else
+      flash[:error] = errors_message
+    end
+  end
+
   private
 
   def find_current_user

@@ -29,14 +29,6 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_not_includes MediaFile.file_paths, fixtures_file_path("not_supported_file.txt")
   end
 
-  test "should raise error when media_path is not exist" do
-    Setting.update(media_path: "/not_exist")
-
-    assert_raises BlackCandyError::InvalidFilePath do
-      MediaFile.file_paths
-    end
-  end
-
   test "should get correct format" do
     assert_equal "mp3", MediaFile.format(file_fixture("artist1_album2.mp3"))
     assert_equal "flac", MediaFile.format(file_fixture("artist1_album1.flac"))

@@ -23,18 +23,18 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should sync media when media_path setting updated" do
-    Setting.update(media_path: "path")
+    Setting.update(media_path: Rails.root.join("test/fixtures/files"))
     mock = MiniTest::Mock.new
     mock.expect(:call, true)
 
-    Media.stub(:sync, mock) do
+    MediaSyncJob.stub(:perform_later, mock) do
       assert_admin_access(
         method: :patch,
         url: setting_url,
-        params: {setting: {media_path: "updated_path"}},
+        params: {setting: {media_path: Rails.root.join("test/fixtures")}},
         xhr: true
       ) do
-        assert_equal "updated_path", Setting.media_path
+        assert_equal Rails.root.join("test/fixtures").to_s, Setting.media_path
         mock.verify
       end
     end

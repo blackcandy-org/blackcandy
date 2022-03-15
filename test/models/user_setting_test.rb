@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class ScopedSettingTest < ActiveSupport::TestCase
+class UserSettingTest < ActiveSupport::TestCase
   test "should have AVAILABLE_SETTINGS constant" do
     assert_equal [:theme], User::AVAILABLE_SETTINGS
   end
@@ -24,7 +24,7 @@ class ScopedSettingTest < ActiveSupport::TestCase
     assert_equal "light", user.reload.theme
   end
 
-  test "should avoid others option value when set available_options" do
+  test "should validte theme options" do
     user = users(:visitor1)
     assert_equal "dark", user.theme
 
