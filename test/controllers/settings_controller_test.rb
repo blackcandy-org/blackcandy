@@ -3,6 +3,8 @@
 require "test_helper"
 
 class SettingsControllerTest < ActionDispatch::IntegrationTest
+  include ActiveJob::TestHelper
+
   test "should show setting" do
     assert_login_access(url: setting_url) do
       assert_response :success
@@ -23,19 +25,16 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should sync media when media_path setting updated" do
-    Setting.update(media_path: "path")
-    mock = MiniTest::Mock.new
-    mock.expect(:call, true)
+    Setting.update(media_path: Rails.root.join("test/fixtures/files"))
 
-    Media.stub(:sync, mock) do
+    assert_enqueued_with(job: MediaSyncJob) do
       assert_admin_access(
         method: :patch,
         url: setting_url,
-        params: {setting: {media_path: "updated_path"}},
+        params: {setting: {media_path: Rails.root.join("test/fixtures")}},
         xhr: true
       ) do
-        assert_equal "updated_path", Setting.media_path
-        mock.verify
+        assert_equal Rails.root.join("test/fixtures").to_s, Setting.media_path
       end
     end
   end

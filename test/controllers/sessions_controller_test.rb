@@ -24,6 +24,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to root_url
     assert_not_nil session[:user_credentials]
+    assert_not_empty cookies[:user_id]
   end
 
   test "should destroy session" do
@@ -31,6 +32,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     delete session_url
 
     assert_nil session[:user_credentials]
+    assert_empty cookies[:user_id]
     assert_redirected_to new_session_url
   end
 end

@@ -3,6 +3,8 @@
 require "test_helper"
 
 class ArtistsControllerTest < ActionDispatch::IntegrationTest
+  include ActiveJob::TestHelper
+
   test "should get index" do
     assert_login_access(url: artists_url) do
       assert_response :success
@@ -34,15 +36,13 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
   test "should call artist image attach job when show artist unless artist do not need attach" do
     Setting.update(discogs_token: "fake_token")
     artist = artists(:artist1)
-    mock = MiniTest::Mock.new
-    mock.expect(:call, true, [artist])
 
     assert_not artist.has_image?
     assert_not artist.is_unknown?
 
-    AttachArtistImageFromDiscogsJob.stub(:perform_later, mock) do
+    assert_enqueued_with(job: AttachArtistImageFromDiscogsJob) do
       assert_login_access(url: artist_url(artist)) do
-        mock.verify
+        assert_response :success
       end
     end
   end

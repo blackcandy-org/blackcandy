@@ -31,7 +31,7 @@ class AlbumsController < ApplicationController
     if @album.update(album_params)
       flash[:success] = t("success.update")
     else
-      flash[:error] = @album.errors.full_messages.join(" ")
+      flash_errors_message(@album)
     end
 
     redirect_to @album

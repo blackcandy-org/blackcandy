@@ -88,6 +88,10 @@ class ActiveSupport::TestCase
       media_file_path.to_s == file_path.to_s ? file_info.merge(**attributes, md5_hash: "new_md5_hash") : file_info
     end
   end
+
+  def flush_redis
+    Redis::Objects.redis.flushdb
+  end
 end
 
 class ActionDispatch::IntegrationTest

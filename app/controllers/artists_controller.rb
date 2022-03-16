@@ -27,7 +27,7 @@ class ArtistsController < ApplicationController
     if @artist.update(artist_params)
       flash[:success] = t("success.update")
     else
-      flash[:error] = @artist.errors.full_messages.join(" ")
+      flash_errors_message(@artist)
     end
 
     redirect_to @artist

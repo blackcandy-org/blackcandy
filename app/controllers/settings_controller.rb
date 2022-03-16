@@ -7,19 +7,14 @@ class SettingsController < ApplicationController
 
   def update
     raise BlackCandyError::Forbidden unless is_admin?
+    setting = Setting.instance
 
-    Setting.update(setting_params)
-
-    if setting_params[:media_path]
-      begin
-        Media.sync
-      rescue BlackCandyError::InvalidFilePath => e
-        flash.now[:error] = e.message
-        return
-      end
+    if setting.update(setting_params)
+      MediaSyncJob.perform_later if setting_params[:media_path]
+      flash.now[:success] = t("success.update")
+    else
+      flash_errors_message(setting, now: true)
     end
-
-    flash.now[:success] = t("success.update")
   end
 
   private

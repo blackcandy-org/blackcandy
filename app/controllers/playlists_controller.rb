@@ -22,7 +22,7 @@ class PlaylistsController < ApplicationController
     if @playlist.save
       flash.now[:success] = t("success.create")
     else
-      flash.now[:error] = @playlist.errors.full_messages.join(" ")
+      flash_errors_message(@playlist, now: true)
     end
   end
 

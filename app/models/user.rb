@@ -6,11 +6,14 @@ class User < ApplicationRecord
 
   include ScopedSetting
 
+  has_setting :theme, default: DEFAULT_THEME
+
   before_create :downcase_email
   after_create :create_buildin_playlists
 
   validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}, uniqueness: {case_sensitive: false}
   validates :password, confirmation: {if: :require_password?}, length: {minimum: 6, if: :require_password?}
+  validates :theme, inclusion: {in: AVAILABLE_THEME_OPTIONS}, allow_nil: true
 
   has_many :playlists, -> { where(type: nil) }, inverse_of: :user, dependent: :destroy
   has_one :current_playlist, dependent: :destroy
@@ -19,8 +22,6 @@ class User < ApplicationRecord
   acts_as_authentic do |config|
     config.crypto_provider = ::Authlogic::CryptoProviders::BCrypt
   end
-
-  has_setting :theme, default: DEFAULT_THEME, available_options: AVAILABLE_THEME_OPTIONS
 
   def update_settings(settings)
     settings.each do |key, value|
