@@ -1,15 +1,19 @@
 class MediaSyncJob < ApplicationJob
   queue_as :default
-  after_perform :sync_completed
+  before_enqueue :start_syncing
+  after_perform :stop_syncing
 
   def perform
-    Media.is_syncing = true
     Media.sync
   end
 
   private
 
-  def sync_completed
-    Media.is_syncing = false
+  def start_syncing
+    Media.syncing = true
+  end
+
+  def stop_syncing
+    Media.syncing = false
   end
 end

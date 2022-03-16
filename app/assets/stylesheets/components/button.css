@@ -32,3 +32,7 @@ a.c-button:hover {
 .c-button--full-width {
   width: 100%;
 }
+
+.c-button[disabled] {
+  opacity: 0.6;
+}

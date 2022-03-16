@@ -54,6 +54,7 @@ class ApplicationController < ActionController::Base
 
   def find_current_user
     Current.user = UserSession.find&.user
+    cookies.signed[:user_id] ||= Current.user&.id
   end
 
   def require_login

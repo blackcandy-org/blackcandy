@@ -49,6 +49,7 @@ en:
     tracks: 'Tracks'
     save: 'Save'
     sync: 'Sync'
+    syncing: 'Syncing...'
     integration: 'Integration'
     close: 'Close'
     more: 'More'
@@ -104,6 +105,7 @@ en:
     no_search_results: "No search results for \"%{query}\""
     transcoding: "Black candy will transcode formats that are not supported by the browser by default."
     allow_transcode_lossless: "Will transcode lossless format to mp3 to reduce bandwidth."
+    sync_completed: "Media sync completed"
 
   activerecord:
     errors:

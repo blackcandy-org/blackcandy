@@ -4,6 +4,7 @@ require "application_system_test_case"
 
 class SettingSystemTest < ApplicationSystemTestCase
   setup do
+    flush_redis
     login_as users(:admin)
   end
 
@@ -22,7 +23,9 @@ class SettingSystemTest < ApplicationSystemTestCase
     fill_in("setting_media_path", with: Rails.root.join("test/fixtures/files").to_s)
     click_on("Sync")
 
-    assert_selector(:test_id, "global_loader", visible: true)
+    assert_equal "Syncing...", find(:test_id, "media_sync_button").value
+    assert_text("Media sync completed")
+    assert_equal "Sync", find(:test_id, "media_sync_button").value
   end
 
   test "update discogs token" do

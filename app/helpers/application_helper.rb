@@ -41,7 +41,8 @@ module ApplicationHelper
     render partial: "shared/empty_alert", locals: {has_icon: has_icon, has_overlay: has_overlay}
   end
 
-  def render_flash
+  def render_flash(type: :success, message: "")
+    flash[type] = message unless message.blank?
     turbo_stream.update "turbo-flash", partial: "shared/flash"
   end
 

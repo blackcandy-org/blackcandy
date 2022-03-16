@@ -1,4 +1,6 @@
 <% content_for :body do %>
+  <%= turbo_stream_from "media_sync" %>
+
   <% if turbo_native? %>
     <div id='turbo-flash' class='c-flash'>
       <%= render 'shared/flash' %>
@@ -37,9 +39,6 @@
   <% end %>
 
   <div id='js-overlay' class='c-overlay c-overlay--fixed c-overlay--blur u-display-none'></div>
-  <div id='js-global-loader' class='c-overlay c-overlay--fixed c-overlay--blur u-display-none' data-controller='loader' data-loader-target='indicator' data-test-id='global_loader'>
-    <%= loader_tag size: 'large' %>
-  </div>
   <%= turbo_frame_tag 'turbo-dialog' %>
 <% end %>
 

@@ -3,8 +3,11 @@
 require "test_helper"
 
 class MediaTest < ActiveSupport::TestCase
+  include ActionCable::TestHelper
+
   setup do
     clear_media_data
+    flush_redis
 
     Setting.update(media_path: Rails.root.join("test/fixtures/files"))
     Media.sync
@@ -97,6 +100,26 @@ class MediaTest < ActiveSupport::TestCase
       assert_nil Song.find_by(name: "wma_sample")
       assert_nil Album.find_by(name: "album3")
       assert_nil Artist.find_by(name: "artist2")
+    end
+  end
+
+  test "should get syncing status" do
+    assert_not Media.syncing?
+  end
+
+  test "should change syncing status" do
+    Media.syncing = true
+    assert Media.syncing?
+  end
+
+  test "should always get same id" do
+    assert_equal "TWVkaWE=", Media.instance.id
+    assert_equal Media.instance.id, Media.instance.id
+  end
+
+  test "should broadcast media sync stream when set syncing status" do
+    assert_broadcasts("media_sync", 1) do
+      Media.syncing = true
     end
   end
 end
