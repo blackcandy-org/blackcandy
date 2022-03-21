@@ -7,5 +7,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_CABLE_URL") %>
+  url: <%= ENV.fetch("REDIS_CABLE_URL") { "redis://localhost:6379/3" } %>
   channel_prefix: black_candy_production
