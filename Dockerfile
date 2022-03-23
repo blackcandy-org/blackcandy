@@ -16,7 +16,8 @@ RUN apk add --no-cache \
   yarn \
   imagemagick \
   ffmpeg \
-  nginx
+  nginx \
+  gcompat
 
 WORKDIR /app
 
