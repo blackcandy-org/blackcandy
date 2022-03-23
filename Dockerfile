@@ -16,13 +16,14 @@ RUN apk add --no-cache \
   yarn \
   imagemagick \
   ffmpeg \
-  nginx
+  nginx \
+  gcompat
 
 WORKDIR /app
 
 ADD . /app
 
-RUN apk add --no-cache --virtual .build-deps build-base gcompat \
+RUN apk add --no-cache --virtual .build-deps build-base \
   && bundle install --without development test \
   && rm -rf /usr/local/bundle/cache/*.gem \
   && apk del --no-network .build-deps
