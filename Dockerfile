@@ -22,7 +22,7 @@ WORKDIR /app
 
 ADD . /app
 
-RUN apk add --no-cache --virtual .build-deps build-base \
+RUN apk add --no-cache --virtual .build-deps build-base gcompat \
   && bundle install --without development test \
   && rm -rf /usr/local/bundle/cache/*.gem \
   && apk del --no-network .build-deps
