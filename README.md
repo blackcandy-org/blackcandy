@@ -2,9 +2,9 @@
   <img alt='Black candy logo' width='200' src='https://raw.githubusercontent.com/aidewoode/black_candy/master/app/assets/images/logo.svg'>
 </p>
 
-# Black candy
+# Black Candy
 [![CI](https://github.com/aidewoode/black_candy/actions/workflows/ci.yml/badge.svg)](https://github.com/aidewoode/black_candy/actions/workflows/ci.yml)
-[![Coverage Status](https://coveralls.io/repos/github/aidewoode/black_candy/badge.svg?branch=master)](https://coveralls.io/github/aidewoode/black_candy?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/blackcandy-org/black_candy/badge.svg?branch=master)](https://coveralls.io/github/blackcandy-org/black_candy?branch=master)
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
 ![Docker Pulls](https://img.shields.io/docker/pulls/blackcandy/blackcandy)
 
