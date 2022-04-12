@@ -3,7 +3,7 @@ name: Release Edge Build
 on:
   push:
     branches:
-      - master
+      - fix-cannot-generate-transcode-cache
 
 jobs:
   build:
