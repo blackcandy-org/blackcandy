@@ -7,9 +7,7 @@ class CachedTranscodedStreamController < StreamController
 
   private
 
-  def set_header
-    return unless nginx_senfile?
-
+  def set_nginx_header
     response.headers["X-Accel-Redirect"] = File.join("/private_cache_media", @stream.transcode_cache_file_path.sub(Stream::TRANSCODE_CACHE_DIRECTORY.to_s, ""))
   end
 end

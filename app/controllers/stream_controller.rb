@@ -2,7 +2,6 @@
 
 class StreamController < ApplicationController
   before_action :find_stream
-  before_action :set_header
 
   def new
     if need_transcode? @stream.format
@@ -14,11 +13,9 @@ class StreamController < ApplicationController
 
   private
 
-  # Let nginx can get value of media_path dynamically in the nginx config,
-  # when use X-Accel-Redirect header to send file.
-  def set_header
-    return unless nginx_senfile?
-
+  def set_nginx_header
+    # Let nginx can get value of media_path dynamically in the nginx config,
+    # when use X-Accel-Redirect header to send file.
     response.headers["X-Media-Path"] = Setting.media_path
     response.headers["X-Accel-Redirect"] = File.join("/private_media", @stream.file_path.sub(File.expand_path(Setting.media_path), ""))
   end
@@ -34,6 +31,8 @@ class StreamController < ApplicationController
 
   def send_local_file(file_path)
     if nginx_senfile?
+      set_nginx_header
+
       send_file file_path
       return
     end
