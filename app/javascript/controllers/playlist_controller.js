@@ -1,30 +1,30 @@
-import { Controller } from '@hotwired/stimulus';
-import { fetchRequest } from '../helper';
+import { Controller } from '@hotwired/stimulus'
+import { fetchRequest } from '../helper'
 
 export default class extends Controller {
-  static targets = ['name', 'nameInput'];
+  static targets = ['name', 'nameInput']
 
   static values = {
     id: Number
   }
 
-  rename(event) {
-    event.preventDefault();
+  rename (event) {
+    event.preventDefault()
 
-    const name = this.nameTarget.innerText;
+    const name = this.nameTarget.innerText
 
-    this.nameTarget.classList.add('u-display-none');
-    this.nameInputTarget.classList.remove('u-display-none');
-    this.nameInputTarget.value = name;
-    this.nameInputTarget.focus();
-    this.nameInputTarget.select();
+    this.nameTarget.classList.add('u-display-none')
+    this.nameInputTarget.classList.remove('u-display-none')
+    this.nameInputTarget.value = name
+    this.nameInputTarget.focus()
+    this.nameInputTarget.select()
   }
 
-  updateName() {
-    const newName = this.nameInputTarget.value.trim();
+  updateName () {
+    const newName = this.nameInputTarget.value.trim()
 
-    if (newName != this.nameTarget.innerText && newName != '') {
-      this.nameTarget.innerText = newName;
+    if (newName !== this.nameTarget.innerText && newName !== '') {
+      this.nameTarget.innerText = newName
 
       fetchRequest(`/playlists/${this.idValue}`, {
         method: 'put',
@@ -33,16 +33,16 @@ export default class extends Controller {
             name: newName
           }
         })
-      });
+      })
     }
 
-    this.nameTarget.classList.remove('u-display-none');
-    this.nameInputTarget.classList.add('u-display-none');
+    this.nameTarget.classList.remove('u-display-none')
+    this.nameInputTarget.classList.add('u-display-none')
   }
 
-  updateNameOnEnter(event) {
-    if (event.key == 'Enter') {
-      this.updateName();
+  updateNameOnEnter (event) {
+    if (event.key === 'Enter') {
+      this.updateName()
     }
   }
 }

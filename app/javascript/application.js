@@ -1,6 +1,6 @@
-import '@hotwired/turbo-rails';
-import './controllers';
+import '@hotwired/turbo-rails'
+import './controllers'
 
-import Player from './player';
+import Player from './player'
 
-window.App = { player: new Player() };
+window.App = { player: new Player() }

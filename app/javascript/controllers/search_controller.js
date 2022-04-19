@@ -1,28 +1,28 @@
-import { Controller } from '@hotwired/stimulus';
+import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = ['input'];
+  static targets = ['input']
 
-  connect() {
-    this.moveCursorToEnd();
+  connect () {
+    this.moveCursorToEnd()
   }
 
-  moveCursorToEnd() {
-    const searchValueLength = this.inputTarget.value.length;
+  moveCursorToEnd () {
+    const searchValueLength = this.inputTarget.value.length
     if (searchValueLength > 0) {
-      this.inputTarget.focus();
-      this.inputTarget.setSelectionRange(searchValueLength, searchValueLength);
+      this.inputTarget.focus()
+      this.inputTarget.setSelectionRange(searchValueLength, searchValueLength)
     }
   }
 
-  submit(e) {
-    this.inputTarget.value = this.inputTarget.value.trim();
+  submit (e) {
+    this.inputTarget.value = this.inputTarget.value.trim()
 
     if (this.inputTarget.value.length === 0) {
-      e.preventDefault();
-      e.stopPropagation();
+      e.preventDefault()
+      e.stopPropagation()
     } else {
-      this.element.classList.add('is-loading');
+      this.element.classList.add('is-loading')
     }
   }
 }

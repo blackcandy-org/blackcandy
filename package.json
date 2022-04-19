@@ -14,18 +14,24 @@
     "postcss-import": "^14.0.2",
     "postcss-mixins": "^6.2.3",
     "postcss-nesting": "^10.1.0",
-    "postcss-preset-env": "^7.1.0"
+    "postcss-preset-env": "^7.1.0",
+    "standard": "^17.0.0-2"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.6.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2",
     "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0"
   },
   "scripts": {
     "build:css": "postcss ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds"
+  },
+  "standard": {
+    "globals": [
+      "IntersectionObserver",
+      "MediaMetadata",
+      "Request",
+      "fetch",
+      "CustomEvent"
+    ]
   }
 }

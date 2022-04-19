@@ -1,24 +1,24 @@
-import { Controller } from '@hotwired/stimulus';
-import { Sortable, Plugins } from '@shopify/draggable';
-import { fetchRequest } from '../helper';
+import { Controller } from '@hotwired/stimulus'
+import { Sortable, Plugins } from '@shopify/draggable'
+import { fetchRequest } from '../helper'
 
 export default class extends Controller {
   static values = {
     url: String
   }
 
-  connect() {
+  connect () {
     this.sortable = new Sortable(this.element, {
       draggable: '.js-playlist-sortable-item',
       handle: '.js-playlist-sortable-item-handle',
       swapAnimation: {
         duration: 150,
-        easingFunction: 'ease-in-out',
+        easingFunction: 'ease-in-out'
       },
 
       mirror: {
         appendTo: this.element,
-        constrainDimensions: true,
+        constrainDimensions: true
       },
 
       classes: {
@@ -27,26 +27,26 @@ export default class extends Controller {
       },
 
       plugins: [Plugins.SwapAnimation]
-    });
+    })
 
-    this.sortable.on('sortable:stop', this._reorderPlaylist);
+    this.sortable.on('sortable:stop', this._reorderPlaylist)
   }
 
-  disconnect() {
+  disconnect () {
     if (this.sortable) {
-      this.sortable.destroy();
+      this.sortable.destroy()
     }
   }
 
   _reorderPlaylist = (event) => {
-    App.player.playlist.move(event.oldIndex, event.newIndex);
+    window.App.player.playlist.move(event.oldIndex, event.newIndex)
 
     fetchRequest(this.urlValue, {
       method: 'put',
       body: JSON.stringify({
         from_position: event.oldIndex + 1,
-        to_position: event.newIndex + 1,
+        to_position: event.newIndex + 1
       })
-    });
+    })
   }
 }
