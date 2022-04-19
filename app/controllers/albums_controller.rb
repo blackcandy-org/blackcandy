@@ -21,7 +21,7 @@ class AlbumsController < ApplicationController
 
   def show
     @songs = @album.songs.includes(:artist)
-    AttachAlbumImageFromDiscogsJob.perform_later(@album) if @album.need_attach_from_discogs?
+    @album.attach_image_from_discogs
   end
 
   def edit

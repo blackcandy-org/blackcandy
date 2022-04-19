@@ -40,7 +40,7 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
     assert_not album.has_image?
     assert_not album.is_unknown?
 
-    assert_enqueued_with(job: AttachAlbumImageFromDiscogsJob) do
+    assert_enqueued_with(job: AttachImageFromDiscogsJob) do
       assert_login_access(url: album_url(album)) do
         assert_response :success
       end

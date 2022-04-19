@@ -13,6 +13,10 @@ class DiscogsApi
       JSON.parse response, symbolize_names: true if response.success?
     end
 
+    def image(imageable)
+      imageable.is_a?(Artist) ? artist_image(imageable) : album_image(imageable)
+    end
+
     def artist_image(artist)
       raise TypeError, "Expect Artist instance" unless artist.is_a? Artist
 
