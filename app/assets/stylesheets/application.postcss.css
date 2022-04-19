@@ -43,6 +43,7 @@
 @import 'components/nav.css';
 @import 'components/action_bar.css';
 @import 'components/table.css';
+@import 'components/search.css';
 
 @import 'utilities/display.css';
 @import 'utilities/spacing.css';
