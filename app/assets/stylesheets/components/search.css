@@ -2,6 +2,6 @@
   display: none;
 }
 
-.c-search.loading .c-loader {
+.c-search.is-loading .c-loader {
   display: revert;
 }
