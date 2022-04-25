@@ -1,12 +1,16 @@
-<div class='c-input-group o-grid__item' data-controller='search' span@medium='2-6' span='3-5'>
-  <div class='c-input-group__icon'>
-    <%= icon_tag 'search', size: 'large' %>
-  </div>
-  <input id='js-search-input' class='c-input' data-search-target='input' data-action='keydown->search#query' data-test-id='search_input' value='<%= params[:query] %>' />
-  <div class='c-input-group__icon u-display-none' data-search-target='loader'>
-    <%= loader_tag size: 'small' %>
-  </div>
-</div>
+<%= form_tag search_path, method: :get, class: 'c-search c-input-group o-grid__item',
+            'span@medium': '2-6', span: '3-5',
+             data: { action: 'search#submit', controller: 'search' } do %>
+    <div class='c-input-group__icon'>
+      <%= icon_tag 'search', size: 'large' %>
+    </div>
+    <%= text_field_tag 'query', params[:query], class: 'c-input',
+                       data: { search_target: 'input', test_id: 'search_input' } %>
+    <div class='c-input-group__icon'>
+      <%= loader_tag size: 'small' %>
+    </div>
+<% end %>
+
 <div class='o-grid__item o-grid__item--justify-end' span@medium='7-7' span='6-7'>
   <div data-controller='dropdown' class='c-dropdown' data-test-id='search_bar_menu'>
     <span data-action='click->dropdown#show'><%= avatar_tag Current.user %></span>

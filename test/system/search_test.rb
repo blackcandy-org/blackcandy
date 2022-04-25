@@ -8,14 +8,14 @@ class SearchSystemTest < ApplicationSystemTestCase
   end
 
   test "show search results" do
-    fill_in "search_input", with: "artist"
+    fill_in "query", with: "artist"
     find(:test_id, "search_input").send_keys(:enter)
 
     assert_text('Search results for "artist"')
   end
 
   test "can not request search when query text is empty" do
-    fill_in "search_input", with: ""
+    fill_in "query", with: ""
     find(:test_id, "search_input").send_keys(:enter)
 
     assert_no_text('Search results for "artist"')

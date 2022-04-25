@@ -1,36 +1,28 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-  static targets = ['loader', 'input'];
+  static targets = ['input'];
 
   connect() {
-    this.inputTarget.value = this.inputTarget.getAttribute('value');
+    this.moveCursorToEnd();
   }
 
-  disconnect() {
-    this.loaderTarget.classList.add('u-display-none');
-    this.inputTarget.value = '';
+  moveCursorToEnd() {
+    const searchValueLength = this.inputTarget.value.length;
+    if (searchValueLength > 0) {
+      this.inputTarget.focus();
+      this.inputTarget.setSelectionRange(searchValueLength, searchValueLength);
+    }
   }
 
-  query(event) {
-    const query = event.target.value.trim();
+  submit(e) {
+    this.inputTarget.value = this.inputTarget.value.trim();
 
-    if (event.key != 'Enter' || query == '') { return; }
-
-    this.loaderTarget.classList.remove('u-display-none');
-    const queryUrl = `/search${query ? `?query=${query}` : ''}`;
-
-    Turbo.visit(queryUrl);
-    this._focusInput();
-  }
-
-  _focusInput() {
-    document.addEventListener('turbo:load', () => {
-      const searchElement = document.querySelector('#js-search-input');
-      const searchValueLength = searchElement.value.length;
-
-      searchElement.focus();
-      searchElement.setSelectionRange(searchValueLength, searchValueLength);
-    }, { once: true });
+    if (this.inputTarget.value.length === 0) {
+      e.preventDefault();
+      e.stopPropagation();
+    } else {
+      this.element.classList.add('is-loading');
+    }
   }
 }

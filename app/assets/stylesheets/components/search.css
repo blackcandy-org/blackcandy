@@ -1,0 +1,7 @@
+.c-search .c-loader {
+  display: none;
+}
+
+.c-search.loading .c-loader {
+  display: revert;
+}
