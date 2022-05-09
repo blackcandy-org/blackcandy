@@ -76,7 +76,7 @@ module ApplicationHelper
       "cols@extra-wide" => 7
     )
 
-    tag.div(**tag_options, &block)
+    tag.div(**tag_options, escape: false, &block)
   end
 
   def page_title_tag(title)
