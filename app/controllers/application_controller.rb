@@ -22,6 +22,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  rescue_from ActionController::InvalidAuthenticityToken do
+    logout_current_user
+  end
+
   def browser
     @browser ||= Browser.new(
       request.headers["User-Agent"],
@@ -63,5 +67,12 @@ class ApplicationController < ActionController::Base
 
   def require_admin
     raise BlackCandyError::Forbidden unless is_admin?
+  end
+
+  def logout_current_user
+    UserSession.find&.destroy
+    cookies.delete(:user_id)
+
+    redirect_to new_session_path
   end
 end

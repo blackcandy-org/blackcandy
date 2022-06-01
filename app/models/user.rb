@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   include ScopedSetting
 
+  has_secure_token :api_token
   has_setting :theme, default: DEFAULT_THEME
 
   before_create :downcase_email
