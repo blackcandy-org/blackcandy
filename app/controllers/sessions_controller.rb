@@ -21,10 +21,7 @@ class SessionsController < ApplicationController
 
   def destroy
     return unless logged_in?
-
-    UserSession.find.destroy
-    cookies.delete(:user_id)
-    redirect_to new_session_path
+    logout_current_user
   end
 
   private

@@ -35,4 +35,14 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_empty cookies[:user_id]
     assert_redirected_to new_session_url
   end
+
+  test "should have forgery protection" do
+    with_forgery_protection do
+      login @user
+
+      assert_nil session[:user_credentials]
+      assert_nil cookies[:user_id]
+      assert_redirected_to new_session_url
+    end
+  end
 end

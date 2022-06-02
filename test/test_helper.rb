@@ -66,6 +66,10 @@ class ActiveSupport::TestCase
     post session_url, params: {user_session: {email: user.email, password: "foobar"}}
   end
 
+  def api_token_header(user)
+    {authorization: ActionController::HttpAuthentication::Token.encode_credentials(user.api_token)}
+  end
+
   def logout
     delete session_url
   end
@@ -91,6 +95,14 @@ class ActiveSupport::TestCase
 
   def flush_redis
     Redis::Objects.redis.flushdb
+  end
+
+  def with_forgery_protection
+    old = ActionController::Base.allow_forgery_protection
+    ActionController::Base.allow_forgery_protection = true
+    yield
+  ensure
+    ActionController::Base.allow_forgery_protection = old
   end
 end
 

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 json.call(@song, :id, :name, :duration)
 json.url new_stream_path(song_id: @song.id)
 json.album_name @song.album.title
