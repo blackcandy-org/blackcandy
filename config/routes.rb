@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :stream, only: [:new]
   resources :transcoded_stream, only: [:new]
   resources :cached_transcoded_stream, only: [:new]
-  resources :songs, only: [:index, :show]
+  resources :songs, only: [:index]
   resources :albums, only: [:index, :show, :edit, :update], concerns: :playable
 
   resources :users, except: [:show] do
@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resource :authentication, only: [:create]
+      resources :songs, only: [:show]
     end
   end
 end

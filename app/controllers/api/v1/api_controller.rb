@@ -7,16 +7,19 @@ module Api
 
       private
 
+      # If user already has logged in then authenticate with current session,
+      # otherwise authenticate with api token.
       def find_current_user
         Current.user = UserSession.find&.user
 
         return if logged_in?
 
-        Current.user = authenticate_with_http_token do |token, options|
+        authenticate_with_http_token do |token, options|
           user = User.find_by(api_token: token)
-
           return unless user.present?
-          return user if ActiveSupport::SecurityUtils.secure_compare(user.api_token, token)
+
+          # Compare the tokens in a time-constant manner, to mitigate timing attacks.
+          Current.user = user if ActiveSupport::SecurityUtils.secure_compare(user.api_token, token)
         end
       end
 

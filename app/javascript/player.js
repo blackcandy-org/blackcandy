@@ -19,7 +19,7 @@ class Player {
     this.isPlaying = true;
 
     if (!song.howl) {
-      fetchRequest(`/songs/${song.id}`)
+      fetchRequest(`/api/v1/songs/${song.id}`)
         .then((response) => {
           return response.json();
         })

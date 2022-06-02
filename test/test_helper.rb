@@ -66,6 +66,10 @@ class ActiveSupport::TestCase
     post session_url, params: {user_session: {email: user.email, password: "foobar"}}
   end
 
+  def api_token_header(user)
+    {authorization: ActionController::HttpAuthentication::Token.encode_credentials(user.api_token)}
+  end
+
   def logout
     delete session_url
   end
