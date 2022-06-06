@@ -2,60 +2,60 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from './application';
+import { application } from './application'
 
-import DialogController from './dialog_controller.js';
+import DialogController from './dialog_controller.js'
 
-application.register('dialog', DialogController);
+import DropdownController from './dropdown_controller.js'
 
-import DropdownController from './dropdown_controller.js';
+import FlashController from './flash_controller.js'
 
-application.register('dropdown', DropdownController);
+import FormController from './form_controller.js'
 
-import FlashController from './flash_controller.js';
+import InfiniteScrollController from './infinite_scroll_controller.js'
 
-application.register('flash', FlashController);
+import LoaderController from './loader_controller.js'
 
-import FormController from './form_controller.js';
+import MediaSessionController from './media_session_controller.js'
 
-application.register('form', FormController);
+import MiniPlayerController from './mini_player_controller.js'
 
-import InfiniteScrollController from './infinite_scroll_controller.js';
+import PlayerController from './player_controller.js'
 
-application.register('infinite-scroll', InfiniteScrollController);
+import PlaylistController from './playlist_controller.js'
 
-import LoaderController from './loader_controller.js';
+import PlaylistSongsController from './playlist_songs_controller.js'
 
-application.register('loader', LoaderController);
+import PlaylistSortableController from './playlist_sortable_controller.js'
 
-import MediaSessionController from './media_session_controller.js';
+import SearchController from './search_controller.js'
 
-application.register('media-session', MediaSessionController);
+import ThemeController from './theme_controller.js'
 
-import MiniPlayerController from './mini_player_controller.js';
+application.register('dialog', DialogController)
 
-application.register('mini-player', MiniPlayerController);
+application.register('dropdown', DropdownController)
 
-import PlayerController from './player_controller.js';
+application.register('flash', FlashController)
 
-application.register('player', PlayerController);
+application.register('form', FormController)
 
-import PlaylistController from './playlist_controller.js';
+application.register('infinite-scroll', InfiniteScrollController)
 
-application.register('playlist', PlaylistController);
+application.register('loader', LoaderController)
 
-import PlaylistSongsController from './playlist_songs_controller.js';
+application.register('media-session', MediaSessionController)
 
-application.register('playlist-songs', PlaylistSongsController);
+application.register('mini-player', MiniPlayerController)
 
-import PlaylistSortableController from './playlist_sortable_controller.js';
+application.register('player', PlayerController)
 
-application.register('playlist-sortable', PlaylistSortableController);
+application.register('playlist', PlaylistController)
 
-import SearchController from './search_controller.js';
+application.register('playlist-songs', PlaylistSongsController)
 
-application.register('search', SearchController);
+application.register('playlist-sortable', PlaylistSortableController)
 
-import ThemeController from './theme_controller.js';
+application.register('search', SearchController)
 
-application.register('theme', ThemeController);
+application.register('theme', ThemeController)
