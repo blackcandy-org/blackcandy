@@ -40,7 +40,7 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
     assert_not artist.has_image?
     assert_not artist.is_unknown?
 
-    assert_enqueued_with(job: AttachArtistImageFromDiscogsJob) do
+    assert_enqueued_with(job: AttachImageFromDiscogsJob) do
       assert_login_access(url: artist_url(artist)) do
         assert_response :success
       end

@@ -2,11 +2,10 @@
 
 class Artist < ApplicationRecord
   include Searchable
+  include Imageable
 
   has_many :albums, dependent: :destroy
   has_many :songs
-
-  mount_uploader :image, ImageUploader
 
   search_by :name
 
@@ -15,10 +14,6 @@ class Artist < ApplicationRecord
     return I18n.t("text.unknown_artist") if is_unknown?
 
     name
-  end
-
-  def has_image?
-    image.file.present?
   end
 
   def is_unknown?
@@ -31,9 +26,5 @@ class Artist < ApplicationRecord
 
   def appears_on_albums
     Album.joins(:songs).where("albums.artist_id != ? AND songs.artist_id = ?", id, id).distinct
-  end
-
-  def need_attach_from_discogs?
-    Setting.discogs_token.present? && !has_image? && !is_unknown?
   end
 end
