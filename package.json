@@ -14,10 +14,10 @@
     "postcss-import": "^14.0.2",
     "postcss-mixins": "^6.2.3",
     "postcss-nesting": "^10.1.0",
-    "postcss-preset-env": "^7.1.0",
-    "standard": "^17.0.0-2"
+    "postcss-preset-env": "^7.1.0"
   },
   "devDependencies": {
+    "standard": "^17.0.0",
     "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0"
   },

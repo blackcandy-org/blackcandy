@@ -65,7 +65,7 @@ export default class extends Controller {
 
   _showPlayingItem = () => {
     this.itemTargets.forEach((element) => {
-      element.classList.toggle('is-active', element.dataset.songId === this.player.currentSong.id)
+      element.classList.toggle('is-active', Number(element.dataset.songId) === this.player.currentSong.id)
     })
   }
 
@@ -86,7 +86,7 @@ export default class extends Controller {
   }
 
   _delete (target) {
-    const { songId } = target.closest('[data-song-id]').dataset
+    const songId = Number(target.closest('[data-song-id]').dataset.songId)
 
     if (!this.isCurrentValue) { return }
 
