@@ -40,6 +40,8 @@ export default class extends Controller {
     document.removeEventListener('player:pause', this._setPauseStatus)
     document.removeEventListener('player:stop', this._setStopStatus)
     document.removeEventListener('player:end', this._setEndStatus)
+
+    this._clearTimerInterval()
   }
 
   play () {
@@ -111,10 +113,16 @@ export default class extends Controller {
     return this.modes[this.currentModeIndex]
   }
 
+  get currentTime () {
+    const currentTime = this.currentSong.howl ? this.currentSong.howl.seek() : 0
+    return (typeof currentTime === 'number') ? Math.round(currentTime) : 0
+  }
+
   _setBeforePlayingStatus = () => {
     this.headerTarget.classList.add('is-expanded')
     this.loaderTarget.classList.remove('u-display-none')
     this.favoriteButtonTarget.classList.remove('u-visibility-hidden')
+    this.songTimerTarget.textContent = formatDuration(0)
   }
 
   _setPlayingStatus = () => {
@@ -140,17 +148,22 @@ export default class extends Controller {
     this.unFavoriteButtonTarget.action = favoriteSongUrl
 
     window.requestAnimationFrame(this._setProgress.bind(this))
+    this.timerInterval = setInterval(this._setTimer.bind(this), 1000)
 
     // let playlist can show current palying song
     dispatchEvent(document, 'playlistSongs:showPlaying')
   }
 
   _setPauseStatus = () => {
+    this._clearTimerInterval()
+
     this.pauseButtonTarget.classList.add('u-display-none')
     this.playButtonTarget.classList.remove('u-display-none')
   }
 
   _setStopStatus = () => {
+    this._clearTimerInterval()
+
     if (this.player.playlist.length === 0) {
       this.headerTarget.classList.remove('is-expanded')
       this._setPauseStatus()
@@ -158,6 +171,8 @@ export default class extends Controller {
   }
 
   _setEndStatus = () => {
+    this._clearTimerInterval()
+
     if (this.currentMode === 'single') {
       this.player.play()
     } else {
@@ -166,14 +181,20 @@ export default class extends Controller {
   }
 
   _setProgress () {
-    let currentTime = this.currentSong.howl ? this.currentSong.howl.seek() : 0
-    currentTime = (typeof currentTime === 'number') ? Math.round(currentTime) : 0
-
-    this.songTimerTarget.textContent = formatDuration(currentTime)
-    this.progressTarget.value = (currentTime / this.currentSong.duration) * 100 || 0
+    this.progressTarget.value = (this.currentTime / this.currentSong.duration) * 100 || 0
 
     if (this.player.isPlaying) {
       window.requestAnimationFrame(this._setProgress.bind(this))
+    }
+  }
+
+  _setTimer () {
+    this.songTimerTarget.textContent = formatDuration(this.currentTime)
+  }
+
+  _clearTimerInterval () {
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval)
     }
   }
 

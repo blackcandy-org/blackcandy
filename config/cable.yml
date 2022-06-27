@@ -1,5 +1,6 @@
 development:
-  adapter: async
+  adapter: redis
+  url: <%= ENV.fetch("REDIS_CABLE_URL") %>
 
 test:
   adapter: test
