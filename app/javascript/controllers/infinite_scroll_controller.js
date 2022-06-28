@@ -34,7 +34,7 @@ export default class extends Controller {
 
   _handleNextPageLoad (entries) {
     entries.forEach((entry) => {
-      if (!entry.intersectionRatio === 1) { return }
+      if (entry.intersectionRatio !== 1) { return }
 
       if (!this.hasNextPage) {
         this.triggerTarget.classList.add('u-display-none')
