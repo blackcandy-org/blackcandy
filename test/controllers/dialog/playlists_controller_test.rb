@@ -4,8 +4,9 @@ require "test_helper"
 
 class Dialog::PlaylistsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    assert_login_access(url: dialog_playlists_url) do
-      assert_response :success
-    end
+    login
+    get dialog_playlists_url
+
+    assert_response :success
   end
 end
