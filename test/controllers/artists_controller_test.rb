@@ -26,7 +26,7 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should update image for album" do
+  test "should update image for artist" do
     artist = artists(:artist1)
     artist_original_image_url = artist.image.url
 
@@ -34,6 +34,13 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
     patch artist_url(artist), params: {artist: {image: fixture_file_upload("cover_image.jpg", "image/jpeg")}}
 
     assert_not_equal artist_original_image_url, artist.reload.image.url
+  end
+
+  test "should has error flash when failed to update artist" do
+    login users(:admin)
+    patch artist_url(artists(:artist1)), params: {artist: {image: fixture_file_upload("cover_image.jpg", "image/gif")}}
+
+    assert flash[:error].present?
   end
 
   test "should call artist image attach job when show artist unless artist do not need attach" do

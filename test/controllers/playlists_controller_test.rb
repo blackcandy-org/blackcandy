@@ -19,6 +19,13 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
     assert_equal playlists_count + 1, Playlist.count
   end
 
+  test "should has error flash when failed to create playlist" do
+    login
+    post playlists_url, params: {playlist: {name: ""}}, xhr: true
+
+    assert flash[:error].present?
+  end
+
   test "should update playlist" do
     playlist = playlists(:playlist1)
     user = playlist.user

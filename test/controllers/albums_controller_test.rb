@@ -36,6 +36,13 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
     assert_not_equal album_original_image_url, album.reload.image.url
   end
 
+  test "should has error flash when failed to update album" do
+    login users(:admin)
+    patch album_url(albums(:album1)), params: {album: {image: fixture_file_upload("cover_image.jpg", "image/gif")}}
+
+    assert flash[:error].present?
+  end
+
   test "should call album image attach job when show album unless album do not need attach" do
     login
 

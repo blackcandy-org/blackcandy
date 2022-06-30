@@ -21,6 +21,13 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "updated_token", Setting.discogs_token
   end
 
+  test "should has error flash when failed to update" do
+    login users(:admin)
+    patch setting_url, params: {setting: {transcode_bitrate: 11}}, xhr: true
+
+    assert flash[:error].present?
+  end
+
   test "should sync media when media_path setting updated" do
     Setting.update(media_path: Rails.root.join("test/fixtures/files"))
 

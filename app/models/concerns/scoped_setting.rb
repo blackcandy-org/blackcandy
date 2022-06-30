@@ -29,8 +29,6 @@ module ScopedSetting
       ["true", "1", 1, true].include?(value)
     when :integer
       value.to_i
-    when :float
-      value.to_f
     else
       value
     end

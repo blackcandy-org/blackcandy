@@ -27,7 +27,7 @@ class ApplicationControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should require login" do
-    login users(:visitor1)
+    login
 
     get "/dummy_index"
     assert_response :success

@@ -24,12 +24,6 @@ class User < ApplicationRecord
     config.crypto_provider = ::Authlogic::CryptoProviders::BCrypt
   end
 
-  def update_settings(settings)
-    settings.each do |key, value|
-      send("#{key}=", value)
-    end
-  end
-
   def all_playlists
     playlists.unscope(where: :type)
   end

@@ -27,4 +27,9 @@ class CurrentPlaylistSongsControllerTest < ActionDispatch::IntegrationTest
     post current_playlist_songs_url, params: {song_id: 3}, xhr: true
     assert_equal [3, 1, 2], @playlist.reload.song_ids
   end
+
+  test "should has error flash when song alreay in playlist" do
+    post current_playlist_songs_url, params: {song_id: 2}, xhr: true
+    assert flash[:error].present?
+  end
 end
