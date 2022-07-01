@@ -46,6 +46,7 @@ class PlayerSystemTest < ApplicationSystemTestCase
 
   test "favorite toggle" do
     find(:test_id, "player_play_button").click
+    assert_selector(:test_id, "player_header", visible: true)
     assert_selector(:test_id, "player_song_name", text: Song.first.name)
 
     find(:test_id, "player_favorite_button").click

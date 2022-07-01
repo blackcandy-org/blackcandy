@@ -62,16 +62,12 @@ class ActiveSupport::TestCase
     tmp_file.unlink
   end
 
-  def login(user)
+  def login(user = users(:visitor1))
     post session_url, params: {user_session: {email: user.email, password: "foobar"}}
   end
 
   def api_token_header(user)
     {authorization: ActionController::HttpAuthentication::Token.encode_credentials(user.api_token)}
-  end
-
-  def logout
-    delete session_url
   end
 
   def fixtures_file_path(file_name)
@@ -103,51 +99,5 @@ class ActiveSupport::TestCase
     yield
   ensure
     ActionController::Base.allow_forgery_protection = old
-  end
-end
-
-class ActionDispatch::IntegrationTest
-  def assert_admin_access(url:, method: :get, **args)
-    login users(:visitor1)
-    send(method, url, **args)
-    assert_response :forbidden
-
-    login users(:admin)
-    send(method, url, **args)
-    yield users(:admin)
-  end
-
-  def assert_login_access(url:, user: users(:visitor1), method: :get, **args)
-    logout
-    send(method, url, **args)
-    assert_redirected_to new_session_url
-
-    login user
-    send(method, url, **args)
-    yield user
-  end
-
-  def assert_self_or_admin_access(url:, user:, method: :get, **args)
-    login User.where.not(email: user.email).where.not(is_admin: true).first
-    send(method, url, **args)
-    assert_response :forbidden
-
-    login users(:admin)
-    send(method, url, **args)
-    yield
-
-    login user
-    send(method, url, **args)
-    yield
-  end
-
-  def assert_self_access(url:, user:, method: :get, **args)
-    login User.where.not(email: user.email).first
-    send(method, url, **args)
-    assert_response :forbidden
-
-    login user
-    send(method, url, **args)
-    yield user
   end
 end

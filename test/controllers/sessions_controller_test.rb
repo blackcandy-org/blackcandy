@@ -27,6 +27,11 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_not_empty cookies[:user_id]
   end
 
+  test "should has error flash when failed to create session" do
+    post session_url, params: {user_session: {email: @user.email, password: "fake"}}, xhr: true
+    assert flash[:error].present?
+  end
+
   test "should destroy session" do
     login @user
     delete session_url

@@ -6,34 +6,46 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
   include ActiveJob::TestHelper
 
   test "should get index" do
-    assert_login_access(url: artists_url) do
-      assert_response :success
-    end
+    login
+    get artists_url
+
+    assert_response :success
   end
 
   test "should show artist" do
-    assert_login_access(url: artist_url(artists(:artist1))) do
-      assert_response :success
-    end
+    login
+    get artist_url(artists(:artist1))
+
+    assert_response :success
   end
 
   test "should edit album" do
-    assert_admin_access(url: edit_artist_url(artists(:artist1))) do
-      assert_response :success
-    end
+    login users(:admin)
+    get edit_artist_url(artists(:artist1))
+
+    assert_response :success
   end
 
-  test "should update image for album" do
+  test "should update image for artist" do
     artist = artists(:artist1)
-    artist_params = {artist: {image: fixture_file_upload("cover_image.jpg", "image/jpeg")}}
     artist_original_image_url = artist.image.url
 
-    assert_admin_access(url: artist_url(artist), method: :patch, params: artist_params) do
-      assert_not_equal artist_original_image_url, artist.reload.image.url
-    end
+    login users(:admin)
+    patch artist_url(artist), params: {artist: {image: fixture_file_upload("cover_image.jpg", "image/jpeg")}}
+
+    assert_not_equal artist_original_image_url, artist.reload.image.url
+  end
+
+  test "should has error flash when failed to update artist" do
+    login users(:admin)
+    patch artist_url(artists(:artist1)), params: {artist: {image: fixture_file_upload("cover_image.jpg", "image/gif")}}
+
+    assert flash[:error].present?
   end
 
   test "should call artist image attach job when show artist unless artist do not need attach" do
+    login
+
     Setting.update(discogs_token: "fake_token")
     artist = artists(:artist1)
 
@@ -41,9 +53,18 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
     assert_not artist.is_unknown?
 
     assert_enqueued_with(job: AttachImageFromDiscogsJob) do
-      assert_login_access(url: artist_url(artist)) do
-        assert_response :success
-      end
+      get artist_url(artist)
+      assert_response :success
     end
+  end
+
+  test "should only admin can edit artist" do
+    login
+
+    get edit_artist_url(artists(:artist1))
+    assert_response :forbidden
+
+    patch artist_url(artists(:artist1)), params: {artist: {image: fixture_file_upload("cover_image.jpg", "image/jpeg")}}
+    assert_response :forbidden
   end
 end

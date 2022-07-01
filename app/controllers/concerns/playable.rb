@@ -20,6 +20,6 @@ module Playable
   private
 
   def find_all_song_ids
-    @song_ids = []
+    raise NotImplementedError
   end
 end

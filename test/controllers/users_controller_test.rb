@@ -3,61 +3,98 @@
 require "test_helper"
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    login users(:admin)
+  end
+
   test "should get index" do
-    assert_admin_access(url: users_url) do
-      assert_response :success
-    end
+    get users_url
+    assert_response :success
   end
 
   test "should get new user" do
-    assert_admin_access(url: new_user_url) do
-      assert_response :success
-    end
+    get new_user_url
+    assert_response :success
   end
 
   test "should edit user" do
-    current_user = users(:visitor1)
+    get edit_user_url(users(:visitor1))
+    assert_response :success
+  end
 
-    assert_self_or_admin_access(user: current_user, url: edit_user_url(current_user)) do
-      assert_response :success
-    end
+  test "should user can edit themself" do
+    user = users(:visitor1)
+
+    login user
+    get edit_user_url(user)
+    assert_response :success
+
+    login users(:visitor2)
+    get edit_user_url(user)
+    assert_response :forbidden
   end
 
   test "should create user" do
-    user_params = {user: {email: "test@test.com", password: "foobar"}}
     users_count = User.count
 
-    assert_admin_access(method: :post, url: users_url, params: user_params) do
-      assert_equal users_count + 1, User.count
-    end
+    post users_url, params: {user: {email: "test@test.com", password: "foobar"}}
+    assert_equal users_count + 1, User.count
+  end
+
+  test "should has error flash when failed to create user" do
+    post users_url, params: {user: {email: "test.com", password: "foobar"}}, xhr: true
+    assert flash[:error].present?
   end
 
   test "should update user" do
-    current_user = users(:visitor1)
-    user_params = {user: {email: "visitor_updated@blackcandy.com"}}
+    user = users(:visitor1)
 
-    assert_self_or_admin_access(
-      user: current_user,
-      method: :patch,
-      url: user_url(current_user),
-      params: user_params,
-      xhr: true
-    ) do
-      assert_equal "visitor_updated@blackcandy.com", current_user.reload.email
-    end
+    patch user_url(user), params: {user: {email: "visitor_updated@blackcandy.com"}}, xhr: true
+    assert_equal "visitor_updated@blackcandy.com", user.reload.email
+  end
+
+  test "should has error flash when failed to update user" do
+    patch user_url(users(:visitor1)), params: {user: {email: "test.com", password: "foobar"}}, xhr: true
+    assert flash[:error].present?
+  end
+
+  test "should user can update themself" do
+    user = users(:visitor1)
+
+    login user
+    patch user_url(user), params: {user: {email: "visitor_updated@blackcandy.com"}}, xhr: true
+    assert_equal "visitor_updated@blackcandy.com", user.reload.email
+
+    login users(:visitor2)
+    patch user_url(user), params: {user: {email: "visitor_updated@blackcandy.com"}}, xhr: true
+    assert_response :forbidden
   end
 
   test "should destroy user" do
     users_count = User.count
 
-    assert_admin_access(method: :delete, url: user_url(users(:visitor2)), xhr: true) do
-      assert_equal users_count - 1, User.count
-    end
+    delete user_url(users(:visitor2)), xhr: true
+    assert_equal users_count - 1, User.count
   end
 
   test "should not let user destroy self" do
-    assert_admin_access(method: :delete, url: user_url(users(:admin)), xhr: true) do
-      assert_response :forbidden
-    end
+    delete user_url(users(:admin)), xhr: true
+    assert_response :forbidden
+  end
+
+  test "should only admin can access" do
+    login
+
+    get users_url
+    assert_response :forbidden
+
+    get new_user_url
+    assert_response :forbidden
+
+    post users_url, params: {user: {email: "test@test.com", password: "foobar"}}
+    assert_response :forbidden
+
+    delete user_url(users(:visitor2)), xhr: true
+    assert_response :forbidden
   end
 end

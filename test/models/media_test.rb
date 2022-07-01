@@ -122,4 +122,29 @@ class MediaTest < ActiveSupport::TestCase
       Media.syncing = true
     end
   end
+
+  test "should not attach record when file path is invalide" do
+    clear_media_data
+
+    MediaFile.stub(:file_paths, ["/fake.mp3", file_fixture("artist1_album2.mp3").to_s]) do
+      Media.sync
+      assert_equal 1, Album.count
+    end
+  end
+
+  test "should not attach record when file info is invalide" do
+    clear_media_data
+
+    file_info = {
+      name: "",
+      album_name: "",
+      artist_name: "",
+      albumartist_name: ""
+    }
+
+    MediaFile.stub(:file_info, file_info) do
+      Media.sync
+      assert_equal 0, Album.count
+    end
+  end
 end

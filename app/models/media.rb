@@ -39,23 +39,21 @@ class Media
     private
 
     def attach
-      artist = Artist.find_or_create_by(name: @file_info[:artist_name])
+      artist = Artist.find_or_create_by!(name: @file_info[:artist_name])
 
       if various_artists?
-        various_artist = Artist.find_or_create_by(is_various: true)
-        album = Album.find_or_create_by(artist: various_artist, name: @file_info[:album_name])
+        various_artist = Artist.find_or_create_by!(is_various: true)
+        album = Album.find_or_create_by!(artist: various_artist, name: @file_info[:album_name])
       else
-        album = Album.find_or_create_by(artist: artist, name: @file_info[:album_name])
+        album = Album.find_or_create_by!(artist: artist, name: @file_info[:album_name])
       end
 
       # Attach image from file to the album.
       AttachAlbumImageFromFileJob.perform_later(album, @file_info[:file_path]) unless album.has_image?
 
-      Song.find_or_create_by(md5_hash: @file_info[:md5_hash]) do |item|
+      Song.find_or_create_by!(md5_hash: @file_info[:md5_hash]) do |item|
         item.attributes = song_info.merge(album: album, artist: artist)
       end
-    rescue
-      false
     end
 
     def song_info
