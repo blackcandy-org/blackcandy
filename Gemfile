@@ -61,6 +61,9 @@ gem "acts_as_list", "~> 1.0.2"
 gem "authlogic", "~> 6.4.1"
 gem "bcrypt", "~> 3.1.11"
 
+# For sync on library changes
+gem "listen", "~> 3.7.1"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
