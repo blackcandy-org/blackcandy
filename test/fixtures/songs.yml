@@ -1,8 +1,19 @@
+<% mp3_file_path = Rails.root.join('test', 'fixtures', 'files', 'artist1_album2.mp3') %>
+<% flac_file_path = Rails.root.join('test', 'fixtures', 'files', 'artist1_album1.flac') %>
+<% ogg_file_path = Rails.root.join('test', 'fixtures', 'files', 'artist2_album3.ogg') %>
+<% wav_file_path = Rails.root.join('test', 'fixtures', 'files', 'artist2_album3.wav') %>
+<% opus_file_path = Rails.root.join('test', 'fixtures', 'files', 'artist2_album3.opus') %>
+<% m4a_file_path = Rails.root.join('test', 'fixtures', 'files', 'artist1_album1.m4a') %>
+<% oga_file_path = Rails.root.join('test', 'fixtures', 'files', 'artist2_album3.oga') %>
+<% wma_file_path = Rails.root.join('test', 'fixtures', 'files', 'artist2_album3.wma') %>
+<% various_artists_file_path = Rails.root.join('test', 'fixtures', 'files', 'various_artists.mp3') %>
+
 mp3_sample:
   id: 1
   name: 'mp3_sample'
-  file_path: <%= Rails.root.join('test', 'fixtures', 'files', 'artist1_album2.mp3') %>
-  md5_hash: 'fake_md5'
+  file_path: <%= mp3_file_path %>
+  file_path_hash: <%= MediaFile.get_md5_hash(mp3_file_path) %>
+  md5_hash: <%= MediaFile.get_md5_hash(mp3_file_path, with_mtime: true)%>
   artist: 'artist1'
   album: 'album2'
   duration: 8.0
@@ -10,8 +21,9 @@ mp3_sample:
 flac_sample:
   id: 2
   name: 'flac_sample'
-  file_path: <%= Rails.root.join('test', 'fixtures', 'files', 'artist1_album1.flac') %>
-  md5_hash: 'fake_md5'
+  file_path: <%= flac_file_path %>
+  file_path_hash: <%= MediaFile.get_md5_hash(flac_file_path) %>
+  md5_hash: <%= MediaFile.get_md5_hash(flac_file_path, with_mtime: true) %>
   artist: 'artist1'
   album: 'album1'
   duration: 8.0
@@ -19,8 +31,9 @@ flac_sample:
 ogg_sample:
   id: 3
   name: 'ogg_sample'
-  file_path: <%= Rails.root.join('test', 'fixtures', 'files', 'artist2_album3.ogg') %>
-  md5_hash: 'fake_md5'
+  file_path: <%= ogg_file_path %>
+  file_path_hash: <%= MediaFile.get_md5_hash(ogg_file_path) %>
+  md5_hash: <%= MediaFile.get_md5_hash(ogg_file_path, with_mtime: true) %>
   artist: 'artist2'
   album: 'album3'
   duration: 8.0
@@ -28,8 +41,9 @@ ogg_sample:
 wav_sample:
   id: 4
   name: 'wav_sample'
-  file_path: <%= Rails.root.join('test', 'fixtures', 'files', 'artist2_album3.wav') %>
-  md5_hash: 'fake_md5'
+  file_path: <%= wav_file_path %>
+  file_path_hash: <%= MediaFile.get_md5_hash(wav_file_path) %>
+  md5_hash: <%= MediaFile.get_md5_hash(wav_file_path, with_mtime: true) %>
   artist: 'artist2'
   album: 'album3'
   duration: 8.0
@@ -37,8 +51,9 @@ wav_sample:
 opus_sample:
   id: 5
   name: 'opus_sample'
-  file_path: <%= Rails.root.join('test', 'fixtures', 'files', 'artist2_album3.opus') %>
-  md5_hash: 'fake_md5'
+  file_path: <%= opus_file_path %>
+  file_path_hash: <%= MediaFile.get_md5_hash(opus_file_path) %>
+  md5_hash: <%= MediaFile.get_md5_hash(opus_file_path, with_mtime: true) %>
   artist: 'artist2'
   album: 'album3'
   duration: 8.0
@@ -46,8 +61,9 @@ opus_sample:
 m4a_sample:
   id: 6
   name: 'm4a_sample'
-  file_path: <%= Rails.root.join('test', 'fixtures', 'files', 'artist1_album1.m4a') %>
-  md5_hash: 'fake_md5'
+  file_path: <%= m4a_file_path %>
+  file_path_hash: <%= MediaFile.get_md5_hash(m4a_file_path) %>
+  md5_hash: <%= MediaFile.get_md5_hash(m4a_file_path, with_mtime: true) %>
   artist: 'artist1'
   album: 'album1'
   duration: 8.0
@@ -55,8 +71,9 @@ m4a_sample:
 oga_sample:
   id: 7
   name: 'oga_sample'
-  file_path: <%= Rails.root.join('test', 'fixtures', 'files', 'artist2_album3.oga') %>
-  md5_hash: 'fake_md5'
+  file_path: <%= oga_file_path %>
+  file_path_hash: <%= MediaFile.get_md5_hash(oga_file_path) %>
+  md5_hash: <%= MediaFile.get_md5_hash(oga_file_path, with_mtime: true) %>
   artist: 'artist2'
   album: 'album3'
   duration: 8.0
@@ -64,8 +81,9 @@ oga_sample:
 wma_sample:
   id: 8
   name: 'wma_sample'
-  file_path: <%= Rails.root.join('test', 'fixtures', 'files', 'artist2_album3.wma') %>
-  md5_hash: 'fake_md5'
+  file_path: <%= wma_file_path %>
+  file_path_hash: <%= MediaFile.get_md5_hash(wma_file_path) %>
+  md5_hash: <%= MediaFile.get_md5_hash(wma_file_path, with_mtime: true) %>
   artist: 'artist2'
   album: 'album3'
   duration: 8.0
@@ -73,8 +91,9 @@ wma_sample:
 various_artists_sample:
   id: 9
   name: 'various_artists_sample'
-  file_path: <%= Rails.root.join('test', 'fixtures', 'files', 'various_artists.mp3') %>
-  md5_hash: 'fake_md5'
+  file_path: <%= various_artists_file_path %>
+  file_path_hash: <%= MediaFile.get_md5_hash(various_artists_file_path) %>
+  md5_hash: <%= MediaFile.get_md5_hash(various_artists_file_path, with_mtime: true) %>
   artist: 'artist1'
   album: 'album4'
   duration: 8.0

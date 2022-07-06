@@ -81,8 +81,9 @@ class ActiveSupport::TestCase
   def media_file_info_stub(file_path, attributes = {})
     proc do |media_file_path|
       file_info = MediaFile.send(:get_tag_info, media_file_path).merge(
-        file_path: media_file_path,
-        md5_hash: MediaFile.send(:get_md5_hash, media_file_path)
+        file_path: media_file_path.to_s,
+        file_path_hash: MediaFile.get_md5_hash(media_file_path),
+        md5_hash: MediaFile.get_md5_hash(media_file_path, with_mtime: true)
       )
 
       media_file_path.to_s == file_path.to_s ? file_info.merge(**attributes, md5_hash: "new_md5_hash") : file_info

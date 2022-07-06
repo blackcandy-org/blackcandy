@@ -16,15 +16,22 @@ class Media
   end
 
   class << self
-    def sync
-      media_hashes = MediaFile.file_paths.map do |file_path|
-        @file_info = MediaFile.file_info(file_path)
-        @file_info[:md5_hash] if attach
-      rescue
-        next
-      end.compact
+    def sync(type = :all, file_paths = [])
+      file_paths = MediaFile.file_paths if type == :all
+      return if file_paths.blank?
 
-      clean_up(media_hashes)
+      case type
+      when :all
+        file_hashes = add_files(file_paths)
+        clean_up(file_hashes)
+      when :added
+        add_files(file_paths)
+      when :removed
+        remove_files(file_paths)
+      when :modified
+        remove_files(file_paths)
+        add_files(file_paths)
+      end
     end
 
     def syncing?
@@ -37,6 +44,22 @@ class Media
     end
 
     private
+
+    def add_files(file_paths)
+      file_paths.map do |file_path|
+        @file_info = MediaFile.file_info(file_path)
+        @file_info[:md5_hash] if attach
+      rescue
+        next
+      end.compact
+    end
+
+    def remove_files(file_paths)
+      file_path_hashes = file_paths.map { |file_path| MediaFile.get_md5_hash(file_path) }
+      Song.where(file_path_hash: file_path_hashes).destroy_all
+
+      clean_up
+    end
 
     def attach
       artist = Artist.find_or_create_by!(name: @file_info[:artist_name])
@@ -57,7 +80,7 @@ class Media
     end
 
     def song_info
-      @file_info.slice(:name, :tracknum, :duration, :file_path)
+      @file_info.slice(:name, :tracknum, :duration, :file_path, :file_path_hash)
     end
 
     def various_artists?
@@ -65,8 +88,8 @@ class Media
       albumartist.present? && (albumartist.casecmp("various artists").zero? || albumartist != @file_info[:artist_name])
     end
 
-    def clean_up(media_hashes)
-      Song.where.not(md5_hash: media_hashes).destroy_all
+    def clean_up(file_hashes = [])
+      Song.where.not(md5_hash: file_hashes).destroy_all if file_hashes.present?
 
       # Clean up no content albums and artist.
       Album.where.missing(:songs).destroy_all

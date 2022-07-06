@@ -3,8 +3,8 @@ class MediaSyncJob < ApplicationJob
   before_enqueue :start_syncing
   after_perform :stop_syncing
 
-  def perform
-    Media.sync
+  def perform(type = :all, file_paths = [])
+    Media.sync(type, file_paths)
   end
 
   private

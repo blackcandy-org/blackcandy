@@ -91,7 +91,7 @@ class StreamTest < ActiveSupport::TestCase
 
   test "should get transcode cache file path" do
     stream = Stream.new(songs(:flac_sample))
-    assert_equal "#{Stream::TRANSCODE_CACHE_DIRECTORY}/2/ZmFrZV9tZDU=_128.mp3", stream.transcode_cache_file_path
+    assert_equal "#{Stream::TRANSCODE_CACHE_DIRECTORY}/2/Y0YxRW91S2cyUmtXMklNblpsUENIUT09_128.mp3", stream.transcode_cache_file_path
   end
 
   test "should get file duration" do

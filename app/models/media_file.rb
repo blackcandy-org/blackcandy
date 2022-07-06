@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class MediaFile
-  SUPPORT_FORMATE = WahWah.support_formats.freeze
+  SUPPORTED_FORMATS = WahWah.support_formats.freeze
 
   class << self
     def file_paths
       media_path = File.expand_path(Setting.media_path)
-      Dir.glob("#{media_path}/**/*.{#{SUPPORT_FORMATE.join(",")}}", File::FNM_CASEFOLD)
+      Dir.glob("#{media_path}/**/*.{#{SUPPORTED_FORMATS.join(",")}}", File::FNM_CASEFOLD)
     end
 
     def format(file_path)
@@ -22,7 +22,16 @@ class MediaFile
 
     def file_info(file_path)
       tag_info = get_tag_info(file_path)
-      tag_info.merge(file_path: file_path, md5_hash: get_md5_hash(file_path))
+      tag_info.merge(
+        file_path: file_path.to_s,
+        file_path_hash: get_md5_hash(file_path),
+        md5_hash: get_md5_hash(file_path, with_mtime: true)
+      )
+    end
+
+    def get_md5_hash(file_path, with_mtime: false)
+      string = "#{file_path}#{File.mtime(file_path) if with_mtime}"
+      Digest::MD5.base64digest(string)
     end
 
     private
@@ -38,10 +47,6 @@ class MediaFile
         tracknum: tag.track,
         duration: tag.duration.round
       }
-    end
-
-    def get_md5_hash(file_path)
-      Digest::MD5.base64digest(file_path.to_s + File.mtime(file_path).to_s)
     end
   end
 end
