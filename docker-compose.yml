@@ -42,6 +42,10 @@ services:
     ports:
       - 80:80
     command: nginx -g 'pid /tmp/nginx.pid; daemon off;'
+  listener:
+    container_name: 'blackcandy_listener'
+    <<: *app_base
+    command: bundle exec rails listen_media_changes
 volumes:
   production_db_data:
   production_redis_data:

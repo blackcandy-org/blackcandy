@@ -9,7 +9,7 @@ class MediaSyncJobTest < ActiveJob::TestCase
 
   test "sync media" do
     mock = MiniTest::Mock.new
-    mock.expect(:call, true)
+    mock.expect(:call, true, [:all, []])
 
     Setting.update(media_path: Rails.root.join("test/fixtures/files"))
     assert_not Media.syncing?
