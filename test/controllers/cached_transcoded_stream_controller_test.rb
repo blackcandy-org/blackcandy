@@ -17,7 +17,7 @@ class CachedTranscodedStreamControllerTest < ActionDispatch::IntegrationTest
 
   test "should set header for nginx send file" do
     get new_cached_transcoded_stream_url(song_id: songs(:flac_sample).id)
-    assert_equal "/private_cache_media/2/Y0YxRW91S2cyUmtXMklNblpsUENIUT09_128.mp3", @response.get_header("X-Accel-Redirect")
+    assert_equal "/private_cache_media/2/ZmxhY19zYW1wbGVfbWQ1X2hhc2g=_128.mp3", @response.get_header("X-Accel-Redirect")
   end
 
   test "should set correct content type header" do
