@@ -31,7 +31,7 @@ First, you should ensure your music files stored under "/media_data"
 Then run: 
 
 ```shell
-$ curl https://raw.githubusercontent.com/aidewoode/black_candy/v2.0.1/docker-compose.yml > docker-compose.yml
+$ curl https://raw.githubusercontent.com/aidewoode/black_candy/v2.1.0/docker-compose.yml > docker-compose.yml
 $ docker-compose up -d
 ```
 That's all. Now, you can use initial admin user to login (email: admin@admin.com, password: foobar).
