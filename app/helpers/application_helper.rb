@@ -82,8 +82,4 @@ module ApplicationHelper
   def page_title_tag(title)
     content_for :title, title
   end
-
-  def turbo_native?
-    request.user_agent.to_s.match?(/Turbo Native/)
-  end
 end

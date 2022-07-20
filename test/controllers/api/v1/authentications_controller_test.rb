@@ -41,7 +41,7 @@ class Api::V1::AuthenticationsControllerTest < ActionDispatch::IntegrationTest
   test "should not create authentication with wrong credential" do
     post api_v1_authentication_url, as: :json, params: {
       user_session: {
-        email: @user.email,
+        email: "fake@email.com",
         password: "fake"
       }
     }
@@ -55,7 +55,7 @@ class Api::V1::AuthenticationsControllerTest < ActionDispatch::IntegrationTest
     post api_v1_authentication_url, as: :json, params: {
       with_session: true,
       user_session: {
-        email: @user.email,
+        email: "fake@email.com",
         password: "fake"
       }
     }

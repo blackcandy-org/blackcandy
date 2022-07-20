@@ -3,6 +3,8 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
+  helper_method :turbo_native?
+
   before_action :find_current_user
   before_action :require_login
 
@@ -54,7 +56,13 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    redirect_to new_session_path unless logged_in?
+    return if logged_in?
+
+    if turbo_native?
+      head :unauthorized
+    else
+      redirect_to new_session_path
+    end
   end
 
   def require_admin
@@ -66,5 +74,9 @@ class ApplicationController < ActionController::Base
     cookies.delete(:user_id)
 
     redirect_to new_session_path
+  end
+
+  def turbo_native?
+    request.user_agent.to_s.match?(/Turbo Native/)
   end
 end
