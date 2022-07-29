@@ -1,3 +1,5 @@
+@use "tools/functions" as *;
+
 .c-tab {
   display: flex;
   justify-content: space-between;
@@ -7,7 +9,7 @@
 }
 
 .c-tab__item {
-  padding-bottom: var(--spacing-narrow);
+  padding-bottom: spacing("narrow");
   border-bottom: 2px solid transparent;
 }
 

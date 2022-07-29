@@ -1,3 +1,5 @@
+@use "settings/variables";
+
 .u-text-truncate {
   white-space: nowrap;
   overflow: hidden;
@@ -25,7 +27,7 @@
 }
 
 .u-text-monospace {
-  font-family: var(--monospace-fonts);
+  font-family: variables.$monospace-fonts;
 }
 
 .u-text-align-center {
@@ -43,18 +45,8 @@
   overflow: hidden;
 }
 
-.u-text-size-small {
-  font-size: var(--font-size-small);
-}
-
-.u-text-size-medium {
-  font-size: var(--font-size-medium);
-}
-
-.u-text-size-large {
-  font-size: var(--font-size-large);
-}
-
-.u-text-size-wide {
-  font-size: var(--font-size-wide);
+@each $name, $value in variables.$font-size {
+  .u-text-size-#{$name} {
+    font-size: $value;
+  }
 }

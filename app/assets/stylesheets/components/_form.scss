@@ -1,9 +1,11 @@
+@use "tools/functions" as *;
+
 .c-form {
-  padding-bottom: var(--spacing-medium);
+  padding-bottom: spacing("medium");
 }
 
 .c-form__field {
-  margin-top: var(--spacing-small);
+  margin-top: spacing("small");
 }
 
 .c-form__field--inline {
@@ -12,17 +14,17 @@
 }
 
 .c-form__field--submit {
-  margin-top: var(--spacing-medium);
+  margin-top: spacing("medium");
 }
 
 .c-form__field label {
   display: block;
-  margin-bottom: var(--spacing-narrow);
+  margin-bottom: spacing("narrow");
 }
 
 .c-form__field--inline label {
   margin-bottom: 0;
-  margin-right: var(--spacing-tiny);
+  margin-right: spacing("tiny");
 }
 
 .c-form__field > label {
@@ -32,10 +34,10 @@
 .c-form__radio {
   display: inline-flex;
   align-items: center;
-  margin-right: var(--spacing-narrow);
+  margin-right: spacing("narrow");
 }
 
 .c-form__radio label {
   margin-bottom: 0;
-  margin-left: var(--spacing-tiny);
+  margin-left: spacing("tiny");
 }

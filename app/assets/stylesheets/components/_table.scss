@@ -1,3 +1,5 @@
+@use "tools/functions" as *;
+
 .c-table {
   width: 100%;
   table-layout: fixed;
@@ -13,7 +15,7 @@
 .c-table td,
 .c-table [role=columnheader],
 .c-table [role=cell] {
-  padding: var(--spacing-narrow);
+  padding: spacing(narrow);
   text-align: left;
   color: rgb(var(--table-color));
 }

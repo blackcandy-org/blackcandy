@@ -1,3 +1,5 @@
+@use "tools/functions" as *;
+
 .c-flash {
   position: absolute;
   margin: 0;
@@ -13,9 +15,9 @@
 }
 
 .c-flash__body {
-  padding: var(--spacing-tiny);
+  padding: spacing("tiny");
   text-align: center;
-  border-radius: var(--flash-border-radius);
+  border-radius: border-radius("medium");
 }
 
 .c-flash__body--error {

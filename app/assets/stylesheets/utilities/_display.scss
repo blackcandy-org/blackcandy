@@ -1,0 +1,19 @@
+@use "tools/responsive";
+
+@mixin display($responsive-postfix) {
+  .u-display-none#{$responsive-postfix} {
+    display: none !important;
+  }
+
+  .u-display-block#{$responsive-postfix} {
+    display: block !important;
+  }
+}
+
+.u-display-inline-block {
+  display: inline-block !important;
+}
+
+@include responsive.media-query using ($breakpoint){
+  @include display($breakpoint);
+}

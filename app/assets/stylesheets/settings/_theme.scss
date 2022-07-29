@@ -1,4 +1,4 @@
-@define-mixin light-theme {
+@mixin light-theme {
   /* Colors */
   --purple-dark: 54, 30, 64;
   --purple: 119, 66, 141;
@@ -99,7 +99,7 @@
   --player-progress-color: var(--purple);
 }
 
-@define-mixin dark-theme {
+@mixin dark-theme {
   /* Colors */
   --purple-dark: 54, 30, 64;
   --purple: 119, 66, 141;
@@ -197,4 +197,24 @@
   --player-progress-bg-color: var(--black-dark);
   --player-progress-hover-bg-color: var(--black-light);
   --player-progress-color: var(--purple);
+}
+
+[data-color-scheme=light] {
+  @include light-theme;
+}
+
+[data-color-scheme=dark] {
+  @include dark-theme;
+}
+
+@media (prefers-color-scheme: light) {
+  [data-color-scheme=auto] {
+    @include light-theme;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-color-scheme=auto] {
+    @include dark-theme;
+  }
 }

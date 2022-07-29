@@ -1,3 +1,5 @@
+@use "tools/functions" as *;
+
 .c-dialog {
   position: fixed;
   top: 100px;
@@ -5,19 +7,19 @@
   right: 0;
   z-index: 1000;
   background: rgb(var(--dialog-bg-color));
-  border-radius: var(--dialog-border-radius);
+  border-radius: border-radius("medium");
 }
 
 .c-dialog__header {
-  padding: var(--spacing-narrow) var(--spacing-small);
+  padding: spacing("narrow") spacing("small");
   background: rgb(var(--dialog-header-bg-color));
   color: rgb(var(--dialog-header-color));
-  border-top-left-radius: var(--dialog-border-radius);
-  border-top-right-radius: var(--dialog-border-radius);
+  border-top-left-radius: border-radius("medium");
+  border-top-right-radius: border-radius("medium");
 }
 
 .c-dialog__content {
-  padding: var(--spacing-narrow) var(--spacing-small);
+  padding: spacing("narrow") spacing("small");
   overflow-y: auto;
   min-height: 50px;
   max-height: calc(100vh - 300px);

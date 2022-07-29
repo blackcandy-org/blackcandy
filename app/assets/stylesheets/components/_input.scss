@@ -1,10 +1,12 @@
+@use "tools/functions" as *;
+
 input.c-input {
   width: 100%;
   background: rgb(var(--input-bg-color));
   border: none;
   color: rgb(var(--input-color));
-  padding: var(--spacing-tiny);
-  border-radius: var(--input-border-radius);
+  padding: spacing("tiny");
+  border-radius: border-radius("medium");
   filter: none;
 }
 
@@ -12,8 +14,8 @@ input.c-input {
   display: flex !important;
   align-items: center;
   background: rgb(var(--input-bg-color));
-  border-radius: var(--input-border-radius);
-  padding: 0 var(--spacing-tiny);
+  border-radius: border-radius("medium");
+  padding: 0 spacing("tiny");
 }
 
 .c-input-group input {

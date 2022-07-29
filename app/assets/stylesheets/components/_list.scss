@@ -1,3 +1,5 @@
+@use "tools/functions" as *;
+
 .c-list {
   list-style: none;
   padding: 0;
@@ -6,7 +8,7 @@
 
 .c-list__item {
   width: 100%;
-  padding: var(--spacing-narrow) 0;
+  padding: spacing("narrow") 0;
   text-decoration: none;
   border-bottom: 1px solid rgb(var(--list-border-color));
 }
@@ -35,6 +37,6 @@
 
 .c-list__item.is-dragging {
   background: rgb(var(--list-dragging-bg-color));
-  border-radius: var(--border-radius-medium);
+  border-radius: border-radius("medium");
   box-shadow: 0 4px 8px 0 rgba(var(--list-dragging-shadow-color), 0.1), 0 10px 13px 0 rgba(var(--list-dragging-shadow-color), 0.11);
 }

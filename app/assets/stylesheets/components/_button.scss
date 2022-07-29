@@ -1,9 +1,11 @@
+@use "tools/functions" as *;
+
 .c-button {
   text-align: center;
   display: inline-block;
-  border-radius: var(--btn-border-radius);
+  border-radius: border-radius("medium");
   border: none;
-  padding: var(--spacing-tiny) var(--spacing-narrow);
+  padding: spacing("tiny") spacing("narrow");
   color: rgb(var(--btn-color));
   cursor: pointer;
 }
@@ -26,7 +28,7 @@ a.c-button:hover {
 }
 
 .c-button--small {
-  padding: var(--spacing-tiny);
+  padding: spacing("tiny");
 }
 
 .c-button--full-width {

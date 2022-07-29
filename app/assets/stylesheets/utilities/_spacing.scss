@@ -1,61 +1,70 @@
-@define-mixin spacing $name, $size {
-  .u-m-$(name) {
+@use "settings/variables";
+
+@mixin spacing($name, $size) {
+  .u-m-#{$name} {
     margin: $size !important;
   }
 
-  .u-mt-$(name) {
+  .u-mt-#{$name} {
     margin-top: $size !important;
   }
 
-  .u-mb-$(name) {
+  .u-mb-#{$name} {
     margin-bottom: $size !important;
   }
 
-  .u-ml-$(name) {
+  .u-ml-#{$name} {
     margin-left: $size !important;
   }
 
-  .u-mr-$(name) {
+  .u-mr-#{$name} {
     margin-right: $size !important;
   }
 
-  .u-mx-$(name) {
+  .u-mx-#{$name} {
     margin-left: $size !important;
     margin-right: $size !important;
   }
 
-  .u-my-$(name) {
+  .u-my-#{$name} {
     margin-top: $size !important;
     margin-bottom: $size !important;
   }
 
-  .u-p-$(name) {
+  .u-p-#{$name} {
     padding: $size !important;
   }
 
-  .u-pt-$(name) {
+  .u-pt-#{$name} {
     padding-top: $size !important;
   }
 
-  .u-pb-$(name) {
+  .u-pb-#{$name} {
     padding-bottom: $size !important;
   }
 
-  .u-pl-$(name) {
+  .u-pl-#{$name} {
     padding-left: $size !important;
   }
 
-  .u-pr-$(name) {
+  .u-pr-#{$name} {
     padding-right: $size !important;
   }
 
-  .u-px-$(name) {
+  .u-px-#{$name} {
     padding-left: $size !important;
     padding-right: $size !important;
   }
 
-  .u-py-$(name) {
+  .u-py-#{$name} {
     padding-top: $size !important;
     padding-bottom: $size !important;
   }
 }
+
+@each $name, $value in variables.$spacing {
+  @include spacing($name, $value);
+}
+
+@include spacing(0, 0);
+@include spacing(auto, auto);

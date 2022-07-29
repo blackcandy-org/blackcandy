@@ -1,0 +1,16 @@
+@use "sass:map";
+@use "settings/variables";
+
+@mixin media-query {
+  @content("");
+
+  @media (min-width: #{map.get(variables.$breakpoint, "wide")}) {
+    @content("\\@extra-wide");
+  }
+
+  @each $name, $value in variables.$breakpoint {
+    @media (max-width: #{$value}) {
+      @content("\\@#{$name}");
+    }
+  }
+}
