@@ -1,10 +1,17 @@
 {
-  "extends": "stylelint-config-standard",
+  "extends": "stylelint-config-standard-scss",
   "rules": {
+    "selector-class-pattern": null,
     "selector-pseudo-element-colon-notation": "single",
     "custom-property-empty-line-before": null,
     "at-rule-empty-line-before": null,
-    "at-rule-no-unknown": [true, { "ignoreAtRules": ["mixin", "define-mixin"] }],
-    "value-keyword-case": ["lower", { "ignoreKeywords": ["BlinkMacSystemFont"] }]
+    "value-keyword-case": ["lower", { "ignoreKeywords": ["BlinkMacSystemFont"] }],
+    "keyframes-name-pattern": null,
+    "property-no-vendor-prefix": null,
+    "color-function-notation": "legacy",
+    "alpha-value-notation": "number",
+    "max-line-length": null,
+    "value-no-vendor-prefix": null,
+    "scss/dollar-variable-empty-line-before": null
   }
 }

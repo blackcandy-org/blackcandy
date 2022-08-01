@@ -1,0 +1,19 @@
+.c-loader {
+  border: 5px solid var(--loader-secondary-bg-color);
+  border-top: 5px solid var(--loader-bg-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.c-loader--small {
+  height: 22px;
+  width: 22px;
+  border-width: 3px;
+}
+
+.c-loader--large {
+  height: 55px;
+  width: 55px;
+  border-width: 7px;
+}

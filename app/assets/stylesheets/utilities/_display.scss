@@ -1,0 +1,20 @@
+@use "tools/responsive";
+@use "tools/functions";
+
+@mixin display($breakpoint-postfix) {
+  .u-display-none#{$breakpoint-postfix} {
+    display: none !important;
+  }
+
+  .u-display-block#{$breakpoint-postfix} {
+    display: block !important;
+  }
+}
+
+.u-display-inline-block {
+  display: inline-block !important;
+}
+
+@include responsive.media-query using ($breakpoint) {
+  @include display(functions.breakpoint-postfix($breakpoint));
+}

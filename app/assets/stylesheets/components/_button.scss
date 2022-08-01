@@ -1,0 +1,40 @@
+@use "tools/functions" as *;
+
+.c-button {
+  text-align: center;
+  display: inline-block;
+  border-radius: border-radius("medium");
+  border: none;
+  padding: spacing("tiny") spacing("narrow");
+  color: var(--btn-color);
+  cursor: pointer;
+}
+
+.c-button:hover {
+  filter: brightness(0.9);
+}
+
+a.c-button:hover {
+  color: var(--btn-color);
+}
+
+.c-button--primary {
+  background: var(--btn-primary-bg-color);
+}
+
+.c-button--secondary {
+  background: var(--btn-secondary-bg-color);
+  color: var(--btn-secondary-color);
+}
+
+.c-button--small {
+  padding: spacing("tiny");
+}
+
+.c-button--full-width {
+  width: 100%;
+}
+
+.c-button[disabled] {
+  opacity: 0.6;
+}

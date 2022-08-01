@@ -1,0 +1,43 @@
+@use "tools/functions" as *;
+
+.c-form {
+  padding-bottom: spacing("medium");
+}
+
+.c-form__field {
+  margin-top: spacing("small");
+}
+
+.c-form__field--inline {
+  display: flex;
+  align-items: center;
+}
+
+.c-form__field--submit {
+  margin-top: spacing("medium");
+}
+
+.c-form__field label {
+  display: block;
+  margin-bottom: spacing("narrow");
+}
+
+.c-form__field--inline label {
+  margin-bottom: 0;
+  margin-right: spacing("tiny");
+}
+
+.c-form__field > label {
+  font-weight: bold;
+}
+
+.c-form__radio {
+  display: inline-flex;
+  align-items: center;
+  margin-right: spacing("narrow");
+}
+
+.c-form__radio label {
+  margin-bottom: 0;
+  margin-left: spacing("tiny");
+}

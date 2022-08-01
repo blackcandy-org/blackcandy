@@ -1,6 +1,0 @@
-body {
-  font-family: var(--sans-serif-fonts);
-  background-color: rgb(var(--body-bg-color));
-  color: rgb(var(--text-secondary-color));
-  font-size: var(--font-size-medium);
-}

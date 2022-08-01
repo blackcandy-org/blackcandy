@@ -2,6 +2,6 @@ postgres: postgres
 redis: redis-server --dir .redis_data
 web: rails s -p 3000
 sidekiq: sidekiq
-css: yarn build:css --watch
+css: rails dartsass:watch
 js: yarn build --watch
 listen: rails listen_media_changes

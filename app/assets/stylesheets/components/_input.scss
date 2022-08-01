@@ -1,0 +1,38 @@
+@use "tools/functions" as *;
+
+input.c-input {
+  width: 100%;
+  background: var(--input-bg-color);
+  border: none;
+  color: var(--input-color);
+  padding: spacing("tiny");
+  border-radius: border-radius("medium");
+  filter: none;
+}
+
+.c-input-group {
+  display: flex !important;
+  align-items: center;
+  background: var(--input-bg-color);
+  border-radius: border-radius("medium");
+  padding: 0 spacing("tiny");
+}
+
+.c-input-group input {
+  width: 0 !important;
+  flex-grow: 1;
+}
+
+.c-input-group input:focus {
+  outline: none;
+}
+
+.c-input-group__icon {
+  display: flex;
+  align-items: center;
+  color: var(--input-icon-color);
+}
+
+.c-input-group__icon a {
+  color: var(--input-icon-color);
+}

@@ -1,0 +1,17 @@
+@use "tools/functions" as *;
+
+.c-nav {
+  padding: spacing("small") spacing("small") 0;
+  box-shadow: var(--nav-shadow);
+}
+
+.c-nav--primary {
+  background: var(--nav-primary-bg-color);
+}
+
+@supports (-webkit-backdrop-filter: initial) or (backdrop-filter: initial) {
+  .c-nav--primary {
+    background: var(--nav-backdrop-bg-color);
+    backdrop-filter: blur(15px);
+  }
+}

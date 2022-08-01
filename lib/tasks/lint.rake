@@ -9,7 +9,7 @@ unless Rails.env.production?
     end
 
     task :css do
-      abort("rails lint:css failed") unless system("yarn run stylelint 'app/assets/stylesheets/**/*.css'")
+      abort("rails lint:css failed") unless system("yarn run stylelint 'app/assets/stylesheets/**/*.scss'")
     end
 
     task :all do

@@ -1,0 +1,9 @@
+@use "sass:map";
+@use "settings/variables";
+
+body {
+  font-family: variables.$sans-serif-fonts;
+  background-color: var(--body-bg-color);
+  color: var(--text-secondary-color);
+  font-size: map.get(variables.$font-size, "medium");
+}

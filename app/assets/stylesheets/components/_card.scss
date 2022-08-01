@@ -1,0 +1,38 @@
+@use "tools/functions" as *;
+
+.c-card {
+  width: 100%;
+}
+
+.c-card--horizontal {
+  display: flex;
+}
+
+.c-card__image,
+.c-card__image img {
+  border-radius: border-radius("medium");
+}
+
+.c-card__body {
+  margin-top: spacing("narrow");
+}
+
+.c-card--horizontal .c-card__body {
+  margin-top: 0;
+  margin-left: spacing("medium");
+  flex-grow: 1;
+  width: 0;
+}
+
+.c-card__body__title {
+  margin-bottom: spacing("narrow");
+  font-size: font-size("large");
+}
+
+.c-card__body__text {
+  margin-bottom: spacing("tiny");
+}
+
+.c-card__body__text:last-child {
+  margin-bottom: 0;
+}

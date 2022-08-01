@@ -1,0 +1,28 @@
+@use "tools/functions" as *;
+
+.c-tab {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c-tab__item {
+  padding-bottom: spacing("narrow");
+  border-bottom: 2px solid transparent;
+}
+
+.c-tab__item a {
+  color: var(--tab-color);
+  text-decoration: none;
+}
+
+.c-tab__item.is-active a,
+.c-tab__item a:hover {
+  color: var(--tab-active-color);
+}
+
+.c-tab__item.is-active {
+  border-color: var(--tab-active-color);
+}
