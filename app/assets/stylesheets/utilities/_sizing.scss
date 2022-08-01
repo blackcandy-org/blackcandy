@@ -43,6 +43,6 @@
   }
 }
 
-@include responsive.media-query using ($breakpoint){
+@include responsive.media-query using ($breakpoint) {
   @include sizing(functions.breakpoint-postfix($breakpoint));
 }

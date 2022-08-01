@@ -211,22 +211,22 @@
   --player-progress-color: #{$purple};
 }
 
-[data-color-scheme=light] {
+[data-color-scheme="light"] {
   @include light-theme;
 }
 
-[data-color-scheme=dark] {
+[data-color-scheme="dark"] {
   @include dark-theme;
 }
 
 @media (prefers-color-scheme: light) {
-  [data-color-scheme=auto] {
+  [data-color-scheme="auto"] {
     @include light-theme;
   }
 }
 
 @media (prefers-color-scheme: dark) {
-  [data-color-scheme=auto] {
+  [data-color-scheme="auto"] {
     @include dark-theme;
   }
 }

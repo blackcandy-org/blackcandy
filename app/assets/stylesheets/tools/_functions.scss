@@ -4,15 +4,15 @@
 
 @function font-size($type) {
   @return map.get(variables.$font-size, $type);
-};
+}
 
 @function spacing($type) {
   @return map.get(variables.$spacing, $type);
-};
+}
 
 @function border-radius($type) {
   @return map.get(variables.$border-radius, $type);
-};
+}
 
 @function breakpoint-postfix($breakpoint) {
   @if string.length($breakpoint) != 0 {

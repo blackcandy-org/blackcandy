@@ -32,8 +32,8 @@ form.c-dropdown__item {
   padding: 0;
 }
 
-form.c-dropdown__item input[type='submit'],
-form.c-dropdown__item button[type='submit'] {
+form.c-dropdown__item input[type="submit"],
+form.c-dropdown__item button[type="submit"] {
   padding: spacing("narrow");
   width: 100%;
   background: var(--dropdown-bg-color);
@@ -41,22 +41,22 @@ form.c-dropdown__item button[type='submit'] {
 }
 
 .c-dropdown__item:first-child,
-form.c-dropdown__item:first-child input[type='submit'],
-form.c-dropdown__item:first-child button[type='submit'] {
+form.c-dropdown__item:first-child input[type="submit"],
+form.c-dropdown__item:first-child button[type="submit"] {
   border-top-left-radius: border-radius("medium");
   border-top-right-radius: border-radius("medium");
 }
 
 .c-dropdown__item:last-child,
-form.c-dropdown__item:last-child input[type='submit'],
-form.c-dropdown__item:last-child button[type='submit'] {
+form.c-dropdown__item:last-child input[type="submit"],
+form.c-dropdown__item:last-child button[type="submit"] {
   border-bottom-left-radius: border-radius("medium");
   border-bottom-right-radius: border-radius("medium");
 }
 
 a.c-dropdown__item:hover,
-form.c-dropdown__item:hover input[type='submit'],
-form.c-dropdown__item:hover button[type='submit'],
+form.c-dropdown__item:hover input[type="submit"],
+form.c-dropdown__item:hover button[type="submit"],
 .c-dropdown__item:hover {
   background: var(--dropdown-active-color);
   color: var(--dropdown-color);

@@ -15,6 +15,6 @@
   display: inline-block !important;
 }
 
-@include responsive.media-query using ($breakpoint){
+@include responsive.media-query using ($breakpoint) {
   @include display(functions.breakpoint-postfix($breakpoint));
 }

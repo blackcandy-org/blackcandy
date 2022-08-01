@@ -102,7 +102,7 @@
   grid-template-columns: var(--grid-tc);
   --grid-tc: repeat(4, 1fr);
   --grid-cs: 1; /* column start */
-  --grid-ce: -1 /* column end */
+  --grid-ce: -1; /* column end */
 }
 
 /* o-cell -- cell or column */
@@ -129,6 +129,6 @@
   }
 }
 
-@include responsive.media-query using ($breakpoint){
+@include responsive.media-query using ($breakpoint) {
   @include grid(functions.breakpoint-postfix($breakpoint));
 }
