@@ -1,9 +1,9 @@
 .c-player {
-  background: rgb(var(--player-bg-color));
+  background: var(--player-bg-color);
 }
 
 .c-player__control {
-  background: rgb(var(--player-bg-color));
+  background: var(--player-bg-color);
   z-index: 100;
   position: relative;
 }
@@ -16,7 +16,7 @@
 }
 
 .c-player__header__content {
-  background: rgba(var(--player-bg-color), 0.65);
+  background: var(--player-header-bg-color);
 }
 
 .c-player__header__background {
@@ -45,11 +45,11 @@
 .c-player__progress progress {
   height: 2px;
   border: 0 none;
-  background: rgb(var(--player-progress-bg-color));
+  background: var(--player-progress-bg-color);
 }
 
 .c-player__progress progress::-moz-progress-bar {
-  background: rgb(var(--player-progress-color));
+  background: var(--player-progress-color);
 }
 
 .c-player__progress progress::-webkit-progress-bar {
@@ -57,10 +57,10 @@
 }
 
 .c-player__progress progress::-webkit-progress-value {
-  background: rgb(var(--player-progress-color));
+  background: var(--player-progress-color);
 }
 
 .c-player__progress:hover progress {
   height: 4px;
-  background: rgb(var(--player-progress-hover-bg-color));
+  background: var(--player-progress-hover-bg-color);
 }

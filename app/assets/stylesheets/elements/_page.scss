@@ -3,7 +3,7 @@
 
 body {
   font-family: variables.$sans-serif-fonts;
-  background-color: rgb(var(--body-bg-color));
-  color: rgb(var(--text-secondary-color));
+  background-color: var(--body-bg-color);
+  color: var(--text-secondary-color);
   font-size: map.get(variables.$font-size, "medium");
 }

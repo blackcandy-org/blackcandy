@@ -15,15 +15,15 @@
 }
 
 .u-text-color-primary {
-  color: rgb(var(--text-primary-color)) !important;
+  color: var(--text-primary-color) !important;
 }
 
 .u-text-color-secondary {
-  color: rgb(var(--text-secondary-color)) !important;
+  color: var(--text-secondary-color) !important;
 }
 
 .u-text-color-red {
-  color: rgb(var(--red)) !important;
+  color: var(--red) !important;
 }
 
 .u-text-monospace {

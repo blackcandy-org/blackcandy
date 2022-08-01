@@ -1,6 +1,6 @@
 .c-loader {
-  border: 5px solid rgba(var(--loader-bg-color), 0.3);
-  border-top: 5px solid rgb(var(--loader-bg-color));
+  border: 5px solid var(--loader-secondary-bg-color);
+  border-top: 5px solid var(--loader-bg-color);
   border-radius: 50%;
   width: 40px;
   height: 40px;

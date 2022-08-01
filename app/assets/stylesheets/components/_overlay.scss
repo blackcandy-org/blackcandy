@@ -16,5 +16,5 @@
 }
 
 .c-overlay--blur {
-  background: rgba(var(--overlay-bg-color), 0.9);
+  background: var(--overlay-blur-bg-color);
 }

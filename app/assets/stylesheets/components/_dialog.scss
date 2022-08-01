@@ -6,14 +6,14 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgb(var(--dialog-bg-color));
+  background: var(--dialog-bg-color);
   border-radius: border-radius("medium");
 }
 
 .c-dialog__header {
   padding: spacing("narrow") spacing("small");
-  background: rgb(var(--dialog-header-bg-color));
-  color: rgb(var(--dialog-header-color));
+  background: var(--dialog-header-bg-color);
+  color: var(--dialog-header-color);
   border-top-left-radius: border-radius("medium");
   border-top-right-radius: border-radius("medium");
 }

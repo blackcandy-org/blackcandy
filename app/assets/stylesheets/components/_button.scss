@@ -6,7 +6,7 @@
   border-radius: border-radius("medium");
   border: none;
   padding: spacing("tiny") spacing("narrow");
-  color: rgb(var(--btn-color));
+  color: var(--btn-color);
   cursor: pointer;
 }
 
@@ -15,16 +15,16 @@
 }
 
 a.c-button:hover {
-  color: rgb(var(--btn-color));
+  color: var(--btn-color);
 }
 
 .c-button--primary {
-  background: rgb(var(--btn-primary-bg-color));
+  background: var(--btn-primary-bg-color);
 }
 
 .c-button--secondary {
-  background: rgba(var(--btn-primary-bg-color), 0.25);
-  color: rgb(var(--btn-secondary-color));
+  background: var(--btn-secondary-bg-color);
+  color: var(--btn-secondary-color);
 }
 
 .c-button--small {

@@ -26,30 +26,30 @@ h3,
 h4,
 h5,
 h6 {
-  color: rgb(var(--text-primary-color));
+  color: var(--text-primary-color);
 }
 
 p {
   font-size: $font-size-medium;
-  color: rgb(var(--text-secondary-color));
+  color: var(--text-secondary-color);
 }
 
 a {
   text-decoration: none;
-  color: rgb(var(--text-primary-color));
+  color: var(--text-primary-color);
 }
 
 a:hover {
-  color: rgb(var(--link-active-color));
+  color: var(--link-active-color);
 }
 
 a.is-active {
-  color: rgb(var(--link-active-color));
+  color: var(--link-active-color);
 }
 
 hr {
-  color: rgb(var(--hr-color));
-  border-color: rgb(var(--hr-color));
+  color: var(--hr-color);
+  border-color: var(--hr-color);
   border-bottom: 0;
   margin: spacing("large") 0;
 }

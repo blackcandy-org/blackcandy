@@ -1,11 +1,12 @@
 @use "tools/responsive";
+@use "tools/functions";
 
-@mixin display($responsive-postfix) {
-  .u-display-none#{$responsive-postfix} {
+@mixin display($breakpoint-postfix) {
+  .u-display-none#{$breakpoint-postfix} {
     display: none !important;
   }
 
-  .u-display-block#{$responsive-postfix} {
+  .u-display-block#{$breakpoint-postfix} {
     display: block !important;
   }
 }
@@ -15,5 +16,5 @@
 }
 
 @include responsive.media-query using ($breakpoint){
-  @include display($breakpoint);
+  @include display(functions.breakpoint-postfix($breakpoint));
 }

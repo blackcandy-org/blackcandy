@@ -2,16 +2,16 @@
 
 .c-nav {
   padding: spacing("small") spacing("small") 0;
-  box-shadow: 0 1px 0 rgba(var(--nav-border-color), 0.12), 0 1px 3px rgba(var(--nav-border-color), 0.15);
+  box-shadow: var(--nav-shadow);
 }
 
 .c-nav--primary {
-  background: rgba(var(--nav-primary-bg-color), 0.97);
+  background: var(--nav-primary-bg-color);
 }
 
 @supports (-webkit-backdrop-filter: initial) or (backdrop-filter: initial) {
   .c-nav--primary {
-    background: rgba(var(--nav-primary-bg-color), 0.88);
+    background: var(--nav-backdrop-bg-color);
     backdrop-filter: blur(15px);
   }
 }

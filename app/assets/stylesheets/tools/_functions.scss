@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:string";
 @use "settings/variables";
 
 @function font-size($type) {
@@ -13,6 +14,10 @@
   @return map.get(variables.$border-radius, $type);
 };
 
-@function breakpoint($type) {
-  @return map.get(variables.$breakpoint, $type);
-};
+@function breakpoint-postfix($breakpoint) {
+  @if string.length($breakpoint) != 0 {
+    @return "\\@#{$breakpoint}";
+  }
+
+  @return $breakpoint;
+}

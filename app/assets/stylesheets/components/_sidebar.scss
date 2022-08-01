@@ -1,53 +1,57 @@
+@use "tools/responsive";
+
 .c-sidebar {
   width: 360px;
-  background: rgb(var(--sidebar-bg-color));
+  background: var(--sidebar-bg-color);
 }
 
-@media (--extra-wide) {
-  .c-sidebar {
-    width: 380px;
-  }
-}
-
-@media (--wide) {
-  .c-sidebar {
-    width: 370px;
-  }
-}
-
-@media (--large) {
-  .c-sidebar {
-    width: 350px;
-  }
-}
-
-@media (--medium) {
-  .c-sidebar {
-    width: 340px;
-  }
-}
-
-@media (--small) {
-  .c-sidebar {
-    width: 330px;
-  }
-}
-
-@media (--extra-small) {
-  .c-sidebar {
-    position: fixed;
-    bottom: 0;
-    z-index: -1;
-    height: 100%;
-    width: 100%;
-    visibility: hidden;
-    opacity: 0;
+@include responsive.media-query using ($breakpoint) {
+  @if $breakpoint == "extra-wide" {
+    .c-sidebar {
+      width: 380px;
+    }
   }
 
-  .c-sidebar.is-expanded {
-    z-index: 100;
-    visibility: visible;
-    height: 100%;
-    opacity: 1;
+  @if $breakpoint == "wide" {
+    .c-sidebar {
+      width: 370px;
+    }
+  }
+
+  @if $breakpoint == "large" {
+    .c-sidebar {
+      width: 350px;
+    }
+  }
+
+  @if $breakpoint == "medium" {
+    .c-sidebar {
+      width: 340px;
+    }
+  }
+
+  @if $breakpoint == "small" {
+    .c-sidebar {
+      width: 330px;
+    }
+  }
+
+  @if $breakpoint == "extra-small" {
+    .c-sidebar {
+      position: fixed;
+      bottom: 0;
+      z-index: -1;
+      height: 100%;
+      width: 100%;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .c-sidebar.is-expanded {
+      z-index: 100;
+      visibility: visible;
+      height: 100%;
+      opacity: 1;
+    }
   }
 }

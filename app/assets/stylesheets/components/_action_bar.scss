@@ -3,5 +3,5 @@
 .c-action-bar {
   padding: spacing("narrow");
   border-radius: border-radius("medium");
-  background: rgb(var(--action-bar-bg-color));
+  background: var(--action-bar-bg-color);
 }

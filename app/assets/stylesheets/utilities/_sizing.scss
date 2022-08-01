@@ -1,47 +1,48 @@
 @use "tools/responsive";
+@use "tools/functions";
 
-@mixin sizing($responsive-postfix) {
-  .u-vw-100#{$responsive-postfix} {
+@mixin sizing($breakpoint-postfix) {
+  .u-vw-100#{$breakpoint-postfix} {
     width: 100vw !important;
   }
 
-  .u-vh-100#{$responsive-postfix} {
+  .u-vh-100#{$breakpoint-postfix} {
     height: 100vh !important;
   }
 
-  .u-w-100#{$responsive-postfix} {
+  .u-w-100#{$breakpoint-postfix} {
     width: 100% !important;
   }
 
-  .u-h-100#{$responsive-postfix} {
+  .u-h-100#{$breakpoint-postfix} {
     height: 100% !important;
   }
 
-  .u-h-0#{$responsive-postfix} {
+  .u-h-0#{$breakpoint-postfix} {
     height: 0 !important;
   }
 
-  .u-w-0#{$responsive-postfix} {
+  .u-w-0#{$breakpoint-postfix} {
     width: 0 !important;
   }
 
-  .u-w-15#{$responsive-postfix} {
+  .u-w-15#{$breakpoint-postfix} {
     width: 15% !important;
   }
 
-  .u-w-25#{$responsive-postfix} {
+  .u-w-25#{$breakpoint-postfix} {
     width: 25% !important;
   }
 
-  .u-w-50#{$responsive-postfix} {
+  .u-w-50#{$breakpoint-postfix} {
     width: 50% !important;
   }
 
-  .u-w-75#{$responsive-postfix} {
+  .u-w-75#{$breakpoint-postfix} {
     width: 75% !important;
   }
 }
 
 @include responsive.media-query using ($breakpoint){
-  @include sizing($breakpoint);
+  @include sizing(functions.breakpoint-postfix($breakpoint));
 }

@@ -2,9 +2,9 @@
 
 input.c-input {
   width: 100%;
-  background: rgb(var(--input-bg-color));
+  background: var(--input-bg-color);
   border: none;
-  color: rgb(var(--input-color));
+  color: var(--input-color);
   padding: spacing("tiny");
   border-radius: border-radius("medium");
   filter: none;
@@ -13,7 +13,7 @@ input.c-input {
 .c-input-group {
   display: flex !important;
   align-items: center;
-  background: rgb(var(--input-bg-color));
+  background: var(--input-bg-color);
   border-radius: border-radius("medium");
   padding: 0 spacing("tiny");
 }
@@ -30,9 +30,9 @@ input.c-input {
 .c-input-group__icon {
   display: flex;
   align-items: center;
-  color: rgb(var(--input-icon-color));
+  color: var(--input-icon-color);
 }
 
 .c-input-group__icon a {
-  color: rgb(var(--input-icon-color));
+  color: var(--input-icon-color);
 }

@@ -1,6 +1,6 @@
 @use "settings/variables";
 
-@mixin spacing($name, $size) {
+@mixin margin($name, $size) {
   .u-m-#{$name} {
     margin: $size !important;
   }
@@ -30,7 +30,9 @@
     margin-top: $size !important;
     margin-bottom: $size !important;
   }
+}
 
+@mixin padding($name, $size) {
   .u-p-#{$name} {
     padding: $size !important;
   }
@@ -63,8 +65,10 @@
 }
 
 @each $name, $value in variables.$spacing {
-  @include spacing($name, $value);
+  @include margin($name, $value);
+  @include padding($name, $value);
 }
 
-@include spacing(0, 0);
-@include spacing(auto, auto);
+@include margin(0, 0);
+@include margin(auto, auto);
+@include padding(0, 0);

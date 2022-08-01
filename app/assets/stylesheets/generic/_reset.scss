@@ -47,5 +47,5 @@ textarea {
 
 /* Reset style for turbo progress bar */
 .turbo-progress-bar {
-  background-color: rgb(var(--progress-bar-bg-color));
+  background-color: var(--progress-bar-bg-color);
 }
