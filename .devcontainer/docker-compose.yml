@@ -49,7 +49,7 @@ services:
     # (Adding the "ports" property to this file will not forward from a Codespace.)
 
   redis:
-    image: redis:4.0-alpine
+    image: redis:6.0-alpine
     volumes:
       - redis-data:/data
     networks:

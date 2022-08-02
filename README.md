@@ -86,37 +86,15 @@ $ docker-compose restart
 - Postgres 11
 - Redis 6.0 
 - Nodejs 12
-- Yarn 1.22
-- Imagemagick 7
-- ffmpeg 4.3
+- Yarn
+- Imagemagick
+- ffmpeg
 
-You can use [nix](https://nixos.org) to setup dev environment easily. 
+You can use VS Code Remote Containers or GitHub Codespaces to setup dev environment easily.
+For more infomations about dev container, please visit this link <https://code.visualstudio.com/docs/remote/create-dev-container>.
 
-```shell
-# First, install nix. You can check out the nix doc for more details.
-$ curl -L https://nixos.org/nix/install | sh
-
-# Then clone the repo.
-$ git clone https://github.com/aidewoode/black_candy.git
-
-# Change to the directory.
-$ cd black_candy
-
-# Go into nix shell, the nix shell will auto setup all dev requirements you need.
-$ nix-shell 
-
-# Install requirement gems.
-$ bundle
-
-# Install npm packages.
-$ yarn
-
-# Setup database.
-$ rails db:setup
-
-# Finally, start all services.
-$ ./bin/dev 
-```
+After the dev container has been built. You can run `./bin/dev` in terminal to start all services. 
+Then visit <http://localhost:3000> use initial admin user to login (email: admin@admin.com, password: foobar).
 
 ## Test
 
