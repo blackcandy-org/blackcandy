@@ -16,6 +16,7 @@ services:
     volumes:
       - ..:/workspace:cached
       - ~/media_data:/media_data
+      - bundler-data:/usr/local/bundle
 
     environment: 
       DB_HOST: postgres
@@ -58,6 +59,7 @@ services:
 volumes:
   postgres-data:
   redis-data:
+  bundler-data:
 
 networks:
   external_network:
