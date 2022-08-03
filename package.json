@@ -5,10 +5,10 @@
     "@hotwired/stimulus": "^3.0.1",
     "@hotwired/turbo-rails": "^7.1.1",
     "@shopify/draggable": "^1.0.0-beta.12",
+    "esbuild": "^0.14.9",
     "howler": "^2.2.3"
   },
   "devDependencies": {
-    "esbuild": "^0.14.9",
     "standard": "^17.0.0",
     "stylelint": "^14.9.1",
     "stylelint-config-standard-scss": "^5.0.0"
