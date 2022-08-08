@@ -1,5 +1,5 @@
-@use "tools/responsive";
-@use "tools/functions";
+@use "../tools/responsive";
+@use "../tools/functions";
 
 @mixin sizing($breakpoint-postfix) {
   .u-vw-100#{$breakpoint-postfix} {

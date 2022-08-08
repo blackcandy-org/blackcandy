@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "settings/variables";
+@use "../settings/variables";
 
 body {
   font-family: variables.$sans-serif-fonts;

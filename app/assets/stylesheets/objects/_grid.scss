@@ -1,8 +1,8 @@
 /* Base on Raster grid subsystem (rsms.me/raster) */
 
-@use "settings/variables";
-@use "tools/responsive";
-@use "tools/functions";
+@use "../settings/variables";
+@use "../tools/responsive";
+@use "../tools/functions";
 
 @mixin grid($breakpoint-postfix) {
   .o-grid[cols#{$breakpoint-postfix}="1"] { --grid-tc: repeat(1, 1fr); }
