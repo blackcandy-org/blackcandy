@@ -1,6 +1,6 @@
 @use "sass:map";
 @use "sass:string";
-@use "settings/variables";
+@use "../settings/variables";
 
 @function font-size($type) {
   @return map.get(variables.$font-size, $type);

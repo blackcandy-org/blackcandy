@@ -13,8 +13,8 @@ gem "turbo-rails", "~> 1.0.0"
 # Install Stimulus on Rails
 gem "stimulus-rails", "~> 1.0.2"
 
-# Integrate Dart Sass with the asset pipeline in Rails
-gem "dartsass-rails", "~> 0.4.0"
+# Bundle and process CSS in Rails
+gem "cssbundling-rails", "~> 1.1.0"
 
 # Bundle and transpile JavaScript in Rails
 gem "jsbundling-rails", "~> 1.0.0"

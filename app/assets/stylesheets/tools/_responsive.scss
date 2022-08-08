@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "settings/variables";
+@use "../settings/variables";
 
 @mixin media-query {
   @content("");
