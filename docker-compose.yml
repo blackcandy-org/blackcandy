@@ -45,6 +45,9 @@ services:
   listener:
     <<: *app_base
     container_name: 'blackcandy_listener'
+    depends_on:
+      - app
+      - worker
     command: bundle exec rails listen_media_changes
 volumes:
   production_db_data:
