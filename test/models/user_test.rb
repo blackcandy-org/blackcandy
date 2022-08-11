@@ -66,4 +66,40 @@ class UserTest < ActiveSupport::TestCase
     @user.favorite_playlist.songs.push song
     assert @user.favorited? song
   end
+
+  test "should add album to recently played" do
+    assert_empty @user.recently_played_album_ids
+
+    @user.add_album_to_recently_played albums(:album1)
+    assert_equal [albums(:album1).id], @user.recently_played_album_ids
+  end
+
+  test "should only add album to recently played once" do
+    @user.add_album_to_recently_played albums(:album1)
+    @user.add_album_to_recently_played albums(:album2)
+    assert_equal [albums(:album2).id, albums(:album1).id], @user.recently_played_album_ids
+
+    @user.add_album_to_recently_played albums(:album1)
+    assert_equal [albums(:album1).id, albums(:album2).id], @user.recently_played_album_ids
+  end
+
+  test "should get recently played albums on correct position" do
+    @user.add_album_to_recently_played albums(:album1)
+    @user.add_album_to_recently_played albums(:album2)
+    @user.add_album_to_recently_played albums(:album3)
+    @user.add_album_to_recently_played albums(:album2)
+
+    assert_equal [albums(:album2), albums(:album3), albums(:album1)], @user.recently_played_albums
+  end
+
+  test "should not over the limit of recently played albums" do
+    User::RECENTLY_PLAYED_LIMIT.times do |index|
+      album = Album.create(name: "album_test_#{index}", artist_id: artists(:artist1).id)
+      @user.add_album_to_recently_played album
+    end
+
+    @user.add_album_to_recently_played albums(:album1)
+
+    assert_equal User::RECENTLY_PLAYED_LIMIT, @user.recently_played_album_ids.count
+  end
 end

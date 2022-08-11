@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_05_083238) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_11_021933) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "pg_trgm"
@@ -86,6 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_05_083238) do
     t.string "password_salt"
     t.string "persistence_token"
     t.string "api_token"
+    t.integer "recently_played_album_ids", default: [], array: true
     t.index ["api_token"], name: "index_users_on_api_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["persistence_token"], name: "index_users_on_persistence_token", unique: true

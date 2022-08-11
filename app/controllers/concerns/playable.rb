@@ -5,6 +5,7 @@ module Playable
 
   included do
     before_action :find_all_song_ids, only: [:play]
+    after_action :after_played, only: [:play]
   end
 
   def play
@@ -21,5 +22,8 @@ module Playable
 
   def find_all_song_ids
     raise NotImplementedError
+  end
+
+  def after_played
   end
 end
