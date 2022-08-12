@@ -7,6 +7,6 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     login
     get root_url
 
-    assert_redirected_to albums_url
+    assert_response :success
   end
 end

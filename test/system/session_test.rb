@@ -11,7 +11,7 @@ class SessionSystemTest < ApplicationSystemTestCase
 
     click_on "Login"
 
-    assert_current_path(albums_url)
+    assert_current_path(root_url)
   end
 
   test "login with wrong credentials" do

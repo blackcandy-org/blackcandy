@@ -50,4 +50,8 @@ class AlbumsController < ApplicationController
   def find_all_song_ids
     @song_ids = @album.song_ids
   end
+
+  def after_played
+    Current.user.add_album_to_recently_played(@album)
+  end
 end

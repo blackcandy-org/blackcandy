@@ -78,4 +78,15 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
     patch album_url(albums(:album1)), params: {album: {image: fixture_file_upload("cover_image.jpg", "image/jpeg")}}
     assert_response :forbidden
   end
+
+  test "should add album to recently played after playing" do
+    user = users(:visitor1)
+
+    assert_empty user.recently_played_albums
+
+    login user
+    post play_album_url(albums(:album1))
+
+    assert_equal [albums(:album1)], user.reload.recently_played_albums
+  end
 end

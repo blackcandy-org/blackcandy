@@ -3,10 +3,10 @@ ARG VARIANT=3.1-bullseye
 FROM mcr.microsoft.com/vscode/devcontainers/ruby:0-${VARIANT}
 
 # Install Rails
-# RUN gem install rails webdrivers 
+# RUN gem install rails webdrivers
 
 # Default value to allow debug server to serve content over GitHub Codespace's port forwarding service
-# The value is a comma-separated list of allowed domains 
+# The value is a comma-separated list of allowed domains
 ENV RAILS_DEVELOPMENT_HOSTS=".githubpreview.dev"
 
 # [Choice] Node.js version: lts/*, 16, 14, 12, 10
@@ -15,7 +15,7 @@ RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSI
 
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends imagemagick ffmpeg
+    && apt-get -y install --no-install-recommends imagemagick ffmpeg chromium
 
 # [Optional] Uncomment this line to install additional gems.
 RUN gem install foreman

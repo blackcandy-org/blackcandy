@@ -60,6 +60,9 @@ en:
     actions: 'Actions'
     edit: 'Edit'
     transcoding: 'Transcoding'
+    home: 'Home'
+    recently_added: 'Recently Added'
+    recently_played: 'Recently Played'
   error:
     login: 'Wrong email or password'
     forbidden: "Sorry, you do not have permission to visit that"

@@ -3,6 +3,7 @@
 class User < ApplicationRecord
   AVAILABLE_THEME_OPTIONS = %w[dark light auto].freeze
   DEFAULT_THEME = "dark"
+  RECENTLY_PLAYED_LIMIT = 10
 
   include ScopedSetting
 
@@ -40,6 +41,18 @@ class User < ApplicationRecord
 
   def favorited?(song)
     favorite_playlist.songs.exists? song.id
+  end
+
+  def recently_played_albums
+    album_ids = recently_played_album_ids
+    order_clause = album_ids.map { |id| "id=#{id} desc" }.join(",")
+
+    Album.includes(:artist).where(id: album_ids).order(Arel.sql(order_clause))
+  end
+
+  def add_album_to_recently_played(album)
+    album_ids = recently_played_album_ids.unshift(album.id).uniq.take(RECENTLY_PLAYED_LIMIT)
+    update_column(:recently_played_album_ids, album_ids)
   end
 
   private
