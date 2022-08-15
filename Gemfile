@@ -4,8 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 7.0.0"
 
-# The original asset pipeline for Rails
-gem "sprockets-rails", "~> 3.4.2"
+# Deliver assets for Rails
+gem "propshaft", "~> 0.6.4"
 
 # Install Turbo on Rails
 gem "turbo-rails", "~> 1.0.0"

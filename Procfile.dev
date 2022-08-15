@@ -1,5 +1,5 @@
 web: rails s -p 3000
 sidekiq: sidekiq
-js: yarn build --watch
-css: yarn build:css --watch
+js: yarn build-dev --watch
+css: yarn build-dev:css --watch
 listen: rails listen_media_changes

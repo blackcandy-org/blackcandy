@@ -15,8 +15,10 @@
     "stylelint-config-standard-scss": "^5.0.0"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
-    "build:css": "sass app/assets/stylesheets/application.scss:app/assets/builds/application.css --no-source-map"
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --minify",
+    "build-dev": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
+    "build:css": "sass app/assets/stylesheets/application.scss:app/assets/builds/application.css --no-source-map --style=compressed",
+    "build-dev:css": "sass app/assets/stylesheets/application.scss:app/assets/builds/application.css --no-source-map"
   },
   "standard": {
     "globals": [
