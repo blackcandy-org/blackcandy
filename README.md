@@ -26,19 +26,19 @@ Black candy support mp3, m4a, ogg, oga, opus, flac, wma and wav formats now.
 
 Black candy has built [docker images](https://hub.docker.com/r/blackcandy/blackcandy). You can use docker compose to run all services.
 
-First, you should ensure your music files stored under "/media_data" 
+First, you should ensure your music files stored under "/media_data"
 
-Then run: 
+Then run:
 
 ```shell
-$ curl https://raw.githubusercontent.com/aidewoode/black_candy/v2.1.1/docker-compose.yml > docker-compose.yml
+$ curl https://raw.githubusercontent.com/blackcandy-org/black_candy/v2.1.1/docker-compose.yml > docker-compose.yml
 $ docker-compose up -d
 ```
 That's all. Now, you can use initial admin user to login (email: admin@admin.com, password: foobar).
 
 You can also change the `docker-compose.yml` for your own needs.
 
-> **Note:** When the SECRET_KEY_BASE environment variable is not set, Black candy will generate SECRET_KEY_BASE environment variable every time when service start up. 
+> **Note:** When the SECRET_KEY_BASE environment variable is not set, Black candy will generate SECRET_KEY_BASE environment variable every time when service start up.
 > This will cause old sessions invalid, You can set your own SECRET_KEY_BASE environment variable on docker service to avoid it.
 
 ## Try in PWD
@@ -53,13 +53,13 @@ And feel free to try it.
 
 ### List for all sample music for the demo:
 
-- Kurt Vile - Live at WFMU on Talk's Cheap 8/11/2008 (licensed under [Attribution-NonCommercial-ShareAlike 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/))		
+- Kurt Vile - Live at WFMU on Talk's Cheap 8/11/2008 (licensed under [Attribution-NonCommercial-ShareAlike 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/))
 
 - Wooden Shjips - Live at ATP NY 2008 (licensed under [Attribution-Noncommercial-No Derivative Works 3.0 United States](http://creativecommons.org/licenses/by-nc-nd/3.0/us/))
 
 - Ty Segall - Live at WFMU on The Cherry Blossom Clinic with Terre T June 25, 2011 (licensed under [Attribution-Noncommercial-No Derivative Works 3.0 United States](http://creativecommons.org/licenses/by-nc-nd/3.0/us/))
 
-- Thee Oh Sees - Peanut Butter Oven EP (licensed under [Attribution-Noncommercial-Share Alike 3.0 United States](http://creativecommons.org/licenses/by-nc-sa/3.0/us/)) 
+- Thee Oh Sees - Peanut Butter Oven EP (licensed under [Attribution-Noncommercial-Share Alike 3.0 United States](http://creativecommons.org/licenses/by-nc-sa/3.0/us/))
 
 If like their music, you can buy their albums to support them.
 
@@ -75,16 +75,16 @@ $ docker pull blackcandy/blackcandy
 Restart services:
 
 ```shell
-$ docker-compose restart 
+$ docker-compose restart
 ```
 
 ## Development
 
 ### Requirements
 
-- Ruby 3.1 
+- Ruby 3.1
 - Postgres 11
-- Redis 6.0 
+- Redis 6.0
 - Nodejs 12
 - Yarn
 - Imagemagick
@@ -93,17 +93,17 @@ $ docker-compose restart
 You can use VS Code Remote Containers or GitHub Codespaces to setup dev environment easily.
 For more infomations about dev container, please visit this link <https://code.visualstudio.com/docs/remote/create-dev-container>.
 
-After the dev container has been built. You can run `./bin/dev` in terminal to start all services. 
+After the dev container has been built. You can run `./bin/dev` in terminal to start all services.
 Then visit <http://localhost:3000> use initial admin user to login (email: admin@admin.com, password: foobar).
 
 ## Test
 
 ```shell
 # Runing test
-$ rails test RAILS_ENV=test 
+$ rails test RAILS_ENV=test
 
 # Runing lint
-$ rails lint:all 
+$ rails lint:all
 ```
 
 ## Integrations
