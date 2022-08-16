@@ -47,8 +47,8 @@ class Media
 
     def add_files(file_paths)
       file_paths.map do |file_path|
-        @file_info = MediaFile.file_info(file_path)
-        @file_info[:md5_hash] if attach
+        file_info = MediaFile.file_info(file_path)
+        file_info[:md5_hash] if attach(file_info)
       rescue
         next
       end.compact
@@ -61,31 +61,31 @@ class Media
       clean_up
     end
 
-    def attach
-      artist = Artist.find_or_create_by!(name: @file_info[:artist_name])
+    def attach(file_info)
+      artist = Artist.find_or_create_by!(name: file_info[:artist_name])
 
-      if various_artists?
+      if various_artists?(file_info)
         various_artist = Artist.find_or_create_by!(is_various: true)
-        album = Album.find_or_create_by!(artist: various_artist, name: @file_info[:album_name])
+        album = Album.find_or_create_by!(artist: various_artist, name: file_info[:album_name])
       else
-        album = Album.find_or_create_by!(artist: artist, name: @file_info[:album_name])
+        album = Album.find_or_create_by!(artist: artist, name: file_info[:album_name])
       end
 
       # Attach image from file to the album.
-      AttachAlbumImageFromFileJob.perform_later(album, @file_info[:file_path]) unless album.has_image?
+      AttachAlbumImageFromFileJob.perform_later(album, file_info[:file_path]) unless album.has_image?
 
-      Song.find_or_create_by!(md5_hash: @file_info[:md5_hash]) do |item|
-        item.attributes = song_info.merge(album: album, artist: artist)
+      Song.find_or_create_by!(md5_hash: file_info[:md5_hash]) do |item|
+        item.attributes = song_info(file_info).merge(album: album, artist: artist)
       end
     end
 
-    def song_info
-      @file_info.slice(:name, :tracknum, :duration, :file_path, :file_path_hash)
+    def song_info(file_info)
+      file_info.slice(:name, :tracknum, :duration, :file_path, :file_path_hash)
     end
 
-    def various_artists?
-      albumartist = @file_info[:albumartist_name]
-      albumartist.present? && (albumartist.casecmp("various artists").zero? || albumartist != @file_info[:artist_name])
+    def various_artists?(file_info)
+      albumartist = file_info[:albumartist_name]
+      albumartist.present? && (albumartist.casecmp("various artists").zero? || albumartist != file_info[:artist_name])
     end
 
     def clean_up(file_hashes = [])
