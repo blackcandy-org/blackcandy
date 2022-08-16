@@ -40,8 +40,6 @@ export default class extends Controller {
     document.removeEventListener('player:pause', this._setPauseStatus)
     document.removeEventListener('player:stop', this._setStopStatus)
     document.removeEventListener('player:end', this._setEndStatus)
-
-    this._clearTimerInterval()
   }
 
   play () {
