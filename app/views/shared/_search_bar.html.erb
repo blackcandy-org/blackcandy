@@ -1,24 +1,26 @@
-<%= form_tag search_path, method: :get, class: 'c-search c-input-group o-grid__item',
-            'span@medium': '2-6', span: '3-5',
-             data: { action: 'search#submit', controller: 'search' } do %>
-    <div class='c-input-group__icon'>
-      <%= icon_tag 'search', size: 'large' %>
-    </div>
-    <%= text_field_tag 'query', params[:query], class: 'c-input',
-                       data: { search_target: 'input', test_id: 'search_input' } %>
-    <div class='c-input-group__icon'>
-      <%= loader_tag size: 'small' %>
-    </div>
-<% end %>
+<div class='o-grid o-grid--align-items-center' cols='7'>
+  <%= form_tag search_path, method: :get, class: 'c-search c-input-group o-grid__item',
+              'span@medium': '2-6', span: '3-5',
+              data: { action: 'search#submit', controller: 'search' } do %>
+      <div class='c-input-group__icon'>
+        <%= icon_tag 'search', size: 'large' %>
+      </div>
+      <%= text_field_tag 'query', params[:query], class: 'c-input',
+                        data: { search_target: 'input', test_id: 'search_input' } %>
+      <div class='c-input-group__icon'>
+        <%= loader_tag size: 'small' %>
+      </div>
+  <% end %>
 
-<div class='o-grid__item o-grid__item--justify-end' span@medium='7-7' span='6-7'>
-  <div data-controller='dropdown' class='c-dropdown' data-test-id='search_bar_menu'>
-    <span data-action='click->dropdown#show'><%= avatar_tag Current.user %></span>
-    <div data-dropdown-target='list' class='u-display-none c-dropdown__list'>
-      <%= link_to t('label.settings'), setting_path, class: 'c-dropdown__item' %>
-      <%= link_to t('label.manage_users'), users_path, class: 'c-dropdown__item' if is_admin? %>
-      <%= link_to t('label.update_profile'), edit_user_path(Current.user), class: 'c-dropdown__item' %>
-      <%= button_to t('label.logout'), session_path, method: :delete, form_class: 'c-dropdown__item' %>
+  <div class='o-grid__item o-grid__item--justify-end' span@medium='7-7' span='6-7'>
+    <div data-controller='dropdown' class='c-dropdown' data-test-id='search_bar_menu'>
+      <span data-action='click->dropdown#show'><%= avatar_tag Current.user %></span>
+      <div data-dropdown-target='list' class='u-display-none c-dropdown__list'>
+        <%= link_to t('label.settings'), setting_path, class: 'c-dropdown__item' %>
+        <%= link_to t('label.manage_users'), users_path, class: 'c-dropdown__item' if is_admin? %>
+        <%= link_to t('label.update_profile'), edit_user_path(Current.user), class: 'c-dropdown__item' %>
+        <%= button_to t('label.logout'), session_path, method: :delete, form_class: 'c-dropdown__item' %>
+      </div>
     </div>
   </div>
 </div>

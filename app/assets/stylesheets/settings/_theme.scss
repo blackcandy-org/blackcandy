@@ -59,6 +59,7 @@
   --list-dragging-bg-color: #{$white};
   --list-dragging-shadow-color: #{$black-lighter};
   --list-dragging-shadow: 0 4px 8px 0 #{color.change($black-lighter, $alpha: 0.1)}, 0 10px 13px 0 #{color.change($black-lighter, $alpha: 0.11)};
+  --list-grouped-bg-color: #{$grey-lightest};
 
   /* Table */
   --table-border-color: #{$grey-lighter};
@@ -105,6 +106,10 @@
   --player-progress-bg-color: #{$grey-lighter};
   --player-progress-hover-bg-color: #{$grey-lightest};
   --player-progress-color: #{$purple};
+
+  /* Badge */
+  --badge-bg-color: #{$purple};
+  --badge-color: #{$white};
 }
 
 @mixin dark-theme {
@@ -164,6 +169,7 @@
   --list-dragging-placeholder-bg-color: #{$black-light};
   --list-dragging-bg-color: #{$black-dark};
   --list-dragging-shadow: 0 4px 8px 0 #{color.change($grey, $alpha: 0.1)}, 0 10px 13px 0 #{color.change($grey, $alpha: 0.11)};
+  --list-grouped-bg-color: #{$black};
 
   /* Table */
   --table-border-color: #{$black};
@@ -210,6 +216,10 @@
   --player-progress-bg-color: #{$black-dark};
   --player-progress-hover-bg-color: #{$black-light};
   --player-progress-color: #{$purple};
+
+  /* Badge */
+  --badge-bg-color: #{$purple};
+  --badge-color: #{$white};
 }
 
 [data-color-scheme="light"] {

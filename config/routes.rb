@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
   resource :setting, only: [:show, :update]
+  resource :library, only: [:show]
 
   resources :artists, only: [:index, :show, :edit, :update]
   resources :stream, only: [:new]

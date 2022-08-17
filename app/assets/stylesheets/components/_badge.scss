@@ -1,0 +1,10 @@
+@use "../tools/functions" as *;
+
+.c-badge {
+  display: inline-block;
+  border-radius: border-radius("large");
+  background-color: var(--badge-bg-color);
+  color: var(--badge-color);
+  font-size: font-size("small");
+  padding: 2px 13px;
+}

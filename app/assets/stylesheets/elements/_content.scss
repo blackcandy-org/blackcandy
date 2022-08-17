@@ -1,23 +1,20 @@
 @use "../tools/functions" as *;
 
-$font-size-medium: font-size("medium");
-$font-size-wide: font-size("wide");
-
 h1 {
-  font-size: $font-size-wide;
+  font-size: font-size("wide");
   margin-bottom: spacing("wide");
 }
 
 h2,
 h3 {
-  font-size: $font-size-medium;
+  font-size: font-size("large");
   margin-bottom: spacing("medium");
 }
 
 h4,
 h5,
 h6 {
-  font-size: $font-size-medium;
+  font-size: font-size("medium");
 }
 
 h1,
@@ -30,7 +27,7 @@ h6 {
 }
 
 p {
-  font-size: $font-size-medium;
+  font-size: font-size("medium");
   color: var(--text-secondary-color);
 }
 

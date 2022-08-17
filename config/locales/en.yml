@@ -63,6 +63,7 @@ en:
     home: 'Home'
     recently_added: 'Recently Added'
     recently_played: 'Recently Played'
+    library: 'Library'
   error:
     login: 'Wrong email or password'
     forbidden: "Sorry, you do not have permission to visit that"
