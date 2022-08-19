@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
 class PlaylistsController < ApplicationController
-  layout "playlist"
-
   include Pagy::Backend
+  layout "dialog", only: [:new, :edit]
 
-  before_action :find_playlist, only: [:destroy, :update]
+  before_action :find_playlist, only: [:edit, :destroy, :update]
 
   def index
-    @pagy, @playlists = pagy(Current.user.playlists.order(created_at: :desc))
+    @pagy, @playlists = pagy(Current.user.all_playlists.order(created_at: :desc))
 
     respond_to do |format|
       format.turbo_stream if params[:page].to_i > 1
@@ -16,18 +15,33 @@ class PlaylistsController < ApplicationController
     end
   end
 
+  def new
+    @playlist = Playlist.new
+  end
+
+  def edit
+  end
+
   def create
     @playlist = Current.user.playlists.new playlist_params
 
     if @playlist.save
-      flash.now[:success] = t("success.create")
+      flash[:success] = t("success.create")
     else
-      flash_errors_message(@playlist, now: true)
+      flash_errors_message(@playlist)
     end
+
+    redirect_to action: "index"
   end
 
   def update
-    @playlist.update(playlist_params)
+    if @playlist.update(playlist_params)
+      flash[:success] = t("success.update")
+    else
+      flash_errors_message(@playlist)
+    end
+
+    redirect_to playlist_songs_path(@playlist)
   end
 
   def destroy

@@ -5,6 +5,7 @@
     <%= empty_alert_tag has_icon: true, has_overlay: false %>
   </div>
 <% else %>
+  <h1><%= t('label.artists') %></h1>
   <div data-controller='infinite-scroll' data-infinite-scroll-url-value='<%= artists_path %>' data-infinite-scroll-total-pages-value='<%= @pagy.pages %>'>
     <%= shelf_grid_tag class: 'o-container o-container--large', id: 'turbo-artists-content' do %>
       <%= render partial: 'artists/artist', collection: @artists, cached: true %>

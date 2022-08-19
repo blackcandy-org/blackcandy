@@ -17,6 +17,11 @@
   box-shadow: 0 1px 6px var(--dropdown-shadow-color);
 }
 
+.c-dropdown__list--left {
+  left: 0;
+  right: auto;
+}
+
 .c-dropdown__item {
   display: block;
   padding: spacing("narrow");

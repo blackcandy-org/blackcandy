@@ -55,11 +55,11 @@ module ApplicationHelper
     params[:controller].in?(Array(controller)) || (path.is_a?(Regexp) ? (path =~ request.path) : (path == request.path))
   end
 
-  def playlist_songs_for_path(playlist, options = {})
+  def playlist_songs_path(playlist, options = {})
     return current_playlist_songs_path(options) if playlist.current?
     return favorite_playlist_songs_path(options) if playlist.favorite?
 
-    playlist_songs_path(playlist, options)
+    super(playlist, options)
   end
 
   def shelf_grid_tag(**options, &block)

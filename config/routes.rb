@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
   resource :setting, only: [:show, :update]
+  resource :library, only: [:show]
 
   resources :artists, only: [:index, :show, :edit, :update]
   resources :stream, only: [:new]
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
     resource :setting, only: [:update], module: "users"
   end
 
-  resources :playlists, except: [:show, :new, :edit] do
+  resources :playlists, except: [:show] do
     resource :songs, only: [:show, :create, :destroy, :update], module: "playlists", concerns: :playable
   end
 

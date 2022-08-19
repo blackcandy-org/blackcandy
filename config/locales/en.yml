@@ -63,6 +63,10 @@ en:
     home: 'Home'
     recently_added: 'Recently Added'
     recently_played: 'Recently Played'
+    library: 'Library'
+    add: 'Add'
+    create_playlist: 'Create Playlist'
+    edit_playlist: 'Edit Playlist'
   error:
     login: 'Wrong email or password'
     forbidden: "Sorry, you do not have permission to visit that"

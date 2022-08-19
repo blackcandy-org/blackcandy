@@ -5,6 +5,7 @@
     <%= empty_alert_tag has_icon: true, has_overlay: false %>
   </div>
 <% else %>
+  <h1><%= t('label.albums') %></h1>
   <div data-controller='infinite-scroll' data-infinite-scroll-url-value='<%= albums_path %>' data-infinite-scroll-total-pages-value='<%= @pagy.pages %>'>
     <%= shelf_grid_tag class: 'o-container o-container--large', id: 'turbo-albums-content' do %>
       <%= render partial: 'albums/album', collection: @albums, cached: true %>

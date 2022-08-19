@@ -1,20 +1,25 @@
-<div data-controller='playlist-songs' data-playlist-songs-playlist-id-value='<%= @playlist.id %>' data-test-id='favorite_playlist'>
-  <% if @songs.empty? %>
-    <%= empty_alert_tag %>
-  <% else %>
-    <div class='c-action-bar o-flex o-flex--justify-between o-flex--align-center'>
-      <p>
-        <span id='<%= dom_id(@playlist, :songs_count) %>'><%= @playlist.songs.count %></span>
-        <span><%= t('label.tracks') %></span>
-      </p>
-      <div data-controller='dropdown' class='c-dropdown' data-test-id='playlist_menu'>
-        <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', title: t('label.more') %></span>
-        <div data-dropdown-target='list' class='u-display-none c-dropdown__list'>
-          <%= button_to t('label.play_all'), play_favorite_playlist_songs_path, form_class: 'c-dropdown__item' %>
-          <%= button_to t('label.clear'), favorite_playlist_songs_path(clear_all: true), method: :delete, form_class: 'c-dropdown__item' %>
+<div class='o-container o-container--narrow' data-test-id='favorite_playlist'>
+  <div data-controller='playlist-songs' data-playlist-songs-playlist-id-value='<%= @playlist.id %>'>
+    <div class="c-card c-card--horizontal u-my-large">
+      <div class='c-card__body'>
+        <h1 class='c-card__body__title' data-test-id='playlist_name'><%= @playlist.name %></h1>
+        <div class='c-card__body__text'>
+          <span id='<%= dom_id(@playlist, :songs_count) %>'><%= @playlist.songs.size %></span>
+          <span><%= t('label.tracks') %></span>
+          <span>,</span>
+          <span id='<%= dom_id(@playlist, :songs_duration) %>' class='u-text-monospace'><%= format_duration(@playlist.songs.sum(:duration)) %></span>
+        </div>
+        <div class='u-mt-large'>
+          <% unless @songs.blank? %>
+            <%= button_to t('label.play_all'), play_favorite_playlist_songs_path, form_class: 'c-button c-button--primary', form: { 'data-turbo-frame' => 'turbo-playlist' } %>
+            <%= button_to t('label.clear'), favorite_playlist_songs_path(clear_all: true), method: :delete, form_class: 'c-button c-button--secondary' %>
+          <% end %>
         </div>
       </div>
     </div>
-    <%= render partial: 'playlists/songs/list', locals: { playlist: @playlist, songs: @songs, pagy: @pagy } %>
-  <% end %>
+    <% if @playlist.present? %>
+      <%= render partial: 'playlists/songs/list', locals: { playlist: @playlist, songs: @songs, pagy: @pagy } %>
+    <% end %>
+  </div>
 </div>
+

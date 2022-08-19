@@ -2,7 +2,7 @@
 
 .c-tab {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -11,6 +11,7 @@
 .c-tab__item {
   padding-bottom: spacing("narrow");
   border-bottom: 2px solid transparent;
+  margin: 0 spacing("large");
 }
 
 .c-tab__item a {

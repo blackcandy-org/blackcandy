@@ -1,3 +1,4 @@
 <%= turbo_stream.update dom_id(@playlist, :songs_count), @playlist.songs.size %>
+<%= turbo_stream.update dom_id(@playlist, :songs_duration), format_duration(@playlist.songs.sum(:duration)) %>
 <%= turbo_stream.remove "#{dom_id(@playlist)}_#{dom_id(@song)}" %>
 <%= render_flash %>

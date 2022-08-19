@@ -8,7 +8,7 @@ class FavoritePlaylistSystemTest < ApplicationSystemTestCase
     users(:visitor1).favorite_playlist.replace(Song.ids)
     login_as users(:visitor1)
 
-    click_on "Favorites"
+    visit favorite_playlist_songs_url
   end
 
   test "show playlist songs" do
@@ -20,7 +20,6 @@ class FavoritePlaylistSystemTest < ApplicationSystemTestCase
   end
 
   test "play all songs in playlist" do
-    find(:test_id, "playlist_menu").click
     click_on "Play all"
 
     # assert current playlist have all songs in playlist
@@ -34,7 +33,6 @@ class FavoritePlaylistSystemTest < ApplicationSystemTestCase
   end
 
   test "clear playlist songs" do
-    find(:test_id, "playlist_menu").click
     click_on "Clear"
 
     assert_selector(:test_id, "playlist_song", count: 0)
@@ -69,7 +67,7 @@ class FavoritePlaylistSystemTest < ApplicationSystemTestCase
 
     first(:test_id, "playlist_song_menu").click
     click_on "Add to playlist"
-    first(:test_id, "dialog_playlist").click
+    find(:test_id, "dialog_playlist", text: "test-playlist").click
 
     assert_selector(:test_id, "playlist_name", text: "test-playlist")
     assert_equal Song.first.name, first(:test_id, "playlist_song_name").text
