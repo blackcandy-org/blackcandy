@@ -22,8 +22,6 @@ import MiniPlayerController from './mini_player_controller.js'
 
 import PlayerController from './player_controller.js'
 
-import PlaylistController from './playlist_controller.js'
-
 import PlaylistSongsController from './playlist_songs_controller.js'
 
 import PlaylistSortableController from './playlist_sortable_controller.js'
@@ -49,8 +47,6 @@ application.register('media-session', MediaSessionController)
 application.register('mini-player', MiniPlayerController)
 
 application.register('player', PlayerController)
-
-application.register('playlist', PlaylistController)
 
 application.register('playlist-songs', PlaylistSongsController)
 

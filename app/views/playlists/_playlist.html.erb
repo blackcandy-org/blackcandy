@@ -1,6 +1,6 @@
 <li class='c-list__item' data-test-id='playlist'>
-  <%= link_to playlist_songs_path(playlist), class: 'o-flex o-flex--justify-between o-flex--align-center' do %>
+  <%= link_to playlist_songs_path(playlist), class: 'o-flex o-flex--align-center' do %>
+    <%= icon_tag('heart', class: 'u-text-color-red u-mr-tiny') if playlist.favorite? %>
     <span class='u-text-truncate u-mr-narrow' data-test-id='playlist_name'><%= playlist.name %></span>
-    <span><%= icon_tag('chevron-right') %></span>
   <% end %>
 </li>

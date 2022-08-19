@@ -39,14 +39,14 @@ class UserTest < ActiveSupport::TestCase
 
   test "should retutn all playlists except current playlist and favorite playlist" do
     assert_equal 1, @user.playlists.count
-    assert_equal ["Playlist"], @user.playlists.map { |playlist| playlist.class.name }.uniq
+    assert_equal %w[Playlist], @user.playlists.map { |playlist| playlist.class.name }.uniq
   end
 
-  test "should retutn all playlists" do
+  test "should return all playlist except current playlist" do
     all_playlists = @user.all_playlists.map { |playlist| playlist.class.name }.uniq.sort
 
-    assert_equal 3, @user.all_playlists.count
-    assert_equal %w[CurrentPlaylist FavoritePlaylist Playlist], all_playlists
+    assert_equal 2, @user.all_playlists.count
+    assert_equal %w[FavoritePlaylist Playlist], all_playlists
   end
 
   test "should always have current playlist" do

@@ -2,14 +2,14 @@
 
 <% if [@recently_added_albums, @recently_played_albums].any?(&:present?) %>
   <% if @recently_played_albums.present? %>
-    <h1 class='u-mb-medium'><%= t('label.recently_played') %></h1>
+    <h1><%= t('label.recently_played') %></h1>
     <%= shelf_grid_tag class: 'u-mb-large' do %>
       <%= render partial: 'albums/album', collection: @recently_played_albums, cached: true %>
     <% end %>
   <% end %>
 
   <% if @recently_added_albums.present? %>
-    <h1 class='u-mb-medium'><%= t('label.recently_added') %></h1>
+    <h1><%= t('label.recently_added') %></h1>
     <%= shelf_grid_tag class: 'u-mb-large' do %>
       <%= render partial: 'albums/album', collection: @recently_added_albums, cached: true %>
     <% end %>

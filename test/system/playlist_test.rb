@@ -6,8 +6,8 @@ class PlaylistSystemTest < ApplicationSystemTestCase
   setup do
     Setting.update(media_path: Rails.root.join("test/fixtures/files"))
     login_as users(:admin)
-    click_on "Playlists"
-    click_on "playlist1"
+
+    visit playlist_songs_url(playlists(:playlist1))
   end
 
   test "show playlist songs" do
@@ -17,7 +17,6 @@ class PlaylistSystemTest < ApplicationSystemTestCase
   end
 
   test "play all songs in playlist" do
-    find(:test_id, "playlist_menu").click
     click_on "Play all"
 
     # assert current playlist have all songs in playlist
@@ -44,14 +43,15 @@ class PlaylistSystemTest < ApplicationSystemTestCase
     assert_selector(:test_id, "playlist", count: 0)
   end
 
-  test "rename playlist" do
-    find(:test_id, "playlist_menu").click
-    click_on "Rename"
+  test "edit playlist" do
+    click_on "Edit"
 
-    fill_in "playlist_name_input", with: "renamed_playlist"
-    # blur the input
-    find("body").click
+    assert_selector(:test_id, "playlist_edit_form", visible: true)
 
+    fill_in "playlist_name", with: "renamed_playlist"
+    click_on "Save"
+
+    assert_text("Updated successfully")
     assert_selector(:test_id, "playlist_name", text: "renamed_playlist")
   end
 
@@ -86,7 +86,7 @@ class PlaylistSystemTest < ApplicationSystemTestCase
 
     first(:test_id, "playlist_song_menu").click
     click_on "Add to playlist"
-    first(:test_id, "dialog_playlist").click
+    find(:test_id, "dialog_playlist", text: "test-playlist").click
 
     assert_selector(:test_id, "playlist_name", text: "test-playlist")
     assert_equal playlists(:playlist1).songs.first.name, first(:test_id, "playlist_song_name").text

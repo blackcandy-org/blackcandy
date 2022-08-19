@@ -18,15 +18,12 @@ class User < ApplicationRecord
   validates :theme, inclusion: {in: AVAILABLE_THEME_OPTIONS}, allow_nil: true
 
   has_many :playlists, -> { where(type: nil) }, inverse_of: :user, dependent: :destroy
+
   has_one :current_playlist, dependent: :destroy
   has_one :favorite_playlist, dependent: :destroy
 
   acts_as_authentic do |config|
     config.crypto_provider = ::Authlogic::CryptoProviders::BCrypt
-  end
-
-  def all_playlists
-    playlists.unscope(where: :type)
   end
 
   # ensure user always have current playlist
@@ -41,6 +38,11 @@ class User < ApplicationRecord
 
   def favorited?(song)
     favorite_playlist.songs.exists? song.id
+  end
+
+  # User created playlists with favorite playlist
+  def all_playlists
+    playlists.unscope(where: :type).where("playlists.type IS NULL OR playlists.type = ?", "FavoritePlaylist").order(:type)
   end
 
   def recently_played_albums

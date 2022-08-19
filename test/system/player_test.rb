@@ -55,6 +55,6 @@ class PlayerSystemTest < ApplicationSystemTestCase
 
     find(:test_id, "player_favorite_button").click
     assert_selector(:test_id, "favorite_playlist", visible: true)
-    assert_text("No items")
+    assert_text("0 Tracks")
   end
 end

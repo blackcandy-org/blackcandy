@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CurrentPlaylist::SongsController < Playlists::SongsController
+  layout "playlist"
+
   def create
     @current_song = Song.find_by(id: cookies[:current_song_id])
     current_song_position = @playlist.playlists_songs.find_by(song_id: @current_song&.id)&.position.to_i

@@ -3,7 +3,7 @@
 <% end %>
 
 <% if @playlists.present? %>
-  <%= form_tag nil, 'data-turbo-frame': 'turbo-playlist' do %>
+  <%= form_tag nil, 'data-turbo-frame': '_top' do %>
     <%= hidden_field_tag :song_id, params[:song_id] %>
     <div data-controller='infinite-scroll' data-infinite-scroll-container-value='#js-dialog-content'
         data-infinite-scroll-url-value='<%= dialog_playlists_path %>'

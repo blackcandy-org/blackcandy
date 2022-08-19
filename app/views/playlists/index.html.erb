@@ -1,16 +1,18 @@
-<%= form_with model: Playlist.new, class: 'c-form o-flex o-flex--justify-between', data: { controller: 'form', action: 'turbo:submit-end->form#reset' } do |form| %>
-  <%= form.text_field :name, class: 'c-input u-mr-narrow' %>
-  <%= form.submit t('label.create'), class: 'c-button c-button--primary c-button--small' %>
-<% end %>
-<div data-controller='infinite-scroll' data-infinite-scroll-url-value='<%= playlists_path %>' data-infinite-scroll-total-pages-value='<%= @pagy.pages %>'>
-  <ul id='turbo-playlist-list' class='c-list c-list--border-none'>
-    <% if @playlists.present? %>
-      <%= render partial: 'playlists/playlist', collection: @playlists, cached: true %>
-    <% end %>
-  </ul>
-  <div data-infinite-scroll-target='trigger' class='o-flex o-flex--justify-center u-my-small'>
-    <% if @pagy.next %>
-      <%= loader_tag %>
-    <% end %>
+<div class='o-container o-container--narrow'>
+  <div class='o-flex o-flex--align-center o-flex--justify-between u-mb-large'>
+    <h1 class='u-mb-0'><%= t('lable.playlists') %></h1>
+    <%= link_to t('label.add'), new_playlist_path, data: { turbo_frame: 'turbo-dialog' }, class: 'c-button c-button--primary' %>
+  </div>
+  <div data-controller='infinite-scroll' data-infinite-scroll-url-value='<%= playlists_path %>' data-infinite-scroll-total-pages-value='<%= @pagy.pages %>'>
+    <ul id='turbo-playlist-list' class='c-list'>
+      <% if @playlists.present? %>
+        <%= render partial: 'playlists/playlist', collection: @playlists, cached: true %>
+      <% end %>
+    </ul>
+    <div data-infinite-scroll-target='trigger' class='o-flex o-flex--justify-center u-my-small'>
+      <% if @pagy.next %>
+        <%= loader_tag %>
+      <% end %>
+    </div>
   </div>
 </div>

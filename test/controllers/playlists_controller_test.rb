@@ -36,6 +36,16 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "updated_playlist", playlist.reload.name
   end
 
+  test "should has error flash when failed to update playlist" do
+    playlist = playlists(:playlist1)
+    user = playlist.user
+
+    login user
+    patch playlist_url(playlist), params: {playlist: {name: ""}}
+
+    assert flash[:error].present?
+  end
+
   test "should destroy playlist" do
     playlist = playlists(:playlist1)
     user = playlist.user
@@ -45,5 +55,22 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
     delete playlist_url(playlist)
 
     assert_equal playlists_count - 1, Playlist.count
+  end
+
+  test "should get new playlist" do
+    login
+    get new_playlist_path
+
+    assert_response :success
+  end
+
+  test "should edit playlist" do
+    playlist = playlists(:playlist1)
+    user = playlist.user
+
+    login user
+    get edit_playlist_path(playlist)
+
+    assert_response :success
   end
 end
