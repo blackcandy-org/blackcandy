@@ -111,6 +111,10 @@
   /* Badge */
   --badge-bg-color: #{$purple};
   --badge-color: #{$white};
+
+  /* Card */
+  --card-border-color: #{$grey-lighter};
+  --card-bg-color: #{$grey-lightest};
 }
 
 @mixin dark-theme {
@@ -222,6 +226,10 @@
   /* Badge */
   --badge-bg-color: #{$purple};
   --badge-color: #{$white};
+
+  /* Card */
+  --card-border-color: #{$black-lighter};
+  --card-bg-color: #{$black};
 }
 
 [data-color-scheme="light"] {

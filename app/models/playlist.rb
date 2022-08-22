@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
 class Playlist < ApplicationRecord
+  include Searchable
+
   validates :name, presence: true, if: :require_name?
 
   has_many :playlists_songs
   has_many :songs, -> { order "playlists_songs.position" }, through: :playlists_songs
   belongs_to :user
+
+  search_by :name
 
   def current?
     type == "CurrentPlaylist"

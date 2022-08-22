@@ -8,18 +8,31 @@
   display: flex;
 }
 
+.c-card--border {
+  border: 1px solid var(--card-border-color);
+  border-radius: border-radius("medium");
+  background-color: var(--card-bg-color);
+}
+
+.c-card--border .c-card__body {
+  padding: spacing("narrow");
+}
+
+.c-card__image {
+  display: block;
+  margin-bottom: spacing("narrow");
+}
+
 .c-card__image,
 .c-card__image img {
   border-radius: border-radius("medium");
 }
 
-.c-card__body {
-  margin-top: spacing("narrow");
+.c-card--horizontal .c-card__image {
+  margin-right: spacing("medium");
 }
 
 .c-card--horizontal .c-card__body {
-  margin-top: 0;
-  margin-left: spacing("medium");
   flex-grow: 1;
   width: 0;
 }

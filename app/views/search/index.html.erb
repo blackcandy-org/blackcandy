@@ -1,4 +1,4 @@
-<% if [@albums, @artists, @songs].any?(&:present?) %>
+<% if [@albums, @artists, @songs, @playlists].any?(&:present?) %>
   <h1><%= t('text.search_results', query: params[:query]) %></h1>
 
   <% if @albums.present? %>
@@ -24,6 +24,19 @@
     </div>
     <%= shelf_grid_tag class: 'u-mb-large' do %>
       <%= render partial: 'artists/artist', collection: @artists, cached: true %>
+    <% end %>
+  <% end %>
+
+  <% if @playlists.present? %>
+    <div class='o-flex o-flex--justify-between o-flex--align-center u-mb-medium'>
+      <h2 class='u-mb-0'><%= t('label.playlists') %></h2>
+
+      <% unless @is_all_playlists %>
+        <%= link_to t('text.see_all'), search_playlists_path(query: params[:query]), class: 'is-active' %>
+      <% end %>
+    </div>
+    <%= list_grid_tag class: 'u-mb-wide' do %>
+      <%= render partial: 'playlists/playlist', collection: @playlists, cached: true %>
     <% end %>
   <% end %>
 
