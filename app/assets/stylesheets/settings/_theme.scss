@@ -109,8 +109,8 @@
   --player-progress-color: #{$purple};
 
   /* Badge */
-  --badge-bg-color: #{$purple};
-  --badge-color: #{$white};
+  --badge-bg-color: #{color.change($purple-light, $alpha: 0.2)};
+  --badge-color: #{$purple};
 
   /* Card */
   --card-border-color: #{$grey-lighter};
@@ -224,8 +224,8 @@
   --player-progress-color: #{$purple};
 
   /* Badge */
-  --badge-bg-color: #{$purple};
-  --badge-color: #{$white};
+  --badge-bg-color: #{color.change($purple, $alpha: 0.2)};
+  --badge-color: #{$purple-light};
 
   /* Card */
   --card-border-color: #{$black-lighter};
