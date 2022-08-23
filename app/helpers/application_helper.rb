@@ -79,6 +79,18 @@ module ApplicationHelper
     tag.div(**tag_options, escape: false, &block)
   end
 
+  def list_grid_tag(**options, &block)
+    class_option = "o-grid o-grid--gap-small #{options[:class]}"
+    tag_options = options.merge(
+      :class => class_option,
+      "cols" => 3,
+      "cols@narrow" => 1,
+      "cols@medium" => 2
+    )
+
+    tag.div(**tag_options, escape: false, &block)
+  end
+
   def page_title_tag(title)
     content_for :title, title
   end

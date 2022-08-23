@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     resources :artists, only: [:index]
     resources :songs, only: [:index]
     resources :albums, only: [:index]
+    resources :playlists, only: [:index]
   end
 
   get "/403", to: "errors#forbidden", as: :forbidden
