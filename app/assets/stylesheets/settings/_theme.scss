@@ -87,6 +87,10 @@
   --dialog-header-bg-color: #{$grey-lighter};
   --dialog-header-color: #{$black};
 
+  ::backdrop {
+    --dialog-backdrop-color: #{color.change($grey-lightest, $alpha: 0.9)};
+  }
+
   /* Overlay */
   --overlay-blur-bg-color: #{color.change($grey-lightest, $alpha: 0.9)};
 
@@ -170,7 +174,7 @@
   --tab-active-color: #{$purple-light};
 
   /* List */
-  --list-border-color: #{$black-lighter};
+  --list-border-color: #{$black-light};
   --list-active-color: #{$purple-light};
   --list-dragging-placeholder-bg-color: #{$black-light};
   --list-dragging-bg-color: #{$black-dark};
@@ -201,6 +205,10 @@
   --dialog-bg-color: #{$black};
   --dialog-header-bg-color: #{$grey};
   --dialog-header-color: #{$black};
+
+  ::backdrop {
+    --dialog-backdrop-color: #{color.change($black-light, $alpha: 0.9)};
+  }
 
   /* Overlay */
   --overlay-blur-bg-color: #{color.change($black-light, $alpha: 0.9)};

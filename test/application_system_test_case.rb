@@ -8,7 +8,8 @@ SimpleCov.command_name "test:system"
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   driven_by :cuprite, screen_size: [1400, 900], options: {
     browser_options: {"no-sandbox": nil},
-    url_blacklist: ["https://www.gravatar.com"]
+    url_blacklist: ["https://www.gravatar.com"],
+    timeout: 10
   }
 
   def login_as(user)
