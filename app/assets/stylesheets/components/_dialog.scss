@@ -1,13 +1,18 @@
 @use "../tools/functions" as *;
 
 .c-dialog {
-  position: fixed;
-  top: 100px;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+  padding: 0;
+  margin-top: 100px;
   background: var(--dialog-bg-color);
+  border: none;
   border-radius: border-radius("medium");
+  width: 100%;
+  max-width: 360px;
+  color: inherit;
+}
+
+.c-dialog::backdrop {
+  background-color: var(--dialog-backdrop-color);
 }
 
 .c-dialog__header {
