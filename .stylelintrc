@@ -2,7 +2,6 @@
   "extends": "stylelint-config-standard-scss",
   "rules": {
     "selector-class-pattern": null,
-    "selector-pseudo-element-colon-notation": "single",
     "custom-property-empty-line-before": null,
     "at-rule-empty-line-before": null,
     "value-keyword-case": ["lower", { "ignoreKeywords": ["BlinkMacSystemFont"] }],
