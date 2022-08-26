@@ -20,7 +20,7 @@ class AlbumsSystemTest < ApplicationSystemTestCase
 
   test "show next page albums when scroll to the bottom" do
     visit albums_url
-    find(:test_id, "main_content").scroll_to :bottom
+    scroll_to :bottom
 
     assert_selector(:test_id, "album_card", count: Pagy::DEFAULT[:items] * 2)
   end

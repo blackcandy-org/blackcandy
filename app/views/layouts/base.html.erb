@@ -10,7 +10,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body class="<%= 'u-overflow-hidden' unless turbo_native? %>">
+  <body>
     <%= content_for?(:body) ? yield(:body) : yield %>
     <%= render 'shared/icons' %>
   </body>

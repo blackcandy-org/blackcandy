@@ -9,16 +9,18 @@
       <%= yield %>
     </main>
   <% else %>
-    <div class='o-flex u-vw-100 u-vh-100'>
-      <aside id='js-sidebar' class='o-flex__item o-flex__item--shrink-0 o-flex o-flex--column-reverse c-sidebar' data-turbo-permanent>
-        <div class='o-flex__item o-flex__item--shrink-0'>
-          <%= render 'shared/player' %>
-        </div>
-        <div class='o-flex__item o-flex__item--grow-1 u-h-0'>
-          <%= turbo_frame_tag 'turbo-playlist', src: current_playlist_songs_path(init: true), class: 'u-h-100 o-flex o-flex--column' %>
+    <div class='o-flex'>
+      <aside id='js-sidebar' class='o-flex__item o-flex__item--shrink-0 c-sidebar' data-turbo-permanent>
+        <div class='o-flex o-flex--column-reverse u-position-sticky-top u-overflow-auto u-vh-100'>
+          <div class='o-flex__item o-flex__item--shrink-0'>
+            <%= render 'shared/player' %>
+          </div>
+          <div class='o-flex__item o-flex__item--grow-1 u-h-0'>
+            <%= turbo_frame_tag 'turbo-playlist', src: current_playlist_songs_path(init: true), class: 'u-h-100 o-flex o-flex--column' %>
+          </div>
         </div>
       </aside>
-      <div class='o-flex__item o-flex__item--grow-1 u-overflow-auto' data-test-id='main_content'>
+      <div class='o-flex__item o-flex__item--grow-1' >
         <div>
           <header class='c-nav c-nav--primary u-position-sticky-top'>
             <div id='turbo-flash' class='c-flash'>
