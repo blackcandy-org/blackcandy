@@ -27,7 +27,7 @@ class SongsSystemTest < ApplicationSystemTestCase
 
   test "show next page songs when scroll to the bottom" do
     visit songs_url
-    find(:test_id, "main_content").scroll_to :bottom
+    scroll_to :bottom
 
     assert_selector(:test_id, "song_item", count: Pagy::DEFAULT[:items] * 2)
   end

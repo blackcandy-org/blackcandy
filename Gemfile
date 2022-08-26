@@ -89,7 +89,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem "capybara", "~> 3.36.0"
+  gem "capybara", "~> 3.37.0"
   gem "cuprite", git: "https://github.com/rubycdp/cuprite", branch: "master"
   gem "webmock", "~> 3.14.0", require: false
   gem "simplecov", "~> 0.21.2", require: false

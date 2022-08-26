@@ -6,8 +6,6 @@ import { application } from './application'
 
 import DialogController from './dialog_controller.js'
 
-import DropdownController from './dropdown_controller.js'
-
 import FlashController from './flash_controller.js'
 
 import FormController from './form_controller.js'
@@ -31,8 +29,6 @@ import SearchController from './search_controller.js'
 import ThemeController from './theme_controller.js'
 
 application.register('dialog', DialogController)
-
-application.register('dropdown', DropdownController)
 
 application.register('flash', FlashController)
 

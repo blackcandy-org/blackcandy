@@ -6,13 +6,18 @@
 }
 
 .c-nav--primary {
-  background: var(--nav-primary-bg-color);
-}
+  position: relative;
 
-@supports (-webkit-backdrop-filter: initial) or (backdrop-filter: initial) {
-  .c-nav--primary {
-    background: var(--nav-backdrop-bg-color);
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
+    z-index: -1;
+    background: var(--nav-primary-bg-color);
   }
 }

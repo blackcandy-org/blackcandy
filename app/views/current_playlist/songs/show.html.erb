@@ -7,12 +7,12 @@
         <span id='<%= dom_id(@playlist, :songs_count) %>'><%= @playlist.songs.count %></span>
         <span><%= t('label.tracks') %></span>
       </p>
-      <div data-controller='dropdown' class='c-dropdown' data-test-id='playlist_menu'>
-        <span data-action='click->dropdown#show'><%= icon_tag 'more-vertical', title: t('label.more') %></span>
-        <div data-dropdown-target='list' class='u-display-none c-dropdown__list'>
+      <details class='c-dropdown' data-test-id='playlist_menu'>
+        <summary><%= icon_tag 'more-vertical', title: t('label.more') %></summary>
+        <div class='c-dropdown__list'>
           <%= button_to t('label.clear'), current_playlist_songs_path(clear_all: true), method: :delete, form_class: 'c-dropdown__item u-cursor-pointer', form: { data: { action: 'turbo:submit-end->playlist-songs#clear' } } %>
         </div>
-      </div>
+      </details>
     </div>
     <%= render partial: 'playlists/songs/list', locals: { playlist: @playlist, songs: @songs, pagy: @pagy } %>
   <% end %>

@@ -14,19 +14,20 @@
             <%= button_to t('label.play_all'), play_playlist_songs_path(@playlist), form_class: 'c-button c-button--primary', form: { 'data-turbo-frame' => 'turbo-playlist' } %>
           <% end %>
           <%= link_to t('label.edit'), edit_playlist_path(@playlist), data: { turbo_frame: 'turbo-dialog' }, class: 'c-button c-button--secondary' %>
-          <div data-controller='dropdown' class='c-dropdown u-display-inline-block' data-test-id='playlist_menu'>
-            <span data-action='click->dropdown#show'>
-              <button class='c-button c-button--secondary'>
+
+          <details class='c-dropdown' data-test-id='playlist_menu'>
+            <summary>
+              <span class='c-button c-button--secondary'>
                 <%= icon_tag 'more-horizontal', size: 'narrow', title: t('label.more') %>
-              </button>
-            </span>
-            <div data-dropdown-target='list' class='u-display-none c-dropdown__list c-dropdown__list--left'>
+              </span>
+            </summary>
+            <div class='c-dropdown__list c-dropdown__list--left''>
               <% unless @songs.blank? %>
                 <%= button_to t('label.clear'), playlist_songs_path(@playlist, clear_all: true), method: :delete, form_class: 'c-dropdown__item' %>
               <% end %>
               <%= button_to t('label.delete'), playlist_path(@playlist), method: :delete, form_class: 'c-dropdown__item'  %>
             </div>
-          </div>
+          </details>
         </div>
       </div>
     </div>

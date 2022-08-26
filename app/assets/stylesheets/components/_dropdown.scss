@@ -1,15 +1,44 @@
 @use "../tools/functions" as *;
 
 .c-dropdown {
-  cursor: pointer;
+  display: inline-block;
   position: relative;
+}
+
+.c-dropdown > summary {
+  display: inline-block;
+  cursor: pointer;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.c-dropdown[open] > summary {
+  &::before {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    display: block;
+    cursor: default;
+    content: "";
+    background: transparent;
+  }
+}
+
+.c-dropdown:not([open]) > *:not(summary) {
+  display: none;
 }
 
 .c-dropdown__list {
   position: absolute;
   right: 0;
   top: 0;
-  z-index: 1;
+  z-index: 101;
   min-width: 100px;
   background: var(--dropdown-bg-color);
   border-radius: border-radius("medium");
@@ -33,13 +62,8 @@ a.c-dropdown__item {
   color: var(--dropdown-color);
 }
 
-form.c-dropdown__item {
-  padding: 0;
-}
-
 form.c-dropdown__item input[type="submit"],
 form.c-dropdown__item button[type="submit"] {
-  padding: spacing("narrow");
   width: 100%;
   background: var(--dropdown-bg-color);
   border: none;
