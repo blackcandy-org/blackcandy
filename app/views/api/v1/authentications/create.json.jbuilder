@@ -1,1 +1,1 @@
-json.call(@current_user, :api_token)
+json.user @current_user, :id, :email, :is_admin, :api_token

@@ -15,11 +15,14 @@ class Api::V1::AuthenticationsControllerTest < ActionDispatch::IntegrationTest
       }
     }
 
-    response = @response.parsed_body
+    response = @response.parsed_body["user"]
 
     assert_response :success
     assert_nil session[:user_credentials]
     assert_equal @user.reload.api_token, response["api_token"]
+    assert_equal @user.id, response["id"]
+    assert_equal @user.email, response["email"]
+    assert_equal @user.is_admin, response["is_admin"]
   end
 
   test "should create authentication with session" do
@@ -31,11 +34,14 @@ class Api::V1::AuthenticationsControllerTest < ActionDispatch::IntegrationTest
       }
     }
 
-    response = @response.parsed_body
+    response = @response.parsed_body["user"]
 
     assert_response :success
     assert_not_nil session[:user_credentials]
     assert_equal @user.reload.api_token, response["api_token"]
+    assert_equal @user.id, response["id"]
+    assert_equal @user.email, response["email"]
+    assert_equal @user.is_admin, response["is_admin"]
   end
 
   test "should not create authentication with wrong credential" do
