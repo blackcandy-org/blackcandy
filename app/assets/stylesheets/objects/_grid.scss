@@ -2,7 +2,7 @@
 
 @use "../settings/variables";
 @use "../tools/responsive";
-@use "../tools/functions";
+@use "../tools/functions" as *;
 
 @mixin grid($breakpoint-postfix) {
   .o-grid[cols#{$breakpoint-postfix}="1"] { --grid-tc: repeat(1, 1fr); }
@@ -105,6 +105,60 @@
   --grid-ce: -1; /* column end */
 }
 
+.o-grid--shelf {
+  grid-gap: spacing("medium");
+}
+
+@include responsive.media-query using ($breakpoint) {
+  @if $breakpoint == "extra-wide" {
+    .o-grid--shelf {
+      --grid-tc: repeat(7, 1fr);
+    }
+  }
+
+  @if $breakpoint == "wide" {
+    .o-grid--shelf {
+      --grid-tc: repeat(6, 1fr);
+    }
+  }
+
+  @if $breakpoint == "extra-large" {
+    .o-grid--shelf {
+      --grid-tc: repeat(5, 1fr);
+    }
+  }
+
+  @if $breakpoint == "large" {
+    .o-grid--shelf {
+      --grid-tc: repeat(4, 1fr);
+    }
+  }
+
+  @if $breakpoint == "medium" {
+    .o-grid--shelf {
+      --grid-tc: repeat(3, 1fr);
+    }
+  }
+
+  @if $breakpoint == "small" {
+    .o-grid--shelf {
+      --grid-tc: repeat(2, 1fr);
+    }
+  }
+
+  @if $breakpoint == "extra-small" {
+    .o-grid--shelf {
+      --grid-tc: repeat(3, 1fr);
+    }
+  }
+
+  @if $breakpoint == "narrow" {
+    .o-grid--shelf {
+      --grid-tc: repeat(2, 1fr);
+    }
+  }
+}
+
 /* o-cell -- cell or column */
 .o-grid > .o-grid__item {
   display: block;
@@ -130,5 +184,5 @@
 }
 
 @include responsive.media-query using ($breakpoint) {
-  @include grid(functions.breakpoint-postfix($breakpoint));
+  @include grid(breakpoint-postfix($breakpoint));
 }

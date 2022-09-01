@@ -12,11 +12,6 @@ class AlbumsController < ApplicationController
   def index
     records = Album.includes(:artist).order(:name)
     @pagy, @albums = pagy(records)
-
-    respond_to do |format|
-      format.turbo_stream if params[:page].to_i > 1
-      format.html
-    end
   end
 
   def show
