@@ -1,7 +1,7 @@
-<div class='o-grid o-grid--align-items-center' cols='7'>
-  <%= form_tag search_path, method: :get, class: 'c-search c-input-group o-grid__item',
-              'span@medium': '2-6', span: '3-5',
-              data: { action: 'search#submit', controller: 'search' } do %>
+<div class='o-flex o-flex--align-center'>
+  <div class='o-flex__item o-flex__item--grow-1 o-flex__item--basic-0'>
+  </div>
+  <%= form_tag search_path, method: :get, class: 'c-search c-input-group o-flex__item', data: { action: 'search#submit', controller: 'search' } do %>
       <div class='c-input-group__icon'>
         <%= icon_tag 'search', size: 'large' %>
       </div>
@@ -12,8 +12,8 @@
       </div>
   <% end %>
 
-  <div class='o-grid__item o-grid__item--justify-end' span@medium='7-7' span='6-7'>
-    <details class='c-dropdown' data-test-id='search_bar_menu'>
+  <div class='o-flex o-flex--align-center o-flex__item o-flex__item--grow-1 o-flex__item--basic-0'>
+    <details class='c-dropdown u-ml-auto' data-test-id='search_bar_menu'>
       <summary><%= avatar_tag Current.user %></summary>
       <div class='c-dropdown__list'>
         <%= link_to t('label.settings'), setting_path, class: 'c-dropdown__item' %>

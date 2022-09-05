@@ -12,8 +12,6 @@ import FlashController from './flash_controller.js'
 
 import FormController from './form_controller.js'
 
-import InfiniteScrollController from './infinite_scroll_controller.js'
-
 import LoaderController from './loader_controller.js'
 
 import MediaSessionController from './media_session_controller.js'
@@ -37,8 +35,6 @@ application.register('element', ElementController)
 application.register('flash', FlashController)
 
 application.register('form', FormController)
-
-application.register('infinite-scroll', InfiniteScrollController)
 
 application.register('loader', LoaderController)
 

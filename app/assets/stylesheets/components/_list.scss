@@ -35,8 +35,7 @@
   color: transparent;
 }
 
-.c-list__item.is-active *,
-.c-list__item:hover button[type="submit"] * {
+.c-list__item.is-active * {
   color: var(--list-active-color);
 }
 

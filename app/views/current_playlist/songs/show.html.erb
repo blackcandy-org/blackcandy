@@ -10,7 +10,7 @@
       <details class='c-dropdown' data-test-id='playlist_menu'>
         <summary><%= icon_tag 'more-vertical', title: t('label.more') %></summary>
         <div class='c-dropdown__list'>
-          <%= button_to t('label.clear'), current_playlist_songs_path(clear_all: true), method: :delete, form_class: 'c-dropdown__item u-cursor-pointer', form: { data: { action: 'turbo:submit-end->playlist-songs#clear' } } %>
+          <%= button_to t('label.clear'), current_playlist_songs_path(clear_all: true), method: :delete, form_class: 'c-dropdown__item', form: { data: { action: 'turbo:submit-end->playlist-songs#clear' } } %>
         </div>
       </details>
     </div>

@@ -50,3 +50,12 @@ hr {
   border-bottom: 0;
   margin: spacing("large") 0;
 }
+
+button[type="submit"] {
+  cursor: pointer;
+
+  &:hover,
+  &:hover * {
+    color: var(--link-active-color);
+  }
+}

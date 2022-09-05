@@ -1,6 +1,6 @@
 <h1><%= t('text.search_results', query: params[:query]) %></h1>
 <h2><%= t('label.playlists') %></h2>
 
-<%= list_grid_tag do %>
+<div class='o-grid o-grid--list'>
   <%= render partial: 'playlists/playlist', collection: @playlists, cached: true %>
-<% end %>
+</div>
