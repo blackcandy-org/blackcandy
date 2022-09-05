@@ -1,5 +1,3 @@
-import { Turbo } from '@hotwired/turbo-rails'
-
 function formatDuration (secs) {
   const date = new Date(null)
   date.setSeconds(secs)
@@ -38,27 +36,6 @@ async function fetchRequest (url, options = {}) {
   return fetch(request, options)
 }
 
-async function fetchTurboStream (url, options = {}, successCallback = () => {}) {
-  const turboStreamHeader = {
-    Accept: 'text/vnd.turbo-stream.html'
-  }
-
-  options.headers = ('headers' in options)
-    ? { ...options.headers, ...turboStreamHeader }
-    : turboStreamHeader
-
-  try {
-    const response = await fetchRequest(url, options)
-
-    if (response.ok) {
-      const streamMessage = await response.text()
-
-      Turbo.renderStreamMessage(streamMessage)
-      successCallback()
-    }
-  } catch (_) { /* ignore error */ }
-}
-
 function dispatchEvent (element, type, data = null) {
   if (typeof element === 'string') { element = document.querySelector(element) }
   element.dispatchEvent(new CustomEvent(type, { detail: data }))
@@ -69,6 +46,5 @@ export {
   shuffle,
   randomIndex,
   fetchRequest,
-  fetchTurboStream,
   dispatchEvent
 }

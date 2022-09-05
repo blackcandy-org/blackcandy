@@ -9,11 +9,6 @@ class Playlists::SongsController < ApplicationController
 
   def show
     @pagy, @songs = pagy(@playlist.songs.includes(:artist))
-
-    respond_to do |format|
-      format.turbo_stream if params[:page].to_i > 1
-      format.html
-    end
   end
 
   def create

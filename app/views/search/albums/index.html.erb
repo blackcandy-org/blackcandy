@@ -1,5 +1,5 @@
 <h1><%= t('text.search_results', query: params[:query]) %></h1>
 <h2><%= t('label.albums') %></h2>
-<%= shelf_grid_tag class: 'u-mb-large' do %>
+<div class='o-grid o-grid--shelf u-mb-large'>
   <%= render partial: 'albums/album', collection: @albums, cached: true %>
-<% end %>
+</div>

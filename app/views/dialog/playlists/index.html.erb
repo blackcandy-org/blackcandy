@@ -5,18 +5,17 @@
 <% if @playlists.present? %>
   <%= form_tag nil, 'data-turbo-frame': '_top' do %>
     <%= hidden_field_tag :song_id, params[:song_id] %>
-    <div data-controller='infinite-scroll' data-infinite-scroll-container-value='#js-dialog-content'
-        data-infinite-scroll-url-value='<%= dialog_playlists_path %>'
-        data-infinite-scroll-total-pages-value='<%= @pagy.pages %>'>
-      <div id='turbo-dialog-playlists' data-action='click->dialog#hide' class='c-list'>
-        <%= render partial: 'dialog/playlists/playlist', collection: @playlists, cached: true %>
-      </div>
-      <div data-infinite-scroll-target='trigger' class='o-flex o-flex--justify-center u-my-small'>
-        <% if @pagy.next %>
-          <%= loader_tag %>
+    <%= turbo_frame_tag "turbo-dialog-playlists-page-#{@pagy.page}", class: 'c-list', data: { action: 'click->dialog#hide' }, target: '_top' do %>
+      <%= render partial: 'dialog/playlists/playlist', collection: @playlists, cached: true %>
+
+      <% if @pagy.next %>
+        <%= turbo_frame_tag "turbo-dialog-playlists-page-#{@pagy.next}", src: pagy_url_for(@pagy, @pagy.next), loading: 'lazy', class: 'u-my-small', data: { controller: 'element', action: 'turbo:frame-render->element#replaceWithChildren' }  do %>
+          <div class='o-flex o-flex--justify-center'>
+            <%= loader_tag %>
+          </div>
         <% end %>
-      </div>
-    </div>
+      <% end %>
+    <% end %>
   <% end %>
 <% else %>
   <%= empty_alert_tag %>

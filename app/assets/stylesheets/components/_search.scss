@@ -1,3 +1,11 @@
+@use "../tools/functions" as *;
+
+.c-search {
+  max-width: 380px;
+  width: 100%;
+  margin: 0 spacing("small");
+}
+
 .c-search .c-loader {
   display: none;
 }

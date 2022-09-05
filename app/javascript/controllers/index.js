@@ -6,11 +6,11 @@ import { application } from './application'
 
 import DialogController from './dialog_controller.js'
 
+import ElementController from './element_controller'
+
 import FlashController from './flash_controller.js'
 
 import FormController from './form_controller.js'
-
-import InfiniteScrollController from './infinite_scroll_controller.js'
 
 import LoaderController from './loader_controller.js'
 
@@ -30,11 +30,11 @@ import ThemeController from './theme_controller.js'
 
 application.register('dialog', DialogController)
 
+application.register('element', ElementController)
+
 application.register('flash', FlashController)
 
 application.register('form', FormController)
-
-application.register('infinite-scroll', InfiniteScrollController)
 
 application.register('loader', LoaderController)
 

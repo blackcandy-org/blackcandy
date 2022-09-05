@@ -1,14 +1,35 @@
+@use "../tools/responsive";
 @use "../tools/functions" as *;
 
 .c-table {
+  display: table;
   width: 100%;
-  table-layout: fixed;
+  table-layout: auto;
   text-align: left;
 }
 
-.c-table tr,
+.c-table[role="table"] {
+  display: grid;
+  grid-template-columns: var(--grid-tc);
+  --grid-tc: repeat(5, auto);
+}
+
+.c-table [role="rowgroup"] {
+  display: contents;
+}
+
 .c-table [role="row"] {
+  display: contents;
+}
+
+.c-table tr,
+.c-table [role="columnheader"],
+.c-table [role="cell"] {
   border-bottom: 1px solid var(--table-border-color);
+}
+
+.c-table [role="columnheader"] {
+  font-weight: bold;
 }
 
 .c-table th,
@@ -20,16 +41,16 @@
   color: var(--table-color);
 }
 
-.c-table th:first-child,
-.c-table td:first-child,
-.c-table [role="columnheader"]:first-child,
-.c-table [role="cell"]:first-child {
-  padding-left: 0;
+.c-table [role="cell"][span="row"] {
+  grid-column: 1 / -1;
 }
 
-.c-table tbody tr:hover *,
-.c-table tbody tr.is-active *,
-.c-table [role="row"]:hover [role="cell"],
-.c-table [role="row"].is-active [role="cell"] {
-  color: var(--table-active-color);
+@include responsive.media-query using ($breakpoint) {
+  @if $breakpoint == "medium" {
+    .c-table[role="table"][cols\@medium="3"] { --grid-tc: repeat(3, auto); }
+  }
+
+  @if $breakpoint == "small" {
+    .c-table[role="table"][cols\@small="2"] { --grid-tc: repeat(2, auto); }
+  }
 }

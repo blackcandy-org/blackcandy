@@ -1,6 +1,6 @@
 <div class='o-container o-container--wide'>
   <% cache @artist do %>
-    <%= shelf_grid_tag class: 'u-pb-wide' do %>
+    <div class='o-grid o-grid--shelf u-pb-wide'>
       <div class='o-grid__item c-card u-mb-medium'>
         <%= image_tag image_url_for(@artist), class: 'u-image-fluid c-card__image', data: { test_id: 'artist_image' } %>
       </div>
@@ -15,7 +15,7 @@
           <%= link_to t('label.edit'), edit_artist_path(@artist), data: { turbo_frame: 'turbo-dialog' }, class: 'c-button c-button--secondary u-mt-large' %>
         <% end %>
       </div>
-    <% end %>
+    </div>
   <% end %>
   <%= render partial: 'artists/albums', locals: { title: t('label.albums'), albums: @albums } %>
   <%= render partial: 'artists/albums', locals: { title: t('label.appears_on'), albums: @appears_on_albums } %>

@@ -5,15 +5,18 @@
     <%= empty_alert_tag has_icon: true, has_overlay: false %>
   </div>
 <% else %>
-  <h1><%= t('label.albums') %></h1>
-  <div data-controller='infinite-scroll' data-infinite-scroll-url-value='<%= albums_path %>' data-infinite-scroll-total-pages-value='<%= @pagy.pages %>'>
-    <%= shelf_grid_tag class: 'o-container o-container--large', id: 'turbo-albums-content' do %>
+  <div class='o-container o-container--large'>
+    <h1><%= t('label.albums') %></h1>
+    <%= turbo_frame_tag "turbo-albums-page-#{@pagy.page}", class: 'o-grid o-grid--shelf', target: '_top' do %>
       <%= render partial: 'albums/album', collection: @albums, cached: true %>
-    <% end %>
-    <div data-infinite-scroll-target='trigger' class='o-flex o-flex--justify-center u-my-small'>
+
       <% if @pagy.next %>
-        <%= loader_tag %>
+        <%= turbo_frame_tag "turbo-albums-page-#{@pagy.next}", src: pagy_url_for(@pagy, @pagy.next), loading: 'lazy', class: 'o-grid__item o-grid__item--row u-my-small', data: { controller: 'element', action: 'turbo:frame-render->element#replaceWithChildren' }  do %>
+          <div class='o-flex o-flex--justify-center'>
+            <%= loader_tag %>
+          </div>
+        <% end %>
       <% end %>
-    </div>
+    <% end %>
   </div>
 <% end %>

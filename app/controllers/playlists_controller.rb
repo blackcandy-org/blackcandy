@@ -8,11 +8,6 @@ class PlaylistsController < ApplicationController
 
   def index
     @pagy, @playlists = pagy(Current.user.all_playlists.order(created_at: :desc))
-
-    respond_to do |format|
-      format.turbo_stream if params[:page].to_i > 1
-      format.html
-    end
   end
 
   def new
