@@ -3,6 +3,10 @@
   <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
+    <% if turbo_native? %>
+      <%# Set title for turbo native %>
+      <meta data-native-title="<%= yield(:native_title) %>">
+    <% end %>
     <title><%= content_for?(:title) ? yield(:title) : "Black Candy" %></title>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'link_icon.png', type: 'image/png' %>

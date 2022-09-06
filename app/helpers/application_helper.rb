@@ -62,7 +62,8 @@ module ApplicationHelper
     super(playlist, options)
   end
 
-  def page_title_tag(title)
+  def page_title_tag(title, native: false)
     content_for :title, title
+    content_for :native_title, title if native
   end
 end

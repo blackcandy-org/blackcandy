@@ -1,4 +1,4 @@
-<% page_title_tag t('label.songs') %>
+<% page_title_tag t('label.songs'), native: true %>
 
 <% if @songs.empty? %>
   <div class='u-mt-wide'>
@@ -6,7 +6,9 @@
   </div>
 <% else %>
 <div class='o-container o-container--large'>
-  <h1><%= t('label.songs') %></h1>
+  <% unless turbo_native? %>
+    <h1><%= t('label.songs') %></h1>
+  <% end %>
   <%= render partial: 'songs/table', locals: { songs: @songs, pagy: @pagy } %>
 </div>
 <% end %>

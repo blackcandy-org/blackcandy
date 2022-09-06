@@ -1,6 +1,10 @@
+<% page_title_tag t('label.playlists'), native: true %>
+
 <div class='o-container o-container--small'>
   <div class='o-flex o-flex--align-center o-flex--justify-between u-mb-large'>
-    <h1 class='u-mb-0'><%= t('lable.playlists') %></h1>
+    <% unless turbo_native? %>
+      <h1 class='u-mb-0'><%= t('lable.playlists') %></h1>
+    <% end %>
     <%= link_to t('label.add'), new_playlist_path, data: { turbo_frame: 'turbo-dialog' }, class: 'c-button c-button--primary' %>
   </div>
   <%= turbo_frame_tag "turbo-playlists-page-#{@pagy.page}", class: 'o-grid o-grid--list', target: '_top' do %>
