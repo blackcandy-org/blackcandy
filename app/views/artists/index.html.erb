@@ -1,4 +1,4 @@
-<% page_title_tag t('label.artists') %>
+<% page_title_tag t('label.artists'), native: true %>
 
 <% if @artists.empty? %>
   <div class='u-mt-wide'>
@@ -6,7 +6,9 @@
   </div>
 <% else %>
   <div class='o-container o-container--large'>
-    <h1><%= t('label.artists') %></h1>
+    <% unless turbo_native? %>
+      <h1><%= t('label.artists') %></h1>
+    <% end %>
     <%= turbo_frame_tag "turbo-artists-page-#{@pagy.page}", class: 'o-grid o-grid--shelf', target: '_top' do %>
       <%= render partial: 'artists/artist', collection: @artists, cached: true %>
 
