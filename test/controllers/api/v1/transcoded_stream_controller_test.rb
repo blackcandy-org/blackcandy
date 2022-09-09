@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class TranscodedStreamControllerTest < ActionDispatch::IntegrationTest
+class Api::V1::TranscodedStreamControllerTest < ActionDispatch::IntegrationTest
   setup do
     Setting.update(media_path: Rails.root.join("test/fixtures/files"))
 
@@ -15,12 +15,12 @@ class TranscodedStreamControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new stream for transcode format" do
-    get new_transcoded_stream_url(song_id: songs(:flac_sample).id)
+    get new_api_v1_transcoded_stream_url(song_id: songs(:flac_sample).id)
     assert_response :success
   end
 
   test "should get transcoded data" do
-    get new_transcoded_stream_url(song_id: songs(:flac_sample).id)
+    get new_api_v1_transcoded_stream_url(song_id: songs(:flac_sample).id)
 
     create_tmp_file(format: "mp3") do |tmp_file_path|
       File.write(tmp_file_path, response.body)
@@ -33,24 +33,24 @@ class TranscodedStreamControllerTest < ActionDispatch::IntegrationTest
     stream = Stream.new(songs(:flac_sample))
     assert_not File.exist? stream.transcode_cache_file_path
 
-    get new_transcoded_stream_url(song_id: songs(:flac_sample).id)
+    get new_api_v1_transcoded_stream_url(song_id: songs(:flac_sample).id)
 
     assert_response :success
     assert File.exist? stream.transcode_cache_file_path
   end
 
   test "should redirect to cache transcoded stream path when found cache" do
-    get new_transcoded_stream_url(song_id: songs(:flac_sample).id)
+    get new_api_v1_transcoded_stream_url(song_id: songs(:flac_sample).id)
     assert_response :success
 
-    get new_transcoded_stream_url(song_id: songs(:flac_sample).id)
-    assert_redirected_to new_cached_transcoded_stream_url(song_id: songs(:flac_sample).id)
+    get new_api_v1_transcoded_stream_url(song_id: songs(:flac_sample).id)
+    assert_redirected_to new_api_v1_cached_transcoded_stream_url(song_id: songs(:flac_sample).id)
   end
 
   test "should regenerate new cache when cache is invalid" do
     stream = Stream.new(songs(:flac_sample))
 
-    get new_transcoded_stream_url(song_id: songs(:flac_sample).id)
+    get new_api_v1_transcoded_stream_url(song_id: songs(:flac_sample).id)
     assert_response :success
 
     original_cache_file_mtime = File.mtime(stream.transcode_cache_file_path)
@@ -59,14 +59,14 @@ class TranscodedStreamControllerTest < ActionDispatch::IntegrationTest
     # so that the cache will be treated as invalid
     songs(:flac_sample).update(duration: 12.0)
 
-    get new_transcoded_stream_url(song_id: songs(:flac_sample).id)
+    get new_api_v1_transcoded_stream_url(song_id: songs(:flac_sample).id)
     assert_response :success
 
     assert_not_equal original_cache_file_mtime, File.mtime(stream.transcode_cache_file_path)
   end
 
   test "should set correct content type header" do
-    get new_transcoded_stream_url(song_id: songs(:flac_sample).id)
+    get new_api_v1_transcoded_stream_url(song_id: songs(:flac_sample).id)
     assert_equal "audio/mpeg", @response.get_header("Content-Type")
   end
 end
