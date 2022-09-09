@@ -35,7 +35,7 @@
             <% end %>
 
             <%= link_to dialog_playlists_path(song_id: song.id), data: { turbo_frame: 'turbo-dialog', test_id: 'album_song_add_playlist' } do %>
-              <%= icon_tag 'playlist-add', size: 'small', title: t('text.add_to_playlist') %>
+              <%= icon_tag 'playlist-add', size: 'small', title: t('label.add_to_playlist') %>
             <% end %>
           </div>
         </li>

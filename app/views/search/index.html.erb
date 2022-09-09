@@ -6,7 +6,7 @@
       <h2 class='u-mb-0'><%= t('label.albums') %></h2>
 
       <% unless @is_all_albums %>
-        <%= link_to t('text.see_all'), search_albums_path(query: params[:query]), class: 'is-active' %>
+        <%= link_to t('label.see_all'), search_albums_path(query: params[:query]), class: 'is-active' %>
       <% end %>
     </div>
     <div class='o-grid o-grid--shelf u-mb-large'>
@@ -19,7 +19,7 @@
       <h2 class='u-mb-0'><%= t('label.artists') %></h2>
 
       <% unless @is_all_artists %>
-        <%= link_to t('text.see_all'), search_artists_path(query: params[:query]), class: 'is-active' %>
+        <%= link_to t('label.see_all'), search_artists_path(query: params[:query]), class: 'is-active' %>
       <% end %>
     </div>
     <div class='o-grid o-grid--shelf u-mb-large'>
@@ -32,7 +32,7 @@
       <h2 class='u-mb-0'><%= t('label.playlists') %></h2>
 
       <% unless @is_all_playlists %>
-        <%= link_to t('text.see_all'), search_playlists_path(query: params[:query]), class: 'is-active' %>
+        <%= link_to t('label.see_all'), search_playlists_path(query: params[:query]), class: 'is-active' %>
       <% end %>
     </div>
     <div class='o-grid o-grid--list u-mb-wide'>
@@ -45,7 +45,7 @@
       <h2 class='u-mb-0'><%= t('label.songs') %></h2>
 
       <% unless @is_all_songs %>
-        <%= link_to t('text.see_all'), search_songs_path(query: params[:query]), class: 'is-active' %>
+        <%= link_to t('label.see_all'), search_songs_path(query: params[:query]), class: 'is-active' %>
       <% end %>
     </div>
     <%= render partial: 'search/songs/table', locals: { songs: @songs } %>
