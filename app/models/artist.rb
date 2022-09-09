@@ -10,8 +10,8 @@ class Artist < ApplicationRecord
   search_by :name
 
   def title
-    return I18n.t("text.various_artists") if is_various?
-    return I18n.t("text.unknown_artist") if is_unknown?
+    return I18n.t("label.various_artists") if is_various?
+    return I18n.t("label.unknown_artist") if is_unknown?
 
     name
   end

@@ -12,7 +12,7 @@ class Album < ApplicationRecord
   search_by :name, associations: :artist
 
   def title
-    is_unknown? ? I18n.t("text.unknown_album") : name
+    is_unknown? ? I18n.t("label.unknown_album") : name
   end
 
   def is_unknown?

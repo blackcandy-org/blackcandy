@@ -67,20 +67,6 @@ en:
     add: 'Add'
     create_playlist: 'Create Playlist'
     edit_playlist: 'Edit Playlist'
-  error:
-    login: 'Wrong email or password'
-    forbidden: "Sorry, you do not have permission to visit that"
-    not_found: "The page you were looking for doesn't exist"
-    unprocessable_entity: 'The change you wanted was rejected'
-    internal_server_error: "We're sorry, but something went wrong"
-    already_in_playlist: "Add to playlist failed, song is already in playlist"
-  success:
-    delete: 'Deleted successfully'
-    create: 'Created successfully'
-    update: 'Updated successfully'
-    add_to_playlist: 'Added to playlist successfully'
-    delete_from_playlist: 'Deleted from playlist successfully'
-  text:
     no_items: 'No items'
     add_to_playlist: 'Add to playlist'
     update_profile: 'Update profile'
@@ -91,7 +77,6 @@ en:
     various_artists: 'Various Artists'
     unknown_artist: 'Unknown Artist'
     unknown_album: 'Unknown Album'
-    go_back: 'Go back'
     repeat_mode: 'Repeat mode'
     single_mode: 'Single mode'
     shuffle_mode: 'Shuffle mode'
@@ -108,6 +93,20 @@ en:
     edit_artist: 'Edit Artist'
     album_cover: 'Album cover'
     artist_cover: 'Artist cover'
+  error:
+    login: 'Wrong email or password'
+    forbidden: "Sorry, you do not have permission to visit that"
+    not_found: "The page you were looking for doesn't exist"
+    unprocessable_entity: 'The change you wanted was rejected'
+    internal_server_error: "We're sorry, but something went wrong"
+    already_in_playlist: "Add to playlist failed, song is already in playlist"
+  success:
+    delete: 'Deleted successfully'
+    create: 'Created successfully'
+    update: 'Updated successfully'
+    add_to_playlist: 'Added to playlist successfully'
+    delete_from_playlist: 'Deleted from playlist successfully'
+  text:
     search_results: "Search results for \"%{query}\""
     no_search_results: "No search results for \"%{query}\""
     transcoding: "Black candy will transcode formats that are not supported by the browser by default."
