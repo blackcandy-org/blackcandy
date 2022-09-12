@@ -3,7 +3,7 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
-  helper_method :turbo_native?
+  helper_method :turbo_native?, :need_transcode?
 
   before_action :find_current_user
   before_action :require_login
