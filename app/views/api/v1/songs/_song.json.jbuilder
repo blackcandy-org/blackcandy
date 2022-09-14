@@ -5,7 +5,7 @@ json.artist_name song.artist.title
 json.is_favorited Current.user.favorited? song
 json.format need_transcode?(song.format) ? Stream::TRANSCODE_FORMAT : song.format
 json.album_image_url do
-  json.small image_url_for(song.album, size: "small")
-  json.medium image_url_for(song.album, size: "medium")
-  json.large image_url_for(song.album, size: "large")
+  json.small URI.join(root_url, image_url_for(song.album, size: "small"))
+  json.medium URI.join(root_url, image_url_for(song.album, size: "medium"))
+  json.large URI.join(root_url, image_url_for(song.album, size: "large"))
 end
