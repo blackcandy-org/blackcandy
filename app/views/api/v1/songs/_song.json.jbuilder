@@ -1,8 +1,8 @@
 json.call(song, :id, :name, :duration)
-json.url new_api_v1_stream_path(song_id: song.id)
+json.url new_api_v1_stream_url(song_id: song.id)
 json.album_name song.album.title
 json.artist_name song.artist.title
-json.is_favorited Current.user.favorited? song
+json.is_favorited song.respond_to?(:is_favorited) ? song.is_favorited : Current.user.favorited?(song)
 json.format need_transcode?(song.format) ? Stream::TRANSCODE_FORMAT : song.format
 json.album_image_url do
   json.small URI.join(root_url, image_url_for(song.album, size: "small"))
