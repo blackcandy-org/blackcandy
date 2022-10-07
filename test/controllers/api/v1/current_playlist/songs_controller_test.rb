@@ -3,7 +3,8 @@ require "test_helper"
 class Api::V1::CurrentPlaylist::SongsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:visitor1)
-    @user.current_playlist.song_ids = [1, 2]
+    @playlist = @user.current_playlist
+    @playlist.song_ids = [1, 2, 3]
   end
 
   test "should show all songs" do
@@ -11,6 +12,19 @@ class Api::V1::CurrentPlaylist::SongsControllerTest < ActionDispatch::Integratio
     response = @response.parsed_body
 
     assert_response :success
-    assert_equal [1, 2], response.map { |song| song["id"] }
+    assert_equal [1, 2, 3], response.map { |song| song["id"] }
+  end
+
+  test "should remove songs from playlist" do
+    delete api_v1_current_playlist_songs_url, params: {song_ids: [1]}, headers: api_token_header(@user)
+    assert_equal [2, 3], @playlist.reload.song_ids
+
+    delete api_v1_current_playlist_songs_url, params: {song_ids: [2, 3]}, headers: api_token_header(@user)
+    assert_equal [], @playlist.reload.song_ids
+  end
+
+  test "should clear all songs from playlist" do
+    delete api_v1_current_playlist_songs_url, params: {clear_all: true}, headers: api_token_header(@user)
+    assert_equal [], @playlist.reload.song_ids
   end
 end
