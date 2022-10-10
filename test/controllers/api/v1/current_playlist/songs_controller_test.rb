@@ -27,4 +27,12 @@ class Api::V1::CurrentPlaylist::SongsControllerTest < ActionDispatch::Integratio
     delete api_v1_current_playlist_songs_url, params: {clear_all: true}, headers: api_token_header(@user)
     assert_equal [], @playlist.reload.song_ids
   end
+
+  test "should reorder songs from playlist" do
+    assert_equal [1, 2, 3], @playlist.song_ids
+
+    put api_v1_current_playlist_songs_url, params: {from_position: 1, to_position: 2}, headers: api_token_header(@user)
+
+    assert_equal [2, 1, 3], @playlist.reload.song_ids
+  end
 end

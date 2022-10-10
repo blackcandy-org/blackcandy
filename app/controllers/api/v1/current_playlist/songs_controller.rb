@@ -23,6 +23,14 @@ module Api
         end
       end
 
+      def update
+        from_position = Integer(params[:from_position])
+        to_position = Integer(params[:to_position])
+
+        playlists_song = @playlist.playlists_songs.find_by(position: from_position)
+        playlists_song.update(position: to_position)
+      end
+
       private
 
       def find_playlist
