@@ -32,9 +32,9 @@ class ApplicationController < ActionController::Base
   end
 
   def need_transcode?(format)
-    return true if format.in?(Stream::UNSUPPORTED_FORMATS)
-    return true if is_safari? && format.in?(Stream::SAFARI_UNSUPPORTED_FORMATS)
-    return true if is_turbo_ios? && format.in?(Stream::IOS_UNSUPPORTED_FORMATS)
+    return true unless format.in?(Stream::SUPPORTED_FORMATS)
+    return true if is_safari? && !format.in?(Stream::SAFARI_SUPPORTED_FORMATS)
+    return true if is_turbo_ios? && !format.in?(Stream::IOS_SUPPORTED_FORMATS)
 
     Setting.allow_transcode_lossless ? format.in?(Stream::LOSSLESS_FORMATS) : false
   end

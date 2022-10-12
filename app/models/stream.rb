@@ -3,10 +3,11 @@
 class Stream
   extend Forwardable
 
-  LOSSLESS_FORMATS = %w[flac wav].freeze
-  UNSUPPORTED_FORMATS = %w[wma].freeze
-  SAFARI_UNSUPPORTED_FORMATS = %w[ogg opus oga].freeze
-  IOS_UNSUPPORTED_FORMATS = %w[ogg opus oga].freeze
+  LOSSLESS_FORMATS = MediaFile::SUPPORTED_FORMATS & %w[flac wav]
+  SUPPORTED_FORMATS = MediaFile::SUPPORTED_FORMATS - %w[wma]
+  SAFARI_SUPPORTED_FORMATS = MediaFile::SUPPORTED_FORMATS - %w[ogg opus oga]
+  IOS_SUPPORTED_FORMATS = MediaFile::SUPPORTED_FORMATS - %w[ogg opus oga]
+
   TRANSCODE_FORMAT = "mp3"
   TRANSCODE_CACHE_DIRECTORY = Rails.root.join("tmp/cache/media_file")
 
