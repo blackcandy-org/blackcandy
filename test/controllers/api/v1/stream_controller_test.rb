@@ -13,25 +13,6 @@ class Api::V1::StreamControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should redirect to transcoded stream path for unsupported format" do
-    get new_api_v1_stream_url(song_id: songs(:wma_sample).id)
-    assert_redirected_to new_api_v1_transcoded_stream_url(song_id: songs(:wma_sample).id)
-  end
-
-  test "should redirect to transcoded stream path for lossless formats when allow transcode lossless format" do
-    Setting.update(allow_transcode_lossless: true)
-
-    get new_api_v1_stream_url(song_id: songs(:flac_sample).id)
-    assert_redirected_to new_api_v1_transcoded_stream_url(song_id: songs(:flac_sample).id)
-  end
-
-  test "should not redirect to transcoded stream path for lossless formats when don't allow transcode lossless format" do
-    Setting.update(allow_transcode_lossless: false)
-
-    get new_api_v1_stream_url(song_id: songs(:flac_sample).id)
-    assert_response :success
-  end
-
   test "should set header for nginx send file" do
     get new_api_v1_stream_url(song_id: songs(:mp3_sample).id)
 

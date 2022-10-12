@@ -50,7 +50,6 @@ jobs:
           bundle exec rails db:setup
           bundle exec rails lint:all
           bundle exec rails test:all
-          bundle exec brakeman
 
       - name: Push coverage data to Coveralls
         uses: coverallsapp/github-action@master

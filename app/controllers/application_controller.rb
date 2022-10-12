@@ -34,6 +34,7 @@ class ApplicationController < ActionController::Base
   def need_transcode?(format)
     return true if format.in?(Stream::UNSUPPORTED_FORMATS)
     return true if is_safari? && format.in?(Stream::SAFARI_UNSUPPORTED_FORMATS)
+    return true if is_turbo_ios? && format.in?(Stream::IOS_UNSUPPORTED_FORMATS)
 
     Setting.allow_transcode_lossless ? format.in?(Stream::LOSSLESS_FORMATS) : false
   end
@@ -76,7 +77,15 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_path
   end
 
+  def is_turbo_ios?
+    request.user_agent.to_s.match?(/Turbo Native iOS/)
+  end
+
+  def is_turbo_android?
+    request.user_agent.to_s.match?(/Turbo Native Android/)
+  end
+
   def turbo_native?
-    request.user_agent.to_s.match?(/Turbo Native/)
+    is_turbo_ios? || is_turbo_android?
   end
 end

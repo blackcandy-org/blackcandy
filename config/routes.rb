@@ -55,7 +55,6 @@ Rails.application.routes.draw do
       resources :songs, only: [:show]
       resources :stream, only: [:new]
       resources :transcoded_stream, only: [:new]
-      resources :cached_transcoded_stream, only: [:new]
 
       namespace :current_playlist do
         resource :songs, only: [:show, :destroy, :update]

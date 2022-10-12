@@ -1,5 +1,5 @@
 json.call(song, :id, :name, :duration)
-json.url new_api_v1_stream_url(song_id: song.id)
+json.url need_transcode?(song.format) ? new_api_v1_transcoded_stream_url(song_id: song.id) : new_api_v1_stream_url(song_id: song.id)
 json.album_name song.album.title
 json.artist_name song.artist.title
 json.is_favorited song.respond_to?(:is_favorited) ? song.is_favorited : Current.user.favorited?(song)

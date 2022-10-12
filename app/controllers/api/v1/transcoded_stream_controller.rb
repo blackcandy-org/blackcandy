@@ -26,9 +26,13 @@ module Api
       private
 
       def find_cache
-        if valid_cache?
-          redirect_to new_api_v1_cached_transcoded_stream_path(song_id: params[:song_id])
+        return unless valid_cache?
+
+        if nginx_senfile?
+          response.headers["X-Accel-Redirect"] = File.join("/private_cache_media", @stream.transcode_cache_file_path.sub(Stream::TRANSCODE_CACHE_DIRECTORY.to_s, ""))
         end
+
+        send_file @stream.transcode_cache_file_path
       end
 
       def valid_cache?
