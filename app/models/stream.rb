@@ -6,6 +6,7 @@ class Stream
   LOSSLESS_FORMATS = %w[flac wav].freeze
   UNSUPPORTED_FORMATS = %w[wma].freeze
   SAFARI_UNSUPPORTED_FORMATS = %w[ogg opus oga].freeze
+  IOS_UNSUPPORTED_FORMATS = %w[ogg opus oga].freeze
   TRANSCODE_FORMAT = "mp3"
   TRANSCODE_CACHE_DIRECTORY = Rails.root.join("tmp/cache/media_file")
 

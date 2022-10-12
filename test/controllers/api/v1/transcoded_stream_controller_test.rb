@@ -39,12 +39,13 @@ class Api::V1::TranscodedStreamControllerTest < ActionDispatch::IntegrationTest
     assert File.exist? stream.transcode_cache_file_path
   end
 
-  test "should redirect to cache transcoded stream path when found cache" do
+  test "should send cached transcoded stream file when found cache" do
     get new_api_v1_transcoded_stream_url(song_id: songs(:flac_sample).id)
     assert_response :success
 
     get new_api_v1_transcoded_stream_url(song_id: songs(:flac_sample).id)
-    assert_redirected_to new_api_v1_cached_transcoded_stream_url(song_id: songs(:flac_sample).id)
+    assert_equal "/private_cache_media/2/ZmxhY19zYW1wbGVfbWQ1X2hhc2g=_128.mp3", @response.get_header("X-Accel-Redirect")
+    assert_equal "audio/mpeg", @response.get_header("Content-Type")
   end
 
   test "should regenerate new cache when cache is invalid" do
