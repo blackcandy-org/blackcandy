@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class ArtistsController < ApplicationController
-  include Pagy::Backend
-
   layout "dialog", only: :edit
 
   before_action :require_admin, only: [:edit, :update]

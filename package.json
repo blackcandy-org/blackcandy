@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@hotwired/stimulus": "^3.0.1",
-    "@hotwired/turbo-rails": "^7.1.1",
+    "@hotwired/turbo-rails": "^7.2.1",
     "@shopify/draggable": "^1.0.0-beta.12",
     "esbuild": "^0.14.9",
     "howler": "^2.2.3",

@@ -4,6 +4,16 @@ require "test_helper"
 
 class DummyPlayableController < ApplicationController
   include Playable
+
+  private
+
+  def find_all_song_ids
+    @song_ids = [1, 2, 3]
+  end
+end
+
+class NotImplementedDummyPlayableController < ApplicationController
+  include Playable
 end
 
 class PlayableTest < ActionDispatch::IntegrationTest
@@ -11,8 +21,11 @@ class PlayableTest < ActionDispatch::IntegrationTest
     Rails.application.routes.disable_clear_and_finalize = true
 
     Rails.application.routes.draw do
-      get "/dummy_play", to: "dummy_playable#play"
+      post "/not_implemented_dummy_play", to: "not_implemented_dummy_playable#play"
+      post "/dummy_play", to: "dummy_playable#play"
     end
+
+    login
   end
 
   teardown do
@@ -20,10 +33,16 @@ class PlayableTest < ActionDispatch::IntegrationTest
   end
 
   test "should raise error when find_all_song_ids method did not implemented" do
-    login
-
     assert_raises(NotImplementedError) do
-      get "/dummy_play"
+      post "/not_implemented_dummy_play"
+    end
+  end
+
+  test "should call playAll() in native bridge when play song in native client" do
+    post "/dummy_play", headers: {"HTTP_USER_AGENT" => "Turbo Native iOS"}
+
+    assert_turbo_stream action: :replace, target: "turbo-script" do
+      assert_select "script", /window.NativeBridge.playAll/
     end
   end
 end

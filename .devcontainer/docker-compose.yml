@@ -11,14 +11,14 @@ services:
         # Use -bullseye variants on local arm64/Apple Silicon.
         VARIANT: "3.1-bullseye"
         # Optional Node.js version to install
-        NODE_VERSION: "12"
+        NODE_VERSION: "14"
 
     volumes:
       - ..:/workspace:cached
       - ~/media_data:/media_data
       - bundler-data:/usr/local/bundle
 
-    environment: 
+    environment:
       DB_HOST: postgres
       DB_USER: postgres
       REDIS_DATA_URL: redis://redis:6379/0

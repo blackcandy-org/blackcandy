@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
   include SessionsHelper
 
   helper_method :turbo_native?, :need_transcode?
@@ -49,6 +50,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def turbo_native?
+    is_turbo_ios? || is_turbo_android?
+  end
+
+  def stream_js(&block)
+    turbo_stream.replace "turbo-script" do
+      "<script id='turbo-script' type='text/javascript'>#{block.call}</script>".html_safe
+    end
+  end
+
   private
 
   def find_current_user
@@ -83,9 +94,5 @@ class ApplicationController < ActionController::Base
 
   def is_turbo_android?
     request.user_agent.to_s.match?(/Turbo Native Android/)
-  end
-
-  def turbo_native?
-    is_turbo_ios? || is_turbo_android?
   end
 end
