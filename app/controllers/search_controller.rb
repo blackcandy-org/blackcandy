@@ -3,8 +3,6 @@
 class SearchController < ApplicationController
   SEARCH_RESULT_MAX_AMOUNT = 10
 
-  include Pagy::Backend
-
   def index
     searched_albums = Album.search(params[:query]).includes(:artist)
     searched_artists = Artist.search(params[:query])

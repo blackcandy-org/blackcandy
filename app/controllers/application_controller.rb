@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
   include SessionsHelper
 
   helper_method :turbo_native?, :need_transcode?
@@ -20,21 +21,10 @@ class ApplicationController < ActionController::Base
     logout_current_user
   end
 
-  def browser
-    @browser ||= Browser.new(
-      request.headers["User-Agent"],
-      accept_language: request.headers["Accept-Language"]
-    )
-  end
-
-  def is_safari?
-    browser.safari? || browser.core_media?
-  end
-
   def need_transcode?(format)
     return true unless format.in?(Stream::SUPPORTED_FORMATS)
-    return true if is_safari? && !format.in?(Stream::SAFARI_SUPPORTED_FORMATS)
-    return true if is_turbo_ios? && !format.in?(Stream::IOS_SUPPORTED_FORMATS)
+    return true if safari? && !format.in?(Stream::SAFARI_SUPPORTED_FORMATS)
+    return true if turbo_ios? && !format.in?(Stream::IOS_SUPPORTED_FORMATS)
 
     Setting.allow_transcode_lossless ? format.in?(Stream::LOSSLESS_FORMATS) : false
   end
@@ -46,6 +36,16 @@ class ApplicationController < ActionController::Base
       flash.now[:error] = errors_message
     else
       flash[:error] = errors_message
+    end
+  end
+
+  def turbo_native?
+    turbo_ios? || turbo_android?
+  end
+
+  def stream_js(&block)
+    turbo_stream.replace "turbo-script" do
+      "<script id='turbo-script' type='text/javascript'>#{block.call}</script>".html_safe
     end
   end
 
@@ -77,15 +77,22 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_path
   end
 
-  def is_turbo_ios?
+  def browser
+    @browser ||= Browser.new(
+      request.headers["User-Agent"],
+      accept_language: request.headers["Accept-Language"]
+    )
+  end
+
+  def safari?
+    browser.safari? || browser.core_media?
+  end
+
+  def turbo_ios?
     request.user_agent.to_s.match?(/Turbo Native iOS/)
   end
 
-  def is_turbo_android?
+  def turbo_android?
     request.user_agent.to_s.match?(/Turbo Native Android/)
-  end
-
-  def turbo_native?
-    is_turbo_ios? || is_turbo_android?
   end
 end

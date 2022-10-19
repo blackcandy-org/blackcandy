@@ -4,7 +4,6 @@ class Playlists::SongsController < ApplicationController
   before_action :find_playlist
   before_action :find_song, only: [:create, :destroy]
 
-  include Pagy::Backend
   include Playable
 
   def show

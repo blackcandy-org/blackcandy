@@ -6,7 +6,6 @@ class AlbumsController < ApplicationController
   before_action :require_admin, only: [:edit, :update]
   before_action :find_album, except: [:index]
 
-  include Pagy::Backend
   include Playable
 
   def index
