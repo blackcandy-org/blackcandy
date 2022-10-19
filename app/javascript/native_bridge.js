@@ -1,8 +1,17 @@
 class NativeBridge {
   playAll () {
-    if (this._isiOSWebView) {
+    if (this._isTurboiOS) {
       window.webkit.messageHandlers.nativeApp.postMessage({
         name: 'playAll'
+      })
+    }
+  }
+
+  playSong (songId) {
+    if (this._isTurboiOS) {
+      window.webkit.messageHandlers.nativeApp.postMessage({
+        name: 'playSong',
+        songId: Number(songId)
       })
     }
   }
@@ -15,8 +24,12 @@ class NativeBridge {
     return document.querySelector('meta[data-native-title]').dataset.nativeTitle
   }
 
-  get _isiOSWebView () {
-    return window.webkit && window.webkit.messageHandlers
+  get isTurboNative () {
+    return this._isTurboiOS
+  }
+
+  get _isTurboiOS () {
+    return !!(window.webkit && window.webkit.messageHandlers)
   }
 }
 

@@ -21,21 +21,10 @@ class ApplicationController < ActionController::Base
     logout_current_user
   end
 
-  def browser
-    @browser ||= Browser.new(
-      request.headers["User-Agent"],
-      accept_language: request.headers["Accept-Language"]
-    )
-  end
-
-  def is_safari?
-    browser.safari? || browser.core_media?
-  end
-
   def need_transcode?(format)
     return true unless format.in?(Stream::SUPPORTED_FORMATS)
-    return true if is_safari? && !format.in?(Stream::SAFARI_SUPPORTED_FORMATS)
-    return true if is_turbo_ios? && !format.in?(Stream::IOS_SUPPORTED_FORMATS)
+    return true if safari? && !format.in?(Stream::SAFARI_SUPPORTED_FORMATS)
+    return true if turbo_ios? && !format.in?(Stream::IOS_SUPPORTED_FORMATS)
 
     Setting.allow_transcode_lossless ? format.in?(Stream::LOSSLESS_FORMATS) : false
   end
@@ -51,7 +40,7 @@ class ApplicationController < ActionController::Base
   end
 
   def turbo_native?
-    is_turbo_ios? || is_turbo_android?
+    turbo_ios? || turbo_android?
   end
 
   def stream_js(&block)
@@ -88,11 +77,22 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_path
   end
 
-  def is_turbo_ios?
+  def browser
+    @browser ||= Browser.new(
+      request.headers["User-Agent"],
+      accept_language: request.headers["Accept-Language"]
+    )
+  end
+
+  def safari?
+    browser.safari? || browser.core_media?
+  end
+
+  def turbo_ios?
     request.user_agent.to_s.match?(/Turbo Native iOS/)
   end
 
-  def is_turbo_android?
+  def turbo_android?
     request.user_agent.to_s.match?(/Turbo Native Android/)
   end
 end
