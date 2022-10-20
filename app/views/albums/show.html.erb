@@ -15,7 +15,7 @@
         <div class='u-mt-large'>
           <%= button_to t('label.play_all'), play_album_path(@album), form_class: 'u-display-inline-block', class: 'c-button c-button--primary', form: { 'data-turbo-frame' => 'turbo-playlist' } %>
           <% if is_admin? %>
-            <%= link_to t('label.edit'), edit_album_path(@album), data: { turbo_frame: 'turbo-dialog' }, class: 'c-button c-button--secondary u-ml-tiny' %>
+            <%= link_to t('label.edit'), edit_album_path(@album), data: { turbo_frame: ('turbo-dialog' unless turbo_native?) }, class: 'c-button c-button--secondary u-ml-tiny' %>
           <% end %>
         </div>
       </div>
@@ -34,7 +34,7 @@
               <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
             <% end %>
 
-            <%= link_to dialog_playlists_path(song_id: song.id), data: { turbo_frame: 'turbo-dialog', test_id: 'album_song_add_playlist' } do %>
+            <%= link_to dialog_playlists_path(song_id: song.id), data: { turbo_frame: ('turbo-dialog' unless turbo_native?), test_id: 'album_song_add_playlist' } do %>
               <%= icon_tag 'playlist-add', size: 'small', title: t('label.add_to_playlist') %>
             <% end %>
           </div>

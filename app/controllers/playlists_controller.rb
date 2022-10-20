@@ -2,7 +2,7 @@
 
 class PlaylistsController < ApplicationController
   include Pagy::Backend
-  layout "dialog", only: [:new, :edit]
+  layout proc { "dialog" unless turbo_native? }, only: [:new, :edit]
 
   before_action :find_playlist, only: [:edit, :destroy, :update]
 
