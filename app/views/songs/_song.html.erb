@@ -12,7 +12,7 @@
   </div>
   <div role='cell' class='u-display-none@small'><%= format_duration(song.duration) %></div>
   <div role='cell'>
-    <%= link_to dialog_playlists_path(song_id: song.id), data: { test_id: 'song_add_playlist', turbo_frame: 'turbo-dialog' } do %>
+    <%= link_to dialog_playlists_path(song_id: song.id, referer_url: current_url), data: { test_id: 'song_add_playlist', turbo_frame: ('turbo-dialog' unless turbo_native?) } do %>
       <%= icon_tag 'playlist-add', size: 'small', title: t('label.add_to_playlist') %>
     <% end %>
   </div>

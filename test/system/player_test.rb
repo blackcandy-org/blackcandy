@@ -50,11 +50,9 @@ class PlayerSystemTest < ApplicationSystemTestCase
     assert_selector(:test_id, "player_song_name", text: Song.first.name)
 
     find(:test_id, "player_favorite_button").click
-    assert_selector(:test_id, "favorite_playlist", visible: true)
-    assert_equal Song.first.name, all(:test_id, "playlist_song_name").first.text
+    assert_equal Song.first.name, users(:visitor1).favorite_playlist.songs.first.name
 
     find(:test_id, "player_favorite_button").click
-    assert_selector(:test_id, "favorite_playlist", visible: true)
-    assert_text("0 Tracks")
+    assert_equal 0, users(:visitor1).favorite_playlist.songs.count
   end
 end

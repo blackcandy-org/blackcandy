@@ -14,7 +14,7 @@
           <span><%= @artist.songs.size %> <%= t('label.songs')%></span>
         </p>
         <% if is_admin? %>
-          <%= link_to t('label.edit'), edit_artist_path(@artist), data: { turbo_frame: 'turbo-dialog' }, class: 'c-button c-button--secondary u-mt-large' %>
+          <%= link_to t('label.edit'), edit_artist_path(@artist), data: { turbo_frame: ('turbo-dialog' unless turbo_native?) }, class: 'c-button c-button--secondary u-mt-large' %>
         <% end %>
       </div>
     </div>

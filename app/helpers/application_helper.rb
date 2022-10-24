@@ -66,4 +66,8 @@ module ApplicationHelper
     content_for :title, title
     content_for :native_title, title if native
   end
+
+  def current_url
+    url_for(only_path: false)
+  end
 end

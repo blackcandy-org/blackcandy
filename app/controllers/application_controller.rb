@@ -49,6 +49,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def redirect_back_with_referer_params(fallback_location:)
+    if params[:referer_url].present?
+      redirect_to params[:referer_url]
+    else
+      redirect_back_or_to(fallback_location)
+    end
+  end
+
   private
 
   def find_current_user

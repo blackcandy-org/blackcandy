@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ArtistsController < ApplicationController
-  layout "dialog", only: :edit
+  layout proc { "dialog" unless turbo_native? }, only: :edit
 
   before_action :require_admin, only: [:edit, :update]
   before_action :find_artist, except: [:index]

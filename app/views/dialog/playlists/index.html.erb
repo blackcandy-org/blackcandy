@@ -1,10 +1,19 @@
+<% page_title_tag t('label.add_to_playlist'), native: true %>
+
 <% content_for :title do %>
   <%= t('label.add_to_playlist') %>
 <% end %>
 
 <% if @playlists.present? %>
-  <%= form_tag nil, 'data-turbo-frame': '_top' do %>
+  <%= form_tag nil, 'data-turbo-frame': '_top', 'data-turbo-action': ('replace' if turbo_native?) do %>
     <%= hidden_field_tag :song_id, params[:song_id] %>
+
+    <%# Because this page in turbo native doesn't render as a turbo frame, %>
+    <%# it's render as a whole page in modal in another session. %>
+    <%# So we can't get the previous url of the page that open the modal. %>
+    <%# And we need a way to save the referer_url as parmas, %>
+    <%# so we can redirect to the referer_url later. %>
+    <%= hidden_field_tag :referer_url, params[:referer_url] if turbo_native? %>
     <%= turbo_frame_tag "turbo-dialog-playlists-page-#{@pagy.page}", class: 'c-list', data: { action: 'click->dialog#hide' }, target: '_top' do %>
       <%= render partial: 'dialog/playlists/playlist', collection: @playlists, cached: true %>
 
