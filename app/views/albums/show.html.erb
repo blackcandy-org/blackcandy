@@ -34,7 +34,7 @@
               <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
             <% end %>
 
-            <%= link_to dialog_playlists_path(song_id: song.id), data: { turbo_frame: ('turbo-dialog' unless turbo_native?), test_id: 'album_song_add_playlist' } do %>
+            <%= link_to dialog_playlists_path(song_id: song.id, referer_url: current_url), data: { turbo_frame: ('turbo-dialog' unless turbo_native?), test_id: 'album_song_add_playlist' } do %>
               <%= icon_tag 'playlist-add', size: 'small', title: t('label.add_to_playlist') %>
             <% end %>
           </div>

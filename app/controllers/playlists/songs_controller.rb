@@ -12,12 +12,11 @@ class Playlists::SongsController < ApplicationController
 
   def create
     @playlist.playlists_songs.create(song_id: @song.id, position: 1)
-    flash.now[:success] = t("success.add_to_playlist")
-
-    # for refresh playlist content, when first song add to playlist
-    redirect_to action: "show" if @playlist.songs.size == 1
+    flash[:success] = t("success.add_to_playlist")
   rescue ActiveRecord::RecordNotUnique
-    flash.now[:error] = t("error.already_in_playlist")
+    flash[:error] = t("error.already_in_playlist")
+  ensure
+    redirect_back_with_referer_params(fallback_location: {action: "show"})
   end
 
   def destroy
