@@ -5,7 +5,7 @@
     <div id='turbo-flash' class='c-flash'>
       <%= render 'shared/flash' %>
     </div>
-    <main class='u-p-large'>
+    <main class='u-p-large u-p-small@small'>
       <%= yield %>
     </main>
   <% else %>
@@ -29,7 +29,7 @@
             <%= render 'shared/search_bar' %>
             <%= render 'shared/nav_bar' %>
           </header>
-          <main class='u-p-large'>
+          <main class='u-p-large u-p-small@small'>
             <%= yield %>
           </main>
           <footer class='u-display-none u-display-block@extra-small u-position-fixed-bottom'>

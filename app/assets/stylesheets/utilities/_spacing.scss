@@ -1,4 +1,6 @@
 @use "../settings/variables";
+@use "../tools/responsive";
+@use "../tools/functions" as *;
 
 @mixin margin($name, $size) {
   .u-m-#{$name} {
@@ -72,3 +74,11 @@
 @include margin(0, 0);
 @include margin(auto, auto);
 @include padding(0, 0);
+
+@include responsive.media-query using ($breakpoint) {
+  @if $breakpoint == "small" {
+    .u-p-small\@small {
+      padding: spacing("small") !important;
+    }
+  }
+}
