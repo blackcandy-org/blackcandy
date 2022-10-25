@@ -42,7 +42,8 @@ textarea {
 /* Reset element style generate from button_to */
 [type="submit"] {
   text-align: left;
-  color: currentcolor;
+  color: var(--text-primary-color);
+  font-weight: normal;
 }
 
 /* Reset style for turbo progress bar */
