@@ -16,7 +16,7 @@ class UserSettingTest < ActiveSupport::TestCase
 
   test "should update settings" do
     user = users(:visitor1)
-    assert_equal "dark", user.theme
+    assert_equal "auto", user.theme
 
     user.theme = "light"
     user.save
@@ -26,12 +26,12 @@ class UserSettingTest < ActiveSupport::TestCase
 
   test "should validte theme options" do
     user = users(:visitor1)
-    assert_equal "dark", user.theme
+    assert_equal "auto", user.theme
 
     user.theme = "fake_theme"
     user.save
 
     assert_not user.valid?
-    assert_equal "dark", user.reload.theme
+    assert_equal "auto", user.reload.theme
   end
 end

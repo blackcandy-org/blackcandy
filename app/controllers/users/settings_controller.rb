@@ -9,6 +9,7 @@ class Users::SettingsController < ApplicationController
 
     # set theme cookie to track theme when user didn't login
     cookies.permanent[:theme] = @user.theme
+    ActionCable.server.broadcast("theme_update", {theme: @user.theme})
 
     flash.now[:success] = t("success.update")
   end
