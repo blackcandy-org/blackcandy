@@ -1,10 +1,10 @@
 <h2><%= t('label.personal') %></h2>
-<%= form_with model: user, url: user_setting_path(user), method: :put, class: 'c-form', data: { controller: 'theme', action: 'turbo:submit-end->theme#update' } do |form| %>
+<%= form_with model: user, url: user_setting_path(user), method: :put, class: 'c-form' do |form| %>
   <div class='c-form__field'>
     <%= form.label :theme %>
     <% User::AVAILABLE_THEME_OPTIONS.each do |option| %>
       <div class='c-form__radio'>
-        <%= form.radio_button :theme, option, checked: user.theme == option, data: { theme_option_param: option, action: 'click->theme#select'} %>
+        <%= form.radio_button :theme, option, checked: user.theme == option %>
         <%= form.label "theme_#{option}", option %>
       </div>
     <% end %>

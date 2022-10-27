@@ -2,7 +2,7 @@
 
 class User < ApplicationRecord
   AVAILABLE_THEME_OPTIONS = %w[dark light auto].freeze
-  DEFAULT_THEME = "dark"
+  DEFAULT_THEME = "auto"
   RECENTLY_PLAYED_LIMIT = 10
 
   include ScopedSetting

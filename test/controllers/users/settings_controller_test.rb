@@ -5,7 +5,7 @@ require "test_helper"
 class Users::SettingsControllerTest < ActionDispatch::IntegrationTest
   test "should update user settings" do
     current_user = users(:visitor1)
-    assert_equal "dark", current_user.theme
+    assert_equal "auto", current_user.theme
 
     login current_user
     patch user_setting_url(current_user), params: {user: {theme: "light"}}, xhr: true

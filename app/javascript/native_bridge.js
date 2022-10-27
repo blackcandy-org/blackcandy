@@ -20,6 +20,15 @@ class NativeBridge {
     window.Turbo.visit(`/search?query=${query}`)
   }
 
+  updateTheme (theme) {
+    if (this._isTurboiOS) {
+      window.webkit.messageHandlers.nativeApp.postMessage({
+        name: 'updateTheme',
+        theme
+      })
+    }
+  }
+
   get nativeTitle () {
     return document.querySelector('meta[data-native-title]').dataset.nativeTitle
   }
