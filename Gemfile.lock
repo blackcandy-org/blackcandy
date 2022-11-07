@@ -124,6 +124,10 @@ GEM
       reline (>= 0.2.7)
     digest (3.1.0)
     docile (1.4.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.10.0)
     ferrum (0.11)
       addressable (~> 2.5)
@@ -326,6 +330,7 @@ DEPENDENCIES
   cssbundling-rails (~> 1.1.0)
   cuprite!
   debug
+  dotenv-rails (~> 2.8.1)
   httparty (~> 0.17.0)
   jbuilder (~> 2.11.5)
   jsbundling-rails (~> 1.0.0)
@@ -351,4 +356,4 @@ DEPENDENCIES
   webmock (~> 3.14.0)
 
 BUNDLED WITH
-   2.3.3
+   2.3.7
