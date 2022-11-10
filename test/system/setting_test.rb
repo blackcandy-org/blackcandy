@@ -4,7 +4,6 @@ require "application_system_test_case"
 
 class SettingSystemTest < ApplicationSystemTestCase
   setup do
-    flush_redis
     login_as users(:admin)
   end
 

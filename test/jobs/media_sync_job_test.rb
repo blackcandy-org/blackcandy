@@ -4,7 +4,7 @@ require "test_helper"
 
 class MediaSyncJobTest < ActiveJob::TestCase
   setup do
-    flush_redis
+    Media.syncing = false
   end
 
   test "sync media" do

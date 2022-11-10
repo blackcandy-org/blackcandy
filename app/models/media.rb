@@ -2,18 +2,11 @@
 
 class Media
   include Singleton
-  include Redis::Objects
   include Turbo::Broadcastable
 
   extend ActiveModel::Naming
 
-  value :syncing, marshal: true, default: false
-
-  # Redis::Objects will work with any class that provides an id method that returns a unique value.
-  # Beacuse this is a Singleton class, so always return same id.
-  def id
-    Base64.urlsafe_encode64(self.class.name)
-  end
+  @@syncing = false
 
   class << self
     def sync(type = :all, file_paths = [])
@@ -35,11 +28,11 @@ class Media
     end
 
     def syncing?
-      instance.syncing.value
+      @@syncing
     end
 
     def syncing=(is_syncing)
-      instance.syncing = is_syncing
+      @@syncing = is_syncing
       instance.broadcast_render_to "media_sync", partial: "settings/media_sync"
     end
 

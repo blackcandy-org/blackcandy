@@ -90,10 +90,6 @@ class ActiveSupport::TestCase
     end
   end
 
-  def flush_redis
-    Redis::Objects.redis.flushdb
-  end
-
   def with_forgery_protection
     old = ActionController::Base.allow_forgery_protection
     ActionController::Base.allow_forgery_protection = true
