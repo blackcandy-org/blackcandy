@@ -40,8 +40,6 @@ gem "pagy", "~> 5.6.6"
 # Use redis on cache and sidekiq
 gem "redis", "~> 4.0"
 
-gem "redis-objects", "~> 1.5.1"
-
 # For image attachment
 gem "carrierwave", "~> 2.2.0"
 

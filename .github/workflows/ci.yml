@@ -39,7 +39,6 @@ jobs:
         env:
           DB_HOST: localhost
           DB_USER: postgres
-          REDIS_DATA_URL: redis://localhost:6379/0
           REDIS_SIDEKIQ_URL: redis://localhost:6379/1
           REDIS_CABLE_URL: redis://localhost:6379/2
           PGPASSWORD: postgres

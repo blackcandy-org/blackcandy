@@ -7,7 +7,7 @@ class MediaTest < ActiveSupport::TestCase
 
   setup do
     clear_media_data
-    flush_redis
+    Media.syncing = false
 
     Setting.update(media_path: Rails.root.join("test/fixtures/files"))
     Media.sync
@@ -112,9 +112,8 @@ class MediaTest < ActiveSupport::TestCase
     assert Media.syncing?
   end
 
-  test "should always get same id" do
-    assert_equal "TWVkaWE=", Media.instance.id
-    assert_equal Media.instance.id, Media.instance.id
+  test "should always get same instance" do
+    assert_equal Media.instance.object_id, Media.instance.object_id
   end
 
   test "should broadcast media sync stream when set syncing status" do
