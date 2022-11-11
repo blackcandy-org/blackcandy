@@ -1,11 +1,15 @@
 development:
-  adapter: redis
-  url: <%= ENV.fetch("REDIS_CABLE_URL") { "redis://localhost:6379/2" } %>
+  adapter: async
 
 test:
   adapter: test
 
+<% if ENV["REDIS_URL"].present? || ENV["REDIS_CABLE_URL"].present? %>
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_CABLE_URL") { "redis://localhost:6379/3" } %>
+  url: <%= ENV.fetch("REDIS_CABLE_URL", ENV["REDIS_URL"]) %>
   channel_prefix: black_candy_production
+<% else %>
+production:
+  adapter: async
+<% end %>

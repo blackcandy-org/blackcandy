@@ -16,14 +16,6 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-      redis:
-        image: redis:6
-        ports: ['6379:6379']
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
@@ -39,8 +31,6 @@ jobs:
         env:
           DB_HOST: localhost
           DB_USER: postgres
-          REDIS_SIDEKIQ_URL: redis://localhost:6379/1
-          REDIS_CABLE_URL: redis://localhost:6379/2
           PGPASSWORD: postgres
           RAILS_ENV: test
         run: |

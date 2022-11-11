@@ -21,7 +21,7 @@ module ApplicationHelper
       stroke_linejoin: "round",
       class: icon_class
     ) do
-      tag.title(options[:title]) + tag.use('xlink:href': "##{name}")
+      tag.title(options[:title]) + tag.use("xlink:href": "##{name}")
     end
   end
 
@@ -48,7 +48,7 @@ module ApplicationHelper
 
   def format_duration(sec)
     time = Time.at(sec).utc
-    sec > 1.hour ? time.strftime("%T") : time.strftime("%M:%S")
+    (sec > 1.hour) ? time.strftime("%T") : time.strftime("%M:%S")
   end
 
   def is_active?(controller: "", path: "")
