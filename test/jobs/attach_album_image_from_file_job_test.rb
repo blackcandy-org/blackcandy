@@ -10,7 +10,7 @@ class AttachAlbumImageFromFileJobTest < ActiveJob::TestCase
   test "should attach image to album" do
     album = albums(:album1)
 
-    MediaFile.stub(:image, data: file_fixture("cover_image.jpg").read.force_encoding("BINARY"), format: "jpeg") do
+    MediaFile.stub(:image, {data: file_fixture("cover_image.jpg").read.force_encoding("BINARY"), format: "jpeg"}) do
       assert_not album.has_image?
 
       AttachAlbumImageFromFileJob.perform_now(album, file_fixture("cover_image.jpg"))

@@ -21,8 +21,6 @@ services:
     environment:
       DB_HOST: postgres
       DB_USER: postgres
-      REDIS_SIDEKIQ_URL: redis://redis:6379/1
-      REDIS_CABLE_URL: redis://redis:6379/2
       MEDIA_PATH: /media_data
 
     # Overrides default command so things don't shut down after the process ends.
@@ -48,16 +46,8 @@ services:
     # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
 
-  redis:
-    image: redis:6.0-alpine
-    volumes:
-      - redis-data:/data
-    networks:
-      - internal_network
-
 volumes:
   postgres-data:
-  redis-data:
   bundler-data:
 
 networks:

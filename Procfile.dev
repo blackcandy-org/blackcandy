@@ -1,4 +1,3 @@
 web: rails s -p 3000
-sidekiq: sidekiq
 js: yarn build-dev --watch
 css: yarn build-dev:css --watch

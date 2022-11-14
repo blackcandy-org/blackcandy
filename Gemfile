@@ -23,7 +23,7 @@ gem "jsbundling-rails", "~> 1.0.0"
 gem "pg", "~> 1.3.2"
 
 # Use Puma as the app server
-gem "puma", "~> 5.6.4"
+gem "puma", "~> 6.0.0"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.11.5"
@@ -32,7 +32,7 @@ gem "jbuilder", "~> 2.11.5"
 gem "wahwah", "~> 1.3.0"
 
 # Use sidekiq for backgroud job
-gem "sidekiq", "~> 6.4.0"
+gem "sidekiq", "~> 7.0.0"
 
 # Pagination
 gem "pagy", "~> 5.6.6"
@@ -86,8 +86,8 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem "capybara", "~> 3.37.0"
-  gem "cuprite", git: "https://github.com/rubycdp/cuprite", branch: "master"
+  gem "capybara", "~> 3.38.0"
+  gem "cuprite", "~> 0.14.3"
   gem "webmock", "~> 3.14.0", require: false
   gem "simplecov", "~> 0.21.2", require: false
   gem "simplecov-lcov", "~> 0.8.0", require: false

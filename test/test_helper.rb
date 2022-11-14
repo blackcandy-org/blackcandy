@@ -86,7 +86,7 @@ class ActiveSupport::TestCase
         md5_hash: MediaFile.get_md5_hash(media_file_path, with_mtime: true)
       )
 
-      media_file_path.to_s == file_path.to_s ? file_info.merge(**attributes, md5_hash: "new_md5_hash") : file_info
+      (media_file_path.to_s == file_path.to_s) ? file_info.merge(**attributes, md5_hash: "new_md5_hash") : file_info
     end
   end
 
