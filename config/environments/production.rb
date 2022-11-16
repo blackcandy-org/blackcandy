@@ -42,7 +42,7 @@ Rails.application.configure do
   config.log_tags = [:request_id]
 
   # Use a different cache store in production.
-  config.cache_store = :redis_cache_store, {url: ENV["REDIS_CACHE_URL"]}
+  config.cache_store = (ENV["REDIS_URL"].present? || ENV["REDIS_CACHE_URL"].present?) ? [:redis_cache_store, {url: ENV.fetch("REDIS_CACHE_URL", ENV["REDIS_URL"])}] : :file_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   config.active_job.queue_adapter = (ENV["REDIS_URL"].present? || ENV["REDIS_SIDEKIQ_URL"].present?) ? :sidekiq : :async
