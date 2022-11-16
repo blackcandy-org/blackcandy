@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_secure_token :api_token
   has_setting :theme, default: DEFAULT_THEME
+  serialize :recently_played_album_ids, Array
 
   before_create :downcase_email
   after_create :create_buildin_playlists

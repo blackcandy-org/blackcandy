@@ -10,7 +10,7 @@ class UserSettingTest < ActiveSupport::TestCase
   test "should get default value when setting value did not set" do
     user = users(:visitor1)
 
-    assert_nil user.settings&.fetch("theme")
+    assert_nil user.settings["theme"]
     assert_equal User::DEFAULT_THEME, user.theme
   end
 

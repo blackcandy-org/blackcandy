@@ -10,7 +10,7 @@ class SearchableTest < ActiveSupport::TestCase
   end
 
   test "should support search by model attribute" do
-    assert_equal Artist.where(name: %w[artist1 artist2]).ids.sort, Artist.search("artist1").ids.sort
+    assert_equal Artist.where(name: %w[artist1]).ids.sort, Artist.search("artist1").ids.sort
   end
 
   test "should support fuzzy search by model attribute" do
@@ -18,9 +18,7 @@ class SearchableTest < ActiveSupport::TestCase
   end
 
   test "should support search by model attribute with association" do
-    album_ids = Artist.find_by(name: "artist1").albums.ids +
-      Artist.find_by(name: "artist2").albums.ids
-    assert_equal album_ids.sort, Album.search("artist1").ids.sort
+    assert_equal Artist.find_by(name: "artist1").albums.ids.sort, Album.search("artist1").ids.sort
   end
 
   test "should support fuzzy search by model attribute with association" do

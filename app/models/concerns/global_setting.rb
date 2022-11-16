@@ -16,23 +16,10 @@ module GlobalSetting
       first_or_create!(singleton_guard: 0)
     end
 
-    def has_settings(*settings)
-      self::AVAILABLE_SETTINGS.push(*settings)
-
-      store_accessor :values, *settings
-
-      settings.each do |setting|
-        define_singleton_method(setting) do
-          setting_value = instance.send(setting)
-          setting_value || ENV[setting.to_s.upcase]
-        end
-      end
-    end
-
     def has_setting(setting, type: :string, default: nil)
       self::AVAILABLE_SETTINGS.push(setting)
 
-      store_accessor :values, setting
+      store :values, accessors: setting
 
       define_method("#{setting}=") do |value|
         setting_value = ScopedSetting.convert_setting_value(type, value)
@@ -45,7 +32,7 @@ module GlobalSetting
 
       define_singleton_method(setting) do
         setting_value = instance.send(setting)
-        setting_value || default
+        setting_value || default || ENV[setting.to_s.upcase]
       end
     end
   end

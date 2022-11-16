@@ -10,18 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_22_030432) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "hstore"
-  enable_extension "pg_trgm"
-  enable_extension "plpgsql"
-
+ActiveRecord::Schema[7.0].define(version: 2022_11_15_062920) do
   create_table "albums", force: :cascade do |t|
     t.string "name"
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "artist_id"
+    t.integer "artist_id"
     t.index ["artist_id", "name"], name: "index_albums_on_artist_id_and_name", unique: true
     t.index ["artist_id"], name: "index_albums_on_artist_id"
     t.index ["name"], name: "index_albums_on_name"
@@ -41,20 +36,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_22_030432) do
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.integer "user_id"
     t.index ["name"], name: "index_playlists_on_name"
     t.index ["user_id"], name: "index_playlists_on_user_id"
   end
 
   create_table "playlists_songs", force: :cascade do |t|
-    t.bigint "playlist_id", null: false
-    t.bigint "song_id", null: false
+    t.integer "playlist_id", null: false
+    t.integer "song_id", null: false
     t.integer "position"
     t.index ["song_id", "playlist_id"], name: "index_playlists_songs_on_song_id_and_playlist_id", unique: true
   end
 
   create_table "settings", force: :cascade do |t|
-    t.hstore "values"
+    t.text "values"
     t.integer "singleton_guard"
     t.index ["singleton_guard"], name: "index_settings_on_singleton_guard", unique: true
   end
@@ -67,8 +62,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_22_030432) do
     t.integer "tracknum"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "album_id"
-    t.bigint "artist_id"
+    t.integer "album_id"
+    t.integer "artist_id"
     t.string "file_path_hash"
     t.index ["album_id"], name: "index_songs_on_album_id"
     t.index ["artist_id"], name: "index_songs_on_artist_id"
@@ -83,11 +78,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_22_030432) do
     t.boolean "is_admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.hstore "settings"
+    t.text "settings"
     t.string "password_salt"
     t.string "persistence_token"
     t.string "api_token"
-    t.integer "recently_played_album_ids", default: [], array: true
+    t.text "recently_played_album_ids"
     t.index ["api_token"], name: "index_users_on_api_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["persistence_token"], name: "index_users_on_persistence_token", unique: true

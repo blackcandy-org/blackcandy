@@ -19,8 +19,11 @@ gem "cssbundling-rails", "~> 1.1.0"
 # Bundle and transpile JavaScript in Rails
 gem "jsbundling-rails", "~> 1.0.0"
 
-# Use postgresql as the database for Active Record
-gem "pg", "~> 1.3.2"
+if ENV.fetch("DATABASE_ADAPTER", "sqlite") == "postgresql"
+  gem "pg", "~> 1.3.2"
+else
+  gem "sqlite3", "~> 1.5.0"
+end
 
 # Use Puma as the app server
 gem "puma", "~> 6.0.0"
@@ -49,8 +52,8 @@ gem "httparty", "~> 0.17.0"
 # For browser detection
 gem "browser", "~> 2.6.1", require: "browser/browser"
 
-# For PostgreSQL's full text search
-gem "pg_search", "~> 2.3.2"
+# For searching
+gem "ransack", "~> 3.2.1"
 
 # For sortable list
 gem "acts_as_list", "~> 1.0.2"
