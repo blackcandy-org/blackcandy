@@ -11,7 +11,7 @@ module ScopedSetting
     def has_setting(setting, type: :string, default: nil)
       self::AVAILABLE_SETTINGS.push(setting)
 
-      store_accessor :settings, setting
+      store :settings, accessors: setting
 
       define_method(setting) do
         setting_value = ScopedSetting.convert_setting_value(type, super())
@@ -30,7 +30,7 @@ module ScopedSetting
     when :integer
       value.to_i
     else
-      value
+      value.to_s
     end
   end
 end

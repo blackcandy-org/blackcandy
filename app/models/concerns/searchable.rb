@@ -3,30 +3,17 @@
 module Searchable
   extend ActiveSupport::Concern
 
-  included do
-    include PgSearch::Model
-  end
-
   class_methods do
     def search_by(attr, options = {})
-      associations = Array(options[:associations])
-      associated_against = associations.index_with { attr }
-
-      search_options = {}.tap do |option|
-        option[:against] = attr
-        option[:using] = {
-          tsearch: {prefix: true},
-          trigram: {}
-        }
-        option[:associated_against] = associated_against if associations.present?
-      end
-
-      pg_search_scope "search_by_#{attr}", search_options
+      associations = Hash(options[:associations])
+      associations_attrs = associations.map { |name, attr| "#{name}_#{attr}" }
+      predicate = [attr].push(*associations_attrs).join("_or_").concat("_i_cont")
 
       define_singleton_method :search do |query|
         return self if query.blank?
 
-        send("search_by_#{attr}", query)
+        search_result = ransack({predicate.to_sym => query}).result
+        associations.present? ? search_result.includes(*associations.keys) : search_result
       end
     end
   end

@@ -9,7 +9,7 @@ class Album < ApplicationRecord
   has_many :songs, -> { order(:tracknum) }, inverse_of: :album, dependent: :destroy
   belongs_to :artist, touch: true
 
-  search_by :name, associations: :artist
+  search_by :name, associations: {artist: :name}
 
   def title
     is_unknown? ? I18n.t("label.unknown_album") : name

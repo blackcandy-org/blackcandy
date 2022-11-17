@@ -1,13 +1,14 @@
 class UseHstoreForSettings < ActiveRecord::Migration[6.0]
   def up
-    enable_extension "hstore" unless extension_enabled?("hstore")
+    enable_extension "hstore" if adapter_name.downcase == "postgresql" && !extension_enabled?("hstore")
     add_column :settings, :values, :hstore
     add_column :settings, :singleton_guard, :integer
     add_column :users, :settings, :hstore
     add_index :settings, :singleton_guard, unique: true
     remove_columns :settings, :created_at, :updated_at
 
-    execute <<-SQL
+    if adapter_name.downcase == "postgresql" && extension_enabled?("hstore")
+      execute <<-SQL
       /* Migrate user theme settings */
       UPDATE users u
       SET
@@ -48,7 +49,8 @@ class UseHstoreForSettings < ActiveRecord::Migration[6.0]
       ))
       WHERE
         singleton_guard = 0;
-    SQL
+      SQL
+    end
 
     remove_columns :settings, :var, :value, :thing_id, :thing_type
 
@@ -73,6 +75,6 @@ class UseHstoreForSettings < ActiveRecord::Migration[6.0]
     remove_column :settings, :values
     remove_column :settings, :singleton_guard
     remove_column :users, :settings
-    disable_extension "hstore" if extension_enabled?("hstore")
+    disable_extension "hstore" if adapter_name.downcase == "postgresql" && extension_enabled?("hstore")
   end
 end
