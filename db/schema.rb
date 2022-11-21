@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_15_062920) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_21_154637) do
   create_table "albums", force: :cascade do |t|
     t.string "name"
     t.string "image"
@@ -51,6 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_062920) do
   create_table "settings", force: :cascade do |t|
     t.text "values"
     t.integer "singleton_guard"
+    t.string "lastfm_api_key"
     t.index ["singleton_guard"], name: "index_settings_on_singleton_guard", unique: true
   end
 
