@@ -7,6 +7,7 @@ class Setting < ApplicationRecord
 
   has_setting :media_path
   has_setting :discogs_token
+  has_setting :lastfm_api_key
   has_setting :transcode_bitrate, type: :integer, default: 128
   has_setting :allow_transcode_lossless, type: :boolean, default: false
 
