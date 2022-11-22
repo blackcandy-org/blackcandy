@@ -44,8 +44,18 @@ class Api::V1::TranscodedStreamControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     get new_api_v1_transcoded_stream_url(song_id: songs(:flac_sample).id)
-    assert_equal "/private_cache_media/2/ZmxhY19zYW1wbGVfbWQ1X2hhc2g=_128.mp3", @response.get_header("X-Accel-Redirect")
-    assert_equal "audio/mpeg", @response.get_header("Content-Type")
+    assert_equal binary_data(Stream.new(songs(:flac_sample)).transcode_cache_file_path), response.body
+  end
+
+  test "should send cached transcoded stream file when found cache and send file with nginx" do
+    get new_api_v1_transcoded_stream_url(song_id: songs(:flac_sample).id)
+    assert_response :success
+
+    stub_env("NGINX_SENDFILE", "true") do
+      get new_api_v1_transcoded_stream_url(song_id: songs(:flac_sample).id)
+      assert_equal "/private_cache_media/2/ZmxhY19zYW1wbGVfbWQ1X2hhc2g=_128.mp3", @response.get_header("X-Accel-Redirect")
+      assert_equal "audio/mpeg", @response.get_header("Content-Type")
+    end
   end
 
   test "should regenerate new cache when cache is invalid" do

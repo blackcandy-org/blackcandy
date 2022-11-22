@@ -28,7 +28,7 @@ module Api
       def find_cache
         return unless valid_cache?
 
-        if nginx_senfile?
+        if nginx_sendfile?
           response.headers["X-Accel-Redirect"] = File.join("/private_cache_media", @stream.transcode_cache_file_path.sub(Stream::TRANSCODE_CACHE_DIRECTORY.to_s, ""))
         end
 

@@ -6,7 +6,7 @@ module Api
       before_action :find_stream
 
       def new
-        if nginx_senfile?
+        if nginx_sendfile?
           # Let nginx can get value of media_path dynamically in the nginx config,
           # when use X-Accel-Redirect header to send file.
           response.headers["X-Media-Path"] = Setting.media_path
@@ -23,8 +23,8 @@ module Api
         @stream = Stream.new(song)
       end
 
-      def nginx_senfile?
-        Rails.configuration.action_dispatch.x_sendfile_header == "X-Accel-Redirect"
+      def nginx_sendfile?
+        ENV.fetch("NGINX_SENDFILE", "false") == "true"
       end
     end
   end
