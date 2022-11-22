@@ -29,7 +29,7 @@ Rails.application.configure do
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
-  config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
+  # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -42,7 +42,9 @@ Rails.application.configure do
   config.log_tags = [:request_id]
 
   # Use a different cache store in production.
-  config.cache_store = (ENV["REDIS_URL"].present? || ENV["REDIS_CACHE_URL"].present?) ? [:redis_cache_store, {url: ENV.fetch("REDIS_CACHE_URL", ENV["REDIS_URL"])}] : :file_store
+  config.cache_store = (ENV["REDIS_URL"].present? || ENV["REDIS_CACHE_URL"].present?) ?
+    [:redis_cache_store, {url: ENV.fetch("REDIS_CACHE_URL", ENV["REDIS_URL"])}] :
+    [:file_store, "#{root}/tmp/cache/"]
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   config.active_job.queue_adapter = (ENV["REDIS_URL"].present? || ENV["REDIS_SIDEKIQ_URL"].present?) ? :sidekiq : :async
@@ -72,4 +74,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   config.active_record.async_query_executor = :global_thread_pool
+
+  # Disable warning of running SQLite in production
+  config.active_record.sqlite3_production_warning = false
 end
