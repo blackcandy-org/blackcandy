@@ -116,10 +116,6 @@ GEM
       irb (>= 1.3.6)
       reline (>= 0.3.1)
     docile (1.4.0)
-    dotenv (2.8.1)
-    dotenv-rails (2.8.1)
-      dotenv (= 2.8.1)
-      railties (>= 3.2)
     erubi (1.11.0)
     ferrum (0.13)
       addressable (~> 2.5)
@@ -321,7 +317,6 @@ DEPENDENCIES
   cssbundling-rails (~> 1.1.0)
   cuprite (~> 0.14.3)
   debug
-  dotenv-rails (~> 2.8.1)
   httparty (~> 0.17.0)
   jbuilder (~> 2.11.5)
   jsbundling-rails (~> 1.0.0)
