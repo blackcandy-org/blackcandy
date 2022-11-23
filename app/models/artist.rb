@@ -27,4 +27,9 @@ class Artist < ApplicationRecord
   def appears_on_albums
     Album.joins(:songs).where("albums.artist_id != ? AND songs.artist_id = ?", id, id).distinct
   end
+
+  def top_songs
+    top_tracks_titles = LastfmApi.artist_top_track(self)
+    songs.where(name: top_tracks_titles)
+  end
 end

@@ -12,13 +12,14 @@
           <span><%= @artist.songs.size %> <%= t('label.songs')%></span>
         </div>
         <% if is_admin? %>
-          <div class='u-mt-large'>
+        <div class='u-mt-large'>
             <%= link_to t('label.edit'), edit_artist_path(@artist), data: { turbo_frame: ('turbo-dialog' unless turbo_native?) }, class: 'c-button c-button--secondary u-mt-large' %>
           </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
-    </div>
   <% end %>
   <%= render partial: 'artists/albums', locals: { title: t('label.albums'), albums: @albums } %>
   <%= render partial: 'artists/albums', locals: { title: t('label.appears_on'), albums: @appears_on_albums } %>
+  <%= render partial: 'artists/top_songs', locals: { songs: @artist.top_songs } %>
 </div>

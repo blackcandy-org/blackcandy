@@ -6,6 +6,8 @@ class ArtistsController < ApplicationController
   before_action :require_admin, only: [:edit, :update]
   before_action :find_artist, except: [:index]
 
+  include Playable
+
   def index
     records = Artist.order(:name)
     @pagy, @artists = pagy(records)
@@ -39,5 +41,9 @@ class ArtistsController < ApplicationController
 
   def find_artist
     @artist = Artist.find(params[:id])
+  end
+
+  def find_all_song_ids
+    @song_ids = @artist.top_songs.pluck(:id)
   end
 end

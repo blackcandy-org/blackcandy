@@ -93,6 +93,8 @@ en:
     edit_artist: 'Edit Artist'
     album_cover: 'Album cover'
     artist_cover: 'Artist cover'
+    play_top_songs: 'Play top songs'
+    play_similar_artists: 'Play similar artists'
   error:
     login: 'Wrong email or password'
     forbidden: "Sorry, you do not have permission to visit that"
