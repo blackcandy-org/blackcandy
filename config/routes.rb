@@ -11,7 +11,12 @@ Rails.application.routes.draw do
   resource :setting, only: [:show, :update]
   resource :library, only: [:show]
 
-  resources :artists, only: [:index, :show, :edit, :update], concerns: :playable
+  resources :artists, only: [:index, :show, :edit, :update], concerns: :playable do
+    member do
+      get :top_songs
+    end
+  end
+
   resources :songs, only: [:index]
   resources :albums, only: [:index, :show, :edit, :update], concerns: :playable
 

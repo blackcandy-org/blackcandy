@@ -65,6 +65,9 @@ gem "bcrypt", "~> 3.1.11"
 # For sync on library changes
 gem "listen", "~> 3.7.1"
 
+# For render async partials
+gem 'render_async'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

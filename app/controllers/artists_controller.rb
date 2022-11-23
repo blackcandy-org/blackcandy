@@ -33,6 +33,11 @@ class ArtistsController < ApplicationController
     redirect_to @artist
   end
 
+  def top_songs
+    @songs = @artist.top_songs
+    render partial: "top_songs"
+  end
+
   private
 
   def artist_params

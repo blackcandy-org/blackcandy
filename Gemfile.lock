@@ -237,6 +237,7 @@ GEM
     regexp_parser (2.6.0)
     reline (0.3.1)
       io-console (~> 0.5)
+    render_async (2.1.11)
     request_store (1.5.1)
       rack (>= 1.4)
     rexml (3.2.5)
@@ -333,6 +334,7 @@ DEPENDENCIES
   rails (~> 7.0.0)
   ransack (~> 3.2.1)
   redis (~> 4.0)
+  render_async
   sidekiq (~> 7.0.0)
   simplecov (~> 0.21.2)
   simplecov-lcov (~> 0.8.0)

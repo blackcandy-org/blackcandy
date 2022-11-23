@@ -2,7 +2,7 @@
   <%= button_to t('label.play_top_songs'), play_artist_path(@artist), form_class: 'u-display-inline-block', class: 'c-button c-button--primary', form: { 'data-turbo-frame' => 'turbo-playlist' } %>
 </div>
 <ul class='c-list' data-action='turbo:submit-end->playlist-songs#submitEndHandle turbo:submit-start->playlist-songs#submitStartHandle'>
-  <% songs.each do |song| %>
+  <% @songs.each do |song| %>
     <li class='c-list__item' data-playlist-songs-target='item' data-song-id='<%= song.id %>' data-test-id='album_song'>
       <div class='o-flex o-flex--justify-between o-flex--align-center'>
         <%= button_to current_playlist_songs_path(song_id: song.id), class: 'u-w-100 o-flex o-flex--justify-between o-flex--align-center', form_class: 'o-flex__item--grow-1', form: { 'data-submit-start-action' => 'check_before_playing', 'data-submit-end-action' => 'play', 'data-turbo-frame' => 'turbo-playlist' } do  %>
