@@ -18,4 +18,13 @@ class ArtistTest < ActiveSupport::TestCase
   test "should get appears on albums" do
     assert_equal Album.where(name: %w[album4]).ids.sort, artists(:artist1).appears_on_albums.ids.sort
   end
+
+  test "should get top songs" do
+    api_response = File.read('./test/fixtures/json/lastfm/get_top_tracks_with_fixtures.json')
+
+    stub_request(:get, "http://ws.audioscrobbler.com/2.0/?api_key=&artist=artist1&format=json&method=artist.gettoptracks")
+      .to_return(status: 200, body: api_response)
+
+    assert_equal [1,2], artists(:artist1).top_songs.ids.sort
+  end
 end

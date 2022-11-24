@@ -1,0 +1,1708 @@
+{
+  "toptracks": {
+      "track": [
+          {
+              "name": "Me and Bobby McGee",
+              "playcount": "2689131",
+              "listeners": "608611",
+              "mbid": "7f699048-4411-4db7-87eb-7ad11e266d21",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Me+and+Bobby+McGee",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "1"
+              }
+          },
+          {
+              "name": "Piece of My Heart",
+              "playcount": "2334608",
+              "listeners": "499961",
+              "mbid": "b6f9ecae-29a2-4251-a885-f82dde5be7b5",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Piece+of+My+Heart",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "2"
+              }
+          },
+          {
+              "name": "Cry Baby",
+              "playcount": "1748133",
+              "listeners": "420323",
+              "mbid": "a11c0a4d-de77-4fd7-8df6-4db36e49a634",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Cry+Baby",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "3"
+              }
+          },
+          {
+              "name": "Mercedes Benz",
+              "playcount": "1650389",
+              "listeners": "412901",
+              "mbid": "b7450002-ca11-4854-883d-0282acaa2bc3",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Mercedes+Benz",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "4"
+              }
+          },
+          {
+              "name": "Move Over",
+              "playcount": "1153149",
+              "listeners": "306431",
+              "mbid": "fe37a369-3276-4969-90a6-1ef128b67107",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Move+Over",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "5"
+              }
+          },
+          {
+              "name": "Summertime",
+              "playcount": "1320416",
+              "listeners": "285217",
+              "mbid": "2d7f4eb3-199c-469a-aea7-cb8af5a08957",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Summertime",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "6"
+              }
+          },
+          {
+              "name": "Try (Just a Little Bit Harder)",
+              "playcount": "921185",
+              "listeners": "255163",
+              "mbid": "ed4cfe52-ff00-4e77-92fb-e25cf839dac6",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Try+(Just+a+Little+Bit+Harder)",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "7"
+              }
+          },
+          {
+              "name": "Get It While You Can",
+              "playcount": "788605",
+              "listeners": "234101",
+              "mbid": "6dfebc73-f2cc-45c5-9d9a-bab9d533b4fc",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Get+It+While+You+Can",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "8"
+              }
+          },
+          {
+              "name": "Kozmic Blues",
+              "playcount": "942617",
+              "listeners": "229628",
+              "mbid": "30267397-94bb-45b0-a638-d9552609b527",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Kozmic+Blues",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "9"
+              }
+          },
+          {
+              "name": "Maybe",
+              "playcount": "957341",
+              "listeners": "226296",
+              "mbid": "bd5838be-e84b-4aef-be8d-272dfa657a93",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Maybe",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "10"
+              }
+          },
+          {
+              "name": "Down on Me",
+              "playcount": "616975",
+              "listeners": "172833",
+              "mbid": "a5c0bd35-e31e-458d-926f-aa681329fb8a",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Down+on+Me",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "11"
+              }
+          },
+          {
+              "name": "A Woman Left Lonely",
+              "playcount": "499407",
+              "listeners": "154401",
+              "mbid": "b9039a6d-5de5-4b47-8fa9-0874391cf18d",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/A+Woman+Left+Lonely",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "12"
+              }
+          },
+          {
+              "name": "Half Moon",
+              "playcount": "469745",
+              "listeners": "146603",
+              "mbid": "e55c6809-1f98-42e3-ba59-04da828bccbf",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Half+Moon",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "13"
+              }
+          },
+          {
+              "name": "Trust Me",
+              "playcount": "458274",
+              "listeners": "141259",
+              "mbid": "43ff323d-2470-463b-8e69-ed4f3cf76c34",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Trust+Me",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "14"
+              }
+          },
+          {
+              "name": "Ball and Chain",
+              "playcount": "492958",
+              "listeners": "139454",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Ball+and+Chain",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "15"
+              }
+          },
+          {
+              "name": "Little Girl Blue",
+              "playcount": "515801",
+              "listeners": "129771",
+              "mbid": "4b4f237d-7107-415a-8779-633c33369fed",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Little+Girl+Blue",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "16"
+              }
+          },
+          {
+              "name": "One Good Man",
+              "playcount": "371109",
+              "listeners": "124105",
+              "mbid": "2508402c-c4d0-474e-a412-91807d30cc1c",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/One+Good+Man",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "17"
+              }
+          },
+          {
+              "name": "To Love Somebody",
+              "playcount": "417347",
+              "listeners": "120486",
+              "mbid": "2e985cdd-56d8-456f-9f2d-d9915652cbc1",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/To+Love+Somebody",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "18"
+              }
+          },
+          {
+              "name": "Bye, Bye Baby",
+              "playcount": "383794",
+              "listeners": "113506",
+              "mbid": "33de84d5-8444-4035-9df0-11336b6f9b97",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Bye,+Bye+Baby",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "19"
+              }
+          },
+          {
+              "name": "My Baby",
+              "playcount": "322776",
+              "listeners": "110094",
+              "mbid": "de4eae0d-78b5-440d-8873-1fca9b1cc3c6",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/My+Baby",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "20"
+              }
+          },
+          {
+              "name": "Buried Alive in the Blues",
+              "playcount": "263341",
+              "listeners": "91988",
+              "mbid": "e611e1a9-add2-40c4-bbd1-6840bbe67490",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Buried+Alive+in+the+Blues",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "21"
+              }
+          },
+          {
+              "name": "I Need a Man to Love",
+              "playcount": "266882",
+              "listeners": "77115",
+              "mbid": "6e302f35-0912-4bac-9177-8d0899e53fee",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/I+Need+a+Man+to+Love",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "22"
+              }
+          },
+          {
+              "name": "Work Me, Lord",
+              "playcount": "215606",
+              "listeners": "68816",
+              "mbid": "84324b44-71eb-4507-bc62-083cd6aaca5c",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Work+Me,+Lord",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "23"
+              }
+          },
+          {
+              "name": "As Good as You've Been to This World",
+              "playcount": "186395",
+              "listeners": "64526",
+              "mbid": "151186f1-2314-48f6-88f4-092e77a2e687",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/As+Good+as+You%27ve+Been+to+This+World",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "24"
+              }
+          },
+          {
+              "name": "Turtle Blues",
+              "playcount": "149024",
+              "listeners": "50613",
+              "mbid": "d1432f66-ea44-427a-91a7-31dca6fb63c6",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Turtle+Blues",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "25"
+              }
+          },
+          {
+              "name": "Summertime - (Big Brother & The Holding Company-janis Joplin)",
+              "playcount": "136975",
+              "listeners": "47875",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Summertime+-+(Big+Brother+&+The+Holding+Company-janis+Joplin)",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "26"
+              }
+          },
+          {
+              "name": "Raise Your Hand",
+              "playcount": "113277",
+              "listeners": "41072",
+              "mbid": "908a020f-6a26-4c11-9dfc-df7bc7c68099",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Raise+Your+Hand",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "27"
+              }
+          },
+          {
+              "name": "Try",
+              "playcount": "131512",
+              "listeners": "38453",
+              "mbid": "44b95d1a-28d5-4e78-878e-dac4809ef1f7",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Try",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "28"
+              }
+          },
+          {
+              "name": "Tell Mama",
+              "playcount": "107310",
+              "listeners": "37640",
+              "mbid": "8aecedf3-abdc-4919-a639-339ef8d8d1ad",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Tell+Mama",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "29"
+              }
+          },
+          {
+              "name": "One Night Stand",
+              "playcount": "132061",
+              "listeners": "37320",
+              "mbid": "4c09b4db-7222-4d9d-9c29-26e1599ae2ea",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/One+Night+Stand",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "30"
+              }
+          },
+          {
+              "name": "Trouble in Mind",
+              "playcount": "103239",
+              "listeners": "37131",
+              "mbid": "434b6de2-5325-4e01-be51-fe260e605501",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Trouble+in+Mind",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "31"
+              }
+          },
+          {
+              "name": "Bye Bye Baby",
+              "playcount": "132007",
+              "listeners": "37042",
+              "mbid": "2fd17ca2-c58b-4ea6-ba99-f423b4ac3283",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Bye+Bye+Baby",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "32"
+              }
+          },
+          {
+              "name": "Mary Jane",
+              "playcount": "107189",
+              "listeners": "34688",
+              "mbid": "77f4105d-d914-412e-9bca-7616106ebf13",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Mary+Jane",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "33"
+              }
+          },
+          {
+              "name": "All Is Loneliness",
+              "playcount": "103669",
+              "listeners": "34056",
+              "mbid": "ccbf5054-3627-4165-a793-fdd4222253bc",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/All+Is+Loneliness",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "34"
+              }
+          },
+          {
+              "name": "Easy Rider",
+              "playcount": "95464",
+              "listeners": "34004",
+              "mbid": "8ea8c427-a711-4845-a191-61441e7b9bf6",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Easy+Rider",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "35"
+              }
+          },
+          {
+              "name": "Women Is Losers",
+              "playcount": "91618",
+              "listeners": "32745",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Women+Is+Losers",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "36"
+              }
+          },
+          {
+              "name": "Oh, Sweet Mary",
+              "playcount": "89911",
+              "listeners": "31746",
+              "mbid": "6ea76a85-5490-4745-8de5-2af0cecadfa8",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Oh,+Sweet+Mary",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "37"
+              }
+          },
+          {
+              "name": "Coo Coo",
+              "playcount": "91468",
+              "listeners": "30754",
+              "mbid": "4dac1f3a-bc62-462d-b0cb-c6a273c1bf05",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Coo+Coo",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "38"
+              }
+          },
+          {
+              "name": "Combination of the Two",
+              "playcount": "88845",
+              "listeners": "30714",
+              "mbid": "ca9aa9ec-beea-47f1-ace4-87ab80ff294c",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Combination+of+the+Two",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "39"
+              }
+          },
+          {
+              "name": "Flower in the Sun",
+              "playcount": "88764",
+              "listeners": "29937",
+              "mbid": "9f87428c-5496-4747-8c09-f6679ca87e2b",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Flower+in+the+Sun",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "40"
+              }
+          },
+          {
+              "name": "Me & Bobby McGee",
+              "playcount": "110363",
+              "listeners": "26973",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Me+&+Bobby+McGee",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "41"
+              }
+          },
+          {
+              "name": "Misery'n",
+              "playcount": "69153",
+              "listeners": "26424",
+              "mbid": "68a49009-bdac-4d85-842e-1f48781ce5b1",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Misery%27n",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "42"
+              }
+          },
+          {
+              "name": "Call on Me",
+              "playcount": "92416",
+              "listeners": "25733",
+              "mbid": "8f8d1246-895c-4606-9e99-bcb793883577",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Call+on+Me",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "43"
+              }
+          },
+          {
+              "name": "Light Is Faster than Sound",
+              "playcount": "66923",
+              "listeners": "24795",
+              "mbid": "090310d8-8749-4e14-8921-a890db99f997",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Light+Is+Faster+than+Sound",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "44"
+              }
+          },
+          {
+              "name": "Farewell Song",
+              "playcount": "66686",
+              "listeners": "24562",
+              "mbid": "adb46968-cca2-40eb-b88c-dbb0d8eed79f",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Farewell+Song",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "45"
+              }
+          },
+          {
+              "name": "Dear Landlord",
+              "playcount": "49632",
+              "listeners": "21398",
+              "mbid": "b6ac4071-55de-4e73-b46f-c23135289b39",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Dear+Landlord",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "46"
+              }
+          },
+          {
+              "name": "Catch Me Daddy",
+              "playcount": "56995",
+              "listeners": "20864",
+              "mbid": "bcf4f6ca-f826-437a-9c02-79e7408542c3",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Catch+Me+Daddy",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "47"
+              }
+          },
+          {
+              "name": "Magic of Love",
+              "playcount": "58382",
+              "listeners": "20153",
+              "mbid": "3f6be66a-da9f-44e5-97f6-4208650817c5",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Magic+of+Love",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "48"
+              }
+          },
+          {
+              "name": "Summertime (live at Woodstock)",
+              "playcount": "56188",
+              "listeners": "19952",
+              "mbid": "a7f07f6e-31d7-420a-a19f-96acb7a71fae",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Summertime+(live+at+Woodstock)",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "49"
+              }
+          },
+          {
+              "name": "Take Another Little Piece of",
+              "playcount": "92447",
+              "listeners": "19940",
+              "url": "https://www.last.fm/music/Janis+Joplin/_/Take+Another+Little+Piece+of",
+              "streamable": "0",
+              "artist": {
+                  "name": "Janis Joplin",
+                  "mbid": "76c9a186-75bd-436a-85c0-823e3efddb7f",
+                  "url": "https://www.last.fm/music/Janis+Joplin"
+              },
+              "image": [
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "small"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "medium"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "large"
+                  },
+                  {
+                      "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                      "size": "extralarge"
+                  }
+              ],
+              "@attr": {
+                  "rank": "50"
+              }
+          }
+      ],
+      "@attr": {
+          "artist": "Janis Joplin",
+          "page": "1",
+          "perPage": "50",
+          "totalPages": "831",
+          "total": "41515"
+      }
+  }
+}

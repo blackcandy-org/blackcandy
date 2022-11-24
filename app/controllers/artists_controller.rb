@@ -49,6 +49,6 @@ class ArtistsController < ApplicationController
   end
 
   def find_all_song_ids
-    @song_ids = @artist.top_songs.pluck(:id)
+    @song_ids = @artist.top_songs.ids
   end
 end
