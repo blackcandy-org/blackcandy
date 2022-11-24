@@ -19,6 +19,13 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should show artist top songs" do
+    login
+    get top_songs_artist_url(artists(:artist1))
+
+    assert_response :success
+  end
+
   test "should edit album" do
     login users(:admin)
     get edit_artist_url(artists(:artist1))
