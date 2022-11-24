@@ -14,10 +14,12 @@ class Api::V1::StreamControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should set header for nginx send file" do
-    get new_api_v1_stream_url(song_id: songs(:mp3_sample).id)
+    stub_env("NGINX_SENDFILE", "true") do
+      get new_api_v1_stream_url(song_id: songs(:mp3_sample).id)
 
-    assert_equal Setting.media_path, @response.get_header("X-Media-Path")
-    assert_equal "/private_media/artist1_album2.mp3", @response.get_header("X-Accel-Redirect")
+      assert_equal Setting.media_path, @response.get_header("X-Media-Path")
+      assert_equal "/private_media/artist1_album2.mp3", @response.get_header("X-Accel-Redirect")
+    end
   end
 
   test "should respond file data" do
@@ -25,8 +27,8 @@ class Api::V1::StreamControllerTest < ActionDispatch::IntegrationTest
     assert_equal binary_data(file_fixture("artist1_album2.mp3")), response.body
   end
 
-  test "should respond file data when not set nginx send file header" do
-    Rails.configuration.action_dispatch.stub(:x_sendfile_header, "") do
+  test "should respond file data when set nginx send file header" do
+    stub_env("NGINX_SENDFILE", "true") do
       get new_api_v1_stream_url(song_id: songs(:mp3_sample).id)
       assert_equal binary_data(file_fixture("artist1_album2.mp3")), response.body
     end

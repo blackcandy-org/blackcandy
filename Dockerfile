@@ -1,10 +1,9 @@
-FROM ruby:3.1-alpine
+FROM ruby:3.1.2-alpine
 
 ENV LANG C.UTF-8
-
 ENV RAILS_ENV production
-
 ENV NODE_ENV production
+ENV RAILS_SERVE_STATIC_FILES true
 
 LABEL maintainer="Aidewoode@github.com/aidewoode"
 
@@ -16,7 +15,6 @@ RUN apk add --no-cache \
   yarn \
   imagemagick \
   ffmpeg \
-  nginx \
   gcompat
 
 WORKDIR /app
@@ -24,7 +22,8 @@ WORKDIR /app
 ADD . /app
 
 RUN apk add --no-cache --virtual .build-deps build-base \
-  && bundle install --without development test \
+  && bundle config --local without 'development test' \
+  && bundle install \
   && rm -rf /usr/local/bundle/cache/*.gem \
   && apk del --no-network .build-deps
 
@@ -32,8 +31,6 @@ RUN apk add --no-cache --virtual .build-deps build-base \
 RUN bundle exec rails assets:precompile SECRET_KEY_BASE=fake_secure_for_compile \
   && yarn cache clean \
   && rm -rf node_modules tmp/cache/* /tmp/*
-
-RUN cp config/nginx/nginx.conf /etc/nginx/nginx.conf
 
 ENTRYPOINT ["docker/entrypoint.sh"]
 

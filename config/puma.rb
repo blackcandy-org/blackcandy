@@ -1,4 +1,4 @@
-embedded_sidekiq = Rails.configuration.active_job.queue_adapter == :sidekiq && ENV.fetch("EMBEDDED_SIDEKIQ", "true") == "true"
+embedded_sidekiq = ENV.fetch("EMBEDDED_SIDEKIQ", "false") == "true"
 
 # Accroding to the documentation, we should keep embedded sidekiq concurrency very low, i.e. 1-2
 embedded_sidekiq_concurrency = [ENV.fetch("EMBEDDED_SIDEKIQ_CONCURRENCY", 2), 2].min
