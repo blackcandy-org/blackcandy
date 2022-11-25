@@ -98,11 +98,18 @@ class ActiveSupport::TestCase
     ActionController::Base.allow_forgery_protection = old
   end
 
-  def stub_env(name, value)
-    old_value = ENV[name]
-    ENV[name] = value
+  def with_env(envs = {})
+    old_value = {}
+
+    envs.each do |key, value|
+      old_value[key] = ENV[key]
+      ENV[key] = value
+    end
+
     yield
   ensure
-    ENV[name] = old_value
+    old_value.each do |key, value|
+      ENV[key] = value
+    end
   end
 end

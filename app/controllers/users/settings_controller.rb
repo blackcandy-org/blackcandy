@@ -25,6 +25,6 @@ class Users::SettingsController < ApplicationController
   end
 
   def auth_user
-    raise BlackCandyError::Forbidden unless @user == Current.user
+    raise BlackCandy::Error::Forbidden unless @user == Current.user
   end
 end

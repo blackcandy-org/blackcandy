@@ -23,12 +23,8 @@ module Api
         @stream = Stream.new(song)
       end
 
-      def nginx_sendfile?
-        ENV.fetch("NGINX_SENDFILE", "false") == "true"
-      end
-
       def send_local_file(file_path)
-        if nginx_sendfile?
+        if BlackCandy::Config.nginx_sendfile?
           set_nginx_header
 
           send_file file_path

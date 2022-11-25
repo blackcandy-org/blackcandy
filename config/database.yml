@@ -12,12 +12,12 @@ test:
   database: db/test.sqlite3
 
 
-<% if ENV.fetch("DATABASE_ADAPTER", "sqlite") == "postgresql" %>
+<% if BlackCandy::Config.database_adapter == "postgresql" %>
 production:
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= BlackCandy::Config.database_url %>
 <% else %>
 production:
   <<: *default

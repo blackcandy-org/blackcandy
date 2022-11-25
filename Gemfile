@@ -19,12 +19,6 @@ gem "cssbundling-rails", "~> 1.1.0"
 # Bundle and transpile JavaScript in Rails
 gem "jsbundling-rails", "~> 1.0.0"
 
-if ENV.fetch("DATABASE_ADAPTER", "sqlite") == "postgresql"
-  gem "pg", "~> 1.3.2"
-else
-  gem "sqlite3", "~> 1.5.0"
-end
-
 # Use Puma as the app server
 gem "puma", "~> 6.0.0"
 
@@ -65,6 +59,12 @@ gem "bcrypt", "~> 3.1.11"
 # For sync on library changes
 gem "listen", "~> 3.7.1"
 
+# For postgresql database adapter
+gem "pg", "~> 1.3.2"
+
+# For sqlite database adapter
+gem "sqlite3", "~> 1.5.0"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -87,7 +87,6 @@ group :development do
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
   gem "capybara", "~> 3.38.0"
   gem "cuprite", "~> 0.14.3"
   gem "webmock", "~> 3.14.0", require: false
