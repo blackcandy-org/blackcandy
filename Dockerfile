@@ -1,11 +1,14 @@
 FROM ruby:3.1.2-alpine
 
+LABEL maintainer="Aidewoode@github.com/aidewoode"
+
 ENV LANG C.UTF-8
 ENV RAILS_ENV production
 ENV NODE_ENV production
 ENV RAILS_SERVE_STATIC_FILES true
 
-LABEL maintainer="Aidewoode@github.com/aidewoode"
+# build for musl-libc, not glibc (see https://github.com/sparklemotion/nokogiri/issues/2075, https://github.com/rubygems/rubygems/issues/3174)
+ENV BUNDLE_FORCE_RUBY_PLATFORM 1
 
 RUN apk add --no-cache \
   tzdata \
@@ -14,8 +17,7 @@ RUN apk add --no-cache \
   nodejs \
   yarn \
   imagemagick \
-  ffmpeg \
-  gcompat
+  ffmpeg
 
 WORKDIR /app
 
