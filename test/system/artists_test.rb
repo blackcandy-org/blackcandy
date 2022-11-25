@@ -15,13 +15,13 @@ class ArtistsSystemTest < ApplicationSystemTestCase
   test "show artists" do
     visit artists_url
 
-    assert_selector(:test_id, "artist_card", count: Pagy::DEFAULT[:items])
+    assert_selector(:test_id, "artist_card", count: Pagy::DEFAULT[:items], visible: :all)
   end
 
   test "show next page artists when scroll to the bottom" do
     visit artists_url
     scroll_to :bottom
 
-    assert_selector(:test_id, "artist_card", count: Pagy::DEFAULT[:items] * 2)
+    assert_selector(:test_id, "artist_card", count: Pagy::DEFAULT[:items] * 2, visible: :all)
   end
 end

@@ -1,9 +1,9 @@
-if Rails.configuration.active_job.queue_adapter == :sidekiq
+if BlackCandy::Config.redis_sidekiq_url.present?
   Sidekiq.configure_server do |config|
-    config.redis = {url: ENV.fetch("REDIS_SIDEKIQ_URL", ENV["REDIS_URL"])}
+    config.redis = {url: BlackCandy::Config.redis_sidekiq_url}
   end
 
   Sidekiq.configure_client do |config|
-    config.redis = {url: ENV.fetch("REDIS_SIDEKIQ_URL", ENV["REDIS_URL"])}
+    config.redis = {url: BlackCandy::Config.redis_sidekiq_url}
   end
 end

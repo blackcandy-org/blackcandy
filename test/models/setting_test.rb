@@ -8,10 +8,10 @@ class SettingTest < ActiveSupport::TestCase
   end
 
   test "should get env default value when setting value did not set" do
-    ENV["MEDIA_PATH"] = "/test_media_path"
-
-    assert_nil Setting.instance.values&.[]("media_path")
-    assert_equal "/test_media_path", Setting.media_path
+    with_env("MEDIA_PATH" => "/test_media_path") do
+      assert_nil Setting.instance.values&.[]("media_path")
+      assert_equal "/test_media_path", Setting.media_path
+    end
   end
 
   test "should get singleton global setting" do

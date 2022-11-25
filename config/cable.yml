@@ -4,10 +4,10 @@ development:
 test:
   adapter: test
 
-<% if ENV["REDIS_URL"].present? || ENV["REDIS_CABLE_URL"].present? %>
+<% if BlackCandy::Config.redis_cable_url.present? %>
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_CABLE_URL", ENV["REDIS_URL"]) %>
+  url: <%= BlackCandy::Config.redis_cable_url %>
   channel_prefix: black_candy_production
 <% else %>
 production:
