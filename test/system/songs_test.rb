@@ -22,14 +22,14 @@ class SongsSystemTest < ApplicationSystemTestCase
   test "show songs" do
     visit songs_url
 
-    assert_selector(:test_id, "song_item", count: Pagy::DEFAULT[:items])
+    assert_selector(:test_id, "song_item", count: Pagy::DEFAULT[:items], visible: :all)
   end
 
   test "show next page songs when scroll to the bottom" do
     visit songs_url
     scroll_to :bottom
 
-    assert_selector(:test_id, "song_item", count: Pagy::DEFAULT[:items] * 2)
+    assert_selector(:test_id, "song_item", count: Pagy::DEFAULT[:items] * 2, visible: :all)
   end
 
   test "play song from songs list" do
