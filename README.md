@@ -43,7 +43,7 @@ docker run -p 3000:3000 blackcandy/blackcandy:edge
 
 ### Media Files Mounts 
 
-You can mount media files from host to container and use MEDIA_PATH environment variable to set the media path for black candy.
+You can mount media files from host to container and use `MEDIA_PATH` environment variable to set the media path for black candy.
 
 ```shell
 docker run -v /media_data:/media_data -e MEDIA_PATH=/media_data blackcandy/blackcandy:edge   
@@ -96,7 +96,7 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - /media_data:/media_data # Keep the path of media files in container same as blackcandy container.
 
-  blackcandy:
+  app:
     image: blackcandy/blackcandy:edge 
     volumes:
       - ./log:/app/log
@@ -161,7 +161,7 @@ services:
 
 | Name                         | Default   | Description |
 | ---                          | ---       | ---         |
-| REDIS_URL                    |           | The URL of Redis, when this environment variable has set Black Candy will use Sidekiq for background job, Redis adapter for WebSockets and use Redis to store cache|
+| REDIS_URL                    |           | The URL of Redis, when this environment variable has been set Black Candy will use Sidekiq for background job, Redis adapter for WebSockets and use Redis to store cache|
 | REDIS_CACHE_URL              | REDIS_URL | This environment variable can override the REDIS_URL, if you want to set different Redis URL for cache.|
 | REDIS_SIDEKIQ_URL            | REDIS_URL | This environment variable can override the REDIS_URL, if you want to set different Redis URL for Sidekiq. |
 | REDIS_CABLE_URL              | REDIS_URL | This environment variable can override the REDIS_URL, if you want to set different Redis URL for WebSockets. |
@@ -180,7 +180,7 @@ services:
 
 Click the button above, then you can try Black Candy on [Play with Docker](https://labs.play-with-docker.com).
 
-When the service is ready, access Black Candy from port 80. Then use initial admin user to login (email: admin@admin.com, password: foobar). This demo already contains some sample music file. You can go to the setting page and click the sync button of the media path to import the sample music into the database.
+When the service is ready, access Black Candy from port 3000. Then use initial admin user to login (email: admin@admin.com, password: foobar). This demo already contains some sample music file. You can go to the setting page and click the sync button of the media path to import the sample music into the database.
 
 And feel free to try it.
 
