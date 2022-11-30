@@ -10,7 +10,9 @@ class Media
 
   class << self
     def sync(type = :all, file_paths = [])
+      self.syncing = true
       file_paths = MediaFile.file_paths if type == :all
+
       return if file_paths.blank?
 
       case type
@@ -25,6 +27,8 @@ class Media
         remove_files(file_paths)
         add_files(file_paths)
       end
+    ensure
+      self.syncing = false
     end
 
     def syncing?

@@ -7,7 +7,6 @@ class MediaTest < ActiveSupport::TestCase
 
   setup do
     clear_media_data
-    Media.syncing = false
 
     Setting.update(media_path: Rails.root.join("test/fixtures/files"))
     Media.sync
