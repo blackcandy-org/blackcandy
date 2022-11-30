@@ -29,7 +29,7 @@ That's all. Now, you can use initial admin user to login (email: admin@admin.com
 
 
 ## Mobile App
-Black Candy now has an iOS app in beta. You can visit [here](https://github.com/blackcandy-org/black_candy_ios) and join TestFlight to give it a try. Because this iOS app still in beta, you need use the edge version of Black Candy.
+Black Candy now has an iOS app in beta. You can visit [here](https://testflight.apple.com/join/TwMUVmDl) and join TestFlight to give it a try. Because this iOS app still in beta, you need use the edge version of Black Candy.
 
 ## Configuration
 
