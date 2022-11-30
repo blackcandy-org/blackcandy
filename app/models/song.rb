@@ -14,6 +14,8 @@ class Song < ApplicationRecord
 
   search_by :name, associations: {artist: :name, album: :name}
 
+  attribute :is_favorited, :boolean
+
   def format
     MediaFile.format(file_path)
   end
