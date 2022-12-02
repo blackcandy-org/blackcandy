@@ -22,7 +22,7 @@ class LastfmApi
 
       result = search(options)
 
-      return [] if result.blank?
+      return [] if result.blank? || result[:error].present?
 
       result[:toptracks][:track].each.with_object(:name).map(&:[])
     end
