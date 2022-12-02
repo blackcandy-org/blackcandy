@@ -19,7 +19,12 @@ class LastfmApi
       raise TypeError, "Expect Artist instance" unless artist.is_a? Artist
 
       options = { query: { method: 'artist.gettoptracks', artist: artist.name }}
-      search(options)[:toptracks][:track].each.with_object(:name).map(&:[])
+
+      result = search(options)
+
+      return [] if result.blank?
+
+      result[:toptracks][:track].each.with_object(:name).map(&:[])
     end
   end
 end

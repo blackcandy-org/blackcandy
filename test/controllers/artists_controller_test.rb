@@ -21,6 +21,8 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
 
   test "should show artist top songs" do
     login
+    stub_request(:get, "http://ws.audioscrobbler.com/2.0/?api_key=&artist=artist1&format=json&method=artist.gettoptracks")
+    .to_return(status: 200, body: '""')
     get top_songs_artist_url(artists(:artist1))
 
     assert_response :success
