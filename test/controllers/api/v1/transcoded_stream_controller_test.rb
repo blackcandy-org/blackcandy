@@ -51,7 +51,7 @@ class Api::V1::TranscodedStreamControllerTest < ActionDispatch::IntegrationTest
     get new_api_v1_transcoded_stream_url(song_id: songs(:flac_sample).id)
     assert_response :success
 
-    stub_env("NGINX_SENDFILE", "true") do
+    with_env("NGINX_SENDFILE" => "true") do
       get new_api_v1_transcoded_stream_url(song_id: songs(:flac_sample).id)
       assert_equal "/private_cache_media/2/ZmxhY19zYW1wbGVfbWQ1X2hhc2g=_128.mp3", @response.get_header("X-Accel-Redirect")
       assert_equal "audio/mpeg", @response.get_header("Content-Type")

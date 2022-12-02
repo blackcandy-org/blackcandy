@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   before_action :find_current_user
   before_action :require_login
 
-  rescue_from BlackCandyError::Forbidden do
+  rescue_from BlackCandy::Error::Forbidden do
     respond_to do |format|
       format.js { head :forbidden }
       format.json { head :forbidden }
@@ -75,7 +75,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
-    raise BlackCandyError::Forbidden unless is_admin?
+    raise BlackCandy::Error::Forbidden unless is_admin?
   end
 
   def logout_current_user

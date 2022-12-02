@@ -32,7 +32,9 @@ module GlobalSetting
 
       define_singleton_method(setting) do
         setting_value = instance.send(setting)
-        setting_value || default || ENV[setting.to_s.upcase]
+        default_value = default.is_a?(Proc) ? default.call : default
+
+        setting_value || default_value
       end
     end
   end

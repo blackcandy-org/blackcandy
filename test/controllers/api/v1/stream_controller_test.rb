@@ -14,7 +14,7 @@ class Api::V1::StreamControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should set header for nginx send file" do
-    stub_env("NGINX_SENDFILE", "true") do
+    with_env("NGINX_SENDFILE" => "true") do
       get new_api_v1_stream_url(song_id: songs(:mp3_sample).id)
 
       assert_equal Setting.media_path, @response.get_header("X-Media-Path")
@@ -28,7 +28,7 @@ class Api::V1::StreamControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should respond file data when set nginx send file header" do
-    stub_env("NGINX_SENDFILE", "true") do
+    with_env("NGINX_SENDFILE" => "true") do
       get new_api_v1_stream_url(song_id: songs(:mp3_sample).id)
       assert_equal binary_data(file_fixture("artist1_album2.mp3")), response.body
     end

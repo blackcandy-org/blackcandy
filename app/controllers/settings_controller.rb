@@ -6,7 +6,7 @@ class SettingsController < ApplicationController
   end
 
   def update
-    raise BlackCandyError::Forbidden unless is_admin?
+    raise BlackCandy::Error::Forbidden unless is_admin?
     setting = Setting.instance
 
     if setting.update(setting_params)

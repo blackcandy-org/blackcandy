@@ -13,6 +13,7 @@ class Api::V1::CurrentPlaylist::SongsControllerTest < ActionDispatch::Integratio
 
     assert_response :success
     assert_equal [1, 2, 3], response.map { |song| song["id"] }
+    assert_equal [false, false, false], response.map { |song| song["is_favorited"] }
   end
 
   test "should remove songs from playlist" do
