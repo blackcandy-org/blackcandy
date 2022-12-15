@@ -174,15 +174,9 @@ services:
 | SECRET_KEY_BASE              |           | When the SECRET_KEY_BASE environment variable is not set, Black candy will generate SECRET_KEY_BASE environment variable every time when service start up. This will cause old sessions invalid, You can set your own SECRET_KEY_BASE environment variable on docker service to avoid it. |
 
 
-## Try in PWD
+## Try The Demo
 
-[![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](http://play-with-docker.com/?stack=https://raw.githubusercontent.com/blackcandy-org/black_candy/master/docker-compose.pwd.yml)
-
-Click the button above, then you can try Black Candy on [Play with Docker](https://labs.play-with-docker.com).
-
-When the service is ready, access Black Candy from port 3000. Then use initial admin user to login (email: admin@admin.com, password: foobar). This demo already contains some sample music file. You can go to the setting page and click the sync button of the media path to import the sample music into the database.
-
-And feel free to try it.
+Please visit <https://demo.blackcandy.org> and use demo user (email: demo@blackcandy.org, password: foobar) to login. And feel free to try it.
 
 ### List for all sample music for the demo:
 
