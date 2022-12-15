@@ -15,6 +15,10 @@ Black Candy is a self hosted music streaming server built with [Rails](https://r
 
 ![screenshot theme light](https://raw.githubusercontent.com/blackcandy-org/black_candy/master/screenshots/screenshot_theme_light.png)
 
+## Try The Demo
+
+Please visit <https://demo.blackcandy.org> and use demo user (email: demo@blackcandy.org, password: foobar) to login. And feel free to try it.
+
 ## Installation
 > ⚠️  **Note:** This installation instruction is for edge version, which means the docker image is build base on master branch. Because upcoming major version of Black Candy is going to have a lot of infrastructure changes. So the installation process will have a lot of difference.
 > If you are looking for installation instruction for latest stable version, please visit [here](https://github.com/blackcandy-org/black_candy/blob/7f9202bd8a9777d439e95eabd0654e9b4a336be9/README.md).
@@ -173,24 +177,6 @@ services:
 | EMBEDDED_SIDEKIQ_CONCURRENCY | 2         | The concurrency number of embedded Sidekiq. This value should not greater than 2. Because we should keep embedded Sidekiq concurrency very low. For more details, see this [document](https://github.com/mperham/sidekiq/wiki/Embedding) about embedded Sidekiq. |
 | SECRET_KEY_BASE              |           | When the SECRET_KEY_BASE environment variable is not set, Black candy will generate SECRET_KEY_BASE environment variable every time when service start up. This will cause old sessions invalid, You can set your own SECRET_KEY_BASE environment variable on docker service to avoid it. |
 
-
-## Try The Demo
-
-Please visit <https://demo.blackcandy.org> and use demo user (email: demo@blackcandy.org, password: foobar) to login. And feel free to try it.
-
-### List for all sample music for the demo:
-
-- Kurt Vile - Live at WFMU on Talk's Cheap 8/11/2008 (licensed under [Attribution-NonCommercial-ShareAlike 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/))
-
-- Wooden Shjips - Live at ATP NY 2008 (licensed under [Attribution-Noncommercial-No Derivative Works 3.0 United States](http://creativecommons.org/licenses/by-nc-nd/3.0/us/))
-
-- Ty Segall - Live at WFMU on The Cherry Blossom Clinic with Terre T June 25, 2011 (licensed under [Attribution-Noncommercial-No Derivative Works 3.0 United States](http://creativecommons.org/licenses/by-nc-nd/3.0/us/))
-
-- Thee Oh Sees - Peanut Butter Oven EP (licensed under [Attribution-Noncommercial-Share Alike 3.0 United States](http://creativecommons.org/licenses/by-nc-sa/3.0/us/))
-
-If like their music, you can buy their albums to support them.
-
-
 ## Upgrade
 
 Pull new image from remote
@@ -249,6 +235,19 @@ $ rails lint:all
 ## Integrations
 
 Black Candy support get artist and album image from Discogs API. You can create a API token from Discogs and set Discogs token on Setting page to enable it.
+
+## Licences Of The Music In Demo 
+
+- Kurt Vile - Live at WFMU on Talk's Cheap 8/11/2008 (licensed under [Attribution-NonCommercial-ShareAlike 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/))
+
+- Wooden Shjips - Live at ATP NY 2008 (licensed under [Attribution-Noncommercial-No Derivative Works 3.0 United States](http://creativecommons.org/licenses/by-nc-nd/3.0/us/))
+
+- Ty Segall - Live at WFMU on The Cherry Blossom Clinic with Terre T June 25, 2011 (licensed under [Attribution-Noncommercial-No Derivative Works 3.0 United States](http://creativecommons.org/licenses/by-nc-nd/3.0/us/))
+
+- Thee Oh Sees - Peanut Butter Oven EP (licensed under [Attribution-Noncommercial-Share Alike 3.0 United States](http://creativecommons.org/licenses/by-nc-sa/3.0/us/))
+
+If you like their music, you can buy their albums to support them.
+
 
 ## Sponsorship 
 
