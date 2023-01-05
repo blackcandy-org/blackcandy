@@ -176,6 +176,7 @@ services:
 | EMBEDDED_SIDEKIQ             | false     | Whether enable embedded mode of Sidekiq. |
 | EMBEDDED_SIDEKIQ_CONCURRENCY | 2         | The concurrency number of embedded Sidekiq. This value should not greater than 2. Because we should keep embedded Sidekiq concurrency very low. For more details, see this [document](https://github.com/mperham/sidekiq/wiki/Embedding) about embedded Sidekiq. |
 | SECRET_KEY_BASE              |           | When the SECRET_KEY_BASE environment variable is not set, Black candy will generate SECRET_KEY_BASE environment variable every time when service start up. This will cause old sessions invalid, You can set your own SECRET_KEY_BASE environment variable on docker service to avoid it. |
+| FORCE_SSL                    | false     | Force all access to the app over SSL. |
 
 ## Upgrade
 
