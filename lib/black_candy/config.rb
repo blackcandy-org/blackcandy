@@ -58,6 +58,7 @@ module BlackCandy
     has_config :nginx_sendfile, default: false
     has_config :embedded_sidekiq, default: false
     has_config :embedded_sidekiq_concurrency, default: 2
+    has_config :force_ssl, default: false
 
     # Accroding to the documentation, we should keep embedded sidekiq concurrency very low, i.e. 1-2
     validate :embedded_sidekiq_concurrency do |value|
