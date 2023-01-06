@@ -2,6 +2,8 @@ name: Release Build
 
 on:
   push:
+    branches:
+      - master
     tags:
       - v*
 
@@ -13,6 +15,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Create release
         id: create_release
+        if: github.ref_name != 'master'
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -20,7 +23,7 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: ${{ github.ref }}
           draft: false
-          prerelease: false
+          prerelease: ${{ contains(github.ref_name, 'beta') }}
 
   build:
     needs: create_release
@@ -29,12 +32,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Get version
+        if: github.ref_name != 'master'
         run: |
           # Strip git ref prefix from version
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           # Strip "v" prefix from tag name
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
           echo "VERSION=$VERSION" >> $GITHUB_ENV
+      - name: Set Docker Tag
+        run: |
+          echo "DOCKER_TAG=blackcandy/blackcandy:latest,blackcandy/blackcandy:${{ env.VERSION }}" >> $GITHUB_ENV
+      - name: Remove Latest Docker Tag
+        if: contains(github.ref_name, 'beta')
+        run: |
+          echo "DOCKER_TAG=blackcandy/blackcandy:${{ env.VERSION }}" >> $GITHUB_ENV
+      - name: Set Edge Docker Tag
+        if: github.ref_name == 'master'
+        run: |
+          touch .is-edge-release.txt
+          echo "DOCKER_TAG=blackcandy/blackcandy:edge" >> $GITHUB_ENV
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
@@ -51,6 +67,4 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: |
-            blackcandy/blackcandy:latest
-            blackcandy/blackcandy:${{ env.VERSION }}
+          tags: ${{ env.DOCKER_TAG }}
