@@ -55,3 +55,5 @@ yarn-debug.log*
 .env
 .env.*
 !.env.template
+
+.is-edge-release.txt

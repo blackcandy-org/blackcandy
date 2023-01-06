@@ -16,14 +16,13 @@ require "rails/test_unit/railtie"
 
 require_relative "../lib/black_candy/config"
 require_relative "../lib/black_candy/error"
+require_relative "../lib/black_candy/version"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module BlackCandy
-  VERSION = "2.1.1"
-
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
