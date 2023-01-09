@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resource :authentication, only: [:create]
+      resource :system, only: [:show]
       resources :songs, only: [:show]
       resources :stream, only: [:new]
       resources :transcoded_stream, only: [:new]
