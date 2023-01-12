@@ -81,4 +81,10 @@
       padding: spacing("small") !important;
     }
   }
+
+  @if $breakpoint == "extra-narrow" {
+    .u-p-narrow\@extra-narrow {
+      padding: spacing("narrow") !important;
+    }
+  }
 }

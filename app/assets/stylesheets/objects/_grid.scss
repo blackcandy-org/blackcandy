@@ -6,10 +6,6 @@
 
 .o-grid {
   display: grid !important;
-  grid-template-columns: var(--grid-tc);
-  --grid-tc: repeat(4, 1fr);
-  --grid-cs: 1; /* column start */
-  --grid-ce: -1; /* column end */
 }
 
 .o-grid > .o-grid__item {
@@ -19,11 +15,12 @@
 
 .o-grid--shelf {
   grid-gap: spacing("medium");
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
 
 .o-grid--list {
   grid-gap: spacing("small");
-  --grid-tc: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
 .o-grid > .o-grid__item--row {
@@ -31,59 +28,16 @@
 }
 
 @include responsive.media-query using ($breakpoint) {
-  @if $breakpoint == "extra-wide" {
-    .o-grid--shelf {
-      --grid-tc: repeat(7, 1fr);
-    }
-  }
-
-  @if $breakpoint == "wide" {
-    .o-grid--shelf {
-      --grid-tc: repeat(6, 1fr);
-    }
-  }
-
-  @if $breakpoint == "extra-large" {
-    .o-grid--shelf {
-      --grid-tc: repeat(5, 1fr);
-    }
-  }
-
-  @if $breakpoint == "large" {
-    .o-grid--shelf {
-      --grid-tc: repeat(4, 1fr);
-    }
-  }
-
-  @if $breakpoint == "medium" {
-    .o-grid--shelf {
-      --grid-tc: repeat(3, 1fr);
-    }
-
-    .o-grid--list {
-      --grid-tc: repeat(2, 1fr);
-    }
-  }
-
-  @if $breakpoint == "small" {
-    .o-grid--shelf {
-      --grid-tc: repeat(2, 1fr);
-    }
-  }
-
-  @if $breakpoint == "extra-small" {
-    .o-grid--shelf {
-      --grid-tc: repeat(3, 1fr);
-    }
-  }
-
   @if $breakpoint == "narrow" {
     .o-grid--shelf {
-      --grid-tc: repeat(2, 1fr);
+      grid-gap: spacing("small");
     }
+  }
 
-    .o-grid--list {
-      --grid-tc: repeat(1, 1fr);
+  @if $breakpoint == "extra-narrow" {
+    .o-grid--shelf {
+      grid-gap: spacing("narrow");
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }
