@@ -37,3 +37,6 @@ shell.nix
 .stylelintrc
 .travis.yml
 .envrc
+.node-version
+.ruby-version
+.dockerignore
