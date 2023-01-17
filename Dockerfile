@@ -15,7 +15,6 @@ RUN apk add --no-cache \
   tzdata \
   curl \
   postgresql-dev \
-  yarn \
   imagemagick \
   ffmpeg
 
@@ -28,7 +27,9 @@ RUN get_architecture() { \
       *) echo "unknown" ;; \
     esac \
   };\
-  curl -s https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-$(get_architecture).tar.gz | tar xzf - -C /usr/local --strip-components=1
+  curl -s https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-$(get_architecture).tar.gz | tar xzf - -C /usr/local --strip-components=1; \
+  npm install --global yarn; \
+  npm cache clean
 
 
 WORKDIR /app
