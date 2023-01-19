@@ -19,7 +19,7 @@ RUN apk add --no-cache tzdata postgresql-dev build-base
 
 WORKDIR /app
 
-COPY . /app
+COPY Gemfile* /app/
 
 RUN bundle config --local without 'development test' \
   && bundle install -j4 --retry 3 \
@@ -27,6 +27,8 @@ RUN bundle config --local without 'development test' \
   && rm -rf /usr/local/bundle/cache \
   && find /usr/local/bundle/gems/ -name "*.c" -delete \
   && find /usr/local/bundle/gems/ -name "*.o" -delete
+
+COPY . /app
 
 RUN bundle exec rails assets:precompile SECRET_KEY_BASE=fake_secure_for_compile \
   && yarn cache clean \
@@ -37,7 +39,6 @@ FROM base
 
 ENV LANG C.UTF-8
 ENV RAILS_ENV production
-ENV NODE_ENV production
 ENV RAILS_SERVE_STATIC_FILES true
 
 RUN apk add --no-cache \
@@ -48,11 +49,15 @@ RUN apk add --no-cache \
 
 WORKDIR /app
 
-COPY --from=builder /usr/local/bundle/ /usr/local/bundle/
-COPY --from=builder /app/ /app/
+EXPOSE 3000
+
+RUN addgroup -g 1000 -S app && adduser -u 1000 -S app -G app
+
+COPY --from=builder --chown=app:app /usr/local/bundle/ /usr/local/bundle/
+COPY --from=builder --chown=app:app /app/ /app/
+
+USER app
 
 ENTRYPOINT ["docker/entrypoint.sh"]
-
-EXPOSE 3000
 
 CMD ["docker/production_start.sh"]
