@@ -1,24 +1,22 @@
 <% page_title_tag @artist.title %>
 
 <div class='o-container o-container--wide'>
-  <% cache @artist do %>
-    <div class='c-card c-card--horizontal c-card--center@narrow u-my-large'>
-      <%= image_tag image_url_for(@artist), class: 'c-card__image u-image-large', data: { test_id: 'artist_image' } %>
-      <div class='c-card__body'>
-        <h1 class='c-card__body__title'><%= @artist.title %></h1>
-        <div class='c-card__body__text'>
-          <span><%= @artist.all_albums.size %> <%= t('label.albums') %></span>
-          <span>,</span>
-          <span><%= @artist.songs.size %> <%= t('label.songs')%></span>
-        </div>
-        <% if is_admin? %>
-          <div class='u-mt-large'>
-            <%= link_to t('label.edit'), edit_artist_path(@artist), data: { turbo_frame: ('turbo-dialog' unless turbo_native?) }, class: 'c-button c-button--secondary u-mt-large' %>
-          </div>
-        <% end %>
+  <div class='c-card c-card--horizontal c-card--center@narrow u-my-large'>
+    <%= image_tag image_url_for(@artist), class: 'c-card__image u-image-large', data: { test_id: 'artist_image' } %>
+    <div class='c-card__body'>
+      <h1 class='c-card__body__title'><%= @artist.title %></h1>
+      <div class='c-card__body__text'>
+        <span><%= @artist.all_albums.size %><%= t('label.albums') %></span>
+        <span>,</span>
+        <span><%= @artist.songs.size %> <%= t('label.songs')%></span>
       </div>
+      <% if is_admin? %>
+        <div class='u-mt-large'>
+          <%= link_to t('label.edit'), edit_artist_path(@artist), data: { turbo_frame: ('turbo-dialog' unless turbo_native?) }, class: 'c-button c-button--secondary u-mt-large' %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
   <%= render partial: 'artists/albums', locals: { title: t('label.albums'), albums: @albums } %>
   <%= render partial: 'artists/albums', locals: { title: t('label.appears_on'), albums: @appears_on_albums } %>
 </div>

@@ -1,45 +1,43 @@
 <% page_title_tag @album.title %>
 
-<% cache @album do %>
-  <div class='o-container o-container--narrow' data-controller='playlist-songs'>
-    <div class='c-card c-card--horizontal c-card--center@narrow u-my-large'>
-      <%= image_tag image_url_for(@album), class: 'c-card__image u-image-large', data: { test_id: 'album_image' } %>
-      <div class='c-card__body'>
-        <h1 class='c-card__body__title'><%= @album.title %></h1>
-        <p class='c-card__body__text'><%= @album.artist.title %></p>
-        <div class='c-card__body__text'>
-          <span><%= @songs.load.size %> <%= t('label.tracks') %></span>
-          <span>,</span>
-          <span class='u-text-monospace'><%= format_duration(@songs.sum(:duration)) %></span>
-        </div>
-        <div class='u-mt-large'>
-          <%= button_to t('label.play_all'), play_album_path(@album), form_class: 'u-display-inline-block', class: 'c-button c-button--primary', form: { 'data-turbo-frame' => 'turbo-playlist' } %>
-          <% if is_admin? %>
-            <%= link_to t('label.edit'), edit_album_path(@album), data: { turbo_frame: ('turbo-dialog' unless turbo_native?) }, class: 'c-button c-button--secondary u-ml-tiny' %>
-          <% end %>
-        </div>
+<div class='o-container o-container--narrow' data-controller='playlist-songs'>
+  <div class='c-card c-card--horizontal c-card--center@narrow u-my-large'>
+    <%= image_tag image_url_for(@album), class: 'c-card__image u-image-large', data: { test_id: 'album_image' } %>
+    <div class='c-card__body'>
+      <h1 class='c-card__body__title'><%= @album.title %></h1>
+      <p class='c-card__body__text'><%= @album.artist.title %></p>
+      <div class='c-card__body__text'>
+        <span><%= @songs.load.size %> <%= t('label.tracks') %></span>
+        <span>,</span>
+        <span class='u-text-monospace'><%= format_duration(@songs.sum(:duration)) %></span>
+      </div>
+      <div class='u-mt-large'>
+        <%= button_to t('label.play_all'), play_album_path(@album), form_class: 'u-display-inline-block', class: 'c-button c-button--primary', form: { 'data-turbo-frame' => 'turbo-playlist' } %>
+        <% if is_admin? %>
+          <%= link_to t('label.edit'), edit_album_path(@album), data: { turbo_frame: ('turbo-dialog' unless turbo_native?) }, class: 'c-button c-button--secondary u-ml-tiny' %>
+        <% end %>
       </div>
     </div>
-    <ul class='c-list' data-action='turbo:submit-end->playlist-songs#submitEndHandle turbo:submit-start->playlist-songs#submitStartHandle'>
-      <% @songs.each do |song| %>
-        <li class='c-list__item' data-playlist-songs-target='item' data-song-id='<%= song.id %>' data-test-id='album_song'>
-          <div class='o-flex o-flex--justify-between o-flex--align-center'>
-            <%= button_to current_playlist_songs_path(song_id: song.id), class: 'u-w-100 o-flex o-flex--justify-between o-flex--align-center', form_class: 'o-flex__item--grow-1', form: { 'data-submit-start-action' => 'check_before_playing', 'data-submit-end-action' => 'play', 'data-turbo-frame' => 'turbo-playlist' } do  %>
-              <div>
-                <h4 class='u-mb-tiny u-text-weight-normal' data-test-id='album_song_name'><%= song.name %></h4>
-                <% if @album.artist.is_various? %>
-                  <%= song.artist.title %>
-                <% end %>
-              </div>
-              <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
-            <% end %>
-
-            <%= link_to dialog_playlists_path(song_id: song.id, referer_url: current_url), data: { turbo_frame: ('turbo-dialog' unless turbo_native?), test_id: 'album_song_add_playlist' } do %>
-              <%= icon_tag 'playlist-add', size: 'small', title: t('label.add_to_playlist') %>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
   </div>
-<% end %>
+  <ul class='c-list' data-action='turbo:submit-end->playlist-songs#submitEndHandle turbo:submit-start->playlist-songs#submitStartHandle'>
+    <% @songs.each do |song| %>
+      <li class='c-list__item' data-playlist-songs-target='item' data-song-id='<%= song.id %>' data-test-id='album_song'>
+        <div class='o-flex o-flex--justify-between o-flex--align-center'>
+          <%= button_to current_playlist_songs_path(song_id: song.id), class: 'u-w-100 o-flex o-flex--justify-between o-flex--align-center', form_class: 'o-flex__item--grow-1', form: { 'data-submit-start-action' => 'check_before_playing', 'data-submit-end-action' => 'play', 'data-turbo-frame' => 'turbo-playlist' } do  %>
+            <div>
+              <h4 class='u-mb-tiny u-text-weight-normal' data-test-id='album_song_name'><%= song.name %></h4>
+              <% if @album.artist.is_various? %>
+                <%= song.artist.title %>
+              <% end %>
+            </div>
+            <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
+          <% end %>
+
+          <%= link_to dialog_playlists_path(song_id: song.id, referer_url: current_url), data: { turbo_frame: ('turbo-dialog' unless turbo_native?), test_id: 'album_song_add_playlist' } do %>
+            <%= icon_tag 'playlist-add', size: 'small', title: t('label.add_to_playlist') %>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
