@@ -19,8 +19,10 @@ Black Candy is a self hosted music streaming server built with [Rails](https://r
 
 Please visit <https://demo.blackcandy.org> and use demo user (email: demo@blackcandy.org, password: foobar) to login. And feel free to try it.
 
+> **Notice:** This demo user does not have administrator privileges. So you cannot experience all the features in Black Candy. And all music in the demo is under non-commercial licences. You can check their [licences](https://github.com/blackcandy-org/black_candy#licences-of-the-music-in-demo).
+
 ## Installation
-> ⚠️  **Note:** This installation instruction is for edge version, which means the docker image is build base on master branch. Because upcoming major version of Black Candy is going to have a lot of infrastructure changes. So the installation process will have a lot of difference.
+> ⚠️  **Notice:** This installation instruction is for edge version, which means the docker image is build base on master branch. Because upcoming major version of Black Candy is going to have a lot of infrastructure changes. So the installation process will have a lot of difference.
 > If you are looking for installation instruction for latest stable version, please visit [here](https://github.com/blackcandy-org/black_candy/blob/7f9202bd8a9777d439e95eabd0654e9b4a336be9/README.md).
 
 Black Candy use docker image to install easily. You can simply run Black Candy like this.
