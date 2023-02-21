@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_15_062920) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_21_024303) do
   create_table "albums", force: :cascade do |t|
     t.string "name"
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "artist_id"
+    t.integer "year"
+    t.string "genre"
     t.index ["artist_id", "name"], name: "index_albums_on_artist_id_and_name", unique: true
     t.index ["artist_id"], name: "index_albums_on_artist_id"
     t.index ["name"], name: "index_albums_on_name"

@@ -210,4 +210,23 @@ class MediaTest < ActiveSupport::TestCase
       end
     end
   end
+
+  test "should set album attributes after synced" do
+    album1 = Album.find_by(name: "album1")
+    album2 = Album.find_by(name: "album2")
+    album3 = Album.find_by(name: "album3")
+    album4 = Album.find_by(name: "album4")
+
+    assert_equal "Rock", album1.genre
+    assert_equal 1984, album1.year
+
+    assert_equal "Rock", album2.genre
+    assert_equal 1984, album2.year
+
+    assert_equal "Rock", album3.genre
+    assert_equal 1984, album3.year
+
+    assert_nil album4.genre
+    assert_nil album4.year
+  end
 end
