@@ -55,7 +55,6 @@ en:
     more: 'More'
     appears_on: 'Appears On'
     name: 'Name'
-    artist: 'Artist'
     duration: 'Duration'
     actions: 'Actions'
     edit: 'Edit'
@@ -93,6 +92,17 @@ en:
     edit_artist: 'Edit Artist'
     album_cover: 'Album cover'
     artist_cover: 'Artist cover'
+    sort: 'Sort'
+    year: 'Year'
+    created_at: 'Created At'
+    asc: 'Ascending'
+    desc: 'Descending'
+    artist:
+      name: 'Artist'
+      cover: 'Artist Cover'
+    album:
+      name: 'Album'
+      cover: 'Album Cover'
   error:
     login: 'Wrong email or password'
     forbidden: "Sorry, you do not have permission to visit that"

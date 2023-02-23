@@ -61,12 +61,15 @@ class Media
     def attach(file_info)
       artist = Artist.find_or_create_by!(name: file_info[:artist_name])
 
-      if various_artists?(file_info)
+      album = if various_artist?(file_info)
         various_artist = Artist.find_or_create_by!(is_various: true)
-        album = Album.find_or_create_by!(artist: various_artist, name: file_info[:album_name])
+        Album.find_or_create_by!(artist: various_artist, name: file_info[:album_name])
       else
-        album = Album.find_or_create_by!(artist: artist, name: file_info[:album_name])
+        Album.find_or_create_by!(artist: artist, name: file_info[:album_name])
       end
+
+      album.update_column(:year, file_info[:year]) if file_info[:year].present? && album.year.blank?
+      album.update_column(:genre, file_info[:genre]) if file_info[:genre].present? && album.genre.blank?
 
       # Attach image from file to the album.
       AttachAlbumImageFromFileJob.perform_later(album, file_info[:file_path]) unless album.has_image?
@@ -80,7 +83,7 @@ class Media
       file_info.slice(:name, :tracknum, :duration, :file_path, :file_path_hash)
     end
 
-    def various_artists?(file_info)
+    def various_artist?(file_info)
       albumartist = file_info[:albumartist_name]
       albumartist.present? && (albumartist.casecmp("various artists").zero? || albumartist != file_info[:artist_name])
     end

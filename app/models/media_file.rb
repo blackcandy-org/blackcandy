@@ -44,9 +44,16 @@ class MediaFile
         album_name: tag.album.presence,
         artist_name: tag.artist.presence,
         albumartist_name: tag.albumartist.presence,
+        genre: tag.genre.presence,
         tracknum: tag.track,
         duration: tag.duration.round
-      }
+      }.tap do |info|
+        info[:year] = begin
+          Date.strptime(tag.year, "%Y").year
+        rescue
+          nil
+        end
+      end
     end
   end
 end
