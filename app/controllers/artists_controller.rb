@@ -1,13 +1,17 @@
 # frozen_string_literal: true
 
 class ArtistsController < ApplicationController
+  include Orderable
+
   layout proc { "dialog" unless turbo_native? }, only: :edit
 
   before_action :require_admin, only: [:edit, :update]
   before_action :find_artist, except: [:index]
 
+  order_by :name, :created_at
+
   def index
-    records = Artist.order(:name)
+    records = Artist.order(order_condition)
     @pagy, @artists = pagy(records)
   end
 

@@ -1,15 +1,18 @@
 # frozen_string_literal: true
 
 class AlbumsController < ApplicationController
+  include Playable
+  include Orderable
+
   layout proc { "dialog" unless turbo_native? }, only: :edit
 
   before_action :require_admin, only: [:edit, :update]
   before_action :find_album, except: [:index]
 
-  include Playable
+  order_by :name, "artist.name", :year, :created_at
 
   def index
-    records = Album.includes(:artist).order(:name)
+    records = Album.includes(:artist).order(order_condition)
     @pagy, @albums = pagy(records)
   end
 
@@ -42,7 +45,7 @@ class AlbumsController < ApplicationController
   end
 
   def find_all_song_ids
-    @song_ids = @album.song_ids
+    @song_ids = Album.find(params[:id]).song_ids
   end
 
   def after_played

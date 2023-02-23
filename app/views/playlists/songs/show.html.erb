@@ -23,7 +23,7 @@
                 <%= icon_tag 'more-horizontal', size: 'narrow', title: t('label.more') %>
               </span>
             </summary>
-            <div class='c-dropdown__list c-dropdown__list--left''>
+            <div class='c-dropdown__list c-dropdown__list--right''>
               <% unless @songs.blank? %>
                 <%= button_to t('label.clear'), playlist_songs_path(@playlist, clear_all: true), method: :delete, form_class: 'c-dropdown__item' %>
               <% end %>
