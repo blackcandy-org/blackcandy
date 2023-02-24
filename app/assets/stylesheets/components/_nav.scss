@@ -1,8 +1,10 @@
 @use "../tools/functions" as *;
+@use "../settings/variables";
 
 .c-nav {
   padding: spacing("small") spacing("small") 0;
   box-shadow: var(--nav-shadow);
+  z-index: variables.$nav-zindex;
 }
 
 .c-nav--primary {
@@ -17,7 +19,7 @@
     bottom: 0;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    z-index: -1;
+    z-index: variables.$base-zindex - 1;
     background: var(--nav-primary-bg-color);
   }
 }

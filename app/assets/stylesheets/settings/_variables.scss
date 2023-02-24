@@ -34,3 +34,12 @@ $breakpoint: (
   "narrow": 560px,
   "extra-narrow": 375px,
 );
+
+$base-zindex: 0;
+$nav-zindex: $base-zindex + 1;
+$sidebar-zindex: $nav-zindex + 1;
+$dropdown-overlay-zindex: $sidebar-zindex + 1;
+$dropdown-zindex: $dropdown-overlay-zindex + 1;
+$flash-zindex: $dropdown-zindex + 1;
+$fixed-overlay-zindex: $flash-zindex + 1;
+$expanded-sidebar-zindex: $fixed-overlay-zindex + 1;
