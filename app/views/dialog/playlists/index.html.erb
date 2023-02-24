@@ -1,9 +1,5 @@
 <% page_title_tag t('label.add_to_playlist'), native: true %>
 
-<% content_for :title do %>
-  <%= t('label.add_to_playlist') %>
-<% end %>
-
 <% if @playlists.present? %>
   <%= form_tag nil, 'data-turbo-frame': '_top', 'data-turbo-action': ('replace' if turbo_native?) do %>
     <%= hidden_field_tag :song_id, params[:song_id] %>
