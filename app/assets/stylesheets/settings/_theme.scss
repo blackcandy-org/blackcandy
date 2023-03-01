@@ -43,6 +43,9 @@
   --btn-primary-bg-color: #{$purple};
   --btn-secondary-bg-color: #{color.change($purple, $alpha: 0.25)};
   --btn-secondary-color: #{$purple-light};
+  --btn-outline-color: #{$black};
+  --btn-outline-border-color: #{$grey-light};
+  --btn-outline-bg-color: #{$grey-lightest};
 
   /* Flash message */
   --flash-color: #{$white};
@@ -163,6 +166,9 @@
   --btn-primary-bg-color: #{$purple};
   --btn-secondary-bg-color: #{color.change($purple, $alpha: 0.25)};
   --btn-secondary-color: #{$purple-light};
+  --btn-outline-color: #{$white};
+  --btn-outline-border-color: #{$black-light};
+  --btn-outline-bg-color: #{$black-lighter};
 
   /* Flash message */
   --flash-color: #{$white};

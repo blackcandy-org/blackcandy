@@ -3,6 +3,7 @@
 class AlbumsController < ApplicationController
   include Playable
   include Orderable
+  include Filterable
 
   layout proc { "dialog" unless turbo_native? }, only: :edit
 
@@ -10,9 +11,10 @@ class AlbumsController < ApplicationController
   before_action :find_album, except: [:index]
 
   order_by :name, "artist.name", :year, :created_at
+  filter_by :genre, :year
 
   def index
-    records = Album.includes(:artist).order(order_condition)
+    records = Album.includes(:artist).where(filter_conditions).order(order_condition)
     @pagy, @albums = pagy(records)
   end
 

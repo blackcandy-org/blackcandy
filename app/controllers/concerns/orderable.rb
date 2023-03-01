@@ -4,7 +4,7 @@ module Orderable
   extend ActiveSupport::Concern
 
   included do
-    before_action :get_order_selection, only: [:index]
+    before_action :get_order_options, only: [:index]
     const_set(:VALID_ORDER_VALUES, [])
   end
 
@@ -30,7 +30,7 @@ module Orderable
     {value: default_value, direction: "asc"}
   end
 
-  def get_order_selection
-    @order_selection = {values: self.class::VALID_ORDER_VALUES, default: default_order}
+  def get_order_options
+    @order_options = {values: self.class::VALID_ORDER_VALUES, default: default_order}
   end
 end

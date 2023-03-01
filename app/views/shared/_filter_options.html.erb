@@ -1,0 +1,7 @@
+<%= turbo_frame_tag "turbo-#{filter_name}-filter", class: 'c-dropdown__list' do %>
+  <% options.each do |option| %>
+    <%= link_to url_for(controller: filter_controller, filter_name => option), class: 'c-dropdown__item', data: { turbo_frame: '_top' }  do %>
+      <%= option %>
+    <% end %>
+  <% end %>
+<% end %>

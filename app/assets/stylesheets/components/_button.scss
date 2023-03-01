@@ -28,7 +28,15 @@ a.c-button:hover {
 }
 
 .c-button--small {
-  padding: spacing("tiny");
+  padding: 2px spacing("tiny");
+  font-size: font-size("small");
+}
+
+.c-button--outline {
+  border-radius: border-radius("large");
+  color: var(--btn-outline-color);
+  border: 1px solid var(--btn-outline-border-color);
+  background: var(--btn-outline-bg-color);
 }
 
 .c-button--full-width {
