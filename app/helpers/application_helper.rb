@@ -70,4 +70,12 @@ module ApplicationHelper
   def current_url
     url_for(only_path: false)
   end
+
+  def filter_sort_params(args = {})
+    filter_params = params[:filter].presence || {}
+    filter_params = filter_params.merge(args.delete(:filter) || {})
+    new_params = params.merge(args).merge(filter: filter_params)
+
+    new_params.slice(:filter, :sort, :sort_direction).permit!
+  end
 end

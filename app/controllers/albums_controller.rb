@@ -2,19 +2,18 @@
 
 class AlbumsController < ApplicationController
   include Playable
-  include Orderable
-  include Filterable
 
   layout proc { "dialog" unless turbo_native? }, only: :edit
 
   before_action :require_admin, only: [:edit, :update]
   before_action :find_album, except: [:index]
-
-  order_by :name, "artist.name", :year, :created_at
-  filter_by :genre, :year
+  before_action :get_sort_options, only: [:index]
 
   def index
-    records = Album.includes(:artist).where(filter_conditions).order(order_condition)
+    records = Album.includes(:artist)
+      .filter_records(filter_params)
+      .sort_records(*sort_params)
+
     @pagy, @albums = pagy(records)
   end
 
@@ -52,5 +51,17 @@ class AlbumsController < ApplicationController
 
   def after_played
     Current.user.add_album_to_recently_played(@album)
+  end
+
+  def filter_params
+    params[:filter]&.slice(*Album::VALID_FILTERS)
+  end
+
+  def sort_params
+    [params[:sort], params[:sort_direction]]
+  end
+
+  def get_sort_options
+    @sort_options = Album.sort_options
   end
 end

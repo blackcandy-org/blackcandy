@@ -1,20 +1,20 @@
 <% page_title_tag t('label.songs'), native: true %>
 
-<% if @songs.empty? %>
-  <div class='u-mt-wide'>
-    <%= empty_alert_tag has_icon: true, has_overlay: false %>
-  </div>
-<% else %>
 <div class='o-container o-container--large'>
   <div class='o-flex o-flex--align-center u-mb-large'>
     <% unless turbo_native? %>
       <h1 class='u-mb-0'><%= t('label.songs') %></h1>
     <% end %>
-    <div class='u-ml-auto'>
-      <%= render partial: 'shared/order_select', locals: {options: @order_options} %>
+    <div class='u-ml-auto o-flex o-flex--align-center'>
+      <%= render partial: 'songs/filters' %>
+      <%= render partial: 'shared/sort_select', locals: {options: @sort_options} %>
     </div>
   </div>
-
-  <%= render partial: 'songs/table', locals: { songs: @songs, pagy: @pagy } %>
+  <% if @songs.empty? %>
+    <div class='u-mt-wide'>
+      <%= empty_alert_tag has_icon: true, has_overlay: false %>
+    </div>
+  <% else %>
+    <%= render partial: 'songs/table', locals: { songs: @songs, pagy: @pagy } %>
+  <% end %>
 </div>
-<% end %>

@@ -3,6 +3,8 @@
 class Album < ApplicationRecord
   include Searchable
   include Imageable
+  include Filterable
+  include Sortable
 
   validates :name, uniqueness: {scope: :artist}
 
@@ -10,6 +12,11 @@ class Album < ApplicationRecord
   belongs_to :artist, touch: true
 
   search_by :name, associations: {artist: :name}
+
+  filter_by :year, :genre
+
+  sort_by :name, :year, :created_at
+  sort_by_associations artist: :name
 
   def title
     is_unknown? ? I18n.t("label.unknown_album") : name

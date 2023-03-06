@@ -2,6 +2,7 @@
 
 class Playlist < ApplicationRecord
   include Searchable
+  include Sortable
 
   validates :name, presence: true, if: :require_name?
 
@@ -10,6 +11,12 @@ class Playlist < ApplicationRecord
   belongs_to :user
 
   search_by :name
+
+  sort_by :name, :created_at
+
+  def self.default_sort
+    ["created_at", "desc"]
+  end
 
   def current?
     type == "CurrentPlaylist"

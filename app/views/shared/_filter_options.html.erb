@@ -1,7 +1,12 @@
-<%= turbo_frame_tag "turbo-#{filter_name}-filter", class: 'c-dropdown__list' do %>
+<%= turbo_frame_tag "turbo-#{filter_name}-filter".dasherize, class: 'c-dropdown__list' do %>
   <% options.each do |option| %>
-    <%= link_to url_for(controller: filter_controller, filter_name => option), class: 'c-dropdown__item', data: { turbo_frame: '_top' }  do %>
-      <%= option %>
+    <%= link_to url_for(controller: filter_controller, **filter_sort_params(filter: {filter_name => option})), class: 'c-dropdown__item', data: { turbo_frame: '_top' }  do %>
+        <span class='o-flex o-flex--justify-between o-flex--align-center'>
+          <%= option %>
+          <% if params[:filter]&.fetch(filter_name, nil) == option.to_s %>
+            <%= icon_tag('check', size: 'small', class: 'u-ml-narrow') %>
+          <% end %>
+        </span>
     <% end %>
   <% end %>
 <% end %>
