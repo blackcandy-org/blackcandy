@@ -26,4 +26,36 @@ class AlbumTest < ActiveSupport::TestCase
 
     assert_equal %w[test_song_3 test_song_1 test_song_2], album.songs.pluck(:name)
   end
+
+  test "should filter by genre" do
+    assert_equal Album.where(name: %w[album1 album2]).ids.sort, Album.filter_records(genre: "Rock").ids.sort
+  end
+
+  test "should filter by year" do
+    assert_equal Album.where(name: %w[album2]).ids.sort, Album.filter_records(year: 1984).ids.sort
+  end
+
+  test "should filter by multiple attributes" do
+    assert_equal Album.where(name: %w[album2]).ids.sort, Album.filter_records(genre: "Rock", year: 1984).ids.sort
+  end
+
+  test "should sort by name" do
+    assert_equal %w[album1 album2 album3 album4], Album.sort_records(:name).pluck(:name)
+    assert_equal %w[album4 album3 album2 album1], Album.sort_records(:name, :desc).pluck(:name)
+  end
+
+  test "should sort by year" do
+    assert_equal %w[album4 album3 album2 album1], Album.sort_records(:year).pluck(:name)
+    assert_equal %w[album1 album2 album3 album4], Album.sort_records(:year, :desc).pluck(:name)
+  end
+
+  test "should sort by created_at" do
+    assert_equal %w[album2 album1 album3 album4], Album.sort_records(:created_at).pluck(:name)
+    assert_equal %w[album4 album3 album1 album2], Album.sort_records(:created_at, :desc).pluck(:name)
+  end
+
+  test "should sort by artist name" do
+    assert_equal %w[album4 album1 album2 album3], Album.sort_records(:artist_name).pluck(:name)
+    assert_equal %w[album3 album1 album2 album4], Album.sort_records(:artist_name, :desc).pluck(:name)
+  end
 end

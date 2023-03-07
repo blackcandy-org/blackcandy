@@ -7,6 +7,7 @@ mp3_sample:
   artist: 'artist1'
   album: 'album2'
   duration: 8.0
+  created_at: 2023-01-02
 
 flac_sample:
   id: 2
@@ -17,6 +18,7 @@ flac_sample:
   artist: 'artist1'
   album: 'album1'
   duration: 8.0
+  created_at: 2023-01-01
 
 ogg_sample:
   id: 3
@@ -27,6 +29,7 @@ ogg_sample:
   artist: 'artist2'
   album: 'album3'
   duration: 8.0
+  created_at: 2023-01-03
 
 wav_sample:
   id: 4
@@ -37,6 +40,7 @@ wav_sample:
   artist: 'artist2'
   album: 'album3'
   duration: 8.0
+  created_at: 2023-01-04
 
 opus_sample:
   id: 5
@@ -47,6 +51,7 @@ opus_sample:
   artist: 'artist2'
   album: 'album3'
   duration: 8.0
+  created_at: 2023-01-05
 
 m4a_sample:
   id: 6
@@ -57,6 +62,7 @@ m4a_sample:
   artist: 'artist1'
   album: 'album1'
   duration: 8.0
+  created_at: 2023-01-05
 
 oga_sample:
   id: 7
@@ -67,6 +73,7 @@ oga_sample:
   artist: 'artist2'
   album: 'album3'
   duration: 8.0
+  created_at: 2023-01-05
 
 wma_sample:
   id: 8
@@ -77,6 +84,7 @@ wma_sample:
   artist: 'artist2'
   album: 'album3'
   duration: 8.0
+  created_at: 2023-01-06
 
 various_artists_sample:
   id: 9
@@ -87,3 +95,4 @@ various_artists_sample:
   artist: 'artist1'
   album: 'album4'
   duration: 8.0
+  created_at: 2023-01-05

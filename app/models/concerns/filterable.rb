@@ -15,11 +15,6 @@ module Filterable
       end
     end
 
-    def filter_by_scope(name, *args)
-      scope "filter_by_#{name}", *args
-      self::VALID_FILTERS.push(name.to_s)
-    end
-
     def filter_by_associations(associations)
       associations = Hash(associations)
 

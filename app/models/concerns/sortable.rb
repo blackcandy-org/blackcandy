@@ -31,7 +31,7 @@ module Sortable
     end
 
     def sort_records(sort_name = "", sort_direction = "")
-      sort_direction = (sort_direction == "desc") ? "desc" : "asc"
+      sort_direction = (sort_direction.to_s == "desc") ? "desc" : "asc"
       return public_send("sort_by_#{sort_name}", sort_direction) if self::VALID_SORTS.include?(sort_name.to_s)
 
       default_sort_name, default_sort_direction = default_sort
