@@ -30,4 +30,14 @@ class PlaylistTest < ActiveSupport::TestCase
       playlist.replace(song_ids)
     end
   end
+
+  test "should sort by name" do
+    assert_equal %w[playlist1 playlist2], Playlist.sort_records(:name).pluck(:name)
+    assert_equal %w[playlist2 playlist1], Playlist.sort_records(:name, :desc).pluck(:name)
+  end
+
+  test "should sort by created_at" do
+    assert_equal %w[playlist2 playlist1], Playlist.sort_records(:created_at).pluck(:name)
+    assert_equal %w[playlist1 playlist2], Playlist.sort_records(:created_at, :desc).pluck(:name)
+  end
 end

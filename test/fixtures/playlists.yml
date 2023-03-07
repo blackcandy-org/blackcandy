@@ -2,3 +2,10 @@ playlist1:
   id: 1
   name: 'playlist1'
   user: 'admin'
+  created_at: 2023-01-02
+
+playlist2:
+  id: 2
+  name: 'playlist2'
+  user: 'admin'
+  created_at: 2023-01-01

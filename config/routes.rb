@@ -44,6 +44,20 @@ Rails.application.routes.draw do
     resources :playlists, only: [:index]
   end
 
+  namespace :albums do
+    namespace :filter do
+      resources :genres, only: [:index]
+      resources :years, only: [:index]
+    end
+  end
+
+  namespace :songs do
+    namespace :filter do
+      resources :genres, only: [:index]
+      resources :years, only: [:index]
+    end
+  end
+
   get "/403", to: "errors#forbidden", as: :forbidden
   get "/404", to: "errors#not_found", as: :not_found
   get "/422", to: "errors#unprocessable_entity", as: :unprocessable_entity

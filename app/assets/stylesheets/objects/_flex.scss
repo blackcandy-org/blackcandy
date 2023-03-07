@@ -22,6 +22,10 @@
   flex-direction: column-reverse;
 }
 
+.o-flex--wrap {
+  flex-wrap: wrap;
+}
+
 .o-flex--justify-start {
   justify-content: flex-start;
 }

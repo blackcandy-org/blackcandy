@@ -1,19 +1,20 @@
 <% page_title_tag t('label.albums'), native: true %>
 
-<% if @albums.empty? %>
-  <div class='u-mt-wide'>
-    <%= empty_alert_tag has_icon: true, has_overlay: false %>
-  </div>
-<% else %>
-  <div class='o-container o-container--large'>
-    <div class='o-flex o-flex--align-center u-mb-large'>
-      <% unless turbo_native? %>
-        <h1 class='u-mb-0'><%= t('label.albums') %></h1>
-      <% end %>
-      <div class='u-ml-auto'>
-        <%= render partial: 'shared/order_select', locals: {order_selection: @order_selection} %>
-      </div>
+<div class='o-container o-container--large'>
+  <div class='o-flex o-flex--align-center o-flex--justify-between o-flex--wrap u-mb-large'>
+    <% unless turbo_native? %>
+      <h1 class='u-my-narrow u-mr-small'><%= t('label.albums') %></h1>
+    <% end %>
+    <div class='o-flex o-flex--align-center'>
+      <%= render partial: 'albums/filters' %>
+      <%= render partial: 'shared/sort_select', locals: {options: @sort_options} %>
     </div>
+  </div>
+  <% if @albums.empty? %>
+    <div class='u-mt-wide'>
+      <%= empty_alert_tag has_icon: true, has_overlay: false %>
+    </div>
+  <% else %>
     <%= turbo_frame_tag "turbo-albums-page-#{@pagy.page}", class: 'o-grid o-grid--shelf', target: '_top' do %>
       <%= render partial: 'albums/album', collection: @albums, cached: true %>
 
@@ -25,5 +26,5 @@
         <% end %>
       <% end %>
     <% end %>
-  </div>
-<% end %>
+  <% end %>
+</div>

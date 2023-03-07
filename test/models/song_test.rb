@@ -20,4 +20,44 @@ class SongTest < ActiveSupport::TestCase
     songs(:flac_sample).destroy
     assert_not File.exist?(stream.transcode_cache_file_path)
   end
+
+  test "should filter by album genre" do
+    song_ids = Song.where(album: [albums(:album1), albums(:album2)]).ids.sort
+    assert_equal song_ids, Song.filter_records(album_genre: "Rock").ids.sort
+  end
+
+  test "should filter by album year" do
+    song_ids = Song.where(album: albums(:album2)).ids.sort
+    assert_equal song_ids, Song.filter_records(album_year: 1984).ids.sort
+  end
+
+  test "should filter by multiple attributes" do
+    song_ids = Song.where(album: albums(:album2)).ids.sort
+    assert_equal song_ids, Song.filter_records(album_genre: "Rock", album_year: 1984).ids.sort
+  end
+
+  test "should sort by name" do
+    assert_equal songs(:flac_sample), Song.sort_records(:name).first
+    assert_equal songs(:wma_sample), Song.sort_records(:name, :desc).first
+  end
+
+  test "should sort by created_at" do
+    assert_equal songs(:flac_sample), Song.sort_records(:created_at).first
+    assert_equal songs(:wma_sample), Song.sort_records(:created_at, :desc).first
+  end
+
+  test "should sort by artist name" do
+    assert_equal songs(:mp3_sample), Song.sort_records(:artist_name).first
+    assert_equal songs(:ogg_sample), Song.sort_records(:artist_name, :desc).first
+  end
+
+  test "should sort by album name" do
+    assert_equal songs(:flac_sample), Song.sort_records(:album_name).first
+    assert_equal songs(:various_artists_sample), Song.sort_records(:album_name, :desc).first
+  end
+
+  test "should sort by album year" do
+    assert_equal songs(:various_artists_sample).name, Song.sort_records(:album_year).first.name
+    assert_equal songs(:flac_sample), Song.sort_records(:album_year, :desc).first
+  end
 end

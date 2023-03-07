@@ -2,6 +2,8 @@
 
 class Song < ApplicationRecord
   include Searchable
+  include Filterable
+  include Sortable
 
   validates :name, :file_path, :file_path_hash, :md5_hash, presence: true
 
@@ -10,11 +12,16 @@ class Song < ApplicationRecord
   has_many :playlists_songs
   has_many :playlists, through: :playlists_songs
 
+  attribute :is_favorited, :boolean
+
   before_destroy :remove_transcode_cache
 
   search_by :name, associations: {artist: :name, album: :name}
 
-  attribute :is_favorited, :boolean
+  filter_by_associations album: [:genre, :year]
+
+  sort_by :name, :created_at
+  sort_by_associations artist: :name, album: [:name, :year]
 
   def format
     MediaFile.format(file_path)

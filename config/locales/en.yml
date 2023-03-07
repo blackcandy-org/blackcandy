@@ -90,19 +90,19 @@ en:
     see_all: 'See All'
     edit_album: 'Edit Album'
     edit_artist: 'Edit Artist'
-    album_cover: 'Album cover'
-    artist_cover: 'Artist cover'
+    album: 'Album'
+    album_cover: 'Album Cover'
+    album_name: 'Album Name'
+    album_year: 'Album Year'
+    artist: 'Artist'
+    artist_cover: 'Artist Cover'
+    artist_name: 'Artist Name'
     sort: 'Sort'
     year: 'Year'
     created_at: 'Created At'
     asc: 'Ascending'
     desc: 'Descending'
-    artist:
-      name: 'Artist'
-      cover: 'Artist Cover'
-    album:
-      name: 'Album'
-      cover: 'Album Cover'
+    clear_filters: 'Clear Filters'
   error:
     login: 'Wrong email or password'
     forbidden: "Sorry, you do not have permission to visit that"

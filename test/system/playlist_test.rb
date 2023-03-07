@@ -37,10 +37,12 @@ class PlaylistSystemTest < ApplicationSystemTestCase
   end
 
   test "delete playlist" do
+    playlist_count = users(:admin).all_playlists.count
+
     find(:test_id, "playlist_menu").click
     click_on "Delete"
 
-    assert_selector(:test_id, "playlist", count: 0)
+    assert_selector(:test_id, "playlist", count: playlist_count - 1)
   end
 
   test "edit playlist" do

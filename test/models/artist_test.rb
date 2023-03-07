@@ -18,4 +18,14 @@ class ArtistTest < ActiveSupport::TestCase
   test "should get appears on albums" do
     assert_equal Album.where(name: %w[album4]).ids.sort, artists(:artist1).appears_on_albums.ids.sort
   end
+
+  test "should sort by name" do
+    assert_equal %w[artist1 artist2], Artist.sort_records(:name).pluck(:name).compact
+    assert_equal %w[artist2 artist1], Artist.sort_records(:name, :desc).pluck(:name).compact
+  end
+
+  test "should sort by created_at" do
+    assert_equal %w[artist2 artist1], Artist.sort_records(:created_at).pluck(:name).compact
+    assert_equal %w[artist1 artist2], Artist.sort_records(:created_at, :desc).pluck(:name).compact
+  end
 end

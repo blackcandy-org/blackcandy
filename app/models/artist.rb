@@ -3,11 +3,14 @@
 class Artist < ApplicationRecord
   include Searchable
   include Imageable
+  include Sortable
 
   has_many :albums, dependent: :destroy
   has_many :songs
 
   search_by :name
+
+  sort_by :name, :created_at
 
   def title
     return I18n.t("label.various_artists") if is_various?

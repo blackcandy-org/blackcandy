@@ -1,17 +1,15 @@
 <% page_title_tag t('label.playlists'), native: true %>
 
 <div class='o-container o-container--small'>
-  <div class='o-flex o-flex--align-center u-mb-large'>
-    <div class='o-flex o-flex--align-center'>
+  <div class='o-flex o-flex--align-center o-flex--justify-between o-flex--wrap u-mb-large'>
+    <div class='o-flex o-flex--align-center u-my-narrow u-mr-small'>
       <% unless turbo_native? %>
         <h1 class='u-mb-0 u-mr-narrow'><%= t('label.playlists') %></h1>
       <% end %>
       <%= link_to t('label.add'), new_playlist_path, data: { turbo_frame: ('turbo-dialog' unless turbo_native?) }, class: 'c-button c-button--primary' %>
     </div>
 
-    <div class='u-ml-auto'>
-      <%= render partial: 'shared/order_select', locals: {order_selection: @order_selection} %>
-    </div>
+    <%= render partial: 'shared/sort_select', locals: {options: @sort_options} %>
   </div>
 
   <%= turbo_frame_tag "turbo-playlists-page-#{@pagy.page}", class: 'o-grid o-grid--list', target: '_top' do %>

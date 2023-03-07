@@ -1,16 +1,13 @@
 # frozen_string_literal: true
 
 class PlaylistsController < ApplicationController
-  include Orderable
-
   layout proc { "dialog" unless turbo_native? }, only: [:new, :edit]
 
   before_action :find_playlist, only: [:edit, :destroy, :update]
-
-  order_by :name, :created_at
+  before_action :get_sort_options, only: [:index]
 
   def index
-    @pagy, @playlists = pagy(Current.user.all_playlists.order(order_condition))
+    @pagy, @playlists = pagy(Current.user.all_playlists.sort_records(*sort_params))
   end
 
   def new
@@ -58,7 +55,11 @@ class PlaylistsController < ApplicationController
     params.require(:playlist).permit(:name)
   end
 
-  def default_order
-    {value: "created_at", direction: "desc"}
+  def sort_params
+    [params[:sort], params[:sort_direction]]
+  end
+
+  def get_sort_options
+    @sort_options = Playlist.sort_options
   end
 end
