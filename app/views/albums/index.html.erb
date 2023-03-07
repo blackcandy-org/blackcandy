@@ -1,11 +1,11 @@
 <% page_title_tag t('label.albums'), native: true %>
 
 <div class='o-container o-container--large'>
-  <div class='o-flex o-flex--align-center u-mb-large'>
+  <div class='o-flex o-flex--align-center o-flex--justify-between o-flex--wrap u-mb-large'>
     <% unless turbo_native? %>
-      <h1 class='u-mb-0'><%= t('label.albums') %></h1>
+      <h1 class='u-my-narrow u-mr-small'><%= t('label.albums') %></h1>
     <% end %>
-    <div class='u-ml-auto o-flex o-flex--align-center'>
+    <div class='o-flex o-flex--align-center'>
       <%= render partial: 'albums/filters' %>
       <%= render partial: 'shared/sort_select', locals: {options: @sort_options} %>
     </div>

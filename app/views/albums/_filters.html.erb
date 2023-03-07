@@ -1,3 +1,12 @@
+<% if filter_sort_params[:filter].present? %>
+  <%= link_to albums_path, class: 'c-button c-button--outline c-button--small u-mr-small', data: { turbo_action: ('replace' if turbo_native?) } do %>
+    <span class='o-flex o-flex--align-center'>
+      <%= icon_tag 'close' %>
+      <%= t('label.clear_filters') %>
+    </span>
+  <% end %>
+<% end %>
+
 <details class='c-dropdown u-mr-small'>
   <summary>
     <div role='button' class='c-button c-button--outline c-button--small'>
@@ -7,7 +16,7 @@
       </span>
     </div>
   </summary>
-  <div class='c-dropdown__list'>
+  <div class='c-dropdown__list c-dropdown__list--right'>
     <%= turbo_frame_tag "turbo-genre-filter", src: albums_filter_genres_path(**filter_sort_params), loading: 'lazy' do %>
       <div class='o-flex o-flex--justify-center u-p-medium'>
         <%= loader_tag size: 'small' %>

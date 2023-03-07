@@ -1,13 +1,11 @@
 <% page_title_tag t('label.artists'), native: true %>
 
 <div class='o-container o-container--large'>
-  <div class='o-flex o-flex--align-center u-mb-large'>
+  <div class='o-flex o-flex--align-center o-flex--justify-between o-flex--wrap u-mb-large'>
     <% unless turbo_native? %>
-      <h1 class='u-mb-0'><%= t('label.artists') %></h1>
+      <h1 class='u-my-narrow u-mr-small'><%= t('label.artists') %></h1>
     <% end %>
-    <div class='u-ml-auto'>
-      <%= render partial: 'shared/sort_select', locals: {options: @sort_options} %>
-    </div>
+    <%= render partial: 'shared/sort_select', locals: {options: @sort_options} %>
   </div>
   <% if @artists.empty? %>
     <div class='u-mt-wide'>
