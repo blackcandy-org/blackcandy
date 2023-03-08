@@ -74,6 +74,7 @@ form.c-dropdown__item button[type="submit"] {
   width: 100%;
   background: var(--dropdown-bg-color);
   border: none;
+  cursor: pointer;
 }
 
 .c-dropdown__item:first-child,

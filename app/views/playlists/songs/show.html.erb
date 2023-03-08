@@ -13,7 +13,7 @@
         </div>
         <div class='u-mt-large'>
           <% unless @songs.blank? %>
-            <%= button_to t('label.play_all'), play_playlist_songs_path(@playlist), form_class: 'c-button c-button--primary', form: { 'data-turbo-frame' => 'turbo-playlist' } %>
+            <%= button_to t('label.play_all'), play_playlist_songs_path(@playlist), class: 'c-button c-button--primary', form_class: 'u-display-inline-block', form: { 'data-turbo-frame' => 'turbo-playlist' } %>
           <% end %>
           <%= link_to t('label.edit'), edit_playlist_path(@playlist), data: { turbo_frame: ('turbo-dialog' unless turbo_native?) }, class: 'c-button c-button--secondary' %>
 

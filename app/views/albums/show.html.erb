@@ -23,14 +23,16 @@
     <% @songs.each do |song| %>
       <li class='c-list__item' data-playlist-songs-target='item' data-song-id='<%= song.id %>' data-test-id='album_song'>
         <div class='o-flex o-flex--justify-between o-flex--align-center'>
-          <%= button_to current_playlist_songs_path(song_id: song.id), class: 'u-w-100 o-flex o-flex--justify-between o-flex--align-center', form_class: 'o-flex__item--grow-1', form: { 'data-submit-start-action' => 'check_before_playing', 'data-submit-end-action' => 'play', 'data-turbo-frame' => 'turbo-playlist' } do  %>
-            <div>
-              <h4 class='u-mb-tiny u-text-weight-normal' data-test-id='album_song_name'><%= song.name %></h4>
-              <% if @album.artist.is_various? %>
-                <%= song.artist.title %>
-              <% end %>
+          <%= button_to current_playlist_songs_path(song_id: song.id), class: 'c-button c-button--link u-w-100', form_class: 'o-flex__item--grow-1', form: { 'data-submit-start-action' => 'check_before_playing', 'data-submit-end-action' => 'play', 'data-turbo-frame' => 'turbo-playlist' } do  %>
+            <div class='o-flex o-flex--justify-between o-flex--align-center'>
+              <div>
+                <span class='u-mb-tiny' data-test-id='album_song_name'><%= song.name %></span>
+                <% if @album.artist.is_various? %>
+                  <%= song.artist.title %>
+                <% end %>
+              </div>
+              <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
             </div>
-            <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
           <% end %>
 
           <%= link_to dialog_playlists_path(song_id: song.id, referer_url: current_url), data: { turbo_frame: ('turbo-dialog' unless turbo_native?), test_id: 'album_song_add_playlist' } do %>

@@ -10,21 +10,32 @@
   cursor: pointer;
 }
 
-.c-button:hover {
-  filter: brightness(0.9);
-}
-
-a.c-button:hover {
-  color: currentcolor;
-}
-
 .c-button--primary {
   background: var(--btn-primary-bg-color);
+
+  &:hover {
+    color: var(--btn-color);
+  }
 }
 
 .c-button--secondary {
   background: var(--btn-secondary-bg-color);
   color: var(--btn-secondary-color);
+
+  &:hover {
+    color: var(--btn-secondary-color);
+  }
+}
+
+.c-button--link {
+  text-align: left;
+  background: none;
+  color: var(--text-primary-color);
+  padding: 0;
+
+  &:hover {
+    color: var(--link-active-color) !important;
+  }
 }
 
 .c-button--small {
@@ -45,4 +56,8 @@ a.c-button:hover {
 
 .c-button[disabled] {
   opacity: 0.6;
+}
+
+.c-button:hover {
+  filter: brightness(0.9);
 }
