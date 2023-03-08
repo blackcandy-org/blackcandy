@@ -11,8 +11,8 @@
         </div>
         <div class='u-mt-large'>
           <% unless @songs.blank? %>
-            <%= button_to t('label.play_all'), play_favorite_playlist_songs_path, form_class: 'c-button c-button--primary', form: { 'data-turbo-frame' => 'turbo-playlist' } %>
-            <%= button_to t('label.clear'), favorite_playlist_songs_path(clear_all: true), method: :delete, form_class: 'c-button c-button--secondary' %>
+            <%= button_to t('label.play_all'), play_favorite_playlist_songs_path, class: 'c-button c-button--primary', form_class: 'u-display-inline-block', form: { 'data-turbo-frame' => 'turbo-playlist' } %>
+            <%= button_to t('label.clear'), favorite_playlist_songs_path(clear_all: true), class: 'c-button c-button--secondary', form_class: 'u-display-inline-block', method: :delete %>
           <% end %>
         </div>
       </div>
@@ -22,4 +22,3 @@
     <% end %>
   </div>
 </div>
-
