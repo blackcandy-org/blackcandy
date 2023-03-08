@@ -5,7 +5,7 @@
     <% unless turbo_native? %>
       <h1 class='u-my-narrow u-mr-small'><%= t('label.albums') %></h1>
     <% end %>
-    <div class='o-flex o-flex--align-center'>
+    <div class='o-flex o-flex--align-center <%= 'u-ml-auto' if turbo_native? %>'>
       <%= render partial: 'albums/filters' %>
       <%= render partial: 'shared/sort_select', locals: {options: @sort_options} %>
     </div>
