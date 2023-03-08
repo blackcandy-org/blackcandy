@@ -5,7 +5,9 @@
     <% unless turbo_native? %>
       <h1 class='u-my-narrow u-mr-small'><%= t('label.artists') %></h1>
     <% end %>
-    <%= render partial: 'shared/sort_select', locals: {options: @sort_options} %>
+    <div class='<%= 'u-ml-auto' if turbo_native? %>'>
+      <%= render partial: 'shared/sort_select', locals: {options: @sort_options} %>
+    </div>
   </div>
   <% if @artists.empty? %>
     <div class='u-mt-wide'>

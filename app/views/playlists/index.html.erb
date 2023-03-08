@@ -9,7 +9,9 @@
       <%= link_to t('label.add'), new_playlist_path, data: { turbo_frame: ('turbo-dialog' unless turbo_native?) }, class: 'c-button c-button--primary' %>
     </div>
 
-    <%= render partial: 'shared/sort_select', locals: {options: @sort_options} %>
+    <div class='<%= 'u-ml-auto' if turbo_native? %>'>
+      <%= render partial: 'shared/sort_select', locals: {options: @sort_options} %>
+    </div>
   </div>
 
   <%= turbo_frame_tag "turbo-playlists-page-#{@pagy.page}", class: 'o-grid o-grid--list', target: '_top' do %>
