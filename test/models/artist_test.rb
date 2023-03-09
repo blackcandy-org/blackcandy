@@ -28,4 +28,17 @@ class ArtistTest < ActiveSupport::TestCase
     assert_equal %w[artist2 artist1], Artist.sort_records(:created_at).pluck(:name).compact
     assert_equal %w[artist1 artist2], Artist.sort_records(:created_at, :desc).pluck(:name).compact
   end
+
+  test "should sort by name by default" do
+    assert_equal %w[artist1 artist2], Artist.sort_records.pluck(:name).compact
+  end
+
+  test "should get sort options" do
+    assert_equal %w[name created_at], Artist.sort_options[:sorts]
+    assert_equal %w[name asc], Artist.sort_options[:default]
+  end
+
+  test "should use default sort when use invalid sort value" do
+    assert_equal %w[artist1 artist2], Artist.sort_records(:invalid).pluck(:name).compact
+  end
 end

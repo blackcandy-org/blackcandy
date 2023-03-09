@@ -39,7 +39,7 @@ module Sortable
     end
 
     def default_sort
-      [self::VALID_SORTS.first, "asc"]
+      const_defined?(:DEFAULT_SORT) ? self::DEFAULT_SORT : [self::VALID_SORTS.first, "asc"]
     end
 
     def sort_options
