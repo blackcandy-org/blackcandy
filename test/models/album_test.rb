@@ -39,6 +39,14 @@ class AlbumTest < ActiveSupport::TestCase
     assert_equal Album.where(name: %w[album2]).ids.sort, Album.filter_records(genre: "Rock", year: 1984).ids.sort
   end
 
+  test "should have valid filter constant" do
+    assert_equal %w[year genre], Album::VALID_FILTERS
+  end
+
+  test "should not filter by invalid filter value" do
+    assert_equal Album.all.ids.sort, Album.filter_records(invalid: "test").ids.sort
+  end
+
   test "should sort by name" do
     assert_equal %w[album1 album2 album3 album4], Album.sort_records(:name).pluck(:name)
     assert_equal %w[album4 album3 album2 album1], Album.sort_records(:name, :desc).pluck(:name)
@@ -57,5 +65,18 @@ class AlbumTest < ActiveSupport::TestCase
   test "should sort by artist name" do
     assert_equal %w[album4 album1 album2 album3], Album.sort_records(:artist_name).pluck(:name)
     assert_equal %w[album3 album1 album2 album4], Album.sort_records(:artist_name, :desc).pluck(:name)
+  end
+
+  test "should sort by name by default" do
+    assert_equal %w[album1 album2 album3 album4], Album.sort_records.pluck(:name)
+  end
+
+  test "should get sort options" do
+    assert_equal %w[name year created_at artist_name], Album.sort_options[:sorts]
+    assert_equal %w[name asc], Album.sort_options[:default]
+  end
+
+  test "should use default sort when use invalid sort value" do
+    assert_equal %w[album1 album2 album3 album4], Album.sort_records(:invalid).pluck(:name)
   end
 end

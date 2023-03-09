@@ -40,4 +40,17 @@ class PlaylistTest < ActiveSupport::TestCase
     assert_equal %w[playlist2 playlist1], Playlist.sort_records(:created_at).pluck(:name)
     assert_equal %w[playlist1 playlist2], Playlist.sort_records(:created_at, :desc).pluck(:name)
   end
+
+  test "should sort by created_at desc by default" do
+    assert_equal %w[playlist1 playlist2], Playlist.sort_records.pluck(:name)
+  end
+
+  test "should get sort options" do
+    assert_equal %w[name created_at], Playlist.sort_options[:sorts]
+    assert_equal %w[created_at desc], Playlist.sort_options[:default]
+  end
+
+  test "should use default sort when use invalid sort value" do
+    assert_equal %w[playlist1 playlist2], Playlist.sort_records(:invalid).pluck(:name)
+  end
 end

@@ -36,6 +36,14 @@ class SongTest < ActiveSupport::TestCase
     assert_equal song_ids, Song.filter_records(album_genre: "Rock", album_year: 1984).ids.sort
   end
 
+  test "should have valid filter constant" do
+    assert_equal %w[album_genre album_year], Song::VALID_FILTERS
+  end
+
+  test "should not filter by invalid filter value" do
+    assert_equal Song.all.ids.sort, Song.filter_records(invalid: "test").ids.sort
+  end
+
   test "should sort by name" do
     assert_equal songs(:flac_sample), Song.sort_records(:name).first
     assert_equal songs(:wma_sample), Song.sort_records(:name, :desc).first
@@ -59,5 +67,18 @@ class SongTest < ActiveSupport::TestCase
   test "should sort by album year" do
     assert_equal songs(:various_artists_sample).name, Song.sort_records(:album_year).first.name
     assert_equal songs(:flac_sample), Song.sort_records(:album_year, :desc).first
+  end
+
+  test "should sort by name by default" do
+    assert_equal songs(:flac_sample), Song.sort_records.first
+  end
+
+  test "should get sort options" do
+    assert_equal %w[name created_at artist_name album_name album_year], Song.sort_options[:sorts]
+    assert_equal %w[name asc], Song.sort_options[:default]
+  end
+
+  test "should use default sort when use invalid sort value" do
+    assert_equal songs(:flac_sample), Song.sort_records(:invalid).first
   end
 end
