@@ -17,7 +17,7 @@ class Playlists::SongsControllerTest < ActionDispatch::IntegrationTest
 
   test "should add songs to playlist" do
     post playlist_songs_url(@playlist), params: {song_id: 3}, xhr: true
-    assert_equal [3, 1, 2], @playlist.reload.song_ids
+    assert_equal [1, 2, 3], @playlist.reload.song_ids
   end
 
   test "should remove songs from playlist" do
