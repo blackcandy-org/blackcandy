@@ -11,7 +11,7 @@ class Playlists::SongsController < ApplicationController
   end
 
   def create
-    @playlist.playlists_songs.create(song_id: @song.id, position: 1)
+    @playlist.songs.push(@song)
     flash[:success] = t("success.add_to_playlist")
   rescue ActiveRecord::RecordNotUnique
     flash[:error] = t("error.already_in_playlist")
