@@ -54,7 +54,7 @@ export default class extends Controller {
   }
 
   _initPlayer () {
-    this.player = window.App.player
+    this.player = App.player
   }
 
   get currentIndex () {

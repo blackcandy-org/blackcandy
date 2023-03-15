@@ -16,7 +16,7 @@ class Playlist {
   pushSong (songId) {
     const song = { id: Number(songId) }
 
-    this.orderedSongs.splice(window.App.player.currentIndex + 1, 0, song)
+    this.orderedSongs.splice(App.player.currentIndex + 1, 0, song)
     this.shuffledSongs.splice(randomIndex(this.shuffledSongs.length), 0, song)
 
     return this.indexOf(songId)

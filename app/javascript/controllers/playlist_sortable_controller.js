@@ -39,7 +39,7 @@ export default class extends Controller {
   }
 
   _reorderPlaylist = (event) => {
-    window.App.player.playlist.move(event.oldIndex, event.newIndex)
+    App.player.playlist.move(event.oldIndex, event.newIndex)
 
     fetchRequest(this.urlValue, {
       method: 'put',

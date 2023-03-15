@@ -26,7 +26,8 @@
       "MediaMetadata",
       "Request",
       "fetch",
-      "CustomEvent"
+      "CustomEvent",
+      "App"
     ]
   }
 }

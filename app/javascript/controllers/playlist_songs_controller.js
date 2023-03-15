@@ -102,6 +102,6 @@ export default class extends Controller {
   }
 
   get player () {
-    return window.App.player
+    return App.player
   }
 }
