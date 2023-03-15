@@ -5,6 +5,6 @@ consumer.subscriptions.create('ThemeChannel', {
     const theme = data.theme
 
     document.body.dataset.colorScheme = theme
-    window.NativeBridge.updateTheme(theme)
+    App.nativeBridge.updateTheme(theme)
   }
 })

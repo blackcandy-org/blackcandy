@@ -15,7 +15,7 @@ module Playable
     @playlist.replace(@song_ids)
 
     if turbo_native?
-      render turbo_stream: stream_js { "window.NativeBridge.playAll()" }
+      render turbo_stream: stream_js { "App.nativeBridge.playAll()" }
     else
       @pagy, @songs = pagy(@playlist.songs.includes(:artist))
       redirect_to current_playlist_songs_path(init: true, playable: true)
