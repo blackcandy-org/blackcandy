@@ -1,5 +1,5 @@
 <% if @current_song.nil? %>
-  <%= turbo_stream.prepend dom_id(@playlist), partial: 'playlists/songs/song', locals: { song: @song, playlist: @playlist } %>
+  <%= turbo_stream.before "#{dom_id(@playlist)}_#{dom_id(@playlist.songs.second)}", partial: 'playlists/songs/song', locals: { song: @song, playlist: @playlist } %>
 <% else %>
   <%# add song next to the current_song %>
   <%= turbo_stream.after "#{dom_id(@playlist)}_#{dom_id(@current_song)}", partial: 'playlists/songs/song', locals: { song: @song, playlist: @playlist } %>
