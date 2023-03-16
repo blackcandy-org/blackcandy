@@ -28,7 +28,7 @@ class AlbumSystemTest < ApplicationSystemTestCase
 
     # assert current playlist have all songs in album
     @album.songs.each do |song|
-      assert_selector(:test_id, "playlist_song_name", text: song.name)
+      assert_selector(:test_id, "current_playlist_song_name", text: song.name)
     end
 
     # assert play the first song in album
@@ -62,7 +62,7 @@ class AlbumSystemTest < ApplicationSystemTestCase
     first(:test_id, "album_song").click
 
     # when click song to play, the current playlist and player sould list current playing song
-    assert_equal first_song_name, first(:test_id, "playlist_song_name").text
+    assert_equal first(:test_id, "current_playlist_song_name").text, first_song_name
     assert_selector(:test_id, "player_song_name", text: first_song_name)
   end
 
@@ -71,13 +71,38 @@ class AlbumSystemTest < ApplicationSystemTestCase
     login_as users(:visitor1)
 
     visit album_url(@album)
-
-    first_song_name = first(:test_id, "album_song_name").text
-
-    first(:test_id, "album_song_add_playlist").click
+    first(:test_id, "album_song_menu").click
+    click_on "Add to playlist"
     first(:test_id, "dialog_playlist").click
 
     # assert the song added to the playlist
-    assert_equal first_song_name, playlist.songs.first.name
+    assert_equal playlist.songs.first.name, first(:test_id, "album_song_name").text
+  end
+
+  test "add song to the next in current playlist" do
+    login_as users(:visitor1)
+    visit album_url(@album)
+
+    first(:test_id, "album_song_menu").click
+    click_on "Play Next"
+    assert_equal first(:test_id, "current_playlist_song_name").text, first(:test_id, "album_song_name").text
+
+    find("body").click
+    first(:test_id, "current_playlist_song").click
+    all(:test_id, "album_song_menu").last.click
+    click_on "Play Next"
+    assert_equal all(:test_id, "current_playlist_song_name")[1].text, all(:test_id, "album_song_name").last.text
+  end
+
+  test "add song to the end in current playlist" do
+    song_ids = Song.ids - @album.songs.ids
+    users(:visitor1).current_playlist.replace(song_ids)
+    login_as users(:visitor1)
+    visit album_url(@album)
+
+    first(:test_id, "album_song_menu").click
+    click_on "Play Last"
+
+    assert_equal all(:test_id, "current_playlist_song_name").last.text, first(:test_id, "album_song_name").text
   end
 end

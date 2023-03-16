@@ -28,6 +28,11 @@ class CurrentPlaylistSongsControllerTest < ActionDispatch::IntegrationTest
     assert_equal [3, 1, 2], @playlist.reload.song_ids
   end
 
+  test "should add song to the last position when set location param to last" do
+    post current_playlist_songs_url, params: {song_id: 3, location: "last"}, xhr: true
+    assert_equal [1, 2, 3], @playlist.reload.song_ids
+  end
+
   test "should has error flash when song alreay in playlist" do
     post current_playlist_songs_url, params: {song_id: 2}, xhr: true
     assert flash[:error].present?

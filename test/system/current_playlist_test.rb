@@ -10,10 +10,10 @@ class CurrentPlaylistSystemTest < ApplicationSystemTestCase
   end
 
   test "show playlist songs" do
-    assert_selector(:test_id, "playlist_song", count: Song.count)
+    assert_selector(:test_id, "current_playlist_song", count: Song.count)
 
     Song.all.each do |song|
-      assert_selector(:test_id, "playlist_song_name", text: song.name)
+      assert_selector(:test_id, "current_playlist_song_name", text: song.name)
     end
   end
 
@@ -21,7 +21,7 @@ class CurrentPlaylistSystemTest < ApplicationSystemTestCase
     find(:test_id, "playlist_menu").click
     click_on "Clear"
 
-    assert_selector(:test_id, "playlist_song", count: 0)
+    assert_selector(:test_id, "current_playlist_song", count: 0)
     assert_text("No items")
   end
 
@@ -34,17 +34,17 @@ class CurrentPlaylistSystemTest < ApplicationSystemTestCase
   end
 
   test "play song in playlist" do
-    first(:test_id, "playlist_song").click
+    first(:test_id, "current_playlist_song").click
 
     assert_selector(:test_id, "player_header", visible: true)
     assert_selector(:test_id, "player_song_name", text: Song.first.name)
   end
 
   test "delete song in playlist" do
-    first(:test_id, "playlist_song_menu").click
+    first(:test_id, "current_playlist_song_menu").click
     click_on "Delete"
 
-    assert_selector(:test_id, "playlist_song", count: Song.count - 1)
+    assert_selector(:test_id, "current_playlist_song", count: Song.count - 1)
   end
 
   test "reorder song in playlist" do
@@ -52,13 +52,13 @@ class CurrentPlaylistSystemTest < ApplicationSystemTestCase
     target_element = all(:test_id, "playlist_song_sortable_handle").last
     source_element.drag_to(target_element)
 
-    assert_equal Song.first.name, all(:test_id, "playlist_song_name").last.text
+    assert_equal Song.first.name, all(:test_id, "current_playlist_song_name").last.text
   end
 
   test "add to playlist" do
     playlist = Playlist.create(name: "test-playlist", user_id: users(:visitor1).id)
 
-    first(:test_id, "playlist_song_menu").click
+    first(:test_id, "current_playlist_song_menu").click
     click_on "Add to playlist"
     first(:test_id, "dialog_playlist").click
 
