@@ -28,7 +28,7 @@ Please visit <https://demo.blackcandy.org> and use demo user (email: demo@blackc
 Black Candy use docker image to install easily. You can simply run Black Candy like this.
 
 ```shell
-docker run blackcandy/blackcandy:edge
+docker run ghcr.io/blackcandy-org/blackcandy:edge 
 ```
 
 That's all. Now, you can use initial admin user to login (email: admin@admin.com, password: foobar).
@@ -44,7 +44,7 @@ Black Candy now has an iOS app in beta. You can visit [here](https://testflight.
 Black Candy exports the 3000 port. If you want to be able to access it from the host. You can add `-p 3000:3000` to the arguments of docker run command and then access either http://localhost:3000 or http://host-ip:3000 in a browser.
 
 ```shell
-docker run -p 3000:3000 blackcandy/blackcandy:edge
+docker run -p 3000:3000 ghcr.io/blackcandy-org/blackcandy:edge 
 ```
 
 ### Media Files Mounts 
@@ -52,7 +52,7 @@ docker run -p 3000:3000 blackcandy/blackcandy:edge
 You can mount media files from host to container and use `MEDIA_PATH` environment variable to set the media path for black candy.
 
 ```shell
-docker run -v /media_data:/media_data -e MEDIA_PATH=/media_data blackcandy/blackcandy:edge   
+docker run -v /media_data:/media_data -e MEDIA_PATH=/media_data ghcr.io/blackcandy-org/blackcandy:edge   
 ```
 
 ### Use PostgreSQL As Database
@@ -60,7 +60,7 @@ docker run -v /media_data:/media_data -e MEDIA_PATH=/media_data blackcandy/black
 Black Candy use SQLite as database by default. Because SQLite can simplify the process of installation, and it's an ideal choice for self hosted small server. If you think SQLite is not enough or you are using some cloud service like heroku to host Black Candy, you can also use PostgreSQL as database.
 
 ```shell
-docker run -e DATABASE_ADAPTER=postgresql -e DATABASE_URL=postgresql://yourdatabaseurl blackcandy/blackcandy:edge
+docker run -e DATABASE_ADAPTER=postgresql -e DATABASE_URL=postgresql://yourdatabaseurl ghcr.io/blackcandy-org/blackcandy:edge 
 ```
 
 ### How to Persist Data
@@ -70,7 +70,7 @@ There are two parts of data need to persist in Black Candy. First it's the data 
 ```shell
 touch production.sqlite3
 
-docker run -v ./production.sqlite3:/app/db/production.sqlite3 -v ./uploads_data:/app/public/uploads blackcandy/blackcandy:edge
+docker run -v ./production.sqlite3:/app/db/production.sqlite3 -v ./uploads_data:/app/public/uploads ghcr.io/blackcandy-org/blackcandy:edge 
 ```
 
 ### Enhance With Redis
@@ -80,7 +80,7 @@ By default, Black Candy use async adapter for background job and WebSockets, and
 When you have set the `REDIS_URL` environment variable, black candy will use Sidekiq for background job, Redis adapter for WebSockets and use Redis to store cache. In another way, you can also use `REDIS_SIDEKIQ_URL`, `REDIS_CABLE_URL`, and `REDIS_CACHE_URL` to set those service separately.
 
 ```shell
-docker run -e REDIS_URL=redis://yourredisurl blackcandy/blackcandy:edge 
+docker run -e REDIS_URL=redis://yourredisurl ghcr.io/blackcandy-org/blackcandy:edge 
 ```
 
 ### Nginx To Send File
@@ -103,7 +103,7 @@ services:
       - /media_data:/media_data # Keep the path of media files in container same as blackcandy container.
 
   app:
-    image: blackcandy/blackcandy:edge 
+    image: ghcr.io/blackcandy-org/blackcandy:edge 
     volumes:
       - ./log:/app/log
       - ./production.sqlite3:/app/db/production.sqlite3
@@ -130,7 +130,7 @@ By default, you need another process to run Sidekiq for background job. Like thi
 version: '3'
 services:
   app: &app_base
-    image: blackcandy/blackcandy:edge
+    image: ghcr.io/blackcandy-org/blackcandy:edge 
     volumes:
       - ./log:/app/log
       - ./production.sqlite3:/app/db/production.sqlite3
@@ -152,7 +152,7 @@ Listener for media library can automatically sync for media library changes. You
 version: '3'
 services:
   app: &app_base
-    image: blackcandy/blackcandy:edge
+    image: ghcr.io/blackcandy-org/blackcandy:edge 
     volumes:
       - ./log:/app/log
       - ./production.sqlite3:/app/db/production.sqlite3
@@ -185,7 +185,7 @@ services:
 Pull new image from remote
 
 ```shell
-$ docker pull blackcandy/blackcandy:edge
+$ docker pull ghcr.io/blackcandy-org/blackcandy:edge 
 ```
 
 ## Development
@@ -193,7 +193,7 @@ $ docker pull blackcandy/blackcandy:edge
 ### Requirements
 
 - Ruby 3.1
-- Node.js 14
+- Node.js 18
 - Yarn
 - ImageMagick
 - FFmpeg
