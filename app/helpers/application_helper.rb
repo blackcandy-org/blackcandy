@@ -41,11 +41,6 @@ module ApplicationHelper
     render partial: "shared/empty_alert", locals: {has_icon: has_icon, has_overlay: has_overlay}
   end
 
-  def render_flash(type: :success, message: "")
-    flash[type] = message unless message.blank?
-    turbo_stream.update "turbo-flash", partial: "shared/flash"
-  end
-
   def format_duration(sec)
     time = Time.at(sec).utc
     (sec > 1.hour) ? time.strftime("%T") : time.strftime("%M:%S")

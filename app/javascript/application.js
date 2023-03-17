@@ -5,7 +5,9 @@ import './channels'
 import Player from './player'
 import NativeBridge from './native_bridge'
 
-window.App = { player: new Player() }
-window.NativeBridge = new NativeBridge()
+window.App = {
+  player: new Player(),
+  nativeBridge: new NativeBridge()
+}
 
-window.NativeBridge.updateTheme(document.body.dataset.colorScheme)
+App.nativeBridge.updateTheme(document.body.dataset.colorScheme)

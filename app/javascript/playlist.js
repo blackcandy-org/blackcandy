@@ -13,10 +13,17 @@ class Playlist {
     this.shuffledSongs = shuffle(Object.assign([], this.songs))
   }
 
-  pushSong (songId) {
+  pushSong (songId, toTheLast = false) {
     const song = { id: Number(songId) }
+    const playerCurrentIndex = App.player.currentIndex
 
-    this.orderedSongs.splice(window.App.player.currentIndex + 1, 0, song)
+    let pushIndex = playerCurrentIndex === 0 ? 0 : playerCurrentIndex + 1
+
+    if (toTheLast) {
+      pushIndex = this.length
+    }
+
+    this.orderedSongs.splice(pushIndex, 0, song)
     this.shuffledSongs.splice(randomIndex(this.shuffledSongs.length), 0, song)
 
     return this.indexOf(songId)

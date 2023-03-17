@@ -22,7 +22,7 @@ class PlaylistSystemTest < ApplicationSystemTestCase
     # assert current playlist have all songs in playlist
     assert_selector(:test_id, "current_playlist", visible: true)
     playlists(:playlist1).songs.each do |song|
-      assert_selector(:test_id, "playlist_song_name", text: song.name)
+      assert_selector(:test_id, "current_playlist_song_name", text: song.name)
     end
 
     # assert play the first song in playlist
@@ -91,5 +91,28 @@ class PlaylistSystemTest < ApplicationSystemTestCase
     find(:test_id, "dialog_playlist", text: "test-playlist").click
 
     assert_equal playlists(:playlist1).songs.first.name, playlist.songs.first.name
+  end
+
+  test "add song to the next in current playlist" do
+    first(:test_id, "playlist_song_menu").click
+    click_on "Play Next"
+    assert_equal first(:test_id, "current_playlist_song_name").text, playlists(:playlist1).songs.first.name
+
+    find("body").click
+    first(:test_id, "current_playlist_song").click
+    all(:test_id, "playlist_song_menu").last.click
+    click_on "Play Next"
+    assert_equal all(:test_id, "current_playlist_song_name")[1].text, playlists(:playlist1).songs.last.name
+  end
+
+  test "add song to the end in current playlist" do
+    song_ids = Song.ids - playlists(:playlist1).songs.ids
+    users(:admin).current_playlist.replace(song_ids)
+    visit playlist_songs_url(playlists(:playlist1))
+
+    first(:test_id, "playlist_song_menu").click
+    click_on "Play Last"
+
+    assert_equal all(:test_id, "current_playlist_song_name").last.text, playlists(:playlist1).songs.first.name
   end
 end

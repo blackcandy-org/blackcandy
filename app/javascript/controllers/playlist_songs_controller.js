@@ -55,6 +55,12 @@ export default class extends Controller {
       case 'play':
         this._play(event.target)
         break
+      case 'add_song':
+        this._add_song(event.target)
+        break
+      case 'add_song_to_last':
+        this._add_song_to_last(event.target)
+        break
     }
   }
 
@@ -70,7 +76,7 @@ export default class extends Controller {
   }
 
   _checkBeforePlaying (event) {
-    if (window.NativeBridge.isTurboNative) { return }
+    if (App.nativeBridge.isTurboNative) { return }
 
     const { songId } = event.target.closest('[data-song-id]').dataset
     const playlistIndex = this.player.playlist.indexOf(songId)
@@ -84,8 +90,8 @@ export default class extends Controller {
   _play (target) {
     const { songId } = target.closest('[data-song-id]').dataset
 
-    if (window.NativeBridge.isTurboNative) {
-      window.NativeBridge.playSong(songId)
+    if (App.nativeBridge.isTurboNative) {
+      App.nativeBridge.playSong(songId)
     } else {
       this.player.skipTo(this.player.playlist.pushSong(songId))
     }
@@ -101,7 +107,17 @@ export default class extends Controller {
     }
   }
 
+  _add_song (target) {
+    const { songId } = target.closest('[data-song-id]').dataset
+    this.player.playlist.pushSong(songId)
+  }
+
+  _add_song_to_last (target) {
+    const { songId } = target.closest('[data-song-id]').dataset
+    this.player.playlist.pushSong(songId, true)
+  }
+
   get player () {
-    return window.App.player
+    return App.player
   }
 }

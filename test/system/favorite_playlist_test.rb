@@ -25,7 +25,7 @@ class FavoritePlaylistSystemTest < ApplicationSystemTestCase
     # assert current playlist have all songs in playlist
     assert_selector(:test_id, "current_playlist", visible: true)
     Song.all.each.each do |song|
-      assert_selector(:test_id, "playlist_song_name", text: song.name)
+      assert_selector(:test_id, "current_playlist_song_name", text: song.name)
     end
 
     # assert play the first song in playlist

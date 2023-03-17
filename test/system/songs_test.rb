@@ -40,20 +40,46 @@ class SongsSystemTest < ApplicationSystemTestCase
     first(:test_id, "song_item").click
 
     # when click song to play, the current playlist and player sould list current playing song
-    assert_equal first_song_name, first(:test_id, "playlist_song_name").text
+    assert_equal first_song_name, first(:test_id, "current_playlist_song_name").text
     assert_selector(:test_id, "player_song_name", text: first_song_name)
   end
 
   test "add song to playlist" do
     playlist = Playlist.create(name: "test-playlist", user_id: users(:visitor1).id)
+
     visit songs_url
-
-    first_song_name = first(:test_id, "song_name").text
-
-    first(:test_id, "song_add_playlist").click
+    first(:test_id, "song_menu").click
+    click_on "Add to playlist"
     first(:test_id, "dialog_playlist").click
 
     # assert the song added to the playlist
-    assert_equal first_song_name, playlist.songs.first.name
+    assert_equal playlist.songs.first.name, first(:test_id, "song_name").text
+  end
+
+  test "add song to the next in current playlist" do
+    visit songs_url
+
+    first(:test_id, "song_menu").click
+    click_on "Play Next"
+    assert_equal first(:test_id, "current_playlist_song_name").text, first(:test_id, "song_name").text
+
+    find("body").click
+    first(:test_id, "current_playlist_song").click
+    all(:test_id, "song_menu")[1].click
+    click_on "Play Next"
+    assert_equal all(:test_id, "current_playlist_song_name")[1].text, all(:test_id, "song_name")[1].text
+  end
+
+  test "add song to the end in current playlist" do
+    visit songs_url
+
+    first(:test_id, "song_menu").click
+    click_on "Play Last"
+    assert_equal all(:test_id, "current_playlist_song_name").last.text, first(:test_id, "song_name").text
+
+    find("body").click
+    all(:test_id, "song_menu")[1].click
+    click_on "Play Last"
+    assert_equal all(:test_id, "current_playlist_song_name").last.text, all(:test_id, "song_name")[1].text
   end
 end

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
   include SessionsHelper
 
-  helper_method :turbo_native?, :need_transcode?
+  helper_method :turbo_native?, :need_transcode?, :render_flash
 
   before_action :find_current_user
   before_action :require_login
@@ -55,6 +55,11 @@ class ApplicationController < ActionController::Base
     else
       redirect_back_or_to(fallback_location)
     end
+  end
+
+  def render_flash(type: :success, message: "")
+    flash[type] = message unless message.blank?
+    turbo_stream.update "turbo-flash", partial: "shared/flash"
   end
 
   private
