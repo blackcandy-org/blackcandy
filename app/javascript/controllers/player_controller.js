@@ -22,24 +22,24 @@ export default class extends Controller {
   ]
 
   initialize () {
-    this._initPlayer()
-    this._initMode()
+    this.#initPlayer()
+    this.#initMode()
   }
 
   connect () {
-    document.addEventListener('player:beforePlaying', this._setBeforePlayingStatus)
-    document.addEventListener('player:playing', this._setPlayingStatus)
-    document.addEventListener('player:pause', this._setPauseStatus)
-    document.addEventListener('player:stop', this._setStopStatus)
-    document.addEventListener('player:end', this._setEndStatus)
+    document.addEventListener('player:beforePlaying', this.#setBeforePlayingStatus)
+    document.addEventListener('player:playing', this.#setPlayingStatus)
+    document.addEventListener('player:pause', this.#setPauseStatus)
+    document.addEventListener('player:stop', this.#setStopStatus)
+    document.addEventListener('player:end', this.#setEndStatus)
   }
 
   disconnect () {
-    document.removeEventListener('player:beforePlaying', this._setBeforePlayingStatus)
-    document.removeEventListener('player:playing', this._setPlayingStatus)
-    document.removeEventListener('player:pause', this._setPauseStatus)
-    document.removeEventListener('player:stop', this._setStopStatus)
-    document.removeEventListener('player:end', this._setEndStatus)
+    document.removeEventListener('player:beforePlaying', this.#setBeforePlayingStatus)
+    document.removeEventListener('player:playing', this.#setPlayingStatus)
+    document.removeEventListener('player:pause', this.#setPauseStatus)
+    document.removeEventListener('player:stop', this.#setStopStatus)
+    document.removeEventListener('player:end', this.#setEndStatus)
   }
 
   play () {
@@ -88,7 +88,7 @@ export default class extends Controller {
 
   seek (event) {
     this.player.seek((event.offsetX / event.target.offsetWidth) * this.currentSong.duration)
-    window.requestAnimationFrame(this._setProgress.bind(this))
+    window.requestAnimationFrame(this.#setProgress.bind(this))
   }
 
   collapse () {
@@ -116,14 +116,14 @@ export default class extends Controller {
     return (typeof currentTime === 'number') ? Math.round(currentTime) : 0
   }
 
-  _setBeforePlayingStatus = () => {
+  #setBeforePlayingStatus = () => {
     this.headerTarget.classList.add('is-expanded')
     this.loaderTarget.classList.remove('u-display-none')
     this.favoriteButtonTarget.classList.remove('u-visibility-hidden')
     this.songTimerTarget.textContent = formatDuration(0)
   }
 
-  _setPlayingStatus = () => {
+  #setPlayingStatus = () => {
     const { currentSong } = this
     const favoriteSongUrl = new URL(this.favoriteButtonTarget.action)
 
@@ -145,31 +145,31 @@ export default class extends Controller {
     this.favoriteButtonTarget.action = favoriteSongUrl
     this.unFavoriteButtonTarget.action = favoriteSongUrl
 
-    window.requestAnimationFrame(this._setProgress.bind(this))
-    this.timerInterval = setInterval(this._setTimer.bind(this), 1000)
+    window.requestAnimationFrame(this.#setProgress.bind(this))
+    this.timerInterval = setInterval(this.#setTimer.bind(this), 1000)
 
     // let playlist can show current palying song
     dispatchEvent(document, 'playlistSongs:showPlaying')
   }
 
-  _setPauseStatus = () => {
-    this._clearTimerInterval()
+  #setPauseStatus = () => {
+    this.#clearTimerInterval()
 
     this.pauseButtonTarget.classList.add('u-display-none')
     this.playButtonTarget.classList.remove('u-display-none')
   }
 
-  _setStopStatus = () => {
-    this._clearTimerInterval()
+  #setStopStatus = () => {
+    this.#clearTimerInterval()
 
     if (this.player.playlist.length === 0) {
       this.headerTarget.classList.remove('is-expanded')
-      this._setPauseStatus()
+      this.#setPauseStatus()
     }
   }
 
-  _setEndStatus = () => {
-    this._clearTimerInterval()
+  #setEndStatus = () => {
+    this.#clearTimerInterval()
 
     if (this.currentMode === 'single') {
       this.player.play()
@@ -178,32 +178,32 @@ export default class extends Controller {
     }
   }
 
-  _setProgress () {
+  #setProgress () {
     this.progressTarget.value = (this.currentTime / this.currentSong.duration) * 100 || 0
 
     if (this.player.isPlaying) {
-      window.requestAnimationFrame(this._setProgress.bind(this))
+      window.requestAnimationFrame(this.#setProgress.bind(this))
     }
   }
 
-  _setTimer () {
+  #setTimer () {
     this.songTimerTarget.textContent = formatDuration(this.currentTime)
   }
 
-  _clearTimerInterval () {
+  #clearTimerInterval () {
     if (this.timerInterval) {
       clearInterval(this.timerInterval)
     }
   }
 
-  _initPlayer () {
+  #initPlayer () {
     // Hack for Safari issue of can not play song when first time page loaded.
     // So call Howl init function manually let document have audio unlock event when click or touch.
     // When first time user interact page the audio will be unlocked.
     new Howl({ src: [''], format: ['mp3'] }) // eslint-disable-line no-new
   }
 
-  _initMode () {
+  #initMode () {
     this.modes = ['repeat', 'single', 'shuffle']
     this.currentModeIndex = 0
     this.updateMode()

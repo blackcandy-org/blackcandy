@@ -4,16 +4,16 @@ export default class extends Controller {
   static targets = ['content', 'indicator']
 
   connect () {
-    this.element.addEventListener('loader:hide', this._hide)
-    this.element.addEventListener('loader:show', this._show)
+    this.element.addEventListener('loader:hide', this.#hide)
+    this.element.addEventListener('loader:show', this.#show)
   }
 
   disconnect () {
-    this.element.removeEventListener('loader:hide', this._hide)
-    this.element.removeEventListener('loader:show', this._show)
+    this.element.removeEventListener('loader:hide', this.#hide)
+    this.element.removeEventListener('loader:show', this.#show)
   }
 
-  _show = () => {
+  #show = () => {
     if (this.hasContentTarget) {
       this.contentTarget.classList.add('u-display-none')
     }
@@ -23,7 +23,7 @@ export default class extends Controller {
     }
   }
 
-  _hide = () => {
+  #hide = () => {
     if (this.hasContentTarget) {
       this.contentTarget.classList.remove('u-display-none')
     }
