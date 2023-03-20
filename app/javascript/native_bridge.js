@@ -1,6 +1,6 @@
 class NativeBridge {
   playAll () {
-    if (this._isTurboiOS) {
+    if (this.#isTurboiOS) {
       window.webkit.messageHandlers.nativeApp.postMessage({
         name: 'playAll'
       })
@@ -8,7 +8,7 @@ class NativeBridge {
   }
 
   playSong (songId) {
-    if (this._isTurboiOS) {
+    if (this.#isTurboiOS) {
       window.webkit.messageHandlers.nativeApp.postMessage({
         name: 'playSong',
         songId: Number(songId)
@@ -21,7 +21,7 @@ class NativeBridge {
   }
 
   updateTheme (theme) {
-    if (this._isTurboiOS) {
+    if (this.#isTurboiOS) {
       window.webkit.messageHandlers.nativeApp.postMessage({
         name: 'updateTheme',
         theme
@@ -34,10 +34,10 @@ class NativeBridge {
   }
 
   get isTurboNative () {
-    return this._isTurboiOS
+    return this.#isTurboiOS
   }
 
-  get _isTurboiOS () {
+  get #isTurboiOS () {
     return !!(window.webkit && window.webkit.messageHandlers)
   }
 }

@@ -23,12 +23,12 @@ export default class extends Controller {
   }
 
   connect () {
-    this._showPlayingItem()
-    document.addEventListener('playlistSongs:showPlaying', this._showPlayingItem)
+    this.#showPlayingItem()
+    document.addEventListener('playlistSongs:showPlaying', this.#showPlayingItem)
   }
 
   disconnect () {
-    document.removeEventListener('playlistSongs:showPlaying', this._showPlayingItem)
+    document.removeEventListener('playlistSongs:showPlaying', this.#showPlayingItem)
   }
 
   submitStartHandle (event) {
@@ -38,7 +38,7 @@ export default class extends Controller {
 
     switch (actionElement.dataset.submitStartAction) {
       case 'check_before_playing':
-        this._checkBeforePlaying(event)
+        this.#checkBeforePlaying(event)
         break
     }
   }
@@ -50,16 +50,16 @@ export default class extends Controller {
 
     switch (actionElement.dataset.submitEndAction) {
       case 'delete':
-        this._delete(event.target)
+        this.#delete(event.target)
         break
       case 'play':
-        this._play(event.target)
+        this.#play(event.target)
         break
       case 'add_song':
-        this._add_song(event.target)
+        this.#addSong(event.target)
         break
       case 'add_song_to_last':
-        this._add_song_to_last(event.target)
+        this.#addSongToLast(event.target)
         break
     }
   }
@@ -69,13 +69,13 @@ export default class extends Controller {
     this.player.playlist.update([])
   }
 
-  _showPlayingItem = () => {
+  #showPlayingItem = () => {
     this.itemTargets.forEach((element) => {
       element.classList.toggle('is-active', Number(element.dataset.songId) === this.player.currentSong.id)
     })
   }
 
-  _checkBeforePlaying (event) {
+  #checkBeforePlaying (event) {
     if (App.nativeBridge.isTurboNative) { return }
 
     const { songId } = event.target.closest('[data-song-id]').dataset
@@ -87,7 +87,7 @@ export default class extends Controller {
     }
   }
 
-  _play (target) {
+  #play (target) {
     const { songId } = target.closest('[data-song-id]').dataset
 
     if (App.nativeBridge.isTurboNative) {
@@ -97,7 +97,7 @@ export default class extends Controller {
     }
   }
 
-  _delete (target) {
+  #delete (target) {
     const songId = Number(target.closest('[data-song-id]').dataset.songId)
 
     if (!this.isCurrentValue) { return }
@@ -107,12 +107,12 @@ export default class extends Controller {
     }
   }
 
-  _add_song (target) {
+  #addSong (target) {
     const { songId } = target.closest('[data-song-id]').dataset
     this.player.playlist.pushSong(songId)
   }
 
-  _add_song_to_last (target) {
+  #addSongToLast (target) {
     const { songId } = target.closest('[data-song-id]').dataset
     this.player.playlist.pushSong(songId, true)
   }

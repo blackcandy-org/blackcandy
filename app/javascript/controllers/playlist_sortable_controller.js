@@ -29,7 +29,7 @@ export default class extends Controller {
       plugins: [Plugins.SwapAnimation]
     })
 
-    this.sortable.on('sortable:stop', this._reorderPlaylist)
+    this.sortable.on('sortable:stop', this.#reorderPlaylist)
   }
 
   disconnect () {
@@ -38,7 +38,7 @@ export default class extends Controller {
     }
   }
 
-  _reorderPlaylist = (event) => {
+  #reorderPlaylist = (event) => {
     App.player.playlist.move(event.oldIndex, event.newIndex)
 
     fetchRequest(this.urlValue, {

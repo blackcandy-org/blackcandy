@@ -30,8 +30,8 @@ class Playlist {
   }
 
   deleteSong (songId) {
-    const orderedSongsindex = this._indexOfSongs(this.orderedSongs, songId)
-    const shuffledSongsindex = this._indexOfSongs(this.shuffledSongs, songId)
+    const orderedSongsindex = this.#indexOfSongs(this.orderedSongs, songId)
+    const shuffledSongsindex = this.#indexOfSongs(this.shuffledSongs, songId)
 
     this.orderedSongs.splice(orderedSongsindex, 1)
     this.shuffledSongs.splice(shuffledSongsindex, 1)
@@ -40,14 +40,14 @@ class Playlist {
   }
 
   indexOf (songId) {
-    return this._indexOfSongs(this.songs, songId)
+    return this.#indexOfSongs(this.songs, songId)
   }
 
   move (fromIndex, toIndex) {
     this.orderedSongs.splice(toIndex, 0, this.orderedSongs.splice(fromIndex, 1)[0])
   }
 
-  _indexOfSongs (songs, songId) {
+  #indexOfSongs (songs, songId) {
     return songs.map((song) => song.id).indexOf(Number(songId))
   }
 

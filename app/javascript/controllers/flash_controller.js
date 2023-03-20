@@ -6,10 +6,10 @@ export default class extends Controller {
   }
 
   connect () {
-    setTimeout(this._removeFlash.bind(this), this.timeoutValue)
+    setTimeout(this.#removeFlash.bind(this), this.timeoutValue)
   }
 
-  _removeFlash () {
+  #removeFlash () {
     this.element.addEventListener('animationend', function removeFlashElement () {
       this.remove()
     }, { once: true })
