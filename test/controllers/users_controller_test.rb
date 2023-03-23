@@ -97,4 +97,28 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     delete user_url(users(:visitor2)), xhr: true
     assert_response :forbidden
   end
+
+  test "should not let user access when is on demo mode" do
+    with_env("DEMO_MODE" => "true") do
+      login users(:admin)
+
+      get users_url
+      assert_response :forbidden
+
+      get new_user_url
+      assert_response :forbidden
+
+      post users_url, params: {user: {email: "test@test.com", password: "foobar"}}
+      assert_response :forbidden
+
+      delete user_url(users(:visitor2)), xhr: true
+      assert_response :forbidden
+
+      get edit_user_url(users(:visitor2))
+      assert_response :forbidden
+
+      patch user_url(users(:visitor2)), params: {user: {email: "visitor_updated@blackcandy.com"}}, xhr: true
+      assert_response :forbidden
+    end
+  end
 end
