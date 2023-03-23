@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class SettingsController < ApplicationController
+  before_action :require_admin, only: [:update]
   def show
     @user = Current.user
   end
 
   def update
-    raise BlackCandy::Error::Forbidden unless is_admin?
     setting = Setting.instance
 
     if setting.update(setting_params)

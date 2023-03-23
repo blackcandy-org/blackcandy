@@ -45,4 +45,13 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     patch setting_url, params: {setting: {discogs_token: "updated_token"}}, xhr: true
     assert_response :forbidden
   end
+
+  test "should not update global settings when is on demo mode" do
+    with_env("DEMO_MODE" => "true") do
+      login users(:admin)
+
+      patch setting_url, params: {setting: {discogs_token: "updated_token"}}, xhr: true
+      assert_response :forbidden
+    end
+  end
 end

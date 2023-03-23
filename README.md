@@ -17,7 +17,7 @@ Black Candy is a self hosted music streaming server built with [Rails](https://r
 
 ## Try The Demo
 
-Please visit <https://demo.blackcandy.org> and use demo user (email: demo@blackcandy.org, password: foobar) to login. And feel free to try it.
+Please visit <https://demo.blackcandy.org> and use demo user (email: admin@admin.com, password: foobar) to login. And feel free to try it.
 
 > **Notice:** This demo user does not have administrator privileges. So you cannot experience all the features in Black Candy. And all music in the demo is under non-commercial licences. You can check their [licences](https://github.com/blackcandy-org/black_candy#licences-of-the-music-in-demo).
 
@@ -179,6 +179,7 @@ services:
 | EMBEDDED_SIDEKIQ_CONCURRENCY | 2         | The concurrency number of embedded Sidekiq. This value should not greater than 2. Because we should keep embedded Sidekiq concurrency very low. For more details, see this [document](https://github.com/mperham/sidekiq/wiki/Embedding) about embedded Sidekiq. |
 | SECRET_KEY_BASE              |           | When the SECRET_KEY_BASE environment variable is not set, Black candy will generate SECRET_KEY_BASE environment variable every time when service start up. This will cause old sessions invalid, You can set your own SECRET_KEY_BASE environment variable on docker service to avoid it. |
 | FORCE_SSL                    | false     | Force all access to the app over SSL. |
+| DEMO_MODE                    | false     | Whether to enable demo mode, when demo mode is on, all users cannot access administrator privileges, even user is admin. And also users cannot change their profile.  |
 
 ## Upgrade
 

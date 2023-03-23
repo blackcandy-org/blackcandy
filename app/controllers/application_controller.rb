@@ -80,7 +80,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
-    raise BlackCandy::Error::Forbidden unless is_admin?
+    raise BlackCandy::Error::Forbidden if BlackCandy::Config.demo_mode? || !is_admin?
   end
 
   def logout_current_user
