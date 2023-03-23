@@ -69,6 +69,7 @@ There are two parts of data need to persist in Black Candy. First it's the data 
 
 ```shell
 touch production.sqlite3
+mkdir uploads_data
 
 docker run -v ./production.sqlite3:/app/db/production.sqlite3 -v ./uploads_data:/app/public/uploads ghcr.io/blackcandy-org/blackcandy:edge 
 ```
