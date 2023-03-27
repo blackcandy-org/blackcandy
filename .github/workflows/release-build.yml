@@ -3,7 +3,7 @@ name: Release Build
 on:
   push:
     branches:
-      - dev
+      - master
     tags:
       - v*
 
