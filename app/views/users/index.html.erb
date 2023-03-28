@@ -1,16 +1,16 @@
 <% page_title_tag t('label.manage_users') %>
 
-<% cache @users do %>
-  <div class='o-container o-container--extra-narrow'>
-    <div class='o-flex o-flex--justify-between o-flex--align-center'>
-      <h2 class='u-mb-0'><%= t('label.users') %></h2>
-      <%= link_to t('label.add_user'), new_user_path, class: 'c-button c-button--primary' %>
-    </div>
-    <hr />
-    <div class='u-position-relative'>
-      <% if @users.present? %>
-        <ul class='c-list c-list--border-none'>
-          <% @users.each do |user| %>
+<div class='o-container o-container--extra-narrow'>
+  <div class='o-flex o-flex--justify-between o-flex--align-center'>
+    <h2 class='u-mb-0'><%= t('label.users') %></h2>
+    <%= link_to t('label.add_user'), new_user_path, class: 'c-button c-button--primary' %>
+  </div>
+  <hr />
+  <div class='u-position-relative'>
+    <% if @users.present? %>
+      <ul class='c-list c-list--border-none'>
+        <% @users.each do |user| %>
+          <% cache user do %>
             <li id='<%= dom_id(user) %>' class='c-list__item o-flex o-flex--justify-between o-flex--align-center'>
               <%= link_to edit_user_path(user), class: 'o-flex o-flex--align-center' do %>
                 <span class='u-mr-tiny'><%= avatar_tag user %></span>
@@ -21,10 +21,10 @@
               <% end %>
             </li>
           <% end %>
-        </ul>
-      <% else %>
-        <%= empty_alert_tag %>
-      <% end %>
-    </div>
+        <% end %>
+      </ul>
+    <% else %>
+      <%= empty_alert_tag %>
+    <% end %>
   </div>
-<% end %>
+</div>
