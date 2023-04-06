@@ -1,7 +1,7 @@
 <% page_title_tag @playlist.name %>
 
 <div class='o-container o-container--narrow'>
-  <div data-controller='playlist-songs' data-playlist-songs-playlist-id-value='<%= @playlist.id %>'>
+  <div data-controller='playlist-songs'>
     <div class="c-card c-card--horizontal u-my-large">
       <div class='c-card__body'>
         <h1 class='c-card__body__title' data-test-id='playlist_name'><%= @playlist.name %></h1>
@@ -13,7 +13,7 @@
         </div>
         <div class='u-mt-large'>
           <% unless @songs.blank? %>
-            <%= button_to t('label.play_all'), play_playlist_songs_path(@playlist), class: 'c-button c-button--primary', form_class: 'u-display-inline-block', form: { 'data-turbo-frame' => 'turbo-playlist' } %>
+            <%= button_to t('label.play_all'), play_playlist_songs_path(@playlist), class: 'c-button c-button--primary', form_class: 'u-display-inline-block', form: { 'data-controller' => 'native-bridge', 'data-turbo-frame' => 'turbo-playlist', 'data-action' => 'turbo:submit-end->native-bridge#playAll' } %>
           <% end %>
           <%= link_to t('label.edit'), edit_playlist_path(@playlist), data: { turbo_frame: ('turbo-dialog' unless turbo_native?) }, class: 'c-button c-button--secondary' %>
 

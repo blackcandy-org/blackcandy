@@ -26,6 +26,8 @@ import PlaylistSortableController from './playlist_sortable_controller.js'
 
 import SearchController from './search_controller.js'
 
+import NativeBridgeController from './native_bridge_controller.js'
+
 application.register('dialog', DialogController)
 
 application.register('element', ElementController)
@@ -47,3 +49,5 @@ application.register('playlist-songs', PlaylistSongsController)
 application.register('playlist-sortable', PlaylistSortableController)
 
 application.register('search', SearchController)
+
+application.register('native-bridge', NativeBridgeController)
