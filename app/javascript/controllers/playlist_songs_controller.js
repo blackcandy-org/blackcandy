@@ -4,7 +4,6 @@ export default class extends Controller {
   static targets = ['item']
 
   static values = {
-    playlistId: Number,
     isCurrent: Boolean,
     isPlayable: Boolean,
     playlistSongs: Array

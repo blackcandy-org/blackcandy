@@ -43,12 +43,6 @@ class ApplicationController < ActionController::Base
     turbo_ios? || turbo_android?
   end
 
-  def stream_js(&block)
-    turbo_stream.replace "turbo-script" do
-      "<script id='turbo-script' type='text/javascript'>#{block.call}</script>".html_safe
-    end
-  end
-
   def redirect_back_with_referer_params(fallback_location:)
     if params[:referer_url].present?
       redirect_to params[:referer_url]

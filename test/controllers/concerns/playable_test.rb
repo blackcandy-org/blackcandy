@@ -37,12 +37,4 @@ class PlayableTest < ActionDispatch::IntegrationTest
       post "/not_implemented_dummy_play"
     end
   end
-
-  test "should call playAll() in native bridge when play song in native client" do
-    post "/dummy_play", headers: {"HTTP_USER_AGENT" => "Turbo Native iOS"}
-
-    assert_turbo_stream action: :replace, target: "turbo-script" do
-      assert_select "script", /App.nativeBridge.playAll/
-    end
-  end
 end
