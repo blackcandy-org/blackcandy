@@ -1,25 +1,25 @@
 @use "sass:color";
 
+$purple-dark: rgb(54, 30, 64);
+$purple: rgb(119, 66, 141);
+$purple-light: rgb(161, 90, 191);
+
+$white: rgb(255, 255, 251);
+$grey-100: rgb(237, 237, 237);
+$grey-200: rgb(217, 217, 217);
+$grey-300: rgb(191, 191, 191);
+$grey-400: rgb(166, 166, 166);
+$grey-500: rgb(140, 140, 140);
+$grey-600: rgb(89, 89, 89);
+$grey-700: rgb(59, 59, 59);
+$grey-800: rgb(33, 33, 33);
+$grey-900: rgb(18, 18, 18);
+$black: rgb(0, 0, 0);
+
+$red: rgb(166, 22, 55);
+$green: rgb(35, 166, 80);
+
 @mixin light-theme {
-  /* Colors */
-  $purple-dark: rgb(54, 30, 64);
-  $purple: rgb(119, 66, 141);
-  $purple-light: rgb(161, 90, 191);
-
-  $black: rgb(18, 18, 18);
-  $black-light: rgb(59, 59, 59);
-  $black-lighter: rgb(89, 89, 89);
-  $black-lightest: rgb(140, 140, 140);
-
-  $grey: rgb(166, 166, 166);
-  $grey-light: rgb(191, 191, 191);
-  $grey-lighter: rgb(217, 217, 217);
-  $grey-lightest: rgb(237, 237, 237);
-
-  $white: rgb(255, 255, 251);
-  $red: rgb(166, 22, 55);
-  $green: rgb(35, 166, 80);
-
   --link-active-color: #{$purple};
   --gradient-bg-color: linear-gradient(#{color.change($white, $alpha: 0.85)}, #{color.change($white, $alpha: 0.65)}), linear-gradient(#{$purple}, #{$purple});
   --primary-bg-color: #{$white};
@@ -28,12 +28,12 @@
   --body-bg-color: #{$white};
 
   /* Text */
-  --text-primary-color: #{$black};
-  --text-secondary-color: #{$black-lighter};
+  --text-primary-color: #{$grey-900};
+  --text-secondary-color: #{$grey-600};
   --text-red-color: #{$red};
 
   /* Sidebar */
-  --sidebar-bg-color: #{$grey-lightest};
+  --sidebar-bg-color: #{$grey-100};
 
   /* Progress bar */
   --progress-bar-bg-color: #{$purple};
@@ -43,9 +43,9 @@
   --btn-primary-bg-color: #{$purple};
   --btn-secondary-bg-color: #{color.change($purple, $alpha: 0.25)};
   --btn-secondary-color: #{$purple-light};
-  --btn-outline-color: #{$black};
-  --btn-outline-border-color: #{$grey-light};
-  --btn-outline-bg-color: #{$grey-lightest};
+  --btn-outline-color: #{$grey-900};
+  --btn-outline-border-color: #{$grey-300};
+  --btn-outline-bg-color: #{$grey-100};
 
   /* Flash message */
   --flash-color: #{$white};
@@ -53,27 +53,27 @@
   --flash-error-bg-color: #{$red};
 
   /* Tab */
-  --tab-color: #{$black};
+  --tab-color: #{$grey-900};
   --tab-active-color: #{$purple};
 
   /* List */
-  --list-border-color: #{$grey-lighter};
+  --list-border-color: #{$grey-200};
   --list-active-color: #{$purple};
-  --list-dragging-placeholder-bg-color: #{$grey-lighter};
+  --list-dragging-placeholder-bg-color: #{$grey-200};
   --list-dragging-bg-color: #{$white};
-  --list-dragging-shadow-color: #{$black-lighter};
-  --list-dragging-shadow: 0 4px 8px 0 #{color.change($black-lighter, $alpha: 0.1)}, 0 10px 13px 0 #{color.change($black-lighter, $alpha: 0.11)};
-  --list-grouped-bg-color: #{$grey-lightest};
+  --list-dragging-shadow-color: #{$grey-600};
+  --list-dragging-shadow: 0 4px 8px 0 #{color.change($grey-600, $alpha: 0.1)}, 0 10px 13px 0 #{color.change($grey-600, $alpha: 0.11)};
+  --list-grouped-bg-color: #{$grey-100};
 
   /* Table */
-  --table-border-color: #{$grey-lighter};
+  --table-border-color: #{$grey-200};
   --table-active-color: #{$purple};
-  --table-color: #{$black-lighter};
+  --table-color: #{$grey-600};
 
   /* Input */
-  --input-bg-color: #{$grey-lighter};
-  --input-color: #{$black};
-  --input-icon-color: #{$black-lightest};
+  --input-bg-color: #{$grey-200};
+  --input-color: #{$grey-900};
+  --input-icon-color: #{$grey-500};
 
   /* Loader */
   --loader-bg-color: #{$purple};
@@ -81,38 +81,38 @@
 
   /* Dropdown */
   --dropdown-bg-color: #{$white};
-  --dropdown-active-color: #{$grey-light};
-  --dropdown-color: #{$black};
-  --dropdown-shadow-color: #{$grey-light};
+  --dropdown-active-color: #{$grey-300};
+  --dropdown-color: #{$grey-900};
+  --dropdown-shadow-color: #{$grey-300};
 
   /* Dialog */
   --dialog-bg-color: #{$white};
-  --dialog-header-bg-color: #{$grey-lighter};
-  --dialog-header-color: #{$black};
+  --dialog-header-bg-color: #{$grey-200};
+  --dialog-header-color: #{$grey-900};
 
   ::backdrop {
-    --dialog-backdrop-color: #{color.change($grey-lightest, $alpha: 0.9)};
+    --dialog-backdrop-color: #{color.change($grey-100, $alpha: 0.9)};
   }
 
   /* Overlay */
-  --overlay-blur-bg-color: #{color.change($grey-lightest, $alpha: 0.9)};
+  --overlay-blur-bg-color: #{color.change($grey-100, $alpha: 0.9)};
 
   /* Hr */
-  --hr-color: #{$grey-lighter};
+  --hr-color: #{$grey-200};
 
   /* Action bar */
-  --action-bar-bg-color: #{$grey-lighter};
+  --action-bar-bg-color: #{$grey-200};
 
   /* Nav */
-  --nav-shadow: 0 1px 0 #{color.change($grey-light, $alpha: 0.12)}, 0 1px 3px #{color.change($grey-light, $alpha: 0.15)};
+  --nav-shadow: 0 1px 0 #{color.change($grey-300, $alpha: 0.12)}, 0 1px 3px #{color.change($grey-300, $alpha: 0.15)};
   --nav-primary-bg-color: #{color.change($white, $alpha: 0.9)};
   --nav-backdrop-bg-color: #{color.change($white, $alpha: 0.88)};
 
   /* Player */
-  --player-bg-color: #{$grey-lighter};
-  --player-header-bg-color: #{color.change($grey-lighter, $alpha: 0.65)};
-  --player-progress-bg-color: #{$grey-lighter};
-  --player-progress-hover-bg-color: #{$grey-lightest};
+  --player-bg-color: #{$grey-200};
+  --player-header-bg-color: #{color.change($grey-200, $alpha: 0.65)};
+  --player-progress-bg-color: #{$grey-200};
+  --player-progress-hover-bg-color: #{$grey-100};
   --player-progress-color: #{$purple};
 
   /* Badge */
@@ -120,43 +120,25 @@
   --badge-color: #{$purple};
 
   /* Card */
-  --card-border-color: #{$grey-lighter};
-  --card-bg-color: #{$grey-lightest};
+  --card-border-color: #{$grey-200};
+  --card-bg-color: #{$grey-100};
 }
 
 @mixin dark-theme {
-  /* Colors */
-  $purple-dark: rgb(54, 30, 64);
-  $purple: rgb(119, 66, 141);
-  $purple-light: rgb(161, 90, 191);
-
-  $black-dark: rgb(0, 0, 0);
-  $black: rgb(18, 18, 18);
-  $black-light: rgb(33, 33, 33);
-  $black-lighter: rgb(59, 59, 59);
-
-  $grey: rgb(140, 140, 140);
-  $grey-light: rgb(191, 191, 191);
-  $grey-lighter: rgb(237, 237, 237);
-
-  $white: rgb(255, 255, 251);
-  $red: rgb(166, 22, 55);
-  $green: rgb(35, 166, 80);
-
   --link-active-color: #{$purple-light};
-  --gradient-bg-color: linear-gradient(#{$black-dark}, #{color.change($black-dark, $alpha: 0.75)}), linear-gradient(#{$purple-light}, #{$purple-light});
-  --primary-bg-color: #{$black-light};
+  --gradient-bg-color: linear-gradient(#{$black}, #{color.change($black, $alpha: 0.75)}), linear-gradient(#{$purple-light}, #{$purple-light});
+  --primary-bg-color: #{$grey-800};
 
   /* Body */
-  --body-bg-color: #{$black-light};
+  --body-bg-color: #{$grey-800};
 
   /* Text */
   --text-primary-color: #{$white};
-  --text-secondary-color: #{$grey-light};
+  --text-secondary-color: #{$grey-300};
   --text-red-color: #{$red};
 
   /* Sidebar */
-  --sidebar-bg-color: #{$black};
+  --sidebar-bg-color: #{$grey-900};
 
   /* Progress bar */
   --progress-bar-bg-color: #{$purple};
@@ -167,8 +149,8 @@
   --btn-secondary-bg-color: #{color.change($purple, $alpha: 0.25)};
   --btn-secondary-color: #{$purple-light};
   --btn-outline-color: #{$white};
-  --btn-outline-border-color: #{$black-light};
-  --btn-outline-bg-color: #{$black-lighter};
+  --btn-outline-border-color: #{$grey-800};
+  --btn-outline-bg-color: #{$grey-700};
 
   /* Flash message */
   --flash-color: #{$white};
@@ -180,61 +162,61 @@
   --tab-active-color: #{$purple-light};
 
   /* List */
-  --list-border-color: #{$black-light};
+  --list-border-color: #{$grey-800};
   --list-active-color: #{$purple-light};
-  --list-dragging-placeholder-bg-color: #{$black-light};
-  --list-dragging-bg-color: #{$black-dark};
-  --list-dragging-shadow: 0 4px 8px 0 #{color.change($grey, $alpha: 0.1)}, 0 10px 13px 0 #{color.change($grey, $alpha: 0.11)};
-  --list-grouped-bg-color: #{$black};
+  --list-dragging-placeholder-bg-color: #{$grey-800};
+  --list-dragging-bg-color: #{$black};
+  --list-dragging-shadow: 0 4px 8px 0 #{color.change($grey-500, $alpha: 0.1)}, 0 10px 13px 0 #{color.change($grey-500, $alpha: 0.11)};
+  --list-grouped-bg-color: #{$grey-900};
 
   /* Table */
-  --table-border-color: #{$black};
+  --table-border-color: #{$grey-900};
   --table-active-color: #{$purple-light};
-  --table-color: #{$grey-light};
+  --table-color: #{$grey-300};
 
   /* Input */
-  --input-bg-color: #{$black-lighter};
+  --input-bg-color: #{$grey-700};
   --input-color: #{$white};
-  --input-icon-color: #{$black};
+  --input-icon-color: #{$grey-900};
 
   /* Loader */
   --loader-bg-color: #{$purple};
   --loader-secondary-bg-color: #{color.change($purple, $alpha: 0.3)};
 
   /* Dropdown */
-  --dropdown-bg-color: #{$black-lighter};
-  --dropdown-active-color: #{$grey};
+  --dropdown-bg-color: #{$grey-700};
+  --dropdown-active-color: #{$grey-500};
   --dropdown-color: #{$white};
-  --dropdown-shadow-color: #{$black-dark};
+  --dropdown-shadow-color: #{$black};
 
   /* Dialog */
-  --dialog-bg-color: #{$black};
-  --dialog-header-bg-color: #{$grey};
-  --dialog-header-color: #{$black};
+  --dialog-bg-color: #{$grey-900};
+  --dialog-header-bg-color: #{$grey-500};
+  --dialog-header-color: #{$grey-900};
 
   ::backdrop {
-    --dialog-backdrop-color: #{color.change($black-light, $alpha: 0.9)};
+    --dialog-backdrop-color: #{color.change($grey-800, $alpha: 0.9)};
   }
 
   /* Overlay */
-  --overlay-blur-bg-color: #{color.change($black-light, $alpha: 0.9)};
+  --overlay-blur-bg-color: #{color.change($grey-800, $alpha: 0.9)};
 
   /* Hr */
-  --hr-color: #{$black};
+  --hr-color: #{$grey-900};
 
   /* Action bar */
-  --action-bar-bg-color: #{$black-light};
+  --action-bar-bg-color: #{$grey-800};
 
   /* Nav */
-  --nav-shadow: 0 1px 0 #{color.change($black-dark, $alpha: 0.12)}, 0 1px 3px #{color.change($black-dark, $alpha: 0.15)};
-  --nav-primary-bg-color: #{color.change($black-light, $alpha: 0.9)};
-  --nav-backdrop-bg-color: #{color.change($black-light, $alpha: 0.88)};
+  --nav-shadow: 0 1px 0 #{color.change($black, $alpha: 0.12)}, 0 1px 3px #{color.change($black, $alpha: 0.15)};
+  --nav-primary-bg-color: #{color.change($grey-800, $alpha: 0.9)};
+  --nav-backdrop-bg-color: #{color.change($grey-800, $alpha: 0.88)};
 
   /* Player */
-  --player-bg-color: #{$black-dark};
-  --player-header-bg-color: #{color.change($black-dark, $alpha: 0.65)};
-  --player-progress-bg-color: #{$black-dark};
-  --player-progress-hover-bg-color: #{$black-light};
+  --player-bg-color: #{$black};
+  --player-header-bg-color: #{color.change($black, $alpha: 0.65)};
+  --player-progress-bg-color: #{$black};
+  --player-progress-hover-bg-color: #{$grey-800};
   --player-progress-color: #{$purple};
 
   /* Badge */
@@ -242,8 +224,8 @@
   --badge-color: #{$purple-light};
 
   /* Card */
-  --card-border-color: #{$black-lighter};
-  --card-bg-color: #{$black};
+  --card-border-color: #{$grey-700};
+  --card-bg-color: #{$grey-900};
 }
 
 [data-color-scheme="light"] {
