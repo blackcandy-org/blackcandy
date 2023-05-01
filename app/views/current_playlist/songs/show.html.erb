@@ -5,15 +5,15 @@
     <div class='c-action-bar o-flex o-flex--justify-between o-flex--align-center'>
       <p>
         <span id='<%= dom_id(@playlist, :songs_count) %>'><%= @playlist.songs.count %></span>
-        <span><%= t('label.tracks') %></span>
+        <span><%= t("label.tracks") %></span>
       </p>
       <details class='c-dropdown' data-test-id='playlist_menu'>
-        <summary><%= icon_tag 'more-vertical', title: t('label.more') %></summary>
+        <summary><%= icon_tag "more-vertical", title: t("label.more") %></summary>
         <div class='c-dropdown__list'>
-          <%= button_to t('label.clear'), current_playlist_songs_path(clear_all: true), method: :delete, form_class: 'c-dropdown__item', form: { data: { action: 'turbo:submit-end->playlist-songs#clear' } } %>
+          <%= button_to t("label.clear"), current_playlist_songs_path(clear_all: true), method: :delete, form_class: "c-dropdown__item", form: {data: {action: "turbo:submit-end->playlist-songs#clear"}} %>
         </div>
       </details>
     </div>
-    <%= render partial: 'playlists/songs/list', locals: { playlist: @playlist, songs: @songs, pagy: @pagy } %>
+    <%= render partial: "playlists/songs/list", locals: {playlist: @playlist, songs: @songs, pagy: @pagy} %>
   <% end %>
 </div>

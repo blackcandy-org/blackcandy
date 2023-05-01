@@ -3,7 +3,7 @@
     <div class='u-position-relative u-overflow-hidden'>
       <div class='c-player__header__background' data-player-target='backgroundImage'></div>
       <div class='c-player__header__content c-card c-card--horizontal u-p-medium u-position-relative'>
-        <img data-player-target='image' class='c-card__image u-image-small' />
+        <img data-player-target='image' class='c-card__image u-image-small'>
         <div class='c-card__body'>
           <h1 class='c-card__body__title u-text-truncate' data-player-target='songName' data-test-id='player_song_name'></h1>
           <p class='c-card__body__text u-text-truncate' data-player-target='albumName'></p>
@@ -25,34 +25,34 @@
   </div>
   <div class='u-px-small u-py-medium o-flex o-flex--justify-between o-flex--align-center c-player__control'>
     <div class='u-cursor-pointer' data-action='click->player#nextMode'>
-      <span data-player-target='modeButton'><%= icon_tag 'repeat', title: t('label.repeat_mode') %></span>
-      <span data-player-target='modeButton'><%= icon_tag 'repeat-one', title: t('label.single_mode') %></span>
-      <span data-player-target='modeButton'><%= icon_tag 'shuffle', title: t('label.shuffle_mode') %></span>
+      <span data-player-target='modeButton'><%= icon_tag "repeat", title: t("label.repeat_mode") %></span>
+      <span data-player-target='modeButton'><%= icon_tag "repeat-one", title: t("label.single_mode") %></span>
+      <span data-player-target='modeButton'><%= icon_tag "shuffle", title: t("label.shuffle_mode") %></span>
     </div>
     <div>
       <span class='u-text-color-primary u-cursor-pointer' data-action='click->player#previous' data-test-id='player_previous_button'>
-        <%= icon_tag 'rewind', size: 'large', title: t('label.previous_song') %>
+        <%= icon_tag "rewind", size: "large", title: t("label.previous_song") %>
       </span>
       <span class='u-mx-medium u-text-color-primary u-cursor-pointer' data-action='click->player#play' data-player-target='playButton' data-test-id='player_play_button'>
-        <%= icon_tag 'play', size: 'large', title: t('label.play_song') %>
+        <%= icon_tag "play", size: "large", title: t("label.play_song") %>
       </span>
       <span class='u-mx-medium  u-text-color-primary u-cursor-pointer u-display-none' data-action='click->player#pause' data-player-target='pauseButton' data-test-id='player_pause_button'>
-        <%= icon_tag 'pause', size: 'large', title: t('label.pause_song') %>
+        <%= icon_tag "pause", size: "large", title: t("label.pause_song") %>
       </span>
       <span class='u-text-color-primary u-cursor-pointer' data-action='click->player#next' data-test-id='player_next_button'>
-        <%= icon_tag 'fast-forward', size: 'large', title: t('label.next_song') %>
+        <%= icon_tag "fast-forward", size: "large", title: t("label.next_song") %>
       </span>
     </div>
     <div data-action='turbo:submit-end->player#toggleFavorite' data-test-id='player_favorite_button'>
-      <%= button_to favorite_playlist_songs_path, form_class: 'u-visibility-hidden', form: { 'data-player-target' => 'favoriteButton' } do %>
-        <%= icon_tag 'heart', title: t('label.toggle_favorite') %>
+      <%= button_to favorite_playlist_songs_path, form_class: "u-visibility-hidden", form: {"data-player-target" => "favoriteButton"} do %>
+        <%= icon_tag "heart", title: t("label.toggle_favorite") %>
       <% end %>
-      <%= button_to favorite_playlist_songs_path, method: :delete, form_class: 'u-display-none', form: { 'data-player-target' => 'unFavoriteButton' }, class: 'u-text-color-red' do %>
-        <%= icon_tag 'heart', title: t('label.toggle_favorite') %>
+      <%= button_to favorite_playlist_songs_path, method: :delete, form_class: "u-display-none", form: {"data-player-target" => "unFavoriteButton"}, class: "u-text-color-red" do %>
+        <%= icon_tag "heart", title: t("label.toggle_favorite") %>
       <% end %>
     </div>
   </div>
   <div class='u-py-tiny u-bg-primary u-text-align-center u-display-none u-display-block@extra-small' data-action='click->player#collapse'>
-    <%= icon_tag 'expand-more', size: 'large', title: t('label.collapse_player') %>
+    <%= icon_tag "expand-more", size: "large", title: t("label.collapse_player") %>
   </div>
 </div>

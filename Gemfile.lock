@@ -77,6 +77,13 @@ GEM
       activesupport (>= 5.2, < 7.1)
       request_store (~> 1.0)
     bcrypt (3.1.18)
+    better_html (2.0.1)
+      actionview (>= 6.0)
+      activesupport (>= 6.0)
+      ast (~> 2.0)
+      erubi (~> 1.4)
+      parser (>= 2.4)
+      smart_properties
     bindex (0.8.1)
     bootsnap (1.10.3)
       msgpack (~> 1.2)
@@ -116,6 +123,13 @@ GEM
       irb (>= 1.3.6)
       reline (>= 0.3.1)
     docile (1.4.0)
+    erb_lint (0.4.0)
+      activesupport
+      better_html (>= 2.0.1)
+      parser (>= 2.7.1.4)
+      rainbow
+      rubocop
+      smart_properties
     erubi (1.11.0)
     ferrum (0.13)
       addressable (~> 2.5)
@@ -267,6 +281,7 @@ GEM
     simplecov-html (0.12.3)
     simplecov-lcov (0.8.0)
     simplecov_json_formatter (0.1.4)
+    smart_properties (1.17.0)
     sqlite3 (1.5.3)
       mini_portile2 (~> 2.8.0)
     ssrf_filter (1.1.1)
@@ -318,6 +333,7 @@ DEPENDENCIES
   cssbundling-rails (~> 1.1.0)
   cuprite (~> 0.14.3)
   debug
+  erb_lint (~> 0.4.0)
   httparty (~> 0.17.0)
   jbuilder (~> 2.11.5)
   jsbundling-rails (~> 1.0.0)

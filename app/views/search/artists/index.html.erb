@@ -1,5 +1,5 @@
-<h1><%= t('text.search_results', query: params[:query]) %></h1>
-<h2><%= t('label.artists') %></h2>
+<h1><%= t("text.search_results", query: params[:query]) %></h1>
+<h2><%= t("label.artists") %></h2>
 <div class='o-grid o-grid--shelf u-mb-large'>
-  <%= render partial: 'artists/artist', collection: @artists, cached: true %>
+  <%= render partial: "artists/artist", collection: @artists, cached: true %>
 </div>

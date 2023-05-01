@@ -1,5 +1,5 @@
-<h2><%= t('label.personal') %></h2>
-<%= form_with model: user, url: user_setting_path(user), method: :put, class: 'c-form' do |form| %>
+<h2><%= t("label.personal") %></h2>
+<%= form_with model: user, url: user_setting_path(user), method: :put, class: "c-form" do |form| %>
   <div class='c-form__field'>
     <%= form.label :theme %>
     <% User::AVAILABLE_THEME_OPTIONS.each do |option| %>
@@ -10,6 +10,6 @@
     <% end %>
   </div>
   <div class='c-form__field c-form__field--submit'>
-    <%= form.submit t('label.save'), class: 'c-button c-button--primary c-button--full-width', data: { test_id: 'setting_theme_save_button' } %>
+    <%= form.submit t("label.save"), class: "c-button c-button--primary c-button--full-width", data: {test_id: "setting_theme_save_button"} %>
   </div>
 <% end %>

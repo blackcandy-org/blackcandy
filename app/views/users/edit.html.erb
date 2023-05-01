@@ -1,9 +1,9 @@
-<% page_title_tag t('label.update_profile') %>
+<% page_title_tag t("label.update_profile") %>
 
 <% cache @user do %>
   <div class='o-container o-container--extra-narrow'>
-    <h2 class='u-mb-0'><%= t('label.update_profile') %></h2>
-    <hr />
-    <%= render partial: 'users/form', locals: { user: @user } %>
+    <h2 class='u-mb-0'><%= t("label.update_profile") %></h2>
+    <hr>
+    <%= render partial: "users/form", locals: {user: @user} %>
   </div>
 <% end %>

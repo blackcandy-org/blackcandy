@@ -1,14 +1,14 @@
-<div role='table' class='c-table' data-controller='playlist-songs' cols@medium='3' cols@small='2'>
+<div role='table' class='c-table' data-controller='playlist-songs' cols-at-medium='3' cols-at-small='2'>
   <div role='rowgroup'>
     <div role='row'>
-      <div role='columnheader'><%= t('label.name') %></div>
-      <div role='columnheader' class='u-display-none@medium'><%= t('label.artist') %></div>
-      <div role='columnheader' class='u-display-none@medium'><%= t('label.album') %></div>
-      <div role='columnheader' class='u-display-none@small'><%= t('label.duration') %></div>
-      <div role='columnheader'><%= t('label.actions') %></div>
+      <div role='columnheader'><%= t("label.name") %></div>
+      <div role='columnheader' class='u-display-none@medium'><%= t("label.artist") %></div>
+      <div role='columnheader' class='u-display-none@medium'><%= t("label.album") %></div>
+      <div role='columnheader' class='u-display-none@small'><%= t("label.duration") %></div>
+      <div role='columnheader'><%= t("label.actions") %></div>
     </div>
   </div>
   <div role='rowgroup' data-action='turbo:submit-end->playlist-songs#submitEndHandle turbo:submit-start->playlist-songs#submitStartHandle'>
-    <%= render partial: 'songs/song', collection: songs, cached: true %>
+    <%= render partial: "songs/song", collection: songs, cached: true %>
   </div>
 </div>

@@ -5,20 +5,20 @@
         <h1 class='c-card__body__title' data-test-id='playlist_name'><%= @playlist.name %></h1>
         <div class='c-card__body__text'>
           <span id='<%= dom_id(@playlist, :songs_count) %>'><%= @playlist.songs.size %></span>
-          <span><%= t('label.tracks') %></span>
+          <span><%= t("label.tracks") %></span>
           <span>,</span>
           <span id='<%= dom_id(@playlist, :songs_duration) %>' class='u-text-monospace'><%= format_duration(@playlist.songs.sum(:duration)) %></span>
         </div>
         <div class='u-mt-large'>
           <% unless @songs.blank? %>
-            <%= button_to t('label.play_all'), play_favorite_playlist_songs_path, class: 'c-button c-button--primary', form_class: 'u-display-inline-block', form: {'data-controller' => 'native-bridge', 'data-turbo-frame' => 'turbo-playlist', 'data-action' => 'turbo:submit-end->native-bridge#playAll'} %>
-            <%= button_to t('label.clear'), favorite_playlist_songs_path(clear_all: true), class: 'c-button c-button--secondary', form_class: 'u-display-inline-block', method: :delete %>
+            <%= button_to t("label.play_all"), play_favorite_playlist_songs_path, class: "c-button c-button--primary", form_class: "u-display-inline-block", form: {"data-controller" => "native-bridge", "data-turbo-frame" => "turbo-playlist", "data-action" => "turbo:submit-end->native-bridge#playAll"} %>
+            <%= button_to t("label.clear"), favorite_playlist_songs_path(clear_all: true), class: "c-button c-button--secondary", form_class: "u-display-inline-block", method: :delete %>
           <% end %>
         </div>
       </div>
     </div>
     <% if @playlist.present? %>
-      <%= render partial: 'playlists/songs/list', locals: { playlist: @playlist, songs: @songs, pagy: @pagy } %>
+      <%= render partial: "playlists/songs/list", locals: {playlist: @playlist, songs: @songs, pagy: @pagy} %>
     <% end %>
   </div>
 </div>

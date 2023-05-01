@@ -1,12 +1,12 @@
-<%= form_with model: UserSession.new, url: session_path, class: 'c-form', data: { controller: 'form', action: 'turbo:submit-end->form#reset' } do |form| %>
+<%= form_with model: UserSession.new, url: session_path, class: "c-form", data: {controller: "form", action: "turbo:submit-end->form#reset"} do |form| %>
   <div class='c-form__field'>
     <%= form.label :email %>
-    <%= form.email_field :email, value: params[:email], autofocus: true, class: 'c-input' %>
+    <%= form.email_field :email, value: params[:email], autofocus: true, class: "c-input" %>
   </div>
 
   <div class='c-form__field'>
     <%= form.label :password %>
-    <%= form.password_field :password, class: 'c-input' %>
+    <%= form.password_field :password, class: "c-input" %>
   </div>
 
   <div class='c-form__field c-form__field--inline'>
@@ -15,6 +15,6 @@
   </div>
 
   <div class='c-form__field c-form__field--submit'>
-    <%= form.submit t('label.login'), class: 'c-button c-button--primary c-button--full-width' %>
+    <%= form.submit t("label.login"), class: "c-button c-button--primary c-button--full-width" %>
   </div>
 <% end %>

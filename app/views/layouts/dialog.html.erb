@@ -1,9 +1,9 @@
-<%= turbo_frame_tag 'turbo-dialog' do %>
+<%= turbo_frame_tag "turbo-dialog" do %>
   <dialog class='c-dialog' data-controller='dialog'>
     <header class='c-dialog__header o-flex o-flex--justify-between'>
       <h2 class='u-mb-0'><%= yield(:title) %></h2>
       <span class='u-cursor-pointer' data-action='click->dialog#hide'>
-        <%= icon_tag 'close', title: t('label.close') %>
+        <%= icon_tag "close", title: t("label.close") %>
       </span>
     </header>
     <div class='c-dialog__content u-position-relative'>
