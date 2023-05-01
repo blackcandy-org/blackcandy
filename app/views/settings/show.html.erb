@@ -1,10 +1,10 @@
-<% page_title_tag t('label.settings') %>
+<% page_title_tag t("label.settings") %>
 
 <div class='o-container o-container--extra-narrow'>
-  <%= render partial: 'users/settings/form', locals: { user: @user } %>
+  <%= render partial: "users/settings/form", locals: {user: @user} %>
   <% if is_admin? %>
-    <hr />
-    <%= render 'settings/form' %>
+    <hr>
+    <%= render "settings/form" %>
   <% end %>
   <p class='u-text-align-center u-mt-large'>Version: <%= BlackCandy::Version %></p>
 </div>

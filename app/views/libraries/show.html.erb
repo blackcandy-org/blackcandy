@@ -1,39 +1,39 @@
-<% page_title_tag t('label.library'), native: true %>
+<% page_title_tag t("label.library"), native: true %>
 
 <div class='o-container o-container--narrow'>
   <ul class='c-list c-list--grouped'>
     <li class='c-list__item'>
-      <%= link_to albums_path, class: 'o-flex o-flex--justify-between' do %>
+      <%= link_to albums_path, class: "o-flex o-flex--justify-between" do %>
         <span class='o-flex o-flex--align-center u-text-size-large'>
-          <%= icon_tag 'album', class: 'u-mr-tiny' %>
-          <%= t('label.albums') %>
+          <%= icon_tag "album", class: "u-mr-tiny" %>
+          <%= t("label.albums") %>
         </span>
         <span class='c-badge'><%= @albums_count %></span>
       <% end %>
     </li>
     <li class='c-list__item'>
-      <%= link_to artists_path, class: 'o-flex o-flex--justify-between' do %>
+      <%= link_to artists_path, class: "o-flex o-flex--justify-between" do %>
         <span class='o-flex o-flex--align-center u-text-size-large'>
-          <%= icon_tag 'mic', class: 'u-mr-tiny' %>
-          <%= t('label.artists') %>
+          <%= icon_tag "mic", class: "u-mr-tiny" %>
+          <%= t("label.artists") %>
         </span>
         <span class='c-badge'><%= @artists_count %></span>
       <% end %>
     </li>
     <li class='c-list__item'>
-      <%= link_to playlists_path, class: 'o-flex o-flex--justify-between' do %>
+      <%= link_to playlists_path, class: "o-flex o-flex--justify-between" do %>
         <span class='o-flex o-flex--align-center u-text-size-large'>
-          <%= icon_tag 'queue-music', class: 'u-mr-tiny' %>
-          <%= t('label.playlists') %>
+          <%= icon_tag "queue-music", class: "u-mr-tiny" %>
+          <%= t("label.playlists") %>
         </span>
         <span class='c-badge'><%= @playlists_count %></span>
       <% end %>
     </li>
     <li class='c-list__item'>
-      <%= link_to songs_path, class: 'o-flex o-flex--justify-between' do %>
+      <%= link_to songs_path, class: "o-flex o-flex--justify-between" do %>
         <span class='o-flex o-flex--align-center u-text-size-large'>
-          <%= icon_tag 'music-note', class: 'u-mr-tiny' %>
-          <%= t('label.songs') %>
+          <%= icon_tag "music-note", class: "u-mr-tiny" %>
+          <%= t("label.songs") %>
         </span>
         <span class='c-badge'><%= @songs_count %></span>
       <% end %>

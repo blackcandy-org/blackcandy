@@ -12,6 +12,10 @@ unless Rails.env.production?
       abort("rails lint:css failed") unless system("yarn run stylelint 'app/assets/stylesheets/**/*.scss'")
     end
 
-    task all: %w[standard js css]
+    task :erb do
+      abort("rails lint:erb failed") unless system("bundle exec erblint --lint-all")
+    end
+
+    task all: %w[standard erb js css]
   end
 end

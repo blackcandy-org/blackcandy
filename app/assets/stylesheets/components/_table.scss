@@ -47,10 +47,10 @@
 
 @include responsive.media-query using ($breakpoint) {
   @if $breakpoint == "medium" {
-    .c-table[role="table"][cols\@medium="3"] { --grid-tc: repeat(3, auto); }
+    .c-table[role="table"][cols-at-medium="3"] { --grid-tc: repeat(3, auto); }
   }
 
   @if $breakpoint == "small" {
-    .c-table[role="table"][cols\@small="2"] { --grid-tc: repeat(2, auto); }
+    .c-table[role="table"][cols-at-small="2"] { --grid-tc: repeat(2, auto); }
   }
 }

@@ -1,10 +1,10 @@
 <div class='o-grid__item c-card c-card--border' data-test-id='playlist'>
   <div class='c-card__body'>
-    <%= link_to playlist_songs_path(playlist), class: 'o-flex o-flex--align-center' do %>
+    <%= link_to playlist_songs_path(playlist), class: "o-flex o-flex--align-center" do %>
       <% if playlist.favorite? %>
-        <%= icon_tag('heart', class: 'u-text-color-red') %>
+        <%= icon_tag("heart", class: "u-text-color-red") %>
       <% else %>
-        <%= icon_tag('queue-music') %>
+        <%= icon_tag("queue-music") %>
       <% end %>
       <span class='u-text-truncate u-mr-narrow u-ml-tiny' data-test-id='playlist_name'><%= playlist.name %></span>
     <% end %>

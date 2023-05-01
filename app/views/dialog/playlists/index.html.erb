@@ -1,7 +1,7 @@
-<% page_title_tag t('label.add_to_playlist'), native: true %>
+<% page_title_tag t("label.add_to_playlist"), native: true %>
 
 <% if @playlists.present? %>
-  <%= form_tag nil, 'data-turbo-frame': '_top', 'data-turbo-action': ('replace' if turbo_native?) do %>
+  <%= form_tag nil, "data-turbo-frame": "_top", "data-turbo-action": ("replace" if turbo_native?) do %>
     <%= hidden_field_tag :song_id, params[:song_id] %>
 
     <%# Because this page in turbo native doesn't render as a turbo frame, %>
@@ -10,11 +10,11 @@
     <%# And we need a way to save the referer_url as parmas, %>
     <%# so we can redirect to the referer_url later. %>
     <%= hidden_field_tag :referer_url, params[:referer_url] if turbo_native? %>
-    <%= turbo_frame_tag "turbo-dialog-playlists-page-#{@pagy.page}", class: 'c-list', data: { action: 'click->dialog#hide' }, target: '_top' do %>
-      <%= render partial: 'dialog/playlists/playlist', collection: @playlists, cached: true %>
+    <%= turbo_frame_tag "turbo-dialog-playlists-page-#{@pagy.page}", class: "c-list", data: {action: "click->dialog#hide"}, target: "_top" do %>
+      <%= render partial: "dialog/playlists/playlist", collection: @playlists, cached: true %>
 
       <% if @pagy.next %>
-        <%= turbo_frame_tag "turbo-dialog-playlists-page-#{@pagy.next}", src: pagy_url_for(@pagy, @pagy.next), loading: 'lazy', class: 'u-my-small', data: { controller: 'element', action: 'turbo:frame-render->element#replaceWithChildren' }  do %>
+        <%= turbo_frame_tag "turbo-dialog-playlists-page-#{@pagy.next}", src: pagy_url_for(@pagy, @pagy.next), loading: "lazy", class: "u-my-small", data: {controller: "element", action: "turbo:frame-render->element#replaceWithChildren"}  do %>
           <div class='o-flex o-flex--justify-center'>
             <%= loader_tag %>
           </div>

@@ -1,17 +1,17 @@
-<%= form_with model: user, class: 'c-form', id: 'turbo-user-form' do |form| %>
+<%= form_with model: user, class: "c-form", id: "turbo-user-form" do |form| %>
   <div class='c-form__field'>
     <%= form.label :email %>
-    <%= form.email_field :email, class: 'c-input' %>
+    <%= form.email_field :email, class: "c-input" %>
   </div>
   <div class='c-form__field'>
     <%= form.label :password %>
-    <%= form.password_field :password, class: 'c-input' %>
+    <%= form.password_field :password, class: "c-input" %>
   </div>
   <div class='c-form__field'>
     <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, class: 'c-input' %>
+    <%= form.password_field :password_confirmation, class: "c-input" %>
   </div>
   <div class='c-form__field c-form__field--submit'>
-    <%= form.submit t('label.save'), class: 'c-button c-button--primary c-button--full-width' %>
+    <%= form.submit t("label.save"), class: "c-button c-button--primary c-button--full-width" %>
   </div>
 <% end %>

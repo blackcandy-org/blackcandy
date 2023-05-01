@@ -1,0 +1,26 @@
+EnableDefaultLinters: true
+
+exclude:
+  - "vendor/bundle/**/*"
+
+linters:
+  ErbSafety:
+    enabled: true
+  PartialInstanceVariable:
+    enabled: true
+  Rubocop:
+    enabled: true
+    rubocop_config:
+      require: standard
+      inherit_gem:
+        standard: config/base.yml
+      Layout/ArgumentAlignment:
+        Enabled: false
+      Layout/FirstArgumentIndentation:
+        Enabled: false
+      Layout/InitialIndentation:
+        Enabled: false
+      Layout/TrailingEmptyLines:
+        Enabled: false
+      Lint/UselessAssignment:
+        Enabled: false

@@ -9,13 +9,13 @@
     <% end %>
     <title><%= content_for?(:title) ? yield(:title) : "Black Candy" %></title>
     <%= csrf_meta_tags %>
-    <%= favicon_link_tag 'link_icon.png', type: 'image/png' %>
+    <%= favicon_link_tag "link_icon.png", type: "image/png" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body data-color-scheme='<%= Current.user&.theme || cookies[:theme].presence || User::DEFAULT_THEME  %>'>
+  <body data-color-scheme='<%= Current.user&.theme || cookies[:theme].presence || User::DEFAULT_THEME %>'>
     <%= content_for?(:body) ? yield(:body) : yield %>
-    <%= render 'shared/icons' %>
+    <%= render "shared/icons" %>
   </body>
 </html>
