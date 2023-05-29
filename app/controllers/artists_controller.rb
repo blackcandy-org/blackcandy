@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 class ArtistsController < ApplicationController
-  layout proc { "dialog" unless turbo_native? }, only: :edit
-
-  before_action :require_admin, only: [:edit, :update]
+  before_action :require_admin, only: [:update]
   before_action :find_artist, except: [:index]
   before_action :get_sort_options, only: [:index]
 
@@ -17,9 +15,6 @@ class ArtistsController < ApplicationController
     @appears_on_albums = @artist.appears_on_albums.load_async
 
     @artist.attach_image_from_discogs
-  end
-
-  def edit
   end
 
   def update

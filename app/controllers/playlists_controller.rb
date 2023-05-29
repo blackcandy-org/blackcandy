@@ -1,20 +1,11 @@
 # frozen_string_literal: true
 
 class PlaylistsController < ApplicationController
-  layout proc { "dialog" unless turbo_native? }, only: [:new, :edit]
-
-  before_action :find_playlist, only: [:edit, :destroy, :update]
+  before_action :find_playlist, only: [:destroy, :update]
   before_action :get_sort_options, only: [:index]
 
   def index
     @pagy, @playlists = pagy(Current.user.all_playlists.sort_records(*sort_params))
-  end
-
-  def new
-    @playlist = Playlist.new
-  end
-
-  def edit
   end
 
   def create

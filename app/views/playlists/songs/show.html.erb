@@ -15,7 +15,7 @@
           <% unless @songs.blank? %>
             <%= button_to t("label.play_all"), play_playlist_songs_path(@playlist), class: "c-button c-button--primary", form_class: "u-display-inline-block", form: {"data-controller" => "native-bridge", "data-turbo-frame" => "turbo-playlist", "data-action" => "turbo:submit-end->native-bridge#playAll"} %>
           <% end %>
-          <%= link_to t("label.edit"), edit_playlist_path(@playlist), data: {turbo_frame: ("turbo-dialog" unless turbo_native?)}, class: "c-button c-button--secondary" %>
+          <%= link_to t("label.edit"), edit_dialog_playlist_path(@playlist), data: {turbo_frame: ("turbo-dialog" unless turbo_native?)}, class: "c-button c-button--secondary" %>
 
           <details class='c-dropdown' data-test-id='playlist_menu'>
             <summary>

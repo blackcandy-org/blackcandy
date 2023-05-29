@@ -12,7 +12,7 @@
       </div>
       <% if is_admin? %>
         <div class='u-mt-large'>
-          <%= link_to t("label.edit"), edit_artist_path(@artist), data: {turbo_frame: ("turbo-dialog" unless turbo_native?)}, class: "c-button c-button--secondary u-mt-large" %>
+          <%= link_to t("label.edit"), edit_dialog_artist_path(@artist), data: {turbo_frame: ("turbo-dialog" unless turbo_native?)}, class: "c-button c-button--secondary u-mt-large" %>
         </div>
       <% end %>
     </div>
