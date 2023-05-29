@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
-class Dialog::ArtistsController < DialogController
-  before_action :require_admin
+module Dialog
+  class ArtistsController < DialogController
+    before_action :require_admin
 
-  def edit
-    @artist = Artist.find(params[:id])
+    def edit
+      @artist = Artist.find(params[:id])
+    end
   end
 end
