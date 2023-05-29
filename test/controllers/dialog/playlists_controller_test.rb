@@ -9,4 +9,21 @@ class Dialog::PlaylistsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
   end
+
+  test "should get new playlist" do
+    login
+    get new_dialog_playlist_path
+
+    assert_response :success
+  end
+
+  test "should edit playlist" do
+    playlist = playlists(:playlist1)
+    user = playlist.user
+
+    login user
+    get edit_dialog_playlist_path(playlist)
+
+    assert_response :success
+  end
 end

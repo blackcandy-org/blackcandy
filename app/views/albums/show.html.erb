@@ -14,7 +14,7 @@
       <div class='u-mt-large'>
         <%= button_to t("label.play_all"), play_album_path(@album), form_class: "u-display-inline-block", class: "c-button c-button--primary", form: {"data-controller" => "native-bridge", "data-turbo-frame" => "turbo-playlist", "data-action" => "turbo:submit-end->native-bridge#playAll"} %>
         <% if is_admin? %>
-          <%= link_to t("label.edit"), edit_album_path(@album), data: {turbo_frame: ("turbo-dialog" unless turbo_native?)}, class: "c-button c-button--secondary u-ml-tiny" %>
+          <%= link_to t("label.edit"), edit_dialog_album_path(@album), data: {turbo_frame: ("turbo-dialog" unless turbo_native?)}, class: "c-button c-button--secondary u-ml-tiny" %>
         <% end %>
       </div>
     </div>

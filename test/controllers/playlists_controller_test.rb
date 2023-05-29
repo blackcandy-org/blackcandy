@@ -56,21 +56,4 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
 
     assert_equal playlists_count - 1, Playlist.count
   end
-
-  test "should get new playlist" do
-    login
-    get new_playlist_path
-
-    assert_response :success
-  end
-
-  test "should edit playlist" do
-    playlist = playlists(:playlist1)
-    user = playlist.user
-
-    login user
-    get edit_playlist_path(playlist)
-
-    assert_response :success
-  end
 end

@@ -11,15 +11,15 @@ Rails.application.routes.draw do
   resource :setting, only: [:show, :update]
   resource :library, only: [:show]
 
-  resources :artists, only: [:index, :show, :edit, :update]
+  resources :artists, only: [:index, :show, :update]
   resources :songs, only: [:index]
-  resources :albums, only: [:index, :show, :edit, :update], concerns: :playable
+  resources :albums, only: [:index, :show, :update], concerns: :playable
 
   resources :users, except: [:show] do
     resource :setting, only: [:update], module: "users"
   end
 
-  resources :playlists, except: [:show] do
+  resources :playlists, only: [:index, :create, :update, :destroy] do
     resource :songs, only: [:show, :create, :destroy, :update], module: "playlists", concerns: :playable
   end
 
@@ -32,7 +32,9 @@ Rails.application.routes.draw do
   end
 
   namespace :dialog do
-    resources :playlists, only: [:index]
+    resources :playlists, only: [:index, :new, :edit]
+    resources :artists, only: [:edit]
+    resources :albums, only: [:edit]
   end
 
   get "/search", to: "search#index", as: "search"

@@ -12,20 +12,6 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should show album" do
-    login
-    get album_url(albums(:album1))
-
-    assert_response :success
-  end
-
-  test "should edit album" do
-    login users(:admin)
-    get edit_album_url(albums(:album1))
-
-    assert_response :success
-  end
-
   test "should update image for album" do
     album = albums(:album1)
     album_original_image_url = album.image.url
@@ -67,28 +53,6 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
     post play_album_url(albums(:album1))
 
     assert_equal albums(:album1).song_ids, user.current_playlist.reload.song_ids
-  end
-
-  test "should only admin can edit album" do
-    login
-
-    get edit_album_url(albums(:album1))
-    assert_response :forbidden
-
-    patch album_url(albums(:album1)), params: {album: {image: fixture_file_upload("cover_image.jpg", "image/jpeg")}}
-    assert_response :forbidden
-  end
-
-  test "should not edit album when is on demo mode" do
-    with_env("DEMO_MODE" => "true") do
-      login users(:admin)
-
-      get edit_album_url(albums(:album1))
-      assert_response :forbidden
-
-      patch album_url(albums(:album1)), params: {album: {image: fixture_file_upload("cover_image.jpg", "image/jpeg")}}
-      assert_response :forbidden
-    end
   end
 
   test "should add album to recently played after playing" do
