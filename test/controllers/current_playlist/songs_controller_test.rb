@@ -37,4 +37,13 @@ class CurrentPlaylistSongsControllerTest < ActionDispatch::IntegrationTest
     post current_playlist_songs_url, params: {song_id: 2}, xhr: true
     assert flash[:error].present?
   end
+
+  test "should only render flash when add song in turbo native" do
+    post current_playlist_songs_url, params: {song_id: 3}, headers: {"User-Agent" => "Turbo Native iOS"}
+    assert flash[:success].present?
+
+    @playlist.songs.clear
+    post current_playlist_songs_url, params: {song_id: 1}, headers: {"User-Agent" => "Turbo Native iOS"}
+    assert flash[:success].present?
+  end
 end
