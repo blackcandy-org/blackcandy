@@ -39,6 +39,9 @@ export default class extends Controller {
       case 'check_before_playing':
         this.#checkBeforePlaying(event)
         break
+      case 'check_current_song':
+        this.#checkCurrentSong(event)
+        break
     }
   }
 
@@ -83,6 +86,16 @@ export default class extends Controller {
     if (playlistIndex !== -1) {
       event.detail.formSubmission.stop()
       this.player.skipTo(playlistIndex)
+    } else {
+      this.#checkCurrentSong(event)
+    }
+  }
+
+  #checkCurrentSong (event) {
+    const currentSongId = this.player.currentSong.id
+
+    if (currentSongId !== undefined) {
+      event.detail.formSubmission.fetchRequest.body.append('current_song_id', currentSongId)
     }
   }
 

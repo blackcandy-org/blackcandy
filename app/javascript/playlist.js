@@ -15,9 +15,7 @@ class Playlist {
 
   pushSong (songId, toTheLast = false) {
     const song = { id: Number(songId) }
-    const playerCurrentIndex = App.player.currentIndex
-
-    let pushIndex = playerCurrentIndex === 0 ? 0 : playerCurrentIndex + 1
+    let pushIndex = this.#indexOfSongs(this.orderedSongs, App.player.currentSong.id) + 1
 
     if (toTheLast) {
       pushIndex = this.length
