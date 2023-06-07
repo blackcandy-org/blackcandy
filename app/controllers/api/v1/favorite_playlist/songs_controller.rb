@@ -8,8 +8,6 @@ module Api
 
       def create
         @playlist.playlists_songs.create(song_id: @song.id, position: 1)
-      rescue ActiveRecord::RecordNotUnique
-        render json: {error: "RecordNotUnique", message: t("error.already_in_playlist")}, status: :bad_request
       end
 
       def destroy

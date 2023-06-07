@@ -74,7 +74,7 @@ Rails.application.routes.draw do
       resources :transcoded_stream, only: [:new]
 
       namespace :current_playlist do
-        resource :songs, only: [:show, :destroy, :update]
+        resource :songs, only: [:show, :destroy, :update, :create]
       end
 
       namespace :favorite_playlist do

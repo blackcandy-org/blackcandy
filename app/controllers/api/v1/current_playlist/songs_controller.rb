@@ -31,6 +31,17 @@ module Api
         playlists_song.update(position: to_position)
       end
 
+      def create
+        @song = Song.find(params[:song_id])
+
+        if params[:location] == "last"
+          @playlist.songs.push(@song)
+        else
+          current_song_position = @playlist.playlists_songs.find_by(song_id: params[:current_song_id])&.position.to_i
+          @playlist.playlists_songs.create(song_id: @song.id, position: current_song_position + 1)
+        end
+      end
+
       private
 
       def find_playlist
