@@ -78,9 +78,15 @@ export default class extends Controller {
   }
 
   #checkBeforePlaying (event) {
-    if (App.nativeBridge.isTurboNative) { return }
-
     const { songId } = event.target.closest('[data-song-id]').dataset
+
+    if (App.nativeBridge.isTurboNative) {
+      event.detail.formSubmission.stop()
+      App.nativeBridge.playSong(songId)
+
+      return
+    }
+
     const playlistIndex = this.player.playlist.indexOf(songId)
 
     if (playlistIndex !== -1) {
@@ -102,11 +108,7 @@ export default class extends Controller {
   #play (target) {
     const { songId } = target.closest('[data-song-id]').dataset
 
-    if (App.nativeBridge.isTurboNative) {
-      App.nativeBridge.playSong(songId)
-    } else {
-      this.player.skipTo(this.player.playlist.pushSong(songId))
-    }
+    this.player.skipTo(this.player.playlist.pushSong(songId))
   }
 
   #delete (target) {
