@@ -39,6 +39,9 @@ export default class extends Controller {
       case 'check_before_playing':
         this.#checkBeforePlaying(event)
         break
+      case 'check_current_song':
+        this.#checkCurrentSong(event)
+        break
     }
   }
 
@@ -75,25 +78,37 @@ export default class extends Controller {
   }
 
   #checkBeforePlaying (event) {
-    if (App.nativeBridge.isTurboNative) { return }
-
     const { songId } = event.target.closest('[data-song-id]').dataset
+
+    if (App.nativeBridge.isTurboNative) {
+      event.detail.formSubmission.stop()
+      App.nativeBridge.playSong(songId)
+
+      return
+    }
+
     const playlistIndex = this.player.playlist.indexOf(songId)
 
     if (playlistIndex !== -1) {
       event.detail.formSubmission.stop()
       this.player.skipTo(playlistIndex)
+    } else {
+      this.#checkCurrentSong(event)
+    }
+  }
+
+  #checkCurrentSong (event) {
+    const currentSongId = this.player.currentSong.id
+
+    if (currentSongId !== undefined) {
+      event.detail.formSubmission.fetchRequest.body.append('current_song_id', currentSongId)
     }
   }
 
   #play (target) {
     const { songId } = target.closest('[data-song-id]').dataset
 
-    if (App.nativeBridge.isTurboNative) {
-      App.nativeBridge.playSong(songId)
-    } else {
-      this.player.skipTo(this.player.playlist.pushSong(songId))
-    }
+    this.player.skipTo(this.player.playlist.pushSong(songId))
   }
 
   #delete (target) {

@@ -1,11 +1,11 @@
 <% if params[:location] == 'last' %>
   <%= turbo_stream.after "#{dom_id(@playlist)}_#{dom_id(@playlist.songs.second_to_last)}", partial: 'playlists/songs/song', locals: { song: @song, playlist: @playlist } %>
 <% else %>
-  <% if @current_song.nil? %>
+  <% if @current_song_position.zero? %>
     <%= turbo_stream.before "#{dom_id(@playlist)}_#{dom_id(@playlist.songs.second)}", partial: 'playlists/songs/song', locals: { song: @song, playlist: @playlist } %>
   <% else %>
     <%# add song next to the current_song %>
-    <%= turbo_stream.after "#{dom_id(@playlist)}_#{dom_id(@current_song)}", partial: 'playlists/songs/song', locals: { song: @song, playlist: @playlist } %>
+    <%= turbo_stream.after "#{dom_id(@playlist)}_song_#{params[:current_song_id]}", partial: 'playlists/songs/song', locals: { song: @song, playlist: @playlist } %>
   <% end %>
 <% end %>
 

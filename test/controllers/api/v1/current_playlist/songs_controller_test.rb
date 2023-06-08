@@ -36,4 +36,40 @@ class Api::V1::CurrentPlaylist::SongsControllerTest < ActionDispatch::Integratio
 
     assert_equal [2, 1, 3], @playlist.reload.song_ids
   end
+
+  test "should add song next to the current song when current song did set" do
+    post api_v1_current_playlist_songs_url, params: {song_id: 4, current_song_id: 1}, as: :json, headers: api_token_header(@user)
+    response = @response.parsed_body
+
+    assert_response :success
+    assert_equal 4, response["id"]
+    assert_equal [1, 4, 2, 3], @playlist.reload.song_ids
+  end
+
+  test "should add song to the first position when current song did not set" do
+    post api_v1_current_playlist_songs_url, params: {song_id: 4}, as: :json, headers: api_token_header(@user)
+    response = @response.parsed_body
+
+    assert_response :success
+    assert_equal 4, response["id"]
+    assert_equal [4, 1, 2, 3], @playlist.reload.song_ids
+  end
+
+  test "should add song to the last position when set location param to last" do
+    post api_v1_current_playlist_songs_url, params: {song_id: 4, location: "last"}, as: :json, headers: api_token_header(@user)
+    response = @response.parsed_body
+
+    assert_response :success
+    assert_equal 4, response["id"]
+    assert_equal [1, 2, 3, 4], @playlist.reload.song_ids
+  end
+
+  test "should not add song to playlist if already in playlist" do
+    post api_v1_current_playlist_songs_url, params: {song_id: 1}, as: :json, headers: api_token_header(@user)
+    response = @response.parsed_body
+
+    assert_response :bad_request
+    assert_equal "RecordNotUnique", response["error"]
+    assert_not_empty response["message"]
+  end
 end

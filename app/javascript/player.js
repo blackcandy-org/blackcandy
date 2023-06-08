@@ -1,18 +1,12 @@
 import { Howl } from 'howler'
 import { fetchRequest, dispatchEvent } from './helper'
 import Playlist from './playlist'
-import Cookies from 'js-cookie'
 
 class Player {
   currentIndex = 0
   currentSong = {}
   isPlaying = false
   playlist = new Playlist()
-
-  constructor () {
-    // Remove current song id from cookies if there is no current playing song
-    Cookies.remove('current_song_id')
-  }
 
   playOn (index) {
     if (this.playlist.length === 0) { return }
@@ -46,9 +40,6 @@ class Player {
     } else {
       song.howl.play()
     }
-
-    // keep track id of the current playing song
-    Cookies.set('current_song_id', song.id)
   }
 
   play () {
