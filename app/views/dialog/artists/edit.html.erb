@@ -1,4 +1,4 @@
-<% page_title_tag t("label.edit_artist"), native: true %>
+<% page_title_tag t("label.edit_artist") %>
 
 <%= form_with model: @artist, data: {turbo_frame: "_top", turbo_action: ("replace" if turbo_native?), test_id: "artist_edit_form"}, class: "c-form" do |form| %>
   <div class='c-form__field'>

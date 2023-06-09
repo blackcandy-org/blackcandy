@@ -57,9 +57,11 @@ module ApplicationHelper
     super(playlist, options)
   end
 
-  def page_title_tag(title, native: false)
-    content_for :title, title
-    content_for :native_title, title if native
+  def page_title_tag(title, show_on_native: true)
+    title_suffix = " - #{t(:app_name)}"
+    title = "#{title}#{title_suffix unless turbo_native?}"
+
+    content_for(:title, title) unless turbo_native? && !show_on_native
   end
 
   def current_url

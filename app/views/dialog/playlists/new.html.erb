@@ -1,4 +1,4 @@
-<% page_title_tag t("label.create_playlist"), native: true %>
+<% page_title_tag t("label.create_playlist") %>
 
 <%= form_with model: @playlist, class: "c-form", data: {turbo_frame: "_top", turbo_action: ("replace" if turbo_native?)} do |form| %>
   <div class='c-form__field'>

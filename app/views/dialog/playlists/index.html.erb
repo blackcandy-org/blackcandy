@@ -1,4 +1,4 @@
-<% page_title_tag t("label.add_to_playlist"), native: true %>
+<% page_title_tag t("label.add_to_playlist") %>
 
 <% if @playlists.present? %>
   <%= form_tag nil, "data-turbo-frame": "_top", "data-turbo-action": ("replace" if turbo_native?) do %>
