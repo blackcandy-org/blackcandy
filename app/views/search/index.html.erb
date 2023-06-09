@@ -1,4 +1,4 @@
-<% page_title_tag t("label.search_results"), native: true %>
+<% page_title_tag t("label.search_results") %>
 
 <% if [@albums, @artists, @songs, @playlists].any?(&:present?) %>
   <h1><%= t("text.search_results", query: params[:query]) %></h1>

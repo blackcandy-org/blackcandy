@@ -29,10 +29,6 @@ class NativeBridge {
     }
   }
 
-  get nativeTitle () {
-    return document.querySelector('meta[data-native-title]').dataset.nativeTitle
-  }
-
   get isTurboNative () {
     return this.#isTurboiOS
   }

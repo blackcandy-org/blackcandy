@@ -30,6 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  app_name: 'Black Candy'
   label:
     login: 'Login'
     logout: 'Logout'
