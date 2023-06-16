@@ -27,6 +27,10 @@ class Song < ApplicationRecord
     MediaFile.format(file_path)
   end
 
+  def lossless?
+    bit_depth.present?
+  end
+
   private
 
   def remove_transcode_cache

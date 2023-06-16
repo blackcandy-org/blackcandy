@@ -26,7 +26,7 @@ gem "puma", "~> 6.0.2"
 gem "jbuilder", "~> 2.11.5"
 
 # Get meta data from audio file
-gem "wahwah", "~> 1.3.0"
+gem "wahwah", "~> 1.4.0"
 
 # Use sidekiq for backgroud job
 gem "sidekiq", "~> 7.0.0"

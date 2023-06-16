@@ -40,17 +40,10 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal "m4a", MediaFile.format(file_fixture("artist1_album1.m4a"))
   end
 
-  test "should get image from media file" do
-    cover_image_binary = file_fixture("cover_image.jpg").read.force_encoding("BINARY").strip
-
-    %w[artist1_album2.mp3 artist1_album1.m4a artist1_album1.flac artist2_album3.wav].each do |file|
-      assert_equal cover_image_binary, MediaFile.image(file_fixture(file))[:data].strip
-      assert_equal "jpeg", MediaFile.image(file_fixture(file))[:format]
-    end
-  end
-
   test "should get tag info from mp3 file" do
     tag_info = MediaFile.send(:get_tag_info, file_fixture("artist1_album2.mp3"))
+    tag_image_binary = tag_info[:image].read.force_encoding("BINARY").strip
+    cover_image_binary = file_fixture("cover_image.jpg").read.force_encoding("BINARY").strip
 
     assert_equal "mp3_sample", tag_info[:name]
     assert_equal "album2", tag_info[:album_name]
@@ -60,10 +53,13 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 8, tag_info[:duration]
     assert_equal 1984, tag_info[:year]
     assert_equal "Rock", tag_info[:genre]
+    assert_equal cover_image_binary, tag_image_binary
   end
 
   test "should get tag info from flac file" do
     tag_info = MediaFile.send(:get_tag_info, file_fixture("artist1_album1.flac"))
+    tag_image_binary = tag_info[:image].read.force_encoding("BINARY").strip
+    cover_image_binary = file_fixture("cover_image.jpg").read.force_encoding("BINARY").strip
 
     assert_equal "flac_sample", tag_info[:name]
     assert_equal "album1", tag_info[:album_name]
@@ -73,6 +69,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 8, tag_info[:duration]
     assert_equal 1984, tag_info[:year]
     assert_equal "Rock", tag_info[:genre]
+    assert_equal cover_image_binary, tag_image_binary
   end
 
   test "should get tag info from ogg file" do
@@ -90,6 +87,8 @@ class MediaFileTest < ActiveSupport::TestCase
 
   test "should get tag info from wav file" do
     tag_info = MediaFile.send(:get_tag_info, file_fixture("artist2_album3.wav"))
+    tag_image_binary = tag_info[:image].read.force_encoding("BINARY").strip
+    cover_image_binary = file_fixture("cover_image.jpg").read.force_encoding("BINARY").strip
 
     assert_equal "wav_sample", tag_info[:name]
     assert_equal "album3", tag_info[:album_name]
@@ -99,6 +98,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 8, tag_info[:duration]
     assert_equal 1984, tag_info[:year]
     assert_equal "Rock", tag_info[:genre]
+    assert_equal cover_image_binary, tag_image_binary
   end
 
   test "should get tag info from opus file" do
@@ -116,6 +116,8 @@ class MediaFileTest < ActiveSupport::TestCase
 
   test "should get tag info from m4a file" do
     tag_info = MediaFile.send(:get_tag_info, file_fixture("artist1_album1.m4a"))
+    tag_image_binary = tag_info[:image].read.force_encoding("BINARY").strip
+    cover_image_binary = file_fixture("cover_image.jpg").read.force_encoding("BINARY").strip
 
     assert_equal "m4a_sample", tag_info[:name]
     assert_equal "album1", tag_info[:album_name]
@@ -125,6 +127,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 8, tag_info[:duration]
     assert_equal 1984, tag_info[:year]
     assert_equal "Rock", tag_info[:genre]
+    assert_equal cover_image_binary, tag_image_binary
   end
 
   test "should get tag info from oga file" do

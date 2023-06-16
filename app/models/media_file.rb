@@ -13,13 +13,6 @@ class MediaFile
       File.extname(file_path).downcase.delete(".")
     end
 
-    def image(file_path)
-      tag = WahWah.open(file_path)
-      image = tag.images.first
-
-      {data: image[:data], format: MIME::Type.new(image[:mime_type]).sub_type} if image
-    end
-
     def file_info(file_path)
       tag_info = get_tag_info(file_path)
       tag_info.merge(
@@ -36,6 +29,14 @@ class MediaFile
 
     private
 
+    def extract_image_from(tag)
+      image = tag.images.first
+      return unless image.present?
+
+      image_format = MIME::Type.new(image[:mime_type]).sub_type
+      CarrierWaveStringIO.new("cover.#{image_format}", image[:data])
+    end
+
     def get_tag_info(file_path)
       tag = WahWah.open(file_path)
 
@@ -46,7 +47,9 @@ class MediaFile
         albumartist_name: tag.albumartist.presence,
         genre: tag.genre.presence,
         tracknum: tag.track,
-        duration: tag.duration.round
+        duration: tag.duration.round,
+        bit_depth: tag.bit_depth,
+        image: extract_image_from(tag)
       }.tap do |info|
         info[:year] = begin
           Date.strptime(tag.year, "%Y").year

@@ -63,24 +63,24 @@ class Media
 
       album = if various_artist?(file_info)
         various_artist = Artist.find_or_create_by!(is_various: true)
-        Album.find_or_create_by!(artist: various_artist, name: file_info[:album_name])
+        Album.find_or_initialize_by(artist: various_artist, name: file_info[:album_name])
       else
-        Album.find_or_create_by!(artist: artist, name: file_info[:album_name])
+        Album.find_or_initialize_by(artist: artist, name: file_info[:album_name])
       end
 
-      album.update_column(:year, file_info[:year]) if file_info[:year].present? && album.year.blank?
-      album.update_column(:genre, file_info[:genre]) if file_info[:genre].present? && album.genre.blank?
+      album.update!(album_info(file_info))
+      album.update!(image: file_info[:image]) unless album.has_image?
 
-      # Attach image from file to the album.
-      AttachAlbumImageFromFileJob.perform_later(album, file_info[:file_path]) unless album.has_image?
-
-      Song.find_or_create_by!(md5_hash: file_info[:md5_hash]) do |item|
-        item.attributes = song_info(file_info).merge(album: album, artist: artist)
-      end
+      song = Song.find_or_initialize_by(md5_hash: file_info[:md5_hash])
+      song.update!(song_info(file_info).merge(album: album, artist: artist))
     end
 
     def song_info(file_info)
-      file_info.slice(:name, :tracknum, :duration, :file_path, :file_path_hash)
+      file_info.slice(:name, :tracknum, :duration, :file_path, :file_path_hash, :bit_depth).compact
+    end
+
+    def album_info(file_info)
+      file_info.slice(:year, :genre).compact
     end
 
     def various_artist?(file_info)
