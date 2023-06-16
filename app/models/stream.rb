@@ -3,7 +3,6 @@
 class Stream
   extend Forwardable
 
-  LOSSLESS_FORMATS = MediaFile::SUPPORTED_FORMATS & %w[flac wav]
   SUPPORTED_FORMATS = MediaFile::SUPPORTED_FORMATS - %w[wma]
   SAFARI_SUPPORTED_FORMATS = MediaFile::SUPPORTED_FORMATS - %w[ogg opus oga]
   IOS_SUPPORTED_FORMATS = MediaFile::SUPPORTED_FORMATS - %w[ogg opus oga]
