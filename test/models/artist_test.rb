@@ -34,8 +34,9 @@ class ArtistTest < ActiveSupport::TestCase
   end
 
   test "should get sort options" do
-    assert_equal %w[name created_at], Artist.sort_options[:sorts]
-    assert_equal %w[name asc], Artist.sort_options[:default]
+    assert_equal %w[name created_at], Artist::SORT_OPTION.values
+    assert_equal "name", Artist::SORT_OPTION.default.name
+    assert_equal "asc", Artist::SORT_OPTION.default.direction
   end
 
   test "should use default sort when use invalid sort value" do

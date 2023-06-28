@@ -4,14 +4,14 @@ module Sortable
   extend ActiveSupport::Concern
 
   included do
-    const_set(:VALID_SORTS, [])
+    const_set(:SORT_OPTION, SortOption.new)
   end
 
   class_methods do
     def sort_by(*attributes)
       attributes.each do |attr|
         scope "sort_by_#{attr}", ->(direction) { order(attr => direction) }
-        self::VALID_SORTS.push(attr.to_s)
+        self::SORT_OPTION.push(attr.to_s)
       end
     end
 
@@ -25,25 +25,21 @@ module Sortable
             joins(name).order("#{name}.#{attr}" => direction)
           }
 
-          self::VALID_SORTS.push(sort_name.to_s)
+          self::SORT_OPTION.push(sort_name.to_s)
         end
       end
     end
 
     def sort_records(sort_name = "", sort_direction = "")
-      sort_direction = (sort_direction.to_s == "desc") ? "desc" : "asc"
-      return public_send("sort_by_#{sort_name}", sort_direction) if self::VALID_SORTS.include?(sort_name.to_s)
+      sort_value = SortValue.new(sort_name, sort_direction)
+      return public_send("sort_by_#{sort_value.name}", sort_value.direction) if self::SORT_OPTION.include?(sort_value.name.to_s)
 
-      default_sort_name, default_sort_direction = default_sort
-      public_send("sort_by_#{default_sort_name}", default_sort_direction)
+      default_sort = self::SORT_OPTION.default
+      public_send("sort_by_#{default_sort.name}", default_sort.direction)
     end
 
-    def default_sort
-      const_defined?(:DEFAULT_SORT) ? self::DEFAULT_SORT : [self::VALID_SORTS.first, "asc"]
-    end
-
-    def sort_options
-      {sorts: self::VALID_SORTS, default: default_sort}
+    def default_sort(sort_name, sort_direction)
+      self::SORT_OPTION.set_default(sort_name, sort_direction)
     end
   end
 end

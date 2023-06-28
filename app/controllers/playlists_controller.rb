@@ -2,7 +2,7 @@
 
 class PlaylistsController < ApplicationController
   before_action :find_playlist, only: [:destroy, :update]
-  before_action :get_sort_options, only: [:index]
+  before_action :get_sort_option, only: [:index]
 
   def index
     @pagy, @playlists = pagy(Current.user.all_playlists.sort_records(*sort_params))
@@ -50,7 +50,7 @@ class PlaylistsController < ApplicationController
     [params[:sort], params[:sort_direction]]
   end
 
-  def get_sort_options
-    @sort_options = Playlist.sort_options
+  def get_sort_option
+    @sort_option = Playlist::SORT_OPTION
   end
 end
