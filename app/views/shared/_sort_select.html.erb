@@ -1,15 +1,13 @@
-<% default_sort_name, default_sort_direction = options[:default] %>
-
 <details class='c-dropdown'>
   <summary>
     <%= icon_tag "sort", title: t("label.sort") %>
   </summary>
   <div class='c-dropdown__list'>
-    <% options[:sorts].each do |sort_name| %>
-      <%= link_to url_for(controller: params[:controller], action: :index, **filter_sort_params(sort: sort_name)), class: "c-dropdown__item", data: {turbo_action: ("replace" if turbo_native?)} do %>
+    <% option.values.each do |sort_value| %>
+      <%= link_to url_for(controller: params[:controller], action: :index, **filter_sort_params(sort: sort_value)), class: "c-dropdown__item", data: {turbo_action: ("replace" if turbo_native?)} do %>
         <span class='o-flex o-flex--justify-between o-flex--align-center'>
-          <%= t("label.#{sort_name}") %>
-          <% if params[:sort] == sort_name || (params[:sort].blank? && sort_name == default_sort_name) %>
+          <%= t("label.#{sort_value}") %>
+          <% if params[:sort] == sort_value || (params[:sort].blank? && sort_value == option.default.name) %>
             <%= icon_tag("check", size: "small", class: "u-ml-narrow") %>
           <% end %>
         </span>
@@ -19,10 +17,10 @@
     <hr>
 
     <% %w[asc desc].each do |sort_direction| %>
-      <%= link_to url_for(controller: params[:controller], action: :index, **filter_sort_params(sort: params[:sort] || default_sort_name, sort_direction: sort_direction)), class: "c-dropdown__item", data: {turbo_action: ("replace" if turbo_native?)} do %>
+      <%= link_to url_for(controller: params[:controller], action: :index, **filter_sort_params(sort: params[:sort] || option.default.name, sort_direction: sort_direction)), class: "c-dropdown__item", data: {turbo_action: ("replace" if turbo_native?)} do %>
         <span class='o-flex o-flex--justify-between o-flex--align-center'>
           <%= t("label.#{sort_direction}") %>
-          <% if params[:sort_direction] == sort_direction || (params[:sort_direction].blank? && default_sort_direction == sort_direction) %>
+          <% if params[:sort_direction] == sort_direction || (params[:sort_direction].blank? && option.default.direction == sort_direction) %>
             <%= icon_tag("check", size: "small", class: "u-ml-narrow") %>
           <% end %>
         </span>

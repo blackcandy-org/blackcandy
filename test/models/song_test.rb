@@ -74,8 +74,9 @@ class SongTest < ActiveSupport::TestCase
   end
 
   test "should get sort options" do
-    assert_equal %w[name created_at artist_name album_name album_year], Song.sort_options[:sorts]
-    assert_equal %w[name asc], Song.sort_options[:default]
+    assert_equal %w[name created_at artist_name album_name album_year], Song::SORT_OPTION.values
+    assert_equal "name", Song::SORT_OPTION.default.name
+    assert_equal "asc", Song::SORT_OPTION.default.direction
   end
 
   test "should use default sort when use invalid sort value" do

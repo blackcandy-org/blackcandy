@@ -46,8 +46,9 @@ class PlaylistTest < ActiveSupport::TestCase
   end
 
   test "should get sort options" do
-    assert_equal %w[name created_at], Playlist.sort_options[:sorts]
-    assert_equal %w[created_at desc], Playlist.sort_options[:default]
+    assert_equal %w[name created_at], Playlist::SORT_OPTION.values
+    assert_equal "created_at", Playlist::SORT_OPTION.default.name
+    assert_equal "desc", Playlist::SORT_OPTION.default.direction
   end
 
   test "should use default sort when use invalid sort value" do

@@ -3,7 +3,7 @@
 class ArtistsController < ApplicationController
   before_action :require_admin, only: [:update]
   before_action :find_artist, except: [:index]
-  before_action :get_sort_options, only: [:index]
+  before_action :get_sort_option, only: [:index]
 
   def index
     records = Artist.sort_records(*sort_params)
@@ -41,7 +41,7 @@ class ArtistsController < ApplicationController
     [params[:sort], params[:sort_direction]]
   end
 
-  def get_sort_options
-    @sort_options = Artist.sort_options
+  def get_sort_option
+    @sort_option = Artist::SORT_OPTION
   end
 end

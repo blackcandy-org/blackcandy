@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Playlist < ApplicationRecord
-  DEFAULT_SORT = %w[created_at desc].freeze
-
   include Searchable
   include Sortable
 
@@ -15,6 +13,7 @@ class Playlist < ApplicationRecord
   search_by :name
 
   sort_by :name, :created_at
+  default_sort :created_at, :desc
 
   def current?
     type == "CurrentPlaylist"
