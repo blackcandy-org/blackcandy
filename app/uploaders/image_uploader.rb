@@ -22,7 +22,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def content_type_allowlist
-    %w[image/jpeg image/png]
+    /image\//
   end
 
   def extension_allowlist

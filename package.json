@@ -2,17 +2,17 @@
   "name": "black_candy",
   "private": true,
   "dependencies": {
-    "@hotwired/stimulus": "^3.0.1",
-    "@hotwired/turbo-rails": "^7.2.1",
+    "@hotwired/stimulus": "^3.2.1",
+    "@hotwired/turbo-rails": "^7.3.0",
     "@shopify/draggable": "^1.0.0-beta.12",
-    "esbuild": "^0.14.9",
+    "esbuild": "^0.18.17",
     "howler": "^2.2.3",
-    "sass": "^1.54.3"
+    "sass": "^1.64.2"
   },
   "devDependencies": {
-    "standard": "^17.0.0",
-    "stylelint": "^14.9.1",
-    "stylelint-config-standard-scss": "^5.0.0"
+    "standard": "^17.1.0",
+    "stylelint": "^15.10.2",
+    "stylelint-config-standard-scss": "^9.0.0"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --minify",

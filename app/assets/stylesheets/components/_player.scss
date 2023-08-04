@@ -20,10 +20,7 @@
 
 .c-player__header__background {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  inset: 0;
   filter: blur(15px);
   background-position: center;
   background-repeat: no-repeat;

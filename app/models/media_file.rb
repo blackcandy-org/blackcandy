@@ -33,8 +33,8 @@ class MediaFile
       image = tag.images.first
       return unless image.present?
 
-      image_format = MIME::Type.new(image[:mime_type]).sub_type
-      CarrierWaveStringIO.new("cover.#{image_format}", image[:data])
+      image_format = Mime::Type.lookup(image[:mime_type]).symbol
+      CarrierWaveStringIO.new("cover.#{image_format}", image[:data]) if image_format.present?
     end
 
     def get_tag_info(file_path)
