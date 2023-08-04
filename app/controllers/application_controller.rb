@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     song_format = song.format
 
     return true unless song_format.in?(Stream::SUPPORTED_FORMATS)
-    return true if safari? && !song_format.in?(Stream::SAFARI_SUPPORTED_FORMATS)
+    return true if browser.safari? && !song_format.in?(Stream::SAFARI_SUPPORTED_FORMATS)
     return true if turbo_ios? && !song_format.in?(Stream::IOS_SUPPORTED_FORMATS)
 
     Setting.allow_transcode_lossless ? song.lossless? : false
@@ -84,17 +84,6 @@ class ApplicationController < ActionController::Base
     cookies.delete(:user_id)
 
     redirect_to new_session_path
-  end
-
-  def browser
-    @browser ||= Browser.new(
-      request.headers["User-Agent"],
-      accept_language: request.headers["Accept-Language"]
-    )
-  end
-
-  def safari?
-    browser.safari? || browser.core_media?
   end
 
   def turbo_ios?

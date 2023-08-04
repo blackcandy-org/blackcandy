@@ -31,7 +31,7 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
 
   test "should has error flash when failed to update artist" do
     login users(:admin)
-    patch artist_url(artists(:artist1)), params: {artist: {image: fixture_file_upload("cover_image.jpg", "image/gif")}}
+    patch artist_url(artists(:artist1)), params: {artist: {image: fixture_file_upload("cover_image.gif", "image/gif")}}
 
     assert flash[:error].present?
   end

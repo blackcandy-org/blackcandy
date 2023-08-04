@@ -24,7 +24,7 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
 
   test "should has error flash when failed to update album" do
     login users(:admin)
-    patch album_url(albums(:album1)), params: {album: {image: fixture_file_upload("cover_image.jpg", "image/gif")}}
+    patch album_url(albums(:album1)), params: {album: {image: fixture_file_upload("cover_image.gif", "image/gif")}}
 
     assert flash[:error].present?
   end
