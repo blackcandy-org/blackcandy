@@ -23,6 +23,22 @@ class MediaFileTest < ActiveSupport::TestCase
     end
   end
 
+  test "should get file path array from case insensitive files" do
+    expect_file_paths = [
+      Rails.root.join("test/fixtures/case_insensitive_files", "test.MP3"),
+      Rails.root.join("test/fixtures/case_insensitive_files", "test.oGG"),
+      Rails.root.join("test/fixtures/case_insensitive_files", "test.FLac"),
+      Rails.root.join("test/fixtures/case_insensitive_files", "test.WaV"),
+      Rails.root.join("test/fixtures/case_insensitive_files", "test.OpUS")
+    ].map(&:to_s)
+
+    Setting.update(media_path: Rails.root.join("test/fixtures/case_insensitive_files"))
+
+    MediaFile.file_paths.each do |file_path|
+      assert_includes expect_file_paths, file_path
+    end
+  end
+
   test "should ignore not supported files under media_path" do
     Setting.update(media_path: Rails.root.join("test/fixtures/files"))
 
