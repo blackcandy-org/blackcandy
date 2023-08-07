@@ -6,7 +6,15 @@ class MediaFile
   class << self
     def file_paths
       media_path = File.expand_path(Setting.media_path)
-      Dir.glob("#{media_path}/**/*.{#{SUPPORTED_FORMATS.join(",")}}", File::FNM_CASEFOLD)
+
+      # Because Ruby ignores the FNM_CASEFOLD flag in Dir.glob, case sensitivity depends on your system.
+      # So we need another way to make Dir.glob case-insensitive.
+      # See here: https://github.com/ruby/ruby/pull/4583
+      case_insensitive_supported_formats = SUPPORTED_FORMATS.map do |format|
+        format.chars.map { |char| (char.downcase != char.upcase) ? "[#{char.downcase}#{char.upcase}]" : char }.join
+      end
+
+      Dir.glob("#{media_path}/**/*.{#{case_insensitive_supported_formats.join(",")}}")
     end
 
     def format(file_path)
