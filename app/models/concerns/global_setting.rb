@@ -13,7 +13,7 @@ module GlobalSetting
     delegate :update, to: :instance
 
     def instance
-      first_or_create!(singleton_guard: 0)
+      Current.setting ||= first_or_create!(singleton_guard: 0)
     end
 
     def has_setting(setting, type: :string, default: nil)
