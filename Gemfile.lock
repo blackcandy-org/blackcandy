@@ -314,7 +314,7 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.4.2)
     uniform_notifier (1.16.0)
-    wahwah (1.4.0)
+    wahwah (1.5.1)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -369,7 +369,7 @@ DEPENDENCIES
   stimulus-rails (~> 1.2.1)
   turbo-rails (~> 1.4.0)
   tzinfo-data
-  wahwah (~> 1.4.0)
+  wahwah (~> 1.5.0)
   web-console (>= 3.3.0)
   webmock (~> 3.18.0)
 
