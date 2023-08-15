@@ -52,9 +52,9 @@ module BlackCandy
     has_config :redis_cache_url, default: proc { redis_url }
     has_config :redis_sidekiq_url, default: proc { redis_url }
     has_config :redis_cable_url, default: proc { redis_url }
-    has_config :database_url
+    has_config :db_url
     has_config :media_path
-    has_config :database_adapter, default: "sqlite"
+    has_config :db_adapter, default: "sqlite"
     has_config :nginx_sendfile, default: false
     has_config :embedded_sidekiq, default: false
     has_config :embedded_sidekiq_concurrency, default: 2
@@ -68,13 +68,13 @@ module BlackCandy
       end
     end
 
-    validate :database_adapter do |value|
+    validate :db_adapter do |value|
       unless SUPPORTED_DATABASE_ADAPTERS.include?(value)
         raise_validation_error "Unsupported database adapter."
       end
 
-      if value == "postgresql" && database_url.blank?
-        raise_validation_error "DATABASE_URL is required if database adapter is postgresql"
+      if value == "postgresql" && db_url.blank?
+        raise_validation_error "DB_URL is required if database adapter is postgresql"
       end
     end
 

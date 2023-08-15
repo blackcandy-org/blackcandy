@@ -1,25 +1,30 @@
-default: &default
+sqlite_default: &sqlite_default
   adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
-development:
-  <<: *default
-  database: db/development.sqlite3
-
-test:
-  <<: *default
-  database: db/test.sqlite3
-
-
-<% if BlackCandy::Config.database_adapter == "postgresql" %>
-production:
+pg_default: &pg_default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  url: <%= BlackCandy::Config.database_url %>
-<% else %>
+  url: <%= BlackCandy::Config.db_url %>
+
+development:
+  <<: *sqlite_default
+  database: db/development.sqlite3
+
+<% if BlackCandy::Config.db_adapter == "postgresql" %>
+test:
+  <<: *pg_default
+
 production:
-  <<: *default
+  <<: *pg_default
+<% else %>
+test:
+  <<: *sqlite_default
+  database: db/test.sqlite3
+
+production:
+  <<: *sqlite_default
   database: db/production.sqlite3
 <% end %>

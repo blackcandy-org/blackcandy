@@ -16,8 +16,8 @@ jobs:
           - postgresql
           - sqlite
     env:
-      DATABASE_ADAPTER: ${{ matrix.database_adapter }}
-      DATABASE_URL: postgresql://postgres:postgres@localhost
+      DB_ADAPTER: ${{ matrix.database_adapter }}
+      DB_URL: postgresql://postgres:postgres@localhost/black_candy_test
     services:
       postgres:
         image: postgres:latest
