@@ -12,8 +12,9 @@ class BlackCandy::ConfigTest < ActiveSupport::TestCase
   end
 
   test "should get default value when can not find value from ENV" do
-    assert_nil ENV["DATABASE_ADAPTER"]
-    assert_equal "sqlite", BlackCandy::Config.database_adapter
+    with_env("DB_ADAPTER" => nil) do
+      assert_equal "sqlite", BlackCandy::Config.db_adapter
+    end
   end
 
   test "should get nginx_sendfile value as a boolean" do
@@ -85,24 +86,22 @@ class BlackCandy::ConfigTest < ActiveSupport::TestCase
   end
 
   test "should raise error when database_adapter is not supported" do
-    with_env("DATABASE_ADAPTER" => "invalid_adapter") do
+    with_env("DB_ADAPTER" => "invalid_adapter") do
       assert_raises(BlackCandy::Config::ValidationError) do
-        BlackCandy::Config.database_adapter
+        BlackCandy::Config.db_adapter
       end
     end
   end
 
   test "should raise error when database_adapter is postgresql but database_url is not set" do
-    assert_nil ENV["DATABASE_URL"]
-
-    with_env("DATABASE_ADAPTER" => "postgresql") do
+    with_env("DB_ADAPTER" => "postgresql", "DB_URL" => nil) do
       assert_raises(BlackCandy::Config::ValidationError) do
-        BlackCandy::Config.database_adapter
+        BlackCandy::Config.db_adapter
       end
     end
 
-    with_env("DATABASE_ADAPTER" => "postgresql", "DATABASE_URL" => "database_url") do
-      assert_equal "postgresql", BlackCandy::Config.database_adapter
+    with_env("DB_ADAPTER" => "postgresql", "DB_URL" => "database_url") do
+      assert_equal "postgresql", BlackCandy::Config.db_adapter
     end
   end
 

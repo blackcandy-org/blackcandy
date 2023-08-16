@@ -60,7 +60,7 @@ docker run -v /media_data:/media_data -e MEDIA_PATH=/media_data ghcr.io/blackcan
 Black Candy use SQLite as database by default. Because SQLite can simplify the process of installation, and it's an ideal choice for self hosted small server. If you think SQLite is not enough or you are using some cloud service like heroku to host Black Candy, you can also use PostgreSQL as database.
 
 ```shell
-docker run -e DATABASE_ADAPTER=postgresql -e DATABASE_URL=postgresql://yourdatabaseurl ghcr.io/blackcandy-org/blackcandy:edge 
+docker run -e DB_ADAPTER=postgresql -e DB_URL=postgresql://yourdatabaseurl ghcr.io/blackcandy-org/blackcandy:edge 
 ```
 
 ### How to Persist Data
@@ -172,9 +172,9 @@ services:
 | REDIS_CACHE_URL              | REDIS_URL | This environment variable can override the REDIS_URL, if you want to set different Redis URL for cache.|
 | REDIS_SIDEKIQ_URL            | REDIS_URL | This environment variable can override the REDIS_URL, if you want to set different Redis URL for Sidekiq. |
 | REDIS_CABLE_URL              | REDIS_URL | This environment variable can override the REDIS_URL, if you want to set different Redis URL for WebSockets. |
-| DATABASE_URL                 |           | The URL of PostgreSQL database. You must set this environment variable if you use PostgreSQL as database. |
+| DB_URL                 |           | The URL of PostgreSQL database. You must set this environment variable if you use PostgreSQL as database. |
 | MEDIA_PATH                   |           | You can use this environment variable to set media path for Black Candy, otherwise you can set media path in settings page. |
-| DATABASE_ADAPTER             | "sqlite"  | There are two adapters are supported, "sqlite" and "postgresql".|
+| DB_ADAPTER             | "sqlite"  | There are two adapters are supported, "sqlite" and "postgresql".|
 | NGINX_SENDFILE               | false     | Whether enable Nginx sendfile. |
 | EMBEDDED_SIDEKIQ             | false     | Whether enable embedded mode of Sidekiq. |
 | EMBEDDED_SIDEKIQ_CONCURRENCY | 2         | The concurrency number of embedded Sidekiq. This value should not greater than 2. Because we should keep embedded Sidekiq concurrency very low. For more details, see this [document](https://github.com/mperham/sidekiq/wiki/Embedding) about embedded Sidekiq. |

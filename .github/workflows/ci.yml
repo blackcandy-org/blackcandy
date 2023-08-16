@@ -2,9 +2,33 @@ name: CI
 
 on: [push, pull_request]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test_lint:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        database_adapter:
+          - postgresql
+          - sqlite
+    env:
+      DB_ADAPTER: ${{ matrix.database_adapter }}
+      DB_URL: postgresql://postgres:postgres@localhost/black_candy_test
+    services:
+      postgres:
+        image: postgres:latest
+        ports: ['5432:5432']
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 3
     steps:
       - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1
