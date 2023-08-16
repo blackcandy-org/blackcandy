@@ -12,8 +12,9 @@ class BlackCandy::ConfigTest < ActiveSupport::TestCase
   end
 
   test "should get default value when can not find value from ENV" do
-    assert_nil ENV["DB_ADAPTER"]
-    assert_equal "sqlite", BlackCandy::Config.db_adapter
+    with_env("DB_ADAPTER" => nil) do
+      assert_equal "sqlite", BlackCandy::Config.db_adapter
+    end
   end
 
   test "should get nginx_sendfile value as a boolean" do
@@ -93,9 +94,7 @@ class BlackCandy::ConfigTest < ActiveSupport::TestCase
   end
 
   test "should raise error when database_adapter is postgresql but database_url is not set" do
-    assert_nil ENV["DB_URL"]
-
-    with_env("DB_ADAPTER" => "postgresql") do
+    with_env("DB_ADAPTER" => "postgresql", "DB_URL" => nil) do
       assert_raises(BlackCandy::Config::ValidationError) do
         BlackCandy::Config.db_adapter
       end

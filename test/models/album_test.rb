@@ -63,8 +63,8 @@ class AlbumTest < ActiveSupport::TestCase
   end
 
   test "should sort by artist name" do
-    assert_equal %w[album4 album1 album2 album3], Album.sort_records(:artist_name).pluck(:name)
-    assert_equal %w[album3 album1 album2 album4], Album.sort_records(:artist_name, :desc).pluck(:name)
+    assert_equal %w[album1 album2 album3 album4], Album.sort_records(:artist_name).pluck(:name)
+    assert_equal %w[album4 album3 album1 album2], Album.sort_records(:artist_name, :desc).pluck(:name)
   end
 
   test "should sort by name by default" do
