@@ -22,6 +22,8 @@ import PlayerController from './player_controller.js'
 
 import PlaylistSongsController from './playlist_songs_controller.js'
 
+import CurrentPlaylistSongsController from './current_playlist_songs_controller.js'
+
 import PlaylistSortableController from './playlist_sortable_controller.js'
 
 import SearchController from './search_controller.js'
@@ -45,6 +47,8 @@ application.register('mini-player', MiniPlayerController)
 application.register('player', PlayerController)
 
 application.register('playlist-songs', PlaylistSongsController)
+
+application.register('current-playlist-songs', CurrentPlaylistSongsController)
 
 application.register('playlist-sortable', PlaylistSortableController)
 

@@ -1,25 +1,12 @@
 import { Controller } from '@hotwired/stimulus'
+import { camelCase } from '../helper'
 
 export default class extends Controller {
   static targets = ['item']
 
-  static values = {
-    isCurrent: Boolean,
-    isPlayable: Boolean,
-    playlistSongs: Array
-  }
-
-  initialize () {
-    if (!this.isCurrentValue) { return }
-
-    if (this.hasPlaylistSongsValue) {
-      this.player.playlist.update(this.playlistSongsValue)
-    }
-
-    if (this.isPlayableValue) {
-      this.player.skipTo(0)
-    }
-  }
+  submitStartActions = ['checkBeforePlaying', 'checkCurrentSong']
+  submitEndActions = ['play', 'addSong', 'addSongToLast']
+  clickActions = []
 
   connect () {
     this.#showPlayingItem()
@@ -32,43 +19,32 @@ export default class extends Controller {
 
   submitStartHandle (event) {
     const actionElement = event.target.closest('[data-submit-start-action]')
-
     if (!actionElement) { return }
 
-    switch (actionElement.dataset.submitStartAction) {
-      case 'check_before_playing':
-        this.#checkBeforePlaying(event)
-        break
-      case 'check_current_song':
-        this.#checkCurrentSong(event)
-        break
-    }
+    const actionName = camelCase(actionElement.dataset.submitStartAction)
+    if (!this.submitStartActions.includes(actionName)) { return }
+
+    this[`_${actionName}`](event)
   }
 
   submitEndHandle (event) {
     const actionElement = event.target.closest('[data-submit-end-action]')
-
     if (!actionElement || !event.detail.success) { return }
 
-    switch (actionElement.dataset.submitEndAction) {
-      case 'delete':
-        this.#delete(event.target)
-        break
-      case 'play':
-        this.#play(event.target)
-        break
-      case 'add_song':
-        this.#addSong(event.target)
-        break
-      case 'add_song_to_last':
-        this.#addSongToLast(event.target)
-        break
-    }
+    const actionName = camelCase(actionElement.dataset.submitEndAction)
+    if (!this.submitEndActions.includes(actionName)) { return }
+
+    this[`_${actionName}`](event.target)
   }
 
-  clear (event) {
-    if (!event.detail.success) { return }
-    this.player.playlist.update([])
+  clickHandle (event) {
+    const actionElement = event.target.closest('[data-click-action]')
+    if (!actionElement) { return }
+
+    const actionName = camelCase(actionElement.dataset.clickAction)
+    if (!this.clickActions.includes(actionName)) { return }
+
+    this[`_${actionName}`](event.target)
   }
 
   #showPlayingItem = () => {
@@ -77,7 +53,7 @@ export default class extends Controller {
     })
   }
 
-  #checkBeforePlaying (event) {
+  _checkBeforePlaying (event) {
     const { songId } = event.target.closest('[data-song-id]').dataset
 
     if (App.nativeBridge.isTurboNative) {
@@ -93,11 +69,11 @@ export default class extends Controller {
       event.detail.formSubmission.stop()
       this.player.skipTo(playlistIndex)
     } else {
-      this.#checkCurrentSong(event)
+      this._checkCurrentSong(event)
     }
   }
 
-  #checkCurrentSong (event) {
+  _checkCurrentSong (event) {
     const currentSongId = this.player.currentSong.id
 
     if (currentSongId !== undefined) {
@@ -105,28 +81,18 @@ export default class extends Controller {
     }
   }
 
-  #play (target) {
+  _play (target) {
     const { songId } = target.closest('[data-song-id]').dataset
 
     this.player.skipTo(this.player.playlist.pushSong(songId))
   }
 
-  #delete (target) {
-    const songId = Number(target.closest('[data-song-id]').dataset.songId)
-
-    if (!this.isCurrentValue) { return }
-
-    if (this.player.currentSong.id === songId) {
-      this.player.skipTo(this.player.playlist.deleteSong(songId))
-    }
-  }
-
-  #addSong (target) {
+  _addSong (target) {
     const { songId } = target.closest('[data-song-id]').dataset
     this.player.playlist.pushSong(songId)
   }
 
-  #addSongToLast (target) {
+  _addSongToLast (target) {
     const { songId } = target.closest('[data-song-id]').dataset
     this.player.playlist.pushSong(songId, true)
   }

@@ -3,6 +3,10 @@
 class CurrentPlaylist::SongsController < Playlists::SongsController
   layout "playlist"
 
+  def show
+    @songs = @playlist.songs.includes(:artist)
+  end
+
   def create
     if params[:location] == "last"
       @playlist.songs.push(@song)
