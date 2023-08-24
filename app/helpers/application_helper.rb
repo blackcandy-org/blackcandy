@@ -50,13 +50,6 @@ module ApplicationHelper
     params[:controller].in?(Array(controller)) || (path.is_a?(Regexp) ? (path =~ request.path) : (path == request.path))
   end
 
-  def playlist_songs_path(playlist, options = {})
-    return current_playlist_songs_path(options) if playlist.current?
-    return favorite_playlist_songs_path(options) if playlist.favorite?
-
-    super(playlist, options)
-  end
-
   def page_title_tag(title, show_on_native: true)
     title_suffix = " - #{t(:app_name)}"
     title = "#{title}#{title_suffix unless turbo_native?}"

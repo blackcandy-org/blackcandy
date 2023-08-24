@@ -4,9 +4,12 @@ import { camelCase } from '../helper'
 export default class extends Controller {
   static targets = ['item']
 
-  submitStartActions = ['checkBeforePlaying', 'checkCurrentSong']
-  submitEndActions = ['play', 'addSong', 'addSongToLast']
+  submitStartActions = []
   clickActions = []
+
+  initialize () {
+    this.submitStartActions = ['checkBeforePlaying', 'checkCurrentSong']
+  }
 
   connect () {
     this.#showPlayingItem()
@@ -27,16 +30,6 @@ export default class extends Controller {
     this[`_${actionName}`](event)
   }
 
-  submitEndHandle (event) {
-    const actionElement = event.target.closest('[data-submit-end-action]')
-    if (!actionElement || !event.detail.success) { return }
-
-    const actionName = camelCase(actionElement.dataset.submitEndAction)
-    if (!this.submitEndActions.includes(actionName)) { return }
-
-    this[`_${actionName}`](event.target)
-  }
-
   clickHandle (event) {
     const actionElement = event.target.closest('[data-click-action]')
     if (!actionElement) { return }
@@ -45,12 +38,6 @@ export default class extends Controller {
     if (!this.clickActions.includes(actionName)) { return }
 
     this[`_${actionName}`](event.target)
-  }
-
-  #showPlayingItem = () => {
-    this.itemTargets.forEach((element) => {
-      element.classList.toggle('is-active', Number(element.dataset.songId) === this.player.currentSong.id)
-    })
   }
 
   _checkBeforePlaying (event) {
@@ -81,20 +68,10 @@ export default class extends Controller {
     }
   }
 
-  _play (target) {
-    const { songId } = target.closest('[data-song-id]').dataset
-
-    this.player.skipTo(this.player.playlist.pushSong(songId))
-  }
-
-  _addSong (target) {
-    const { songId } = target.closest('[data-song-id]').dataset
-    this.player.playlist.pushSong(songId)
-  }
-
-  _addSongToLast (target) {
-    const { songId } = target.closest('[data-song-id]').dataset
-    this.player.playlist.pushSong(songId, true)
+  #showPlayingItem = () => {
+    this.itemTargets.forEach((element) => {
+      element.classList.toggle('is-active', Number(element.dataset.songId) === this.player.currentSong.id)
+    })
   }
 
   get player () {

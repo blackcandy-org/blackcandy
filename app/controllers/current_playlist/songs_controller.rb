@@ -4,7 +4,7 @@ class CurrentPlaylist::SongsController < Playlists::SongsController
   layout "playlist"
 
   def show
-    @songs = @playlist.songs.includes(:artist)
+    @songs = @playlist.songs_with_favorite
   end
 
   def create
@@ -17,7 +17,7 @@ class CurrentPlaylist::SongsController < Playlists::SongsController
 
     flash.now[:success] = t("success.add_to_playlist")
 
-    redirect_to action: "show" if @playlist.songs.count == 1
+    redirect_to action: "show", playable: params[:song_playable] if @playlist.songs.count == 1
   rescue ActiveRecord::RecordNotUnique
     flash.now[:error] = t("error.already_in_playlist")
     render turbo_stream: render_flash

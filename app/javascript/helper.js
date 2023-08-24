@@ -6,14 +6,6 @@ function formatDuration (secs) {
   return secs > 60 * 60 ? dateString.substring(11, 19) : dateString.substring(14, 19)
 }
 
-function shuffle (a) {
-  for (let i = a.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]]
-  }
-  return a
-}
-
 function randomIndex (length) {
   return Math.floor(Math.random() * (length - 1))
 }
@@ -47,7 +39,6 @@ function camelCase (string) {
 
 export {
   formatDuration,
-  shuffle,
   randomIndex,
   fetchRequest,
   dispatchEvent,

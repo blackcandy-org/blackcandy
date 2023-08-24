@@ -1,4 +1,7 @@
-<div data-test-id='current_playlist' data-controller='current-playlist-songs' data-playlist-songs-is-current-value='true' <%= "data-current-playlist-songs-playlist-songs-value=#{@playlist.song_ids.to_json}" if params[:init] %> <%= "data-current-playlist-songs-is-playable-value='true'" if params[:playable] %>>
+<div
+  data-test-id='current_playlist'
+  data-controller='current-playlist-songs'
+  <%= "data-current-playlist-songs-playable-value='true'" if params[:playable] %>>
   <% if @songs.empty? %>
     <%= empty_alert_tag %>
   <% else %>
@@ -10,7 +13,7 @@
       <details class='c-dropdown' data-test-id='playlist_menu'>
         <summary><%= icon_tag "more-vertical", title: t("label.more") %></summary>
         <div class='c-dropdown__list'>
-          <%= button_to t("label.clear"), current_playlist_songs_path(clear_all: true), method: :delete, form_class: "c-dropdown__item", form: {data: {action: "turbo:submit-end->current-playlist-songs#clear"}} %>
+          <%= button_to t("label.clear"), current_playlist_songs_path(clear_all: true), method: :delete, form_class: "c-dropdown__item" %>
         </div>
       </details>
     </div>

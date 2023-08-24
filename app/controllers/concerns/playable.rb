@@ -16,7 +16,7 @@ module Playable
 
     unless turbo_native?
       @pagy, @songs = pagy(@playlist.songs.includes(:artist))
-      redirect_to current_playlist_songs_path(init: true, playable: true)
+      redirect_to current_playlist_songs_path(playable: true)
     end
   end
 

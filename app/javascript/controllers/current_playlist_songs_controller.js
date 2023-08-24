@@ -2,29 +2,45 @@ import PlaylistSongsController from './playlist_songs_controller.js'
 
 export default class extends PlaylistSongsController {
   static values = {
-    isPlayable: Boolean,
-    playlistSongs: Array
+    playable: Boolean
   }
 
-  submitStartActions = []
-  submitEndActions = ['delete']
-  clickActions = ['play']
-
   initialize () {
-    super.initialize()
+    this.clickActions = ['play']
+  }
 
-    if (this.hasPlaylistSongsValue) {
-      this.player.playlist.update(this.playlistSongsValue)
+  itemTargetConnected (target) {
+    const song = JSON.parse(target.dataset.songJson)
+    const songPlayable = target.dataset.songPlayable === 'true'
+    const targetIndex = this.itemTargets.indexOf(target)
+
+    if (this.player.playlist.indexOf(song.id) !== -1) { return }
+
+    this.player.playlist.insert(targetIndex, song)
+
+    if (songPlayable) {
+      this.player.skipTo(targetIndex)
     }
+  }
 
-    if (this.isPlayableValue) {
+  connect () {
+    super.connect()
+
+    if (this.playableValue) {
       this.player.skipTo(0)
     }
   }
 
-  clear (event) {
-    if (!event.detail.success) { return }
-    this.player.playlist.update([])
+  itemTargetDisconnected (target) {
+    const songId = Number(target.dataset.songId)
+
+    if (this.player.playlist.indexOf(songId) === -1) { return }
+
+    const deleteSongIndex = this.player.playlist.deleteSong(songId)
+
+    if (this.player.currentSong.id === songId) {
+      this.player.skipTo(deleteSongIndex)
+    }
   }
 
   _play (target) {
@@ -32,13 +48,5 @@ export default class extends PlaylistSongsController {
     const playlistIndex = this.player.playlist.indexOf(songId)
 
     this.player.skipTo(playlistIndex)
-  }
-
-  _delete (target) {
-    const songId = Number(target.closest('[data-song-id]').dataset.songId)
-
-    if (this.player.currentSong.id === songId) {
-      this.player.skipTo(this.player.playlist.deleteSong(songId))
-    }
   }
 }
