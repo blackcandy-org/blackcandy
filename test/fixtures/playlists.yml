@@ -9,3 +9,27 @@ playlist2:
   name: 'playlist2'
   user: 'admin'
   created_at: 2023-01-01
+
+adminCurrentPlaylist:
+  type: 'CurrentPlaylist'
+  user: 'admin'
+
+adminFavoritePlaylist:
+  type: 'FavoritePlaylist'
+  user: 'admin'
+
+visitor1CurrentPlaylist:
+  type: 'CurrentPlaylist'
+  user: 'visitor1'
+
+visitor1FavoritePlaylist:
+  type: 'FavoritePlaylist'
+  user: 'visitor1'
+
+visitor2CurrentPlaylist:
+  type: 'CurrentPlaylist'
+  user: 'visitor2'
+
+visitor2FavoritePlaylist:
+  type: 'FavoritePlaylist'
+  user: 'visitor2'
