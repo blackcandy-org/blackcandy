@@ -35,6 +35,7 @@ jobs:
         uses: mxschmitt/action-tmate@v3
         with:
           limit-access-to-actor: true
+          detached: true
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1
