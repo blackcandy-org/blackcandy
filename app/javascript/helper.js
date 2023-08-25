@@ -6,14 +6,6 @@ function formatDuration (secs) {
   return secs > 60 * 60 ? dateString.substring(11, 19) : dateString.substring(14, 19)
 }
 
-function shuffle (a) {
-  for (let i = a.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]]
-  }
-  return a
-}
-
 function randomIndex (length) {
   return Math.floor(Math.random() * (length - 1))
 }
@@ -41,10 +33,14 @@ function dispatchEvent (element, type, data = null) {
   element.dispatchEvent(new CustomEvent(type, { detail: data }))
 }
 
+function camelCase (string) {
+  return string.replace(/[-_]([a-z])/g, function (g) { return g[1].toUpperCase() })
+}
+
 export {
   formatDuration,
-  shuffle,
   randomIndex,
   fetchRequest,
-  dispatchEvent
+  dispatchEvent,
+  camelCase
 }

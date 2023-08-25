@@ -12,7 +12,7 @@
       <div role='columnheader'><%= t("label.actions") %></div>
     </div>
   </div>
-  <%= turbo_frame_tag "turbo-songs-page-#{pagy.page}", role: "rowgroup", target: "_top", data: {action: "turbo:submit-end->playlist-songs#submitEndHandle turbo:submit-start->playlist-songs#submitStartHandle"} do %>
+  <%= turbo_frame_tag "turbo-songs-page-#{pagy.page}", role: "rowgroup", target: "_top", data: {action: "turbo:submit-start->playlist-songs#submitStartHandle"} do %>
     <%= render partial: "songs/song", collection: songs, cached: true %>
 
     <% if pagy.next %>

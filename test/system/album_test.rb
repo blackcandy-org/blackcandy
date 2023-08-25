@@ -67,13 +67,14 @@ class AlbumSystemTest < ApplicationSystemTestCase
   end
 
   test "add song to playlist" do
-    playlist = Playlist.create(name: "test-playlist", user_id: users(:visitor1).id)
+    playlist_name = "test-playlist"
+    playlist = Playlist.create(name: playlist_name, user_id: users(:visitor1).id)
     login_as users(:visitor1)
 
     visit album_url(@album)
     first(:test_id, "album_song_menu").click
     click_on "Add to playlist"
-    first(:test_id, "dialog_playlist").click
+    find(:test_id, "dialog_playlist", text: playlist_name).click
 
     # assert the song added to the playlist
     assert_equal playlist.songs.first.name, first(:test_id, "album_song_name").text

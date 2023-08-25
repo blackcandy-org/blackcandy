@@ -1,0 +1,31 @@
+<li id='<%= "#{dom_id(playlist)}_#{dom_id(song)}" %>'
+  class='js-playlist-sortable-item c-list__item u-p-0'
+  data-current-playlist-songs-target='item'
+  data-song-id='<%= song.id %>'
+  data-song-json='<%= song_json_builder(song).target! %>'
+  data-song-playable='<%= params[:song_playable] %>'
+  data-test-id='current_playlist_song'>
+
+  <div class='o-flex o-flex--align-center u-py-narrow'>
+    <div class='js-playlist-sortable-item-handle u-mr-narrow' data-test-id='playlist_song_sortable_handle'><%= icon_tag "drag-indicator", size: "small" %></div>
+
+    <button class='c-button c-button--link o-flex__item--grow-1' data-click-action='play'>
+      <div class='o-flex o-flex--justify-between o-flex--align-center'>
+        <div class='u-mr-narrow'>
+          <span class='u-mb-tiny u-text-line-clamp-2' data-test-id='current_playlist_song_name'><%= song.name %></span>
+          <%= song.artist.title %>
+        </div>
+        <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
+      </div>
+    </button>
+
+    <details class='c-dropdown' data-test-id='current_playlist_song_menu'>
+      <summary><%= icon_tag "more-vertical", size: "small", title: t("label.more") %></summary>
+      <div class='c-dropdown__list'>
+        <%= link_to t("label.add_to_playlist"), dialog_playlists_path(song_id: song.id, referer_url: current_url), data: {turbo_frame: ("turbo-dialog" unless turbo_native?)}, class: "c-dropdown__item" %>
+
+        <%= button_to t("label.delete"), playlist_songs_path(playlist, song_id: song.id), method: :delete, form_class: "c-dropdown__item", form: {data: {turbo_frame: "turbo-playlist"}} %>
+      </div>
+    </details>
+  </div>
+</li>

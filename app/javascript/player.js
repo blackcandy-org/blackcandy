@@ -1,5 +1,5 @@
 import { Howl } from 'howler'
-import { fetchRequest, dispatchEvent } from './helper'
+import { dispatchEvent } from './helper'
 import Playlist from './playlist'
 
 class Player {
@@ -19,27 +19,18 @@ class Player {
     this.isPlaying = true
 
     if (!song.howl) {
-      fetchRequest(`/api/v1/songs/${song.id}`)
-        .then((response) => {
-          return response.json()
-        })
-        .then((data) => {
-          song.howl = new Howl({
-            src: [data.url],
-            format: [data.format],
-            html5: true,
-            onplay: () => { dispatchEvent(document, 'player:playing') },
-            onpause: () => { dispatchEvent(document, 'player:pause') },
-            onend: () => { dispatchEvent(document, 'player:end') },
-            onstop: () => { dispatchEvent(document, 'player:stop') }
-          })
-
-          Object.assign(song, data)
-          song.howl.play()
-        })
-    } else {
-      song.howl.play()
+      song.howl = new Howl({
+        src: [song.url],
+        format: [song.format],
+        html5: true,
+        onplay: () => { dispatchEvent(document, 'player:playing') },
+        onpause: () => { dispatchEvent(document, 'player:pause') },
+        onend: () => { dispatchEvent(document, 'player:end') },
+        onstop: () => { dispatchEvent(document, 'player:stop') }
+      })
     }
+
+    song.howl.play()
   }
 
   play () {
