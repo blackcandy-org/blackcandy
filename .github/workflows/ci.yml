@@ -31,6 +31,10 @@ jobs:
           --health-retries 3
     steps:
       - uses: actions/checkout@v3
+      - name: Setup tmate session to debug
+        uses: mxschmitt/action-tmate@v3
+        with:
+          limit-access-to-actor: true
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1
