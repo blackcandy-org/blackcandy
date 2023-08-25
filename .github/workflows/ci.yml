@@ -41,8 +41,6 @@ jobs:
           cache: 'yarn'
       - run: yarn install
       - name: Test and Lint
-        env:
-          RAILS_ENV: test
         run: |
           sudo apt-get update
           sudo apt-get -yqq install libpq-dev imagemagick ffmpeg

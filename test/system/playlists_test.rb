@@ -15,11 +15,13 @@ class PlaylistsSystemTest < ApplicationSystemTestCase
   end
 
   test "create playlist" do
+    playlist_name = "test-playlist"
+
     click_on "Add"
-    fill_in "playlist_name", with: "test-playlist"
+    fill_in "playlist_name", with: playlist_name
     click_on "Save"
 
     assert_text("Created successfully")
-    assert_equal "test-playlist", first(:test_id, "playlist_name").text
+    assert_selector(:test_id, "playlist_name", text: playlist_name)
   end
 end

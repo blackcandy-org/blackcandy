@@ -43,7 +43,7 @@ class User < ApplicationRecord
 
   # User created playlists with favorite playlist
   def all_playlists
-    playlists.unscope(where: :type).where("playlists.type IS NULL OR playlists.type = ?", "FavoritePlaylist").order(:type)
+    playlists.unscope(where: :type).where("playlists.type IS NULL OR playlists.type = ?", "FavoritePlaylist")
   end
 
   def recently_played_albums

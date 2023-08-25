@@ -63,11 +63,12 @@ class FavoritePlaylistSystemTest < ApplicationSystemTestCase
   end
 
   test "add to playlist" do
-    playlist = Playlist.create(name: "test-playlist", user_id: users(:visitor1).id)
+    playlist_name = "test-playlist"
+    playlist = Playlist.create(name: playlist_name, user_id: users(:visitor1).id)
 
     first(:test_id, "playlist_song_menu").click
     click_on "Add to playlist"
-    find(:test_id, "dialog_playlist", text: "test-playlist").click
+    find(:test_id, "dialog_playlist", text: playlist_name).click
 
     assert_equal Song.first.name, playlist.songs.first.name
   end
