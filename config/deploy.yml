@@ -1,0 +1,33 @@
+service: blackcandy
+
+image: blackcandy-org/blackcandy
+
+registry:
+  server: ghcr.io
+  username:
+    - REGISTRY_USER
+  password:
+    - REGISTRY_TOKEN
+
+servers:
+  - <%= ENV["SERVER_IP"] %>
+
+env:
+  clear:
+    MEDIA_PATH: /media_data
+    DEMO_MODE: true
+  secret:
+    - SECRET_KEY_BASE
+
+ssh:
+  user: <%= ENV["SERVER_USER"] %>
+
+volumes:
+  - "/media/music_data:/media_data"
+
+files:
+  - production.sqlite3:/app/db/production.sqlite3
+
+directories:
+  - log:/app/log
+  - uploads_data:/app/public/uploads
