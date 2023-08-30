@@ -45,7 +45,8 @@ RUN apk add --no-cache \
   tzdata \
   postgresql-dev \
   imagemagick \
-  ffmpeg
+  ffmpeg \
+  curl
 
 WORKDIR /app
 
