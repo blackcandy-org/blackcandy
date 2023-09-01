@@ -1,0 +1,54 @@
+service: blackcandy
+
+image: blackcandy-org/blackcandy
+
+registry:
+  server: ghcr.io
+  username:
+    - REGISTRY_USER
+  password:
+    - REGISTRY_TOKEN
+
+servers:
+  web:
+    hosts: <%= ENV["SERVER_IP"] %>
+    labels:
+      traefik.http.routers.blackcandy.rule: Host(`demo.blackcandy.org`)
+      traefik.http.routers.blackcandy_secure.rule: Host(`demo.blackcandy.org`)
+      traefik.http.routers.blackcandy_secure.entrypoints: websecure
+      traefik.http.routers.blackcandy_secure.tls: true
+      traefik.http.routers.blackcandy_secure.tls.certresolver: letsencrypt
+
+env:
+  clear:
+    MEDIA_PATH: /media_data
+    DEMO_MODE: true
+  secret:
+    - SECRET_KEY_BASE
+
+ssh:
+  user: <%= ENV["SERVER_USER"] %>
+
+volumes:
+  - "${PWD}/media_data:/media_data"
+  - "${PWD}/production.sqlite3:/app/db/production.sqlite3"
+  - "${PWD}/log:/app/log"
+  - "${PWD}/uploads_data:/app/public/uploads"
+
+traefik:
+  options:
+    publish:
+      - "443:443"
+    volume:
+      - "${PWD}/letsencrypt/acme.json:/letsencrypt/acme.json"
+  args:
+    entryPoints.web.address: ":80"
+    entryPoints.websecure.address: ":443"
+    entryPoints.websecure.forwardedHeaders.insecure: true
+    entryPoints.web.http.redirections.entryPoint.to: websecure
+    entryPoints.web.http.redirections.entryPoint.scheme: https
+    entryPoints.web.http.redirections.entrypoint.permanent: true
+    certificatesResolvers.letsencrypt.acme.email: "aidewoode@gmail.com"
+    certificatesResolvers.letsencrypt.acme.storage: "/letsencrypt/acme.json"
+    certificatesResolvers.letsencrypt.acme.httpchallenge: true
+    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web

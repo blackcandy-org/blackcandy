@@ -65,9 +65,6 @@ gem "pg", "~> 1.3.2"
 # For sqlite database adapter
 gem "sqlite3", "~> 1.6.3"
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", "~> 1.16.0", require: false
 
@@ -86,6 +83,8 @@ group :development do
   gem "memory_profiler", "~> 0.9.13", require: false
   # Help to kill N+1 queries and unused eager loading
   gem "bullet", "~> 7.0.0"
+  # For deployment
+  gem "kamal", "~> 0.16.1"
 end
 
 group :test do

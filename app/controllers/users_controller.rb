@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    # Avoit user delete self
+    # Avoid user delete self
     raise BlackCandy::Error::Forbidden if @user == Current.user
 
     @user.destroy

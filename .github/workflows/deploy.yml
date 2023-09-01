@@ -1,0 +1,30 @@
+name: Deploy
+
+on:
+  workflow_run:
+    workflows: ["Release Build"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.DEMO_SSH_KEY }}
+          known_hosts: ${{ secrets.DEMO_KNOWN_HOSTS }}
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+          bundler-cache: true
+      - name: Deploy to demo
+        run: bundle exec kamal deploy -P --version=edge
+        env:
+          SERVER_IP: ${{ secrets.DEMO_SERVER_IP }}
+          SERVER_USER: ${{ secrets.DEMO_SERVER_USER }}
+          SECRET_KEY_BASE: ${{ secrets.DEMO_SECRET_KEY_BASE }}
+          REGISTRY_USER: ${{ github.repository_owner }}
+          REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
