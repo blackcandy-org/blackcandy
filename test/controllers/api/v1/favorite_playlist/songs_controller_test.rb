@@ -25,7 +25,7 @@ class Api::V1::FavoritePlaylist::SongsControllerTest < ActionDispatch::Integrati
     response = @response.parsed_body
 
     assert_response :bad_request
-    assert_equal "RecordNotUnique", response["error"]
+    assert_equal "RecordNotUnique", response["type"]
     assert_not_empty response["message"]
   end
 end
