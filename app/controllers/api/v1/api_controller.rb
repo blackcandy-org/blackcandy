@@ -6,7 +6,6 @@ module Api
       skip_before_action :verify_authenticity_token
 
       rescue_from ActiveRecord::RecordNotUnique do
-        # render json: {type: "RecordNotUnique", message: t("error.already_in_playlist")}, status: :bad_request
         render json: ApiError.new(:record_not_unique, t("error.already_in_playlist")), status: :bad_request
       end
 

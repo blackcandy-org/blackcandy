@@ -54,7 +54,6 @@ class Api::V1::AuthenticationsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :unauthorized
     assert_nil session[:user_credentials]
-    assert_empty @response.body
   end
 
   test "should not create authentication and session with wrong credential" do
@@ -68,6 +67,20 @@ class Api::V1::AuthenticationsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :unauthorized
     assert_nil session[:user_credentials]
-    assert_empty @response.body
+  end
+
+  test "should get error message with wrong credential" do
+    post api_v1_authentication_url, as: :json, params: {
+      user_session: {
+        email: "fake@email.com",
+        password: "fake"
+      }
+    }
+
+    response = @response.parsed_body
+
+    assert_response :unauthorized
+    assert_equal "InvalidCredential", response["type"]
+    assert_not_empty response["message"]
   end
 end
