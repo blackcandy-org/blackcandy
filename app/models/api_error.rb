@@ -2,7 +2,8 @@
 
 class ApiError
   TYPES = {
-    record_not_unique: "RecordNotUnique"
+    record_not_unique: "RecordNotUnique",
+    invalid_credential: "InvalidCredential"
   }
 
   attr_reader :type, :message
