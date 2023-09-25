@@ -17,7 +17,11 @@ App.nativeBridge.updateTheme(document.body.dataset.colorScheme)
 // And this will lead to unexpected behaviour when updating the current playlist song based on
 // song element in the DOM.
 window.addEventListener('turbo:before-render', ({ detail }) => {
-  detail.render = (currentElement, newElement) => {
+  detail.render = async (currentElement, newElement) => {
+    // This is a temporary fix for wrong page displayed when returning to the previous page.
+    // See https://github.com/hotwired/turbo/issues/951. Remove this when the issue is fixed.
+    await new Promise((resolve) => setTimeout(() => resolve(), 0))
+
     const appContainer = currentElement.querySelector('#js-app')
     const newAppContainer = newElement.querySelector('#js-app')
 
