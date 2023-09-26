@@ -77,6 +77,7 @@ en:
     various_artists: 'Various Artists'
     unknown_artist: 'Unknown Artist'
     unknown_album: 'Unknown Album'
+    no_repeat_mode: 'No repeat mode'
     repeat_mode: 'Repeat mode'
     single_mode: 'Single mode'
     shuffle_mode: 'Shuffle mode'

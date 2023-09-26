@@ -2,7 +2,7 @@
   <div class='c-card__body'>
     <%= link_to playlist_songs_path(playlist), class: "o-flex o-flex--align-center" do %>
       <% if playlist.favorite? %>
-        <%= icon_tag("heart", class: "u-text-color-red") %>
+        <%= icon_tag("heart", emphasis: true) %>
       <% else %>
         <%= icon_tag("queue-music") %>
       <% end %>

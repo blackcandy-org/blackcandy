@@ -12,7 +12,9 @@ module ApplicationHelper
     return if name.blank?
 
     size_class = options[:size].blank? ? "" : "c-icon--#{options[:size]}"
-    icon_class = ["c-icon", size_class, options[:class]].join(" ")
+    active_class = options[:active] ? "c-icon--active" : ""
+    emphasis_class = options[:emphasis] ? "c-icon--emphasis" : ""
+    icon_class = ["c-icon", size_class, active_class, emphasis_class, options[:class]].join(" ")
 
     tag.svg(
       fill: "currentColor",
