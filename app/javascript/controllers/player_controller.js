@@ -116,6 +116,10 @@ export default class extends Controller {
     return (typeof currentTime === 'number') ? Math.round(currentTime) : 0
   }
 
+  get isEndOfPlaylist () {
+    return this.currentIndex === this.player.playlist.length - 1
+  }
+
   #setBeforePlayingStatus = () => {
     this.headerTarget.classList.add('is-expanded')
     this.loaderTarget.classList.remove('u-display-none')
@@ -160,21 +164,29 @@ export default class extends Controller {
   }
 
   #setStopStatus = () => {
-    this.#clearTimerInterval()
+    this.#setPauseStatus()
 
     if (this.player.playlist.length === 0) {
       this.headerTarget.classList.remove('is-expanded')
-      this.#setPauseStatus()
     }
   }
 
   #setEndStatus = () => {
     this.#clearTimerInterval()
 
-    if (this.currentMode === 'single') {
-      this.player.play()
-    } else {
-      this.next()
+    switch (this.currentMode) {
+      case 'noRepeat':
+        if (this.isEndOfPlaylist) {
+          this.player.stop()
+        } else {
+          this.next()
+        }
+        break
+      case 'single':
+        this.player.play()
+        break
+      default:
+        this.next()
     }
   }
 
@@ -204,7 +216,7 @@ export default class extends Controller {
   }
 
   #initMode () {
-    this.modes = ['repeat', 'single', 'shuffle']
+    this.modes = ['noRepeat', 'repeat', 'single', 'shuffle']
     this.currentModeIndex = 0
     this.updateMode()
   }

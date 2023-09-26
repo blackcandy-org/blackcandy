@@ -1,3 +1,5 @@
+@use "../tools/functions" as *;
+
 .c-player {
   background: var(--player-bg-color);
 }
@@ -5,6 +7,12 @@
 .c-player__control {
   background: var(--player-bg-color);
   position: relative;
+  padding: spacing("medium") spacing("small");
+  color: var(--player-control-color);
+}
+
+.c-player__control__main {
+  color: var(--player-control-main-color);
 }
 
 .c-player__header {

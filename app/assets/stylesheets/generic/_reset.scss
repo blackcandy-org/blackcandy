@@ -42,7 +42,7 @@ textarea {
 /* Reset element style generate from button_to */
 [type="submit"] {
   text-align: left;
-  color: var(--text-primary-color);
+  color: currentcolor;
   font-weight: normal;
 }
 

@@ -30,7 +30,6 @@ $green: rgb(35, 166, 80);
   /* Text */
   --text-primary-color: #{$grey-900};
   --text-secondary-color: #{$grey-600};
-  --text-red-color: #{$red};
 
   /* Sidebar */
   --sidebar-bg-color: #{$grey-100};
@@ -114,6 +113,8 @@ $green: rgb(35, 166, 80);
   --player-progress-bg-color: #{$grey-200};
   --player-progress-hover-bg-color: #{$grey-100};
   --player-progress-color: #{$purple};
+  --player-control-color: #{$grey-500};
+  --player-control-main-color: #{$grey-900};
 
   /* Badge */
   --badge-bg-color: #{color.change($purple-light, $alpha: 0.2)};
@@ -122,6 +123,10 @@ $green: rgb(35, 166, 80);
   /* Card */
   --card-border-color: #{$grey-200};
   --card-bg-color: #{$grey-100};
+
+  /* Icon */
+  --icon-active-color: #{$purple};
+  --icon-emphasis-color: #{$red};
 }
 
 @mixin dark-theme {
@@ -135,7 +140,6 @@ $green: rgb(35, 166, 80);
   /* Text */
   --text-primary-color: #{$white};
   --text-secondary-color: #{$grey-300};
-  --text-red-color: #{$red};
 
   /* Sidebar */
   --sidebar-bg-color: #{$grey-900};
@@ -218,6 +222,8 @@ $green: rgb(35, 166, 80);
   --player-progress-bg-color: #{$black};
   --player-progress-hover-bg-color: #{$grey-800};
   --player-progress-color: #{$purple};
+  --player-control-color: #{$grey-400};
+  --player-control-main-color: #{$white};
 
   /* Badge */
   --badge-bg-color: #{color.change($purple, $alpha: 0.2)};
@@ -226,6 +232,10 @@ $green: rgb(35, 166, 80);
   /* Card */
   --card-border-color: #{$grey-700};
   --card-bg-color: #{$grey-900};
+
+  /* Icon */
+  --icon-active-color: #{$purple-light};
+  --icon-emphasis-color: #{$red};
 }
 
 [data-color-scheme="light"] {

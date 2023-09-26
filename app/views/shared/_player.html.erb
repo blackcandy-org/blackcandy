@@ -23,23 +23,24 @@
       <%= loader_tag %>
     </div>
   </div>
-  <div class='u-px-small u-py-medium o-flex o-flex--justify-between o-flex--align-center c-player__control'>
+  <div class='o-flex o-flex--justify-between o-flex--align-center c-player__control'>
     <div class='u-cursor-pointer' data-action='click->player#nextMode'>
-      <span data-player-target='modeButton'><%= icon_tag "repeat", title: t("label.repeat_mode") %></span>
-      <span data-player-target='modeButton'><%= icon_tag "repeat-one", title: t("label.single_mode") %></span>
-      <span data-player-target='modeButton'><%= icon_tag "shuffle", title: t("label.shuffle_mode") %></span>
+      <span data-player-target='modeButton'><%= icon_tag "repeat", title: t("label.no_repeat_mode") %></span>
+      <span data-player-target='modeButton'><%= icon_tag "repeat", active: true, title: t("label.repeat_mode") %></span>
+      <span data-player-target='modeButton'><%= icon_tag "repeat-one", active: true, title: t("label.single_mode") %></span>
+      <span data-player-target='modeButton'><%= icon_tag "shuffle", active: true, title: t("label.shuffle_mode") %></span>
     </div>
-    <div>
-      <span class='u-text-color-primary u-cursor-pointer' data-action='click->player#previous' data-test-id='player_previous_button'>
+    <div class="c-player__control__main">
+      <span class='u-cursor-pointer' data-action='click->player#previous' data-test-id='player_previous_button'>
         <%= icon_tag "rewind", size: "large", title: t("label.previous_song") %>
       </span>
-      <span class='u-mx-medium u-text-color-primary u-cursor-pointer' data-action='click->player#play' data-player-target='playButton' data-test-id='player_play_button'>
+      <span class='u-mx-medium u-cursor-pointer' data-action='click->player#play' data-player-target='playButton' data-test-id='player_play_button'>
         <%= icon_tag "play", size: "large", title: t("label.play_song") %>
       </span>
-      <span class='u-mx-medium  u-text-color-primary u-cursor-pointer u-display-none' data-action='click->player#pause' data-player-target='pauseButton' data-test-id='player_pause_button'>
+      <span class='u-mx-medium u-cursor-pointer u-display-none' data-action='click->player#pause' data-player-target='pauseButton' data-test-id='player_pause_button'>
         <%= icon_tag "pause", size: "large", title: t("label.pause_song") %>
       </span>
-      <span class='u-text-color-primary u-cursor-pointer' data-action='click->player#next' data-test-id='player_next_button'>
+      <span class='u-cursor-pointer' data-action='click->player#next' data-test-id='player_next_button'>
         <%= icon_tag "fast-forward", size: "large", title: t("label.next_song") %>
       </span>
     </div>
@@ -47,8 +48,8 @@
       <%= button_to favorite_playlist_songs_path, form_class: "u-visibility-hidden", form: {"data-player-target" => "favoriteButton"} do %>
         <%= icon_tag "heart", title: t("label.toggle_favorite") %>
       <% end %>
-      <%= button_to favorite_playlist_songs_path, method: :delete, form_class: "u-display-none", form: {"data-player-target" => "unFavoriteButton"}, class: "u-text-color-red" do %>
-        <%= icon_tag "heart", title: t("label.toggle_favorite") %>
+      <%= button_to favorite_playlist_songs_path, method: :delete, form_class: "u-display-none", form: {"data-player-target" => "unFavoriteButton"} do %>
+        <%= icon_tag "heart", emphasis: true, title: t("label.toggle_favorite") %>
       <% end %>
     </div>
   </div>
