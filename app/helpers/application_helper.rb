@@ -52,11 +52,11 @@ module ApplicationHelper
     params[:controller].in?(Array(controller)) || (path.is_a?(Regexp) ? (path =~ request.path) : (path == request.path))
   end
 
-  def page_title_tag(title, show_on_native: true)
+  def page_title_tag(title)
     title_suffix = " - #{t(:app_name)}"
     title = "#{title}#{title_suffix unless turbo_native?}"
 
-    content_for(:title, title) unless turbo_native? && !show_on_native
+    content_for(:title, title)
   end
 
   def current_url

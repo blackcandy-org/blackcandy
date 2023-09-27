@@ -3,7 +3,7 @@
   <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
-    <title><%= content_for?(:title) ? yield(:title) : (t(:app_name) unless turbo_native?) %></title>
+    <title><%= content_for?(:title) ? yield(:title) : t(:app_name) %></title>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag "link_icon.png", type: "image/png" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
