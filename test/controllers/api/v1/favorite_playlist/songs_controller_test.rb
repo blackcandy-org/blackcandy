@@ -8,15 +8,27 @@ class Api::V1::FavoritePlaylist::SongsControllerTest < ActionDispatch::Integrati
   end
 
   test "should add songs to playlist" do
-    post api_v1_favorite_playlist_songs_url, params: {song_id: 3}, headers: api_token_header(@user)
+    post api_v1_favorite_playlist_songs_url, params: {song_id: 3}, as: :json, headers: api_token_header(@user)
+    response = @response.parsed_body
+
+    assert_response :success
+    assert_equal 3, response["id"]
     assert_equal [3, 1, 2], @playlist.reload.song_ids
   end
 
   test "should remove songs from playlist" do
-    delete api_v1_favorite_playlist_songs_url, params: {song_id: 1}, headers: api_token_header(@user)
+    delete api_v1_favorite_playlist_songs_url, params: {song_id: 1}, as: :json, headers: api_token_header(@user)
+    response = @response.parsed_body
+
+    assert_response :success
+    assert_equal 1, response["id"]
     assert_equal [2], @playlist.reload.song_ids
 
-    delete api_v1_favorite_playlist_songs_url, params: {song_id: 2}, headers: api_token_header(@user)
+    delete api_v1_favorite_playlist_songs_url, params: {song_id: 2}, as: :json, headers: api_token_header(@user)
+    response = @response.parsed_body
+
+    assert_response :success
+    assert_equal 2, response["id"]
     assert_equal [], @playlist.reload.song_ids
   end
 
