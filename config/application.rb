@@ -15,7 +15,7 @@ require "action_cable/engine"
 require "rails/test_unit/railtie"
 
 require_relative "../lib/black_candy/config"
-require_relative "../lib/black_candy/error"
+require_relative "../lib/black_candy/errors"
 require_relative "../lib/black_candy/version"
 
 # Require the gems listed in Gemfile, including any gems

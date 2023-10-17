@@ -9,7 +9,7 @@ module Playable
   end
 
   def play
-    raise BlackCandy::Error::Forbidden if @song_ids.blank?
+    raise BlackCandy::Forbidden if @song_ids.blank?
 
     @playlist = Current.user.current_playlist
     @playlist.replace(@song_ids)

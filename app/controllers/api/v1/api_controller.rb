@@ -5,10 +5,6 @@ module Api
     class ApiController < ApplicationController
       skip_before_action :verify_authenticity_token
 
-      rescue_from ActiveRecord::RecordNotUnique do
-        render json: ApiError.new(:record_not_unique, t("error.already_in_playlist")), status: :bad_request
-      end
-
       private
 
       # If user already has logged in then authenticate with current session,

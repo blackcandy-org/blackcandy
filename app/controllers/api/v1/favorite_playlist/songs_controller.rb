@@ -8,6 +8,8 @@ module Api
 
       def create
         @playlist.playlists_songs.create(song_id: @song.id, position: 1)
+      rescue ActiveRecord::RecordNotUnique
+        raise BlackCandy::DuplicatePlaylistSong
       end
 
       def destroy

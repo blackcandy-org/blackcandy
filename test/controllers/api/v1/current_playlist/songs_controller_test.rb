@@ -69,7 +69,7 @@ class Api::V1::CurrentPlaylist::SongsControllerTest < ActionDispatch::Integratio
     response = @response.parsed_body
 
     assert_response :bad_request
-    assert_equal "RecordNotUnique", response["type"]
+    assert_equal "DuplicatePlaylistSong", response["type"]
     assert_not_empty response["message"]
   end
 end

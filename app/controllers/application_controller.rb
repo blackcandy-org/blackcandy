@@ -9,11 +9,30 @@ class ApplicationController < ActionController::Base
   before_action :find_current_user
   before_action :require_login
 
-  rescue_from BlackCandy::Error::Forbidden do
+  rescue_from BlackCandy::Forbidden do |error|
     respond_to do |format|
-      format.js { head :forbidden }
-      format.json { head :forbidden }
+      format.json { render_json_error(error, :forbidden) }
       format.html { render template: "errors/forbidden", layout: "plain", status: :forbidden }
+    end
+  end
+
+  rescue_from BlackCandy::InvalidCredential do |error|
+    respond_to do |format|
+      format.json { render_json_error(error, :unauthorized) }
+      format.html { redirect_to new_session_path }
+    end
+  end
+
+  rescue_from BlackCandy::DuplicatePlaylistSong do |error|
+    respond_to do |format|
+      format.json { render_json_error(error, :bad_request) }
+    end
+  end
+
+  rescue_from ActiveRecord::RecordNotFound do |error|
+    respond_to do |format|
+      format.json { render_json_error(OpenStruct.new(type: "RecordNotFound", message: error.message), :not_found) }
+      format.html { render template: "errors/not_found", layout: "plain", status: :not_found }
     end
   end
 
@@ -76,7 +95,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
-    raise BlackCandy::Error::Forbidden if BlackCandy::Config.demo_mode? || !is_admin?
+    raise BlackCandy::Forbidden if BlackCandy::Config.demo_mode? || !is_admin?
   end
 
   def logout_current_user
@@ -92,5 +111,9 @@ class ApplicationController < ActionController::Base
 
   def turbo_android?
     request.user_agent.to_s.match?(/Turbo Native Android/)
+  end
+
+  def render_json_error(error, status)
+    render json: {type: error.type, message: error.message}, status: status
   end
 end
