@@ -33,11 +33,11 @@ class Api::V1::FavoritePlaylist::SongsControllerTest < ActionDispatch::Integrati
   end
 
   test "should not add song to playlist if already in playlist" do
-    post api_v1_favorite_playlist_songs_url, params: {song_id: 1}, headers: api_token_header(@user)
+    post api_v1_favorite_playlist_songs_url, params: {song_id: 1}, as: :json, headers: api_token_header(@user)
     response = @response.parsed_body
 
     assert_response :bad_request
-    assert_equal "RecordNotUnique", response["type"]
+    assert_equal "DuplicatePlaylistSong", response["type"]
     assert_not_empty response["message"]
   end
 end

@@ -35,6 +35,8 @@ module Api
           current_song_position = @playlist.playlists_songs.find_by(song_id: params[:current_song_id])&.position.to_i
           @playlist.playlists_songs.create(song_id: @song.id, position: current_song_position + 1)
         end
+      rescue ActiveRecord::RecordNotUnique
+        raise BlackCandy::DuplicatePlaylistSong
       end
 
       private

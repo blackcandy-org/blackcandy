@@ -10,23 +10,19 @@ module Api
         session = UserSession.new(session_params.merge({remember_me: true}).to_h)
 
         if params[:with_session]
-          render_unauthorized and return unless session.save
+          raise BlackCandy::InvalidCredential unless session.save
         else
-          render_unauthorized and return unless session.valid?
+          raise BlackCandy::InvalidCredential unless session.valid?
         end
 
         @current_user = User.find_by(email: session_params[:email])
 
-        render_unauthorized and return unless @current_user.present?
+        raise BlackCandy::InvalidCredential unless @current_user.present?
 
         @current_user.regenerate_api_token if @current_user.api_token.blank?
       end
 
       private
-
-      def render_unauthorized
-        render(json: ApiError.new(:invalid_credential, t("error.login")), status: :unauthorized)
-      end
 
       def session_params
         params.require(:user_session).permit(:email, :password)
