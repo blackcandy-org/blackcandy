@@ -36,9 +36,15 @@ class Playlists::SongsControllerTest < ActionDispatch::IntegrationTest
   test "should reorder songs from playlist" do
     assert_equal [1, 2], @playlist.song_ids
 
-    put playlist_songs_url(@playlist), params: {from_position: 1, to_position: 2}
+    put playlist_songs_url(@playlist), params: {song_id: 1, destination_song_id: 2}
 
+    assert_response :success
     assert_equal [2, 1], @playlist.reload.song_ids
+  end
+
+  test "should return forbidden when reorder song not in playlist" do
+    put playlist_songs_url(@playlist), params: {song_id: 4, destination_song_id: 2}
+    assert_response :forbidden
   end
 
   test "should play whole playlist" do

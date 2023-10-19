@@ -32,9 +32,15 @@ class Api::V1::CurrentPlaylist::SongsControllerTest < ActionDispatch::Integratio
   test "should reorder songs from playlist" do
     assert_equal [1, 2, 3], @playlist.song_ids
 
-    put api_v1_current_playlist_songs_url, params: {from_position: 1, to_position: 2}, headers: api_token_header(@user)
+    put api_v1_current_playlist_songs_url, params: {song_id: 1, destination_song_id: 2}, headers: api_token_header(@user)
 
+    assert_response :success
     assert_equal [2, 1, 3], @playlist.reload.song_ids
+  end
+
+  test "should return forbidden when reorder song not in playlist" do
+    put api_v1_current_playlist_songs_url, params: {song_id: 4, destination_song_id: 2}, as: :json, headers: api_token_header(@user)
+    assert_response :forbidden
   end
 
   test "should add song next to the current song when current song did set" do

@@ -19,11 +19,10 @@ module Api
       end
 
       def update
-        from_position = Integer(params[:from_position])
-        to_position = Integer(params[:to_position])
+        moving_song, destination_song = @playlist.playlists_songs.where(song_id: [params[:song_id], params[:destination_song_id]])
+        raise BlackCandy::Forbidden unless moving_song && destination_song
 
-        playlists_song = @playlist.playlists_songs.find_by(position: from_position)
-        playlists_song.update(position: to_position)
+        moving_song.update(position: destination_song.position)
       end
 
       def create
