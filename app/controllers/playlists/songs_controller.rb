@@ -32,8 +32,8 @@ class Playlists::SongsController < ApplicationController
   end
 
   def update
-    moving_song, destination_song = @playlist.playlists_songs.where(song_id: [params[:song_id], params[:destination_song_id]])
-    raise BlackCandy::Forbidden unless moving_song && destination_song
+    moving_song = @playlist.playlists_songs.find_by!(song_id: params[:song_id])
+    destination_song = @playlist.playlists_songs.find_by!(song_id: params[:destination_song_id])
 
     moving_song.update(position: destination_song.position)
   end

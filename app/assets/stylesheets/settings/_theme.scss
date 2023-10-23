@@ -58,10 +58,6 @@ $green: rgb(35, 166, 80);
   /* List */
   --list-border-color: #{$grey-200};
   --list-active-color: #{$purple};
-  --list-dragging-placeholder-bg-color: #{$grey-200};
-  --list-dragging-bg-color: #{$white};
-  --list-dragging-shadow-color: #{$grey-600};
-  --list-dragging-shadow: 0 4px 8px 0 #{color.change($grey-600, $alpha: 0.1)}, 0 10px 13px 0 #{color.change($grey-600, $alpha: 0.11)};
   --list-grouped-bg-color: #{$grey-100};
 
   /* Table */
@@ -168,9 +164,6 @@ $green: rgb(35, 166, 80);
   /* List */
   --list-border-color: #{$grey-800};
   --list-active-color: #{$purple-light};
-  --list-dragging-placeholder-bg-color: #{$grey-800};
-  --list-dragging-bg-color: #{$black};
-  --list-dragging-shadow: 0 4px 8px 0 #{color.change($grey-500, $alpha: 0.1)}, 0 10px 13px 0 #{color.change($grey-500, $alpha: 0.11)};
   --list-grouped-bg-color: #{$grey-900};
 
   /* Table */

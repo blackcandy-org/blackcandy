@@ -31,21 +31,21 @@
   border-bottom: none;
 }
 
-.c-list__item.is-dragging-placeholder * {
-  color: transparent;
-}
-
 .c-list__item.is-active * {
   color: var(--list-active-color);
 }
 
-.c-list__item.is-dragging-placeholder {
-  background: var(--list-dragging-placeholder-bg-color);
-  color: transparent;
+.c-list.is-dragging .c-list__item {
+  border: none;
 }
 
-.c-list__item.is-dragging {
-  background: var(--list-dragging-bg-color);
+.c-list.is-dragging .c-list__item:not(.is-dragging-source) * {
+  // Prevent dragleave from firing when dragging into a child element
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.c-list__item.is-dragging-over {
+  border: 2px dashed var(--list-active-color) !important;
   border-radius: border-radius("medium");
-  box-shadow: var(--list-dragging-shadow);
 }
