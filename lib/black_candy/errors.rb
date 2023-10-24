@@ -5,10 +5,6 @@ module BlackCandy
     def type
       self.class.name.split("::").last
     end
-
-    def message
-      super
-    end
   end
 
   class Forbidden < BaseError
