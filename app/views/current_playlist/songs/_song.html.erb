@@ -1,9 +1,10 @@
 <li id='<%= "#{dom_id(playlist)}_#{dom_id(song)}" %>'
-  class='js-playlist-sortable-item c-list__item u-p-0'
+  class='c-list__item u-p-0'
   data-current-playlist-songs-target='item'
   data-song-id='<%= song.id %>'
   data-song-json='<%= song_json_builder(song).target! %>'
   data-song-playable='<%= params[:song_playable] %>'
+  draggable='true'
   data-test-id='current_playlist_song'>
 
   <div class='o-flex o-flex--align-center u-py-narrow'>

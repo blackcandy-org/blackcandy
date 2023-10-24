@@ -4,7 +4,6 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/turbo-rails": "^7.3.0",
-    "@shopify/draggable": "^1.0.0-beta.12",
     "esbuild": "^0.18.17",
     "howler": "^2.2.3",
     "sass": "^1.64.2"
