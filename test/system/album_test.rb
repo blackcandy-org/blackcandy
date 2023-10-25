@@ -4,6 +4,7 @@ require "application_system_test_case"
 
 class AlbumSystemTest < ApplicationSystemTestCase
   setup do
+    Setting.update(media_path: Rails.root.join("test/fixtures/files"))
     @album = albums(:album1)
   end
 
@@ -21,7 +22,6 @@ class AlbumSystemTest < ApplicationSystemTestCase
 
   test "play all songs on album" do
     login_as users(:visitor1)
-    Setting.update(media_path: Rails.root.join("test/fixtures/files"))
 
     visit album_url(@album)
     click_on "Play all"
@@ -53,7 +53,6 @@ class AlbumSystemTest < ApplicationSystemTestCase
   end
 
   test "play song from album" do
-    Setting.update(media_path: Rails.root.join("test/fixtures/files"))
     login_as users(:visitor1)
 
     visit album_url(@album)

@@ -4,7 +4,7 @@ class Playlists::SongsController < ApplicationController
   before_action :find_playlist
   before_action :find_song, only: [:create, :destroy]
 
-  include Playable
+  include PlayableConcern
 
   def show
     @pagy, @songs = pagy(@playlist.songs.includes(:artist))
