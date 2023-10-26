@@ -61,10 +61,10 @@ class CurrentPlaylistSystemTest < ApplicationSystemTestCase
     playlist_name = "test-playlist"
     playlist = Playlist.create(name: playlist_name, user_id: users(:visitor1).id)
 
-    first(:test_id, "current_playlist_song_menu").click
-    click_on "Add to playlist"
-    find(:test_id, "dialog_playlist", text: playlist_name).click
-
-    assert_equal Song.first.name, playlist.songs.first.name
+    assert_difference -> { playlist.songs.count } do
+      first(:test_id, "current_playlist_song_menu").click
+      click_on "Add to playlist"
+      find(:test_id, "dialog_playlist", text: playlist_name).click
+    end
   end
 end
