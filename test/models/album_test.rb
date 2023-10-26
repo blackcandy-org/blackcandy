@@ -32,11 +32,11 @@ class AlbumTest < ActiveSupport::TestCase
   end
 
   test "should filter by year" do
-    assert_equal Album.where(name: %w[album2]).ids.sort, Album.filter_records(year: 1984).ids.sort
+    assert_equal Album.where(name: %w[album1]).ids.sort, Album.filter_records(year: 1984).ids.sort
   end
 
   test "should filter by multiple attributes" do
-    assert_equal Album.where(name: %w[album2]).ids.sort, Album.filter_records(genre: "Rock", year: 1984).ids.sort
+    assert_equal Album.where(name: %w[album1]).ids.sort, Album.filter_records(genre: "Rock", year: 1984).ids.sort
   end
 
   test "should have valid filter constant" do
@@ -53,8 +53,8 @@ class AlbumTest < ActiveSupport::TestCase
   end
 
   test "should sort by year" do
-    assert_equal %w[album4 album3 album2 album1], Album.sort_records(:year).pluck(:name)
-    assert_equal %w[album1 album2 album3 album4], Album.sort_records(:year, :desc).pluck(:name)
+    assert_equal %w[album4 album3 album1 album2], Album.sort_records(:year).pluck(:name)
+    assert_equal %w[album2 album1 album3 album4], Album.sort_records(:year, :desc).pluck(:name)
   end
 
   test "should sort by created_at" do

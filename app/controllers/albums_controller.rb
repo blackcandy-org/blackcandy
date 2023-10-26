@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AlbumsController < ApplicationController
-  include Playable
+  include PlayableConcern
 
   before_action :require_admin, only: [:update]
   before_action :find_album, except: [:index]

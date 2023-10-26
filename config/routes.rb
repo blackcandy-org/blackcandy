@@ -60,6 +60,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :stream, only: [:new]
+  resources :transcoded_stream, only: [:new]
+
   get "/403", to: "errors#forbidden", as: :forbidden
   get "/404", to: "errors#not_found", as: :not_found
   get "/422", to: "errors#unprocessable_entity", as: :unprocessable_entity

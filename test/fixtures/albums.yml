@@ -2,13 +2,13 @@ album1:
   name: 'album1'
   artist: 'artist1'
   genre: 'Rock'
-  year: 2000
+  year: 1984
   created_at: 2023-01-02
 album2:
   name: 'album2'
   artist: 'artist1'
   genre: 'Rock'
-  year: 1984
+  year: 2000
   created_at: 2023-01-01
 album3:
   name: 'album3'

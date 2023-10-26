@@ -27,12 +27,12 @@ class SongTest < ActiveSupport::TestCase
   end
 
   test "should filter by album year" do
-    song_ids = Song.where(album: albums(:album2)).ids.sort
+    song_ids = Song.where(album: albums(:album1)).ids.sort
     assert_equal song_ids, Song.filter_records(album_year: 1984).ids.sort
   end
 
   test "should filter by multiple attributes" do
-    song_ids = Song.where(album: albums(:album2)).ids.sort
+    song_ids = Song.where(album: albums(:album1)).ids.sort
     assert_equal song_ids, Song.filter_records(album_genre: "Rock", album_year: 1984).ids.sort
   end
 
@@ -66,7 +66,7 @@ class SongTest < ActiveSupport::TestCase
 
   test "should sort by album year" do
     assert_equal songs(:various_artists_sample).name, Song.sort_records(:album_year).first.name
-    assert_equal songs(:flac_sample), Song.sort_records(:album_year, :desc).first
+    assert_equal songs(:mp3_sample), Song.sort_records(:album_year, :desc).first
   end
 
   test "should sort by name by default" do

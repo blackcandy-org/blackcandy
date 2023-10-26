@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Playlist < ApplicationRecord
-  include Searchable
-  include Sortable
+  include SearchableConcern
+  include SortableConcern
 
   validates :name, presence: true, if: :require_name?
 

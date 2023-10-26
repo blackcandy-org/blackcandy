@@ -3,7 +3,7 @@
 require "test_helper"
 
 class DummyPlayableController < ApplicationController
-  include Playable
+  include PlayableConcern
 
   private
 
@@ -13,7 +13,7 @@ class DummyPlayableController < ApplicationController
 end
 
 class NotImplementedDummyPlayableController < ApplicationController
-  include Playable
+  include PlayableConcern
 end
 
 class PlayableTest < ActionDispatch::IntegrationTest

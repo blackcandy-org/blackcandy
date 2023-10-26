@@ -8,11 +8,11 @@ class Api::V1::ApiControllerTest < ActionDispatch::IntegrationTest
     @song = songs(:mp3_sample)
   end
 
-  test "should authenticate when have user session" do
+  test "should not authenticate when have user session" do
     login(@user)
     get api_v1_song_url(@song), as: :json
 
-    assert_response :success
+    assert_response :unauthorized
   end
 
   test "should authenticate when have api token" do
@@ -21,7 +21,7 @@ class Api::V1::ApiControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should not authenticate when do not have user seesion or api token" do
+  test "should not authenticate when do not have api token" do
     get api_v1_song_url(@song), as: :json
 
     assert_response :unauthorized
