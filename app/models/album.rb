@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class Album < ApplicationRecord
-  include Searchable
-  include Imageable
-  include Filterable
-  include Sortable
+  include SearchableConcern
+  include ImageableConcern
+  include FilterableConcern
+  include SortableConcern
 
   validates :name, uniqueness: {scope: :artist}
 

@@ -5,7 +5,7 @@ class User < ApplicationRecord
   DEFAULT_THEME = "auto"
   RECENTLY_PLAYED_LIMIT = 10
 
-  include ScopedSetting
+  include ScopedSettingConcern
 
   has_secure_token :api_token
   has_setting :theme, default: DEFAULT_THEME

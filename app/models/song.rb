@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class Song < ApplicationRecord
-  include Searchable
-  include Filterable
-  include Sortable
+  include SearchableConcern
+  include FilterableConcern
+  include SortableConcern
 
   validates :name, :file_path, :file_path_hash, :md5_hash, presence: true
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Setting < ApplicationRecord
-  include GlobalSetting
+  include GlobalSettingConcern
 
   AVAILABLE_BITRATE_OPTIONS = [128, 192, 320].freeze
 

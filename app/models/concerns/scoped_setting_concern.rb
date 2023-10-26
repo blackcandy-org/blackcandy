@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ScopedSetting
+module ScopedSettingConcern
   extend ActiveSupport::Concern
 
   included do
@@ -14,7 +14,7 @@ module ScopedSetting
       store :settings, accessors: setting
 
       define_method(setting) do
-        setting_value = ScopedSetting.convert_setting_value(type, super())
+        setting_value = ScopedSettingConcern.convert_setting_value(type, super())
 
         setting_value || default
       end
