@@ -47,7 +47,7 @@ gem "httparty", "~> 0.21.0"
 gem "browser", "~> 5.3.1"
 
 # For searching
-gem "ransack", "~> 3.2.1"
+gem "ransack", "~> 4.1.0"
 
 # For sortable list
 gem "acts_as_list", "~> 1.1.0"
