@@ -2,7 +2,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 7.0.0"
+gem "rails", "~> 7.1.0"
 
 # Deliver assets for Rails
 gem "propshaft", "~> 0.7.0"
@@ -52,8 +52,7 @@ gem "ransack", "~> 4.1.0"
 # For sortable list
 gem "acts_as_list", "~> 1.1.0"
 
-# For authentication
-gem "authlogic", "~> 6.4.1"
+# For password encryption
 gem "bcrypt", "~> 3.1.11"
 
 # For sync on library changes
@@ -82,7 +81,7 @@ group :development do
   # Memory profiler for ruby
   gem "memory_profiler", "~> 0.9.13", require: false
   # Help to kill N+1 queries and unused eager loading
-  gem "bullet", "~> 7.0.0"
+  gem "bullet", "~> 7.1.0"
   # For deployment
   gem "kamal", "~> 0.16.1"
 end

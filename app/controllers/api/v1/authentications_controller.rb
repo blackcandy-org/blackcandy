@@ -3,29 +3,24 @@
 module Api
   module V1
     class AuthenticationsController < ApiController
-      skip_before_action :find_current_user
-      skip_before_action :require_login
+      skip_before_action :find_current_session, only: [:create]
+      skip_before_action :require_login, only: [:create]
 
       def create
-        session = UserSession.new(session_params.merge({remember_me: true}).to_h)
+        @session = Session.build_from_credential(session_params)
+        raise BlackCandy::InvalidCredential unless @session.save
 
-        if params[:with_session]
-          raise BlackCandy::InvalidCredential unless session.save
-        else
-          raise BlackCandy::InvalidCredential unless session.valid?
-        end
+        login(@session) if params[:with_cookie]
+      end
 
-        @current_user = User.find_by(email: session_params[:email])
-
-        raise BlackCandy::InvalidCredential unless @current_user.present?
-
-        @current_user.regenerate_api_token if @current_user.api_token.blank?
+      def destroy
+        Current.session.destroy
       end
 
       private
 
       def session_params
-        params.require(:user_session).permit(:email, :password)
+        params.require(:session).permit(:email, :password)
       end
     end
   end

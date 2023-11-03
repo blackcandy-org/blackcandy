@@ -9,7 +9,7 @@ class Api::V1::AuthenticationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create authentication without session" do
     post api_v1_authentication_url, as: :json, params: {
-      user_session: {
+      session: {
         email: @user.email,
         password: "foobar"
       }
@@ -18,8 +18,9 @@ class Api::V1::AuthenticationsControllerTest < ActionDispatch::IntegrationTest
     response = @response.parsed_body["user"]
 
     assert_response :success
-    assert_nil session[:user_credentials]
-    assert_equal @user.reload.api_token, response["api_token"]
+    assert_nil cookies[:session_id]
+    assert_not_empty @user.sessions
+    assert_not_empty response["api_token"]
     assert_equal @user.id, response["id"]
     assert_equal @user.email, response["email"]
     assert_equal @user.is_admin, response["is_admin"]
@@ -27,8 +28,8 @@ class Api::V1::AuthenticationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create authentication with session" do
     post api_v1_authentication_url, as: :json, params: {
-      with_session: true,
-      user_session: {
+      with_cookie: true,
+      session: {
         email: @user.email,
         password: "foobar"
       }
@@ -37,8 +38,9 @@ class Api::V1::AuthenticationsControllerTest < ActionDispatch::IntegrationTest
     response = @response.parsed_body["user"]
 
     assert_response :success
-    assert_not_nil session[:user_credentials]
-    assert_equal @user.reload.api_token, response["api_token"]
+    assert_not_empty cookies[:session_id]
+    assert_not_empty response["api_token"]
+    assert_not_empty @user.sessions
     assert_equal @user.id, response["id"]
     assert_equal @user.email, response["email"]
     assert_equal @user.is_admin, response["is_admin"]
@@ -46,32 +48,34 @@ class Api::V1::AuthenticationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should not create authentication with wrong credential" do
     post api_v1_authentication_url, as: :json, params: {
-      user_session: {
+      session: {
         email: "fake@email.com",
         password: "fake"
       }
     }
 
     assert_response :unauthorized
-    assert_nil session[:user_credentials]
+    assert_nil cookies[:session_id]
+    assert_empty @user.sessions
   end
 
   test "should not create authentication and session with wrong credential" do
     post api_v1_authentication_url, as: :json, params: {
-      with_session: true,
-      user_session: {
+      with_cookie: true,
+      session: {
         email: "fake@email.com",
         password: "fake"
       }
     }
 
     assert_response :unauthorized
-    assert_nil session[:user_credentials]
+    assert_nil cookies[:session_id]
+    assert_empty @user.sessions
   end
 
   test "should get error message with wrong credential" do
     post api_v1_authentication_url, as: :json, params: {
-      user_session: {
+      session: {
         email: "fake@email.com",
         password: "fake"
       }
@@ -82,5 +86,23 @@ class Api::V1::AuthenticationsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unauthorized
     assert_equal "InvalidCredential", response["type"]
     assert_not_empty response["message"]
+  end
+
+  test "should destroy authentication" do
+    post api_v1_authentication_url, as: :json, params: {
+      session: {
+        email: @user.email,
+        password: "foobar"
+      }
+    }
+
+    response = @response.parsed_body["user"]
+
+    delete api_v1_authentication_url, as: :json, headers: {
+      authorization: ActionController::HttpAuthentication::Token.encode_credentials(response["api_token"])
+    }
+
+    assert_response :success
+    assert_empty @user.sessions
   end
 end

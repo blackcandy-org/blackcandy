@@ -31,10 +31,6 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
-  def new_user(attributes = {})
-    User.new({password: "foobar"}.merge(attributes))
-  end
-
   def clear_media_data
     Artist.destroy_all
     Album.destroy_all
@@ -63,11 +59,12 @@ class ActiveSupport::TestCase
   end
 
   def login(user = users(:visitor1))
-    post session_url, params: {user_session: {email: user.email, password: "foobar"}}
+    post sessions_url, params: {session: {email: user.email, password: "foobar"}}
   end
 
   def api_token_header(user)
-    {authorization: ActionController::HttpAuthentication::Token.encode_credentials(user.api_token)}
+    session = user.sessions.create!
+    {authorization: ActionController::HttpAuthentication::Token.encode_credentials(session.signed_id)}
   end
 
   def fixtures_file_path(file_name)

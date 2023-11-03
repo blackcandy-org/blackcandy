@@ -17,8 +17,9 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
 
     fill_in "Email", with: user.email
     fill_in "Password", with: "foobar"
-
     click_on "Login"
+
+    assert_current_path root_url
   end
 end
 

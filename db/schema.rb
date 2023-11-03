@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_16_013722) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_02_065319) do
   create_table "albums", force: :cascade do |t|
     t.string "name"
     t.string "image"
@@ -50,6 +50,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_013722) do
     t.index ["song_id", "playlist_id"], name: "index_playlists_songs_on_song_id_and_playlist_id", unique: true
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "user_agent"
+    t.string "ip_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
   create_table "settings", force: :cascade do |t|
     t.text "values"
     t.integer "singleton_guard"
@@ -77,18 +86,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_013722) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
-    t.string "crypted_password", null: false
+    t.string "password_digest", null: false
     t.boolean "is_admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "settings"
-    t.string "password_salt"
-    t.string "persistence_token"
-    t.string "api_token"
+    t.string "deprecated_password_salt"
     t.text "recently_played_album_ids"
-    t.index ["api_token"], name: "index_users_on_api_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["persistence_token"], name: "index_users_on_persistence_token", unique: true
   end
 
 end

@@ -18,15 +18,33 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "should have valid email" do
-    assert new_user(email: "test1@test.com").valid?
+    assert User.new(email: "test1@test.com", password: "foobar").valid?
 
     INVALID_EMAIL_ADDRESSES.each do |email|
-      assert_not new_user(email: email).valid?
+      assert_not User.new(email: email, password: "foobar").valid?
     end
+  end
+
+  test "password should not less than 6 characters" do
+    assert User.new(email: "test1@test.com", password: "foobar").valid?
+    assert_not User.new(email: "test1@test.com", password: "foo").valid?
+  end
+
+  test "should check password confirmation when it provided" do
+    assert User.new(email: "test1@test.com", password: "foobar", password_confirmation: "foobar").valid?
+    assert_not User.new(email: "test1@test.com", password: "foobar", password_confirmation: "foo").valid?
   end
 
   test "should downcase email when create" do
     assert_equal "test1@test.com", User.create(email: "TEST1@test.com", password: "foobar").email
+  end
+
+  test "should remove deprecated_password_salt after update password" do
+    user = users(:visitor1)
+    assert_not_nil user.deprecated_password_salt
+
+    user.update(password: "foobarfoo")
+    assert_nil user.reload.deprecated_password_salt
   end
 
   test "should have current playlist after created" do
