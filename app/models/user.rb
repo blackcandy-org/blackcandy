@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   has_secure_password
   has_setting :theme, default: DEFAULT_THEME
-  serialize :recently_played_album_ids, Array
+  serialize :recently_played_album_ids, type: Array, coder: YAML
 
   before_create :downcase_email
   before_update :remove_deprecated_password_salt, if: :will_save_change_to_password_digest?

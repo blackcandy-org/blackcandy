@@ -65,7 +65,7 @@ gem "pg", "~> 1.3.2"
 gem "sqlite3", "~> 1.6.3"
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.16.0", require: false
+gem "bootsnap", "~> 1.17.0", require: false
 
 group :development, :test do
   gem "standard", "~> 1.25.0"

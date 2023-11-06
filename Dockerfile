@@ -39,7 +39,6 @@ FROM base
 
 ENV LANG C.UTF-8
 ENV RAILS_ENV production
-ENV RAILS_SERVE_STATIC_FILES true
 
 RUN apk add --no-cache \
   tzdata \
