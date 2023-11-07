@@ -8,7 +8,7 @@ class Api::V1::ApiControllerTest < ActionDispatch::IntegrationTest
     @song = songs(:mp3_sample)
   end
 
-  test "should not authenticate when have user session" do
+  test "should not authenticate when use session" do
     login(@user)
     get api_v1_song_url(@song), as: :json
 

@@ -7,25 +7,24 @@ class User < ApplicationRecord
 
   include ScopedSettingConcern
 
-  has_secure_token :api_token
+  has_secure_password
   has_setting :theme, default: DEFAULT_THEME
-  serialize :recently_played_album_ids, Array
+  serialize :recently_played_album_ids, type: Array, coder: YAML
 
-  before_create :downcase_email
+  before_update :remove_deprecated_password_salt, if: :will_save_change_to_password_digest?
   after_create :create_buildin_playlists
 
+  normalizes :email, with: ->(email) { email.strip.downcase }
+
   validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}, uniqueness: {case_sensitive: false}
-  validates :password, confirmation: {if: :require_password?}, length: {minimum: 6, if: :require_password?}
+  validates :password, allow_nil: true, length: {minimum: 6}
   validates :theme, inclusion: {in: AVAILABLE_THEME_OPTIONS}, allow_nil: true
 
   has_many :playlists, -> { where(type: nil) }, inverse_of: :user, dependent: :destroy
+  has_many :sessions, dependent: :destroy
 
   has_one :current_playlist, dependent: :destroy
   has_one :favorite_playlist, dependent: :destroy
-
-  acts_as_authentic do |config|
-    config.crypto_provider = ::Authlogic::CryptoProviders::BCrypt
-  end
 
   # ensure user always have current playlist
   def current_playlist
@@ -60,12 +59,12 @@ class User < ApplicationRecord
 
   private
 
+  def remove_deprecated_password_salt
+    self.deprecated_password_salt = nil if deprecated_password_salt.present?
+  end
+
   def create_buildin_playlists
     create_current_playlist
     create_favorite_playlist
-  end
-
-  def downcase_email
-    self.email = email.downcase
   end
 end

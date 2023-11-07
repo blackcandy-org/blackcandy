@@ -6,7 +6,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :turbo_native?, :need_transcode?, :render_flash
 
-  before_action :find_current_user
+  before_action :find_current_session
+  before_action :find_current_request_details
   before_action :require_login
 
   rescue_from BlackCandy::Forbidden do |error|
@@ -37,7 +38,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from ActionController::InvalidAuthenticityToken do
-    logout_current_user
+    logout
   end
 
   def need_transcode?(song)
@@ -79,9 +80,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def find_current_user
-    Current.user = UserSession.find&.user
-    cookies.signed[:user_id] ||= Current.user&.id
+  def find_current_session
+    Current.session = Session.find_by(id: cookies.signed[:session_id])
   end
 
   def require_login
@@ -98,19 +98,12 @@ class ApplicationController < ActionController::Base
     raise BlackCandy::Forbidden if BlackCandy::Config.demo_mode? || !is_admin?
   end
 
-  def logout_current_user
-    UserSession.find&.destroy
-    cookies.delete(:user_id)
-
-    redirect_to new_session_path
-  end
-
   def turbo_ios?
-    request.user_agent.to_s.match?(/Turbo Native iOS/)
+    Current.user_agent.to_s.match?(/Turbo Native iOS/)
   end
 
   def turbo_android?
-    request.user_agent.to_s.match?(/Turbo Native Android/)
+    Current.user_agent.to_s.match?(/Turbo Native Android/)
   end
 
   def render_json_error(error, status)
@@ -125,8 +118,8 @@ class ApplicationController < ActionController::Base
       return
     end
 
-    # Use Rack::File to support HTTP range without nginx. see https://github.com/rails/rails/issues/32193
-    Rack::File.new(nil).serving(request, file_path).tap do |(status, headers, body)|
+    # Use Rack::Files to support HTTP range without nginx. see https://github.com/rails/rails/issues/32193
+    Rack::Files.new(nil).serving(request, file_path).tap do |(status, headers, body)|
       self.status = status
       self.response_body = body
 
@@ -135,5 +128,10 @@ class ApplicationController < ActionController::Base
       response.headers["Content-Type"] = Mime[format]
       response.headers["Content-Disposition"] = "attachment"
     end
+  end
+
+  def find_current_request_details
+    Current.ip_address = request.ip
+    Current.user_agent = request.user_agent
   end
 end

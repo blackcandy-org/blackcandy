@@ -3,6 +3,13 @@
 require "simplecov"
 
 SimpleCov.start "rails" do
+  # After upgrading to Rails 7.1, simplecov cannot collect coverage for files in the lib directory.
+  # It seems that the behavior of the Rails test command has changed. I have already tried adding the lib directory to the autoload once path,
+  # It works for the development environment, but for the test the database.yml must explicitly require the lib directory. So simplecov
+  # will still run after the required file. The result is that the coverage still does not include the file in the lib directory.
+  # Still didn't figure out how to solve it, so temporarily add the lib directory to the filter.
+  add_filter "/lib/"
+
   if ENV["CI"]
     require "simplecov-lcov"
 
@@ -31,10 +38,6 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
-  def new_user(attributes = {})
-    User.new({password: "foobar"}.merge(attributes))
-  end
-
   def clear_media_data
     Artist.destroy_all
     Album.destroy_all
@@ -63,11 +66,12 @@ class ActiveSupport::TestCase
   end
 
   def login(user = users(:visitor1))
-    post session_url, params: {user_session: {email: user.email, password: "foobar"}}
+    post sessions_url, params: {session: {email: user.email, password: "foobar"}}
   end
 
   def api_token_header(user)
-    {authorization: ActionController::HttpAuthentication::Token.encode_credentials(user.api_token)}
+    session = user.sessions.create!
+    {authorization: ActionController::HttpAuthentication::Token.encode_credentials(session.signed_id)}
   end
 
   def fixtures_file_path(file_name)

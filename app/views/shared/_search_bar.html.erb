@@ -20,7 +20,7 @@
         <%= link_to t("label.settings"), setting_path, class: "c-dropdown__item" %>
         <%= link_to t("label.manage_users"), users_path, class: "c-dropdown__item" if is_admin? %>
         <%= link_to t("label.update_profile"), edit_user_path(Current.user), class: "c-dropdown__item" %>
-        <%= button_to t("label.logout"), session_path, method: :delete, form_class: "c-dropdown__item" %>
+        <%= button_to t("label.logout"), Current.session, method: :delete, form_class: "c-dropdown__item" %>
       </div>
     </details>
   </div>

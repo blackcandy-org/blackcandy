@@ -1,5 +1,4 @@
 #!/bin/sh
 
-rails docker:db_prepare
-
+rails db:prepare
 bundle exec puma -C config/puma.rb

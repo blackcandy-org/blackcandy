@@ -7,13 +7,9 @@ module Api
 
       private
 
-      def find_current_user
+      def find_current_session
         authenticate_with_http_token do |token, _|
-          user = User.find_by(api_token: token)
-          return unless user.present?
-
-          # Compare the tokens in a time-constant manner, to mitigate timing attacks.
-          Current.user = user if ActiveSupport::SecurityUtils.secure_compare(user.api_token, token)
+          Current.session = Session.find_signed(token)
         end
       end
 
