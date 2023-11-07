@@ -3,13 +3,13 @@
 <div class='o-container o-container--small'>
   <div class='o-flex o-flex--align-center o-flex--justify-between o-flex--wrap u-mb-large'>
     <div class='o-flex o-flex--align-center u-my-narrow u-mr-small'>
-      <% unless turbo_native? %>
+      <% unless native_app? %>
         <h1 class='u-mb-0 u-mr-narrow'><%= t("label.playlists") %></h1>
       <% end %>
-      <%= link_to t("label.add"), new_dialog_playlist_path, data: {turbo_frame: ("turbo-dialog" unless turbo_native?)}, class: "c-button c-button--primary" %>
+      <%= link_to t("label.add"), new_dialog_playlist_path, data: {turbo_frame: ("turbo-dialog" unless native_app?)}, class: "c-button c-button--primary" %>
     </div>
 
-    <div class='<%= "u-ml-auto" if turbo_native? %>'>
+    <div class='<%= "u-ml-auto" if native_app? %>'>
       <%= render partial: "shared/sort_select", locals: {option: @sort_option} %>
     </div>
   </div>

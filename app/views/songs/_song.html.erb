@@ -15,7 +15,7 @@
     <details class='c-dropdown' data-test-id='song_menu'>
       <summary><%= icon_tag "more-vertical", size: "small", title: t("label.more") %></summary>
       <div class='c-dropdown__list'>
-        <%= link_to t("label.add_to_playlist"), dialog_playlists_path(song_id: song.id, referer_url: current_url), data: {turbo_frame: ("turbo-dialog" unless turbo_native?)}, class: "c-dropdown__item" %>
+        <%= link_to t("label.add_to_playlist"), dialog_playlists_path(song_id: song.id, referer_url: current_url), data: {turbo_frame: ("turbo-dialog" unless native_app?)}, class: "c-dropdown__item" %>
         <%= button_to t("label.play_next"), current_playlist_songs_path(song_id: song.id), form_class: "c-dropdown__item", form: {data: {turbo_frame: "turbo-playlist", submit_start_action: "check_current_song"}} %>
         <%= button_to t("label.play_last"), current_playlist_songs_path(song_id: song.id, location: "last"), form_class: "c-dropdown__item", form: {data: {turbo_frame: "turbo-playlist"}} %>
       </div>

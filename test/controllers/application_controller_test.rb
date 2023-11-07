@@ -39,10 +39,10 @@ class ApplicationControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get unauthorized when did not logged in on turbo native agent" do
-    get "/dummy_index", headers: {"User-Agent" => "Turbo Native iOS"}
+    get "/dummy_index", headers: {"User-Agent" => "Black Candy iOS"}
     assert_response :unauthorized
 
-    get "/dummy_index", headers: {"User-Agent" => "Turbo Native Android"}
+    get "/dummy_index", headers: {"User-Agent" => "Black Candy Android"}
     assert_response :unauthorized
   end
 
