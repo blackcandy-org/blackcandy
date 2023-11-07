@@ -3,6 +3,13 @@
 require "simplecov"
 
 SimpleCov.start "rails" do
+  # After upgrading to Rails 7.1, simplecov cannot collect coverage for files in the lib directory.
+  # It seems that the behavior of the Rails test command has changed. I have already tried adding the lib directory to the autoload once path,
+  # It works for the development environment, but for the test the database.yml must explicitly require the lib directory. So simplecov
+  # will still run after the required file. The result is that the coverage still does not include the file in the lib directory.
+  # Still didn't figure out how to solve it, so temporarily add the lib directory to the filter.
+  add_filter "/lib/"
+
   if ENV["CI"]
     require "simplecov-lcov"
 
