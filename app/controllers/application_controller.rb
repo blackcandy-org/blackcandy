@@ -118,8 +118,8 @@ class ApplicationController < ActionController::Base
       return
     end
 
-    # Use Rack::File to support HTTP range without nginx. see https://github.com/rails/rails/issues/32193
-    Rack::File.new(nil).serving(request, file_path).tap do |(status, headers, body)|
+    # Use Rack::Files to support HTTP range without nginx. see https://github.com/rails/rails/issues/32193
+    Rack::Files.new(nil).serving(request, file_path).tap do |(status, headers, body)|
       self.status = status
       self.response_body = body
 
