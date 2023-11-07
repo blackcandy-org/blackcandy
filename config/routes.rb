@@ -68,9 +68,7 @@ Rails.application.routes.draw do
   get "/422", to: "errors#unprocessable_entity", as: :unprocessable_entity
   get "/500", to: "errors#internal_server_error", as: :internal_server_error
 
-  # Rails 7.1 will support health check by default,
-  # So we will replace this route with the default one in the future.
-  get "/up", to: "health#show"
+  get "up", to: "rails/health#show", as: :rails_health_check
 
   namespace :api do
     namespace :v1 do
