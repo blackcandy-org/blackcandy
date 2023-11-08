@@ -14,7 +14,7 @@ module PlayableConcern
     @playlist = Current.user.current_playlist
     @playlist.replace(@song_ids)
 
-    unless turbo_native?
+    unless native_app?
       @pagy, @songs = pagy(@playlist.songs.includes(:artist))
       redirect_to current_playlist_songs_path(playable: true)
     end

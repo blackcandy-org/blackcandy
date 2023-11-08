@@ -1,7 +1,7 @@
 <% content_for :body do %>
   <%= turbo_stream_from "media_sync" %>
 
-  <% if turbo_native? %>
+  <% if native_app? %>
     <div id='turbo-flash' class='c-flash'>
       <%= render "shared/flash" %>
     </div>

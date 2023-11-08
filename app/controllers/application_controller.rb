@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
   include SessionsHelper
 
-  helper_method :turbo_native?, :need_transcode?, :render_flash
+  helper_method :native_app?, :need_transcode?, :render_flash
 
   before_action :find_current_session
   before_action :find_current_request_details
@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
 
     return true unless song_format.in?(Stream::SUPPORTED_FORMATS)
     return true if browser.safari? && !song_format.in?(Stream::SAFARI_SUPPORTED_FORMATS)
-    return true if turbo_ios? && !song_format.in?(Stream::IOS_SUPPORTED_FORMATS)
+    return true if ios_app? && !song_format.in?(Stream::IOS_SUPPORTED_FORMATS)
 
     Setting.allow_transcode_lossless ? song.lossless? : false
   end
@@ -61,8 +61,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def turbo_native?
-    turbo_ios? || turbo_android?
+  def native_app?
+    ios_app? || android_app?
   end
 
   def redirect_back_with_referer_params(fallback_location:)
@@ -87,7 +87,7 @@ class ApplicationController < ActionController::Base
   def require_login
     return if logged_in?
 
-    if turbo_native?
+    if native_app?
       head :unauthorized
     else
       redirect_to new_session_path
@@ -98,12 +98,12 @@ class ApplicationController < ActionController::Base
     raise BlackCandy::Forbidden if BlackCandy::Config.demo_mode? || !is_admin?
   end
 
-  def turbo_ios?
-    Current.user_agent.to_s.match?(/Turbo Native iOS/)
+  def ios_app?
+    Current.user_agent.to_s.match?(/Black Candy iOS/)
   end
 
-  def turbo_android?
-    Current.user_agent.to_s.match?(/Turbo Native Android/)
+  def android_app?
+    Current.user_agent.to_s.match?(/Black Candy Android/)
   end
 
   def render_json_error(error, status)
