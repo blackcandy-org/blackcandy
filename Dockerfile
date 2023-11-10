@@ -15,7 +15,7 @@ COPY --from=node /opt/yarn-* /opt/yarn
 RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm  \
   && ln -s /opt/yarn/bin/yarn /usr/local/bin/yarn
 
-RUN apk add --no-cache tzdata postgresql-dev build-base
+RUN apk add --no-cache tzdata libpq-dev build-base
 
 WORKDIR /app
 
@@ -42,7 +42,7 @@ ENV RAILS_ENV production
 
 RUN apk add --no-cache \
   tzdata \
-  postgresql-dev \
+  libpq \
   imagemagick \
   ffmpeg \
   curl
