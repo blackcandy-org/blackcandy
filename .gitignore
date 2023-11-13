@@ -57,3 +57,10 @@ yarn-debug.log*
 !.env.template
 
 .is-edge-release.txt
+
+# Ignore storage (uploaded files in development and any SQLite databases).
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep

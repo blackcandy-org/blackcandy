@@ -11,7 +11,7 @@ pg_default: &pg_default
 
 development:
   <<: *sqlite_default
-  database: db/development.sqlite3
+  database: storage/development.sqlite3
 
 <% if BlackCandy::Config.db_adapter == "postgresql" %>
 test:
@@ -22,9 +22,9 @@ production:
 <% else %>
 test:
   <<: *sqlite_default
-  database: db/test.sqlite3
+  database: storage/test.sqlite3
 
 production:
   <<: *sqlite_default
-  database: db/production.sqlite3
+  database: storage/production.sqlite3
 <% end %>
