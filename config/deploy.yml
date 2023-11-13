@@ -31,8 +31,7 @@ ssh:
 
 volumes:
   - "${PWD}/media_data:/media_data"
-  - "${PWD}/production.sqlite3:/app/db/production.sqlite3"
-  - "${PWD}/log:/app/log"
+  - "${PWD}/storage_data:/app/storage"
   - "${PWD}/uploads_data:/app/public/uploads"
 
 traefik:

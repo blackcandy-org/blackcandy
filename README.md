@@ -65,13 +65,13 @@ docker run -e DB_ADAPTER=postgresql -e DB_URL=postgresql://yourdatabaseurl ghcr.
 
 ### How to Persist Data
 
-There are two parts of data need to persist in Black Candy. First it's the data from database which store in `/app/db/production.sqlite3`, second it's the data from the asset of media files which store in `/app/public/uploads`.
-
+There are two parts of data that need to persist in Black Candy. First it's the data from the database if you are using SQLite as database, which is stored in `/app/storage`, second it's the data from the asset of media files, which is stored in `/app/public/uploads`.
+,s
 ```shell
-touch production.sqlite3
+mkdir storage_data
 mkdir uploads_data
 
-docker run -v ./production.sqlite3:/app/db/production.sqlite3 -v ./uploads_data:/app/public/uploads ghcr.io/blackcandy-org/blackcandy:edge 
+docker run -v ./storage_data:/app/storage -v ./uploads_data:/app/public/uploads ghcr.io/blackcandy-org/blackcandy:edge 
 ```
 
 ### Enhance With Redis
@@ -106,14 +106,13 @@ services:
   app:
     image: ghcr.io/blackcandy-org/blackcandy:edge 
     volumes:
-      - ./log:/app/log
-      - ./production.sqlite3:/app/db/production.sqlite3
+      - ./storage_data:/app/storage
       - ./uploads_data:/app/public/uploads
       - /media_data:/media_data
     environment:
       VIRTUAL_HOST: blackcandy.local
       MEDIA_PATH: /media_data
-      NGINX_SENDFILE: "true" # Don't foreget to set `NGINX_SENDFILE` environment variable to true to enable nginx sendfile.
+      NGINX_SENDFILE: "true" # Don't forget to set `NGINX_SENDFILE` environment variable to true to enable nginx sendfile.
 ```
 
 ```shell
@@ -133,8 +132,7 @@ services:
   app: &app_base
     image: ghcr.io/blackcandy-org/blackcandy:edge 
     volumes:
-      - ./log:/app/log
-      - ./production.sqlite3:/app/db/production.sqlite3
+      - ./storage_data:/app/storage
       - ./uploads_data:/app/public/uploads
       - /media_data:/media_data
   sidekiq:
@@ -155,14 +153,17 @@ services:
   app: &app_base
     image: ghcr.io/blackcandy-org/blackcandy:edge 
     volumes:
-      - ./log:/app/log
-      - ./production.sqlite3:/app/db/production.sqlite3
+      - ./storage_data:/app/storage
       - ./uploads_data:/app/public/uploads
       - /media_data:/media_data
   listener:
     <<: *app_base
     command: bundle exec rails listen_media_changes
 ```
+
+### Logging
+
+Black Candy logs to `STDOUT` by default. So if you want to control the log, Docker already supports a lot of options to handle the log in the container. see: https://docs.docker.com/config/containers/logging/configure/.
 
 ## Environment Variables
 
@@ -230,10 +231,10 @@ Then visit <http://localhost:3000> use initial admin user to login (email: admin
 ## Test
 
 ```shell
-# Runing all test
+# Running all test
 $ rails test:all 
 
-# Runing lint
+# Running lint
 $ rails lint:all
 ```
 
