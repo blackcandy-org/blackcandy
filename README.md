@@ -106,14 +106,13 @@ services:
   app:
     image: ghcr.io/blackcandy-org/blackcandy:edge 
     volumes:
-      - ./log:/app/log
       - ./storage_data:/app/storage
       - ./uploads_data:/app/public/uploads
       - /media_data:/media_data
     environment:
       VIRTUAL_HOST: blackcandy.local
       MEDIA_PATH: /media_data
-      NGINX_SENDFILE: "true" # Don't foreget to set `NGINX_SENDFILE` environment variable to true to enable nginx sendfile.
+      NGINX_SENDFILE: "true" # Don't forget to set `NGINX_SENDFILE` environment variable to true to enable nginx sendfile.
 ```
 
 ```shell
@@ -133,7 +132,6 @@ services:
   app: &app_base
     image: ghcr.io/blackcandy-org/blackcandy:edge 
     volumes:
-      - ./log:/app/log
       - ./storage_data:/app/storage
       - ./uploads_data:/app/public/uploads
       - /media_data:/media_data
@@ -155,7 +153,6 @@ services:
   app: &app_base
     image: ghcr.io/blackcandy-org/blackcandy:edge 
     volumes:
-      - ./log:/app/log
       - ./storage_data:/app/storage
       - ./uploads_data:/app/public/uploads
       - /media_data:/media_data
@@ -163,6 +160,10 @@ services:
     <<: *app_base
     command: bundle exec rails listen_media_changes
 ```
+
+### Logging
+
+Black Candy logs to `STDOUT` by default. So if you want to control the log, Docker already supports a lot of options to handle the log in the container. see: https://docs.docker.com/config/containers/logging/configure/.
 
 ## Environment Variables
 
@@ -230,10 +231,10 @@ Then visit <http://localhost:3000> use initial admin user to login (email: admin
 ## Test
 
 ```shell
-# Runing all test
+# Running all test
 $ rails test:all 
 
-# Runing lint
+# Running lint
 $ rails lint:all
 ```
 
