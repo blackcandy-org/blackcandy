@@ -34,17 +34,17 @@ class Api::V1::CurrentPlaylist::SongsControllerTest < ActionDispatch::Integratio
   test "should reorder songs from playlist" do
     assert_equal [1, 2, 3], @playlist.song_ids
 
-    put api_v1_current_playlist_song_url(id: 1), params: {destination_song_id: 2}, headers: api_token_header(@user)
+    put move_api_v1_current_playlist_song_url(id: 1), params: {destination_song_id: 2}, headers: api_token_header(@user)
     assert_response :success
     assert_equal [2, 1, 3], @playlist.reload.song_ids
 
-    put api_v1_current_playlist_song_url(id: 3), params: {destination_song_id: 2}, headers: api_token_header(@user)
+    put move_api_v1_current_playlist_song_url(id: 3), params: {destination_song_id: 2}, headers: api_token_header(@user)
     assert_response :success
     assert_equal [3, 2, 1], @playlist.reload.song_ids
   end
 
   test "should return not found when reorder song not in playlist" do
-    put api_v1_current_playlist_song_url(id: 4), params: {destination_song_id: 2}, as: :json, headers: api_token_header(@user)
+    put move_api_v1_current_playlist_song_url(id: 4), params: {destination_song_id: 2}, as: :json, headers: api_token_header(@user)
     assert_response :not_found
   end
 

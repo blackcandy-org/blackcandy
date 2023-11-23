@@ -99,7 +99,7 @@ export default class extends Controller {
       target.insertAdjacentElement('beforebegin', sourceElement)
     }
 
-    fetchRequest(`/playlists/${playlistId}/songs/${songId}/`, {
+    fetchRequest(`/playlists/${playlistId}/songs/${songId}/move`, {
       method: 'put',
       body: JSON.stringify({
         destination_song_id: destinationSongId

@@ -2,7 +2,7 @@
 
 class Playlists::SongsController < ApplicationController
   before_action :find_playlist
-  before_action :find_song, only: [:update, :destroy]
+  before_action :find_song, only: [:move, :destroy]
   before_action :redirect_to_built_in_playlist, only: [:index]
 
   include PlayableConcern
@@ -30,7 +30,7 @@ class Playlists::SongsController < ApplicationController
     redirect_to action: "index" if @playlist.songs.empty?
   end
 
-  def update
+  def move
     moving_song = @playlist.playlists_songs.find_by!(song_id: @song.id)
     destination_song = @playlist.playlists_songs.find_by!(song_id: params[:destination_song_id])
 

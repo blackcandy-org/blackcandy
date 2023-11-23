@@ -4,7 +4,7 @@ module Api
   module V1
     class CurrentPlaylist::SongsController < ApiController
       before_action :find_playlist
-      before_action :find_song, only: [:destroy, :update]
+      before_action :find_song, only: [:destroy, :move]
 
       def index
         @songs = @playlist.songs_with_favorite
@@ -14,7 +14,7 @@ module Api
         @playlist.songs.destroy(@song)
       end
 
-      def update
+      def move
         moving_song = @playlist.playlists_songs.find_by!(song_id: @song.id)
         destination_song = @playlist.playlists_songs.find_by!(song_id: params[:destination_song_id])
 

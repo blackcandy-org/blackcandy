@@ -17,20 +17,24 @@ Rails.application.routes.draw do
 
   resources :playlists, only: [:index, :create, :update, :destroy] do
     resource :songs, only: :destroy, action: :destroy_all, module: "playlists"
-    resources :songs, only: [:index, :create, :destroy, :update], module: "playlists" do
+    resources :songs, only: [:index, :create, :destroy], module: "playlists" do
       post "play", on: :collection
+      put "move", on: :member
     end
   end
 
   namespace :current_playlist do
     resource :songs, only: :destroy, action: :destroy_all
-    resources :songs, only: [:index, :create, :destroy, :update]
+    resources :songs, only: [:index, :create, :destroy] do
+      put "move", on: :member
+    end
   end
 
   namespace :favorite_playlist do
     resource :songs, only: :destroy, action: :destroy_all
-    resources :songs, only: [:index, :create, :destroy, :update] do
+    resources :songs, only: [:index, :create, :destroy] do
       post "play", on: :collection
+      put "move", on: :member
     end
   end
 
@@ -83,7 +87,9 @@ Rails.application.routes.draw do
 
       namespace :current_playlist do
         resource :songs, only: :destroy, action: :destroy_all
-        resources :songs, only: [:index, :destroy, :update, :create]
+        resources :songs, only: [:index, :destroy, :create] do
+          put "move", on: :member
+        end
       end
 
       namespace :favorite_playlist do
