@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  concern :playable do
-    member do
-      post "play"
-    end
-  end
-
   root "home#index"
 
   resources :sessions, only: [:new, :create, :destroy]
@@ -13,22 +7,31 @@ Rails.application.routes.draw do
 
   resources :artists, only: [:index, :show, :update]
   resources :songs, only: [:index]
-  resources :albums, only: [:index, :show, :update], concerns: :playable
+  resources :albums, only: [:index, :show, :update] do
+    post "play", on: :member
+  end
 
   resources :users, except: [:show] do
     resource :setting, only: [:update], module: "users"
   end
 
   resources :playlists, only: [:index, :create, :update, :destroy] do
-    resource :songs, only: [:show, :create, :destroy, :update], module: "playlists", concerns: :playable
+    resource :songs, only: :destroy, action: :destroy_all, module: "playlists"
+    resources :songs, only: [:index, :create, :destroy, :update], module: "playlists" do
+      post "play", on: :collection
+    end
   end
 
   namespace :current_playlist do
-    resource :songs, only: [:show, :create, :destroy, :update]
+    resource :songs, only: :destroy, action: :destroy_all
+    resources :songs, only: [:index, :create, :destroy, :update]
   end
 
   namespace :favorite_playlist do
-    resource :songs, only: [:show, :create, :destroy, :update], concerns: :playable
+    resource :songs, only: :destroy, action: :destroy_all
+    resources :songs, only: [:index, :create, :destroy, :update] do
+      post "play", on: :collection
+    end
   end
 
   namespace :dialog do
@@ -79,11 +82,12 @@ Rails.application.routes.draw do
       resources :transcoded_stream, only: [:new]
 
       namespace :current_playlist do
-        resource :songs, only: [:show, :destroy, :update, :create]
+        resource :songs, only: :destroy, action: :destroy_all
+        resources :songs, only: [:index, :destroy, :update, :create]
       end
 
       namespace :favorite_playlist do
-        resource :songs, only: [:create, :destroy]
+        resources :songs, only: [:create, :destroy]
       end
     end
   end

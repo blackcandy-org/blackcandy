@@ -2,53 +2,62 @@
 
 class Playlists::SongsController < ApplicationController
   before_action :find_playlist
-  before_action :find_song, only: [:create, :destroy]
+  before_action :find_song, only: [:update, :destroy]
+  before_action :redirect_to_built_in_playlist, only: [:index]
 
   include PlayableConcern
 
-  def show
+  def index
     @pagy, @songs = pagy(@playlist.songs.includes(:artist))
   end
 
   def create
+    @song = Song.find(params[:song_id])
     @playlist.songs.push(@song)
+
     flash[:success] = t("success.add_to_playlist")
   rescue ActiveRecord::RecordNotUnique
     flash[:error] = t("error.already_in_playlist")
   ensure
-    redirect_back_with_referer_params(fallback_location: {action: "show"})
+    redirect_back_with_referer_params(fallback_location: {action: "index"})
   end
 
   def destroy
-    if params[:clear_all]
-      @playlist.songs.clear
-    else
-      @playlist.songs.destroy(@song)
-      flash.now[:success] = t("success.delete_from_playlist")
-    end
+    @playlist.songs.destroy(@song)
+    flash.now[:success] = t("success.delete_from_playlist")
 
     # for refresh playlist content, when remove last song from playlist
-    redirect_to action: "show" if @playlist.songs.empty?
+    redirect_to action: "index" if @playlist.songs.empty?
   end
 
   def update
-    moving_song = @playlist.playlists_songs.find_by!(song_id: params[:song_id])
+    moving_song = @playlist.playlists_songs.find_by!(song_id: @song.id)
     destination_song = @playlist.playlists_songs.find_by!(song_id: params[:destination_song_id])
 
     moving_song.update(position: destination_song.position)
   end
 
+  def destroy_all
+    @playlist.songs.clear
+    redirect_to action: "index"
+  end
+
   private
 
   def find_playlist
-    @playlist = Current.user.playlists.find(params[:playlist_id])
+    @playlist = Current.user.all_playlists.find(params[:playlist_id])
   end
 
   def find_song
-    @song = Song.find(params[:song_id]) unless params[:clear_all]
+    @song = @playlist.songs.find(params[:id])
   end
 
   def find_all_song_ids
     @song_ids = @playlist.song_ids
+  end
+
+  def redirect_to_built_in_playlist
+    redirect_to current_playlist_songs_path if @playlist.current?
+    redirect_to favorite_playlist_songs_path if @playlist.favorite?
   end
 end

@@ -16,7 +16,7 @@
         <%= link_to t("label.add_to_playlist"), dialog_playlists_path(song_id: song.id, referer_url: current_url), data: {turbo_frame: ("turbo-dialog" unless native_app?)}, class: "c-dropdown__item" %>
         <%= button_to t("label.play_next"), current_playlist_songs_path(song_id: song.id), form_class: "c-dropdown__item", form: {data: {turbo_frame: "turbo-playlist", submit_start_action: "check_current_song"}} %>
         <%= button_to t("label.play_last"), current_playlist_songs_path(song_id: song.id, location: "last"), form_class: "c-dropdown__item", form: {data: {turbo_frame: "turbo-playlist"}} %>
-        <%= button_to t("label.delete"), playlist_songs_path(playlist, song_id: song.id), method: :delete, form_class: "c-dropdown__item" %>
+        <%= button_to t("label.delete"), playlist_song_path(playlist, song), method: :delete, form_class: "c-dropdown__item" %>
       </div>
     </details>
   </div>

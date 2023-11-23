@@ -21,15 +21,15 @@ class Playlists::SongsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should remove songs from playlist" do
-    delete playlist_songs_url(@playlist), params: {song_id: 1}, xhr: true
+    delete playlist_song_url(@playlist, id: 1), xhr: true
     assert_equal [2], @playlist.reload.song_ids
 
-    delete playlist_songs_url(@playlist), params: {song_id: 2}, xhr: true
+    delete playlist_song_url(@playlist, id: 2), xhr: true
     assert_equal [], @playlist.reload.song_ids
   end
 
   test "should clear all songs from playlist" do
-    delete playlist_songs_url(@playlist), params: {clear_all: true}
+    delete playlist_songs_url(@playlist)
     assert_equal [], @playlist.reload.song_ids
   end
 
@@ -37,18 +37,18 @@ class Playlists::SongsControllerTest < ActionDispatch::IntegrationTest
     post playlist_songs_url(@playlist), params: {song_id: 3}, xhr: true
     assert_equal [1, 2, 3], @playlist.reload.song_ids
 
-    put playlist_songs_url(@playlist), params: {song_id: 1, destination_song_id: 2}
+    put playlist_song_url(@playlist, id: 1), params: {destination_song_id: 2}
 
     assert_response :success
     assert_equal [2, 1, 3], @playlist.reload.song_ids
 
-    put playlist_songs_url(@playlist), params: {song_id: 3, destination_song_id: 2}
+    put playlist_song_url(@playlist, id: 3), params: {destination_song_id: 2}
     assert_response :success
     assert_equal [3, 2, 1], @playlist.reload.song_ids
   end
 
   test "should return not found when reorder song not in playlist" do
-    put playlist_songs_url(@playlist), params: {song_id: 4, destination_song_id: 2}
+    put playlist_song_url(@playlist, id: 4), params: {destination_song_id: 2}
     assert_response :not_found
   end
 

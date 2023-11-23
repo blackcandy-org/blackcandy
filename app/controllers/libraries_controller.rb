@@ -5,6 +5,6 @@ class LibrariesController < ApplicationController
     @albums_count = Album.count
     @artists_count = Artist.count
     @songs_count = Song.count
-    @playlists_count = Current.user.all_playlists.count
+    @playlists_count = Current.user.playlists_with_favorite.count
   end
 end

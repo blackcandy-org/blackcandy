@@ -37,7 +37,7 @@ class PlaylistSystemTest < ApplicationSystemTestCase
   end
 
   test "delete playlist" do
-    playlist_count = users(:admin).all_playlists.count
+    playlist_count = users(:admin).playlists_with_favorite.count
 
     find(:test_id, "playlist_menu").click
     click_on "Delete"

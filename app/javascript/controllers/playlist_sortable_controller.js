@@ -2,10 +2,6 @@ import { Controller } from '@hotwired/stimulus'
 import { fetchRequest } from '../helper'
 
 export default class extends Controller {
-  static values = {
-    url: String
-  }
-
   connect () {
     this.dragHandle = null
 
@@ -93,6 +89,7 @@ export default class extends Controller {
     const targetIndex = Array.from(target.parentNode.children).indexOf(target)
     const songId = sourceElement.dataset.songId
     const destinationSongId = target.dataset.songId
+    const playlistId = this.element.dataset.playlistId
 
     sourceElement.remove()
 
@@ -102,10 +99,9 @@ export default class extends Controller {
       target.insertAdjacentElement('beforebegin', sourceElement)
     }
 
-    fetchRequest(this.urlValue, {
+    fetchRequest(`/playlists/${playlistId}/songs/${songId}/`, {
       method: 'put',
       body: JSON.stringify({
-        song_id: songId,
         destination_song_id: destinationSongId
       })
     })

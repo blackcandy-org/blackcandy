@@ -61,9 +61,9 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "should return all playlist except current playlist" do
-    all_playlists = @user.all_playlists.map { |playlist| playlist.class.name }.uniq.sort
+    all_playlists = @user.playlists_with_favorite.map { |playlist| playlist.class.name }.uniq.sort
 
-    assert_equal 2, @user.all_playlists.count
+    assert_equal 2, @user.playlists_with_favorite.count
     assert_equal %w[FavoritePlaylist Playlist], all_playlists
   end
 

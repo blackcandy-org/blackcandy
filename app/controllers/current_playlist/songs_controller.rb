@@ -3,11 +3,15 @@
 class CurrentPlaylist::SongsController < Playlists::SongsController
   layout "playlist"
 
-  def show
+  skip_before_action :redirect_to_built_in_playlist
+
+  def index
     @songs = @playlist.songs_with_favorite
   end
 
   def create
+    @song = Song.find(params[:song_id])
+
     if params[:location] == "last"
       @playlist.songs.push(@song)
     else
@@ -17,7 +21,7 @@ class CurrentPlaylist::SongsController < Playlists::SongsController
 
     flash.now[:success] = t("success.add_to_playlist")
 
-    redirect_to action: "show", playable: params[:song_playable] if @playlist.songs.count == 1
+    redirect_to action: "index", playable: params[:song_playable] if @playlist.songs.count == 1
   rescue ActiveRecord::RecordNotUnique
     flash.now[:error] = t("error.already_in_playlist")
     render turbo_stream: render_flash
