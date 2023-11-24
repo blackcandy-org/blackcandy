@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class AlbumsController < ApplicationController
-  include PlayableConcern
-
   before_action :require_admin, only: [:update]
   before_action :find_album, except: [:index]
   before_action :get_sort_option, only: [:index]
@@ -38,14 +36,6 @@ class AlbumsController < ApplicationController
 
   def find_album
     @album = Album.find(params[:id])
-  end
-
-  def find_all_song_ids
-    @song_ids = Album.find(params[:id]).song_ids
-  end
-
-  def after_played
-    Current.user.add_album_to_recently_played(@album)
   end
 
   def filter_params

@@ -52,14 +52,6 @@ class Playlists::SongsControllerTest < ActionDispatch::IntegrationTest
     assert_response :not_found
   end
 
-  test "should play whole playlist" do
-    assert_not_equal @playlist.song_ids, @user.current_playlist.song_ids
-
-    post play_playlist_songs_url(@playlist)
-
-    assert_equal @playlist.song_ids, @user.current_playlist.reload.song_ids
-  end
-
   test "should has error flash when song alreay in playlist" do
     post playlist_songs_url(@playlist), params: {song_id: 1}, xhr: true
     assert flash[:error].present?

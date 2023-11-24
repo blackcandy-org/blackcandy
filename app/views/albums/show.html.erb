@@ -12,7 +12,7 @@
         <span class='u-text-monospace'><%= format_duration(@songs.sum(:duration)) %></span>
       </div>
       <div class='u-mt-large'>
-        <%= button_to t("label.play_all"), play_album_path(@album), form_class: "u-display-inline-block", class: "c-button c-button--primary", form: {"data-controller" => "native-bridge", "data-turbo-frame" => "turbo-playlist", "data-action" => "turbo:submit-end->native-bridge#playAll"} %>
+        <%= button_to t("label.play_all"), current_playlist_album_path(@album), method: :put, form_class: "u-display-inline-block", class: "c-button c-button--primary", form: {"data-controller" => "native-bridge", "data-turbo-frame" => "turbo-playlist", "data-action" => "turbo:submit-end->native-bridge#playAll"} %>
         <% if is_admin? %>
           <%= link_to t("label.edit"), edit_dialog_album_path(@album), data: {turbo_frame: ("turbo-dialog" unless native_app?)}, class: "c-button c-button--secondary u-ml-tiny" %>
         <% end %>

@@ -5,8 +5,6 @@ class Playlists::SongsController < ApplicationController
   before_action :find_song, only: [:move, :destroy]
   before_action :redirect_to_built_in_playlist, only: [:index]
 
-  include PlayableConcern
-
   def index
     @pagy, @songs = pagy(@playlist.songs.includes(:artist))
   end
@@ -50,10 +48,6 @@ class Playlists::SongsController < ApplicationController
 
   def find_song
     @song = @playlist.songs.find(params[:id])
-  end
-
-  def find_all_song_ids
-    @song_ids = @playlist.song_ids
   end
 
   def redirect_to_built_in_playlist
