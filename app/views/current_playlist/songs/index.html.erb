@@ -1,7 +1,7 @@
 <div
   data-test-id='current_playlist'
   data-controller='current-playlist-songs'
-  <%= "data-current-playlist-songs-playable-value='true'" if params[:playable] %>>
+  data-current-playlist-songs-should-play-all-value='<%= params[:should_play_all] || false %>'>
   <% if @songs.empty? %>
     <%= empty_alert_tag %>
   <% else %>

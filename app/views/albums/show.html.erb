@@ -23,7 +23,7 @@
     <% @songs.each do |song| %>
       <li class='c-list__item' data-playlist-songs-target='item' data-song-id='<%= song.id %>' data-test-id='album_song'>
         <div class='o-flex o-flex--justify-between o-flex--align-center'>
-          <%= button_to current_playlist_songs_path(song_id: song.id, song_playable: true), class: "c-button c-button--link u-w-100", form_class: "o-flex__item--grow-1", form: {"data-submit-start-action" => "check_before_playing", "data-turbo-frame" => "turbo-playlist"} do %>
+          <%= button_to current_playlist_songs_path(song_id: song.id, should_play: true), class: "c-button c-button--link u-w-100", form_class: "o-flex__item--grow-1", form: {"data-submit-start-action" => "check_before_playing", "data-turbo-frame" => "turbo-playlist"} do %>
             <div class='o-flex o-flex--justify-between o-flex--align-center'>
               <div>
                 <span class='u-mb-tiny' data-test-id='album_song_name'><%= song.name %></span>

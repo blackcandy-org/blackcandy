@@ -21,7 +21,7 @@ class CurrentPlaylist::SongsController < Playlists::SongsController
 
     flash.now[:success] = t("success.add_to_playlist")
 
-    redirect_to action: "index", playable: params[:song_playable] if @playlist.songs.count == 1
+    redirect_to action: "index", should_play_all: params[:should_play] if @playlist.songs.count == 1
   rescue ActiveRecord::RecordNotUnique
     flash.now[:error] = t("error.already_in_playlist")
     render turbo_stream: render_flash

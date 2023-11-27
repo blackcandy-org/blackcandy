@@ -11,7 +11,7 @@ class CurrentPlaylist::Songs::AlbumControllerTest < ActionDispatch::IntegrationT
   test "should replace all songs with album songs" do
     put current_playlist_album_url(albums(:album1))
 
-    assert_redirected_to current_playlist_songs_url(playable: true)
+    assert_redirected_to current_playlist_songs_url(should_play_all: true)
     assert_equal albums(:album1).song_ids, @playlist.song_ids
   end
 

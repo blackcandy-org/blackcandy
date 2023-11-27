@@ -1,6 +1,6 @@
 <div role='row' data-song-id='<%= song.id %>'>
   <div role='cell' data-playlist-songs-target='item'>
-    <%= button_to current_playlist_songs_path(song_id: song.id, song_playable: true), class: "c-button c-button--link", data: {test_id: "song_item"}, form: {"data-submit-start-action" => "check_before_playing", "data-turbo-frame" => "turbo-playlist"} do %>
+    <%= button_to current_playlist_songs_path(song_id: song.id, should_play: true), class: "c-button c-button--link", data: {test_id: "song_item"}, form: {"data-submit-start-action" => "check_before_playing", "data-turbo-frame" => "turbo-playlist"} do %>
       <span data-test-id='song_name'><%= song.name %></span>
     <% end %>
   </div>

@@ -2,7 +2,7 @@ import PlaylistSongsController from './playlist_songs_controller.js'
 
 export default class extends PlaylistSongsController {
   static values = {
-    playable: Boolean
+    shouldPlayAll: Boolean
   }
 
   initialize () {
@@ -11,23 +11,25 @@ export default class extends PlaylistSongsController {
 
   itemTargetConnected (target) {
     const song = JSON.parse(target.dataset.songJson)
-    const songPlayable = target.dataset.songPlayable === 'true'
+    const shouldPlay = target.dataset.shouldPlay === 'true'
     const targetIndex = this.itemTargets.indexOf(target)
 
     if (this.player.playlist.indexOf(song.id) !== -1) { return }
 
     this.player.playlist.insert(targetIndex, song)
 
-    if (songPlayable) {
+    if (shouldPlay) {
       this.player.skipTo(targetIndex)
+      delete target.dataset.shouldPlay
     }
   }
 
   connect () {
     super.connect()
 
-    if (this.playableValue) {
+    if (this.shouldPlayAllValue) {
       this.player.skipTo(0)
+      this.shouldPlayAllValue = false
     }
   }
 

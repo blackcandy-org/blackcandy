@@ -13,7 +13,7 @@ class CurrentPlaylist::Songs::PlaylistsControllerTest < ActionDispatch::Integrat
 
     put current_playlist_playlist_url(playlist)
 
-    assert_redirected_to current_playlist_songs_url(playable: true)
+    assert_redirected_to current_playlist_songs_url(should_play_all: true)
     assert_equal playlist.song_ids, @current_playlist.song_ids
   end
 
