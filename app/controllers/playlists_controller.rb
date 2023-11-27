@@ -5,7 +5,7 @@ class PlaylistsController < ApplicationController
   before_action :get_sort_option, only: [:index]
 
   def index
-    @pagy, @playlists = pagy(Current.user.all_playlists.sort_records(*sort_params))
+    @pagy, @playlists = pagy(Current.user.playlists_with_favorite.sort_records(*sort_params))
   end
 
   def create

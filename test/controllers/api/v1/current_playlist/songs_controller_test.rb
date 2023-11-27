@@ -17,32 +17,34 @@ class Api::V1::CurrentPlaylist::SongsControllerTest < ActionDispatch::Integratio
   end
 
   test "should remove songs from playlist" do
-    delete api_v1_current_playlist_songs_url, params: {song_ids: [1]}, headers: api_token_header(@user)
+    delete api_v1_current_playlist_song_url(id: 1), headers: api_token_header(@user)
     assert_equal [2, 3], @playlist.reload.song_ids
 
-    delete api_v1_current_playlist_songs_url, params: {song_ids: [2, 3]}, headers: api_token_header(@user)
-    assert_equal [], @playlist.reload.song_ids
+    delete api_v1_current_playlist_song_url(id: 3), headers: api_token_header(@user)
+    assert_equal [2], @playlist.reload.song_ids
   end
 
   test "should clear all songs from playlist" do
-    delete api_v1_current_playlist_songs_url, params: {clear_all: true}, headers: api_token_header(@user)
+    delete api_v1_current_playlist_songs_url, headers: api_token_header(@user)
+
+    assert_response :success
     assert_equal [], @playlist.reload.song_ids
   end
 
   test "should reorder songs from playlist" do
     assert_equal [1, 2, 3], @playlist.song_ids
 
-    put api_v1_current_playlist_songs_url, params: {song_id: 1, destination_song_id: 2}, headers: api_token_header(@user)
+    put move_api_v1_current_playlist_song_url(id: 1), params: {destination_song_id: 2}, headers: api_token_header(@user)
     assert_response :success
     assert_equal [2, 1, 3], @playlist.reload.song_ids
 
-    put api_v1_current_playlist_songs_url, params: {song_id: 3, destination_song_id: 2}, headers: api_token_header(@user)
+    put move_api_v1_current_playlist_song_url(id: 3), params: {destination_song_id: 2}, headers: api_token_header(@user)
     assert_response :success
     assert_equal [3, 2, 1], @playlist.reload.song_ids
   end
 
   test "should return not found when reorder song not in playlist" do
-    put api_v1_current_playlist_songs_url, params: {song_id: 4, destination_song_id: 2}, as: :json, headers: api_token_header(@user)
+    put move_api_v1_current_playlist_song_url(id: 4), params: {destination_song_id: 2}, as: :json, headers: api_token_header(@user)
     assert_response :not_found
   end
 

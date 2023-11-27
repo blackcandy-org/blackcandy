@@ -9,7 +9,7 @@ class PlaylistsSystemTest < ApplicationSystemTestCase
   end
 
   test "show playlist" do
-    users(:admin).all_playlists.each do |playlist|
+    users(:admin).playlists_with_favorite.each do |playlist|
       assert_selector(:test_id, "playlist_name", text: playlist.name)
     end
   end

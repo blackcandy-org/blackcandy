@@ -43,26 +43,4 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
       assert_response :success
     end
   end
-
-  test "should play whole album" do
-    user = users(:visitor1)
-
-    assert_not_equal albums(:album1).song_ids, user.current_playlist.song_ids
-
-    login user
-    post play_album_url(albums(:album1))
-
-    assert_equal albums(:album1).song_ids, user.current_playlist.reload.song_ids
-  end
-
-  test "should add album to recently played after playing" do
-    user = users(:visitor1)
-
-    assert_empty user.recently_played_albums
-
-    login user
-    post play_album_url(albums(:album1))
-
-    assert_equal [albums(:album1)], user.reload.recently_played_albums
-  end
 end

@@ -129,9 +129,8 @@ export default class extends Controller {
 
   #setPlayingStatus = () => {
     const { currentSong } = this
-    const favoriteSongUrl = new URL(this.favoriteButtonTarget.action)
-
-    favoriteSongUrl.searchParams.set('song_id', currentSong.id)
+    const favoriteSongUrl = `/favorite_playlist/songs?song_id=${currentSong.id}`
+    const unFavoriteSongUrl = `/favorite_playlist/songs/${currentSong.id}`
 
     this.imageTarget.src = currentSong.album_image_url.small
     this.backgroundImageTarget.style.backgroundImage = `url(${currentSong.album_image_url.small})`
@@ -147,7 +146,7 @@ export default class extends Controller {
     this.favoriteButtonTarget.classList.toggle('u-display-none', currentSong.is_favorited)
     this.unFavoriteButtonTarget.classList.toggle('u-display-none', !currentSong.is_favorited)
     this.favoriteButtonTarget.action = favoriteSongUrl
-    this.unFavoriteButtonTarget.action = favoriteSongUrl
+    this.unFavoriteButtonTarget.action = unFavoriteSongUrl
 
     window.requestAnimationFrame(this.#setProgress.bind(this))
     this.timerInterval = setInterval(this.#setTimer.bind(this), 1000)

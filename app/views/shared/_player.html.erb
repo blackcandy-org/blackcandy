@@ -45,10 +45,10 @@
       </span>
     </div>
     <div data-action='turbo:submit-end->player#toggleFavorite' data-test-id='player_favorite_button'>
-      <%= button_to favorite_playlist_songs_path, form_class: "u-visibility-hidden", form: {"data-player-target" => "favoriteButton"} do %>
+      <%= button_to "#", form_class: "u-visibility-hidden", form: {"data-player-target" => "favoriteButton"} do %>
         <%= icon_tag "heart", title: t("label.toggle_favorite") %>
       <% end %>
-      <%= button_to favorite_playlist_songs_path, method: :delete, form_class: "u-display-none", form: {"data-player-target" => "unFavoriteButton"} do %>
+      <%= button_to "#", method: :delete, form_class: "u-display-none", form: {"data-player-target" => "unFavoriteButton"} do %>
         <%= icon_tag "heart", emphasis: true, title: t("label.toggle_favorite") %>
       <% end %>
     </div>
