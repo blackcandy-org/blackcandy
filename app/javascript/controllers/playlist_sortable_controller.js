@@ -1,27 +1,49 @@
 import { Controller } from '@hotwired/stimulus'
 import { fetchRequest } from '../helper'
+import { installEventHandler } from './mixins/event_handler'
 
 export default class extends Controller {
+  initialize () {
+    installEventHandler(this)
+  }
+
   connect () {
     this.dragHandle = null
 
-    this.element.addEventListener('mousedown', this.#handleMouseDown)
-    this.element.addEventListener('dragstart', this.#handleDragStart)
-    this.element.addEventListener('dragenter', this.#handleDragEnter)
-    this.element.addEventListener('dragleave', this.#handleDragLeave)
-    this.element.addEventListener('dragend', this.#handleDragEnd)
-    this.element.addEventListener('dragover', this.#handleDragOver)
-    this.element.addEventListener('drop', this.#handleDrop)
-  }
+    this.handleEvent('mousedown', {
+      on: this.element,
+      with: this.#handleMouseDown
+    })
 
-  disconnect () {
-    this.element.removeEventListener('mousedown', this.#handleMouseDown)
-    this.element.removeEventListener('dragstart', this.#handleDragStart)
-    this.element.removeEventListener('dragenter', this.#handleDragEnter)
-    this.element.removeEventListener('dragleave', this.#handleDragLeave)
-    this.element.removeEventListener('dragend', this.#handleDragEnd)
-    this.element.removeEventListener('dragover', this.#handleDragOver)
-    this.element.removeEventListener('drop', this.#handleDrop)
+    this.handleEvent('dragstart', {
+      on: this.element,
+      with: this.#handleDragStart
+    })
+
+    this.handleEvent('dragenter', {
+      on: this.element,
+      with: this.#handleDragEnter
+    })
+
+    this.handleEvent('dragleave', {
+      on: this.element,
+      with: this.#handleDragLeave
+    })
+
+    this.handleEvent('dragend', {
+      on: this.element,
+      with: this.#handleDragEnd
+    })
+
+    this.handleEvent('dragover', {
+      on: this.element,
+      with: this.#handleDragOver
+    })
+
+    this.handleEvent('drop', {
+      on: this.element,
+      with: this.#handleDrop
+    })
   }
 
   #handleMouseDown = (event) => {

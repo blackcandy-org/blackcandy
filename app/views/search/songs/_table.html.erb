@@ -8,7 +8,7 @@
       <div role='columnheader'><%= t("label.actions") %></div>
     </div>
   </div>
-  <div role='rowgroup' data-action='turbo:submit-start->playlist-songs#submitStartHandle'>
+  <div role='rowgroup'>
     <%= render partial: "songs/song", collection: songs, cached: true %>
   </div>
 </div>

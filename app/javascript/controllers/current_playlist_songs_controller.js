@@ -1,12 +1,17 @@
-import PlaylistSongsController from './playlist_songs_controller.js'
+import { Controller } from '@hotwired/stimulus'
+import { installEventHandler } from './mixins/event_handler'
+import { installPlayingSongIndicator } from './mixins/playing_song_indicator'
 
-export default class extends PlaylistSongsController {
+export default class extends Controller {
+  static targets = ['item']
+
   static values = {
     shouldPlayAll: Boolean
   }
 
   initialize () {
-    this.clickActions = ['play']
+    installEventHandler(this)
+    installPlayingSongIndicator(this, () => this.itemTargets)
   }
 
   itemTargetConnected (target) {
@@ -25,12 +30,16 @@ export default class extends PlaylistSongsController {
   }
 
   connect () {
-    super.connect()
-
     if (this.shouldPlayAllValue) {
       this.player.skipTo(0)
       this.shouldPlayAllValue = false
     }
+
+    this.handleEvent('click', {
+      on: this.element,
+      matching: `[data-delegated-action='click->${this.scope.identifier}#play']`,
+      with: this.play
+    })
   }
 
   itemTargetDisconnected (target) {
@@ -45,10 +54,14 @@ export default class extends PlaylistSongsController {
     }
   }
 
-  _play (target) {
-    const { songId } = target.closest('[data-song-id]').dataset
+  play = (event) => {
+    const { songId } = event.target.closest('[data-song-id]').dataset
     const playlistIndex = this.player.playlist.indexOf(songId)
 
     this.player.skipTo(playlistIndex)
+  }
+
+  get player () {
+    return App.player
   }
 }

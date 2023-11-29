@@ -1,12 +1,17 @@
 import { Controller } from '@hotwired/stimulus'
+import { installEventHandler } from './mixins/event_handler'
 
 export default class extends Controller {
   DEFAULT_SKIP_TIME = 10
 
+  initialize () {
+    installEventHandler(this)
+  }
+
   connect () {
     if (!('mediaSession' in navigator)) { return }
 
-    document.addEventListener('player:playing', this.#setPlayingStatus)
+    this.handleEvent('player:playing', { with: this.#setPlayingStatus })
 
     Object.entries(this.mediaSessionActions).forEach(([actionName, actionHandler]) => {
       try {
@@ -15,12 +20,6 @@ export default class extends Controller {
         // The media session ation is not supported.
       }
     })
-  }
-
-  disconnect () {
-    if (!('mediaSession' in navigator)) { return }
-
-    document.removeEventListener('player:playing', this.#setPlayingStatus)
   }
 
   #setPlayingStatus = () => {

@@ -1,22 +1,18 @@
 import { Controller } from '@hotwired/stimulus'
+import { installEventHandler } from './mixins/event_handler'
 
 export default class extends Controller {
   static targets = ['songName', 'playButton', 'pauseButton', 'loader']
 
   initialize () {
     this.#initPlayer()
+    installEventHandler(this)
   }
 
   connect () {
-    document.addEventListener('player:beforePlaying', this.#setBeforePlayingStatus)
-    document.addEventListener('player:playing', this.#setPlayingStatus)
-    document.addEventListener('player:pause', this.#setPauseStatus)
-  }
-
-  disconnect () {
-    document.removeEventListener('player:beforePlaying', this.#setBeforePlayingStatus)
-    document.removeEventListener('player:playing', this.#setPlayingStatus)
-    document.removeEventListener('player:pause', this.#setPauseStatus)
+    this.handleEvent('player:beforePlaying', { with: this.#setBeforePlayingStatus })
+    this.handleEvent('player:playing', { with: this.#setPlayingStatus })
+    this.handleEvent('player:pause', { with: this.#setPauseStatus })
   }
 
   play () {
