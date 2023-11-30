@@ -1,8 +1,10 @@
 class NativeBridge {
-  playAll () {
+  playAll (resourceType, resourceId) {
     if (this.#isTurboiOS) {
       window.webkit.messageHandlers.nativeApp.postMessage({
-        name: 'playAll'
+        name: 'playAll',
+        resourceType,
+        resourceId: Number(resourceId)
       })
     }
   }
@@ -11,6 +13,24 @@ class NativeBridge {
     if (this.#isTurboiOS) {
       window.webkit.messageHandlers.nativeApp.postMessage({
         name: 'playSong',
+        songId: Number(songId)
+      })
+    }
+  }
+
+  playNext (songId) {
+    if (this.#isTurboiOS) {
+      window.webkit.messageHandlers.nativeApp.postMessage({
+        name: 'playNext',
+        songId: Number(songId)
+      })
+    }
+  }
+
+  playLast (songId) {
+    if (this.#isTurboiOS) {
+      window.webkit.messageHandlers.nativeApp.postMessage({
+        name: 'playLast',
         songId: Number(songId)
       })
     }

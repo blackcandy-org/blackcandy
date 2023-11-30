@@ -13,27 +13,19 @@ export default class extends Controller {
   connect () {
     this.handleEvent('turbo:submit-start', {
       on: this.element,
-      matching: `[data-delegated-action='turbo:submit-start->${this.scope.identifier}#checkBeforePlay']`,
+      matching: `[data-delegated-action~='turbo:submit-start->${this.scope.identifier}#checkBeforePlay']`,
       with: this.checkBeforePlay
     })
 
     this.handleEvent('turbo:submit-start', {
       on: this.element,
-      matching: `[data-delegated-action='turbo:submit-start->${this.scope.identifier}#checkBeforePlayNext']`,
+      matching: `[data-delegated-action~='turbo:submit-start->${this.scope.identifier}#checkBeforePlayNext']`,
       with: this.checkBeforePlayNext
     })
   }
 
   checkBeforePlay = (event) => {
     const { songId } = event.target.closest('[data-song-id]').dataset
-
-    if (App.nativeBridge.isTurboNative) {
-      event.detail.formSubmission.stop()
-      App.nativeBridge.playSong(songId)
-
-      return
-    }
-
     const playlistIndex = this.player.playlist.indexOf(songId)
 
     if (playlistIndex !== -1) {

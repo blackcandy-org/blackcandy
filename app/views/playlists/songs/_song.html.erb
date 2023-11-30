@@ -6,8 +6,11 @@
           class: "c-button c-button--link u-w-100",
           form_class: "o-flex__item--grow-1",
           form: {
-            "data-delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlay",
-            "data-turbo-frame" => "turbo-playlist"
+            data: {
+              "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlay native-bridge#playSong",
+              "turbo-frame" => "turbo-playlist",
+              "disabled-on-native" => "true"
+            }
           }
         ) do %>
       <div class='o-flex o-flex--justify-between o-flex--align-center'>
@@ -33,8 +36,9 @@
               form_class: "c-dropdown__item",
               form: {
                 data: {
-                  turbo_frame: "turbo-playlist",
-                  delegated_action: "turbo:submit-start->playlist-songs#checkBeforePlayNext"
+                  "turbo-frame" => "turbo-playlist",
+                  "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlayNext native-bridge#playNext",
+                  "disabled-on-native" => "true"
                 }
               }
             ) %>
@@ -43,7 +47,11 @@
               current_playlist_songs_path(song_id: song.id, location: "last"),
               form_class: "c-dropdown__item",
               form: {
-                data: {turbo_frame: "turbo-playlist"}
+                data: {
+                  "turbo-frame" => "turbo-playlist",
+                  "delegated-action" => "native-bridge#playLast",
+                  "disabled-on-native" => "true"
+                }
               }
             ) %>
         <%= button_to(
