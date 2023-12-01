@@ -10,7 +10,7 @@
   <div class='o-flex o-flex--align-center u-py-narrow'>
     <div class='js-playlist-sortable-item-handle u-mr-narrow' data-test-id='playlist_song_sortable_handle'><%= icon_tag "drag-indicator", size: "small" %></div>
 
-    <button class='c-button c-button--link o-flex__item--grow-1' data-click-action='play'>
+    <button class='c-button c-button--link o-flex__item--grow-1' data-delegated-action='current-playlist-songs#play'>
       <div class='o-flex o-flex--justify-between o-flex--align-center'>
         <div class='u-mr-narrow'>
           <span class='u-mb-tiny u-text-line-clamp-2' data-test-id='current_playlist_song_name'><%= song.name %></span>

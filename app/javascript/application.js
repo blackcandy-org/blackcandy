@@ -32,3 +32,11 @@ window.addEventListener('turbo:before-render', ({ detail }) => {
     }
   }
 })
+
+window.addEventListener('turbo:submit-start', (event) => {
+  // Disable form submission on native app when the form has data-disabled-on-native attribute.
+  if (event.target.dataset.disabledOnNative === 'true' && App.nativeBridge.isTurboNative) {
+    event.detail.formSubmission.stop()
+    event.stopPropagation()
+  }
+}, { capture: true })

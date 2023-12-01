@@ -1,77 +1,51 @@
 import { Controller } from '@hotwired/stimulus'
-import { camelCase } from '../helper'
+import { installEventHandler } from './mixins/event_handler'
+import { installPlayingSongIndicator } from './mixins/playing_song_indicator'
 
 export default class extends Controller {
   static targets = ['item']
 
-  submitStartActions = []
-  clickActions = []
-
   initialize () {
-    this.submitStartActions = ['checkBeforePlaying', 'checkCurrentSong']
+    installEventHandler(this)
+    installPlayingSongIndicator(this, () => this.itemTargets)
   }
 
   connect () {
-    this.#showPlayingItem()
-    document.addEventListener('playlistSongs:showPlaying', this.#showPlayingItem)
+    this.handleEvent('turbo:submit-start', {
+      on: this.element,
+      matching: `[data-delegated-action~='turbo:submit-start->${this.scope.identifier}#checkBeforePlay']`,
+      with: this.checkBeforePlay
+    })
+
+    this.handleEvent('turbo:submit-start', {
+      on: this.element,
+      matching: `[data-delegated-action~='turbo:submit-start->${this.scope.identifier}#checkBeforePlayNext']`,
+      with: this.checkBeforePlayNext
+    })
   }
 
-  disconnect () {
-    document.removeEventListener('playlistSongs:showPlaying', this.#showPlayingItem)
-  }
-
-  submitStartHandle (event) {
-    const actionElement = event.target.closest('[data-submit-start-action]')
-    if (!actionElement) { return }
-
-    const actionName = camelCase(actionElement.dataset.submitStartAction)
-    if (!this.submitStartActions.includes(actionName)) { return }
-
-    this[`_${actionName}`](event)
-  }
-
-  clickHandle (event) {
-    const actionElement = event.target.closest('[data-click-action]')
-    if (!actionElement) { return }
-
-    const actionName = camelCase(actionElement.dataset.clickAction)
-    if (!this.clickActions.includes(actionName)) { return }
-
-    this[`_${actionName}`](event.target)
-  }
-
-  _checkBeforePlaying (event) {
+  checkBeforePlay = (event) => {
     const { songId } = event.target.closest('[data-song-id]').dataset
-
-    if (App.nativeBridge.isTurboNative) {
-      event.detail.formSubmission.stop()
-      App.nativeBridge.playSong(songId)
-
-      return
-    }
-
     const playlistIndex = this.player.playlist.indexOf(songId)
 
     if (playlistIndex !== -1) {
       event.detail.formSubmission.stop()
       this.player.skipTo(playlistIndex)
     } else {
-      this._checkCurrentSong(event)
+      this.#appendCurrentSongIdToSubmission(event)
     }
   }
 
-  _checkCurrentSong (event) {
+  checkBeforePlayNext = (event) => {
+    this.#appendCurrentSongIdToSubmission(event)
+  }
+
+  #appendCurrentSongIdToSubmission (event) {
     const currentSongId = this.player.currentSong.id
 
     if (currentSongId !== undefined) {
       event.detail.formSubmission.fetchRequest.body.append('current_song_id', currentSongId)
     }
-  }
-
-  #showPlayingItem = () => {
-    this.itemTargets.forEach((element) => {
-      element.classList.toggle('is-active', Number(element.dataset.songId) === this.player.currentSong.id)
-    })
   }
 
   get player () {

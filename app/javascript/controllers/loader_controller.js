@@ -1,16 +1,23 @@
 import { Controller } from '@hotwired/stimulus'
+import { installEventHandler } from './mixins/event_handler'
 
 export default class extends Controller {
   static targets = ['content', 'indicator']
 
-  connect () {
-    this.element.addEventListener('loader:hide', this.#hide)
-    this.element.addEventListener('loader:show', this.#show)
+  initialize () {
+    installEventHandler(this)
   }
 
-  disconnect () {
-    this.element.removeEventListener('loader:hide', this.#hide)
-    this.element.removeEventListener('loader:show', this.#show)
+  connect () {
+    this.handleEvent('loader:hide', {
+      on: this.element,
+      with: this.#hide
+    })
+
+    this.handleEvent('loader:show', {
+      on: this.element,
+      with: this.#show
+    })
   }
 
   #show = () => {

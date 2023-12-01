@@ -1,5 +1,5 @@
 <div class='o-container o-container--narrow' data-test-id='favorite_playlist'>
-  <div data-controller='playlist-songs'>
+  <div data-controller='playlist-songs native-bridge'>
     <div class="c-card c-card--horizontal u-my-large">
       <div class='c-card__body'>
         <h1 class='c-card__body__title' data-test-id='playlist_name'><%= @playlist.name %></h1>
@@ -11,7 +11,22 @@
         </div>
         <div class='u-mt-large'>
           <% unless @songs.blank? %>
-            <%= button_to t("label.play_all"), current_playlist_playlist_path(@playlist), method: :put, class: "c-button c-button--primary", form_class: "u-display-inline-block", form: {"data-controller" => "native-bridge", "data-turbo-frame" => "turbo-playlist", "data-action" => "turbo:submit-end->native-bridge#playAll"} %>
+            <%= button_to(
+                  t("label.play_all"),
+                  current_playlist_playlist_path(@playlist),
+                  method: :put,
+                  class: "c-button c-button--primary",
+                  form_class: "u-display-inline-block",
+                  form: {
+                    data: {
+                      "disabled-on-native" => "true",
+                      "turbo-frame" => "turbo-playlist",
+                      "action" => "native-bridge#playAll",
+                      "native-bridge-resource-type-param" => "playlists",
+                      "native-bridge-resource-id-param" => @playlist.id
+                    }
+                  }
+                ) %>
             <%= button_to t("label.clear"), favorite_playlist_songs_path, class: "c-button c-button--secondary", form_class: "u-display-inline-block", method: :delete %>
           <% end %>
         </div>

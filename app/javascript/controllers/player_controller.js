@@ -1,6 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 import { Howl } from 'howler'
 import { formatDuration, dispatchEvent } from '../helper'
+import { installEventHandler } from './mixins/event_handler'
 
 export default class extends Controller {
   static targets = [
@@ -24,22 +25,16 @@ export default class extends Controller {
   initialize () {
     this.#initPlayer()
     this.#initMode()
+
+    installEventHandler(this)
   }
 
   connect () {
-    document.addEventListener('player:beforePlaying', this.#setBeforePlayingStatus)
-    document.addEventListener('player:playing', this.#setPlayingStatus)
-    document.addEventListener('player:pause', this.#setPauseStatus)
-    document.addEventListener('player:stop', this.#setStopStatus)
-    document.addEventListener('player:end', this.#setEndStatus)
-  }
-
-  disconnect () {
-    document.removeEventListener('player:beforePlaying', this.#setBeforePlayingStatus)
-    document.removeEventListener('player:playing', this.#setPlayingStatus)
-    document.removeEventListener('player:pause', this.#setPauseStatus)
-    document.removeEventListener('player:stop', this.#setStopStatus)
-    document.removeEventListener('player:end', this.#setEndStatus)
+    this.handleEvent('player:beforePlaying', { with: this.#setBeforePlayingStatus })
+    this.handleEvent('player:playing', { with: this.#setPlayingStatus })
+    this.handleEvent('player:pause', { with: this.#setPauseStatus })
+    this.handleEvent('player:stop', { with: this.#setStopStatus })
+    this.handleEvent('player:end', { with: this.#setEndStatus })
   }
 
   play () {

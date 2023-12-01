@@ -33,14 +33,9 @@ function dispatchEvent (element, type, data = null) {
   element.dispatchEvent(new CustomEvent(type, { detail: data }))
 }
 
-function camelCase (string) {
-  return string.replace(/[-_]([a-z])/g, function (g) { return g[1].toUpperCase() })
-}
-
 export {
   formatDuration,
   randomIndex,
   fetchRequest,
-  dispatchEvent,
-  camelCase
+  dispatchEvent
 }
