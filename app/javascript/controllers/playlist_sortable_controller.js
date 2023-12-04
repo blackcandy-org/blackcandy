@@ -113,12 +113,10 @@ export default class extends Controller {
     const destinationSongId = target.dataset.songId
     const playlistId = this.element.dataset.playlistId
 
-    sourceElement.remove()
-
     if (sourceIndex < targetIndex) {
-      target.insertAdjacentElement('afterend', sourceElement)
+      target.after(sourceElement)
     } else {
-      target.insertAdjacentElement('beforebegin', sourceElement)
+      target.before(sourceElement)
     }
 
     fetchRequest(`/playlists/${playlistId}/songs/${songId}/move`, {

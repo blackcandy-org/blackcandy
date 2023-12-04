@@ -19,9 +19,7 @@ export default class extends Controller {
     const shouldPlay = target.dataset.shouldPlay === 'true'
     const targetIndex = this.itemTargets.indexOf(target)
 
-    if (this.player.playlist.indexOf(song.id) !== -1) { return }
-
-    this.player.playlist.insert(targetIndex, song)
+    this.playlist.insert(targetIndex, song)
 
     if (shouldPlay) {
       this.player.skipTo(targetIndex)
@@ -44,24 +42,27 @@ export default class extends Controller {
 
   itemTargetDisconnected (target) {
     const songId = Number(target.dataset.songId)
+    const targetIsDragging = target.classList.contains('is-dragging-source')
 
-    if (this.player.playlist.indexOf(songId) === -1) { return }
+    this.playlist.deleteSong(songId)
 
-    const deleteSongIndex = this.player.playlist.deleteSong(songId)
-
-    if (this.player.currentSong.id === songId) {
-      this.player.skipTo(deleteSongIndex)
+    if (this.player.currentSong.id === songId && !targetIsDragging) {
+      this.player.stop()
     }
   }
 
   play = (event) => {
     const { songId } = event.target.closest('[data-song-id]').dataset
-    const playlistIndex = this.player.playlist.indexOf(songId)
+    const playlistIndex = this.playlist.indexOf(songId)
 
     this.player.skipTo(playlistIndex)
   }
 
   get player () {
     return App.player
+  }
+
+  get playlist () {
+    return this.player.playlist
   }
 }

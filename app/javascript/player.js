@@ -3,7 +3,6 @@ import { dispatchEvent } from './helper'
 import Playlist from './playlist'
 
 class Player {
-  currentIndex = 0
   currentSong = {}
   isPlaying = false
   playlist = new Playlist()
@@ -14,7 +13,6 @@ class Player {
     dispatchEvent(document, 'player:beforePlaying')
 
     const song = this.playlist.songs[index]
-    this.currentIndex = index
     this.currentSong = song
     this.isPlaying = true
 
@@ -52,9 +50,8 @@ class Player {
     this.isPlaying = false
     this.currentSong.howl && this.currentSong.howl.stop()
 
-    if (this.playlist.length === 0) {
+    if (!this.playlist.includes(this.currentSong.id)) {
       // reset current song
-      this.currentIndex = 0
       this.currentSong = {}
     }
   }
@@ -81,6 +78,10 @@ class Player {
 
   seek (seconds) {
     this.currentSong.howl.seek(seconds)
+  }
+
+  get currentIndex () {
+    return Math.max(this.playlist.indexOf(this.currentSong.id), 0)
   }
 }
 

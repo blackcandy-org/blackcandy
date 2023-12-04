@@ -160,7 +160,7 @@ export default class extends Controller {
   #setStopStatus = () => {
     this.#setPauseStatus()
 
-    if (this.player.playlist.length === 0) {
+    if (!this.currentSong.id) {
       this.headerTarget.classList.remove('is-expanded')
     }
   }
