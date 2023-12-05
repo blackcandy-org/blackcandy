@@ -1,5 +1,5 @@
 <div class='o-container o-container--narrow' data-test-id='favorite_playlist'>
-  <div data-controller='playlist-songs native-bridge'>
+  <div data-controller='playlist-songs playlist-songs-bridge'>
     <div class="c-card c-card--horizontal u-my-large">
       <div class='c-card__body'>
         <h1 class='c-card__body__title' data-test-id='playlist_name'><%= @playlist.name %></h1>
@@ -21,9 +21,9 @@
                     data: {
                       "disabled-on-native" => "true",
                       "turbo-frame" => "turbo-playlist",
-                      "action" => "native-bridge#playAll",
-                      "native-bridge-resource-type-param" => "playlists",
-                      "native-bridge-resource-id-param" => @playlist.id
+                      "action" => "playlist-songs-bridge#playAll",
+                      "playlist-songs-bridge-resource-type-param" => "playlists",
+                      "playlist-songs-bridge-resource-id-param" => @playlist.id
                     }
                   }
                 ) %>

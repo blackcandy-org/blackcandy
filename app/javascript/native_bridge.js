@@ -1,6 +1,8 @@
+import { isiOSApp } from './helper'
+
 class NativeBridge {
   playAll (resourceType, resourceId) {
-    if (this.#isTurboiOS) {
+    if (isiOSApp()) {
       window.webkit.messageHandlers.nativeApp.postMessage({
         name: 'playAll',
         resourceType,
@@ -10,7 +12,7 @@ class NativeBridge {
   }
 
   playSong (songId) {
-    if (this.#isTurboiOS) {
+    if (isiOSApp()) {
       window.webkit.messageHandlers.nativeApp.postMessage({
         name: 'playSong',
         songId: Number(songId)
@@ -19,7 +21,7 @@ class NativeBridge {
   }
 
   playNext (songId) {
-    if (this.#isTurboiOS) {
+    if (isiOSApp()) {
       window.webkit.messageHandlers.nativeApp.postMessage({
         name: 'playNext',
         songId: Number(songId)
@@ -28,7 +30,7 @@ class NativeBridge {
   }
 
   playLast (songId) {
-    if (this.#isTurboiOS) {
+    if (isiOSApp()) {
       window.webkit.messageHandlers.nativeApp.postMessage({
         name: 'playLast',
         songId: Number(songId)
@@ -41,7 +43,7 @@ class NativeBridge {
   }
 
   updateTheme (theme) {
-    if (this.#isTurboiOS) {
+    if (isiOSApp()) {
       window.webkit.messageHandlers.nativeApp.postMessage({
         name: 'updateTheme',
         theme
@@ -49,12 +51,13 @@ class NativeBridge {
     }
   }
 
-  get isTurboNative () {
-    return this.#isTurboiOS
-  }
-
-  get #isTurboiOS () {
-    return !!(window.webkit && window.webkit.messageHandlers)
+  showFlashMessage (message) {
+    if (isiOSApp()) {
+      window.webkit.messageHandlers.nativeApp.postMessage({
+        name: 'showFlashMessage',
+        message
+      })
+    }
   }
 }
 

@@ -1,5 +1,7 @@
-<% flash.each do |key, value| %>
-  <div class='o-animation-fadeInDown c-flash__body <%= "c-flash__body--#{key}" %>' data-controller='flash'>
-    <%= h value %>
-  </div>
-<% end %>
+<div class='<%= "u-display-none" if native_app? %>'>
+  <% flash.each do |key, value| %>
+    <div class='o-animation-fadeInDown c-flash__body <%= "c-flash__body--#{key}" %>' data-controller='flash flash-bridge'>
+      <%= h value %>
+    </div>
+  <% end %>
+</div>

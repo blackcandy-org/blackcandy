@@ -4,6 +4,7 @@ import './channels'
 
 import Player from './player'
 import NativeBridge from './native_bridge'
+import { isNativeApp } from './helper'
 
 window.App = {
   player: new Player(),
@@ -35,7 +36,7 @@ window.addEventListener('turbo:before-render', ({ detail }) => {
 
 window.addEventListener('turbo:submit-start', (event) => {
   // Disable form submission on native app when the form has data-disabled-on-native attribute.
-  if (event.target.dataset.disabledOnNative === 'true' && App.nativeBridge.isTurboNative) {
+  if (event.target.dataset.disabledOnNative === 'true' && isNativeApp()) {
     event.detail.formSubmission.stop()
     event.stopPropagation()
   }

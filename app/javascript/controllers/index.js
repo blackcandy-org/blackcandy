@@ -28,7 +28,9 @@ import PlaylistSortableController from './playlist_sortable_controller.js'
 
 import SearchController from './search_controller.js'
 
-import NativeBridgeController from './native_bridge_controller.js'
+import PlaylistSongsBridgeController from './playlist_songs_bridge_controller.js'
+
+import FlashBridgeController from './flash_bridge_controller.js'
 
 application.register('dialog', DialogController)
 
@@ -54,4 +56,6 @@ application.register('playlist-sortable', PlaylistSortableController)
 
 application.register('search', SearchController)
 
-application.register('native-bridge', NativeBridgeController)
+application.register('playlist-songs-bridge', PlaylistSongsBridgeController)
+
+application.register('flash-bridge', FlashBridgeController)

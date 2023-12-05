@@ -1,7 +1,12 @@
 import { Controller } from '@hotwired/stimulus'
 import { installEventHandler } from './mixins/event_handler'
+import { isNativeApp } from '../helper'
 
 export default class extends Controller {
+  static get shouldLoad () {
+    return isNativeApp()
+  }
+
   initialize () {
     installEventHandler(this)
   }
