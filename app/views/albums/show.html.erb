@@ -1,6 +1,6 @@
 <% page_title_tag @album.title %>
 
-<div class='o-container o-container--narrow' data-controller='playlist-songs native-bridge'>
+<div class='o-container o-container--narrow' data-controller='playlist-songs playlist-songs-bridge'>
   <div class='c-card c-card--horizontal c-card--center@narrow u-my-large'>
     <%= image_tag image_url_for(@album), class: "c-card__image u-image-large", data: {test_id: "album_image"} %>
     <div class='c-card__body'>
@@ -22,9 +22,9 @@
                 data: {
                   "disabled-on-native" => "true",
                   "turbo-frame" => "turbo-playlist",
-                  "action" => "native-bridge#playAll",
-                  "native-bridge-resource-type-param" => "albums",
-                  "native-bridge-resource-id-param" => @album.id
+                  "action" => "playlist-songs-bridge#playAll",
+                  "playlist-songs-bridge-resource-type-param" => "albums",
+                  "playlist-songs-bridge-resource-id-param" => @album.id
                 }
               }
             ) %>
@@ -44,7 +44,7 @@
                 form_class: "o-flex__item--grow-1",
                 form: {
                   data: {
-                    "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlay native-bridge#playSong",
+                    "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlay playlist-songs-bridge#playSong",
                     "turbo-frame" => "turbo-playlist",
                     "disabled-on-native" => "true"
                   }
@@ -77,7 +77,7 @@
                     form: {
                       data: {
                         "turbo-frame" => "turbo-playlist",
-                        "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlayNext native-bridge#playNext",
+                        "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlayNext playlist-songs-bridge#playNext",
                         "disabled-on-native" => "true"
                       }
                     }
@@ -89,7 +89,7 @@
                     form: {
                       data: {
                         "turbo-frame" => "turbo-playlist",
-                        "delegated-action" => "native-bridge#playLast",
+                        "delegated-action" => "playlist-songs-bridge#playLast",
                         "disabled-on-native" => "true"
                       }
                     }

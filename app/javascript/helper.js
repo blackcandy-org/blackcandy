@@ -33,9 +33,19 @@ function dispatchEvent (element, type, data = null) {
   element.dispatchEvent(new CustomEvent(type, { detail: data }))
 }
 
+function isiOSApp () {
+  return !!(window.webkit && window.webkit.messageHandlers)
+}
+
+function isNativeApp () {
+  return isiOSApp()
+}
+
 export {
   formatDuration,
   randomIndex,
   fetchRequest,
-  dispatchEvent
+  dispatchEvent,
+  isiOSApp,
+  isNativeApp
 }
