@@ -2,9 +2,7 @@
   <%= turbo_stream_from "media_sync" %>
 
   <% if native_app? %>
-    <div id='turbo-flash' class='c-flash'>
-      <%= render "shared/flash" %>
-    </div>
+    <%= render "shared/flash" %>
     <main class='u-p-large u-p-small@small'>
       <%= yield %>
     </main>
@@ -23,9 +21,7 @@
       <div id='js-app' class='o-flex__item o-flex__item--grow-1'>
         <div>
           <header class='c-nav c-nav--primary u-position-sticky-top'>
-            <div id='turbo-flash' class='c-flash'>
-              <%= render "shared/flash" %>
-            </div>
+            <%= render "shared/flash" %>
             <%= render "shared/search_bar" %>
             <%= render "shared/nav_bar" %>
           </header>
