@@ -70,6 +70,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 1984, tag_info[:year]
     assert_equal "Rock", tag_info[:genre]
     assert_equal cover_image_binary, tag_image_binary
+    assert_equal 0, tag_info[:discnum]
   end
 
   test "should get tag info from flac file" do
@@ -86,6 +87,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 1984, tag_info[:year]
     assert_equal "Rock", tag_info[:genre]
     assert_equal cover_image_binary, tag_image_binary
+    assert_equal 0, tag_info[:discnum]
   end
 
   test "should get tag info from ogg file" do
@@ -99,6 +101,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 8, tag_info[:duration]
     assert_equal 1984, tag_info[:year]
     assert_equal "Rock", tag_info[:genre]
+    assert_nil tag_info[:discnum]
   end
 
   test "should get tag info from wav file" do
@@ -115,6 +118,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 1984, tag_info[:year]
     assert_equal "Rock", tag_info[:genre]
     assert_equal cover_image_binary, tag_image_binary
+    assert_equal 0, tag_info[:discnum]
   end
 
   test "should get tag info from opus file" do
@@ -128,6 +132,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 8, tag_info[:duration]
     assert_equal 1984, tag_info[:year]
     assert_equal "Rock", tag_info[:genre]
+    assert_nil tag_info[:discnum]
   end
 
   test "should get tag info from m4a file" do
@@ -144,6 +149,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 1984, tag_info[:year]
     assert_equal "Rock", tag_info[:genre]
     assert_equal cover_image_binary, tag_image_binary
+    assert_nil tag_info[:discnum]
   end
 
   test "should get tag info from oga file" do
@@ -157,6 +163,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 8, tag_info[:duration]
     assert_equal 1984, tag_info[:year]
     assert_equal "Rock", tag_info[:genre]
+    assert_nil tag_info[:discnum]
   end
 
   test "should get tag info from wma file" do
@@ -170,6 +177,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 8, tag_info[:duration]
     assert_nil tag_info[:year]
     assert_nil tag_info[:genre]
+    assert_nil tag_info[:discnum]
   end
 
   test "should get md5 hash from file" do

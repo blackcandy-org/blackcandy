@@ -55,6 +55,7 @@ class MediaFile
         albumartist_name: tag.albumartist.presence,
         genre: tag.genre.presence,
         tracknum: tag.track,
+        discnum: tag.disc,
         duration: tag.duration.round,
         bit_depth: tag.bit_depth,
         image: extract_image_from(tag)

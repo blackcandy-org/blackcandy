@@ -7,9 +7,9 @@
       <h1 class='c-card__body__title'><%= @album.title %></h1>
       <p class='c-card__body__text'><%= @album.artist.title %></p>
       <div class='c-card__body__text'>
-        <span><%= @songs.load.size %> <%= t("label.tracks") %></span>
+        <span><%= @album.songs.count %> <%= t("label.tracks") %></span>
         <span>,</span>
-        <span class='u-text-monospace'><%= format_duration(@songs.sum(:duration)) %></span>
+        <span class='u-text-monospace'><%= format_duration(@album.songs.sum(:duration)) %></span>
       </div>
       <div class='u-mt-large'>
         <%= button_to(
@@ -35,69 +35,75 @@
     </div>
   </div>
   <ul class='c-list'>
-    <% @songs.each do |song| %>
-      <li class='c-list__item' data-playlist-songs-target='item' data-song-id='<%= song.id %>' data-test-id='album_song'>
-        <div class='o-flex o-flex--justify-between o-flex--align-center'>
-          <%= button_to(
-                current_playlist_songs_path(song_id: song.id, should_play: true),
-                class: "c-button c-button--link u-w-100",
-                form_class: "o-flex__item--grow-1",
-                form: {
-                  data: {
-                    "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlay playlist-songs-bridge#playSong",
-                    "turbo-frame" => "turbo-playlist",
-                    "disabled-on-native" => "true"
-                  }
-                }
-              ) do %>
-            <div class='o-flex o-flex--justify-between o-flex--align-center'>
-              <div>
-                <span class='u-mb-tiny' data-test-id='album_song_name'><%= song.name %></span>
-                <% if @album.artist.is_various? %>
-                  <%= song.artist.title %>
-                <% end %>
-              </div>
-              <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
-            </div>
-          <% end %>
+    <% @groped_songs.each do |discnum, songs| %>
+      <% if @groped_songs.size > 1 %>
+        <li class='c-list__item c-list__item--divider'><%= t("label.disc", number: discnum) %></li>
+      <% end %>
 
-          <details class='c-dropdown' data-test-id='album_song_menu'>
-            <summary><%= icon_tag "more-vertical", size: "small", title: t("label.more") %></summary>
-            <div class='c-dropdown__list'>
-              <%= link_to(
-                    t("label.add_to_playlist"),
-                    dialog_playlists_path(song_id: song.id, referer_url: current_url),
-                    data: {turbo_frame: ("turbo-dialog" unless native_app?)},
-                    class: "c-dropdown__item"
-                  ) %>
-              <%= button_to(
-                    t("label.play_next"),
-                    current_playlist_songs_path(song_id: song.id),
-                    form_class: "c-dropdown__item",
-                    form: {
-                      data: {
-                        "turbo-frame" => "turbo-playlist",
-                        "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlayNext playlist-songs-bridge#playNext",
-                        "disabled-on-native" => "true"
-                      }
+      <% songs.each do |song| %>
+        <li class='c-list__item' data-playlist-songs-target='item' data-song-id='<%= song.id %>' data-test-id='album_song'>
+          <div class='o-flex o-flex--justify-between o-flex--align-center'>
+            <%= button_to(
+                  current_playlist_songs_path(song_id: song.id, should_play: true),
+                  class: "c-button c-button--link u-w-100",
+                  form_class: "o-flex__item--grow-1",
+                  form: {
+                    data: {
+                      "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlay playlist-songs-bridge#playSong",
+                      "turbo-frame" => "turbo-playlist",
+                      "disabled-on-native" => "true"
                     }
-                  ) %>
-              <%= button_to(
-                    t("label.play_last"),
-                    current_playlist_songs_path(song_id: song.id, location: "last"),
-                    form_class: "c-dropdown__item",
-                    form: {
-                      data: {
-                        "turbo-frame" => "turbo-playlist",
-                        "delegated-action" => "playlist-songs-bridge#playLast",
-                        "disabled-on-native" => "true"
+                  }
+                ) do %>
+              <div class='o-flex o-flex--justify-between o-flex--align-center'>
+                <div>
+                  <span class='u-mb-tiny' data-test-id='album_song_name'><%= song.name %></span>
+                  <% if @album.artist.is_various? %>
+                    <%= song.artist.title %>
+                  <% end %>
+                </div>
+                <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
+              </div>
+            <% end %>
+
+            <details class='c-dropdown' data-test-id='album_song_menu'>
+              <summary><%= icon_tag "more-vertical", size: "small", title: t("label.more") %></summary>
+              <div class='c-dropdown__list'>
+                <%= link_to(
+                      t("label.add_to_playlist"),
+                      dialog_playlists_path(song_id: song.id, referer_url: current_url),
+                      data: {turbo_frame: ("turbo-dialog" unless native_app?)},
+                      class: "c-dropdown__item"
+                    ) %>
+                <%= button_to(
+                      t("label.play_next"),
+                      current_playlist_songs_path(song_id: song.id),
+                      form_class: "c-dropdown__item",
+                      form: {
+                        data: {
+                          "turbo-frame" => "turbo-playlist",
+                          "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlayNext playlist-songs-bridge#playNext",
+                          "disabled-on-native" => "true"
+                        }
                       }
-                    }
-                  ) %>
-            </div>
-          </details>
-        </div>
-      </li>
+                    ) %>
+                <%= button_to(
+                      t("label.play_last"),
+                      current_playlist_songs_path(song_id: song.id, location: "last"),
+                      form_class: "c-dropdown__item",
+                      form: {
+                        data: {
+                          "turbo-frame" => "turbo-playlist",
+                          "delegated-action" => "playlist-songs-bridge#playLast",
+                          "disabled-on-native" => "true"
+                        }
+                      }
+                    ) %>
+              </div>
+            </details>
+          </div>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 </div>
