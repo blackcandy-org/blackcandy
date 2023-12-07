@@ -12,19 +12,19 @@ class AlbumTest < ActiveSupport::TestCase
     assert_equal "Unknown Album", Album.create(name: nil).title
   end
 
-  test "should order by tracknum for associated songs" do
+  test "should order by discnum and tracknum for associated songs" do
     artist = artists(:artist1)
     album = artist.albums.create
 
     album.songs.create!(
       [
-        {name: "test_song_1", file_path: "fake_path", file_path_hash: "fake_path_hash", md5_hash: "fake_md5", tracknum: 2, artist: artist},
-        {name: "test_song_2", file_path: "fake_path", file_path_hash: "fake_path_hash", md5_hash: "fake_md5", tracknum: 3, artist: artist},
-        {name: "test_song_3", file_path: "fake_path", file_path_hash: "fake_path_hash", md5_hash: "fake_md5", tracknum: 1, artist: artist}
+        {name: "test_song_1", file_path: "fake_path", file_path_hash: "fake_path_hash", md5_hash: "fake_md5", tracknum: 2, discnum: 2, artist: artist},
+        {name: "test_song_2", file_path: "fake_path", file_path_hash: "fake_path_hash", md5_hash: "fake_md5", tracknum: 3, discnum: 1, artist: artist},
+        {name: "test_song_3", file_path: "fake_path", file_path_hash: "fake_path_hash", md5_hash: "fake_md5", tracknum: 1, discnum: 1, artist: artist}
       ]
     )
 
-    assert_equal %w[test_song_3 test_song_1 test_song_2], album.songs.pluck(:name)
+    assert_equal %w[test_song_3 test_song_2 test_song_1], album.songs.pluck(:name)
   end
 
   test "should filter by genre" do

@@ -76,7 +76,7 @@ class Media
     end
 
     def song_info(file_info)
-      file_info.slice(:name, :tracknum, :duration, :file_path, :file_path_hash, :bit_depth).compact
+      file_info.slice(:name, :tracknum, :discnum, :duration, :file_path, :file_path_hash, :bit_depth).compact
     end
 
     def album_info(file_info)

@@ -19,6 +19,12 @@
   border-bottom: 1px solid var(--list-border-color);
 }
 
+.c-list__item--divider {
+  margin-top: spacing("small");
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 .c-list--border-none .c-list__item {
   border-bottom: none;
 }

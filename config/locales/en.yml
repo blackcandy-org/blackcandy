@@ -108,6 +108,7 @@ en:
     play_next: 'Play Next'
     play_last: 'Play Last'
     search_results: 'Search Results'
+    disc: 'Disc %{number}'
   error:
     login: 'Wrong email or password'
     forbidden: "Sorry, you do not have permission to visit that"

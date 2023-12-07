@@ -14,7 +14,7 @@ class AlbumsController < ApplicationController
   end
 
   def show
-    @songs = @album.songs.includes(:artist)
+    @groped_songs = @album.songs.includes(:artist).group_by(&:discnum)
     @album.attach_image_from_discogs
   end
 
