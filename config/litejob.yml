@@ -1,0 +1,8 @@
+development:
+  path: storage/development_queue.sqlite3
+
+test:
+  path: storage/test_queue.sqlite3
+
+production:
+  path: storage/production_queue.sqlite3

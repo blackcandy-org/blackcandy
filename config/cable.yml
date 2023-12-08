@@ -1,5 +1,5 @@
 development:
-  adapter: async
+  adapter: litecable
 
 test:
   adapter: test
@@ -11,5 +11,5 @@ production:
   channel_prefix: black_candy_production
 <% else %>
 production:
-  adapter: async
+  adapter: litecable
 <% end %>

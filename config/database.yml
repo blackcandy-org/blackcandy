@@ -1,5 +1,5 @@
 sqlite_default: &sqlite_default
-  adapter: sqlite3
+  adapter: litedb
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 

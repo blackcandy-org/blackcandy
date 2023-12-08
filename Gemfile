@@ -28,14 +28,8 @@ gem "jbuilder", "~> 2.11.5"
 # Get meta data from audio file
 gem "wahwah", "~> 1.5.0"
 
-# Use sidekiq for backgroud job
-gem "sidekiq", "~> 7.1.2"
-
 # Pagination
 gem "pagy", "~> 6.0.0"
-
-# Use redis on cache and sidekiq
-gem "redis", "~> 4.0"
 
 # For image attachment
 gem "carrierwave", "~> 3.0.0"
@@ -58,11 +52,17 @@ gem "bcrypt", "~> 3.1.11"
 # For sync on library changes
 gem "listen", "~> 3.8.0"
 
-# For postgresql database adapter
+# Default stack for database, cache, background job and pub/sub
+gem "litestack", "~> 0.4.2"
+
+# Optional support for sidekiq as background job
+gem "sidekiq", "~> 7.1.2"
+
+# Optional support for postgresql as database
 gem "pg", "~> 1.3.2"
 
-# For sqlite database adapter
-gem "sqlite3", "~> 1.6.3"
+# Optional support for redis as cache and pub/sub
+gem "redis", "~> 4.0"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", "~> 1.17.0", require: false
