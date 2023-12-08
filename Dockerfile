@@ -32,7 +32,7 @@ COPY . /app
 
 RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile \
   && yarn cache clean \
-  && rm -rf node_modules tmp/cache/* /tmp/* yarn.lock log/production.log app/javascript/* app/assets/*
+  && rm -rf node_modules tmp/cache/* /tmp/* yarn.lock log/production.log app/javascript/* app/assets/* storage/*
 
 
 FROM base
