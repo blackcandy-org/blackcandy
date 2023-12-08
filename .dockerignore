@@ -12,6 +12,7 @@
 /public/uploads/
 /test
 /screenshots
+/coverage
 /.github
 /config/master.key
 /.direnv
