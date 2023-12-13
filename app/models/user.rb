@@ -12,6 +12,7 @@ class User < ApplicationRecord
   serialize :recently_played_album_ids, type: Array, coder: YAML
 
   before_update :remove_deprecated_password_salt, if: :will_save_change_to_password_digest?
+  after_update :broadcast_theme_change, if: :saved_change_to_theme?
   after_create :create_buildin_playlists
 
   normalizes :email, with: ->(email) { email.strip.downcase }
@@ -70,5 +71,9 @@ class User < ApplicationRecord
   def create_buildin_playlists
     create_current_playlist
     create_favorite_playlist
+  end
+
+  def broadcast_theme_change
+    broadcast_replace_to self, :theme, target: "turbo-theme", partial: "shared/theme_meta", locals: {theme: theme}
   end
 end

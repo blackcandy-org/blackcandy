@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-color-scheme='<%= User::DEFAULT_THEME %>'>
   <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
@@ -8,9 +8,10 @@
     <%= favicon_link_tag "link_icon.png", type: "image/png" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= yield(:head) %>
   </head>
 
-  <body data-color-scheme='<%= Current.user&.theme || cookies[:theme].presence || User::DEFAULT_THEME %>'>
+  <body>
     <%= content_for?(:body) ? yield(:body) : yield %>
     <%= render "shared/icons" %>
   </body>

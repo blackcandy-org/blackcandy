@@ -360,7 +360,7 @@ GEM
     thor (1.3.0)
     tilt (2.3.0)
     timeout (0.4.0)
-    turbo-rails (1.4.0)
+    turbo-rails (1.5.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
@@ -423,7 +423,7 @@ DEPENDENCIES
   standard (~> 1.25.0)
   standard-rails
   stimulus-rails (~> 1.2.1)
-  turbo-rails (~> 1.4.0)
+  turbo-rails (~> 1.5.0)
   tzinfo-data
   wahwah (~> 1.5.0)
   web-console (>= 3.3.0)

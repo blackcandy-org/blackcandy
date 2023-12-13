@@ -1,5 +1,10 @@
+<% content_for :head do %>
+  <%= render partial: "shared/theme_meta", locals: {theme: Current.user.theme} %>
+<% end %>
+
 <% content_for :body do %>
-  <%= turbo_stream_from "media_sync" %>
+  <%= turbo_stream_from "media_sync" if is_admin? %>
+  <%= turbo_stream_from Current.user, :theme %>
 
   <% if native_app? %>
     <%= render "shared/flash" %>

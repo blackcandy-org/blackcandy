@@ -13,7 +13,7 @@ class UserTest < ActiveSupport::TestCase
   ].freeze
 
   setup do
-    @user = User.create(email: "test@test.com", password: "foobar")
+    @user = User.create(email: "test@test.com", password: "foobar", theme: "auto")
     @user.playlists.create(name: "test")
   end
 
@@ -119,5 +119,15 @@ class UserTest < ActiveSupport::TestCase
     @user.add_album_to_recently_played albums(:album1)
 
     assert_equal User::RECENTLY_PLAYED_LIMIT, @user.recently_played_album_ids.count
+  end
+
+  test "should broadcast theme change" do
+    assert_no_turbo_stream_broadcasts [@user, :theme] do
+      @user.update(theme: "auto")
+    end
+
+    assert_turbo_stream_broadcasts [@user, :theme] do
+      @user.update(theme: "light")
+    end
   end
 end
