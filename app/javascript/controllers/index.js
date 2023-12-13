@@ -32,6 +32,10 @@ import PlaylistSongsBridgeController from './playlist_songs_bridge_controller.js
 
 import FlashBridgeController from './flash_bridge_controller.js'
 
+import ThemeController from './theme_controller.js'
+
+import ThemeBridgeController from './theme_bridge_controller.js'
+
 application.register('dialog', DialogController)
 
 application.register('element', ElementController)
@@ -59,3 +63,7 @@ application.register('search', SearchController)
 application.register('playlist-songs-bridge', PlaylistSongsBridgeController)
 
 application.register('flash-bridge', FlashBridgeController)
+
+application.register('theme', ThemeController)
+
+application.register('theme-bridge', ThemeBridgeController)

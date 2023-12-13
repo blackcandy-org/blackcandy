@@ -1,6 +1,5 @@
 import '@hotwired/turbo-rails'
 import './controllers'
-import './channels'
 
 import Player from './player'
 import NativeBridge from './native_bridge'
@@ -10,8 +9,6 @@ window.App = {
   player: new Player(),
   nativeBridge: new NativeBridge()
 }
-
-App.nativeBridge.updateTheme(document.body.dataset.colorScheme)
 
 // Use custom rendering to avoid reloading the permanent aside player element.
 // Otherwise the current playlist controller in the aside player will be reconnected every time.
