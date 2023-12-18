@@ -48,7 +48,7 @@ class ApplicationController < ActionController::Base
     return true if browser.safari? && !song_format.in?(Stream::SAFARI_SUPPORTED_FORMATS)
     return true if ios_app? && !song_format.in?(Stream::IOS_SUPPORTED_FORMATS)
 
-    Setting.allow_transcode_lossless ? song.lossless? : false
+    Setting.allow_transcode_lossless? ? song.lossless? : false
   end
 
   def flash_errors_message(object, now: false)

@@ -143,24 +143,6 @@ services:
 But you can also use embedded mode of Sidekiq if you don't want another separate Sidekiq process. This can help your deployment become easier.
 All you need to do is to set `EMBEDDED_SIDEKIQ` environment variable to true.
 
-### Listener For Media Library
-
-Listener for media library can automatically sync for media library changes. You need another process to run the listener.
-
-```yaml
-version: '3'
-services:
-  app: &app_base
-    image: ghcr.io/blackcandy-org/blackcandy:edge 
-    volumes:
-      - ./storage_data:/app/storage
-      - ./uploads_data:/app/public/uploads
-      - /media_data:/media_data
-  listener:
-    <<: *app_base
-    command: bundle exec rails listen_media_changes
-```
-
 ### Logging
 
 Black Candy logs to `STDOUT` by default. So if you want to control the log, Docker already supports a lot of options to handle the log in the container. see: https://docs.docker.com/config/containers/logging/configure/.

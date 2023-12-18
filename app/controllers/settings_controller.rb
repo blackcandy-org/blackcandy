@@ -10,7 +10,6 @@ class SettingsController < ApplicationController
     setting = Setting.instance
 
     if setting.update(setting_params)
-      MediaSyncJob.perform_later if setting_params[:media_path]
       flash.now[:success] = t("success.update")
     else
       flash_errors_message(setting, now: true)

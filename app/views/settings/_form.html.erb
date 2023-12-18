@@ -1,6 +1,33 @@
 <div id='turbo-settings'>
-  <h2><%= t("label.media_path") %></h2>
-  <%= render "settings/media_path_form" %>
+  <h2 class="o-flex o-flex--justify-between o-flex--align-center">
+    <span><%= t("label.library") %></span>
+    <%= render partial: "media_syncing/button", locals: {syncing: Media.syncing?} %>
+  </h2>
+
+  <%= form_with model: Setting, url: setting_path, method: :put, class: "c-form" do |form| %>
+    <div class='c-form__field'>
+      <%= form.label :media_path %>
+      <%= form.text_field :media_path, value: Setting.media_path, class: "c-input" %>
+    </div>
+
+    <div class='o-flex o-flex--align-end o-flex--justify-between'>
+      <div class="c-form__field c-form__field--inline">
+        <%= form.label :enable_media_listener %>
+        <%= form.check_box :enable_media_listener %>
+      </div>
+      <% if MediaListener.running? %>
+        <div class="o-flex u-text-color-success">
+          <%= icon_tag("check", size: "small") %>
+          <span class="u-ml-tiny"><%= t("text.media_listener_running") %></span>
+        </div>
+      <% end %>
+    </div>
+    <small><%= t("text.enable_media_listener") %></small>
+
+    <div class='c-form__field c-form__field--submit'>
+      <%= form.submit t("label.save"), class: "c-button c-button--primary c-button--full-width" %>
+    </div>
+  <% end %>
 
   <hr>
 

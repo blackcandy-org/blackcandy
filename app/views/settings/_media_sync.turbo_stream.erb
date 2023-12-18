@@ -1,5 +1,0 @@
-<%= turbo_stream.replace 'turbo-settings-media-path', partial: 'settings/media_path_form' %>
-
-<% unless Media.syncing? %>
-  <%= render_flash(message: t("text.sync_completed")) %>
-<% end %>

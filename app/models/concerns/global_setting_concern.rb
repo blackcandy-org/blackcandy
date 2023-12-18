@@ -36,6 +36,10 @@ module GlobalSettingConcern
 
         setting_value || default_value
       end
+
+      if type == :boolean
+        singleton_class.send(:alias_method, "#{setting}?", setting)
+      end
     end
   end
 end
