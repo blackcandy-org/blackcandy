@@ -14,8 +14,8 @@ class Setting < ApplicationRecord
   validates :transcode_bitrate, inclusion: {in: AVAILABLE_BITRATE_OPTIONS}, allow_nil: true
   validate :media_path_exist
 
-  after_update :sync_media, if: :saved_change_to_media_path?
   after_update :toggle_media_listener, if: :saved_change_to_enable_media_listener?
+  after_update_commit :sync_media, if: :saved_change_to_media_path?
 
   private
 
