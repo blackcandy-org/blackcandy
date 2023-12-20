@@ -4,7 +4,6 @@ require "application_system_test_case"
 
 class AlbumSystemTest < ApplicationSystemTestCase
   setup do
-    Setting.update(media_path: Rails.root.join("test/fixtures/files"))
     @album = albums(:album1)
   end
 

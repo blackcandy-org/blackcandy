@@ -4,8 +4,6 @@ require "application_system_test_case"
 
 class SongsSystemTest < ApplicationSystemTestCase
   setup do
-    Setting.update(media_path: Rails.root.join("test/fixtures/files"))
-
     # create many record to test infinite scroll
     (Pagy::DEFAULT[:items] * 2).times do |n|
       Song.create(

@@ -16,9 +16,7 @@ class MediaFileTest < ActiveSupport::TestCase
       fixtures_file_path("various_artists.mp3")
     ]
 
-    Setting.update(media_path: Rails.root.join("test/fixtures/files"))
-
-    MediaFile.file_paths.each do |file_path|
+    MediaFile.file_paths(Rails.root.join("test/fixtures/files")).each do |file_path|
       assert_includes expect_file_paths, file_path
     end
   end
@@ -32,17 +30,13 @@ class MediaFileTest < ActiveSupport::TestCase
       Rails.root.join("test/fixtures/case_insensitive_files", "test.OpUS")
     ].map(&:to_s)
 
-    Setting.update(media_path: Rails.root.join("test/fixtures/case_insensitive_files"))
-
-    MediaFile.file_paths.each do |file_path|
+    MediaFile.file_paths(Rails.root.join("test/fixtures/case_insensitive_files")).each do |file_path|
       assert_includes expect_file_paths, file_path
     end
   end
 
   test "should ignore not supported files under media_path" do
-    Setting.update(media_path: Rails.root.join("test/fixtures/files"))
-
-    assert_not_includes MediaFile.file_paths, fixtures_file_path("not_supported_file.txt")
+    assert_not_includes MediaFile.file_paths(Rails.root.join("test/fixtures/files")), fixtures_file_path("not_supported_file.txt")
   end
 
   test "should get correct format" do

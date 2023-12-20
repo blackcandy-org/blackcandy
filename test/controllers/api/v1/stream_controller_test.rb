@@ -5,7 +5,6 @@ require "test_helper"
 class Api::V1::StreamControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:visitor1)
-    Setting.update(media_path: Rails.root.join("test/fixtures/files"))
   end
 
   test "should get new stream" do

@@ -4,13 +4,14 @@ require "test_helper"
 
 class SettingTest < ActiveSupport::TestCase
   test "should have AVAILABLE_SETTINGS constant" do
-    assert_equal [:media_path, :discogs_token, :transcode_bitrate, :allow_transcode_lossless], Setting::AVAILABLE_SETTINGS
+    assert_equal [:media_path, :discogs_token, :transcode_bitrate, :allow_transcode_lossless, :enable_media_listener], Setting::AVAILABLE_SETTINGS
   end
 
   test "should get env default value when setting value did not set" do
-    with_env("MEDIA_PATH" => "/test_media_path") do
-      assert_nil Setting.instance.values&.[]("media_path")
-      assert_equal "/test_media_path", Setting.media_path
+    Setting.instance.stub(:values, {"media_path" => nil}) do
+      with_env("MEDIA_PATH" => "/test_media_path") do
+        assert_equal "/test_media_path", Setting.media_path
+      end
     end
   end
 

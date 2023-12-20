@@ -6,9 +6,12 @@ class Media
   extend ActiveModel::Naming
 
   class << self
-    def sync(type = :all, file_paths = [])
+    def sync_all(dir = Setting.media_path)
+      sync(:all, MediaFile.file_paths(dir))
+    end
+
+    def sync(type, file_paths = [])
       self.syncing = true
-      file_paths = MediaFile.file_paths if type == :all
 
       return if file_paths.blank?
 

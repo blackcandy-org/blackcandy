@@ -7,9 +7,7 @@ class MediaTest < ActiveSupport::TestCase
 
   setup do
     clear_media_data
-
-    Setting.update(media_path: Rails.root.join("test/fixtures/files"))
-    Media.sync
+    Media.sync_all
   end
 
   test "should create all records in database when synced" do
@@ -47,7 +45,7 @@ class MediaTest < ActiveSupport::TestCase
 
   test "should change associations when modify album info on file" do
     MediaFile.stub(:file_info, media_file_info_stub(file_fixture("artist1_album2.mp3"), album_name: "album1")) do
-      Media.sync
+      Media.sync_all
 
       album1_songs_ids = Song.where(name: %w[flac_sample m4a_sample mp3_sample]).ids.sort
 
@@ -61,7 +59,7 @@ class MediaTest < ActiveSupport::TestCase
       :file_info,
       media_file_info_stub(file_fixture("artist1_album2.mp3"), artist_name: "artist2", albumartist_name: "artist2")
     ) do
-      Media.sync
+      Media.sync_all
 
       artist2_songs_ids = Song.where(
         name: %w[mp3_sample ogg_sample wav_sample opus_sample oga_sample wma_sample]
@@ -75,22 +73,20 @@ class MediaTest < ActiveSupport::TestCase
   test "should change song attribute when modify song info on file" do
     MediaFile.stub(:file_info, media_file_info_stub(file_fixture("artist1_album2.mp3"), tracknum: 2)) do
       assert_changes -> { Song.find_by(name: "mp3_sample").tracknum }, from: 1, to: 2 do
-        Media.sync
+        Media.sync_all
       end
     end
   end
 
   test "should clear records on database when delete file" do
     create_tmp_dir(from: Setting.media_path) do |tmp_dir|
-      Setting.update(media_path: tmp_dir)
-
       File.delete File.join(tmp_dir, "artist2_album3.ogg")
       File.delete File.join(tmp_dir, "artist2_album3.wav")
       File.delete File.join(tmp_dir, "artist2_album3.opus")
       File.delete File.join(tmp_dir, "artist2_album3.oga")
       File.delete File.join(tmp_dir, "artist2_album3.wma")
 
-      Media.sync
+      Media.sync_all(tmp_dir)
 
       assert_nil Song.find_by(name: "ogg_sample")
       assert_nil Song.find_by(name: "wav_sample")
@@ -124,10 +120,8 @@ class MediaTest < ActiveSupport::TestCase
   test "should not attach record when file path is invalide" do
     clear_media_data
 
-    MediaFile.stub(:file_paths, ["/fake.mp3", file_fixture("artist1_album2.mp3").to_s]) do
-      Media.sync
-      assert_equal 1, Album.count
-    end
+    Media.sync(:all, ["/fake.mp3", file_fixture("artist1_album2.mp3").to_s])
+    assert_equal 1, Album.count
   end
 
   test "should not attach record when file info is invalide" do
@@ -141,7 +135,7 @@ class MediaTest < ActiveSupport::TestCase
     }
 
     MediaFile.stub(:file_info, file_info) do
-      Media.sync
+      Media.sync_all
       assert_equal 0, Album.count
     end
   end

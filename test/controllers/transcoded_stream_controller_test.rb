@@ -5,7 +5,6 @@ require "test_helper"
 class TranscodedStreamControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:visitor1)
-    Setting.update(media_path: Rails.root.join("test/fixtures/files"))
 
     cache_directory = "#{Stream::TRANSCODE_CACHE_DIRECTORY}/#{songs(:flac_sample).id}"
     if Dir.exist?(cache_directory)
