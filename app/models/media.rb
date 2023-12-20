@@ -8,6 +8,8 @@ class Media
   class << self
     def sync_all(dir = Setting.media_path)
       sync(:all, MediaFile.file_paths(dir))
+    ensure
+      instance.broadcast_render_to "media_sync", partial: "media_syncing/syncing", locals: {syncing: false}
     end
 
     def sync(type, file_paths = [])
@@ -37,9 +39,7 @@ class Media
 
     def syncing=(is_syncing)
       return if is_syncing == syncing?
-
       Rails.cache.write("media_syncing", is_syncing, expires_in: 1.hour)
-      instance.broadcast_render_to "media_sync", partial: "media_syncing/syncing", locals: {syncing: syncing?}
     end
 
     private

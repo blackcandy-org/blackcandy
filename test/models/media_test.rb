@@ -111,9 +111,9 @@ class MediaTest < ActiveSupport::TestCase
     assert_equal Media.instance.object_id, Media.instance.object_id
   end
 
-  test "should broadcast media sync stream when set syncing status" do
+  test "should broadcast media sync stream when sync all completed" do
     assert_broadcasts("media_sync", 1) do
-      Media.syncing = true
+      Media.sync_all
     end
   end
 
