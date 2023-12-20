@@ -24,7 +24,8 @@ end.parse!
 daemon_options = {
   dir_mode: :normal,
   dir: options[:dir],
-  multiple: false
+  multiple: false,
+  shush: ENV["RAILS_ENV"] == "test"
 }
 
 Daemons.run_proc(options[:name], daemon_options) do

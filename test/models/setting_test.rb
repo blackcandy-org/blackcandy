@@ -3,6 +3,8 @@
 require "test_helper"
 
 class SettingTest < ActiveSupport::TestCase
+  include ActiveJob::TestHelper
+
   test "should have AVAILABLE_SETTINGS constant" do
     assert_equal [:media_path, :discogs_token, :transcode_bitrate, :allow_transcode_lossless, :enable_media_listener], Setting::AVAILABLE_SETTINGS
   end
@@ -67,5 +69,19 @@ class SettingTest < ActiveSupport::TestCase
     setting.update(media_path: "/not_exist")
 
     assert_not setting.valid?
+  end
+
+  test "should sync media when media_path changed" do
+    assert_enqueued_with(job: MediaSyncJob) do
+      Setting.update(media_path: Rails.root.join("test/fixtures"))
+    end
+  end
+
+  test "should toggle media listener when enable_media_listener changed" do
+    Setting.update(enable_media_listener: true)
+    assert MediaListener.running?
+
+    Setting.update(enable_media_listener: false)
+    assert_not MediaListener.running?
   end
 end
