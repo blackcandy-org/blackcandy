@@ -5,7 +5,7 @@ FROM base AS builder
 ENV RAILS_ENV production
 ENV NODE_ENV production
 
-# build for musl-libc, not glibc (see https://github.com/sparklemotion/nokogiri/issues/2075, https://github.com/rubygems/rubygems/issues/3174)
+# Build for musl-libc, not glibc (see https://github.com/sparklemotion/nokogiri/issues/2075, https://github.com/rubygems/rubygems/issues/3174)
 ENV BUNDLE_FORCE_RUBY_PLATFORM 1
 
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
@@ -55,6 +55,9 @@ RUN addgroup -g 1000 -S app && adduser -u 1000 -S app -G app
 
 COPY --from=builder --chown=app:app /usr/local/bundle/ /usr/local/bundle/
 COPY --from=builder --chown=app:app /app/ /app/
+
+# Forwards media listener logs to stdout so they can be captured in docker logs.
+RUN ln -sf /dev/stdout /app/log/media_listener_production.log
 
 USER app
 
