@@ -20,7 +20,7 @@ gem "cssbundling-rails", "~> 1.2.0"
 gem "jsbundling-rails", "~> 1.1.2"
 
 # Use Puma as the app server
-gem "puma", "~> 6.3.0"
+gem "puma", "~> 6.4.0"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.11.5"
@@ -51,6 +51,9 @@ gem "bcrypt", "~> 3.1.11"
 
 # For sync on library changes
 gem "listen", "~> 3.8.0"
+
+# For daemonize library sync process
+gem "daemons", "~> 1.4.0"
 
 # Default stack for database, cache, background job and pub/sub
 gem "litestack", "~> 0.4.2"

@@ -4,8 +4,10 @@ class MediaFile
   SUPPORTED_FORMATS = WahWah.support_formats.freeze
 
   class << self
-    def file_paths
-      media_path = File.expand_path(Setting.media_path)
+    def file_paths(media_path)
+      return [] if media_path.blank?
+
+      absolute_media_path = File.expand_path(media_path)
 
       # Because Ruby ignores the FNM_CASEFOLD flag in Dir.glob, case sensitivity depends on your system.
       # So we need another way to make Dir.glob case-insensitive.
@@ -14,7 +16,7 @@ class MediaFile
         format.chars.map { |char| (char.downcase != char.upcase) ? "[#{char.downcase}#{char.upcase}]" : char }.join
       end
 
-      Dir.glob("#{media_path}/**/*.{#{case_insensitive_supported_formats.join(",")}}")
+      Dir.glob("#{absolute_media_path}/**/*.{#{case_insensitive_supported_formats.join(",")}}")
     end
 
     def format(file_path)

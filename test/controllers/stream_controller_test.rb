@@ -5,8 +5,6 @@ require "test_helper"
 class StreamControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:visitor1)
-    Setting.update(media_path: Rails.root.join("test/fixtures/files"))
-
     login(@user)
   end
 

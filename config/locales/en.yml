@@ -116,6 +116,7 @@ en:
     unprocessable_entity: 'The change you wanted was rejected'
     internal_server_error: "We're sorry, but something went wrong"
     already_in_playlist: "Add to playlist failed, song is already in playlist"
+    syncing_in_progress: "Syncing in progress, please wait"
   success:
     delete: 'Deleted successfully'
     create: 'Created successfully'
@@ -128,6 +129,8 @@ en:
     transcoding: "Black candy will transcode formats that are not supported by the browser by default."
     allow_transcode_lossless: "Will transcode lossless format to mp3 to reduce bandwidth."
     sync_completed: "Media sync completed"
+    enable_media_listener: "Media listener can automatically sync with library changes."
+    media_listener_running: "Listener is running"
 
   activerecord:
     errors:

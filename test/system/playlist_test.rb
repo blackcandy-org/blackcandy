@@ -4,7 +4,6 @@ require "application_system_test_case"
 
 class PlaylistSystemTest < ApplicationSystemTestCase
   setup do
-    Setting.update(media_path: Rails.root.join("test/fixtures/files"))
     login_as users(:admin)
 
     visit playlist_songs_url(playlists(:playlist1))

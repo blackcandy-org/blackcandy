@@ -29,8 +29,6 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should sync media when media_path setting updated" do
-    Setting.update(media_path: Rails.root.join("test/fixtures/files"))
-
     login users(:admin)
 
     assert_enqueued_with(job: MediaSyncJob) do

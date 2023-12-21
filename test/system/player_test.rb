@@ -4,7 +4,6 @@ require "application_system_test_case"
 
 class PlayerSystemTest < ApplicationSystemTestCase
   setup do
-    Setting.update(media_path: Rails.root.join("test/fixtures/files"))
     users(:visitor1).current_playlist.replace(Song.ids.sort)
     login_as users(:visitor1)
   end

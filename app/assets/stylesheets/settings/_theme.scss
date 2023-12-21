@@ -30,6 +30,7 @@ $green: rgb(35, 166, 80);
   /* Text */
   --text-primary-color: #{$grey-900};
   --text-secondary-color: #{$grey-600};
+  --text-success-color: #{$green};
 
   /* Sidebar */
   --sidebar-bg-color: #{$grey-100};
@@ -136,6 +137,7 @@ $green: rgb(35, 166, 80);
   /* Text */
   --text-primary-color: #{$white};
   --text-secondary-color: #{$grey-300};
+  --text-success-color: #{$green};
 
   /* Sidebar */
   --sidebar-bg-color: #{$grey-900};

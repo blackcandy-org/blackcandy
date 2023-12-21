@@ -1,0 +1,53 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "daemons"
+require "optparse"
+
+ROOT_DIR = File.expand_path(__dir__ + "/../../")
+
+options = {
+  name: "black_candy_media_listener_service",
+  dir: File.join(ROOT_DIR, "tmp", "pids")
+}
+
+OptionParser.new do |parser|
+  parser.on("-n", "--name=NAME", "Service Name") do |name|
+    options[:name] = name
+  end
+
+  parser.on("-d", "--dir=DIR", "PID Directory") do |dir|
+    options[:dir] = dir
+  end
+end.parse!
+
+daemon_options = {
+  dir_mode: :normal,
+  dir: options[:dir],
+  multiple: false,
+  shush: ENV["RAILS_ENV"] == "test",
+  log_output: true,
+  log_dir: File.join(ROOT_DIR, "log"),
+  output_logfilename: "media_listener_#{ENV["RAILS_ENV"]}.log"
+}
+
+Daemons.run_proc(options[:name], daemon_options) do
+  Dir.chdir ROOT_DIR
+
+  require "./config/environment"
+
+  listener_log_level = (ENV["RAILS_ENV"] == "production") ? :info : :debug
+  Listen.logger = ::Logger.new($stdout, level: ENV.fetch("RAILS_LOG_LEVEL", listener_log_level))
+
+  supported_formates = MediaFile::SUPPORTED_FORMATS.map { |formate| %r{\.#{formate}$} }
+
+  listener = Listen.to(File.expand_path(Setting.media_path), only: supported_formates, latency: 5, wait_for_delay: 10) do |modified, added, removed|
+    MediaSyncJob.perform_later(:modified, modified) if modified.present?
+    MediaSyncJob.perform_later(:added, added) if added.present?
+    MediaSyncJob.perform_later(:removed, removed) if removed.present?
+  end
+
+  listener.start
+
+  sleep
+end

@@ -33,6 +33,10 @@ allowed_sites_for_webmock = [
 
 WebMock.disable_net_connect!(allow_localhost: true, net_http_connect_on_start: true, allow: allowed_sites_for_webmock)
 
+MediaListener.config do |config|
+  config.service_name = "media_listener_service_test"
+end
+
 class ActiveSupport::TestCase
   include Turbo::Broadcastable::TestHelper
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.

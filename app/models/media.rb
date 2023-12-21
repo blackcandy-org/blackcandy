@@ -3,15 +3,17 @@
 class Media
   include Singleton
   include Turbo::Broadcastable
-
   extend ActiveModel::Naming
 
-  @@syncing = false
-
   class << self
-    def sync(type = :all, file_paths = [])
+    def sync_all(dir = Setting.media_path)
+      sync(:all, MediaFile.file_paths(dir))
+    ensure
+      instance.broadcast_render_to "media_sync", partial: "media_syncing/syncing", locals: {syncing: false}
+    end
+
+    def sync(type, file_paths = [])
       self.syncing = true
-      file_paths = MediaFile.file_paths if type == :all
 
       return if file_paths.blank?
 
@@ -32,12 +34,12 @@ class Media
     end
 
     def syncing?
-      @@syncing
+      Rails.cache.fetch("media_syncing") { false }
     end
 
     def syncing=(is_syncing)
-      @@syncing = is_syncing
-      instance.broadcast_render_to "media_sync", partial: "settings/media_sync"
+      return if is_syncing == syncing?
+      Rails.cache.write("media_syncing", is_syncing, expires_in: 1.hour)
     end
 
     private

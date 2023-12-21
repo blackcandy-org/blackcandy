@@ -1,0 +1,5 @@
+global_setting:
+  id: 1
+  singleton_guard: 0
+  values:
+    media_path: <%= Rails.root.join("test/fixtures/files").to_s %>
