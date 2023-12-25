@@ -11,19 +11,25 @@ module ApplicationHelper
   def icon_tag(name, options = {})
     return if name.blank?
 
-    size_class = options[:size].blank? ? "" : "c-icon--#{options[:size]}"
-    active_class = options[:active] ? "c-icon--active" : ""
-    emphasis_class = options[:emphasis] ? "c-icon--emphasis" : ""
-    icon_class = ["c-icon", size_class, active_class, emphasis_class, options[:class]].join(" ")
+    size = options.delete(:size)
+    title = options.delete(:title)
+    is_active = options.delete(:active)
+    is_emphasis = options.delete(:emphasis)
+
+    size_class = size.blank? ? "" : "c-icon--#{size}"
+    active_class = is_active ? "c-icon--active" : ""
+    emphasis_class = is_emphasis ? "c-icon--emphasis" : ""
+    icon_class = ["c-icon", size_class, active_class, emphasis_class, options.delete(:class)].join(" ")
 
     tag.svg(
       fill: "currentColor",
       stroke_width: "2",
       stroke_linecap: "round",
       stroke_linejoin: "round",
-      class: icon_class
+      class: icon_class,
+      **options
     ) do
-      tag.title(options[:title]) + tag.use("xlink:href": "##{name}")
+      tag.title(title) + tag.use("xlink:href": "##{name}")
     end
   end
 

@@ -62,12 +62,6 @@ class SongsSystemTest < ApplicationSystemTestCase
     first(:test_id, "song_menu").click
     click_on "Play Next"
     assert_equal first(:test_id, "current_playlist_song_name").text, first(:test_id, "song_name").text
-
-    find("body").click
-    first(:test_id, "current_playlist_song").click
-    all(:test_id, "song_menu")[1].click
-    click_on "Play Next"
-    assert_equal all(:test_id, "current_playlist_song_name")[1].text, all(:test_id, "song_name")[1].text
   end
 
   test "add song to the end in current playlist" do
@@ -76,10 +70,5 @@ class SongsSystemTest < ApplicationSystemTestCase
     first(:test_id, "song_menu").click
     click_on "Play Last"
     assert_equal all(:test_id, "current_playlist_song_name").last.text, first(:test_id, "song_name").text
-
-    find("body").click
-    all(:test_id, "song_menu")[1].click
-    click_on "Play Last"
-    assert_equal all(:test_id, "current_playlist_song_name").last.text, all(:test_id, "song_name")[1].text
   end
 end

@@ -8,13 +8,11 @@
 <% end %>
 
 <details class='c-dropdown u-mr-small'>
-  <summary>
-    <div role='button' class='c-button c-button--outline c-button--small'>
-      <span class='o-flex o-flex--align-center'>
-        <%= t("label.genre") %>
-        <%= icon_tag "expand-more" %>
-      </span>
-    </div>
+  <summary class='c-button c-button--outline c-button--small'>
+    <span class='o-flex o-flex--align-center'>
+      <%= t("label.genre") %>
+      <%= icon_tag "expand-more" %>
+    </span>
   </summary>
   <div class='c-dropdown__list c-dropdown__list--right'>
     <%= turbo_frame_tag "turbo-genre-filter", src: albums_filter_genres_path(**filter_sort_params), loading: "lazy" do %>
@@ -26,13 +24,11 @@
 </details>
 
 <details class='c-dropdown u-mr-small'>
-  <summary>
-    <div role='button' class='c-button c-button--outline c-button--small'>
-      <span class='o-flex o-flex--align-center'>
-        <%= t("label.year") %>
-        <%= icon_tag "expand-more" %>
-      </span>
-    </div>
+  <summary class='c-button c-button--outline c-button--small'>
+    <span class='o-flex o-flex--align-center'>
+      <%= t("label.year") %>
+      <%= icon_tag "expand-more" %>
+    </span>
   </summary>
   <div class='c-dropdown__list'>
     <%= turbo_frame_tag "turbo-year-filter", src: albums_filter_years_path(**filter_sort_params), loading: "lazy" do %>

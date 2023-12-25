@@ -16,7 +16,7 @@
                 <span class='u-mr-tiny'><%= avatar_tag user %></span>
                 <%= user.email %>
               <% end %>
-              <%= button_to user_path(user), method: :delete, class: "c-button c-button--link" do %>
+              <%= button_to user_path(user), method: :delete, class: "c-button c-button--icon" do %>
                 <%= icon_tag "delete", size: "small", title: t("label.delete") %>
               <% end %>
             </li>

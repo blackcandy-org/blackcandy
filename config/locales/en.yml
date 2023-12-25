@@ -101,6 +101,7 @@ en:
     artist_name: 'Artist Name'
     sort: 'Sort'
     year: 'Year'
+    genre: 'Genre'
     created_at: 'Created At'
     asc: 'Ascending'
     desc: 'Descending'
