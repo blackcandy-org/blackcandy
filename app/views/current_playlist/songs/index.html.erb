@@ -11,7 +11,7 @@
         <span><%= t("label.tracks") %></span>
       </p>
       <details class='c-dropdown' data-test-id='playlist_menu'>
-        <summary><%= icon_tag "more-vertical", title: t("label.more") %></summary>
+        <summary class="c-button c-button--icon"><%= icon_tag "more-vertical", title: t("label.more") %></summary>
         <div class='c-dropdown__list'>
           <%= button_to t("label.clear"), current_playlist_songs_path, method: :delete, form_class: "c-dropdown__item" %>
         </div>

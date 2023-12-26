@@ -8,7 +8,7 @@
   data-test-id='current_playlist_song'>
 
   <div class='o-flex o-flex--align-center u-py-narrow'>
-    <div class='js-playlist-sortable-item-handle u-mr-narrow' data-test-id='playlist_song_sortable_handle'><%= icon_tag "drag-indicator", size: "small" %></div>
+    <button class='c-button c-button--icon js-playlist-sortable-item-handle u-mr-narrow' data-test-id='playlist_song_sortable_handle'><%= icon_tag "drag-indicator", size: "small" %></button>
 
     <button class='c-button c-button--link o-flex__item--grow-1' data-delegated-action='current-playlist-songs#play'>
       <div class='o-flex o-flex--justify-between o-flex--align-center'>
@@ -21,7 +21,7 @@
     </button>
 
     <details class='c-dropdown' data-test-id='current_playlist_song_menu'>
-      <summary><%= icon_tag "more-vertical", size: "small", title: t("label.more") %></summary>
+      <summary class="c-button c-button--icon" role="button"><%= icon_tag "more-vertical", size: "small", title: t("label.more") %></summary>
       <div class='c-dropdown__list'>
         <%= link_to t("label.add_to_playlist"), dialog_playlists_path(song_id: song.id, referer_url: current_url), data: {turbo_frame: ("turbo-dialog" unless native_app?)}, class: "c-dropdown__item" %>
 

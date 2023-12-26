@@ -33,10 +33,8 @@
           <%= link_to t("label.edit"), edit_dialog_playlist_path(@playlist), data: {turbo_frame: ("turbo-dialog" unless native_app?)}, class: "c-button c-button--secondary" %>
 
           <details class='c-dropdown' data-test-id='playlist_menu'>
-            <summary>
-              <span class='c-button c-button--secondary'>
-                <%= icon_tag "more-horizontal", size: "narrow", title: t("label.more") %>
-              </span>
+            <summary class="c-button c-button--secondary">
+              <%= icon_tag "more-horizontal", size: "narrow", title: t("label.more") %>
             </summary>
             <div class='c-dropdown__list c-dropdown__list--right'>
               <% unless @songs.blank? %>
