@@ -16,7 +16,8 @@ class SongsSystemTest < ApplicationSystemTestCase
       )
     end
 
-    login_as users(:visitor1)
+    @user = users(:visitor1)
+    login_as @user
   end
 
   test "show songs" do
@@ -45,7 +46,7 @@ class SongsSystemTest < ApplicationSystemTestCase
 
   test "add song to playlist" do
     playlist_name = "test-playlist"
-    playlist = Playlist.create(name: playlist_name, user_id: users(:visitor1).id)
+    playlist = Playlist.create(name: playlist_name, user_id: @user.id)
 
     visit songs_url
 
@@ -57,14 +58,20 @@ class SongsSystemTest < ApplicationSystemTestCase
   end
 
   test "add song to the next in current playlist" do
+    @user.current_playlist.songs << Song.where(name: ["song_test_0", "song_test_1"])
     visit songs_url
+
+    # Play the first song in current playlist
+    first(:test_id, "current_playlist_song").click
 
     first(:test_id, "song_menu").click
     click_on "Play Next"
-    assert_equal first(:test_id, "current_playlist_song_name").text, first(:test_id, "song_name").text
+
+    assert_equal all(:test_id, "current_playlist_song_name")[1].text, first(:test_id, "song_name").text
   end
 
   test "add song to the end in current playlist" do
+    @user.current_playlist.songs << Song.where(name: ["song_test_0", "song_test_1"])
     visit songs_url
 
     first(:test_id, "song_menu").click
