@@ -16,7 +16,7 @@
 
   <%= turbo_frame_tag "turbo-playlists-page-#{@pagy.page}", class: "o-grid o-grid--list", target: "_top" do %>
     <% if @playlists.present? %>
-      <%= render partial: "playlists/playlist", collection: @playlists, cached: true %>
+      <%= render partial: "playlists/playlist", collection: @playlists %>
     <% end %>
 
     <% if @pagy.next %>

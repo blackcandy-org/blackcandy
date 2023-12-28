@@ -11,7 +11,7 @@
     <%# so we can redirect to the referer_url later. %>
     <%= hidden_field_tag :referer_url, params[:referer_url] if native_app? %>
     <%= turbo_frame_tag "turbo-dialog-playlists-page-#{@pagy.page}", class: "c-list", data: {action: "click->dialog#hide"}, target: "_top" do %>
-      <%= render partial: "dialog/playlists/playlist", collection: @playlists, cached: true %>
+      <%= render partial: "dialog/playlists/playlist", collection: @playlists %>
 
       <% if @pagy.next %>
         <%= turbo_frame_tag "turbo-dialog-playlists-page-#{@pagy.next}", src: pagy_url_for(@pagy, @pagy.next), loading: "lazy", class: "u-my-small", data: {controller: "element", action: "turbo:frame-render->element#replaceWithChildren"}  do %>

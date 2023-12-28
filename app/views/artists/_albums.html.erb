@@ -1,6 +1,6 @@
 <% if albums.present? %>
   <h2><%= title %></h2>
   <div class='o-grid o-grid--shelf u-mb-large'>
-    <%= render partial: "artists/album", collection: albums, cached: true %>
+    <%= render partial: "artists/album", collection: albums %>
   </div>
 <% end %>

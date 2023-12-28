@@ -12,7 +12,7 @@
       <% end %>
     </div>
     <div class='o-grid o-grid--shelf u-mb-large'>
-      <%= render partial: "albums/album", collection: @albums, cached: true %>
+      <%= render partial: "albums/album", collection: @albums %>
     </div>
   <% end %>
 
@@ -25,7 +25,7 @@
       <% end %>
     </div>
     <div class='o-grid o-grid--shelf u-mb-large'>
-      <%= render partial: "artists/artist", collection: @artists, cached: true %>
+      <%= render partial: "artists/artist", collection: @artists %>
     </div>
   <% end %>
 
@@ -38,7 +38,7 @@
       <% end %>
     </div>
     <div class='o-grid o-grid--list u-mb-wide'>
-      <%= render partial: "playlists/playlist", collection: @playlists, cached: true %>
+      <%= render partial: "playlists/playlist", collection: @playlists %>
     </div>
   <% end %>
 
