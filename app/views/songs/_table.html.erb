@@ -13,7 +13,7 @@
     </div>
   </div>
   <%= turbo_frame_tag "turbo-songs-page-#{pagy.page}", role: "rowgroup", target: "_top" do %>
-    <%= render partial: "songs/song", collection: songs, cached: true %>
+    <%= render partial: "songs/song", collection: songs %>
 
     <% if pagy.next %>
       <%= turbo_frame_tag "turbo-songs-page-#{pagy.next}", src: pagy_url_for(pagy, pagy.next), loading: "lazy", role: "cell", span: "row", class: "o-flex o-flex--justify-center u-my-small u-border-none", data: {controller: "element", action: "turbo:frame-render->element#replaceWithChildren"}  do %>

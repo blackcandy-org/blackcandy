@@ -16,7 +16,7 @@
     </div>
   <% else %>
     <%= turbo_frame_tag "turbo-albums-page-#{@pagy.page}", class: "o-grid o-grid--shelf", target: "_top" do %>
-      <%= render partial: "albums/album", collection: @albums, cached: true %>
+      <%= render partial: "albums/album", collection: @albums %>
 
       <% if @pagy.next %>
         <%= turbo_frame_tag "turbo-albums-page-#{@pagy.next}", src: pagy_url_for(@pagy, @pagy.next), loading: "lazy", class: "o-grid__item o-grid__item--row u-my-small", data: {controller: "element", action: "turbo:frame-render->element#replaceWithChildren"}  do %>

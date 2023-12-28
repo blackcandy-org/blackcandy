@@ -10,17 +10,15 @@
     <% if @users.present? %>
       <ul class='c-list c-list--border-none'>
         <% @users.each do |user| %>
-          <% cache user do %>
-            <li id='<%= dom_id(user) %>' class='c-list__item o-flex o-flex--justify-between o-flex--align-center'>
-              <%= link_to edit_user_path(user), class: "o-flex o-flex--align-center" do %>
-                <span class='u-mr-tiny'><%= avatar_tag user %></span>
-                <%= user.email %>
-              <% end %>
-              <%= button_to user_path(user), method: :delete, class: "c-button c-button--icon" do %>
-                <%= icon_tag "delete", size: "small", title: t("label.delete") %>
-              <% end %>
-            </li>
-          <% end %>
+          <li id='<%= dom_id(user) %>' class='c-list__item o-flex o-flex--justify-between o-flex--align-center'>
+            <%= link_to edit_user_path(user), class: "o-flex o-flex--align-center" do %>
+              <span class='u-mr-tiny'><%= avatar_tag user %></span>
+              <%= user.email %>
+            <% end %>
+            <%= button_to user_path(user), method: :delete, class: "c-button c-button--icon" do %>
+              <%= icon_tag "delete", size: "small", title: t("label.delete") %>
+            <% end %>
+          </li>
         <% end %>
       </ul>
     <% else %>

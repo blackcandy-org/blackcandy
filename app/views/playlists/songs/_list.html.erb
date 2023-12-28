@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "#{dom_id(playlist)}-page-#{pagy.page}", class: "c-list", target: "_top", data: {controller: "playlist-sortable", playlist_id: playlist.id} do %>
-  <%= render partial: "playlists/songs/song", collection: songs, locals: {playlist: playlist}, cached: true %>
+  <%= render partial: "playlists/songs/song", collection: songs, locals: {playlist: playlist} %>
 
   <% if pagy.next %>
     <%= turbo_frame_tag "#{dom_id(playlist)}-page-#{pagy.next}", src: pagy_url_for(pagy, pagy.next), loading: "lazy", class: "u-my-small", data: {controller: "element", action: "turbo:frame-render->element#replaceWithChildren"}  do %>
