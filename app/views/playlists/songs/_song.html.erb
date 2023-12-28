@@ -1,6 +1,9 @@
 <li id='<%= "#{dom_id(playlist)}_#{dom_id(song)}" %>' class='c-list__item u-p-0' data-playlist-songs-target='item' data-song-id='<%= song.id %>' data-test-id='playlist_song' draggable='true'>
   <div class='o-flex o-flex--align-center u-py-narrow'>
-    <button class='c-button c-button--icon js-playlist-sortable-item-handle u-mr-narrow' data-test-id='playlist_song_sortable_handle'><%= icon_tag "drag-indicator", size: "small" %></button>
+    <% unless mobile? %>
+      <button class='c-button c-button--icon js-playlist-sortable-item-handle u-mr-narrow' data-test-id='playlist_song_sortable_handle'><%= icon_tag "drag-indicator", size: "small" %></button>
+    <% end %>
+
     <%= button_to(
           current_playlist_songs_path(song_id: song.id, should_play: true),
           class: "c-button c-button--link u-w-100",

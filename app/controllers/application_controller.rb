@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
   include SessionsHelper
 
-  helper_method :native_app?, :need_transcode?, :render_flash
+  helper_method :native_app?, :need_transcode?, :render_flash, :mobile?
 
   before_action :find_current_session
   before_action :find_current_request_details
@@ -76,6 +76,10 @@ class ApplicationController < ActionController::Base
   def render_flash(type: :success, message: "")
     flash[type] = message unless message.blank?
     turbo_stream.update "turbo-flash", partial: "shared/flash"
+  end
+
+  def mobile?
+    browser.device.mobile?
   end
 
   private

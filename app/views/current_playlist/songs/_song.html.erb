@@ -8,7 +8,9 @@
   data-test-id='current_playlist_song'>
 
   <div class='o-flex o-flex--align-center u-py-narrow'>
-    <button class='c-button c-button--icon js-playlist-sortable-item-handle u-mr-narrow' data-test-id='playlist_song_sortable_handle'><%= icon_tag "drag-indicator", size: "small" %></button>
+    <% unless mobile? %>
+      <button class='c-button c-button--icon js-playlist-sortable-item-handle u-mr-narrow' data-test-id='playlist_song_sortable_handle'><%= icon_tag "drag-indicator", size: "small" %></button>
+    <% end %>
 
     <button class='c-button c-button--link o-flex__item--grow-1' data-delegated-action='current-playlist-songs#play'>
       <div class='o-flex o-flex--justify-between o-flex--align-center'>

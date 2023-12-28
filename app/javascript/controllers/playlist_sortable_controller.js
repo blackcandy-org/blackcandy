@@ -3,6 +3,8 @@ import { fetchRequest } from '../helper'
 import { installEventHandler } from './mixins/event_handler'
 
 export default class extends Controller {
+  DRAG_HANDLE_SELECTOR = '.js-playlist-sortable-item-handle'
+
   initialize () {
     installEventHandler(this)
   }
@@ -47,7 +49,7 @@ export default class extends Controller {
   }
 
   #handleMouseDown = (event) => {
-    const handle = event.target.closest('.js-playlist-sortable-item-handle')
+    const handle = event.target.closest(this.DRAG_HANDLE_SELECTOR)
 
     if (handle) {
       this.dragHandle = handle
@@ -58,8 +60,9 @@ export default class extends Controller {
 
   #handleDragStart = (event) => {
     const target = event.target
+    const handleExists = target.querySelector(this.DRAG_HANDLE_SELECTOR)
 
-    if (!target.draggable || !target.contains(this.dragHandle)) {
+    if (!target.draggable || (handleExists && !target.contains(this.dragHandle))) {
       event.preventDefault()
       return
     }
