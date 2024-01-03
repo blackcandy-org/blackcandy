@@ -20,6 +20,8 @@ class Setting < ApplicationRecord
   private
 
   def media_path_exist
+    return if media_path.nil?
+
     errors.add(:media_path, :blank) and return if media_path.blank?
 
     path = File.expand_path(media_path)
