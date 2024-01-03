@@ -44,9 +44,10 @@ class ApplicationController < ActionController::Base
   def need_transcode?(song)
     song_format = song.format
 
-    return true unless song_format.in?(Stream::SUPPORTED_FORMATS)
+    return true unless song_format.in?(Stream::WEB_SUPPORTED_FORMATS)
     return true if browser.safari? && !song_format.in?(Stream::SAFARI_SUPPORTED_FORMATS)
     return true if ios_app? && !song_format.in?(Stream::IOS_SUPPORTED_FORMATS)
+    return true if android_app? && !song_format.in?(Stream::ANDROID_SUPPORTED_FORMATS)
 
     Setting.allow_transcode_lossless? ? song.lossless? : false
   end
