@@ -22,6 +22,8 @@ class EventHandler {
     const handler = {
       listener (event) {
         if (targetMatching) {
+          if (event.target.dataset.preventDelegation) { return }
+
           const target = event.target.closest(targetMatching)
           if (!target) { return }
         }

@@ -57,9 +57,9 @@
                 ) do %>
               <div class='o-flex o-flex--justify-between o-flex--align-center'>
                 <div>
-                  <span class='u-mb-tiny' data-test-id='album_song_name'><%= song.name %></span>
+                  <div data-test-id='album_song_name'><%= song.name %></div>
                   <% if @album.artist.various? %>
-                    <%= song.artist.name %>
+                    <%= link_to song.artist.name, artist_path(song.artist), class: "c-list__item__subtext" %>
                   <% end %>
                 </div>
                 <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>

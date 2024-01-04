@@ -1,7 +1,7 @@
 @use "../tools/functions" as *;
 
 .c-action-bar {
-  padding: spacing("narrow");
+  padding: spacing("tiny") spacing("narrow");
   border-radius: border-radius("medium");
   background: var(--action-bar-bg-color);
 }

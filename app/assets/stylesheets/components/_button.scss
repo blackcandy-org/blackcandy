@@ -8,6 +8,10 @@
   padding: spacing("tiny") spacing("narrow");
   cursor: pointer;
   font-size: font-size("medium");
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .c-button--primary {

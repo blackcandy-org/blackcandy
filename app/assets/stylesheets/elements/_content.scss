@@ -37,7 +37,7 @@ a {
 }
 
 a:hover {
-  color: var(--link-active-color);
+  text-decoration: underline;
 }
 
 a.is-active {

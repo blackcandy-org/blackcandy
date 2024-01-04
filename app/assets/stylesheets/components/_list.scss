@@ -25,6 +25,12 @@
   text-transform: uppercase;
 }
 
+.c-list__item__subtext {
+  display: inline-block;
+  margin-top: spacing("tiny");
+  color: var(--list-subtext-color);
+}
+
 .c-list--border-none .c-list__item {
   border-bottom: none;
 }
