@@ -19,7 +19,7 @@ class MediaTest < ActiveSupport::TestCase
   test "should create associations between artists and albums" do
     assert_equal Album.where(name: %w[album1 album2]).ids.sort, Artist.find_by(name: "artist1").albums.ids.sort
     assert_equal Album.where(name: "album3").ids.sort, Artist.find_by(name: "artist2").albums.ids.sort
-    assert_equal Album.where(name: "album4").ids.sort, Artist.find_by(is_various: true).albums.ids.sort
+    assert_equal Album.where(name: "album4").ids.sort, Artist.find_by(various: true).albums.ids.sort
   end
 
   test "should create associations between albums and songs" do
@@ -40,7 +40,7 @@ class MediaTest < ActiveSupport::TestCase
 
     assert_equal artist1_songs_ids, Artist.find_by(name: "artist1").songs.ids.sort
     assert_equal artist2_songs_ids, Artist.find_by(name: "artist2").songs.ids.sort
-    assert_equal [], Artist.find_by(is_various: true).songs.ids.sort
+    assert_equal [], Artist.find_by(various: true).songs.ids.sort
   end
 
   test "should change associations when modify album info on file" do

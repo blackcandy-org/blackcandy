@@ -15,8 +15,8 @@
     <button class='c-button c-button--link o-flex__item--grow-1' data-delegated-action='current-playlist-songs#play'>
       <div class='o-flex o-flex--justify-between o-flex--align-center'>
         <div class='u-mr-narrow'>
-          <span class='u-mb-tiny u-text-line-clamp-2' data-test-id='current_playlist_song_name'><%= song.name %></span>
-          <%= song.artist.title %>
+          <span class='u-text-line-clamp-2' data-test-id='current_playlist_song_name'><%= song.name %></span>
+          <%= link_to song.artist.name, artist_path(song.artist), class: "c-list__item__subtext", data: {"turbo-frame" => "_top", "prevent-delegation" => true} %>
         </div>
         <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
       </div>

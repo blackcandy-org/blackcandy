@@ -61,14 +61,13 @@ class Media
     end
 
     def attach(file_info)
-      artist = Artist.find_or_create_by!(name: file_info[:artist_name])
+      artist = Artist.find_or_create_by!(name: file_info[:artist_name] || Artist::UNKNOWN_NAME)
+      various_artist = Artist.find_or_create_by!(various: true) if various_artist?(file_info)
 
-      album = if various_artist?(file_info)
-        various_artist = Artist.find_or_create_by!(is_various: true)
-        Album.find_or_initialize_by(artist: various_artist, name: file_info[:album_name])
-      else
-        Album.find_or_initialize_by(artist: artist, name: file_info[:album_name])
-      end
+      album = Album.find_or_initialize_by(
+        artist: various_artist || artist,
+        name: file_info[:album_name] || Album::UNKNOWN_NAME
+      )
 
       album.update!(album_info(file_info))
       album.update!(image: file_info[:image]) unless album.has_image?
