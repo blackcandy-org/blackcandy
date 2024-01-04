@@ -16,10 +16,10 @@
     <% end %>
   </div>
   <div role='cell' class='u-display-none@medium'>
-    <%= link_to song.artist.title, artist_path(song.artist) %>
+    <%= link_to song.artist.name, artist_path(song.artist) %>
   </div>
   <div role='cell' class='u-display-none@medium'>
-    <%= link_to song.album.title, album_path(song.album) %>
+    <%= link_to song.album.name, album_path(song.album) %>
   </div>
   <div role='cell' class='u-display-none@small'><%= format_duration(song.duration) %></div>
   <div role='cell'>

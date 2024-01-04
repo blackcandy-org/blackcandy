@@ -16,6 +16,6 @@ module ImageableConcern
   private
 
   def needs_image_from_discogs?
-    Setting.discogs_token.present? && !has_image? && !is_unknown?
+    Setting.discogs_token.present? && !has_image? && !unknown?
   end
 end

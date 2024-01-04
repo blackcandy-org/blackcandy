@@ -43,7 +43,7 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
     artist = artists(:artist1)
 
     assert_not artist.has_image?
-    assert_not artist.is_unknown?
+    assert_not artist.unknown?
 
     assert_enqueued_with(job: AttachImageFromDiscogsJob) do
       get artist_url(artist)

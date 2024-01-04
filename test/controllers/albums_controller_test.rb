@@ -36,7 +36,7 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
     album = albums(:album1)
 
     assert_not album.has_image?
-    assert_not album.is_unknown?
+    assert_not album.unknown?
 
     assert_enqueued_with(job: AttachImageFromDiscogsJob) do
       get album_url(album)

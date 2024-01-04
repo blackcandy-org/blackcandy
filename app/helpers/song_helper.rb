@@ -8,8 +8,8 @@ module SongHelper
     Jbuilder.new do |json|
       json.call(song, :id, :name, :duration)
       json.url need_transcode?(song) ? transcoded_stream_url : stream_url
-      json.album_name song.album.title
-      json.artist_name song.artist.title
+      json.album_name song.album.name
+      json.artist_name song.artist.name
       json.is_favorited song.is_favorited.nil? ? Current.user.favorited?(song) : song.is_favorited
       json.format need_transcode?(song) ? Stream::TRANSCODE_FORMAT : song.format
       json.album_image_url do

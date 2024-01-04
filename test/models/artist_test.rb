@@ -3,12 +3,12 @@
 require "test_helper"
 
 class ArtistTest < ActiveSupport::TestCase
-  test "should have default title when name is empty" do
-    assert_equal "Unknown Artist", Artist.create(name: nil).title
+  test "should have default name when name is empty" do
+    assert_equal "Unknown Artist", Artist.create(name: nil).name
   end
 
-  test "should have default title when is various artist" do
-    assert_equal "Various Artists", Artist.create(is_various: true).title
+  test "should have default name when is various artist" do
+    assert_equal "Various Artists", Artist.create(various: true).name
   end
 
   test "should get all albums" do

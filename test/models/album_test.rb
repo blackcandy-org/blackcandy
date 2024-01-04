@@ -8,8 +8,8 @@ class AlbumTest < ActiveSupport::TestCase
     assert_not artists(:artist1).albums.build(name: "best").valid?
   end
 
-  test "should have default title when name is empty" do
-    assert_equal "Unknown Album", Album.create(name: nil).title
+  test "should have default name when name is empty" do
+    assert_equal "Unknown Album", Album.create(name: nil).name
   end
 
   test "should order by discnum and tracknum for associated songs" do

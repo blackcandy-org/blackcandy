@@ -1,11 +1,11 @@
-<% page_title_tag @album.title %>
+<% page_title_tag @album.name %>
 
 <div class='o-container o-container--narrow' data-controller='playlist-songs playlist-songs-bridge'>
   <div class='c-card c-card--horizontal c-card--center@narrow u-my-large'>
     <%= image_tag image_url_for(@album), class: "c-card__image u-image-large", data: {test_id: "album_image"} %>
     <div class='c-card__body'>
-      <h1 class='c-card__body__title'><%= @album.title %></h1>
-      <p class='c-card__body__text'><%= @album.artist.title %></p>
+      <h1 class='c-card__body__title'><%= @album.name %></h1>
+      <p class='c-card__body__text'><%= @album.artist.name %></p>
       <div class='c-card__body__text'>
         <span><%= @album.songs.count %> <%= t("label.tracks") %></span>
         <span>,</span>
@@ -58,8 +58,8 @@
               <div class='o-flex o-flex--justify-between o-flex--align-center'>
                 <div>
                   <span class='u-mb-tiny' data-test-id='album_song_name'><%= song.name %></span>
-                  <% if @album.artist.is_various? %>
-                    <%= song.artist.title %>
+                  <% if @album.artist.various? %>
+                    <%= song.artist.name %>
                   <% end %>
                 </div>
                 <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
