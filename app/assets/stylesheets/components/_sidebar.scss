@@ -2,7 +2,6 @@
 @use "../settings/variables";
 
 .c-sidebar {
-  width: 360px;
   background: var(--sidebar-bg-color);
   z-index: variables.$sidebar-zindex;
 }
@@ -10,31 +9,37 @@
 @include responsive.media-query using ($breakpoint) {
   @if $breakpoint == "extra-wide" {
     .c-sidebar {
-      width: 380px;
+      width: 440px;
     }
   }
 
   @if $breakpoint == "wide" {
     .c-sidebar {
-      width: 370px;
+      width: 420px;
+    }
+  }
+
+  @if $breakpoint == "extra-large" {
+    .c-sidebar {
+      width: 400px;
     }
   }
 
   @if $breakpoint == "large" {
     .c-sidebar {
-      width: 350px;
+      width: 380px;
     }
   }
 
   @if $breakpoint == "medium" {
     .c-sidebar {
-      width: 340px;
+      width: 360px;
     }
   }
 
   @if $breakpoint == "small" {
     .c-sidebar {
-      width: 330px;
+      width: 340px;
     }
   }
 
