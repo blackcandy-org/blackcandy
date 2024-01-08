@@ -66,11 +66,11 @@
               </div>
             <% end %>
 
-            <details class='c-dropdown' data-test-id='album_song_menu'>
+            <details class='c-dropdown' data-test-id='album_song_menu' data-controller='dropdown'>
               <summary class="c-button c-button--icon">
                 <%= icon_tag "more-vertical", size: "small", title: t("label.more") %>
               </summary>
-              <div class='c-dropdown__list'>
+              <div class='c-dropdown__menu' data-dropdown-target="menu">
                 <%= link_to(
                       t("label.add_to_playlist"),
                       dialog_playlists_path(song_id: song.id, referer_url: current_url),

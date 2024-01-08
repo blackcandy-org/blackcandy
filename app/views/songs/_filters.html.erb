@@ -7,14 +7,14 @@
   <% end %>
 <% end %>
 
-<details class='c-dropdown u-mr-small'>
+<details class='c-dropdown u-mr-small' data-controller='dropdown'>
   <summary class='c-button c-button--outline c-button--small'>
     <span class='o-flex o-flex--align-center'>
       <%= t("label.genre") %>
       <%= icon_tag "expand-more" %>
     </span>
   </summary>
-  <div class='c-dropdown__list c-dropdown__list--right'>
+  <div class='c-dropdown__menu c-dropdown__menu--right' data-dropdown-target="menu">
     <%= turbo_frame_tag "turbo-album-genre-filter", src: songs_filter_genres_path(**filter_sort_params), loading: "lazy" do %>
       <div class='o-flex o-flex--justify-center u-p-medium'>
         <%= loader_tag size: "small" %>
@@ -23,14 +23,14 @@
   </div>
 </details>
 
-<details class='c-dropdown u-mr-small'>
+<details class='c-dropdown u-mr-small' data-controller='dropdown'>
   <summary class='c-button c-button--outline c-button--small'>
     <span class='o-flex o-flex--align-center'>
       <%= t("label.year") %>
       <%= icon_tag "expand-more" %>
     </span>
   </summary>
-  <div class='c-dropdown__list'>
+  <div class='c-dropdown__menu' data-dropdown-target="menu">
     <%= turbo_frame_tag "turbo-album-year-filter", src: songs_filter_years_path(**filter_sort_params), loading: "lazy" do %>
       <div class='o-flex o-flex--justify-center u-p-medium'>
         <%= loader_tag size: "small" %>
