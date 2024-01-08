@@ -5,6 +5,7 @@ export default class extends Controller {
 
   connect () {
     this.moveCursorToEnd()
+    this.element.classList.remove('is-loading')
   }
 
   moveCursorToEnd () {

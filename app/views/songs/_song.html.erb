@@ -23,11 +23,11 @@
   </div>
   <div role='cell' class='u-display-none@small'><%= format_duration(song.duration) %></div>
   <div role='cell'>
-    <details class='c-dropdown' data-test-id='song_menu'>
+    <details class='c-dropdown' data-controller='dropdown' data-test-id='song_menu'>
       <summary class="c-button c-button--icon">
         <%= icon_tag "more-vertical", size: "small", title: t("label.more") %>
       </summary>
-      <div class='c-dropdown__list'>
+      <div class='c-dropdown__menu' data-dropdown-target="menu">
         <%= link_to(
               t("label.add_to_playlist"),
               dialog_playlists_path(song_id: song.id, referer_url: current_url),

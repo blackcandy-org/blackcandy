@@ -10,9 +10,9 @@
         <span id='<%= dom_id(@playlist, :songs_count) %>'><%= @playlist.songs.count %></span>
         <span><%= t("label.tracks") %></span>
       </p>
-      <details class='c-dropdown' data-test-id='playlist_menu'>
+      <details class='c-dropdown' data-controller='dropdown' data-test-id='playlist_menu'>
         <summary class="c-button c-button--icon"><%= icon_tag "more-vertical", title: t("label.more") %></summary>
-        <div class='c-dropdown__list'>
+        <div class='c-dropdown__menu' data-dropdown-target="menu">
           <%= button_to t("label.clear"), current_playlist_songs_path, method: :delete, form_class: "c-dropdown__item" %>
         </div>
       </details>

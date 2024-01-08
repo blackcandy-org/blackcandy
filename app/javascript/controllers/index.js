@@ -36,6 +36,8 @@ import ThemeController from './theme_controller.js'
 
 import ThemeBridgeController from './theme_bridge_controller.js'
 
+import DropdownController from './dropdown_controller.js'
+
 application.register('dialog', DialogController)
 
 application.register('element', ElementController)
@@ -67,3 +69,5 @@ application.register('flash-bridge', FlashBridgeController)
 application.register('theme', ThemeController)
 
 application.register('theme-bridge', ThemeBridgeController)
+
+application.register('dropdown', DropdownController)

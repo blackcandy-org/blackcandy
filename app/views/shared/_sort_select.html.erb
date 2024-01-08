@@ -1,8 +1,8 @@
-<details class='c-dropdown'>
+<details class='c-dropdown' data-controller='dropdown'>
   <summary class="c-button c-button--icon">
     <%= icon_tag "sort", title: t("label.sort") %>
   </summary>
-  <div class='c-dropdown__list'>
+  <div class='c-dropdown__menu' data-dropdown-target="menu">
     <% option.values.each do |sort_value| %>
       <%= link_to url_for(controller: params[:controller], action: :index, **filter_sort_params(sort: sort_value)), class: "c-dropdown__item", data: {turbo_action: ("replace" if native_app?)} do %>
         <span class='o-flex o-flex--justify-between o-flex--align-center'>

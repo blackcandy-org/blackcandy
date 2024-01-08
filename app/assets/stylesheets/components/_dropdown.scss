@@ -31,7 +31,7 @@
   display: none;
 }
 
-.c-dropdown__list {
+.c-dropdown__menu {
   position: absolute;
   right: 0;
   top: 0;
@@ -45,11 +45,11 @@
   overflow-y: auto;
 }
 
-.c-dropdown__list > hr {
+.c-dropdown__menu > hr {
   margin: 0;
 }
 
-.c-dropdown__list--right {
+.c-dropdown__menu--right {
   left: 0;
   right: auto;
 }
