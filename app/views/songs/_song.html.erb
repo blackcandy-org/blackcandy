@@ -6,7 +6,7 @@
           data: {test_id: "song_item"},
           form: {
             data: {
-              "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlay playlist-songs-bridge#playSong",
+              "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlay click->playlist-songs-bridge#playSong",
               "turbo-frame" => "turbo-playlist",
               "disabled-on-native" => "true"
             }
@@ -41,7 +41,7 @@
               form: {
                 data: {
                   "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlayNext playlist-songs-bridge#playNext",
+                  "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlayNext click->playlist-songs-bridge#playNext",
                   "disabled-on-native" => "true"
                 }
               }
@@ -53,7 +53,7 @@
               form: {
                 data: {
                   "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "playlist-songs-bridge#playLast",
+                  "delegated-action" => "click->playlist-songs-bridge#playLast",
                   "disabled-on-native" => "true"
                 }
               }

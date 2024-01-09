@@ -12,8 +12,6 @@ import FlashController from './flash_controller.js'
 
 import FormController from './form_controller.js'
 
-import LoaderController from './loader_controller.js'
-
 import MediaSessionController from './media_session_controller.js'
 
 import MiniPlayerController from './mini_player_controller.js'
@@ -45,8 +43,6 @@ application.register('element', ElementController)
 application.register('flash', FlashController)
 
 application.register('form', FormController)
-
-application.register('loader', LoaderController)
 
 application.register('media-session', MediaSessionController)
 

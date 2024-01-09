@@ -35,8 +35,8 @@ export default class extends Controller {
 
     this.handleEvent('click', {
       on: this.element,
-      matching: `[data-delegated-action~='${this.scope.identifier}#play']`,
-      with: this.play
+      with: this.play,
+      delegation: true
     })
   }
 
