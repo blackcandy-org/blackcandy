@@ -5,7 +5,7 @@
     <%= image_tag image_url_for(@album), class: "c-card__image u-image-large", data: {test_id: "album_image"} %>
     <div class='c-card__body'>
       <h1 class='c-card__body__title'><%= @album.name %></h1>
-      <p class='c-card__body__text'><%= @album.artist.name %></p>
+      <%= link_to @album.artist.name, artist_path(@album.artist), class: "c-card__body__text" %>
       <div class='c-card__body__text'>
         <span><%= @album.songs.count %> <%= t("label.tracks") %></span>
         <span>,</span>
