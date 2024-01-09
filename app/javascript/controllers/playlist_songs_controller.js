@@ -18,14 +18,14 @@ export default class extends Controller {
   connect () {
     this.handleEvent('turbo:submit-start', {
       on: this.element,
-      matching: `[data-delegated-action~='turbo:submit-start->${this.scope.identifier}#checkBeforePlay']`,
-      with: this.checkBeforePlay
+      with: this.checkBeforePlay,
+      delegation: true
     })
 
     this.handleEvent('turbo:submit-start', {
       on: this.element,
-      matching: `[data-delegated-action~='turbo:submit-start->${this.scope.identifier}#checkBeforePlayNext']`,
-      with: this.checkBeforePlayNext
+      with: this.checkBeforePlayNext,
+      delegation: true
     })
   }
 

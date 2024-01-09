@@ -14,20 +14,20 @@ export default class extends Controller {
   connect () {
     this.handleEvent('click', {
       on: this.element,
-      matching: `[data-delegated-action~='${this.scope.identifier}#playSong']`,
-      with: this.playSong
+      with: this.playSong,
+      delegation: true
     })
 
     this.handleEvent('click', {
       on: this.element,
-      matching: `[data-delegated-action~='${this.scope.identifier}#playNext']`,
-      with: this.playNext
+      with: this.playNext,
+      delegation: true
     })
 
     this.handleEvent('click', {
       on: this.element,
-      matching: `[data-delegated-action~='${this.scope.identifier}#playLast']`,
-      with: this.playLast
+      with: this.playLast,
+      delegation: true
     })
   }
 

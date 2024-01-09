@@ -1,6 +1,7 @@
 class EventHandler {
   constructor (controller) {
     this.eventHandlers = []
+    this.identifier = controller.scope.identifier
 
     const controllerDisconnectCallback = controller.disconnect.bind(controller)
 
@@ -16,16 +17,17 @@ class EventHandler {
 
   handleEvent = (type, options = {}) => {
     const element = options.on || document
-    const targetMatching = options.matching
+    const isDelegation = options.delegation
     const callback = options.with
+    const identifier = this.identifier
 
     const handler = {
       listener (event) {
-        if (targetMatching) {
+        if (isDelegation) {
           if (event.target.dataset.preventDelegation) { return }
 
-          const target = event.target.closest(targetMatching)
-          if (!target) { return }
+          const targetSelector = `[data-delegated-action~='${type}->${identifier}#${callback.name}']`
+          if (!event.target.closest(targetSelector)) { return }
         }
 
         callback(event)
