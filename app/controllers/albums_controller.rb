@@ -7,6 +7,7 @@ class AlbumsController < ApplicationController
 
   def index
     records = Album.includes(:artist)
+      .with_attached_cover_image
       .filter_records(filter_params)
       .sort_records(*sort_params)
 
@@ -31,7 +32,7 @@ class AlbumsController < ApplicationController
   private
 
   def album_params
-    params.require(:album).permit(:image)
+    params.require(:album).permit(:cover_image)
   end
 
   def find_album

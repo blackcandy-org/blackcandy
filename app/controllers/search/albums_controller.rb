@@ -2,6 +2,6 @@
 
 class Search::AlbumsController < ApplicationController
   def index
-    @albums = Album.search(params[:query]).includes(:artist)
+    @albums = Album.search(params[:query]).includes(:artist).with_attached_cover_image
   end
 end
