@@ -27,7 +27,7 @@ class ArtistSystemTest < ApplicationSystemTestCase
     click_on "Edit"
     assert_selector(:test_id, "artist_edit_form", visible: true)
 
-    attach_file("artist_image", fixtures_file_path("cover_image.jpg"))
+    attach_file("artist_cover_image", fixtures_file_path("cover_image.jpg"))
     click_on "Save"
 
     assert_text("Updated successfully")

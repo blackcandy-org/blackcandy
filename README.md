@@ -65,13 +65,12 @@ docker run -e DB_ADAPTER=postgresql -e DB_URL=postgresql://yourdatabaseurl ghcr.
 
 ### How to Persist Data
 
-There are two parts of data that need to persist in Black Candy. First it's the data from the database if you are using SQLite as database, which is stored in `/app/storage`, second it's the data from the asset of media files, which is stored in `/app/public/uploads`.
-,s
+All the data that need to persist in Black Candy are stored in `/app/storage`, So you can mount this directory to host to persist data.
+
 ```shell
 mkdir storage_data
-mkdir uploads_data
 
-docker run -v ./storage_data:/app/storage -v ./uploads_data:/app/public/uploads ghcr.io/blackcandy-org/blackcandy:edge 
+docker run -v ./storage_data:/app/storage ghcr.io/blackcandy-org/blackcandy:edge 
 ```
 
 ### Enhance With Redis
@@ -107,7 +106,6 @@ services:
     image: ghcr.io/blackcandy-org/blackcandy:edge 
     volumes:
       - ./storage_data:/app/storage
-      - ./uploads_data:/app/public/uploads
       - /media_data:/media_data
     environment:
       VIRTUAL_HOST: blackcandy.local
@@ -133,7 +131,6 @@ services:
     image: ghcr.io/blackcandy-org/blackcandy:edge 
     volumes:
       - ./storage_data:/app/storage
-      - ./uploads_data:/app/public/uploads
       - /media_data:/media_data
   sidekiq:
     <<: *app_base

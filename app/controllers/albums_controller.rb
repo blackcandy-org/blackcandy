@@ -16,7 +16,7 @@ class AlbumsController < ApplicationController
 
   def show
     @groped_songs = @album.songs.includes(:artist).group_by(&:discnum)
-    @album.attach_image_from_discogs
+    @album.attach_cover_image_from_discogs
   end
 
   def update

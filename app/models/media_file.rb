@@ -44,7 +44,13 @@ class MediaFile
       return unless image.present?
 
       image_format = Mime::Type.lookup(image[:mime_type]).symbol
-      CarrierWaveStringIO.new("cover.#{image_format}", image[:data]) if image_format.present?
+      return unless image_format.present?
+
+      {
+        io: StringIO.new(image[:data]),
+        filename: "cover.#{image_format}",
+        content_type: image[:mime_type]
+      }
     end
 
     def get_tag_info(file_path)

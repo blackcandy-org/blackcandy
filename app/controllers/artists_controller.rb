@@ -14,7 +14,7 @@ class ArtistsController < ApplicationController
     @albums = @artist.albums.with_attached_cover_image.load_async
     @appears_on_albums = @artist.appears_on_albums.with_attached_cover_image.load_async
 
-    @artist.attach_image_from_discogs
+    @artist.attach_cover_image_from_discogs
   end
 
   def update
@@ -30,7 +30,7 @@ class ArtistsController < ApplicationController
   private
 
   def artist_params
-    params.require(:artist).permit(:image)
+    params.require(:artist).permit(:cover_image)
   end
 
   def find_artist

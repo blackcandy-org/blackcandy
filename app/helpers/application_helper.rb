@@ -40,7 +40,7 @@ module ApplicationHelper
     size = size.in?(sizes_options) ? size : :medium
     default_cover_url = "#{root_url}images/default_#{object.class.name.downcase}_#{size}.png"
 
-    object.has_image? ? full_url_for(object.cover_image.variant(size)) : default_cover_url
+    object.has_cover_image? ? full_url_for(object.cover_image.variant(size)) : default_cover_url
   end
 
   def loader_tag(size: "")
