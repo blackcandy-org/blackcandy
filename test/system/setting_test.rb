@@ -24,7 +24,7 @@ class SettingSystemTest < ApplicationSystemTestCase
     fill_in("setting_media_path", with: Rails.root.join("test/fixtures/files").to_s)
     click_on("Sync")
 
-    assert_equal "Syncing...", find(:test_id, "media_sync_button").text
+    assert_text("Media sync completed")
   end
 
   test "update discogs token" do
