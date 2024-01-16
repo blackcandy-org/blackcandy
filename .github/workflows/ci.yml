@@ -43,7 +43,7 @@ jobs:
       - name: Test and Lint
         run: |
           sudo apt-get update
-          sudo apt-get -yqq install libpq-dev imagemagick ffmpeg
+          sudo apt-get -yqq install libpq-dev libvips ffmpeg
           bundle exec rails db:setup
           bundle exec rails lint:all
           bundle exec rails test:all

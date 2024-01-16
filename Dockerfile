@@ -43,7 +43,7 @@ ENV RAILS_ENV production
 RUN apk add --no-cache \
   tzdata \
   libpq \
-  imagemagick \
+  vips \
   ffmpeg \
   curl
 

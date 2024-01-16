@@ -180,7 +180,7 @@ $ docker pull ghcr.io/blackcandy-org/blackcandy:edge
 - Ruby 3.2
 - Node.js 18
 - Yarn
-- ImageMagick
+- libvips
 - FFmpeg
 
 Make sure you have installed all those dependencies.
