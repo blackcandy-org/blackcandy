@@ -4,10 +4,16 @@ require "test_helper"
 
 class MediaTest < ActiveSupport::TestCase
   include ActionCable::TestHelper
+  include ActiveJob::TestHelper
 
   setup do
     clear_media_data
-    Media.sync_all
+
+    # Because Media.sync_all will cause others background jobs to be enqueued,
+    # we need to make sure all background jobs are performed.
+    perform_enqueued_jobs do
+      Media.sync_all
+    end
   end
 
   test "should create all records in database when synced" do
