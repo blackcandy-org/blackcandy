@@ -31,8 +31,8 @@ gem "wahwah", "~> 1.5.0"
 # Pagination
 gem "pagy", "~> 6.0.0"
 
-# For image attachment
-gem "carrierwave", "~> 3.0.0"
+# For Active Storage variants
+gem "image_processing", "~> 1.12"
 
 # For API request
 gem "httparty", "~> 0.21.0"

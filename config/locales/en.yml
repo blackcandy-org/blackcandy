@@ -130,11 +130,8 @@ en:
     enable_media_listener: "Media listener can automatically sync with library changes."
     media_listener_running: "Listener is running"
 
-  activerecord:
-    errors:
-      models:
-        setting:
-          attributes:
-            media_path:
-              not_exist: 'does not exist'
-              unreadable: 'is unreadable'
+  errors:
+    messages:
+      not_exist: 'does not exist'
+      unreadable: 'is unreadable'
+      invalid_content_type: "has an invalid content type"

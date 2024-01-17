@@ -44,9 +44,9 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
   def clear_media_data
-    Artist.destroy_all
-    Album.destroy_all
-    Song.destroy_all
+    Artist.delete_all
+    Album.delete_all
+    Song.delete_all
   end
 
   def audio_bitrate(file_path)

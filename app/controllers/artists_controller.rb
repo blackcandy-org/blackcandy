@@ -6,15 +6,15 @@ class ArtistsController < ApplicationController
   before_action :get_sort_option, only: [:index]
 
   def index
-    records = Artist.sort_records(*sort_params)
+    records = Artist.sort_records(*sort_params).with_attached_cover_image
     @pagy, @artists = pagy(records)
   end
 
   def show
-    @albums = @artist.albums.load_async
-    @appears_on_albums = @artist.appears_on_albums.load_async
+    @albums = @artist.albums.with_attached_cover_image.load_async
+    @appears_on_albums = @artist.appears_on_albums.with_attached_cover_image.load_async
 
-    @artist.attach_image_from_discogs
+    @artist.attach_cover_image_from_discogs
   end
 
   def update
@@ -30,7 +30,7 @@ class ArtistsController < ApplicationController
   private
 
   def artist_params
-    params.require(:artist).permit(:image)
+    params.require(:artist).permit(:cover_image)
   end
 
   def find_artist

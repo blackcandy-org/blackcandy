@@ -2,7 +2,7 @@
 
 <div class='o-container o-container--wide'>
   <div class='c-card c-card--horizontal c-card--center@narrow u-my-large'>
-    <%= image_tag image_url_for(@artist), class: "c-card__image u-image-large", data: {test_id: "artist_image"} %>
+    <%= image_tag cover_image_url_for(@artist), class: "c-card__image u-image-large", data: {test_id: "artist_image"} %>
     <div class='c-card__body'>
       <h1 class='c-card__body__title'><%= @artist.name %></h1>
       <div class='c-card__body__text'>

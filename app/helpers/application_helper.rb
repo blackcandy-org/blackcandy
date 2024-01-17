@@ -33,11 +33,14 @@ module ApplicationHelper
     end
   end
 
-  def image_url_for(object, size: "")
-    sizes_options = %w[small medium large]
-    size = size.in?(sizes_options) ? size : "medium"
+  def cover_image_url_for(object, size: :medium)
+    return unless object.respond_to?(:cover_image)
 
-    object.image.send(size).url
+    sizes_options = %i[small medium large]
+    size = size.in?(sizes_options) ? size : :medium
+    default_cover_url = "#{root_url}images/default_#{object.class.name.downcase}_#{size}.png"
+
+    object.has_cover_image? ? full_url_for(object.cover_image.variant(size)) : default_cover_url
   end
 
   def loader_tag(size: "")

@@ -4,8 +4,8 @@ class SearchController < ApplicationController
   SEARCH_RESULT_MAX_AMOUNT = 10
 
   def index
-    searched_albums = Album.search(params[:query]).includes(:artist)
-    searched_artists = Artist.search(params[:query])
+    searched_albums = Album.search(params[:query]).includes(:artist).with_attached_cover_image
+    searched_artists = Artist.search(params[:query]).with_attached_cover_image
     searched_playlists = Playlist.search(params[:query])
     searched_songs = Song.search(params[:query]).includes(:artist, :album)
 

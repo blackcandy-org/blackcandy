@@ -70,7 +70,10 @@ class Media
       )
 
       album.update!(album_info(file_info))
-      album.update!(image: file_info[:image]) unless album.has_image?
+
+      unless album.has_cover_image?
+        album.cover_image.attach(file_info[:image]) if file_info[:image].present?
+      end
 
       song = Song.find_or_initialize_by(md5_hash: file_info[:md5_hash])
       song.update!(song_info(file_info).merge(album: album, artist: artist))

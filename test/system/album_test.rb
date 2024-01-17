@@ -44,7 +44,7 @@ class AlbumSystemTest < ApplicationSystemTestCase
     click_on "Edit"
     assert_selector(:test_id, "album_edit_form", visible: true)
 
-    attach_file("album_image", fixtures_file_path("cover_image.jpg"))
+    attach_file("album_cover_image", fixtures_file_path("cover_image.jpg"))
     click_on "Save"
 
     assert_text("Updated successfully")
