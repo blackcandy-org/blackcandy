@@ -6,7 +6,7 @@ module ImageableConcern
   included do
     has_one_attached :cover_image do |attachable|
       attachable.variant :small, resize_to_fill: [200, 200]
-      attachable.variant :medium, resize_to_fill: [300, 300]
+      attachable.variant :medium, resize_to_fill: [300, 300], preprocessed: true
       attachable.variant :large, resize_to_fill: [400, 400]
     end
 
