@@ -4,8 +4,8 @@ require "open-uri"
 class AttachCoverImageFromDiscogsJob < ApplicationJob
   queue_as :default
 
-  def perform(imageable)
-    image_url = Integrations::Discogs.cover_image(imageable)
+  def perform(imageable, discogs_client = Integrations::Discogs.new)
+    image_url = discogs_client.cover_image(imageable)
     return unless image_url.present?
 
     image_file = OpenURI.open_uri(image_url)

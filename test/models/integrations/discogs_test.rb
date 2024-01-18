@@ -4,7 +4,7 @@ require "test_helper"
 
 class Integrations::DiscogsTest < ActiveSupport::TestCase
   setup do
-    Setting.update(discogs_token: "fake_token")
+    @discogs_client = Integrations::Discogs.new("fake_token")
     @api_response = {results: [{cover_image: "image_url"}]}
   end
 
@@ -16,7 +16,7 @@ class Integrations::DiscogsTest < ActiveSupport::TestCase
       )
       .to_return(body: @api_response.to_json, status: 200)
 
-    assert_equal "image_url", Integrations::Discogs.cover_image(artists(:artist1))
+    assert_equal "image_url", @discogs_client.cover_image(artists(:artist1))
   end
 
   test "should get album image url" do
@@ -27,11 +27,11 @@ class Integrations::DiscogsTest < ActiveSupport::TestCase
       )
       .to_return(body: @api_response.to_json, status: 200)
 
-    assert_equal "image_url", Integrations::Discogs.cover_image(albums(:album1))
+    assert_equal "image_url", @discogs_client.cover_image(albums(:album1))
   end
 
   test "should return nil when pass wrong type params" do
-    assert_nil Integrations::Discogs.cover_image(nil)
-    assert_nil Integrations::Discogs.cover_image(Song.first)
+    assert_nil @discogs_client.cover_image(nil)
+    assert_nil @discogs_client.cover_image(Song.first)
   end
 end
