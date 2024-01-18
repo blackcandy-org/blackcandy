@@ -9,7 +9,7 @@ class AttachAlbumImageFromDiscogsJobTest < ActiveJob::TestCase
     stub_request(:get, "http://example.com/cover.jpg")
       .to_return(body: file_fixture("cover_image.jpg").read, status: 200, headers: {"Content-Type" => "image/jpeg"})
 
-    DiscogsApi.stub(:album_image, "http://example.com/cover.jpg") do
+    Integrations::Discogs.stub(:cover_image, "http://example.com/cover.jpg") do
       assert_not album.has_cover_image?
 
       AttachCoverImageFromDiscogsJob.perform_now(album)
@@ -23,7 +23,7 @@ class AttachAlbumImageFromDiscogsJobTest < ActiveJob::TestCase
     stub_request(:get, "http://example.com/cover.jpg")
       .to_return(body: file_fixture("cover_image.jpg").read, status: 200, headers: {"Content-Type" => "image/jpeg"})
 
-    DiscogsApi.stub(:artist_image, "http://example.com/cover.jpg") do
+    Integrations::Discogs.stub(:cover_image, "http://example.com/cover.jpg") do
       assert_not artist.has_cover_image?
 
       AttachCoverImageFromDiscogsJob.perform_now(artist)
