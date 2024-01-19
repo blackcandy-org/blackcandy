@@ -27,19 +27,4 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
 
     assert flash[:error].present?
   end
-
-  test "should call album image attach job when show album unless album do not need attach" do
-    login
-
-    Setting.update(discogs_token: "fake_token")
-    album = albums(:album1)
-
-    assert_not album.has_cover_image?
-    assert_not album.unknown?
-
-    assert_enqueued_with(job: AttachCoverImageFromDiscogsJob) do
-      get album_url(album)
-      assert_response :success
-    end
-  end
 end

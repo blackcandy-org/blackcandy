@@ -13,8 +13,6 @@ class ArtistsController < ApplicationController
   def show
     @albums = @artist.albums.with_attached_cover_image.load_async
     @appears_on_albums = @artist.appears_on_albums.with_attached_cover_image.load_async
-
-    @artist.attach_cover_image_from_discogs
   end
 
   def update

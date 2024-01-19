@@ -29,6 +29,8 @@ class Media
         remove_files(file_paths)
         add_files(file_paths)
       end
+
+      fetch_external_metadata unless type == :removed
     ensure
       self.syncing = false
     end
@@ -98,6 +100,18 @@ class Media
       # Clean up no content albums and artist.
       Album.where.missing(:songs).destroy_all
       Artist.where.missing(:songs, :albums).destroy_all
+    end
+
+    def fetch_external_metadata
+      return unless Setting.discogs_token.present?
+
+      Artist.lack_metadata.find_each do |artist|
+        AttachCoverImageFromDiscogsJob.perform_later(artist)
+      end
+
+      Album.lack_metadata.find_each do |album|
+        AttachCoverImageFromDiscogsJob.perform_later(album)
+      end
     end
   end
 end

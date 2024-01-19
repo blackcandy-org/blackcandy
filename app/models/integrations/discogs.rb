@@ -19,8 +19,11 @@ class Integrations::Discogs < Integrations::Service
   private
 
   def search_cover_image(options)
-    response = self.class.get("/database/search", options)
-    parsed_json(response)&.dig(:results, 0, :cover_image)
+    json = request("/database/search", options)
+    image_url = json&.dig(:results, 0, :cover_image)
+    return unless image_url.present?
+
+    download_image(image_url)
   end
 
   def artist_cover_image(artist)

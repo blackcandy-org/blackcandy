@@ -2,21 +2,13 @@
 
 require "open-uri"
 class AttachCoverImageFromDiscogsJob < ApplicationJob
+  retry_on Integrations::Service::TooManyRequests, wait: 1.minute, attempts: :unlimited
   queue_as :default
 
   def perform(imageable, discogs_client = Integrations::Discogs.new)
-    image_url = discogs_client.cover_image(imageable)
-    return unless image_url.present?
+    image_resource = discogs_client.cover_image(imageable)
+    return unless image_resource.present?
 
-    image_file = OpenURI.open_uri(image_url)
-    content_type = image_file.content_type
-    image_format = Mime::Type.lookup(content_type).symbol
-    return unless image_format.present?
-
-    imageable.cover_image.attach(
-      io: image_file,
-      filename: "cover.#{image_format}",
-      content_type: content_type
-    )
+    imageable.cover_image.attach(image_resource)
   end
 end

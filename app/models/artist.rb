@@ -19,6 +19,12 @@ class Artist < ApplicationRecord
 
   sort_by :name, :created_at
 
+  scope :lack_metadata, -> {
+    includes(:cover_image_attachment)
+      .where(cover_image_attachment: {id: nil})
+      .where.not(name: [Artist::UNKNOWN_NAME, Artist::VARIOUS_NAME])
+  }
+
   def unknown?
     name == UNKNOWN_NAME
   end

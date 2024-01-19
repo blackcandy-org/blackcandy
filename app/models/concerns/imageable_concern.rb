@@ -17,15 +17,7 @@ module ImageableConcern
     cover_image.attached?
   end
 
-  def attach_cover_image_from_discogs
-    AttachCoverImageFromDiscogsJob.perform_later(self) if needs_cover_image_from_discogs?
-  end
-
   private
-
-  def needs_cover_image_from_discogs?
-    Setting.discogs_token.present? && !has_cover_image? && !unknown?
-  end
 
   def content_type_of_cover_image
     return unless cover_image.attached?
