@@ -7,7 +7,7 @@ class Integrations::Service
 
   def request(path, options = {}, method = :get)
     response = self.class.send(method, path, options)
-    raise TooManyRequests if response.code == "429"
+    raise TooManyRequests if response.code.to_i == 429
 
     parse_json(response)
   end
@@ -24,7 +24,7 @@ class Integrations::Service
       content_type: content_type
     }
   rescue OpenURI::HTTPError => e
-    raise TooManyRequests if e.io.status[0] == "429"
+    raise TooManyRequests if e.io.status[0].to_i == 429
   end
 
   private

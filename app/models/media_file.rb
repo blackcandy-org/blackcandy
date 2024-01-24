@@ -50,7 +50,7 @@ class MediaFile
       {
         io: StringIO.new(image[:data]),
         filename: "cover.#{image_format}",
-        content_type: image[:mime_type]
+        content_type: mime_type
       }
     end
 

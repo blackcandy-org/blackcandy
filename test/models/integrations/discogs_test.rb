@@ -49,4 +49,36 @@ class Integrations::DiscogsTest < ActiveSupport::TestCase
     assert_nil @discogs_client.cover_image(nil)
     assert_nil @discogs_client.cover_image(Song.first)
   end
+
+  test "should raise too many requests error when api request has been rate limited" do
+    stub_request(:get, "http://example.com/cover.jpg")
+      .to_return(body: @cover_image_binary, status: 200, headers: {"Content-Type" => "image/jpeg"})
+
+    stub_request(:get, "https://api.discogs.com/database/search")
+      .with(
+        headers: {"Authorization" => "Discogs token=fake_token"},
+        query: {type: "master", release_title: "album1", artist: "artist1"}
+      )
+      .to_return(status: 429)
+
+    assert_raises(Integrations::Service::TooManyRequests) do
+      @discogs_client.cover_image(albums(:album1))
+    end
+  end
+
+  test "should raise too many requests error when download request has been rate limited" do
+    stub_request(:get, "http://example.com/cover.jpg")
+      .to_return(status: 429)
+
+    stub_request(:get, "https://api.discogs.com/database/search")
+      .with(
+        headers: {"Authorization" => "Discogs token=fake_token"},
+        query: {type: "master", release_title: "album1", artist: "artist1"}
+      )
+      .to_return(body: @api_response.to_json, status: 200)
+
+    assert_raises(Integrations::Service::TooManyRequests) do
+      @discogs_client.cover_image(albums(:album1))
+    end
+  end
 end

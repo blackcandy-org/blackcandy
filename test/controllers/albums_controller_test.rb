@@ -27,4 +27,11 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
 
     assert flash[:error].present?
   end
+
+  test "should show album" do
+    login
+    get album_url(albums(:album1))
+
+    assert_response :success
+  end
 end

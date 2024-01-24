@@ -229,4 +229,14 @@ class MediaTest < ActiveSupport::TestCase
     assert_nil album4.genre
     assert_nil album4.year
   end
+
+  test "should fetch external metadata from discogs after synced" do
+    Setting.update(discogs_token: "fake_token")
+
+    jobs_count = Album.lack_metadata.count + Artist.lack_metadata.count
+
+    assert_enqueued_jobs jobs_count, only: AttachCoverImageFromDiscogsJob do
+      Media.sync_all
+    end
+  end
 end

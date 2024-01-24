@@ -183,4 +183,11 @@ class MediaFileTest < ActiveSupport::TestCase
       MediaFile.file_info("/not_exist")
     end
   end
+
+  test "should normalize image mime type" do
+    tag = WahWah.open(file_fixture("artist2_album3.wav"))
+
+    assert_equal "image/jpg", tag.images.first[:mime_type]
+    assert_equal "image/jpeg", MediaFile.file_info(file_fixture("artist2_album3.wav"))[:image][:content_type]
+  end
 end
