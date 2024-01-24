@@ -6,6 +6,8 @@ class AttachCoverImageFromDiscogsJob < ApplicationJob
   queue_as :default
 
   def perform(imageable, discogs_client = Integrations::Discogs.new)
+    return if imageable.has_cover_image?
+
     image_resource = discogs_client.cover_image(imageable)
     return unless image_resource.present?
 

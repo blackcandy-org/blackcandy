@@ -105,13 +105,17 @@ class Media
     def fetch_external_metadata
       return unless Setting.discogs_token.present?
 
+      jobs = []
+
       Artist.lack_metadata.find_each do |artist|
-        AttachCoverImageFromDiscogsJob.perform_later(artist)
+        jobs << AttachCoverImageFromDiscogsJob.new(artist)
       end
 
       Album.lack_metadata.find_each do |album|
-        AttachCoverImageFromDiscogsJob.perform_later(album)
+        jobs << AttachCoverImageFromDiscogsJob.new(album)
       end
+
+      ActiveJob.perform_all_later(jobs)
     end
   end
 end

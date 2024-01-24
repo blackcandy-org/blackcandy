@@ -68,7 +68,7 @@ Rails.application.configure do
   config.cache_store = BlackCandy::Config.redis_cache_url.present? ? [:redis_cache_store, {url: BlackCandy::Config.redis_cache_url}] : [:litecache, {path: "storage/production_cache.sqlite3"}]
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  config.active_job.queue_adapter = BlackCandy::Config.redis_sidekiq_url.present? ? :sidekiq : :litejob
+  config.active_job.queue_adapter = BlackCandy::Config.redis_sidekiq_url.present? ? :sidekiq : :solid_queue
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
