@@ -36,6 +36,8 @@ import ThemeBridgeController from './theme_bridge_controller.js'
 
 import DropdownController from './dropdown_controller.js'
 
+import CoverImageController from './cover_image_controller.js'
+
 application.register('dialog', DialogController)
 
 application.register('element', ElementController)
@@ -67,3 +69,5 @@ application.register('theme', ThemeController)
 application.register('theme-bridge', ThemeBridgeController)
 
 application.register('dropdown', DropdownController)
+
+application.register('cover-image', CoverImageController)
