@@ -26,7 +26,7 @@ gem "puma", "~> 6.4.0"
 gem "sqlite3", "~> 1.7.0"
 
 # Background job processing
-gem "solid_queue", github: "basecamp/solid_queue", branch: "main"
+gem "solid_queue", "~> 0.2.1"
 
 # Default stack for cache and pub/sub
 gem "litestack", "~> 0.4.2"
