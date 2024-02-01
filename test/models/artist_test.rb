@@ -4,11 +4,17 @@ require "test_helper"
 
 class ArtistTest < ActiveSupport::TestCase
   test "should have default name when name is empty" do
-    assert_equal "Unknown Artist", Artist.create(name: nil).name
+    artist = Artist.create(name: nil)
+
+    assert artist.unknown?
+    assert_equal "Unknown Artist", artist.name
   end
 
   test "should have default name when is various artist" do
-    assert_equal "Various Artists", Artist.create(various: true).name
+    artist = Artist.create(various: true)
+
+    assert artist.various?
+    assert_equal "Various Artists", artist.name
   end
 
   test "should get all albums" do
@@ -41,5 +47,16 @@ class ArtistTest < ActiveSupport::TestCase
 
   test "should use default sort when use invalid sort value" do
     assert_equal %w[artist1 artist2 various_artists], Artist.sort_records(:invalid).pluck(:name).compact
+  end
+
+  test "should transform cover image after attached" do
+    artist = artists(:artist1)
+    artist.cover_image.attach(
+      io: StringIO.new(file_fixture("cover_image.jpg").read),
+      filename: "cover.jpg",
+      content_type: "image/jpeg"
+    )
+
+    assert artist.cover_image.variant(:medium).send(:processed?)
   end
 end

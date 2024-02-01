@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/basecamp/solid_queue.git
+  revision: d57b8e280dd27b1ffda0e203e0fa2afce0b2bb12
+  branch: main
+  specs:
+    solid_queue (0.2.0)
+      rails (~> 7.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -335,7 +343,7 @@ GEM
     simplecov-lcov (0.8.0)
     simplecov_json_formatter (0.1.4)
     smart_properties (1.17.0)
-    sqlite3 (1.6.9)
+    sqlite3 (1.7.0)
       mini_portile2 (~> 2.8.0)
     sshkit (1.21.5)
       net-scp (>= 1.1.2)
@@ -414,6 +422,8 @@ DEPENDENCIES
   sidekiq (~> 7.1.2)
   simplecov (~> 0.22.0)
   simplecov-lcov (~> 0.8.0)
+  solid_queue!
+  sqlite3 (~> 1.7.0)
   standard (~> 1.25.0)
   standard-rails
   stimulus-rails (~> 1.2.1)

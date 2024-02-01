@@ -34,19 +34,4 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
 
     assert flash[:error].present?
   end
-
-  test "should call artist image attach job when show artist unless artist do not need attach" do
-    login
-
-    Setting.update(discogs_token: "fake_token")
-    artist = artists(:artist1)
-
-    assert_not artist.has_cover_image?
-    assert_not artist.unknown?
-
-    assert_enqueued_with(job: AttachCoverImageFromDiscogsJob) do
-      get artist_url(artist)
-      assert_response :success
-    end
-  end
 end

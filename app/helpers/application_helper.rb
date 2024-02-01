@@ -33,14 +33,29 @@ module ApplicationHelper
     end
   end
 
-  def cover_image_url_for(object, size: :medium)
+  def cover_image_url_for(object, size: :medium, default: false)
     return unless object.respond_to?(:cover_image)
 
     sizes_options = %i[small medium large]
     size = size.in?(sizes_options) ? size : :medium
     default_cover_url = "#{root_url}images/default_#{object.class.name.downcase}_#{size}.png"
 
+    return default_cover_url if default
+
     object.has_cover_image? ? full_url_for(object.cover_image.variant(size)) : default_cover_url
+  end
+
+  def cover_image_tag(object, size: :medium, **options)
+    data_attribute = {
+      "controller" => "cover-image",
+      "cover-image-default-url-value" => cover_image_url_for(object, size: size, default: true)
+    }.merge(options.delete(:data) || {})
+
+    image_tag(
+      cover_image_url_for(object, size: size),
+      data: data_attribute,
+      **options
+    )
   end
 
   def loader_tag(size: "")

@@ -22,6 +22,15 @@ gem "jsbundling-rails", "~> 1.1.2"
 # Use Puma as the app server
 gem "puma", "~> 6.4.0"
 
+# Default database
+gem "sqlite3", "~> 1.7.0"
+
+# Background job processing
+gem "solid_queue", github: "basecamp/solid_queue", branch: "main"
+
+# Default stack for cache and pub/sub
+gem "litestack", "~> 0.4.2"
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.11.5"
 
@@ -54,9 +63,6 @@ gem "listen", "~> 3.8.0"
 
 # For daemonize library sync process
 gem "daemons", "~> 1.4.0"
-
-# Default stack for database, cache, background job and pub/sub
-gem "litestack", "~> 0.4.2"
 
 # Optional support for sidekiq as background job
 gem "sidekiq", "~> 7.1.2"

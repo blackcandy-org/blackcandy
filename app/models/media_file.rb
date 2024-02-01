@@ -43,13 +43,14 @@ class MediaFile
       image = tag.images.first
       return unless image.present?
 
-      image_format = Mime::Type.lookup(image[:mime_type]).symbol
+      mime_type = normalize_image_mime_type(image[:mime_type])
+      image_format = Mime::Type.lookup(mime_type).symbol
       return unless image_format.present?
 
       {
         io: StringIO.new(image[:data]),
         filename: "cover.#{image_format}",
-        content_type: image[:mime_type]
+        content_type: mime_type
       }
     end
 
@@ -73,6 +74,15 @@ class MediaFile
         rescue
           nil
         end
+      end
+    end
+
+    def normalize_image_mime_type(mime_type)
+      case mime_type
+      when "image/jpg"
+        "image/jpeg"
+      else
+        mime_type
       end
     end
   end
