@@ -65,7 +65,7 @@ Rails.application.configure do
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
 
   # Use a different cache store in production.
-  config.cache_store = BlackCandy::Config.redis_cache_url.present? ? [:redis_cache_store, {url: BlackCandy::Config.redis_cache_url}] : [:litecache, {path: "storage/production_cache.sqlite3"}]
+  config.cache_store = BlackCandy::Config.redis_cache_url.present? ? [:redis_cache_store, {url: BlackCandy::Config.redis_cache_url}] : :solid_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   config.active_job.queue_adapter = BlackCandy::Config.redis_sidekiq_url.present? ? :sidekiq : :solid_queue

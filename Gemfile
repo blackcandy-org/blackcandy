@@ -25,6 +25,9 @@ gem "puma", "~> 6.4.0"
 # Default database
 gem "sqlite3", "~> 1.7.0"
 
+# Cache store
+gem "solid_cache", "~> 0.4.2"
+
 # Background job processing
 gem "solid_queue", "~> 0.2.1"
 
