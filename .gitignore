@@ -46,7 +46,6 @@ yarn-debug.log*
 /.direnv
 /.gems
 /.pg_data
-/.redis_data
 /.idea
 /coverage
 

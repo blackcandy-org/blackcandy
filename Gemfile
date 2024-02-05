@@ -67,14 +67,8 @@ gem "listen", "~> 3.8.0"
 # For daemonize library sync process
 gem "daemons", "~> 1.4.0"
 
-# Optional support for sidekiq as background job
-gem "sidekiq", "~> 7.1.2"
-
 # Optional support for postgresql as database
-gem "pg", "~> 1.3.2"
-
-# Optional support for redis as cache and pub/sub
-gem "redis", "~> 4.0"
+gem "pg", "~> 1.5.4"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", "~> 1.17.0", require: false

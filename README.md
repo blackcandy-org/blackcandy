@@ -28,11 +28,10 @@ Please visit <https://demo.blackcandy.org> and use demo user (email: admin@admin
 Black Candy use docker image to install easily. You can simply run Black Candy like this.
 
 ```shell
-docker run ghcr.io/blackcandy-org/blackcandy:edge 
+docker run -p 3000:3000 ghcr.io/blackcandy-org/blackcandy:edge 
 ```
 
-That's all. Now, you can use initial admin user to login (email: admin@admin.com, password: foobar).
-
+That's all. Now, you can access either http://localhost:3000 or http://host-ip:3000 in a browser, and use initial admin user to login (email: admin@admin.com, password: foobar).
 
 ## Mobile App
 Black Candy now has an iOS app in beta. You can visit [here](https://testflight.apple.com/join/TwMUVmDl) and join TestFlight to give it a try. Because this iOS app still in beta, you need use the edge version of Black Candy.
@@ -41,10 +40,10 @@ Black Candy now has an iOS app in beta. You can visit [here](https://testflight.
 
 ### Port Mapping
 
-Black Candy exports the 3000 port. If you want to be able to access it from the host. You can add `-p 3000:3000` to the arguments of docker run command and then access either http://localhost:3000 or http://host-ip:3000 in a browser.
+Black Candy exports the 3000 port. If you want to be able to access it from the host, you can use the `-p` option to map the port. 
 
 ```shell
-docker run -p 3000:3000 ghcr.io/blackcandy-org/blackcandy:edge 
+docker run -p 3000:3000 ghcr.io/blackcandy-org/blackcandy:edge
 ```
 
 ### Media Files Mounts 
@@ -71,16 +70,6 @@ All the data that need to persist in Black Candy are stored in `/app/storage`, S
 mkdir storage_data
 
 docker run -v ./storage_data:/app/storage ghcr.io/blackcandy-org/blackcandy:edge 
-```
-
-### Enhance With Redis
-
-By default, Black Candy use async adapter for background job and WebSockets, and use file storage for cache. It maybe not have problem when your music library isn't large or doesn't have many users to use it. But you can use Redis to enhance the experience for Black Candy.
-
-When you have set the `REDIS_URL` environment variable, black candy will use Sidekiq for background job, Redis adapter for WebSockets and use Redis to store cache. In another way, you can also use `REDIS_SIDEKIQ_URL`, `REDIS_CABLE_URL`, and `REDIS_CACHE_URL` to set those service separately.
-
-```shell
-docker run -e REDIS_URL=redis://yourredisurl ghcr.io/blackcandy-org/blackcandy:edge 
 ```
 
 ### Nginx To Send File
@@ -120,26 +109,6 @@ curl https://raw.githubusercontent.com/blackcandy-org/black_candy/master/config/
 docker-compose up
 ```
 
-### Embedded Sidekiq 
-
-By default, you need another process to run Sidekiq for background job. Like this:
-
-```yaml
-version: '3'
-services:
-  app: &app_base
-    image: ghcr.io/blackcandy-org/blackcandy:edge 
-    volumes:
-      - ./storage_data:/app/storage
-      - /media_data:/media_data
-  sidekiq:
-    <<: *app_base
-    command: bundle exec sidekiq
-```
-
-But you can also use embedded mode of Sidekiq if you don't want another separate Sidekiq process. This can help your deployment become easier.
-All you need to do is to set `EMBEDDED_SIDEKIQ` environment variable to true.
-
 ### Logging
 
 Black Candy logs to `STDOUT` by default. So if you want to control the log, Docker already supports a lot of options to handle the log in the container. see: https://docs.docker.com/config/containers/logging/configure/.
@@ -148,16 +117,10 @@ Black Candy logs to `STDOUT` by default. So if you want to control the log, Dock
 
 | Name                         | Default   | Description |
 | ---                          | ---       | ---         |
-| REDIS_URL                    |           | The URL of Redis, when this environment variable has been set Black Candy will use Sidekiq for background job, Redis adapter for WebSockets and use Redis to store cache|
-| REDIS_CACHE_URL              | REDIS_URL | This environment variable can override the REDIS_URL, if you want to set different Redis URL for cache.|
-| REDIS_SIDEKIQ_URL            | REDIS_URL | This environment variable can override the REDIS_URL, if you want to set different Redis URL for Sidekiq. |
-| REDIS_CABLE_URL              | REDIS_URL | This environment variable can override the REDIS_URL, if you want to set different Redis URL for WebSockets. |
 | DB_URL                 |           | The URL of PostgreSQL database. You must set this environment variable if you use PostgreSQL as database. |
 | MEDIA_PATH                   |           | You can use this environment variable to set media path for Black Candy, otherwise you can set media path in settings page. |
 | DB_ADAPTER             | "sqlite"  | There are two adapters are supported, "sqlite" and "postgresql".|
 | NGINX_SENDFILE               | false     | Whether enable Nginx sendfile. |
-| EMBEDDED_SIDEKIQ             | false     | Whether enable embedded mode of Sidekiq. |
-| EMBEDDED_SIDEKIQ_CONCURRENCY | 2         | The concurrency number of embedded Sidekiq. This value should not greater than 2. Because we should keep embedded Sidekiq concurrency very low. For more details, see this [document](https://github.com/mperham/sidekiq/wiki/Embedding) about embedded Sidekiq. |
 | SECRET_KEY_BASE              |           | When the SECRET_KEY_BASE environment variable is not set, Black candy will generate SECRET_KEY_BASE environment variable every time when service start up. This will cause old sessions invalid, You can set your own SECRET_KEY_BASE environment variable on docker service to avoid it. |
 | FORCE_SSL                    | false     | Force all access to the app over SSL. |
 | DEMO_MODE                    | false     | Whether to enable demo mode, when demo mode is on, all users cannot access administrator privileges, even user is admin. And also users cannot change their profile.  |

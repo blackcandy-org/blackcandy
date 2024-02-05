@@ -1,15 +1,22 @@
-development:
+sqlite_default: &sqlite_default
   adapter: litecable
+
+pg_default: &pg_default
+  adapter: postgresql
 
 test:
   adapter: test
 
-<% if BlackCandy::Config.redis_cable_url.present? %>
+<% if BlackCandy::Config.db_adapter == "postgresql" %>
+development:
+  <<: *pg_default
+
 production:
-  adapter: redis
-  url: <%= BlackCandy::Config.redis_cable_url %>
-  channel_prefix: black_candy_production
+  <<: *pg_default
 <% else %>
+development:
+  <<: *sqlite_default
+
 production:
-  adapter: litecable
+  <<: *sqlite_default
 <% end %>
