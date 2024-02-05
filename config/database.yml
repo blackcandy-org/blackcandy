@@ -12,13 +12,15 @@ pg_default: &pg_default
 <% if BlackCandy::Config.db_adapter == "postgresql" %>
 development:
   <<: *pg_default
-  username: <%= ENV['POSTGRES_USERNAME'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   database: blackcandy_development
   host: localhost
 
 test:
   <<: *pg_default
-  username: <%= ENV['POSTGRES_USERNAME'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   database: blackcandy_test
   host: localhost
 
