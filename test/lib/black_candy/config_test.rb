@@ -34,14 +34,14 @@ class BlackCandy::ConfigTest < ActiveSupport::TestCase
     end
   end
 
-  test "should raise error when database_adapter is postgresql but database_url is not set" do
-    with_env("DB_ADAPTER" => "postgresql", "DB_URL" => nil) do
+  test "should raise error when database_adapter is postgresql but database_url is not set in production environment" do
+    with_env("DB_ADAPTER" => "postgresql", "DB_URL" => nil, "RAILS_ENV" => "production") do
       assert_raises(BlackCandy::Config::ValidationError) do
         BlackCandy::Config.db_adapter
       end
     end
 
-    with_env("DB_ADAPTER" => "postgresql", "DB_URL" => "database_url") do
+    with_env("DB_ADAPTER" => "postgresql", "DB_URL" => "database_url", "RAILS_ENV" => "production") do
       assert_equal "postgresql", BlackCandy::Config.db_adapter
     end
   end

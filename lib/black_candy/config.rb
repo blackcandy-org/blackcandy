@@ -58,7 +58,7 @@ module BlackCandy
         raise_validation_error "Unsupported database adapter."
       end
 
-      if value == "postgresql" && db_url.blank?
+      if value == "postgresql" && ENV["RAILS_ENV"] == "production" && db_url.blank?
         raise_validation_error "DB_URL is required if database adapter is postgresql"
       end
     end
