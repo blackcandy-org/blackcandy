@@ -7,19 +7,31 @@ pg_default: &pg_default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  url: <%= BlackCandy::Config.db_url %>
 
+
+<% if BlackCandy::Config.db_adapter == "postgresql" %>
+development:
+  <<: *pg_default
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  database: blackcandy_development
+  host: localhost
+
+test:
+  <<: *pg_default
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  database: blackcandy_test
+  host: localhost
+
+production:
+  <<: *pg_default
+  url: <%= BlackCandy::Config.db_url %>
+<% else %>
 development:
   <<: *sqlite_default
   database: storage/development.sqlite3
 
-<% if BlackCandy::Config.db_adapter == "postgresql" %>
-test:
-  <<: *pg_default
-
-production:
-  <<: *pg_default
-<% else %>
 test:
   <<: *sqlite_default
   database: storage/test.sqlite3

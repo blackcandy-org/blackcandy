@@ -5,7 +5,9 @@ require_relative "../lib/black_candy/config"
 # Any libraries that use thread pools should be configured to match
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum; this matches the default thread size of Active Record.
-threads BlackCandy::Config.puma_min_threads_count, BlackCandy::Config.puma_max_threads_count
+max_threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
+min_threads_count = ENV.fetch("RAILS_MIN_THREADS") { max_threads_count }
+threads min_threads_count, max_threads_count
 
 # Specifies the `worker_timeout` threshold that Puma will use to wait before
 # terminating a worker in development environments.
@@ -52,21 +54,5 @@ end
 if ENV["RAILS_ENV"] == "development"
   on_thread_exit do
     MediaListener.stop if MediaListener.running?
-  end
-end
-
-if BlackCandy::Config.embedded_sidekiq?
-  sidekiq = nil
-
-  on_worker_boot do
-    sidekiq = Sidekiq.configure_embed do |config|
-      config.concurrency = 2
-    end
-
-    sidekiq.run
-  end
-
-  on_worker_shutdown do
-    sidekiq&.stop
   end
 end
