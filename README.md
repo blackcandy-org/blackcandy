@@ -137,7 +137,7 @@ $ docker pull ghcr.io/blackcandy-org/blackcandy:edge
 
 ### Requirements
 
-- Ruby 3.2
+- Ruby 3.3
 - Node.js 18
 - Yarn
 - libvips
