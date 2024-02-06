@@ -21,9 +21,9 @@ class AlbumTest < ActiveSupport::TestCase
 
     album.songs.create!(
       [
-        {name: "test_song_1", file_path: "fake_path", file_path_hash: "fake_path_hash", md5_hash: "fake_md5", tracknum: 2, discnum: 2, artist: artist},
-        {name: "test_song_2", file_path: "fake_path", file_path_hash: "fake_path_hash", md5_hash: "fake_md5", tracknum: 3, discnum: 1, artist: artist},
-        {name: "test_song_3", file_path: "fake_path", file_path_hash: "fake_path_hash", md5_hash: "fake_md5", tracknum: 1, discnum: 1, artist: artist}
+        {name: "test_song_1", file_path: "fake_path", file_path_hash: "fake_path_hash", md5_hash: "fake_md5_0", tracknum: 2, discnum: 2, artist: artist},
+        {name: "test_song_2", file_path: "fake_path", file_path_hash: "fake_path_hash", md5_hash: "fake_md5_1", tracknum: 3, discnum: 1, artist: artist},
+        {name: "test_song_3", file_path: "fake_path", file_path_hash: "fake_path_hash", md5_hash: "fake_md5_2", tracknum: 1, discnum: 1, artist: artist}
       ]
     )
 

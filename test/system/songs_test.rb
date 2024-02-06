@@ -10,7 +10,7 @@ class SongsSystemTest < ApplicationSystemTestCase
         name: "song_test_#{n}",
         file_path: Rails.root.join("test/fixtures/files/artist1_album2.mp3"),
         file_path_hash: "fake_path_hash",
-        md5_hash: "fake_md5",
+        md5_hash: "fake_md5_#{n}",
         artist_id: artists(:artist1).id,
         album_id: albums(:album1).id
       )
