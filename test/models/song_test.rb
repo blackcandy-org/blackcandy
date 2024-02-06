@@ -82,4 +82,18 @@ class SongTest < ActiveSupport::TestCase
   test "should use default sort when use invalid sort value" do
     assert_equal songs(:flac_sample), Song.sort_records(:invalid).first
   end
+
+  test "should get unique error when create song with same md5_hash" do
+    song = Song.new(
+      name: "song_test",
+      file_path: Rails.root.join("test/fixtures/files/artist1_album2.mp3"),
+      file_path_hash: "fake_path_hash",
+      md5_hash: songs(:flac_sample).md5_hash,
+      artist_id: artists(:artist1).id,
+      album_id: albums(:album1).id
+    )
+
+    assert_not song.valid?
+    assert_equal ["has already been taken"], song.errors[:md5_hash]
+  end
 end

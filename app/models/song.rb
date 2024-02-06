@@ -6,6 +6,7 @@ class Song < ApplicationRecord
   include SortableConcern
 
   validates :name, :file_path, :file_path_hash, :md5_hash, presence: true
+  validates :md5_hash, uniqueness: true
 
   belongs_to :album, touch: true
   belongs_to :artist, touch: true

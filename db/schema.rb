@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_02_024633) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_06_051609) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -211,7 +211,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_02_024633) do
     t.index ["album_id"], name: "index_songs_on_album_id"
     t.index ["artist_id"], name: "index_songs_on_artist_id"
     t.index ["file_path_hash"], name: "index_songs_on_file_path_hash"
-    t.index ["md5_hash"], name: "index_songs_on_md5_hash"
+    t.index ["md5_hash"], name: "index_songs_on_md5_hash", unique: true
     t.index ["name"], name: "index_songs_on_name"
   end
 
