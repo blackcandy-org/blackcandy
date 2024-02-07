@@ -30,7 +30,7 @@
         <%= link_to(
               t("label.add_to_playlist"),
               dialog_playlists_path(song_id: song.id, referer_url: current_url),
-              data: {turbo_frame: ("turbo-dialog" unless native_app?)},
+              data: {"turbo-frame" => ("turbo-dialog" unless native_app?)},
               class: "c-dropdown__item"
             ) %>
         <%= button_to(

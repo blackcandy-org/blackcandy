@@ -2,7 +2,7 @@
 
 <div class='o-container o-container--narrow' data-controller='playlist-songs playlist-songs-bridge'>
   <div class='c-card c-card--horizontal c-card--center@narrow u-my-large'>
-    <%= cover_image_tag @album, class: "c-card__image u-image-medium", data: {test_id: "album_image"} %>
+    <%= cover_image_tag @album, class: "c-card__image u-image-medium", data: {"test-id" => "album_image"} %>
     <div class='c-card__body'>
       <h1 class='c-card__body__title'><%= @album.name %></h1>
       <%= link_to @album.artist.name, artist_path(@album.artist), class: "c-card__body__text" %>
@@ -29,7 +29,7 @@
               }
             ) %>
         <% if is_admin? %>
-          <%= link_to t("label.edit"), edit_dialog_album_path(@album), data: {turbo_frame: ("turbo-dialog" unless native_app?)}, class: "c-button c-button--secondary u-ml-tiny" %>
+          <%= link_to t("label.edit"), edit_dialog_album_path(@album), data: {"turbo-frame" => ("turbo-dialog" unless native_app?)}, class: "c-button c-button--secondary u-ml-tiny" %>
         <% end %>
       </div>
     </div>
@@ -74,7 +74,7 @@
                 <%= link_to(
                       t("label.add_to_playlist"),
                       dialog_playlists_path(song_id: song.id, referer_url: current_url),
-                      data: {turbo_frame: ("turbo-dialog" unless native_app?)},
+                      data: {"turbo-frame" => ("turbo-dialog" unless native_app?)},
                       class: "c-dropdown__item"
                     ) %>
                 <%= button_to(

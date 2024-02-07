@@ -6,7 +6,7 @@
       <% unless native_app? %>
         <h1 class='u-mb-0 u-mr-narrow'><%= t("label.playlists") %></h1>
       <% end %>
-      <%= link_to t("label.add"), new_dialog_playlist_path, data: {turbo_frame: ("turbo-dialog" unless native_app?)}, class: "c-button c-button--primary" %>
+      <%= link_to t("label.add"), new_dialog_playlist_path, data: {"turbo-frame" => ("turbo-dialog" unless native_app?)}, class: "c-button c-button--primary" %>
     </div>
 
     <div class='<%= "u-ml-auto" if native_app? %>'>

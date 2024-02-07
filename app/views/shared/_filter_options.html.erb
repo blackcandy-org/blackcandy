@@ -1,6 +1,13 @@
 <%= turbo_frame_tag "turbo-#{filter_name}-filter".dasherize do %>
   <% options.each do |option| %>
-    <%= link_to url_for(controller: filter_controller, **filter_sort_params(filter: {filter_name => option})), class: "c-dropdown__item", data: {turbo_frame: "_top", turbo_action: ("replace" if native_app?)}  do %>
+    <%= link_to(
+          url_for(controller: filter_controller, **filter_sort_params(filter: {filter_name => option})),
+          class: "c-dropdown__item",
+          data: {
+            "turbo-frame" => "_top",
+            "turbo-action" => ("replace" if native_app?)
+          }
+        ) do %>
         <span class='o-flex o-flex--justify-between o-flex--align-center'>
           <%= option %>
           <% if params[:filter]&.fetch(filter_name, nil) == option.to_s %>

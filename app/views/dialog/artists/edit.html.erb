@@ -1,6 +1,6 @@
 <% page_title_tag t("label.edit_artist") %>
 
-<%= form_with model: @artist, data: {turbo_frame: "_top", turbo_action: ("replace" if native_app?), test_id: "artist_edit_form"}, class: "c-form" do |form| %>
+<%= form_with model: @artist, data: {"turbo-frame" => "_top", "turbo-action" => ("replace" if native_app?), "test-id" => "artist_edit_form"}, class: "c-form" do |form| %>
   <div class='c-form__field'>
     <%= form.label :cover_image, t("label.artist_cover") %>
     <%= form.file_field :cover_image, accept: "image/png, image/jpeg", class: "c-input" %>

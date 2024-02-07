@@ -1,6 +1,14 @@
 <% page_title_tag t("label.edit_playlist") %>
 
-<%= form_with model: @playlist, class: "c-form", data: {turbo_frame: "_top", turbo_action: ("replace" if native_app?), test_id: "playlist_edit_form"} do |form| %>
+<%= form_with(
+      model: @playlist,
+      class: "c-form",
+      data: {
+        "turbo-frame" => "_top",
+        "turbo-action" => ("replace" if native_app?),
+        "test-id" => "playlist_edit_form"
+      }
+    ) do |form| %>
   <div class='c-form__field'>
     <%= form.label :name, t("label.name") %>
     <%= form.text_field :name, class: "c-input" %>

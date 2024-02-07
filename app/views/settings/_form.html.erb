@@ -38,7 +38,7 @@
       <%= form.text_field :discogs_token, value: Setting.discogs_token, class: "c-input" %>
     </div>
     <div class='c-form__field c-form__field--submit'>
-      <%= form.submit t("label.save"), class: "c-button c-button--primary c-button--full-width", data: {test_id: "setting_discogs_token_save_button"} %>
+      <%= form.submit t("label.save"), class: "c-button c-button--primary c-button--full-width", data: {"test-id" => "setting_discogs_token_save_button"} %>
     </div>
   <% end %>
 

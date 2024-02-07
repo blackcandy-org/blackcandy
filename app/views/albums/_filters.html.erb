@@ -1,5 +1,5 @@
 <% if filter_sort_params[:filter].present? %>
-  <%= link_to albums_path, class: "c-button c-button--outline c-button--small u-mr-small", data: {turbo_action: ("replace" if native_app?)} do %>
+  <%= link_to albums_path, class: "c-button c-button--outline c-button--small u-mr-small", data: {"turbo-action" => ("replace" if native_app?)} do %>
     <span class='o-flex o-flex--align-center'>
       <%= icon_tag "close" %>
       <%= t("label.clear_filters") %>

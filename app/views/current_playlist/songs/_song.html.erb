@@ -25,9 +25,9 @@
     <details class='c-dropdown' data-controller="dropdown" data-test-id='current_playlist_song_menu'>
       <summary class="c-button c-button--icon" role="button"><%= icon_tag "more-vertical", size: "small", title: t("label.more") %></summary>
       <div class='c-dropdown__menu' data-dropdown-target="menu">
-        <%= link_to t("label.add_to_playlist"), dialog_playlists_path(song_id: song.id, referer_url: current_url), data: {turbo_frame: ("turbo-dialog" unless native_app?)}, class: "c-dropdown__item" %>
+        <%= link_to t("label.add_to_playlist"), dialog_playlists_path(song_id: song.id, referer_url: current_url), data: {"turbo-frame" => ("turbo-dialog" unless native_app?)}, class: "c-dropdown__item" %>
 
-        <%= button_to t("label.delete"), current_playlist_song_path(song), method: :delete, form_class: "c-dropdown__item", form: {data: {turbo_frame: "turbo-playlist"}} %>
+        <%= button_to t("label.delete"), current_playlist_song_path(song), method: :delete, form_class: "c-dropdown__item", form: {data: {"turbo-frame" => "turbo-playlist"}} %>
       </div>
     </details>
   </div>
