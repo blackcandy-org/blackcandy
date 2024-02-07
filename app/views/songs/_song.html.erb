@@ -3,7 +3,7 @@
     <%= button_to(
           current_playlist_songs_path(song_id: song.id, should_play: true),
           class: "c-button c-button--link",
-          data: {test_id: "song_item"},
+          data: {"test-id" => "song_item"},
           form: {
             data: {
               "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlay click->playlist-songs-bridge#playSong",
@@ -31,7 +31,7 @@
         <%= link_to(
               t("label.add_to_playlist"),
               dialog_playlists_path(song_id: song.id, referer_url: current_url),
-              data: {turbo_frame: ("turbo-dialog" unless native_app?)},
+              data: {"turbo-frame" => ("turbo-dialog" unless native_app?)},
               class: "c-dropdown__item"
             ) %>
         <%= button_to(

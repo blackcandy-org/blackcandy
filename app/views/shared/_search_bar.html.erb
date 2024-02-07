@@ -6,7 +6,7 @@
         <%= icon_tag "search", size: "large" %>
       </div>
 
-      <%= text_field_tag "query", params[:query], class: "c-input", data: {search_target: "input", test_id: "search_input"}, autocomplete: "on" %>
+      <%= text_field_tag "query", params[:query], class: "c-input", data: {"search-target" => "input", "test-id" => "search_input"}, autocomplete: "on" %>
 
       <div class='c-input-group__icon'>
         <%= loader_tag size: "small" %>

@@ -1,4 +1,12 @@
-<%= turbo_frame_tag "#{dom_id(playlist)}-page-#{pagy.page}", class: "c-list", target: "_top", data: {controller: "playlist-sortable", playlist_id: playlist.id} do %>
+<%= turbo_frame_tag(
+      "#{dom_id(playlist)}-page-#{pagy.page}",
+      class: "c-list",
+      target: "_top",
+      data: {
+        "controller" => "playlist-sortable",
+        "playlist-id" => playlist.id
+      }
+    ) do %>
   <%= render partial: "playlists/songs/song", collection: songs, locals: {playlist: playlist} %>
 
   <% if pagy.next %>

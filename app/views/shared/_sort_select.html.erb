@@ -4,7 +4,7 @@
   </summary>
   <div class='c-dropdown__menu' data-dropdown-target="menu">
     <% option.values.each do |sort_value| %>
-      <%= link_to url_for(controller: params[:controller], action: :index, **filter_sort_params(sort: sort_value)), class: "c-dropdown__item", data: {turbo_action: ("replace" if native_app?)} do %>
+      <%= link_to url_for(controller: params[:controller], action: :index, **filter_sort_params(sort: sort_value)), class: "c-dropdown__item", data: {"turbo-action" => ("replace" if native_app?)} do %>
         <span class='o-flex o-flex--justify-between o-flex--align-center'>
           <%= t("label.#{sort_value}") %>
           <% if params[:sort] == sort_value || (params[:sort].blank? && sort_value == option.default.name) %>
@@ -17,7 +17,7 @@
     <hr>
 
     <% %w[asc desc].each do |sort_direction| %>
-      <%= link_to url_for(controller: params[:controller], action: :index, **filter_sort_params(sort: params[:sort] || option.default.name, sort_direction: sort_direction)), class: "c-dropdown__item", data: {turbo_action: ("replace" if native_app?)} do %>
+      <%= link_to url_for(controller: params[:controller], action: :index, **filter_sort_params(sort: params[:sort] || option.default.name, sort_direction: sort_direction)), class: "c-dropdown__item", data: {"turbo-action" => ("replace" if native_app?)} do %>
         <span class='o-flex o-flex--justify-between o-flex--align-center'>
           <%= t("label.#{sort_direction}") %>
           <% if params[:sort_direction] == sort_direction || (params[:sort_direction].blank? && option.default.direction == sort_direction) %>
