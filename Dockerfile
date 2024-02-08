@@ -1,4 +1,4 @@
-FROM node:18.12.1-alpine AS node
+FROM node:20.11.0-alpine AS node
 FROM ruby:3.2.2-alpine AS base
 FROM base AS builder
 
