@@ -9,7 +9,8 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   driven_by :cuprite, screen_size: [1400, 900], options: {
     browser_options: {"no-sandbox": nil},
     url_blacklist: ["https://www.gravatar.com"],
-    timeout: 10
+    timeout: 10,
+    process_timeout: 20
   }
 
   def login_as(user)
