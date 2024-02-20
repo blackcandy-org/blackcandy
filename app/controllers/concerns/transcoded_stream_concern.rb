@@ -42,12 +42,12 @@ module TranscodedStreamConcern
   end
 
   def valid_cache?
-    return unless File.exist?(@stream.transcode_cache_file_path)
-
     # Compare duration of cache file and original file to check integrity of cache file.
     # Because the different format of the file, the duration will have a little difference,
     # so the duration difference in two seconds are considered no problem.
     cache_file_tag = WahWah.open(@stream.transcode_cache_file_path)
     (@stream.duration - cache_file_tag.duration).abs <= 2
+  rescue
+    false
   end
 end
