@@ -15,7 +15,7 @@ jobs:
         with:
           key: ${{ secrets.DEMO_SSH_KEY }}
           known_hosts: ${{ secrets.DEMO_KNOWN_HOSTS }}
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2
