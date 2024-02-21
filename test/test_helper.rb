@@ -39,6 +39,19 @@ end
 
 class ActiveSupport::TestCase
   include Turbo::Broadcastable::TestHelper
+
+  # Run tests in parallel with specified workers
+  parallelize(workers: :number_of_processors)
+
+  # Fix SimpleCov to work with parallel tests, see: https://github.com/simplecov-ruby/simplecov/issues/718#issuecomment-538201587
+  parallelize_setup do |worker|
+    SimpleCov.command_name "#{SimpleCov.command_name}-#{worker}"
+  end
+
+  parallelize_teardown do |worker|
+    SimpleCov.result
+  end
+
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
