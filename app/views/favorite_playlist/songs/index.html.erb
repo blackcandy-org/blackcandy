@@ -12,7 +12,7 @@
         <div class='u-mt-large'>
           <% unless @songs.blank? %>
             <%= button_to(
-                  t("label.play_all"),
+                  t("button.play_all"),
                   current_playlist_playlist_path(@playlist),
                   method: :put,
                   class: "c-button c-button--primary",
@@ -27,7 +27,7 @@
                     }
                   }
                 ) %>
-            <%= button_to t("label.clear"), favorite_playlist_songs_path, class: "c-button c-button--secondary", form_class: "u-display-inline-block", method: :delete %>
+            <%= button_to t("button.clear"), favorite_playlist_songs_path, class: "c-button c-button--secondary", form_class: "u-display-inline-block", method: :delete %>
           <% end %>
         </div>
       </div>

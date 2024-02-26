@@ -19,7 +19,7 @@ class CurrentPlaylist::SongsController < Playlists::SongsController
       @playlist.playlists_songs.create(song_id: @song.id, position: @current_song_position + 1)
     end
 
-    flash.now[:success] = t("success.add_to_playlist")
+    flash.now[:success] = t("notice.added_to_playlist")
 
     redirect_to action: "index", should_play_all: params[:should_play] if @playlist.songs.count == 1
   rescue ActiveRecord::RecordNotUnique

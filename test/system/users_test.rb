@@ -17,11 +17,11 @@ class UsersSystemTest < ApplicationSystemTestCase
 
   test "add user" do
     visit users_url
-    click_on "Add user"
+    click_on "Add"
 
     fill_in "Email", with: "system_test@test.com"
     fill_in "Password", with: "foobar"
-    fill_in "Password confirmation", with: "foobar"
+    fill_in "Password Confirmation", with: "foobar"
     click_on "Save"
 
     assert_text("Created successfully")

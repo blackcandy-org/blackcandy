@@ -21,7 +21,7 @@ class CurrentPlaylistSystemTest < ApplicationSystemTestCase
     click_on "Clear"
 
     assert_selector(:test_id, "current_playlist_song", count: 0)
-    assert_text("No items")
+    assert_text("No Items")
   end
 
   test "player is stopped after clear current playlist" do
@@ -62,7 +62,7 @@ class CurrentPlaylistSystemTest < ApplicationSystemTestCase
 
     assert_difference -> { playlist.songs.count } do
       first(:test_id, "current_playlist_song_menu").click
-      click_on "Add to playlist"
+      click_on "Add To Playlist"
       find(:test_id, "dialog_playlist", text: playlist_name).click
     end
   end

@@ -1,7 +1,7 @@
 <div id="turbo-media-syncing-button">
   <% if syncing %>
     <%= button_to(
-          t("label.syncing"),
+          t("button.syncing"),
           false,
           class: "c-button c-button--secondary",
           data: {"test-id" => "media_sync_button"},
@@ -9,12 +9,12 @@
         ) %>
   <% else %>
     <%= button_to(
-        t("label.sync"),
+        t("button.sync"),
         media_syncing_path,
         class: "c-button c-button--secondary",
         data: {
           "test-id" => "media_sync_button",
-          "turbo-submits-with" => t("label.syncing")
+          "turbo-submits-with" => t("button.syncing")
         }
       ) %>
   <% end %>

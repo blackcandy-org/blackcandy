@@ -52,7 +52,7 @@ class SongsSystemTest < ApplicationSystemTestCase
 
     assert_difference -> { playlist.songs.count } do
       first(:test_id, "song_menu").click
-      click_on "Add to playlist"
+      click_on "Add To Playlist"
       find(:test_id, "dialog_playlist", text: playlist_name).click
     end
   end

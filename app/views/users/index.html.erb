@@ -3,7 +3,7 @@
 <div class='o-container o-container--extra-narrow'>
   <div class='o-flex o-flex--justify-between o-flex--align-center'>
     <h2 class='u-mb-0'><%= t("label.users") %></h2>
-    <%= link_to t("label.add_user"), new_user_path, class: "c-button c-button--primary" %>
+    <%= link_to t("label.add"), new_user_path, class: "c-button c-button--primary" %>
   </div>
   <hr>
   <div class='u-position-relative'>
@@ -16,7 +16,7 @@
               <%= user.email %>
             <% end %>
             <%= button_to user_path(user), method: :delete, class: "c-button c-button--icon" do %>
-              <%= icon_tag "delete", size: "small", title: t("label.delete") %>
+              <%= icon_tag "delete", size: "small", title: t("button.delete") %>
             <% end %>
           </li>
         <% end %>

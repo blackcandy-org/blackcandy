@@ -20,7 +20,7 @@ class AlbumsController < ApplicationController
 
   def update
     if @album.update(album_params)
-      flash[:success] = t("success.update")
+      flash[:success] = t("notice.updated")
     else
       flash_errors_message(@album)
     end

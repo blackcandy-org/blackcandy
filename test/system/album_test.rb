@@ -23,7 +23,7 @@ class AlbumSystemTest < ApplicationSystemTestCase
     login_as users(:visitor1)
 
     visit album_url(@album)
-    click_on "Play all"
+    click_on "Play All"
 
     # assert current playlist have all songs in album
     @album.songs.each do |song|
@@ -71,7 +71,7 @@ class AlbumSystemTest < ApplicationSystemTestCase
 
     visit album_url(@album)
     first(:test_id, "album_song_menu").click
-    click_on "Add to playlist"
+    click_on "Add To Playlist"
     find(:test_id, "dialog_playlist", text: playlist_name).click
 
     # assert the song added to the playlist

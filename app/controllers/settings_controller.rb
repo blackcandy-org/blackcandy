@@ -10,7 +10,7 @@ class SettingsController < ApplicationController
     setting = Setting.instance
 
     if setting.update(setting_params)
-      flash.now[:success] = t("success.update")
+      flash.now[:success] = t("notice.updated")
     else
       flash_errors_message(setting, now: true)
     end

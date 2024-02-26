@@ -1,79 +1,31 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
   app_name: 'Black Candy'
+
   label:
-    login: 'Login'
-    logout: 'Logout'
     users: 'Users'
-    current: 'Current'
     playlists: 'Playlists'
     favorites: 'Favorites'
     albums: 'Albums'
     artists: 'Artists'
     songs: 'Songs'
     settings: 'Settings'
-    create: 'Create'
-    play_all: 'Play all'
-    clear: 'Clear'
-    delete: 'Delete'
-    rename: 'Rename'
     tracks: 'Tracks'
-    save: 'Save'
-    sync: 'Sync'
-    syncing: 'Syncing...'
     integration: 'Integration'
-    close: 'Close'
-    more: 'More'
     appears_on: 'Appears On'
-    name: 'Name'
     duration: 'Duration'
     actions: 'Actions'
-    edit: 'Edit'
     transcoding: 'Transcoding'
     home: 'Home'
     recently_added: 'Recently Added'
     recently_played: 'Recently Played'
     library: 'Library'
-    add: 'Add'
     create_playlist: 'Create Playlist'
     edit_playlist: 'Edit Playlist'
-    no_items: 'No items'
-    add_to_playlist: 'Add to playlist'
-    update_profile: 'Update profile'
-    manage_users: 'Manage users'
-    add_user: 'Add user'
+    no_items: 'No Items'
+    add_to_playlist: 'Add To Playlist'
+    update_profile: 'Update Profile'
+    manage_users: 'Manage Users'
     create_user: 'Create User'
-    media_path: 'Media path'
     no_repeat_mode: 'No repeat mode'
     repeat_mode: 'Repeat mode'
     single_mode: 'Single mode'
@@ -86,27 +38,56 @@ en:
     expand_player: 'Expand player'
     collapse_player: 'Collapse player'
     personal: 'Personal'
-    see_all: 'See All'
     edit_album: 'Edit Album'
     edit_artist: 'Edit Artist'
     album: 'Album'
-    album_cover: 'Album Cover'
-    album_name: 'Album Name'
-    album_year: 'Album Year'
     artist: 'Artist'
-    artist_cover: 'Artist Cover'
-    artist_name: 'Artist Name'
     sort: 'Sort'
-    year: 'Year'
-    genre: 'Genre'
-    created_at: 'Created At'
     asc: 'Ascending'
     desc: 'Descending'
-    clear_filters: 'Clear Filters'
-    play_next: 'Play Next'
-    play_last: 'Play Last'
     search_results: 'Search Results'
     disc: 'Disc %{number}'
+    more: 'More'
+    see_all: 'See All'
+    add: 'Add'
+    clear_filters: 'Clear Filters'
+    edit: 'Edit'
+    close: 'Close'
+    no_search_results: "No search results for \"%{query}\""
+    search_results_for: "Search results for \"%{query}\""
+
+  button:
+    login: 'Login'
+    logout: 'Logout'
+    play_all: 'Play All'
+    clear: 'Clear'
+    delete: 'Delete'
+    save: 'Save'
+    sync: 'Sync'
+    syncing: 'Syncing...'
+    play_next: 'Play Next'
+    play_last: 'Play Last'
+
+  field:
+    name: 'Name'
+    media_path: 'Media Path'
+    album_cover: 'Album Cover'
+    artist_cover: 'Artist Cover'
+    album_name: 'Album Name'
+    album_year: 'Album Year'
+    artist_name: 'Artist Name'
+    created_at: 'Created At'
+    year: 'Year'
+    genre: 'Genre'
+    email: 'Email'
+    password: 'Password'
+    theme: 'Theme'
+    enable_media_listener: 'Enable Media Listener'
+    discogs_token: 'Discogs Token'
+    allow_transcode_lossless: 'Allow Transcode Lossless'
+    transcode_bitrate: 'Transcode Bitrate'
+    password_confirmation: 'Password Confirmation'
+
   error:
     login: 'Wrong email or password'
     forbidden: "Sorry, you do not have permission to visit that"
@@ -115,23 +96,24 @@ en:
     internal_server_error: "We're sorry, but something went wrong"
     already_in_playlist: "Add to playlist failed, song is already in playlist"
     syncing_in_progress: "Syncing in progress, please wait"
-  success:
-    delete: 'Deleted successfully'
-    create: 'Created successfully'
-    update: 'Updated successfully'
-    add_to_playlist: 'Added to playlist successfully'
-    delete_from_playlist: 'Deleted from playlist successfully'
+
+  notice:
+    deleted: 'Deleted successfully'
+    created: 'Created successfully'
+    updated: 'Updated successfully'
+    added_to_playlist: 'Added to playlist successfully'
+    deleted_from_playlist: 'Deleted from playlist successfully'
+    sync_completed: "Media sync completed"
+
   text:
-    search_results: "Search results for \"%{query}\""
-    no_search_results: "No search results for \"%{query}\""
     transcoding: "Black candy will transcode formats that are not supported by the browser by default."
     allow_transcode_lossless: "Will transcode lossless format to mp3 to reduce bandwidth."
-    sync_completed: "Media sync completed"
     enable_media_listener: "Media listener can automatically sync with library changes."
     media_listener_running: "Listener is running"
 
-  errors:
-    messages:
-      not_exist: 'does not exist'
-      unreadable: 'is unreadable'
-      invalid_content_type: "has an invalid content type"
+  activerecord:
+    errors:
+      messages:
+        not_exist: 'does not exist'
+        unreadable: 'is unreadable'
+        invalid_content_type: "has an invalid content type"

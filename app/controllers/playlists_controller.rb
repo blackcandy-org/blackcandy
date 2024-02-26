@@ -12,7 +12,7 @@ class PlaylistsController < ApplicationController
     @playlist = Current.user.playlists.new playlist_params
 
     if @playlist.save
-      flash[:success] = t("success.create")
+      flash[:success] = t("notice.created")
     else
       flash_errors_message(@playlist)
     end
@@ -22,7 +22,7 @@ class PlaylistsController < ApplicationController
 
   def update
     if @playlist.update(playlist_params)
-      flash[:success] = t("success.update")
+      flash[:success] = t("notice.updated")
     else
       flash_errors_message(@playlist)
     end

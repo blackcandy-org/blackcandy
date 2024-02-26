@@ -19,7 +19,7 @@ class FavoritePlaylistSystemTest < ApplicationSystemTestCase
   end
 
   test "play all songs in playlist" do
-    click_on "Play all"
+    click_on "Play All"
 
     # assert current playlist have all songs in playlist
     assert_selector(:test_id, "current_playlist", visible: true)
@@ -35,7 +35,7 @@ class FavoritePlaylistSystemTest < ApplicationSystemTestCase
     click_on "Clear"
 
     assert_selector(:test_id, "playlist_song", count: 0)
-    assert_text("No items")
+    assert_text("No Items")
   end
 
   test "play song in playlist" do
@@ -69,7 +69,7 @@ class FavoritePlaylistSystemTest < ApplicationSystemTestCase
 
     assert_difference -> { playlist.songs.count } do
       first(:test_id, "playlist_song_menu").click
-      click_on "Add to playlist"
+      click_on "Add To Playlist"
       find(:test_id, "dialog_playlist", text: playlist_name).click
     end
   end

@@ -1,5 +1,5 @@
 <%= turbo_stream.replace "turbo-media-syncing-button", partial: "media_syncing/button", locals: {syncing: syncing} %>
 
 <% unless syncing %>
-  <%= render_flash(message: t("text.sync_completed")) %>
+  <%= render_flash(message: t("notice.sync_completed")) %>
 <% end %>
