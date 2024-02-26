@@ -1,7 +1,7 @@
 <% page_title_tag t("label.search_results") %>
 
 <% if [@albums, @artists, @songs, @playlists].any?(&:present?) %>
-  <h1><%= t("text.search_results", query: params[:query]) %></h1>
+  <h1><%= t("label.search_results_for", query: params[:query]) %></h1>
 
   <% if @albums.present? %>
     <div class='o-flex o-flex--justify-between o-flex--align-center u-mb-medium'>
@@ -53,5 +53,5 @@
     <%= render partial: "search/songs/table", locals: {songs: @songs} %>
   <% end %>
 <% else %>
-  <h1><%= t("text.no_search_results", query: params[:query]) %></h1>
+  <h1><%= t("label.no_search_results", query: params[:query]) %></h1>
 <% end %>

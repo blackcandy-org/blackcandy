@@ -35,7 +35,7 @@
               class: "c-dropdown__item"
             ) %>
         <%= button_to(
-              t("label.play_next"),
+              t("button.play_next"),
               current_playlist_songs_path(song_id: song.id),
               form_class: "c-dropdown__item",
               form: {
@@ -47,7 +47,7 @@
               }
             ) %>
         <%= button_to(
-              t("label.play_last"),
+              t("button.play_last"),
               current_playlist_songs_path(song_id: song.id, location: "last"),
               form_class: "c-dropdown__item",
               form: {

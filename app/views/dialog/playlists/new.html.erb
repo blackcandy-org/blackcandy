@@ -2,11 +2,11 @@
 
 <%= form_with model: @playlist, class: "c-form", data: {"turbo-frame" => "_top", "turbo-action" => ("replace" if native_app?)} do |form| %>
   <div class='c-form__field'>
-    <%= form.label :name, t("label.name") %>
+    <%= form.label :name, t("field.name") %>
     <%= form.text_field :name, class: "c-input" %>
   </div>
 
   <div class='c-form__field c-form__field--submit'>
-    <%= form.submit t("label.save"), class: "c-button c-button--primary c-button--full-width" %>
+    <%= form.submit t("button.save"), class: "c-button c-button--primary c-button--full-width" %>
   </div>
 <% end %>

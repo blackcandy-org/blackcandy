@@ -11,7 +11,7 @@ class ApplicationHelperTest < ActionView::TestCase
   end
 
   test "empty alert tag" do
-    assert_includes empty_alert_tag, "No items"
+    assert_includes empty_alert_tag, "No Items"
     assert_includes empty_alert_tag, "c-overlay"
     assert_not_includes empty_alert_tag, "c-icon"
     assert_includes empty_alert_tag(has_icon: true), "c-icon"

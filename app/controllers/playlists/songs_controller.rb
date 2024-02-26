@@ -13,7 +13,7 @@ class Playlists::SongsController < ApplicationController
     @song = Song.find(params[:song_id])
     @playlist.songs.push(@song)
 
-    flash[:success] = t("success.add_to_playlist")
+    flash[:success] = t("notice.added_to_playlist")
   rescue ActiveRecord::RecordNotUnique
     flash[:error] = t("error.already_in_playlist")
   ensure
@@ -22,7 +22,7 @@ class Playlists::SongsController < ApplicationController
 
   def destroy
     @playlist.songs.destroy(@song)
-    flash.now[:success] = t("success.delete_from_playlist")
+    flash.now[:success] = t("notice.deleted_from_playlist")
 
     # for refresh playlist content, when remove last song from playlist
     redirect_to action: "index" if @playlist.songs.empty?

@@ -6,7 +6,7 @@ class Users::SettingsController < ApplicationController
 
   def update
     return unless @user.update(user_setting_params)
-    flash.now[:success] = t("success.update")
+    flash.now[:success] = t("notice.updated")
   end
 
   private

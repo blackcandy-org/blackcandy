@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
   include SessionsHelper
 
-  helper_method :native_app?, :need_transcode?, :render_flash, :mobile?
+  helper_method :native_app?, :need_transcode?, :render_flash, :mobile?, :dialog?
 
   before_action :find_current_session
   before_action :find_current_request_details
@@ -81,6 +81,10 @@ class ApplicationController < ActionController::Base
 
   def mobile?
     browser.device.mobile?
+  end
+
+  def dialog?
+    is_a? Dialog::DialogController
   end
 
   private
