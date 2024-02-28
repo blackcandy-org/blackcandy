@@ -10,6 +10,8 @@
   $player-bg-color: $grey-200;
   $badge-color: $primary-color;
 
+  color-scheme: light;
+
   --link-active-color: #{$primary-color};
   --gradient-bg-color: linear-gradient(#{color.change($white, $alpha: 0.85)}, #{color.change($white, $alpha: 0.65)}), linear-gradient(#{$primary-color}, #{$primary-color});
   --primary-bg-color: #{$white};
