@@ -47,6 +47,7 @@
 }
 
 .c-player__progress progress {
+  appearance: none;
   height: 2px;
   border: 0 none;
   background: var(--player-progress-bg-color);
