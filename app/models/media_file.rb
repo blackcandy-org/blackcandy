@@ -33,6 +33,8 @@ class MediaFile
     end
 
     def get_md5_hash(file_path, with_mtime: false)
+      return unless File.exist?(file_path)
+
       string = "#{file_path}#{File.mtime(file_path) if with_mtime}"
       Digest::MD5.base64digest(string)
     end

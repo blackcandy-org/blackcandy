@@ -47,12 +47,17 @@ class Media
     private
 
     def add_files(file_paths)
-      file_paths.map do |file_path|
+      file_md5_hashes = file_paths.map { |file_path| MediaFile.get_md5_hash(file_path, with_mtime: true) }
+      existing_songs = Song.where(md5_hash: file_md5_hashes)
+
+      added_song_hashes = (file_paths - existing_songs.pluck(:file_path)).map do |file_path|
         file_info = MediaFile.file_info(file_path)
         file_info[:md5_hash] if attach(file_info)
       rescue
         next
       end.compact
+
+      added_song_hashes + existing_songs.pluck(:md5_hash)
     end
 
     def remove_files(file_paths)

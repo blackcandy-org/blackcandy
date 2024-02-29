@@ -36,6 +36,26 @@ WebMock.disable_net_connect!(allow_localhost: true, net_http_connect_on_start: t
 MediaListener.config do |config|
   config.service_name = "media_listener_service_test"
 end
+class MediaFileMock < MediaFile
+  class << self
+    alias_method :real_file_info, :file_info
+  end
+
+  def initialize(file_path, attributes = {})
+    @file_path = file_path
+    @attributes = attributes
+    @mtime = File.mtime(file_path)
+  end
+
+  def mtime(path)
+    (path.to_s == @file_path.to_s) ? Time.now : @mtime
+  end
+
+  def file_info(path)
+    file_info = self.class.real_file_info(path)
+    (path.to_s == @file_path.to_s) ? file_info.merge(@attributes) : file_info
+  end
+end
 
 class ActiveSupport::TestCase
   include Turbo::Broadcastable::TestHelper
@@ -100,15 +120,13 @@ class ActiveSupport::TestCase
     File.read(file_path).force_encoding("BINARY").strip
   end
 
-  def media_file_info_stub(file_path, attributes = {})
-    proc do |media_file_path|
-      file_info = MediaFile.send(:get_tag_info, media_file_path).merge(
-        file_path: media_file_path.to_s,
-        file_path_hash: MediaFile.get_md5_hash(media_file_path),
-        md5_hash: MediaFile.get_md5_hash(media_file_path, with_mtime: true)
-      )
+  def stub_file_metadata(file_path, attributes = {})
+    media_file_mock = MediaFileMock.new(file_path, attributes)
 
-      (media_file_path.to_s == file_path.to_s) ? file_info.merge(**attributes, md5_hash: "new_md5_hash") : file_info
+    File.stub(:mtime, media_file_mock.method(:mtime)) do
+      MediaFile.stub(:file_info, media_file_mock.method(:file_info)) do
+        yield
+      end
     end
   end
 
