@@ -50,7 +50,7 @@ class MediaTest < ActiveSupport::TestCase
   end
 
   test "should change associations when modify album info on file" do
-    MediaFile.stub(:file_info, media_file_info_stub(file_fixture("artist1_album2.mp3"), album_name: "album1")) do
+    stub_file_metadata(file_fixture("artist1_album2.mp3"), album_name: "album1") do
       Media.sync_all
 
       album1_songs_ids = Song.where(name: %w[flac_sample m4a_sample mp3_sample]).ids.sort
@@ -61,10 +61,7 @@ class MediaTest < ActiveSupport::TestCase
   end
 
   test "should change associations when modify artist info on file" do
-    MediaFile.stub(
-      :file_info,
-      media_file_info_stub(file_fixture("artist1_album2.mp3"), artist_name: "artist2", albumartist_name: "artist2")
-    ) do
+    stub_file_metadata(file_fixture("artist1_album2.mp3"), artist_name: "artist2", albumartist_name: "artist2") do
       Media.sync_all
 
       artist2_songs_ids = Song.where(
@@ -77,7 +74,7 @@ class MediaTest < ActiveSupport::TestCase
   end
 
   test "should change song attribute when modify song info on file" do
-    MediaFile.stub(:file_info, media_file_info_stub(file_fixture("artist1_album2.mp3"), tracknum: 2)) do
+    stub_file_metadata(file_fixture("artist1_album2.mp3"), tracknum: 2) do
       assert_changes -> { Song.find_by(name: "mp3_sample").tracknum }, from: 1, to: 2 do
         Media.sync_all
       end
@@ -177,7 +174,7 @@ class MediaTest < ActiveSupport::TestCase
   end
 
   test "should change associations when selectively modified album info on file" do
-    MediaFile.stub(:file_info, media_file_info_stub(file_fixture("artist1_album2.mp3"), album_name: "album1")) do
+    stub_file_metadata(file_fixture("artist1_album2.mp3"), album_name: "album1") do
       Media.sync(:modified, [file_fixture("artist1_album2.mp3")])
 
       album1_songs_ids = Song.where(name: %w[flac_sample m4a_sample mp3_sample]).ids.sort
@@ -188,10 +185,7 @@ class MediaTest < ActiveSupport::TestCase
   end
 
   test "should change associations when selectively modified artist info on file" do
-    MediaFile.stub(
-      :file_info,
-      media_file_info_stub(file_fixture("artist1_album2.mp3"), artist_name: "artist2", albumartist_name: "artist2")
-    ) do
+    stub_file_metadata(file_fixture("artist1_album2.mp3"), artist_name: "artist2", albumartist_name: "artist2") do
       Media.sync(:modified, [file_fixture("artist1_album2.mp3")])
 
       artist2_songs_ids = Song.where(
@@ -204,7 +198,7 @@ class MediaTest < ActiveSupport::TestCase
   end
 
   test "should change song attribute when selectively modified song info on file" do
-    MediaFile.stub(:file_info, media_file_info_stub(file_fixture("artist1_album2.mp3"), tracknum: 2)) do
+    stub_file_metadata(file_fixture("artist1_album2.mp3"), tracknum: 2) do
       assert_changes -> { Song.find_by(name: "mp3_sample").tracknum }, from: 1, to: 2 do
         Media.sync(:modified, [file_fixture("artist1_album2.mp3")])
       end
