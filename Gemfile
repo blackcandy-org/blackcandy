@@ -14,10 +14,10 @@ gem "turbo-rails", "~> 1.5.0"
 gem "stimulus-rails", "~> 1.2.1"
 
 # Bundle and process CSS in Rails
-gem "cssbundling-rails", "~> 1.2.0"
+gem "cssbundling-rails", "~> 1.4.0"
 
 # Bundle and transpile JavaScript in Rails
-gem "jsbundling-rails", "~> 1.1.2"
+gem "jsbundling-rails", "~> 1.3.0"
 
 # Use Puma as the app server
 gem "puma", "~> 6.4.0"
