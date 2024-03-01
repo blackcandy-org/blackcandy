@@ -139,7 +139,6 @@ $ docker pull ghcr.io/blackcandy-org/blackcandy:edge
 
 - Ruby 3.2
 - Node.js 20
-- Yarn
 - libvips
 - FFmpeg
 
@@ -154,7 +153,7 @@ bundle install
 ### Install JavaScript dependencies
 
 ```shell
-yarn install
+npm install
 ```
 
 ### Database Configuration

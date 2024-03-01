@@ -10,10 +10,8 @@ ENV BUNDLE_FORCE_RUBY_PLATFORM 1
 
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
 COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
-COPY --from=node /opt/yarn-* /opt/yarn
 
-RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm  \
-  && ln -s /opt/yarn/bin/yarn /usr/local/bin/yarn
+RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 
 RUN apk add --no-cache tzdata libpq-dev build-base
 
@@ -31,8 +29,8 @@ RUN bundle config --local without 'development test' \
 COPY . /app
 
 RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile \
-  && yarn cache clean \
-  && rm -rf node_modules tmp/cache/* /tmp/* yarn.lock log/production.log app/javascript/* app/assets/* storage/*
+  && npm cache clean --force \
+  && rm -rf node_modules tmp/cache/* /tmp/* package-lock.json log/production.log app/javascript/* app/assets/* storage/*
 
 
 FROM base
