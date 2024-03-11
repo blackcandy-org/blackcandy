@@ -1,1 +1,1 @@
-json.call(@song, :id, :name)
+json.partial! "api/v1/songs/song", song: @song
