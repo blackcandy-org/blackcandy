@@ -13,6 +13,7 @@ class Api::V1::FavoritePlaylist::SongsControllerTest < ActionDispatch::Integrati
 
     assert_response :success
     assert_equal 3, response["id"]
+    assert response["is_favorited"]
     assert_equal [3, 1, 2], @playlist.reload.song_ids
   end
 
@@ -22,6 +23,7 @@ class Api::V1::FavoritePlaylist::SongsControllerTest < ActionDispatch::Integrati
 
     assert_response :success
     assert_equal 1, response["id"]
+    assert_not response["is_favorited"]
     assert_equal [2], @playlist.reload.song_ids
 
     delete api_v1_favorite_playlist_song_url(id: 2), as: :json, headers: api_token_header(@user)
