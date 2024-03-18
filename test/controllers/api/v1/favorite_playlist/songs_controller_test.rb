@@ -31,6 +31,7 @@ class Api::V1::FavoritePlaylist::SongsControllerTest < ActionDispatch::Integrati
 
     assert_response :success
     assert_equal 2, response["id"]
+    assert_not response["is_favorited"]
     assert_equal [], @playlist.reload.song_ids
   end
 

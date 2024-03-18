@@ -17,10 +17,18 @@ class Api::V1::CurrentPlaylist::SongsControllerTest < ActionDispatch::Integratio
   end
 
   test "should remove songs from playlist" do
-    delete api_v1_current_playlist_song_url(id: 1), headers: api_token_header(@user)
+    delete api_v1_current_playlist_song_url(id: 1), as: :json, headers: api_token_header(@user)
+    response = @response.parsed_body
+
+    assert_response :success
+    assert_equal 1, response["id"]
     assert_equal [2, 3], @playlist.reload.song_ids
 
-    delete api_v1_current_playlist_song_url(id: 3), headers: api_token_header(@user)
+    delete api_v1_current_playlist_song_url(id: 3), as: :json, headers: api_token_header(@user)
+    response = @response.parsed_body
+
+    assert_response :success
+    assert_equal 3, response["id"]
     assert_equal [2], @playlist.reload.song_ids
   end
 
