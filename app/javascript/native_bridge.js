@@ -1,4 +1,4 @@
-import { isiOSApp } from './helper'
+import { isAndroidApp, isiOSApp } from './helper'
 
 class NativeBridge {
   playAll (resourceType, resourceId) {
@@ -48,6 +48,10 @@ class NativeBridge {
         name: 'updateTheme',
         theme
       })
+    }
+
+    if (isAndroidApp()) {
+      window.NativeBridge.updateTheme(theme)
     }
   }
 

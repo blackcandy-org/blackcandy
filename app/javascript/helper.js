@@ -37,8 +37,12 @@ function isiOSApp () {
   return !!(window.webkit && window.webkit.messageHandlers)
 }
 
+function isAndroidApp () {
+  return !!(window.NativeBridge)
+}
+
 function isNativeApp () {
-  return isiOSApp()
+  return isiOSApp() || isAndroidApp()
 }
 
 export {
@@ -47,5 +51,6 @@ export {
   fetchRequest,
   dispatchEvent,
   isiOSApp,
+  isAndroidApp,
   isNativeApp
 }
