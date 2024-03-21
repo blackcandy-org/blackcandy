@@ -9,6 +9,10 @@ class NativeBridge {
         resourceId: Number(resourceId)
       })
     }
+
+    if (isAndroidApp()) {
+      window.NativeBridge.playAll(resourceType, Number(resourceId))
+    }
   }
 
   playSong (songId) {
@@ -17,6 +21,10 @@ class NativeBridge {
         name: 'playSong',
         songId: Number(songId)
       })
+    }
+
+    if (isAndroidApp()) {
+      window.NativeBridge.playSong(Number(songId))
     }
   }
 
@@ -27,6 +35,10 @@ class NativeBridge {
         songId: Number(songId)
       })
     }
+
+    if (isAndroidApp()) {
+      window.NativeBridge.playNext(Number(songId))
+    }
   }
 
   playLast (songId) {
@@ -35,6 +47,10 @@ class NativeBridge {
         name: 'playLast',
         songId: Number(songId)
       })
+    }
+
+    if (isAndroidApp()) {
+      window.NativeBridge.playLast(Number(songId))
     }
   }
 
@@ -61,6 +77,10 @@ class NativeBridge {
         name: 'showFlashMessage',
         message
       })
+    }
+
+    if (isAndroidApp()) {
+      window.NativeBridge.showFlashMessage(message)
     }
   }
 }

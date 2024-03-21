@@ -7,6 +7,6 @@ export default class extends Controller {
   }
 
   connect () {
-    App.nativeBridge.showFlashMessage(this.element.textContent)
+    App.nativeBridge.showFlashMessage(this.element.textContent.trim())
   }
 }
