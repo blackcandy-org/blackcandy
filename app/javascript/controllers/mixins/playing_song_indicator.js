@@ -5,12 +5,19 @@ export const installPlayingSongIndicator = (controller, getSongElements = () => 
     })
   }
 
-  const addShowPlayingEventListener = () => {
-    document.addEventListener('playlistSongs:showPlaying', showPlayingSong)
+  const hidePlayingSong = () => {
+    const playingSongElement = getSongElements().find((element) => element.classList.contains('is-active'))
+    playingSongElement.classList.remove('is-active')
   }
 
-  const removeShowPlayingEventListener = () => {
+  const addPlayingSongIndicatorEventListener = () => {
+    document.addEventListener('playlistSongs:showPlaying', showPlayingSong)
+    document.addEventListener('playlistSongs:hidePlaying', hidePlayingSong)
+  }
+
+  const removePlayingSongIndicatorEventListener = () => {
     document.removeEventListener('playlistSongs:showPlaying', showPlayingSong)
+    document.removeEventListener('playlistSongs:hidePlaying', hidePlayingSong)
   }
 
   const controllerConnectCallback = controller.connect.bind(controller)
@@ -20,12 +27,12 @@ export const installPlayingSongIndicator = (controller, getSongElements = () => 
     connect () {
       controllerConnectCallback()
       showPlayingSong()
-      addShowPlayingEventListener()
+      addPlayingSongIndicatorEventListener()
     },
 
     disconnect () {
       controllerDisconnectCallback()
-      removeShowPlayingEventListener()
+      removePlayingSongIndicatorEventListener()
     }
   })
 }
