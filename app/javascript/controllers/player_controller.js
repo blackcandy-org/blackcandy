@@ -162,6 +162,7 @@ export default class extends Controller {
 
     if (!this.currentSong.id) {
       this.headerTarget.classList.remove('is-expanded')
+      dispatchEvent(document, 'playlistSongs:hidePlaying')
     }
   }
 

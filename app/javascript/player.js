@@ -1,4 +1,4 @@
-import { Howl } from 'howler'
+import { Howl, Howler } from 'howler'
 import { dispatchEvent } from './helper'
 import Playlist from './playlist'
 
@@ -48,12 +48,11 @@ class Player {
 
   stop () {
     this.isPlaying = false
-    this.currentSong.howl && this.currentSong.howl.stop()
 
-    if (!this.playlist.includes(this.currentSong.id)) {
-      // reset current song
-      this.currentSong = {}
-    }
+    Howler.stop()
+
+    // reset current song
+    this.currentSong = {}
   }
 
   next () {
@@ -65,7 +64,7 @@ class Player {
   }
 
   skipTo (index) {
-    this.stop()
+    this.currentSong.howl && this.currentSong.howl.stop()
 
     if (index >= this.playlist.length) {
       index = 0
