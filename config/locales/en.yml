@@ -22,7 +22,7 @@ en:
     create_playlist: 'Create Playlist'
     edit_playlist: 'Edit Playlist'
     no_items: 'No Items'
-    add_to_playlist: 'Add To Playlist'
+    add_to_playlist: 'Add to Playlist'
     update_profile: 'Update Profile'
     manage_users: 'Manage Users'
     create_user: 'Create User'
@@ -55,6 +55,7 @@ en:
     close: 'Close'
     no_search_results: "No search results for \"%{query}\""
     search_results_for: "Search results for \"%{query}\""
+    go_to_artist: 'Go to Artist'
 
   button:
     login: 'Login'
