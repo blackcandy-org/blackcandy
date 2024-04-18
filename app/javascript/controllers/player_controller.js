@@ -146,7 +146,7 @@ export default class extends Controller {
     window.requestAnimationFrame(this.#setProgress.bind(this))
     this.timerInterval = setInterval(this.#setTimer.bind(this), 1000)
 
-    // let playlist can show current palying song
+    // let playlist can show current playing song
     dispatchEvent(document, 'playlistSongs:showPlaying')
   }
 
