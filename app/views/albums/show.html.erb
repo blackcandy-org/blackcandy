@@ -59,7 +59,11 @@
                 <div>
                   <div data-test-id='album_song_name'><%= song.name %></div>
                   <% if @album.artist.various? %>
-                    <%= link_to song.artist.name, artist_path(song.artist), class: "c-list__item__subtext" %>
+                    <% if native_app? %>
+                      <span class='c-list__item__subtext'><%= song.artist.name %></span>
+                    <% else %>
+                      <%= link_to song.artist.name, artist_path(song.artist), class: "c-list__item__subtext" %>
+                    <% end %>
                   <% end %>
                 </div>
                 <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
@@ -71,6 +75,11 @@
                 <%= icon_tag "more-vertical", size: "small", title: t("label.more") %>
               </summary>
               <div class='c-dropdown__menu' data-dropdown-target="menu">
+                <%= link_to(
+                      t("label.go_to_artist"),
+                      artist_path(song.artist),
+                      class: "c-dropdown__item"
+                    ) %>
                 <%= link_to(
                       t("label.add_to_playlist"),
                       dialog_playlists_path(song_id: song.id, referer_url: current_url),

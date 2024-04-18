@@ -19,7 +19,11 @@
       <div class='o-flex o-flex--justify-between o-flex--align-center'>
         <div class='u-mr-narrow'>
           <span class='u-mb-tiny u-text-line-clamp-2' data-test-id='playlist_song_name'><%= song.name %></span>
-          <%= song.artist.name %>
+          <% if native_app? %>
+            <span class='c-list__item__subtext'><%= song.artist.name %></span>
+          <% else %>
+            <%= link_to song.artist.name, artist_path(song.artist), class: "c-list__item__subtext" %>
+          <% end %>
         </div>
         <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
       </div>
@@ -27,6 +31,11 @@
     <details class='c-dropdown' data-controller='dropdown' data-test-id='playlist_song_menu'>
       <summary class="c-button c-button--icon"><%= icon_tag "more-vertical", size: "small", title: t("label.more") %></summary>
       <div class='c-dropdown__menu' data-dropdown-target="menu">
+        <%= link_to(
+              t("label.go_to_artist"),
+              artist_path(song.artist),
+              class: "c-dropdown__item"
+            ) %>
         <%= link_to(
               t("label.add_to_playlist"),
               dialog_playlists_path(song_id: song.id, referer_url: current_url),

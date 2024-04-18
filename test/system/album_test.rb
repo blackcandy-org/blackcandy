@@ -71,7 +71,7 @@ class AlbumSystemTest < ApplicationSystemTestCase
 
     visit album_url(@album)
     first(:test_id, "album_song_menu").click
-    click_on "Add To Playlist"
+    click_on "Add to Playlist"
     find(:test_id, "dialog_playlist", text: playlist_name).click
 
     # assert the song added to the playlist
