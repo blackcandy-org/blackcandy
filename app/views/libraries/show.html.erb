@@ -8,7 +8,7 @@
           <%= icon_tag "album", class: "u-mr-tiny" %>
           <%= t("label.albums") %>
         </span>
-        <span class='c-badge'><%= @albums_count %></span>
+        <span class='c-badge'><%= format_number(@albums_count) %></span>
       <% end %>
     </li>
     <li class='c-list__item'>
@@ -17,7 +17,7 @@
           <%= icon_tag "mic", class: "u-mr-tiny" %>
           <%= t("label.artists") %>
         </span>
-        <span class='c-badge'><%= @artists_count %></span>
+        <span class='c-badge'><%= format_number(@artists_count) %></span>
       <% end %>
     </li>
     <li class='c-list__item'>
@@ -26,7 +26,7 @@
           <%= icon_tag "queue-music", class: "u-mr-tiny" %>
           <%= t("label.playlists") %>
         </span>
-        <span class='c-badge'><%= @playlists_count %></span>
+        <span class='c-badge'><%= format_number(@playlists_count) %></span>
       <% end %>
     </li>
     <li class='c-list__item'>
@@ -35,7 +35,7 @@
           <%= icon_tag "music-note", class: "u-mr-tiny" %>
           <%= t("label.songs") %>
         </span>
-        <span class='c-badge'><%= @songs_count %></span>
+        <span class='c-badge'><%= format_number(@songs_count) %></span>
       <% end %>
     </li>
   </ul>

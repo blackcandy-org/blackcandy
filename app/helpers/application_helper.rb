@@ -72,6 +72,10 @@ module ApplicationHelper
     (sec > 1.hour) ? time.strftime("%T") : time.strftime("%M:%S")
   end
 
+  def format_number(number)
+    number_to_human(number, units: {thousand: "K", million: "M", billion: "B"}, precision: 1, significant: false)
+  end
+
   def is_active?(controller: "", path: "")
     params[:controller].in?(Array(controller)) || (path.is_a?(Regexp) ? (path =~ request.path) : (path == request.path))
   end
