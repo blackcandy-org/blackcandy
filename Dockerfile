@@ -38,6 +38,8 @@ FROM base
 ENV LANG C.UTF-8
 ENV RAILS_ENV production
 
+LABEL service="blackcandy"
+
 RUN apk add --no-cache \
   tzdata \
   libpq \
