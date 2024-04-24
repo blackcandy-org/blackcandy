@@ -159,18 +159,26 @@ class MediaTest < ActiveSupport::TestCase
   end
 
   test "should remove records when selectively removed files" do
-    Media.sync(:removed, [file_fixture("artist1_album2.mp3"), file_fixture("artist1_album1.flac")])
+    create_tmp_dir(from: Setting.media_path) do |tmp_dir|
+      Media.sync_all(tmp_dir)
 
-    assert_nil Song.find_by(name: "mp3_sample")
-    assert_nil Song.find_by(name: "flac_sample")
-    assert_nil Album.find_by(name: "album2")
+      selected_files = [File.join(tmp_dir, "artist1_album2.mp3"), File.join(tmp_dir, "artist1_album1.flac")]
+      selected_files.each { |file_path| File.delete file_path }
+      Media.sync(:removed, selected_files)
 
-    Media.sync(:removed, [file_fixture("artist1_album1.m4a"), file_fixture("various_artists.mp3")])
+      assert_nil Song.find_by(name: "mp3_sample")
+      assert_nil Song.find_by(name: "flac_sample")
+      assert_nil Album.find_by(name: "album2")
 
-    assert_nil Song.find_by(name: "various_artists_sample")
-    assert_nil Song.find_by(name: "m4a_sample")
-    assert_nil Album.find_by(name: "album1")
-    assert_nil Artist.find_by(name: "artist1")
+      selected_files = [File.join(tmp_dir, "artist1_album1.m4a"), File.join(tmp_dir, "various_artists.mp3")]
+      selected_files.each { |file_path| File.delete file_path }
+      Media.sync(:removed, selected_files)
+
+      assert_nil Song.find_by(name: "various_artists_sample")
+      assert_nil Song.find_by(name: "m4a_sample")
+      assert_nil Album.find_by(name: "album1")
+      assert_nil Artist.find_by(name: "artist1")
+    end
   end
 
   test "should change associations when selectively modified album info on file" do
