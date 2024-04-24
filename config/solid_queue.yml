@@ -5,7 +5,8 @@ default: &default
       concurrency_maintenance_interval: 30
   workers:
     - queues: [critical, high, default, low]
-      threads: 5
+      # 2 more threads are used by worker and heartbeat task in solid queue
+      threads: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } - 2 %>
       processes: 1
       polling_interval: 0.1
 
