@@ -5,12 +5,13 @@
     <% end %>
 
     <%= button_to(
-          current_playlist_songs_path(song_id: song.id, should_play: true),
+          current_playlist_playlist_path(playlist, should_play: true, song_id: song.id),
+          method: :put,
           class: "c-button c-button--link u-w-100",
           form_class: "o-flex__item--grow-1",
           form: {
             data: {
-              "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlay click->playlist-songs-bridge#playSong",
+              "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlay click->playlist-songs-bridge#playResourceBeginWith",
               "turbo-frame" => "turbo-playlist",
               "disabled-on-native" => "true"
             }
@@ -31,16 +32,17 @@
     <details class='c-dropdown' data-controller='dropdown' data-test-id='playlist_song_menu'>
       <summary class="c-button c-button--icon"><%= icon_tag "more-vertical", size: "small", title: t("label.more") %></summary>
       <div class='c-dropdown__menu' data-dropdown-target="menu">
-        <%= link_to(
-              t("label.go_to_artist"),
-              artist_path(song.artist),
-              class: "c-dropdown__item"
-            ) %>
-        <%= link_to(
-              t("label.add_to_playlist"),
-              dialog_playlists_path(song_id: song.id, referer_url: current_url),
-              data: {"turbo-frame" => ("turbo-dialog" unless native_app?)},
-              class: "c-dropdown__item"
+        <%= button_to(
+              t("button.play_now"),
+              current_playlist_songs_path(song_id: song.id, should_play: true),
+              form_class: "c-dropdown__item",
+              form: {
+                data: {
+                  "turbo-frame" => "turbo-playlist",
+                  "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlay click->playlist-songs-bridge#playNow",
+                  "disabled-on-native" => "true"
+                }
+              }
             ) %>
         <%= button_to(
               t("button.play_next"),
@@ -71,6 +73,17 @@
               playlist_song_path(playlist, song),
               method: :delete,
               form_class: "c-dropdown__item"
+            ) %>
+        <%= link_to(
+              t("label.add_to_playlist"),
+              dialog_playlists_path(song_id: song.id, referer_url: current_url),
+              data: {"turbo-frame" => ("turbo-dialog" unless native_app?)},
+              class: "c-dropdown__item"
+            ) %>
+        <%= link_to(
+              t("label.go_to_artist"),
+              artist_path(song.artist),
+              class: "c-dropdown__item"
             ) %>
       </div>
     </details>

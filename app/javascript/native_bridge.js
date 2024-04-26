@@ -1,30 +1,45 @@
 import { isAndroidApp, isiOSApp } from './helper'
 
 class NativeBridge {
-  playAll (resourceType, resourceId) {
+  playResource (resourceType, resourceId) {
     if (isiOSApp()) {
       window.webkit.messageHandlers.nativeApp.postMessage({
-        name: 'playAll',
+        name: 'playResource',
         resourceType,
         resourceId: Number(resourceId)
       })
     }
 
     if (isAndroidApp()) {
-      window.NativeBridge.playAll(resourceType, Number(resourceId))
+      window.NativeBridge.playResource(resourceType, Number(resourceId))
     }
   }
 
-  playSong (songId) {
+  playResourceBeginWith (resourceType, resourceId, songId) {
     if (isiOSApp()) {
       window.webkit.messageHandlers.nativeApp.postMessage({
-        name: 'playSong',
+        name: 'playResourceBeginWith',
+        resourceType,
+        resourceId: Number(resourceId),
         songId: Number(songId)
       })
     }
 
     if (isAndroidApp()) {
-      window.NativeBridge.playSong(Number(songId))
+      window.NativeBridge.playResourceBeginWith(resourceType, Number(resourceId), Number(songId))
+    }
+  }
+
+  playNow (songId) {
+    if (isiOSApp()) {
+      window.webkit.messageHandlers.nativeApp.postMessage({
+        name: 'playNow',
+        songId: Number(songId)
+      })
+    }
+
+    if (isAndroidApp()) {
+      window.NativeBridge.playNow(Number(songId))
     }
   }
 

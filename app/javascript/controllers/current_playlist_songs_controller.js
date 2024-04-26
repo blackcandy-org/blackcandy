@@ -6,7 +6,7 @@ export default class extends Controller {
   static targets = ['item']
 
   static values = {
-    shouldPlayAll: Boolean
+    shouldPlay: Boolean
   }
 
   initialize () {
@@ -16,21 +16,24 @@ export default class extends Controller {
 
   itemTargetConnected (target) {
     const song = JSON.parse(target.dataset.songJson)
-    const shouldPlay = target.dataset.shouldPlay === 'true'
+    const songShouldPlay = target.dataset.shouldPlay === 'true'
     const targetIndex = this.itemTargets.indexOf(target)
 
     this.playlist.insert(targetIndex, song)
 
-    if (shouldPlay) {
+    if (songShouldPlay) {
       this.player.skipTo(targetIndex)
+
       delete target.dataset.shouldPlay
+      this.shouldPlayValue = false
     }
   }
 
   connect () {
-    if (this.shouldPlayAllValue) {
+    if (this.shouldPlayValue) {
+      // If no particular song is set to play, play the first song
       this.player.skipTo(0)
-      this.shouldPlayAllValue = false
+      this.shouldPlayValue = false
     }
 
     this.handleEvent('click', {

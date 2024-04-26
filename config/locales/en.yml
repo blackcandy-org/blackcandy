@@ -60,12 +60,13 @@ en:
   button:
     login: 'Login'
     logout: 'Logout'
-    play_all: 'Play All'
+    play: 'Play'
     clear: 'Clear'
     delete: 'Delete'
     save: 'Save'
     sync: 'Sync'
     syncing: 'Syncing...'
+    play_now: 'Play Now'
     play_next: 'Play Next'
     play_last: 'Play Last'
 

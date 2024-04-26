@@ -23,7 +23,7 @@ class AlbumSystemTest < ApplicationSystemTestCase
     login_as users(:visitor1)
 
     visit album_url(@album)
-    click_on "Play All"
+    click_on "Play"
 
     # assert current playlist have all songs in album
     @album.songs.each do |song|

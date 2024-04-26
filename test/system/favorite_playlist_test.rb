@@ -19,7 +19,7 @@ class FavoritePlaylistSystemTest < ApplicationSystemTestCase
   end
 
   test "play all songs in playlist" do
-    click_on "Play All"
+    click_on "Play"
 
     # assert current playlist have all songs in playlist
     assert_selector(:test_id, "current_playlist", visible: true)
