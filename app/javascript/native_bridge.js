@@ -1,30 +1,70 @@
 import { isAndroidApp, isiOSApp } from './helper'
 
 class NativeBridge {
-  playAll (resourceType, resourceId) {
+  playAlbum (albumId) {
     if (isiOSApp()) {
       window.webkit.messageHandlers.nativeApp.postMessage({
-        name: 'playAll',
-        resourceType,
-        resourceId: Number(resourceId)
+        name: 'playAlbum',
+        albumId: Number(albumId)
       })
     }
 
     if (isAndroidApp()) {
-      window.NativeBridge.playAll(resourceType, Number(resourceId))
+      window.NativeBridge.playAlbum(Number(albumId))
     }
   }
 
-  playSong (songId) {
+  playAlbumBeginWith (albumId, songId) {
     if (isiOSApp()) {
       window.webkit.messageHandlers.nativeApp.postMessage({
-        name: 'playSong',
+        name: 'playAlbumBeginWith',
+        albumId: Number(albumId),
         songId: Number(songId)
       })
     }
 
     if (isAndroidApp()) {
-      window.NativeBridge.playSong(Number(songId))
+      window.NativeBridge.playAlbumBeginWith(Number(albumId), Number(songId))
+    }
+  }
+
+  playPlaylist (playlistId) {
+    if (isiOSApp()) {
+      window.webkit.messageHandlers.nativeApp.postMessage({
+        name: 'playPlaylist',
+        playlistId: Number(playlistId)
+      })
+    }
+
+    if (isAndroidApp()) {
+      window.NativeBridge.playPlaylist(Number(playlistId))
+    }
+  }
+
+  playPlaylistBeginWith (playlistId, songId) {
+    if (isiOSApp()) {
+      window.webkit.messageHandlers.nativeApp.postMessage({
+        name: 'playPlaylistBeginWith',
+        playlistId: Number(playlistId),
+        songId: Number(songId)
+      })
+    }
+
+    if (isAndroidApp()) {
+      window.NativeBridge.playPlaylistBeginWith(Number(playlistId), Number(songId))
+    }
+  }
+
+  playNow (songId) {
+    if (isiOSApp()) {
+      window.webkit.messageHandlers.nativeApp.postMessage({
+        name: 'playNow',
+        songId: Number(songId)
+      })
+    }
+
+    if (isAndroidApp()) {
+      window.NativeBridge.playNow(Number(songId))
     }
   }
 

@@ -1,7 +1,7 @@
 <div
   data-test-id='current_playlist'
   data-controller='current-playlist-songs'
-  data-current-playlist-songs-should-play-all-value='<%= params[:should_play_all] || false %>'>
+  data-current-playlist-songs-should-play-value='<%= @should_play %>'>
   <% if @songs.empty? %>
     <%= empty_alert_tag %>
   <% else %>
@@ -17,6 +17,10 @@
         </div>
       </details>
     </div>
-    <%= render partial: "current_playlist/songs/list", locals: {playlist: @playlist, songs: @songs} %>
+    <ul class="c-list u-my-tiny" data-controller="playlist-sortable" data-playlist-id='<%= @playlist.id %>'>
+      <% @songs.each do |song| %>
+        <%= render partial: "current_playlist/songs/song", locals: {song: song, playlist: @playlist, should_play: @should_play_song_id == song.id} %>
+      <% end %>
+    </ul>
   <% end %>
 </div>

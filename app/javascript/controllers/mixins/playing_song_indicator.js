@@ -11,13 +11,13 @@ export const installPlayingSongIndicator = (controller, getSongElements = () => 
   }
 
   const addPlayingSongIndicatorEventListener = () => {
-    document.addEventListener('playlistSongs:showPlaying', showPlayingSong)
-    document.addEventListener('playlistSongs:hidePlaying', hidePlayingSong)
+    document.addEventListener('songs:showPlaying', showPlayingSong)
+    document.addEventListener('songs:hidePlaying', hidePlayingSong)
   }
 
   const removePlayingSongIndicatorEventListener = () => {
-    document.removeEventListener('playlistSongs:showPlaying', showPlayingSong)
-    document.removeEventListener('playlistSongs:hidePlaying', hidePlayingSong)
+    document.removeEventListener('songs:showPlaying', showPlayingSong)
+    document.removeEventListener('songs:hidePlaying', hidePlayingSong)
   }
 
   const controllerConnectCallback = controller.connect.bind(controller)

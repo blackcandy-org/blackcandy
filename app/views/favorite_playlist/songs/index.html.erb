@@ -1,5 +1,5 @@
 <div class='o-container o-container--narrow' data-test-id='favorite_playlist'>
-  <div data-controller='playlist-songs playlist-songs-bridge'>
+  <div data-controller='songs songs-bridge playlist-bridge' data-playlist-bridge-id-value='<%= @playlist.id %>'>
     <div class="c-card c-card--horizontal u-my-large">
       <div class='c-card__body'>
         <h1 class='c-card__body__title' data-test-id='playlist_name'><%= @playlist.name %></h1>
@@ -12,8 +12,8 @@
         <div class='u-mt-large'>
           <% unless @songs.blank? %>
             <%= button_to(
-                  t("button.play_all"),
-                  current_playlist_playlist_path(@playlist),
+                  t("button.play"),
+                  current_playlist_playlist_path(@playlist, should_play: true),
                   method: :put,
                   class: "c-button c-button--primary",
                   form_class: "u-display-inline-block",
@@ -21,9 +21,7 @@
                     data: {
                       "disabled-on-native" => "true",
                       "turbo-frame" => "turbo-playlist",
-                      "action" => "playlist-songs-bridge#playAll",
-                      "playlist-songs-bridge-resource-type-param" => "playlist",
-                      "playlist-songs-bridge-resource-id-param" => @playlist.id
+                      "action" => "playlist-bridge#play"
                     }
                   }
                 ) %>

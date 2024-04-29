@@ -1,12 +1,12 @@
 <div role='row' data-song-id='<%= song.id %>'>
-  <div role='cell' data-playlist-songs-target='item'>
+  <div role='cell' data-songs-target='item'>
     <%= button_to(
           current_playlist_songs_path(song_id: song.id, should_play: true),
           class: "c-button c-button--link",
           data: {"test-id" => "song_item"},
           form: {
             data: {
-              "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlay click->playlist-songs-bridge#playSong",
+              "delegated-action" => "turbo:submit-start-songs#checkBeforePlay click->songs-bridge#playNow",
               "turbo-frame" => "turbo-playlist",
               "disabled-on-native" => "true"
             }
@@ -41,7 +41,7 @@
               form: {
                 data: {
                   "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlayNext click->playlist-songs-bridge#playNext",
+                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext click->songs-bridge#playNext",
                   "disabled-on-native" => "true"
                 }
               }
@@ -53,7 +53,7 @@
               form: {
                 data: {
                   "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "click->playlist-songs-bridge#playLast",
+                  "delegated-action" => "click->songs-bridge#playLast",
                   "disabled-on-native" => "true"
                 }
               }

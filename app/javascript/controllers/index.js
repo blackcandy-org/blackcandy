@@ -18,7 +18,7 @@ import MiniPlayerController from './mini_player_controller.js'
 
 import PlayerController from './player_controller.js'
 
-import PlaylistSongsController from './playlist_songs_controller.js'
+import SongsController from './songs_controller.js'
 
 import CurrentPlaylistSongsController from './current_playlist_songs_controller.js'
 
@@ -26,7 +26,11 @@ import PlaylistSortableController from './playlist_sortable_controller.js'
 
 import SearchController from './search_controller.js'
 
-import PlaylistSongsBridgeController from './playlist_songs_bridge_controller.js'
+import SongsBridgeController from './songs_bridge_controller.js'
+
+import AlbumBridgeController from './album_bridge_controller.js'
+
+import PlaylistBridgeController from './playlist_bridge_controller.js'
 
 import FlashBridgeController from './flash_bridge_controller.js'
 
@@ -52,7 +56,7 @@ application.register('mini-player', MiniPlayerController)
 
 application.register('player', PlayerController)
 
-application.register('playlist-songs', PlaylistSongsController)
+application.register('songs', SongsController)
 
 application.register('current-playlist-songs', CurrentPlaylistSongsController)
 
@@ -60,7 +64,11 @@ application.register('playlist-sortable', PlaylistSortableController)
 
 application.register('search', SearchController)
 
-application.register('playlist-songs-bridge', PlaylistSongsBridgeController)
+application.register('songs-bridge', SongsBridgeController)
+
+application.register('album-bridge', AlbumBridgeController)
+
+application.register('playlist-bridge', PlaylistBridgeController)
 
 application.register('flash-bridge', FlashBridgeController)
 

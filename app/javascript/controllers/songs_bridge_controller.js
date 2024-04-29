@@ -14,7 +14,7 @@ export default class extends Controller {
   connect () {
     this.handleEvent('click', {
       on: this.element,
-      with: this.playSong,
+      with: this.playNow,
       delegation: true
     })
 
@@ -31,13 +31,9 @@ export default class extends Controller {
     })
   }
 
-  playAll ({ params }) {
-    App.nativeBridge.playAll(params.resourceType, params.resourceId)
-  }
-
-  playSong (event) {
+  playNow (event) {
     const { songId } = event.target.closest('[data-song-id]').dataset
-    App.nativeBridge.playSong(songId)
+    App.nativeBridge.playNow(songId)
   }
 
   playNext (event) {

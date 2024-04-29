@@ -11,9 +11,9 @@ class CurrentPlaylist::Songs::PlaylistsControllerTest < ActionDispatch::Integrat
   test "should replace all songs with playlist songs" do
     playlist = @user.playlists.create(name: "test", song_ids: [1, 2, 3])
 
-    put current_playlist_playlist_url(playlist)
+    put current_playlist_playlist_url(playlist, should_play: true)
 
-    assert_redirected_to current_playlist_songs_url(should_play_all: true)
+    assert_redirected_to current_playlist_songs_url(should_play: true)
     assert_equal playlist.song_ids, @current_playlist.song_ids
   end
 
