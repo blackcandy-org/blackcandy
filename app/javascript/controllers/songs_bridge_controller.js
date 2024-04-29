@@ -7,22 +7,11 @@ export default class extends Controller {
     return isNativeApp()
   }
 
-  static values = {
-    resourceType: String,
-    resourceId: Number
-  }
-
   initialize () {
     installEventHandler(this)
   }
 
   connect () {
-    this.handleEvent('click', {
-      on: this.element,
-      with: this.playResourceBeginWith,
-      delegation: true
-    })
-
     this.handleEvent('click', {
       on: this.element,
       with: this.playNow,
@@ -40,15 +29,6 @@ export default class extends Controller {
       with: this.playLast,
       delegation: true
     })
-  }
-
-  playResource () {
-    App.nativeBridge.playResource(this.resourceTypeValue, this.resourceIdValue)
-  }
-
-  playResourceBeginWith = (event) => {
-    const { songId } = event.target.closest('[data-song-id]').dataset
-    App.nativeBridge.playResourceBeginWith(this.resourceTypeValue, this.resourceIdValue, songId)
   }
 
   playNow (event) {

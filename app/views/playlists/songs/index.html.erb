@@ -1,7 +1,7 @@
 <% page_title_tag @playlist.name %>
 
 <div class='o-container o-container--narrow'>
-  <div data-controller='playlist-songs playlist-songs-bridge' data-playlist-songs-bridge-resource-type-value='playlist' data-playlist-songs-bridge-resource-id-value='<%= @playlist.id %>'>
+  <div data-controller='songs songs-bridge playlist-bridge' data-playlist-bridge-id-value='<%= @playlist.id %>'>
     <div class="c-card c-card--horizontal u-my-large">
       <div class='c-card__body'>
         <h1 class='c-card__body__title' data-test-id='playlist_name'><%= @playlist.name %></h1>
@@ -23,7 +23,7 @@
                     data: {
                       "disabled-on-native" => "true",
                       "turbo-frame" => "turbo-playlist",
-                      "action" => "playlist-songs-bridge#playResource"
+                      "action" => "playlist-bridge#play"
                     }
                   }
                 ) %>

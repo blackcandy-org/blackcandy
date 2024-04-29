@@ -147,7 +147,7 @@ export default class extends Controller {
     this.timerInterval = setInterval(this.#setTimer.bind(this), 1000)
 
     // let playlist can show current playing song
-    dispatchEvent(document, 'playlistSongs:showPlaying')
+    dispatchEvent(document, 'songs:showPlaying')
   }
 
   #setPauseStatus = () => {
@@ -162,7 +162,7 @@ export default class extends Controller {
 
     if (!this.currentSong.id) {
       this.headerTarget.classList.remove('is-expanded')
-      dispatchEvent(document, 'playlistSongs:hidePlaying')
+      dispatchEvent(document, 'songs:hidePlaying')
     }
   }
 

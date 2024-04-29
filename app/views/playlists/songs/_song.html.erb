@@ -1,4 +1,4 @@
-<li id='<%= "#{dom_id(playlist)}_#{dom_id(song)}" %>' class='c-list__item u-p-0' data-playlist-songs-target='item' data-song-id='<%= song.id %>' data-test-id='playlist_song' draggable='true'>
+<li id='<%= "#{dom_id(playlist)}_#{dom_id(song)}" %>' class='c-list__item u-p-0' data-songs-target='item' data-song-id='<%= song.id %>' data-test-id='playlist_song' draggable='true'>
   <div class='o-flex o-flex--align-center u-py-narrow'>
     <% unless mobile? %>
       <button class='c-button c-button--icon js-playlist-sortable-item-handle u-mr-narrow' data-test-id='playlist_song_sortable_handle'><%= icon_tag "drag-indicator", size: "small" %></button>
@@ -11,7 +11,7 @@
           form_class: "o-flex__item--grow-1",
           form: {
             data: {
-              "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlay click->playlist-songs-bridge#playResourceBeginWith",
+              "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->playlist-bridge#playBeginWith",
               "turbo-frame" => "turbo-playlist",
               "disabled-on-native" => "true"
             }
@@ -39,7 +39,7 @@
               form: {
                 data: {
                   "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlay click->playlist-songs-bridge#playNow",
+                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->songs-bridge#playNow",
                   "disabled-on-native" => "true"
                 }
               }
@@ -51,7 +51,7 @@
               form: {
                 data: {
                   "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "turbo:submit-start->playlist-songs#checkBeforePlayNext click->playlist-songs-bridge#playNext",
+                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext click->songs-bridge#playNext",
                   "disabled-on-native" => "true"
                 }
               }
@@ -63,7 +63,7 @@
               form: {
                 data: {
                   "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "click->playlist-songs-bridge#playLast",
+                  "delegated-action" => "click->songs-bridge#playLast",
                   "disabled-on-native" => "true"
                 }
               }
