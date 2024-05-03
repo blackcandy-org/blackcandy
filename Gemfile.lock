@@ -58,6 +58,9 @@ GEM
       activemodel (= 7.1.1)
       activesupport (= 7.1.1)
       timeout (>= 0.4.0)
+    activerecord-enhancedsqlite3-adapter (0.7.0)
+      activerecord (>= 7.1)
+      sqlite3 (>= 1.6)
     activestorage (7.1.1)
       actionpack (= 7.1.1)
       activejob (= 7.1.1)
@@ -336,7 +339,7 @@ GEM
       railties (>= 7)
     solid_queue (0.2.1)
       rails (~> 7.1)
-    sqlite3 (1.7.0)
+    sqlite3 (1.7.3)
       mini_portile2 (~> 2.8.0)
     sshkit (1.22.1)
       base64
@@ -389,6 +392,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-enhancedsqlite3-adapter (~> 0.7.0)
   acts_as_list (~> 1.1.0)
   bcrypt (~> 3.1.11)
   bootsnap (~> 1.17.0)

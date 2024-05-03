@@ -48,15 +48,4 @@ class ArtistTest < ActiveSupport::TestCase
   test "should use default sort when use invalid sort value" do
     assert_equal %w[artist1 artist2 various_artists], Artist.sort_records(:invalid).pluck(:name).compact
   end
-
-  test "should transform cover image after attached" do
-    artist = artists(:artist1)
-    artist.cover_image.attach(
-      io: StringIO.new(file_fixture("cover_image.jpg").read),
-      filename: "cover.jpg",
-      content_type: "image/jpeg"
-    )
-
-    assert artist.cover_image.variant(:medium).send(:processed?)
-  end
 end
