@@ -6,13 +6,11 @@ module ImageableConcern
   included do
     has_one_attached :cover_image do |attachable|
       attachable.variant :small, resize_to_fill: [200, 200]
-      attachable.variant :medium, resize_to_fill: [400, 400]
+      attachable.variant :medium, resize_to_fill: [400, 400], preprocessed: true
       attachable.variant :large, resize_to_fill: [600, 600]
     end
 
     validate :content_type_of_cover_image
-
-    after_commit :transform_cover_image, if: :has_cover_image?
   end
 
   def has_cover_image?
@@ -27,9 +25,5 @@ module ImageableConcern
     unless cover_image.content_type.in?(ALLOWED_IMAGE_CONTENT_TYPES)
       errors.add(:cover_image, :invalid_content_type)
     end
-  end
-
-  def transform_cover_image
-    cover_image.variant(:medium).processed
   end
 end

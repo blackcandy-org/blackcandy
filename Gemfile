@@ -25,13 +25,16 @@ gem "puma", "~> 6.4.0"
 # Default database
 gem "sqlite3", "~> 1.7.0"
 
+# Enhanced SQLite3 adapter
+gem "activerecord-enhancedsqlite3-adapter", "~> 0.7.0"
+
 # Cache store
 gem "solid_cache", "~> 0.4.2"
 
 # Background job processing
 gem "solid_queue", "~> 0.2.1"
 
-# Default stack for cache and pub/sub
+# Default stack for pub/sub
 gem "litestack", "~> 0.4.2"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

@@ -83,15 +83,4 @@ class AlbumTest < ActiveSupport::TestCase
   test "should use default sort when use invalid sort value" do
     assert_equal %w[album1 album2 album3 album4], Album.sort_records(:invalid).pluck(:name)
   end
-
-  test "should transform cover image after attached" do
-    album = albums(:album1)
-    album.cover_image.attach(
-      io: StringIO.new(file_fixture("cover_image.jpg").read),
-      filename: "cover.jpg",
-      content_type: "image/jpeg"
-    )
-
-    assert album.cover_image.variant(:medium).send(:processed?)
-  end
 end
