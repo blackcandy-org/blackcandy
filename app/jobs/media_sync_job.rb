@@ -1,9 +1,10 @@
 class MediaSyncJob < ApplicationJob
   queue_as :critical
 
-  def perform(type = :all, file_paths = [])
-    return if Media.syncing?
+  # Limits the concurrency to 1 to prevent inconsistent media syncing data.
+  limits_concurrency to: 1, key: :media_sync
 
+  def perform(type = :all, file_paths = [])
     if type == :all
       Media.sync_all
     else

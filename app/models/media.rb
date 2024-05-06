@@ -72,7 +72,7 @@ class Media
       various_artist = Artist.find_or_create_by!(various: true) if various_artist?(file_info)
 
       album = Album.find_or_initialize_by(
-        artist: various_artist || artist,
+        artist_id: various_artist&.id || artist.id,
         name: file_info[:album_name] || Album::UNKNOWN_NAME
       )
 
@@ -83,7 +83,7 @@ class Media
       end
 
       song = Song.find_or_initialize_by(md5_hash: file_info[:md5_hash])
-      song.update!(song_info(file_info).merge(album: album, artist: artist))
+      song.update!(song_info(file_info).merge(album_id: album.id, artist_id: artist.id))
     end
 
     def song_info(file_info)
