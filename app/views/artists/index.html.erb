@@ -6,7 +6,7 @@
       <h1 class='u-my-narrow u-mr-small'><%= t("label.artists") %></h1>
     <% end %>
     <div class='<%= "u-ml-auto" if native_app? %>'>
-      <%= render partial: "shared/sort_select", locals: {option: @sort_option} %>
+      <%= render partial: "shared/sort_select", locals: {option: @sort_option, sort_controller: controller_name, filter_sort_presenter: FilterSortPresenter.new(params)} %>
     </div>
   </div>
   <% if @artists.empty? %>

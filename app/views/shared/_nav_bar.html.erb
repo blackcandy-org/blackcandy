@@ -1,9 +1,9 @@
 <nav class='u-mt-medium'>
   <ul class='c-tab'>
-    <li class='c-tab__item <%= "is-active" if is_active?(controller: "home") %>'>
+    <li class='c-tab__item <%= "is-active" if current_controller == "home" %>'>
       <%= link_to t("label.home"), root_path %>
     </li>
-    <li class='c-tab__item <%= "is-active" if is_active?(controller: "libraries") %>'>
+    <li class='c-tab__item <%= "is-active" if current_controller == "libraries" %>'>
       <%= link_to t("label.library"), library_path %>
     </li>
   </ul>

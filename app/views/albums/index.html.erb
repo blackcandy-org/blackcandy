@@ -1,13 +1,15 @@
 <% page_title_tag t("label.albums") %>
 
+<% filter_sort_presenter = FilterSortPresenter.new(params) %>
+
 <div class='o-container o-container--large'>
   <div class='o-flex o-flex--align-center o-flex--justify-between o-flex--wrap u-mb-large'>
     <% unless native_app? %>
       <h1 class='u-my-narrow u-mr-small'><%= t("label.albums") %></h1>
     <% end %>
     <div class='o-flex o-flex--align-center <%= "u-ml-auto" if native_app? %>'>
-      <%= render partial: "albums/filters" %>
-      <%= render partial: "shared/sort_select", locals: {option: @sort_option} %>
+      <%= render partial: "albums/filters", locals: {filter_sort_presenter: filter_sort_presenter} %>
+      <%= render partial: "shared/sort_select", locals: {option: @sort_option, sort_controller: controller_name, filter_sort_presenter: filter_sort_presenter} %>
     </div>
   </div>
   <% if @albums.empty? %>

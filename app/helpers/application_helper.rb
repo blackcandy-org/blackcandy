@@ -76,10 +76,6 @@ module ApplicationHelper
     number_to_human(number, units: {thousand: "K", million: "M", billion: "B"}, precision: 1, significant: false)
   end
 
-  def is_active?(controller: "", path: "")
-    params[:controller].in?(Array(controller)) || (path.is_a?(Regexp) ? (path =~ request.path) : (path == request.path))
-  end
-
   def page_title_tag(title)
     title_suffix = " - #{t(:app_name)}"
     title = "#{title}#{title_suffix unless native_app? || dialog?}"
@@ -89,13 +85,5 @@ module ApplicationHelper
 
   def current_url
     url_for(only_path: false)
-  end
-
-  def filter_sort_params(args = {})
-    filter_params = params[:filter].presence || {}
-    filter_params = filter_params.merge(args.delete(:filter) || {})
-    new_params = params.merge(args).merge(filter: filter_params)
-
-    new_params.slice(:filter, :sort, :sort_direction).permit!
   end
 end
