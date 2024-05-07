@@ -6,7 +6,7 @@
         <%= icon_tag "search", size: "large" %>
       </div>
 
-      <%= text_field_tag "query", params[:query], class: "c-input", data: {"search-target" => "input", "test-id" => "search_input"}, autocomplete: "on" %>
+      <%= text_field_tag "query", query, class: "c-input", data: {"search-target" => "input", "test-id" => "search_input"}, autocomplete: "on" %>
 
       <div class='c-input-group__icon'>
         <%= loader_tag size: "small" %>
@@ -15,12 +15,12 @@
 
   <div class='o-flex o-flex--align-center o-flex__item o-flex__item--grow-1 o-flex__item--basic-0'>
     <details class='c-dropdown u-ml-auto' data-controller='dropdown' data-test-id='search_bar_menu'>
-      <summary><%= avatar_tag Current.user %></summary>
+      <summary><%= avatar_tag current_user %></summary>
       <div class='c-dropdown__menu' data-dropdown-target="menu">
         <%= link_to t("label.settings"), setting_path, class: "c-dropdown__item" %>
         <%= link_to t("label.manage_users"), users_path, class: "c-dropdown__item" if is_admin? %>
-        <%= link_to t("label.update_profile"), edit_user_path(Current.user), class: "c-dropdown__item" %>
-        <%= button_to t("button.logout"), Current.session, method: :delete, form_class: "c-dropdown__item" %>
+        <%= link_to t("label.update_profile"), edit_user_path(current_user), class: "c-dropdown__item" %>
+        <%= button_to t("button.logout"), current_session, method: :delete, form_class: "c-dropdown__item" %>
       </div>
     </details>
   </div>

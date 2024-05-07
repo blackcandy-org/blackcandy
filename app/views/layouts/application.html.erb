@@ -27,8 +27,8 @@
         <div>
           <header class='c-nav c-nav--primary u-position-sticky-top'>
             <%= render "shared/flash" %>
-            <%= render "shared/search_bar" %>
-            <%= render "shared/nav_bar" %>
+            <%= render partial: "shared/search_bar", locals: {current_user: Current.user, current_session: Current.session, query: params[:query]} %>
+            <%= render partial: "shared/nav_bar", locals: {current_controller: controller_name} %>
           </header>
           <main class='o-container--wide u-m-auto u-p-large u-p-small@small u-p-narrow@extra-narrow'>
             <%= yield %>
