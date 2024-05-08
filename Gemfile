@@ -50,7 +50,7 @@ gem "pagy", "~> 6.0.0"
 gem "image_processing", "~> 1.12"
 
 # For API request
-gem "httparty", "~> 0.21.0"
+gem "httparty", "~> 0.22.0"
 
 # For browser detection
 gem "browser", "~> 5.3.1"
@@ -96,7 +96,7 @@ group :development do
 end
 
 group :test do
-  gem "capybara", "~> 3.39.0"
+  gem "capybara", "~> 3.40.0"
   gem "cuprite", "~> 0.14.3"
   gem "webmock", "~> 3.18.0", require: false
   gem "simplecov", "~> 0.22.0", require: false
