@@ -17,6 +17,7 @@
 /.direnv
 /.gems
 /.pg_data
+/docs
 
 yarn-error.log
 Dockerfile
