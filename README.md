@@ -19,7 +19,7 @@ Black Candy is a self hosted music streaming server built with [Rails](https://r
 
 Please visit <https://demo.blackcandy.org> and use demo user (email: admin@admin.com, password: foobar) to login. And feel free to try it.
 
-> **Notice:** This demo user does not have administrator privileges. So you cannot experience all the features in Black Candy. And all music in the demo is under non-commercial licences. You can check their [licences](https://github.com/blackcandy-org/black_candy#licences-of-the-music-in-demo).
+> **Notice:** This demo user does not have administrator privileges. So you cannot experience all the features in Black Candy. And all music in the demo are from  [Free Music Archive](https://freemusicarchive.org/). You can check their [licenses](https://github.com/blackcandy-org/blackcandy/blob/master/docs/demo_music_licenses.md).
 
 ## Installation
 > ⚠️  **Notice:** This installation instruction is for edge version, which means the docker image is build base on master branch. Because upcoming major version of Black Candy is going to have a lot of infrastructure changes. So the installation process will have a lot of difference.
@@ -182,19 +182,6 @@ $ rails lint:all
 ## Integrations
 
 Black Candy support get artist and album image from Discogs API. You can create a API token from Discogs and set Discogs token on Setting page to enable it.
-
-## Licences Of The Music In Demo 
-
-- Kurt Vile - Live at WFMU on Talk's Cheap 8/11/2008 (licensed under [Attribution-NonCommercial-ShareAlike 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/))
-
-- Wooden Shjips - Live at ATP NY 2008 (licensed under [Attribution-Noncommercial-No Derivative Works 3.0 United States](http://creativecommons.org/licenses/by-nc-nd/3.0/us/))
-
-- Ty Segall - Live at WFMU on The Cherry Blossom Clinic with Terre T June 25, 2011 (licensed under [Attribution-Noncommercial-No Derivative Works 3.0 United States](http://creativecommons.org/licenses/by-nc-nd/3.0/us/))
-
-- Thee Oh Sees - Peanut Butter Oven EP (licensed under [Attribution-Noncommercial-Share Alike 3.0 United States](http://creativecommons.org/licenses/by-nc-sa/3.0/us/))
-
-If you like their music, you can buy their albums to support them.
-
 
 ## Sponsorship 
 
