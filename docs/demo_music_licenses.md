@@ -1,6 +1,6 @@
 # Licenses Of The Music In Demo
 
-All music in demon are downloaded from [Free Music Archive](https://freemusicarchive.org/), if you like their music please consider to support the artists. And the details of the licenses are listed below:
+All music in demo are downloaded from [Free Music Archive](https://freemusicarchive.org/), if you like their music please consider to support the artists. And the details of the licenses are listed below:
 
 - [**Contenido**](https://freemusicarchive.org/music/Arrizabalaga_Bravo_Laginestra_Martinez/Contenido) by [Arrizabalaga, Bravo, Laginestra, Martinez](https://freemusicarchive.org/music/Arrizabalaga_Bravo_Laginestra_Martinez/) is licensed under a [Public Domain Mark 1.0](https://creativecommons.org/publicdomain/mark/1.0/).
  

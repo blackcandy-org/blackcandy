@@ -34,7 +34,13 @@ docker run -p 3000:3000 ghcr.io/blackcandy-org/blackcandy:edge
 That's all. Now, you can access either http://localhost:3000 or http://host-ip:3000 in a browser, and use initial admin user to login (email: admin@admin.com, password: foobar).
 
 ## Mobile App
-Black Candy now has an iOS app in beta. You can visit [here](https://testflight.apple.com/join/TwMUVmDl) and join TestFlight to give it a try. Because this iOS app still in beta, you need use the edge version of Black Candy.
+Black Candy now has an iOS and Android apps in beta. 
+
+For iOS app, you can visit [here](https://testflight.apple.com/join/TwMUVmDl) and join TestFlight to try it.
+
+For Android app, you can download the APK from the assets of the latest beta [release](https://github.com/blackcandy-org/android/releases) to give it a try. 
+
+Because the mobile apps still in beta, you need use the edge version of Black Candy.
 
 ## Configuration
 
