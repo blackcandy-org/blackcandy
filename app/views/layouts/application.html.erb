@@ -37,12 +37,10 @@
             <%= render "shared/mini_player" %>
           </footer>
         </div>
+        <%= turbo_frame_tag "turbo-dialog" %>
       </div>
     </div>
   <% end %>
-
-  <div id='js-overlay' class='c-overlay c-overlay--fixed c-overlay--blur u-display-none'></div>
-  <%= turbo_frame_tag "turbo-dialog" %>
 <% end %>
 
 <%= render template: "layouts/base" %>

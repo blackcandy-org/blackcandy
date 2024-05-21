@@ -115,6 +115,6 @@ class PlaylistSystemTest < ApplicationSystemTestCase
     first(:test_id, "playlist_song_menu").click
     click_on "Play Last"
 
-    assert_equal all(:test_id, "current_playlist_song_name").last.text, playlists(:playlist1).songs.first.name
+    assert_equal playlists(:playlist1).songs.first.name, all(:test_id, "current_playlist_song_name").last.text
   end
 end
