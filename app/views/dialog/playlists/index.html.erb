@@ -10,7 +10,7 @@
     <%# And we need a way to save the referer_url as parmas, %>
     <%# so we can redirect to the referer_url later. %>
     <%= hidden_field_tag :referer_url, params[:referer_url] if native_app? %>
-    <%= turbo_frame_tag "turbo-dialog-playlists-page-#{@pagy.page}", class: "c-list", data: {action: "click->dialog#hide"}, target: "_top" do %>
+    <%= turbo_frame_tag "turbo-dialog-playlists-page-#{@pagy.page}", class: "c-list", target: "_top" do %>
       <%= render partial: "dialog/playlists/playlist", collection: @playlists %>
 
       <% if @pagy.next %>
