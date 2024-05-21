@@ -5,7 +5,7 @@ module BlackCandy
     MAJOR = 3
     MINOR = 0
     PATCH = 0
-    PRE = "beta1"
+    PRE = ""
 
     def self.to_s
       return "Edge" if Rails.root.join(".is-edge-release.txt").exist?
