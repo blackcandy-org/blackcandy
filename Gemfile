@@ -41,7 +41,7 @@ gem "litestack", "~> 0.4.2"
 gem "jbuilder", "~> 2.11.5"
 
 # Get meta data from audio file
-gem "wahwah", "~> 1.5.0"
+gem "wahwah", "~> 1.6.0"
 
 # Pagination
 gem "pagy", "~> 6.0.0"

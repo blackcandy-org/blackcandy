@@ -374,7 +374,7 @@ GEM
     uniform_notifier (1.16.0)
     url_mount (0.2.1)
       rack
-    wahwah (1.5.1)
+    wahwah (1.6.2)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -432,7 +432,7 @@ DEPENDENCIES
   stimulus-rails (~> 1.2.1)
   turbo-rails (~> 1.5.0)
   tzinfo-data
-  wahwah (~> 1.5.0)
+  wahwah (~> 1.6.0)
   web-console (>= 3.3.0)
   webmock (~> 3.18.0)
 
