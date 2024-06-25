@@ -3,7 +3,10 @@
 class Media
   include Singleton
   include Turbo::Broadcastable
+  include BlackCandy::Configurable
   extend ActiveModel::Naming
+
+  has_config :parallel_processes, default: Parallel.processor_count
 
   class << self
     def sync_all(dir = Setting.media_path)
@@ -47,7 +50,7 @@ class Media
     private
 
     def add_files(file_paths)
-      file_md5_hashes = file_paths.map { |file_path| MediaFile.get_md5_hash(file_path, with_mtime: true) }
+      file_md5_hashes = Parallel.map(file_paths, in_processes: config.parallel_processes) { |file_path| MediaFile.get_md5_hash(file_path, with_mtime: true) }
       existing_songs = Song.where(md5_hash: file_md5_hashes)
 
       added_song_hashes = (file_paths - existing_songs.pluck(:file_path)).map do |file_path|

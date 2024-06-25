@@ -10,7 +10,7 @@ module SessionsHelper
   end
 
   def login(session)
-    cookies.signed[:session_id] = {value: session.id, expires: 1.year.from_now, httponly: true, secure: BlackCandy::Config.force_ssl?}
+    cookies.signed[:session_id] = {value: session.id, expires: 1.year.from_now, httponly: true, secure: BlackCandy.config.force_ssl?}
   end
 
   def logout

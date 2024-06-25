@@ -49,7 +49,7 @@ Rails.application.configure do
   # config.assume_ssl = true
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = BlackCandy::Config.force_ssl?
+  config.force_ssl = BlackCandy.config.force_ssl?
 
   # Log to STDOUT by default
   config.logger = ActiveSupport::Logger.new($stdout)

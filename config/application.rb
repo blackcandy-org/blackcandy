@@ -14,7 +14,7 @@ require "action_view/railtie"
 require "action_cable/engine"
 require "rails/test_unit/railtie"
 
-require_relative "../lib/black_candy/config"
+require_relative "../lib/black_candy/configurable"
 require_relative "../lib/black_candy/errors"
 require_relative "../lib/black_candy/version"
 
@@ -23,6 +23,27 @@ require_relative "../lib/black_candy/version"
 Bundler.require(*Rails.groups)
 
 module BlackCandy
+  SUPPORTED_DATABASE_ADAPTERS = %w[sqlite postgresql]
+
+  include BlackCandy::Configurable
+
+  has_config :db_url
+  has_config :media_path
+  has_config :db_adapter, default: "sqlite"
+  has_config :nginx_sendfile, default: false
+  has_config :force_ssl, default: false
+  has_config :demo_mode, default: false
+
+  config_validate :db_adapter do |value|
+    unless SUPPORTED_DATABASE_ADAPTERS.include?(value)
+      raise_config_validation_error "Unsupported database adapter."
+    end
+
+    if value == "postgresql" && ENV["RAILS_ENV"] == "production" && config.db_url.blank?
+      raise_config_validation_error "DB_URL is required if database adapter is postgresql"
+    end
+  end
+
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
