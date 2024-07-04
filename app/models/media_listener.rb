@@ -6,8 +6,8 @@ class MediaListener
 
   SERVICE_PATH = File.join(Rails.root, "lib", "daemons", "media_listener_service")
 
-  has_config :service_name, default: "media_listener_service"
-  has_config :pid_dir, default: File.join(Rails.root, "tmp", "pids")
+  has_config :service_name, default: "media_listener_service", env_prefix: "media_listener"
+  has_config :pid_dir, default: File.join(Rails.root, "tmp", "pids"), env_prefix: "media_listener"
 
   class << self
     delegate :start, :stop, :running?, to: :instance

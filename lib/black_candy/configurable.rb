@@ -3,7 +3,7 @@
 module BlackCandy
   module Configurable
     def self.included(base)
-      base.instance_variable_set(:@config, Config.new)
+      base.class_variable_set(:@@config, Config.new)
       base.extend ClassMethods
     end
 
@@ -18,12 +18,15 @@ module BlackCandy
     end
 
     module ClassMethods
-      attr_reader :config
+      def config
+        class_variable_get(:@@config)
+      end
 
-      def has_config(config_name, default: nil)
-        @config.define_singleton_method(config_name) do
+      def has_config(config_name, default: nil, env_prefix: nil)
+        config.define_singleton_method(config_name) do
+          env_name = env_prefix ? "#{env_prefix}_#{config_name}".upcase : config_name.to_s.upcase
+          env_value = ENV[env_name]
           config_value = instance_variable_get("@#{config_name}")
-          env_value = ENV[config_name.to_s.upcase]
           default_value = default.is_a?(Proc) ? default.call : default
 
           return default_value if (env_value.nil? || env_value.empty?) && config_value.nil?
@@ -45,21 +48,21 @@ module BlackCandy
           config_value
         end
 
-        @config.define_singleton_method("#{config_name}=") do |value|
+        config.define_singleton_method("#{config_name}=") do |value|
           instance_variable_set("@#{config_name}", value)
         end
 
         if [true, false].include?(default)
-          @config.singleton_class.send(:alias_method, "#{config_name}?", config_name)
+          config.singleton_class.send(:alias_method, "#{config_name}?", config_name)
         end
       end
 
       def config_validate(config_name, &block)
-        @config.validate_blocks[config_name] = block
+        config.validate_blocks[config_name] = block
       end
 
       def configure
-        yield @config
+        yield config
       end
 
       def raise_config_validation_error(message)
