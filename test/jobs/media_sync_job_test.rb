@@ -3,16 +3,8 @@
 require "test_helper"
 
 class MediaSyncJobTest < ActiveJob::TestCase
-  test "sync all media" do
-    mock = Minitest::Mock.new
-    mock.expect(:call, true, [])
-
-    MediaSyncJob.perform_later
-
-    Media.stub(:sync_all, mock) do
-      perform_enqueued_jobs
-      mock.verify
-    end
+  setup do
+    clear_media_data
   end
 
   test "sync added media" do
@@ -54,6 +46,33 @@ class MediaSyncJobTest < ActiveJob::TestCase
     Media.stub(:sync, mock) do
       perform_enqueued_jobs
       mock.verify
+    end
+  end
+
+  test "should change syncing status" do
+    assert_not Media.syncing?
+
+    mock = Minitest::Mock.new
+    mock.expect(:call, true, [true])
+    mock.expect(:call, true, [false])
+
+    MediaSyncJob.perform_later(:added, [fixtures_file_path("artist1_album1.flac")])
+
+    Media.stub(:syncing=, mock) do
+      perform_enqueued_jobs
+      mock.verify
+    end
+  end
+
+  test "should fetch external metadata unless sync type is removed" do
+    Setting.update(discogs_token: "fake_token")
+
+    assert_enqueued_jobs 2, only: AttachCoverImageFromDiscogsJob do
+      MediaSyncJob.perform_now(:added, [fixtures_file_path("artist1_album1.flac"), fixtures_file_path("artist2_album3.wav")])
+    end
+
+    assert_no_enqueued_jobs only: AttachCoverImageFromDiscogsJob do
+      MediaSyncJob.perform_now(:removed, [fixtures_file_path("artist1_album1.flac")])
     end
   end
 end

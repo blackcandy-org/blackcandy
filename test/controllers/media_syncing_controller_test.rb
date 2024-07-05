@@ -9,7 +9,7 @@ class MediaSyncingControllerTest < ActionDispatch::IntegrationTest
     login users(:admin)
 
     Media.stub(:syncing?, false) do
-      assert_enqueued_with(job: MediaSyncJob) do
+      assert_enqueued_with(job: MediaSyncAllJob) do
         post media_syncing_url
       end
     end

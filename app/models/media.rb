@@ -59,6 +59,8 @@ class Media
       file_paths.map do |file_path|
         file_info = MediaFile.file_info(file_path)
         file_info[:md5_hash] if attach(file_info)
+      rescue
+        next
       end.compact
     end
 

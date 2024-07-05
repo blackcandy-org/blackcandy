@@ -48,4 +48,10 @@ class ArtistTest < ActiveSupport::TestCase
   test "should use default sort when use invalid sort value" do
     assert_equal %w[artist1 artist2 various_artists], Artist.sort_records(:invalid).pluck(:name).compact
   end
+
+  test "should not have same name artist" do
+    assert_raise ActiveRecord::RecordNotUnique do
+      Artist.create(name: "artist1")
+    end
+  end
 end

@@ -37,8 +37,8 @@ MediaListener.configure do |config|
   config.service_name = "media_listener_service_test"
 end
 
-Media.configure do |config|
-  config.parallel_processes = 0
+MediaSyncJob.configure do |config|
+  config.parallel_processor_count = 0
 end
 
 class MediaFileMock < MediaFile

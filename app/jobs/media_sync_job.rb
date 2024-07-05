@@ -10,23 +10,30 @@ class MediaSyncJob < ApplicationJob
   # Limits the concurrency to 1 to prevent inconsistent media syncing data.
   limits_concurrency to: 1, key: :media_sync
 
-  before_perform do
-    Media.syncing = true
-  end
+  before_perform :before_sync
 
   after_perform do |job|
     sync_type = job.arguments.first
-
-    Media.syncing = false
-    Media.fetch_external_metadata unless sync_type == :removed
+    after_sync(fetch_external_metadata: sync_type != :removed)
   end
 
   def perform(type, file_paths = [])
     parallel_processor_count = self.class.config.parallel_processor_count
-    grouped_file_paths = file_paths.in_groups(parallel_processor_count, false).compact_blank
+    grouped_file_paths = (parallel_processor_count > 0) ? file_paths.in_groups(parallel_processor_count, false).compact_blank : [file_paths]
 
     Parallel.each grouped_file_paths, in_processes: parallel_processor_count do |paths|
       Media.sync(type, paths)
     end
+  end
+
+  private
+
+  def before_sync
+    Media.syncing = true
+  end
+
+  def after_sync(fetch_external_metadata: true)
+    Media.syncing = false
+    Media.fetch_external_metadata if fetch_external_metadata
   end
 end

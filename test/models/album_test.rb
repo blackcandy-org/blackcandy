@@ -5,7 +5,10 @@ require "test_helper"
 class AlbumTest < ActiveSupport::TestCase
   test "should not have same name album on an artist" do
     artists(:artist1).albums.create(name: "best")
-    assert_not artists(:artist1).albums.build(name: "best").valid?
+
+    assert_raise ActiveRecord::RecordNotUnique do
+      artists(:artist1).albums.create(name: "best")
+    end
   end
 
   test "should have default name when name is empty" do
