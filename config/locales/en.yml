@@ -85,6 +85,7 @@ en:
     password: 'Password'
     theme: 'Theme'
     enable_media_listener: 'Enable Media Listener'
+    enable_parallel_media_sync: 'Enable Parallel Media Sync'
     discogs_token: 'Discogs Token'
     allow_transcode_lossless: 'Allow Transcode Lossless'
     transcode_bitrate: 'Transcode Bitrate'
@@ -111,6 +112,7 @@ en:
     transcoding: "Black candy will transcode formats that are not supported by the browser by default."
     allow_transcode_lossless: "Will transcode lossless format to mp3 to reduce bandwidth."
     enable_media_listener: "Media listener can automatically sync with library changes."
+    enable_parallel_media_sync: "Parallel media sync only available when using PostgreSQL as database."
     media_listener_running: "Listener is running"
 
   activerecord:
@@ -119,3 +121,4 @@ en:
         not_exist: 'does not exist'
         unreadable: 'is unreadable'
         invalid_content_type: "has an invalid content type"
+        not_supported_with_sqlite: "is not supported with SQLite"

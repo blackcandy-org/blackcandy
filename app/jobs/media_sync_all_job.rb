@@ -2,8 +2,9 @@
 
 class MediaSyncAllJob < MediaSyncJob
   def perform(dir = Setting.media_path)
+    parallel_processor_count = self.class.parallel_processor_count
+
     file_paths = MediaFile.file_paths(dir)
-    parallel_processor_count = self.class.config.parallel_processor_count
     file_md5_hashes = Parallel.map(file_paths, in_processes: parallel_processor_count) do |file_path|
       MediaFile.get_md5_hash(file_path, with_mtime: true)
     end

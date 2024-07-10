@@ -6,7 +6,7 @@ class SettingTest < ActiveSupport::TestCase
   include ActiveJob::TestHelper
 
   test "should have AVAILABLE_SETTINGS constant" do
-    assert_equal [:media_path, :discogs_token, :transcode_bitrate, :allow_transcode_lossless, :enable_media_listener], Setting::AVAILABLE_SETTINGS
+    assert_equal [:media_path, :discogs_token, :transcode_bitrate, :allow_transcode_lossless, :enable_media_listener, :enable_parallel_media_sync], Setting::AVAILABLE_SETTINGS
   end
 
   test "should get env default value when setting value did not set" do
@@ -83,5 +83,19 @@ class SettingTest < ActiveSupport::TestCase
 
     Setting.update(enable_media_listener: false)
     assert_not MediaListener.running?
+  end
+
+  test "should validate when enable parallel media sync" do
+    setting = Setting.instance
+
+    with_env("DB_ADAPTER" => "sqlite") do
+      setting.update(enable_parallel_media_sync: true)
+      assert_not setting.valid?
+    end
+
+    with_env("DB_ADAPTER" => "postgresql") do
+      setting.update(enable_parallel_media_sync: true)
+      assert setting.valid?
+    end
   end
 end

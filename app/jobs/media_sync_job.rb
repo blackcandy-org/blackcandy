@@ -18,12 +18,18 @@ class MediaSyncJob < ApplicationJob
   end
 
   def perform(type, file_paths = [])
-    parallel_processor_count = self.class.config.parallel_processor_count
+    parallel_processor_count = self.class.parallel_processor_count
+
     grouped_file_paths = (parallel_processor_count > 0) ? file_paths.in_groups(parallel_processor_count, false).compact_blank : [file_paths]
 
     Parallel.each grouped_file_paths, in_processes: parallel_processor_count do |paths|
       Media.sync(type, paths)
     end
+  end
+
+  def self.parallel_processor_count
+    return 0 unless Setting.enable_parallel_media_sync?
+    config.parallel_processor_count
   end
 
   private

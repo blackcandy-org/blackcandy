@@ -75,4 +75,31 @@ class MediaSyncJobTest < ActiveJob::TestCase
       MediaSyncJob.perform_now(:removed, [fixtures_file_path("artist1_album1.flac")])
     end
   end
+
+  test "parallel processor count should return 0 when parallel media sync is disabled" do
+    Setting.update(enable_parallel_media_sync: false)
+
+    assert_equal 0, MediaSyncJob.parallel_processor_count
+  end
+
+  test "parallel processor count should return configured value when parallel media sync is enabled" do
+    MediaSyncJob.configure do |config|
+      config.parallel_processor_count = nil
+    end
+
+    with_env("DB_ADAPTER" => "postgresql") do
+      Setting.update(enable_parallel_media_sync: true)
+      assert_equal Parallel.processor_count, MediaSyncJob.parallel_processor_count
+    end
+
+    with_env("DB_ADAPTER" => "postgresql", "MEDIA_SYNC_PARALLEL_PROCESSOR_COUNT" => "4") do
+      Setting.update(enable_parallel_media_sync: true)
+      assert_equal 4, MediaSyncJob.parallel_processor_count
+    end
+
+    # Reset the configuration
+    MediaSyncJob.configure do |config|
+      config.parallel_processor_count = 0
+    end
+  end
 end
