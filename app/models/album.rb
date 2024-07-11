@@ -11,7 +11,6 @@ class Album < ApplicationRecord
   after_initialize :set_default_name, if: :new_record?
 
   validates :name, presence: true
-  validates :name, uniqueness: {scope: :artist}
 
   has_many :songs, -> { order(:discnum, :tracknum) }, inverse_of: :album, dependent: :destroy
   belongs_to :artist, touch: true

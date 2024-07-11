@@ -24,6 +24,12 @@
     </div>
     <small><%= t("text.enable_media_listener") %></small>
 
+    <div class="c-form__field c-form__field--inline">
+      <%= form.label :enable_parallel_media_sync, t("field.enable_parallel_media_sync"), disabled: BlackCandy.config.db_adapter == "sqlite" %>
+      <%= form.check_box :enable_parallel_media_sync, disabled: BlackCandy.config.db_adapter == "sqlite" %>
+    </div>
+    <small><%= t("text.enable_parallel_media_sync") %></small>
+
     <div class='c-form__field c-form__field--submit'>
       <%= form.submit t("button.save"), class: "c-button c-button--primary c-button--full-width" %>
     </div>

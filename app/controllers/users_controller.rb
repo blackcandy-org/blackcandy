@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   end
 
   def auth_user
-    raise BlackCandy::Forbidden if BlackCandy::Config.demo_mode?
+    raise BlackCandy::Forbidden if BlackCandy.config.demo_mode?
     raise BlackCandy::Forbidden unless @user == Current.user || is_admin?
   end
 

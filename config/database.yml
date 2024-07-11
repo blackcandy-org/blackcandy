@@ -9,7 +9,7 @@ pg_default: &pg_default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 
-<% if BlackCandy::Config.db_adapter == "postgresql" %>
+<% if BlackCandy.config.db_adapter == "postgresql" %>
 development:
   <<: *pg_default
   username: <%= ENV['DB_USERNAME'] %>
@@ -26,7 +26,7 @@ test:
 
 production:
   <<: *pg_default
-  url: <%= BlackCandy::Config.db_url %>
+  url: <%= BlackCandy.config.db_url %>
 <% else %>
 development:
   <<: *sqlite_default

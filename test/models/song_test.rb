@@ -93,7 +93,8 @@ class SongTest < ActiveSupport::TestCase
       album_id: albums(:album1).id
     )
 
-    assert_not song.valid?
-    assert_equal ["has already been taken"], song.errors[:md5_hash]
+    assert_raise ActiveRecord::RecordNotUnique do
+      song.save
+    end
   end
 end

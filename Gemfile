@@ -67,6 +67,9 @@ gem "bcrypt", "~> 3.1.11"
 # For sync on library changes
 gem "listen", "~> 3.8.0"
 
+# For parallel media sync
+gem "parallel", "~> 1.25.0"
+
 # For daemonize library sync process
 gem "daemons", "~> 1.4.0"
 

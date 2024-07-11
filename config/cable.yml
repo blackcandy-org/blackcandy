@@ -7,7 +7,7 @@ pg_default: &pg_default
 test:
   adapter: test
 
-<% if BlackCandy::Config.db_adapter == "postgresql" %>
+<% if BlackCandy.config.db_adapter == "postgresql" %>
 development:
   <<: *pg_default
 

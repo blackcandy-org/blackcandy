@@ -109,7 +109,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
-    raise BlackCandy::Forbidden if BlackCandy::Config.demo_mode? || !is_admin?
+    raise BlackCandy::Forbidden if BlackCandy.config.demo_mode? || !is_admin?
   end
 
   def ios_app?
@@ -125,7 +125,7 @@ class ApplicationController < ActionController::Base
   end
 
   def send_local_file(file_path, format, nginx_headers: {})
-    if BlackCandy::Config.nginx_sendfile?
+    if BlackCandy.config.nginx_sendfile?
       nginx_headers.each { |name, value| response.headers[name] = value }
       send_file file_path
 
