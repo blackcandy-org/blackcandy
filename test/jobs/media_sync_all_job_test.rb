@@ -74,7 +74,10 @@ class MediaSyncAllJobTest < ActiveJob::TestCase
   end
 
   test "should clear records on database when delete file" do
+    clear_media_data
+
     create_tmp_dir(from: Setting.media_path) do |tmp_dir|
+      MediaSyncAllJob.perform_now(tmp_dir)
       File.delete File.join(tmp_dir, "artist2_album3.ogg")
       File.delete File.join(tmp_dir, "artist2_album3.wav")
       File.delete File.join(tmp_dir, "artist2_album3.opus")
@@ -82,7 +85,6 @@ class MediaSyncAllJobTest < ActiveJob::TestCase
       File.delete File.join(tmp_dir, "artist2_album3.wma")
 
       MediaSyncAllJob.perform_now(tmp_dir)
-
       assert_nil Song.find_by(name: "ogg_sample")
       assert_nil Song.find_by(name: "wav_sample")
       assert_nil Song.find_by(name: "opus_sample")
