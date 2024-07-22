@@ -13,6 +13,9 @@ gem "turbo-rails", "~> 1.5.0"
 # Install Stimulus on Rails
 gem "stimulus-rails", "~> 1.2.1"
 
+# View components for Rails
+gem "view_component", "~> 3.12.0"
+
 # Bundle and process CSS in Rails
 gem "cssbundling-rails", "~> 1.4.0"
 

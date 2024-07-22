@@ -1,0 +1,8 @@
+<%= render(BaseComponent.new(:details, **@attributes))  do %>
+  <summary><%= toggle %></summary>
+  <div class='c-dropdown__menu' data-dropdown-target="menu">
+    <% menu.each do |item| %>
+      <%= item %>
+    <% end %>
+  </div>
+<% end %>

@@ -209,6 +209,7 @@ GEM
     marcel (1.0.4)
     matrix (0.4.2)
     memory_profiler (0.9.14)
+    method_source (1.1.0)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.6)
@@ -374,6 +375,10 @@ GEM
     uniform_notifier (1.16.0)
     url_mount (0.2.1)
       rack
+    view_component (3.12.1)
+      activesupport (>= 5.2.0, < 8.0)
+      concurrent-ruby (~> 1.0)
+      method_source (~> 1.0)
     wahwah (1.6.2)
     web-console (4.2.1)
       actionview (>= 6.0.0)
@@ -433,6 +438,7 @@ DEPENDENCIES
   stimulus-rails (~> 1.2.1)
   turbo-rails (~> 1.5.0)
   tzinfo-data
+  view_component (~> 3.12.0)
   wahwah (~> 1.6.0)
   web-console (>= 3.3.0)
   webmock (~> 3.18.0)
