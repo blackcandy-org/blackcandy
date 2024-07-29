@@ -1,6 +1,8 @@
 <%= render DropdownComponent.new do |component| %>
   <% component.with_toggle do %>
-    <%= icon_tag "sort", title: t("label.sort"), class: "c-button c-button--icon" %>
+    <span class="c-button c-button--icon">
+      <%= icon_tag "sort", title: t("label.sort") %>
+    </span>
   <% end %>
 
   <% option.values.each do |sort_value| %>

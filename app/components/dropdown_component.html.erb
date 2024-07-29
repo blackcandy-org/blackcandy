@@ -1,8 +1,16 @@
 <%= render(BaseComponent.new(:details, **@attributes))  do %>
   <summary><%= toggle %></summary>
   <div class='c-dropdown__menu' data-dropdown-target="menu">
-    <% menu.each do |item| %>
-      <%= item %>
+    <% if @src.present? && @frame_id.present? %>
+      <%= tag.turbo_frame(id: @frame_id, src: @src, loading: "lazy") do %>
+        <div class='o-flex o-flex--justify-center u-p-medium'>
+          <%= helpers.loader_tag size: "small" %>
+        </div>
+      <% end %>
+    <% else %>
+      <% menu.each do |item| %>
+        <%= item %>
+      <% end %>
     <% end %>
   </div>
 <% end %>

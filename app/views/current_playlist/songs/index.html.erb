@@ -10,12 +10,14 @@
         <span id='<%= dom_id(@playlist, :songs_count) %>'><%= @playlist.songs.count %></span>
         <span><%= t("label.tracks") %></span>
       </p>
-      <details class='c-dropdown' data-controller='dropdown' data-test-id='playlist_menu'>
-        <summary class="c-button c-button--icon"><%= icon_tag "more-vertical", title: t("label.more") %></summary>
-        <div class='c-dropdown__menu' data-dropdown-target="menu">
-          <%= button_to t("button.clear"), current_playlist_songs_path, method: :delete, form_class: "c-dropdown__item" %>
-        </div>
-      </details>
+      <%= render DropdownComponent.new(test_id: "playlist_menu") do |component| %>
+        <% component.with_toggle do %>
+          <span class='c-button c-button--icon'>
+            <%= icon_tag "more-vertical", title: t("label.more") %>
+          </span>
+        <% end %>
+        <%= component.with_menu_item(:button, t("button.clear"), current_playlist_songs_path, method: :delete) %>
+      <% end %>
     </div>
     <ul class="c-list u-my-tiny" data-controller="playlist-sortable" data-playlist-id='<%= @playlist.id %>'>
       <% @songs.each do |song| %>

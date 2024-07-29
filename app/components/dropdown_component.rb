@@ -7,7 +7,9 @@ class DropdownComponent < ApplicationComponent
     divider: -> { tag :hr }
   }
 
-  def initialize(**attributes)
+  def initialize(src: nil, frame_id: nil, **attributes)
+    @src = src
+    @frame_id = frame_id
     @attributes = attributes
     @attributes[:class] = class_names(@attributes[:class], "c-dropdown")
     @attributes[:data] = merge_attributes(@attributes[:data], {controller: "dropdown"})
