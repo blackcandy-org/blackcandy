@@ -9,7 +9,14 @@ module Dropdown
 
     def call
       html_options_index = content? ? 1 : 2
-      @attributes[html_options_index] = merge_attributes(@attributes[html_options_index], {class: "c-dropdown__item"})
+      html_options = case @type
+      when :link
+        {class: "c-dropdown__item"}
+      when :button
+        {form_class: "c-dropdown__item"}
+      end
+
+      @attributes[html_options_index] = merge_attributes(@attributes[html_options_index], html_options)
 
       case @type
       when :link
