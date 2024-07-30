@@ -22,13 +22,15 @@
       </div>
     </button>
 
-    <details class='c-dropdown' data-controller="dropdown" data-test-id='current_playlist_song_menu'>
-      <summary class="c-button c-button--icon" role="button"><%= icon_tag "more-vertical", size: "small", title: t("label.more") %></summary>
-      <div class='c-dropdown__menu' data-dropdown-target="menu">
-        <%= link_to t("label.add_to_playlist"), dialog_playlists_path(song_id: song.id, referer_url: current_url), data: {"turbo-frame" => ("turbo-dialog" unless native_app?)}, class: "c-dropdown__item" %>
+    <%= render DropdownComponent.new(test_id: "current_playlist_song_menu") do |component| %>
+      <% component.with_toggle do %>
+        <span class="c-button c-button--icon">
+          <%= icon_tag "more-vertical", size: "small", title: t("label.more") %>
+        </span>
+      <% end %>
 
-        <%= button_to t("button.delete"), current_playlist_song_path(song), method: :delete, form_class: "c-dropdown__item", form: {data: {"turbo-frame" => "turbo-playlist"}} %>
-      </div>
-    </details>
+      <%= component.with_menu_item(:link, t("label.add_to_playlist"), dialog_playlists_path(song_id: song.id, referer_url: current_url), data: {"turbo-frame" => ("turbo-dialog" unless native_app?)}) %>
+      <%= component.with_menu_item(:button, t("button.delete"), current_playlist_song_path(song), method: :delete, form: {data: {"turbo-frame" => "turbo-playlist"}}) %>
+    <% end %>
   </div>
 </li>

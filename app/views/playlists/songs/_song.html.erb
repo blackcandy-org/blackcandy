@@ -29,63 +29,66 @@
         <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
       </div>
     <% end %>
-    <details class='c-dropdown' data-controller='dropdown' data-test-id='playlist_song_menu'>
-      <summary class="c-button c-button--icon"><%= icon_tag "more-vertical", size: "small", title: t("label.more") %></summary>
-      <div class='c-dropdown__menu' data-dropdown-target="menu">
-        <%= button_to(
-              t("button.play_now"),
-              current_playlist_songs_path(song_id: song.id, should_play: true),
-              form_class: "c-dropdown__item",
-              form: {
-                data: {
-                  "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->songs-bridge#playNow",
-                  "disabled-on-native" => "true"
-                }
+    <%= render DropdownComponent.new(test_id: "playlist_song_menu") do |component| %>
+      <% component.with_toggle do %>
+        <span class="c-button c-button--icon">
+          <%= icon_tag "more-vertical", size: "small", title: t("label.more") %>
+        </span>
+      <% end %>
+
+      <%= component.with_menu_item(
+            :button,
+            t("button.play_now"),
+            current_playlist_songs_path(song_id: song.id, should_play: true),
+            form: {
+              data: {
+                "turbo-frame" => "turbo-playlist",
+                "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->songs-bridge#playNow",
+                "disabled-on-native" => "true"
               }
-            ) %>
-        <%= button_to(
-              t("button.play_next"),
-              current_playlist_songs_path(song_id: song.id),
-              form_class: "c-dropdown__item",
-              form: {
-                data: {
-                  "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext click->songs-bridge#playNext",
-                  "disabled-on-native" => "true"
-                }
+            }
+          ) %>
+      <%= component.with_menu_item(
+            :button,
+            t("button.play_next"),
+            current_playlist_songs_path(song_id: song.id),
+            form: {
+              data: {
+                "turbo-frame" => "turbo-playlist",
+                "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext click->songs-bridge#playNext",
+                "disabled-on-native" => "true"
               }
-            ) %>
-        <%= button_to(
-              t("button.play_last"),
-              current_playlist_songs_path(song_id: song.id, location: "last"),
-              form_class: "c-dropdown__item",
-              form: {
-                data: {
-                  "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "click->songs-bridge#playLast",
-                  "disabled-on-native" => "true"
-                }
+            }
+          ) %>
+      <%= component.with_menu_item(
+            :button,
+            t("button.play_last"),
+            current_playlist_songs_path(song_id: song.id, location: "last"),
+            form: {
+              data: {
+                "turbo-frame" => "turbo-playlist",
+                "delegated-action" => "click->songs-bridge#playLast",
+                "disabled-on-native" => "true"
               }
-            ) %>
-        <%= button_to(
-              t("button.delete"),
-              playlist_song_path(playlist, song),
-              method: :delete,
-              form_class: "c-dropdown__item"
-            ) %>
-        <%= link_to(
-              t("label.add_to_playlist"),
-              dialog_playlists_path(song_id: song.id, referer_url: current_url),
-              data: {"turbo-frame" => ("turbo-dialog" unless native_app?)},
-              class: "c-dropdown__item"
-            ) %>
-        <%= link_to(
-              t("label.go_to_artist"),
-              artist_path(song.artist),
-              class: "c-dropdown__item"
-            ) %>
-      </div>
-    </details>
+            }
+          ) %>
+      <%= component.with_menu_item(
+            :button,
+            t("button.delete"),
+            playlist_song_path(playlist, song),
+            method: :delete
+          ) %>
+      <%= component.with_menu_item(
+            :link,
+            t("label.add_to_playlist"),
+            dialog_playlists_path(song_id: song.id, referer_url: current_url),
+            data: {"turbo-frame" => ("turbo-dialog" unless native_app?)}
+          ) %>
+      <%= component.with_menu_item(
+            :link,
+            t("label.go_to_artist"),
+            artist_path(song.artist)
+          ) %>
+    <% end %>
   </div>
 </li>

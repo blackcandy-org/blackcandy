@@ -14,14 +14,15 @@
   <% end %>
 
   <div class='o-flex o-flex--align-center o-flex__item o-flex__item--grow-1 o-flex__item--basic-0'>
-    <details class='c-dropdown u-ml-auto' data-controller='dropdown' data-test-id='search_bar_menu'>
-      <summary><%= avatar_tag current_user %></summary>
-      <div class='c-dropdown__menu' data-dropdown-target="menu">
-        <%= link_to t("label.settings"), setting_path, class: "c-dropdown__item" %>
-        <%= link_to t("label.manage_users"), users_path, class: "c-dropdown__item" if is_admin? %>
-        <%= link_to t("label.update_profile"), edit_user_path(current_user), class: "c-dropdown__item" %>
-        <%= button_to t("button.logout"), current_session, method: :delete, form_class: "c-dropdown__item" %>
-      </div>
-    </details>
+    <%= render DropdownComponent.new(class: "u-ml-auto", test_id: "search_bar_menu") do |component| %>
+      <% component.with_toggle do %>
+        <%= avatar_tag current_user %>
+      <% end %>
+
+      <%= component.with_menu_item(:link, t("label.settings"), setting_path) %>
+      <%= component.with_menu_item(:link, t("label.manage_users"), users_path) if is_admin? %>
+      <%= component.with_menu_item(:link, t("label.update_profile"), edit_user_path(current_user)) %>
+      <%= component.with_menu_item(:button, t("button.logout"), current_session, method: :delete) %>
+    <% end %>
   </div>
 </div>

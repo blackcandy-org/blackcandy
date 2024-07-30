@@ -1,19 +1,19 @@
 <%= turbo_frame_tag "turbo-#{filter_name}-filter".dasherize do %>
   <% options.each do |option| %>
-    <%= link_to(
-          url_for(controller: filter_controller, **filter_sort_presenter.params(filter: {filter_name => option})),
-          class: "c-dropdown__item",
-          data: {
-            "turbo-frame" => "_top",
-            "turbo-action" => ("replace" if native_app?)
-          }
-        ) do %>
-        <span class='o-flex o-flex--justify-between o-flex--align-center'>
-          <%= option %>
-          <% if filter_sort_presenter.filter_value(filter_name) == option.to_s %>
+    <%= render Dropdown::ItemComponent.new(
+      :link,
+      url_for(controller: filter_controller, **filter_sort_presenter.params(filter: {filter_name => option})),
+      data: {
+        "turbo-frame" => "_top",
+        "turbo-action" => ("replace" if native_app?)
+      }
+    ) do %>
+      <span class='o-flex o-flex--justify-between o-flex--align-center'>
+        <%= option %>
+        <% if filter_sort_presenter.filter_value(filter_name) == option.to_s %>
             <%= icon_tag("check", size: "small", class: "u-ml-narrow") %>
-          <% end %>
-        </span>
+        <% end %>
+      </span>
     <% end %>
   <% end %>
 <% end %>
