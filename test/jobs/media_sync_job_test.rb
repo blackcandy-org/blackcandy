@@ -17,7 +17,7 @@ class MediaSyncJobTest < ActiveJob::TestCase
 
     Media.stub(:sync, mock) do
       perform_enqueued_jobs
-      mock.verify
+      assert mock.verify
     end
   end
 
@@ -31,7 +31,7 @@ class MediaSyncJobTest < ActiveJob::TestCase
 
     Media.stub(:sync, mock) do
       perform_enqueued_jobs
-      mock.verify
+      assert mock.verify
     end
   end
 
@@ -45,7 +45,7 @@ class MediaSyncJobTest < ActiveJob::TestCase
 
     Media.stub(:sync, mock) do
       perform_enqueued_jobs
-      mock.verify
+      assert mock.verify
     end
   end
 
