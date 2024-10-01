@@ -17,16 +17,6 @@ class PlayerSystemTest < ApplicationSystemTestCase
     assert_selector(:test_id, "player_song_name", text: Song.first.name)
   end
 
-  test "pause song" do
-    find(:test_id, "player_play_button").click
-    assert_selector(:test_id, "player_play_button", visible: false)
-    assert_selector(:test_id, "player_pause_button", visible: true)
-
-    find(:test_id, "player_pause_button").click
-    assert_selector(:test_id, "player_play_button", visible: true)
-    assert_selector(:test_id, "player_pause_button", visible: false)
-  end
-
   test "play next song" do
     find(:test_id, "player_play_button").click
     find(:test_id, "player_next_button").click

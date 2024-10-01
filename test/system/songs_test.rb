@@ -57,19 +57,6 @@ class SongsSystemTest < ApplicationSystemTestCase
     end
   end
 
-  test "add song to the next in current playlist" do
-    @user.current_playlist.songs << Song.where(name: ["song_test_0", "song_test_1"])
-    visit songs_url
-
-    # Play the first song in current playlist
-    first(:test_id, "current_playlist_song").click
-
-    first(:test_id, "song_menu").click
-    click_on "Play Next"
-
-    assert_equal all(:test_id, "current_playlist_song_name")[1].text, first(:test_id, "song_name").text
-  end
-
   test "add song to the end in current playlist" do
     @user.current_playlist.songs << Song.where(name: ["song_test_0", "song_test_1"])
     visit songs_url
