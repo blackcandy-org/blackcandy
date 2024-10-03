@@ -16,7 +16,6 @@ class SettingSystemTest < ApplicationSystemTestCase
     assert_text("Updated successfully")
   end
 
-
   test "update discogs token" do
     visit setting_url
 
