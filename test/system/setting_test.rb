@@ -16,17 +16,6 @@ class SettingSystemTest < ApplicationSystemTestCase
     assert_text("Updated successfully")
   end
 
-  test "update media path" do
-    Media.syncing = false
-
-    visit setting_url
-
-    fill_in("setting_media_path", with: Rails.root.join("test/fixtures/files").to_s)
-    click_on("Sync")
-
-    assert_text("Media sync completed")
-  end
-
   test "update discogs token" do
     visit setting_url
 

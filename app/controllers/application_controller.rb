@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
   before_action :find_current_request_details
   before_action :require_login
 
+  allow_browser versions: :modern, block: -> { render template: "errors/unsupported_browser", layout: "plain", status: :not_acceptable }
+
   rescue_from BlackCandy::Forbidden do |error|
     respond_to do |format|
       format.json { render_json_error(error, :forbidden) }

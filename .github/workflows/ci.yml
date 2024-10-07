@@ -7,6 +7,22 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  scan_ruby:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Scan for common Rails security vulnerabilities using static analysis
+        run: bin/brakeman --no-pager
+
   test_lint:
     runs-on: ubuntu-latest
     strategy:
@@ -34,7 +50,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3
+          ruby-version: .ruby-version
           bundler-cache: true
       - uses: actions/setup-node@v4
         with:

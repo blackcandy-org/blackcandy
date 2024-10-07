@@ -22,7 +22,7 @@ module FilterableConcern
         Array(attrs).each do |attr|
           filter_name = "#{name}_#{attr}"
           scope "filter_by_#{filter_name}", ->(value) {
-            joins(name).where("#{name}.#{attr}" => value)
+            joins(name.to_sym).where(name => {attr => value})
           }
 
           self::VALID_FILTERS.push(filter_name.to_s)

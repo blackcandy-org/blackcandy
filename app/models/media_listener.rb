@@ -32,6 +32,6 @@ class MediaListener
   private
 
   def run(command)
-    system "bundle exec #{SERVICE_PATH} #{command} -d #{self.class.config.pid_dir} -n #{self.class.config.service_name}"
+    system "bundle exec #{SERVICE_PATH.shellescape} #{command.shellescape} -d #{self.class.config.pid_dir.shellescape} -n #{self.class.config.service_name.shellescape}"
   end
 end

@@ -99,6 +99,7 @@ en:
     internal_server_error: "We're sorry, but something went wrong"
     already_in_playlist: "Add to playlist failed, song is already in playlist"
     syncing_in_progress: "Syncing in progress, please wait"
+    unsupported_browser: "Your browser is not supported. Please upgrade your browser to continue."
 
   notice:
     deleted: 'Deleted successfully'
