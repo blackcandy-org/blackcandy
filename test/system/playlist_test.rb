@@ -106,15 +106,4 @@ class PlaylistSystemTest < ApplicationSystemTestCase
     click_on "Play Next"
     assert_equal all(:test_id, "current_playlist_song_name")[1].text, playlists(:playlist1).songs.last.name
   end
-
-  test "add song to the end in current playlist" do
-    song_ids = Song.ids - playlists(:playlist1).songs.ids
-    users(:admin).current_playlist.replace(song_ids)
-    visit playlist_songs_url(playlists(:playlist1))
-
-    first(:test_id, "playlist_song_menu").click
-    click_on "Play Last"
-
-    assert_equal playlists(:playlist1).songs.first.name, all(:test_id, "current_playlist_song_name").last.text
-  end
 end

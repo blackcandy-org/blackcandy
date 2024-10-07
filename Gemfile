@@ -5,13 +5,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem "rails", "~> 7.2.0"
 
 # Deliver assets for Rails
-gem "propshaft", "~> 0.7.0"
+gem "propshaft", "~> 1.1.0"
 
 # Install Turbo on Rails
 gem "turbo-rails", "~> 1.5.0"
 
 # Install Stimulus on Rails
-gem "stimulus-rails", "~> 1.2.1"
+gem "stimulus-rails", "~> 1.3.4"
 
 # Bundle and process CSS in Rails
 gem "cssbundling-rails", "~> 1.4.0"
@@ -40,7 +40,7 @@ gem "solid_queue", "~> 0.2.1"
 gem "litestack", git: "https://github.com/oldmoe/litestack.git", branch: "master"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem "jbuilder", "~> 2.11.5"
+gem "jbuilder", "~> 2.13.0"
 
 # Get meta data from audio file
 gem "wahwah", "~> 1.6.0"
@@ -49,25 +49,25 @@ gem "wahwah", "~> 1.6.0"
 gem "pagy", "~> 6.0.0"
 
 # For Active Storage variants
-gem "image_processing", "~> 1.12"
+gem "image_processing", "~> 1.13"
 
 # For API request
 gem "httparty", "~> 0.22.0"
 
 # For browser detection
-gem "browser", "~> 5.3.1"
+gem "browser", "~> 6.0.0"
 
 # For searching
 gem "ransack", "~> 4.2.0"
 
 # For sortable list
-gem "acts_as_list", "~> 1.1.0"
+gem "acts_as_list", "~> 1.2.0"
 
 # For password encryption
 gem "bcrypt", "~> 3.1.11"
 
 # For sync on library changes
-gem "listen", "~> 3.8.0"
+gem "listen", "~> 3.9.0"
 
 # For parallel media sync
 gem "parallel", "~> 1.25.0"
