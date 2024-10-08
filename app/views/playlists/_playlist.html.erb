@@ -1,4 +1,4 @@
-<div class='o-grid__item c-card c-card--border' data-test-id='playlist'>
+<div class='o-grid__item c-card c-card--border'>
   <div class='c-card__body'>
     <%= link_to playlist_songs_path(playlist), class: "o-flex o-flex--align-center" do %>
       <% if playlist.favorite? %>
@@ -6,7 +6,7 @@
       <% else %>
         <%= icon_tag("queue-music") %>
       <% end %>
-      <span class='u-text-truncate u-mr-narrow u-ml-tiny' data-test-id='playlist_name'><%= playlist.name %></span>
+      <span class='u-text-truncate u-mr-narrow u-ml-tiny'><%= playlist.name %></span>
     <% end %>
   </div>
 </div>

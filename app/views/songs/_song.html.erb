@@ -3,7 +3,6 @@
     <%= button_to(
           current_playlist_songs_path(song_id: song.id, should_play: true),
           class: "c-button c-button--link",
-          data: {"test-id" => "song_item"},
           form: {
             data: {
               "delegated-action" => "turbo:submit-start-songs#checkBeforePlay click->songs-bridge#playNow",
@@ -12,7 +11,7 @@
             }
           }
         ) do %>
-      <span data-test-id='song_name'><%= song.name %></span>
+      <span><%= song.name %></span>
     <% end %>
   </div>
   <div role='cell' class='u-display-none@medium'>
@@ -23,7 +22,7 @@
   </div>
   <div role='cell' class='u-display-none@small'><%= format_duration(song.duration) %></div>
   <div role='cell'>
-    <details class='c-dropdown' data-controller='dropdown' data-test-id='song_menu'>
+    <details class='c-dropdown' data-controller='dropdown'>
       <summary class="c-button c-button--icon">
         <%= icon_tag "more-vertical", size: "small", title: t("label.more") %>
       </summary>
