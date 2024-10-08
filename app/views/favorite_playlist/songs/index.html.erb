@@ -1,8 +1,8 @@
-<div class='o-container o-container--narrow' data-test-id='favorite_playlist'>
+<div class='o-container o-container--narrow'>
   <div data-controller='songs songs-bridge playlist-bridge' data-playlist-bridge-id-value='<%= @playlist.id %>'>
     <div class="c-card c-card--horizontal u-my-large">
       <div class='c-card__body'>
-        <h1 class='c-card__body__title' data-test-id='playlist_name'><%= @playlist.name %></h1>
+        <h1 class='c-card__body__title'><%= @playlist.name %></h1>
         <div class='c-card__body__text'>
           <span id='<%= dom_id(@playlist, :songs_count) %>'><%= @playlist.songs.size %></span>
           <span><%= t("label.tracks") %></span>

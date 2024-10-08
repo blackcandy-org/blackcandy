@@ -4,7 +4,6 @@
           t("button.syncing"),
           false,
           class: "c-button c-button--secondary",
-          data: {"test-id" => "media_sync_button"},
           disabled: true
         ) %>
   <% else %>
@@ -13,7 +12,6 @@
         media_syncing_path,
         class: "c-button c-button--secondary",
         data: {
-          "test-id" => "media_sync_button",
           "turbo-submits-with" => t("button.syncing")
         }
       ) %>

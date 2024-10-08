@@ -1,5 +1,4 @@
 <div
-  data-test-id='current_playlist'
   data-controller='current-playlist-songs'
   data-current-playlist-songs-should-play-value='<%= @should_play %>'>
   <% if @songs.empty? %>
@@ -10,7 +9,7 @@
         <span id='<%= dom_id(@playlist, :songs_count) %>'><%= @playlist.songs.count %></span>
         <span><%= t("label.tracks") %></span>
       </p>
-      <details class='c-dropdown' data-controller='dropdown' data-test-id='playlist_menu'>
+      <details class='c-dropdown' data-controller='dropdown'>
         <summary class="c-button c-button--icon"><%= icon_tag "more-vertical", title: t("label.more") %></summary>
         <div class='c-dropdown__menu' data-dropdown-target="menu">
           <%= button_to t("button.clear"), current_playlist_songs_path, method: :delete, form_class: "c-dropdown__item" %>

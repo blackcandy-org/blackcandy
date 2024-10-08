@@ -2,7 +2,7 @@
 
 <div class='o-container o-container--narrow' data-controller='songs songs-bridge album-bridge' data-album-bridge-id-value='<%= @album.id %>'>
   <div class='c-card c-card--horizontal c-card--center@narrow u-my-large'>
-    <%= cover_image_tag @album, class: "c-card__image u-image-medium", data: {"test-id" => "album_image"} %>
+    <%= cover_image_tag @album, class: "c-card__image u-image-medium" %>
     <div class='c-card__body'>
       <h1 class='c-card__body__title'><%= @album.name %></h1>
       <%= link_to @album.artist.name, artist_path(@album.artist), class: "c-card__body__text" %>
@@ -39,7 +39,7 @@
       <% end %>
 
       <% songs.each do |song| %>
-        <li class='c-list__item' data-songs-target='item' data-song-id='<%= song.id %>' data-test-id='album_song'>
+        <li class='c-list__item' data-songs-target='item' data-song-id='<%= song.id %>'>
           <div class='o-flex o-flex--justify-between o-flex--align-center'>
             <%= button_to(
                   current_playlist_album_path(@album, should_play: true, song_id: song.id),
@@ -56,7 +56,7 @@
                 ) do %>
               <div class='o-flex o-flex--justify-between o-flex--align-center'>
                 <div>
-                  <div data-test-id='album_song_name'><%= song.name %></div>
+                  <div><%= song.name %></div>
                   <% if @album.artist.various? %>
                     <% if native_app? %>
                       <span class='c-list__item__subtext'><%= song.artist.name %></span>
@@ -69,7 +69,7 @@
               </div>
             <% end %>
 
-            <details class='c-dropdown' data-test-id='album_song_menu' data-controller='dropdown'>
+            <details class='c-dropdown' data-controller='dropdown'>
               <summary class="c-button c-button--icon">
                 <%= icon_tag "more-vertical", size: "small", title: t("label.more") %>
               </summary>
