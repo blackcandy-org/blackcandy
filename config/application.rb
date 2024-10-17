@@ -29,6 +29,7 @@ module BlackCandy
 
   has_config :db_url
   has_config :cache_db_url
+  has_config :cable_db_url
   has_config :media_path
   has_config :db_adapter, default: "sqlite"
   has_config :nginx_sendfile, default: false
@@ -42,8 +43,8 @@ module BlackCandy
 
     if value == "postgresql" &&
         ENV["RAILS_ENV"] == "production" &&
-        (config.db_url.blank? || config.cache_db_url.blank?)
-      raise_config_validation_error "DB_URL and CACHE_DB_URL are required if database adapter is postgresql"
+        (config.db_url.blank? || config.cache_db_url.blank? || config.cable_db_url.blank?)
+      raise_config_validation_error "DB_URL, CABLE_DB_URL and CACHE_DB_URL are required if database adapter is postgresql"
     end
   end
 

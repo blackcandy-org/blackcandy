@@ -21,6 +21,10 @@ development:
     <<: *primary_development
     database: blackcandy_development_cache
     migrations_paths: db/cache_migrate
+  cable:
+    <<: *primary_development
+    database: blackcandy_development_cable
+    migrations_paths: db/cable_migrate
 
 test:
   primary: &primary_test
@@ -33,6 +37,10 @@ test:
     <<: *primary_test
     database: blackcandy_test_cache
     migrations_paths: db/cache_migrate
+  cable:
+    <<: *primary_test
+    database: blackcandy_test_cable
+    migrations_paths: db/cable_migrate
 
 production:
   primary: &primary_production
@@ -42,6 +50,10 @@ production:
     <<: *primary_production
     url: <%= BlackCandy.config.cache_db_url %>
     migrations_paths: db/cache_migrate
+  cable:
+    <<: *primary_production
+    url: <%= BlackCandy.config.cable_db_url %>
+    migrations_paths: db/cable_migrate
 <% else %>
 development:
   primary:
@@ -51,6 +63,10 @@ development:
     <<: *sqlite_default
     database: storage/development_cache.sqlite3
     migrations_paths: db/cache_migrate
+  cable:
+    <<: *sqlite_default
+    database: storage/development_cable.sqlite3
+    migrations_paths: db/cable_migrate
 
 test:
   primary:
@@ -60,6 +76,10 @@ test:
     <<: *sqlite_default
     database: storage/test_cache.sqlite3
     migrations_paths: db/cache_migrate
+  cable:
+    <<: *sqlite_default
+    database: storage/test_cable.sqlite3
+    migrations_paths: db/cable_migrate
 
 production:
   primary:
@@ -69,4 +89,8 @@ production:
     <<: *sqlite_default
     database: storage/production_cache.sqlite3
     migrations_paths: db/cache_migrate
+  cable:
+    <<: *sqlite_default
+    database: storage/production_cable.sqlite3
+    migrations_paths: db/cable_migrate
 <% end %>

@@ -34,10 +34,8 @@ gem "solid_cache", "~> 1.0.0"
 # Background job processing
 gem "solid_queue", "~> 0.2.1"
 
-# Default stack for pub/sub
-# Because there is an error while using with Rails 7.2, the fix is not released yet.
-# So we use the main branch for now.
-gem "litestack", git: "https://github.com/oldmoe/litestack.git", branch: "master"
+# Action Cable adapter
+gem "solid_cable", "~> 3.0.0"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.13.0"

@@ -61,7 +61,13 @@ class BlackCandy::ConfigTest < ActiveSupport::TestCase
       end
     end
 
-    with_env("DB_ADAPTER" => "postgresql", "DB_URL" => "database_url", "CACHE_DB_URL" => "cache_db_url", "RAILS_ENV" => "production") do
+    with_env(
+      "DB_ADAPTER" => "postgresql",
+      "DB_URL" => "database_url",
+      "CABLE_DB_URL" => "cable_db_url",
+      "CACHE_DB_URL" => "cache_db_url",
+      "RAILS_ENV" => "production"
+    ) do
       assert_equal "postgresql", BlackCandy.config.db_adapter
     end
   end
