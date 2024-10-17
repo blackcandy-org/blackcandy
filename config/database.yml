@@ -11,32 +11,62 @@ pg_default: &pg_default
 
 <% if BlackCandy.config.db_adapter == "postgresql" %>
 development:
-  <<: *pg_default
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  database: blackcandy_development
-  host: localhost
+  primary: &primary_development
+    <<: *pg_default
+    username: <%= ENV['DB_USERNAME'] %>
+    password: <%= ENV['DB_PASSWORD'] %>
+    database: blackcandy_development
+    host: localhost
+  cache:
+    <<: *primary_development
+    database: blackcandy_development_cache
+    migrations_paths: db/cache_migrate
 
 test:
-  <<: *pg_default
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  database: blackcandy_test
-  host: localhost
+  primary: &primary_test
+    <<: *pg_default
+    username: <%= ENV['DB_USERNAME'] %>
+    password: <%= ENV['DB_PASSWORD'] %>
+    database: blackcandy_test
+    host: localhost
+  cache:
+    <<: *primary_test
+    database: blackcandy_test_cache
+    migrations_paths: db/cache_migrate
 
 production:
-  <<: *pg_default
-  url: <%= BlackCandy.config.db_url %>
+  primary: &primary_production
+    <<: *pg_default
+    url: <%= BlackCandy.config.db_url %>
+  cache:
+    <<: *primary_production
+    url: <%= BlackCandy.config.cache_db_url %>
+    migrations_paths: db/cache_migrate
 <% else %>
 development:
-  <<: *sqlite_default
-  database: storage/development.sqlite3
+  primary:
+    <<: *sqlite_default
+    database: storage/development.sqlite3
+  cache:
+    <<: *sqlite_default
+    database: storage/development_cache.sqlite3
+    migrations_paths: db/cache_migrate
 
 test:
-  <<: *sqlite_default
-  database: storage/test.sqlite3
+  primary:
+    <<: *sqlite_default
+    database: storage/test.sqlite3
+  cache:
+    <<: *sqlite_default
+    database: storage/test_cache.sqlite3
+    migrations_paths: db/cache_migrate
 
 production:
-  <<: *sqlite_default
-  database: storage/production.sqlite3
+  primary:
+    <<: *sqlite_default
+    database: storage/production.sqlite3
+  cache:
+    <<: *sqlite_default
+    database: storage/production_cache.sqlite3
+    migrations_paths: db/cache_migrate
 <% end %>
