@@ -104,7 +104,7 @@ group :test do
   gem "webmock", "~> 3.18.0", require: false
   gem "simplecov", "~> 0.22.0", require: false
   gem "simplecov-lcov", "~> 0.8.0", require: false
-  gem fast_ci
+  gem "fast_ci"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
