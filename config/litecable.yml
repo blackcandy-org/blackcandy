@@ -1,5 +1,0 @@
-development:
-  path: storage/development_cable.sqlite3
-
-production:
-  path: storage/production_cable.sqlite3

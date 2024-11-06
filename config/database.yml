@@ -2,6 +2,7 @@ sqlite_default: &sqlite_default
   adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
+  default_transaction_mode: immediate
 
 pg_default: &pg_default
   adapter: postgresql
@@ -25,6 +26,10 @@ development:
     <<: *primary_development
     database: blackcandy_development_cable
     migrations_paths: db/cable_migrate
+  queue:
+    <<: *primary_development
+    database: blackcandy_development_queue
+    migrations_paths: db/queue_migrate
 
 test:
   primary: &primary_test
@@ -41,6 +46,10 @@ test:
     <<: *primary_test
     database: blackcandy_test_cable
     migrations_paths: db/cable_migrate
+  queue:
+    <<: *primary_test
+    database: blackcandy_test_queue
+    migrations_paths: db/queue_migrate
 
 production:
   primary: &primary_production
@@ -54,6 +63,10 @@ production:
     <<: *primary_production
     url: <%= BlackCandy.config.cable_db_url %>
     migrations_paths: db/cable_migrate
+  queue:
+    <<: *primary_production
+    url: <%= BlackCandy.config.queue_db_url %>
+    migrations_paths: db/queue_migrate
 <% else %>
 development:
   primary:
@@ -67,6 +80,10 @@ development:
     <<: *sqlite_default
     database: storage/development_cable.sqlite3
     migrations_paths: db/cable_migrate
+  queue:
+    <<: *sqlite_default
+    database: storage/development_queue.sqlite3
+    migrations_paths: db/queue_migrate
 
 test:
   primary:
@@ -80,6 +97,10 @@ test:
     <<: *sqlite_default
     database: storage/test_cable.sqlite3
     migrations_paths: db/cable_migrate
+  queue:
+    <<: *sqlite_default
+    database: storage/test_queue.sqlite3
+    migrations_paths: db/queue_migrate
 
 production:
   primary:
@@ -93,4 +114,8 @@ production:
     <<: *sqlite_default
     database: storage/production_cable.sqlite3
     migrations_paths: db/cable_migrate
+  queue:
+    <<: *sqlite_default
+    database: storage/production_queue.sqlite3
+    migrations_paths: db/queue_migrate
 <% end %>
