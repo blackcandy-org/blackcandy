@@ -1,16 +1,3 @@
-GIT
-  remote: https://github.com/oldmoe/litestack.git
-  revision: 83a1dc5f788bee673a696ca2d6df551a84799bb4
-  branch: master
-  specs:
-    litestack (0.4.4)
-      erubi (~> 1)
-      oj (~> 3)
-      rack (~> 3)
-      rackup (~> 2)
-      sqlite3 (>= 1.6.0, < 2.0.0)
-      tilt (~> 2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -67,9 +54,6 @@ GEM
       activemodel (= 7.2.1)
       activesupport (= 7.2.1)
       timeout (>= 0.4.0)
-    activerecord-enhancedsqlite3-adapter (0.7.0)
-      activerecord (>= 7.1)
-      sqlite3 (>= 1.6)
     activestorage (7.2.1)
       actionpack (= 7.2.1)
       activejob (= 7.2.1)
@@ -107,7 +91,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
-    brakeman (6.2.1)
+    brakeman (6.2.2)
       racc
     browser (6.0.0)
     builder (3.3.0)
@@ -152,12 +136,17 @@ GEM
       rubocop
       smart_properties
     erubi (1.13.0)
+    et-orbi (1.2.11)
+      tzinfo
     ferrum (0.13)
       addressable (~> 2.5)
       concurrent-ruby (~> 1.1)
       webrick (~> 1.7)
       websocket-driver (>= 0.6, < 0.8)
     ffi (1.16.3)
+    fugit (1.11.1)
+      et-orbi (~> 1, >= 1.2.11)
+      raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashdiff (1.1.0)
@@ -234,10 +223,6 @@ GEM
     nokogiri (1.16.7)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    oj (3.16.6)
-      bigdecimal (>= 3.0)
-      ostruct (>= 0.2)
-    ostruct (0.6.0)
     pagy (6.0.4)
     parallel (1.25.1)
     parser (3.3.1.0)
@@ -254,6 +239,7 @@ GEM
     public_suffix (5.0.5)
     puma (6.4.3)
       nio4r (~> 2.0)
+    raabro (1.4.0)
     racc (1.8.1)
     rack (3.1.7)
     rack-session (2.0.0)
@@ -340,13 +326,23 @@ GEM
     simplecov-lcov (0.8.0)
     simplecov_json_formatter (0.1.4)
     smart_properties (1.17.0)
+    solid_cable (3.0.2)
+      actioncable (>= 7.2)
+      activejob (>= 7.2)
+      activerecord (>= 7.2)
+      railties (>= 7.2)
     solid_cache (1.0.6)
       activejob (>= 7.2)
       activerecord (>= 7.2)
       railties (>= 7.2)
-    solid_queue (0.2.2)
-      rails (~> 7.1)
-    sqlite3 (1.7.3)
+    solid_queue (1.0.0)
+      activejob (>= 7.1)
+      activerecord (>= 7.1)
+      concurrent-ruby (>= 1.3.1)
+      fugit (~> 1.11.0)
+      railties (>= 7.1)
+      thor (~> 1.3.1)
+    sqlite3 (2.1.0)
       mini_portile2 (~> 2.8.0)
     sshkit (1.22.2)
       base64
@@ -365,7 +361,6 @@ GEM
       railties (>= 6.0.0)
     stringio (3.1.1)
     thor (1.3.2)
-    tilt (2.4.0)
     timeout (0.4.1)
     turbo-rails (1.5.0)
       actionpack (>= 6.0.0)
@@ -398,7 +393,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-enhancedsqlite3-adapter (~> 0.7.0)
   acts_as_list (~> 1.2.0)
   bcrypt (~> 3.1.11)
   bootsnap (~> 1.18.0)
@@ -417,7 +411,6 @@ DEPENDENCIES
   jsbundling-rails (~> 1.3.0)
   kamal (~> 1.4.0)
   listen (~> 3.9.0)
-  litestack!
   memory_profiler (~> 0.9.13)
   pagy (~> 6.0.0)
   parallel (~> 1.25.0)
@@ -428,9 +421,10 @@ DEPENDENCIES
   ransack (~> 4.2.0)
   simplecov (~> 0.22.0)
   simplecov-lcov (~> 0.8.0)
+  solid_cable (~> 3.0.0)
   solid_cache (~> 1.0.0)
-  solid_queue (~> 0.2.1)
-  sqlite3 (~> 1.7.0)
+  solid_queue (~> 1.0.0)
+  sqlite3 (~> 2.1.0)
   standard (~> 1.25.0)
   standard-rails
   stimulus-rails (~> 1.3.4)

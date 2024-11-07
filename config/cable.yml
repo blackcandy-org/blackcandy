@@ -1,22 +1,16 @@
-sqlite_default: &sqlite_default
-  adapter: litecable
+default: &default
+  adapter: solid_cable
+  connects_to:
+    database:
+      writing: cable
+  polling_interval: 0.1.seconds
+  message_retention: 1.day
 
-pg_default: &pg_default
-  adapter: postgresql
+development:
+  <<: *default
 
 test:
   adapter: test
 
-<% if BlackCandy.config.db_adapter == "postgresql" %>
-development:
-  <<: *pg_default
-
 production:
-  <<: *pg_default
-<% else %>
-development:
-  <<: *sqlite_default
-
-production:
-  <<: *sqlite_default
-<% end %>
+  <<: *default

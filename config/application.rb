@@ -28,6 +28,9 @@ module BlackCandy
   include BlackCandy::Configurable
 
   has_config :db_url
+  has_config :cache_db_url
+  has_config :cable_db_url
+  has_config :queue_db_url
   has_config :media_path
   has_config :db_adapter, default: "sqlite"
   has_config :nginx_sendfile, default: false
@@ -39,8 +42,10 @@ module BlackCandy
       raise_config_validation_error "Unsupported database adapter."
     end
 
-    if value == "postgresql" && ENV["RAILS_ENV"] == "production" && config.db_url.blank?
-      raise_config_validation_error "DB_URL is required if database adapter is postgresql"
+    if value == "postgresql" &&
+        ENV["RAILS_ENV"] == "production" &&
+        (config.db_url.blank? || config.cache_db_url.blank? || config.cable_db_url.blank? || config.queue_db_url.blank?)
+      raise_config_validation_error "DB_URL, CABLE_DB_URL, QUEUE_DB_URL and CACHE_DB_URL are required if database adapter is postgresql"
     end
   end
 
@@ -57,7 +62,6 @@ module BlackCandy
 
     config.active_storage.resolve_model_to_route = :rails_storage_proxy
 
-    config.solid_queue.silence_polling = true
     config.solid_queue.preserve_finished_jobs = false
 
     # Configuration for the application, engines, and railties goes here.
