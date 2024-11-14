@@ -126,26 +126,6 @@ class ApplicationController < ActionController::Base
     render json: {type: error.type, message: error.message}, status: status
   end
 
-  def send_local_file(file_path, format, nginx_headers: {})
-    if BlackCandy.config.nginx_sendfile?
-      nginx_headers.each { |name, value| response.headers[name] = value }
-      send_file file_path
-
-      return
-    end
-
-    # Use Rack::Files to support HTTP range without nginx. see https://github.com/rails/rails/issues/32193
-    Rack::Files.new(nil).serving(request, file_path).tap do |(status, headers, body)|
-      self.status = status
-      self.response_body = body
-
-      headers.each { |name, value| response.headers[name] = value }
-
-      response.headers["Content-Type"] = Mime[format]
-      response.headers["Content-Disposition"] = "attachment"
-    end
-  end
-
   def find_current_request_details
     Current.ip_address = request.ip
     Current.user_agent = request.user_agent

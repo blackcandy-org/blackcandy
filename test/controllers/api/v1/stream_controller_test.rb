@@ -12,15 +12,6 @@ class Api::V1::StreamControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should set header for nginx send file" do
-    with_env("NGINX_SENDFILE" => "true") do
-      get new_api_v1_stream_url(song_id: songs(:mp3_sample).id), headers: api_token_header(@user)
-
-      assert_equal Setting.media_path, @response.get_header("X-Media-Path")
-      assert_equal "/private_media/artist1_album2.mp3", @response.get_header("X-Accel-Redirect")
-    end
-  end
-
   test "should respond file data" do
     get new_api_v1_stream_url(song_id: songs(:mp3_sample).id), headers: api_token_header(@user)
     assert_equal binary_data(file_fixture("artist1_album2.mp3")), response.body

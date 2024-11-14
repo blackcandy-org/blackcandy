@@ -33,7 +33,6 @@ module BlackCandy
   has_config :queue_db_url
   has_config :media_path
   has_config :db_adapter, default: "sqlite"
-  has_config :nginx_sendfile, default: false
   has_config :force_ssl, default: false
   has_config :demo_mode, default: false
 

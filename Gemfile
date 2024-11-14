@@ -73,6 +73,9 @@ gem "daemons", "~> 1.4.0"
 # Optional support for postgresql as database
 gem "pg", "~> 1.5.4"
 
+# Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
+gem "thruster", "~> 0.1.8", require: false
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", "~> 1.18.0", require: false
 
