@@ -36,9 +36,7 @@ module TranscodedStreamConcern
 
   def find_cache
     return unless valid_cache?
-    send_local_file @stream.transcode_cache_file_path, @stream.format, nginx_headers: {
-      "X-Accel-Redirect" => File.join("/private_cache_media", @stream.transcode_cache_file_path.sub(Stream::TRANSCODE_CACHE_DIRECTORY.to_s, ""))
-    }
+    send_file @stream.transcode_cache_file_path
   end
 
   def valid_cache?

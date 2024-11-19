@@ -8,12 +8,7 @@ module StreamConcern
   end
 
   def new
-    send_local_file @stream.file_path, @stream.format, nginx_headers: {
-      # Let nginx can get value of media_path dynamically in the nginx config
-      # when use X-Accel-Redirect header to send file.
-      "X-Media-Path" => Setting.media_path,
-      "X-Accel-Redirect" => File.join("/private_media", @stream.file_path.sub(File.expand_path(Setting.media_path), ""))
-    }
+    send_file @stream.file_path
   end
 
   private
