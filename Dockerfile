@@ -5,15 +5,12 @@ FROM base AS builder
 ENV RAILS_ENV production
 ENV NODE_ENV production
 
-# Build for musl-libc, not glibc (see https://github.com/sparklemotion/nokogiri/issues/2075, https://github.com/rubygems/rubygems/issues/3174)
-ENV BUNDLE_FORCE_RUBY_PLATFORM 1
-
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
 COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
 
 RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 
-RUN apk add --no-cache tzdata libpq-dev build-base
+RUN apk add --no-cache tzdata libpq-dev build-base gcompat
 
 WORKDIR /app
 
@@ -21,6 +18,7 @@ COPY Gemfile* /app/
 
 RUN bundle config --local without 'development test' \
   && bundle install -j4 --retry 3 \
+  && bundle exec bootsnap precompile --gemfile app/ lib/  \
   && bundle clean --force \
   && rm -rf /usr/local/bundle/cache \
   && find /usr/local/bundle/gems/ -name "*.c" -delete \
@@ -45,11 +43,12 @@ RUN apk add --no-cache \
   libpq \
   vips \
   ffmpeg \
-  curl
+  curl \
+  gcompat
 
 WORKDIR /app
 
-EXPOSE 3000
+EXPOSE 80
 
 RUN addgroup -g 1000 -S app && adduser -u 1000 -S app -G app
 
