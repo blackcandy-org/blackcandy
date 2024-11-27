@@ -24,13 +24,13 @@ Please visit <https://demo.blackcandy.org> and use demo user (email: admin@admin
 Black Candy uses docker image to install easily. You can run Black Candy like this.
 
 ```shell
-docker run -p 3000:3000 ghcr.io/blackcandy-org/blackcandy:latest 
+docker run -p 80:80 ghcr.io/blackcandy-org/blackcandy:latest 
 
 # Or pull from Docker Hub.
-docker run -p 3000:3000 blackcandy/blackcandy:latest 
+docker run -p 80:80 blackcandy/blackcandy:latest 
 ```
 
-That's all. Now, you can access either http://localhost:3000 or http://host-ip:3000 in a browser, and use initial admin user to log in (email: admin@admin.com, password: foobar).
+That's all. Now, you can access either http://localhost or http://host-ip in a browser, and use initial admin user to log in (email: admin@admin.com, password: foobar).
 
 ## Upgrade
 
@@ -71,10 +71,10 @@ For Android app, you can also download APK from [GitHub Release](https://github.
 
 ### Port Mapping
 
-Black Candy exports the 3000 port. If you want to be able to access it from the host, you can use the `-p` option to map the port.
+Black Candy exports the 80 port. If you want to be able to access it from the host, you can use the `-p` option to map the port.
 
 ```shell
-docker run -p 3000:3000 ghcr.io/blackcandy-org/blackcandy:latest
+docker run -p 3000:80 ghcr.io/blackcandy-org/blackcandy:latest
 ```
 
 ### Media Files Mounts
