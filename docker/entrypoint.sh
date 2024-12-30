@@ -9,7 +9,7 @@ addgroup -g "$GROUP_ID" usergroup
 adduser -u "$USER_ID" -G usergroup username
 
 # Change ownership of the working directory
-chown -R "$USER_ID":"$GROUP_ID" /media_data
+chown -R "$USER_ID":"$GROUP_ID" "$MEDIA_PATH"
 
 
 if [ -z ${SECRET_KEY_BASE+x} ]; then

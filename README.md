@@ -79,6 +79,14 @@ docker run -p 3000:3000 ghcr.io/blackcandy-org/blackcandy:latest
 
 ### Media Files Mounts 
 
+You can mount media files from host to container and use `MEDIA_PATH` environment variable to set the media path for black candy. You can now provide the uid and gid as env arguments so that the permissions of "<your_media_data_path>" is properly aligned with media path set for black candy above.
+
+```shell
+docker run -e UID=$(id -u) -e GID=$(id -g) -v <your_media_data_path>:/media_data -e MEDIA_PATH=/media_data ghcr.io/blackcandy-org/blackcandy:latest   
+```
+
+### Media Files Mounts 
+
 You can mount media files from host to container and use `MEDIA_PATH` environment variable to set the media path for black candy.
 
 ```shell
