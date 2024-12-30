@@ -1,5 +1,17 @@
 #!/bin/sh
 
+# Default to UID and GID 1000 if not provided
+USER_ID=${UID:-1000}
+GROUP_ID=${GID:-1000}
+
+# Create group and user with the specified IDs
+addgroup -g "$GROUP_ID" usergroup
+adduser -u "$USER_ID" -G usergroup username
+
+# Change ownership of the working directory
+chown -R "$USER_ID":"$GROUP_ID" /media_data
+
+
 if [ -z ${SECRET_KEY_BASE+x} ]; then
   echo "Generating SECRET_KEY_BASE environment variable."
   echo "Please attention, all old sessions will become invalid."
