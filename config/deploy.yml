@@ -33,6 +33,9 @@ volumes:
   - "${PWD}/media_data:/media_data"
   - "${PWD}/storage_data:/app/storage"
 
+healthcheck:
+  port: "80"
+
 traefik:
   options:
     publish:
