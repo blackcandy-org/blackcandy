@@ -1,10 +1,6 @@
 name: Deploy
 
-on:
-  workflow_run:
-    workflows: ["Release Build"]
-    types:
-      - completed
+on: [push]
 
 jobs:
   deploy:
