@@ -35,6 +35,7 @@ volumes:
 
 healthcheck:
   port: "80"
+  max_attempts: 15
 
 traefik:
   options:
