@@ -18,7 +18,7 @@ COPY Gemfile* /app/
 
 RUN bundle config --local without 'development test' \
   && bundle install -j4 --retry 3 \
-  && bundle exec bootsnap precompile --gemfile app/ lib/  \
+  && bundle exec bootsnap precompile -j 0 --gemfile app/ lib/  \
   && bundle clean --force \
   && rm -rf /usr/local/bundle/cache \
   && find /usr/local/bundle/gems/ -name "*.c" -delete \
