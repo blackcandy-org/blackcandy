@@ -52,13 +52,13 @@ EXPOSE 80
 
 RUN addgroup -g 1000 -S app && adduser -u 1000 -S app -G app
 
+COPY --from=tianon/gosu /gosu /usr/local/bin/
 COPY --from=builder --chown=app:app /usr/local/bundle/ /usr/local/bundle/
 COPY --from=builder --chown=app:app /app/ /app/
 
 # Forwards media listener logs to stdout so they can be captured in docker logs.
-RUN ln -sf /dev/stdout /app/log/media_listener_production.log
-
-USER app
+RUN ln -sf /dev/stdout /app/log/media_listener_production.log \
+  && find /app/tmp -type d -exec chmod 1777 '{}' +
 
 ENTRYPOINT ["docker/entrypoint.sh"]
 
