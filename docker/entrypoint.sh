@@ -8,4 +8,8 @@ if [ -z ${SECRET_KEY_BASE+x} ]; then
   export SECRET_KEY_BASE=$(rails secret)
 fi
 
+if [ "$(id -u)" = '0' ]; then
+  exec gosu app "$0" "$@"
+fi
+
 exec "$@"
