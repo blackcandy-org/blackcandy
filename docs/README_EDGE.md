@@ -103,6 +103,14 @@ mkdir storage_data
 docker run -v ./storage_data:/app/storage ghcr.io/blackcandy-org/blackcandy:latest 
 ```
 
+### Running as an Arbitrary User
+
+When mounting volumes, you may encounter permission issues between the host and the Docker container. To resolve this issue, pass the UID and GID with the `--user` to set the same UID and GID as your host user.
+
+```shell
+docker run --user 2000:2000 -v ./storage_data:/app/storage ghcr.io/blackcandy-org/blackcandy:latest 
+```
+
 ### Logging
 
 Black Candy logs to `STDOUT` by default. So if you want to control the log, Docker already supports a lot of options to handle the log in the container. See: https://docs.docker.com/config/containers/logging/configure/.
