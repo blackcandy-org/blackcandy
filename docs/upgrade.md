@@ -18,7 +18,7 @@ First, remove nginx-proxy from your docker-compose.yml.
 -     - /var/run/docker.sock:/tmp/docker.sock:ro
 -     - /media_data:/media_data #
 ```
-The `NGINX_SENDFILE` environment variable and the blackcandy.local file are no longer used. You can remove them.
+The `NGINX_SENDFILE` environment variable and the `blackcandy.local` file are no longer used. You can remove them.
 
 ### Provide Additional Database URLs
 > [!NOTE]
@@ -236,7 +236,7 @@ Now your Black Candy v2 has been upgraded to v3.0, you can go the [README](https
 
 ### Upgrade from edge to v3.1
 
-Please check the upgrade guide from [v3.0 to v3.1](https://github.com/blackcandy-org/blackcandy/blob/master/docs/upgrade.md#upgrade-from-black-candy-v3.0-to-v3.1) to see if you are missing any steps. Otherwise, you should be fine upgrading from edge to v3.1 
+Please check the upgrade guide from [v3.0 to v3.1](#upgrade-from-black-candy-v3.0-to-v3.1) to see if you are missing any steps. Otherwise, you should be fine upgrading from edge to v3.1 
 
 ### Upgrade from edge to v3.0
 
