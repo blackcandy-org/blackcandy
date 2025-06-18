@@ -19,7 +19,8 @@ export default class extends Controller {
     'favoriteButton',
     'unFavoriteButton',
     'modeButton',
-    'loader'
+    'loader',
+    'volume'
   ]
 
   initialize () {
@@ -84,6 +85,10 @@ export default class extends Controller {
   seek (event) {
     this.player.seek((event.offsetX / event.target.offsetWidth) * this.currentSong.duration)
     window.requestAnimationFrame(this.#setProgress.bind(this))
+  }
+
+  volume (event) {
+    this.player.volume(event.target.value)
   }
 
   collapse () {
