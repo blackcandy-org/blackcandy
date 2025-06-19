@@ -44,6 +44,9 @@
         <%= icon_tag "fast-forward", size: "large", title: t("label.next_song") %>
       </button>
     </div>
+    <div>
+      <input min="0" max="1" type="range" step="0.01" data-player-target='volume' data-action='change->player#volume'>
+    </div>
     <div data-action='turbo:submit-end->player#toggleFavorite'>
       <%= button_to "#", class: "c-button c-button--icon", form_class: "u-visibility-hidden", form: {"data-player-target" => "favoriteButton"} do %>
         <%= icon_tag "heart", title: t("label.toggle_favorite") %>

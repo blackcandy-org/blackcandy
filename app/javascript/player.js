@@ -21,6 +21,7 @@ class Player {
         src: [song.url],
         format: [song.format],
         html5: true,
+        volume: 1.0,
         onplay: () => { dispatchEvent(document, 'player:playing') },
         onpause: () => { dispatchEvent(document, 'player:pause') },
         onend: () => { dispatchEvent(document, 'player:end') },
@@ -77,6 +78,10 @@ class Player {
 
   seek (seconds) {
     this.currentSong.howl.seek(seconds)
+  }
+
+  volume (value) {
+    Howler.volume(value)
   }
 
   get currentIndex () {
