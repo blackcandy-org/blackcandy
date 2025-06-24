@@ -23,14 +23,8 @@
       <%= loader_tag %>
     </div>
   </div>
-  <div class='o-flex o-flex--justify-between o-flex--align-center c-player__control'>
-    <button class='c-button c-button--icon' data-action='click->player#nextMode'>
-      <%= icon_tag "repeat", title: t("label.no_repeat_mode"), data: {"player-target" => "modeButton"} %>
-      <%= icon_tag "repeat", active: true, title: t("label.repeat_mode"), data: {"player-target" => "modeButton"} %>
-      <%= icon_tag "repeat-one", active: true, title: t("label.single_mode"), data: {"player-target" => "modeButton"} %>
-      <%= icon_tag "shuffle", active: true, title: t("label.shuffle_mode"), data: {"player-target" => "modeButton"} %>
-    </button>
-    <div class="c-player__control__main o-flex o-flex--align-center">
+  <div class='c-player__control'>
+    <div class="c-player__control__main o-flex o-flex--justify-between">
       <button class='c-button c-button--icon' data-action='click->player#previous'>
         <%= icon_tag "rewind", size: "large", title: t("label.previous_song") %>
       </button>
@@ -44,16 +38,30 @@
         <%= icon_tag "fast-forward", size: "large", title: t("label.next_song") %>
       </button>
     </div>
-    <div>
-      <input min="0" max="1" type="range" step="0.01" data-player-target='volume' data-action='change->player#volume'>
-    </div>
-    <div data-action='turbo:submit-end->player#toggleFavorite'>
-      <%= button_to "#", class: "c-button c-button--icon", form_class: "u-visibility-hidden", form: {"data-player-target" => "favoriteButton"} do %>
-        <%= icon_tag "heart", title: t("label.toggle_favorite") %>
-      <% end %>
-      <%= button_to "#", class: "c-button c-button--icon", method: :delete, form_class: "u-display-none", form: {"data-player-target" => "unFavoriteButton"} do %>
-        <%= icon_tag "heart", emphasis: true, title: t("label.toggle_favorite") %>
-      <% end %>
+    <div class="c-player__control__secondary o-flex">
+      <button class='c-button c-button--icon u-mr-tiny' data-action='click->player#nextMode'>
+        <%= icon_tag "repeat", size: "small", title: t("label.no_repeat_mode"), data: {"player-target" => "modeButton"} %>
+        <%= icon_tag "repeat", size: "small", active: true, title: t("label.repeat_mode"), data: {"player-target" => "modeButton"} %>
+        <%= icon_tag "repeat-one", size: "small", active: true, title: t("label.single_mode"), data: {"player-target" => "modeButton"} %>
+        <%= icon_tag "shuffle", size: "small", active: true, title: t("label.shuffle_mode"), data: {"player-target" => "modeButton"} %>
+      </button>
+      <div class="o-flex o-flex--align-center o-flex__item--grow-1">
+        <button class='c-button c-button--icon' data-action='click->player#mute'>
+          <%= icon_tag "volume-down", size: "small", title: t("label.toggle_favorite") %>
+        </button>
+        <input class="c-player__volume" min="0" max="1" type="range" step="0.01" autocomplete="off" data-player-target="volume" data-action="player#volume">
+        <button class='c-button c-button--icon' data-action='click->player#maxVolume'>
+          <%= icon_tag "volume-up", size: "small", title: t("label.toggle_favorite") %>
+        </button>
+      </div>
+      <div data-action='turbo:submit-end->player#toggleFavorite' class="u-ml-tiny">
+        <%= button_to "#", class: "c-button c-button--icon", disabled: true, form: {"data-player-target" => "favoriteButton"} do %>
+          <%= icon_tag "heart", size: "small", title: t("label.toggle_favorite") %>
+        <% end %>
+        <%= button_to "#", class: "c-button c-button--icon", method: :delete, form_class: "u-display-none", form: {"data-player-target" => "unFavoriteButton"} do %>
+          <%= icon_tag "heart", size: "small", emphasis: true, title: t("label.toggle_favorite") %>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class='u-py-tiny u-bg-primary u-text-align-center u-display-none u-display-block@extra-small' data-action='click->player#collapse'>

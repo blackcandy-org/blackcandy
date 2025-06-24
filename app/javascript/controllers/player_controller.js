@@ -26,6 +26,7 @@ export default class extends Controller {
   initialize () {
     this.#initPlayer()
     this.#initMode()
+    this.#initVolume()
 
     installEventHandler(this)
   }
@@ -88,7 +89,15 @@ export default class extends Controller {
   }
 
   volume (event) {
-    this.player.volume(event.target.value)
+    this.#setVolume(event.target.value)
+  }
+
+  mute () {
+    this.#setVolume(0)
+  }
+
+  maxVolume () {
+    this.#setVolume(1)
   }
 
   collapse () {
@@ -123,7 +132,7 @@ export default class extends Controller {
   #setBeforePlayingStatus = () => {
     this.headerTarget.classList.add('is-expanded')
     this.loaderTarget.classList.remove('u-display-none')
-    this.favoriteButtonTarget.classList.remove('u-visibility-hidden')
+    this.favoriteButtonTarget.querySelector('button').disabled = false
     this.songTimerTarget.textContent = formatDuration(0)
   }
 
@@ -202,6 +211,16 @@ export default class extends Controller {
     this.songTimerTarget.textContent = formatDuration(this.currentTime)
   }
 
+  #setVolume (value) {
+    const progress = value * 100
+
+    this.volumeTarget.style.setProperty('--progress', `${progress}%`)
+    this.player.volume(value)
+    window.localStorage.setItem('playerVolume', value)
+
+    if (this.volumeTarget.value !== value) { this.volumeTarget.value = value }
+  }
+
   #clearTimerInterval () {
     if (this.timerInterval) {
       clearInterval(this.timerInterval)
@@ -219,5 +238,10 @@ export default class extends Controller {
     this.modes = ['noRepeat', 'repeat', 'single', 'shuffle']
     this.currentModeIndex = 0
     this.updateMode()
+  }
+
+  #initVolume () {
+    const volume = window.localStorage.getItem('playerVolume') || 1
+    this.#setVolume(volume)
   }
 }
