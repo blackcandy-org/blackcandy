@@ -10,7 +10,6 @@
 /public/packs/
 /public/packs-test/
 /test
-/screenshots
 /coverage
 /.github
 /config/master.key
