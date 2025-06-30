@@ -60,6 +60,6 @@ COPY --from=builder --chown=app:app /app/ /app/
 RUN ln -sf /dev/stdout /app/log/media_listener_production.log \
   && find /app/tmp -type d -exec chmod 1777 '{}' +
 
-ENTRYPOINT ["docker/entrypoint.sh"]
+ENTRYPOINT ["./bin/docker-entrypoint"]
 
-CMD ["docker/production_start.sh"]
+CMD ["./bin/thrust", "./bin/rails", "server"]
