@@ -44,11 +44,15 @@ RUN apk add --no-cache \
   vips \
   ffmpeg \
   curl \
-  gcompat
+  gcompat \
+  jemalloc
 
 WORKDIR /app
 
 EXPOSE 80
+
+# Enable jemalloc for reduced memory usage and latency
+ENV LD_PRELOAD=/usr/lib/libjemalloc.so.2
 
 RUN addgroup -g 1000 -S app && adduser -u 1000 -S app -G app
 
