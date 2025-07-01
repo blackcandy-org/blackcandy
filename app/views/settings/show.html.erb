@@ -6,5 +6,7 @@
     <hr>
     <%= render "settings/form" %>
   <% end %>
-  <p class='u-text-align-center u-mt-large'>Version: <%= BlackCandy::Version %></p>
+  <p class='u-text-align-center u-mt-large'>
+    <%= link_to BlackCandy::Version, BlackCandy::Version.link, target: "_blank" %>
+  </p>
 </div>
