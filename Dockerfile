@@ -2,8 +2,6 @@ FROM node:20.11.0-alpine AS node
 FROM ruby:3.3.1-alpine AS base
 FROM base AS builder
 
-ARG COMMIT_HASH
-
 ENV RAILS_ENV production
 ENV NODE_ENV production
 
@@ -34,6 +32,8 @@ RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile \
 
 
 FROM base
+
+ARG COMMIT_HASH
 
 ENV LANG=C.UTF-8 RAILS_ENV=production COMMIT_HASH=$COMMIT_HASH
 
