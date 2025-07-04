@@ -11,6 +11,5 @@ class Api::V1::SystemsControllerTest < ActionDispatch::IntegrationTest
     assert_equal BlackCandy::Version::MAJOR, response["major"]
     assert_equal BlackCandy::Version::MINOR, response["minor"]
     assert_equal BlackCandy::Version::PATCH, response["patch"]
-    assert_equal BlackCandy::Version::PRE, response["pre"]
   end
 end

@@ -35,7 +35,13 @@ shell.nix
 .eslintrc.js
 .stylelintrc
 .travis.yml
-.envrc
 .node-version
 .ruby-version
 .dockerignore
+
+# Ignore all environment files.
+/.env*
+
+# Ignore Kamal files.
+/config/deploy*.yml
+/.kamal
