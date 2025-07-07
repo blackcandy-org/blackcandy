@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "turbo-#{filter_name}-filter".dasherize do %>
   <% options.each do |option| %>
     <%= link_to(
-          url_for(controller: filter_controller, **filter_sort_presenter.params(filter: {filter_name => option})),
+          url_for(controller: filter_controller, **filter_sort_presenter.params(filter: { filter_name => option })),
           class: "c-dropdown__item",
           data: {
             "turbo-frame" => "_top",

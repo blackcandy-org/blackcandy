@@ -6,11 +6,11 @@
       <% unless native_app? %>
         <h1 class='u-mb-0 u-mr-narrow'><%= t("label.playlists") %></h1>
       <% end %>
-      <%= link_to t("label.add"), new_dialog_playlist_path, data: {"turbo-frame" => ("turbo-dialog" unless native_app?)}, class: "c-button c-button--primary" %>
+      <%= link_to t("label.add"), new_dialog_playlist_path, data: { "turbo-frame" => ("turbo-dialog" unless native_app?) }, class: "c-button c-button--primary" %>
     </div>
 
     <div class='<%= "u-ml-auto" if native_app? %>'>
-      <%= render partial: "shared/sort_select", locals: {option: @sort_option, sort_controller: controller_name, filter_sort_presenter: FilterSortPresenter.new(params)} %>
+      <%= render partial: "shared/sort_select", locals: { option: @sort_option, sort_controller: controller_name, filter_sort_presenter: FilterSortPresenter.new(params) } %>
     </div>
   </div>
 
@@ -20,7 +20,7 @@
     <% end %>
 
     <% if @pagy.next %>
-      <%= turbo_frame_tag "turbo-playlists-page-#{@pagy.next}", src: pagy_url_for(@pagy, @pagy.next), loading: "lazy", class: "o-grid__item o-grid__item--row u-my-small", data: {controller: "element", action: "turbo:frame-render->element#replaceWithChildren"}  do %>
+      <%= turbo_frame_tag "turbo-playlists-page-#{@pagy.next}", src: pagy_url_for(@pagy, @pagy.next), loading: "lazy", class: "o-grid__item o-grid__item--row u-my-small", data: { controller: "element", action: "turbo:frame-render->element#replaceWithChildren" }  do %>
         <div class='o-flex o-flex--justify-center'>
           <%= loader_tag %>
         </div>

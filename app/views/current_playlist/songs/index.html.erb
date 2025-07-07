@@ -18,7 +18,7 @@
     </div>
     <ul class="c-list u-my-tiny" data-controller="playlist-sortable" data-playlist-id='<%= @playlist.id %>'>
       <% @songs.each do |song| %>
-        <%= render partial: "current_playlist/songs/song", locals: {song: song, playlist: @playlist, should_play: @should_play_song_id == song.id} %>
+        <%= render partial: "current_playlist/songs/song", locals: { song: song, playlist: @playlist, should_play: @should_play_song_id == song.id } %>
       <% end %>
     </ul>
   <% end %>

@@ -70,7 +70,7 @@ class UseHstoreForSettings < ActiveRecord::Migration[6.0]
     add_column :settings, :thing_id, :integer
     add_column :settings, :thing_type, :string, limit: 30
     add_timestamps :settings
-    add_index :settings, [:thing_type, :thing_id, :var], unique: true
+    add_index :settings, [ :thing_type, :thing_id, :var ], unique: true
 
     remove_column :settings, :values
     remove_column :settings, :singleton_guard

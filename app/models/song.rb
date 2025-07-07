@@ -16,12 +16,12 @@ class Song < ApplicationRecord
 
   before_destroy :remove_transcode_cache
 
-  search_by :name, associations: {artist: :name, album: :name}
+  search_by :name, associations: { artist: :name, album: :name }
 
-  filter_by_associations album: [:genre, :year]
+  filter_by_associations album: [ :genre, :year ]
 
   sort_by :name, :created_at
-  sort_by_associations artist: :name, album: [:name, :year]
+  sort_by_associations artist: :name, album: [ :name, :year ]
 
   def format
     MediaFile.format(file_path)

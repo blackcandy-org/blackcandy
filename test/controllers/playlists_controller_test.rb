@@ -14,14 +14,14 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
     playlists_count = Playlist.count
 
     login
-    post playlists_url, params: {playlist: {name: "test"}}, xhr: true
+    post playlists_url, params: { playlist: { name: "test" } }, xhr: true
 
     assert_equal playlists_count + 1, Playlist.count
   end
 
   test "should has error flash when failed to create playlist" do
     login
-    post playlists_url, params: {playlist: {name: ""}}, xhr: true
+    post playlists_url, params: { playlist: { name: "" } }, xhr: true
 
     assert flash[:error].present?
   end
@@ -31,7 +31,7 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
     user = playlist.user
 
     login user
-    patch playlist_url(playlist), params: {playlist: {name: "updated_playlist"}}
+    patch playlist_url(playlist), params: { playlist: { name: "updated_playlist" } }
 
     assert_equal "updated_playlist", playlist.reload.name
   end
@@ -41,7 +41,7 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
     user = playlist.user
 
     login user
-    patch playlist_url(playlist), params: {playlist: {name: ""}}
+    patch playlist_url(playlist), params: { playlist: { name: "" } }
 
     assert flash[:error].present?
   end

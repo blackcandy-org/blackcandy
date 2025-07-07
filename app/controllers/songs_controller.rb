@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SongsController < ApplicationController
-  before_action :get_sort_option, only: [:index]
+  before_action :get_sort_option, only: [ :index ]
 
   def index
     records = Song.includes(:artist, :album)
@@ -18,7 +18,7 @@ class SongsController < ApplicationController
   end
 
   def sort_params
-    [params[:sort], params[:sort_direction]]
+    [ params[:sort], params[:sort_direction] ]
   end
 
   def get_sort_option

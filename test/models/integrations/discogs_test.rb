@@ -5,18 +5,18 @@ require "test_helper"
 class Integrations::DiscogsTest < ActiveSupport::TestCase
   setup do
     @discogs_client = Integrations::Discogs.new("fake_token")
-    @api_response = {results: [{cover_image: "http://example.com/cover.jpg"}]}
+    @api_response = { results: [ { cover_image: "http://example.com/cover.jpg" } ] }
     @cover_image_binary = file_fixture("cover_image.jpg").read.force_encoding("BINARY").strip
   end
 
   test "should get artist image url" do
     stub_request(:get, "http://example.com/cover.jpg")
-      .to_return(body: @cover_image_binary, status: 200, headers: {"Content-Type" => "image/jpeg"})
+      .to_return(body: @cover_image_binary, status: 200, headers: { "Content-Type" => "image/jpeg" })
 
     stub_request(:get, "https://api.discogs.com/database/search")
       .with(
-        headers: {"Authorization" => "Discogs token=fake_token"},
-        query: {type: "artist", q: "artist1"}
+        headers: { "Authorization" => "Discogs token=fake_token" },
+        query: { type: "artist", q: "artist1" }
       )
       .to_return(body: @api_response.to_json, status: 200)
 
@@ -29,12 +29,12 @@ class Integrations::DiscogsTest < ActiveSupport::TestCase
 
   test "should get album image url" do
     stub_request(:get, "http://example.com/cover.jpg")
-      .to_return(body: @cover_image_binary, status: 200, headers: {"Content-Type" => "image/jpeg"})
+      .to_return(body: @cover_image_binary, status: 200, headers: { "Content-Type" => "image/jpeg" })
 
     stub_request(:get, "https://api.discogs.com/database/search")
       .with(
-        headers: {"Authorization" => "Discogs token=fake_token"},
-        query: {type: "master", release_title: "album1", artist: "artist1"}
+        headers: { "Authorization" => "Discogs token=fake_token" },
+        query: { type: "master", release_title: "album1", artist: "artist1" }
       )
       .to_return(body: @api_response.to_json, status: 200)
 
@@ -52,12 +52,12 @@ class Integrations::DiscogsTest < ActiveSupport::TestCase
 
   test "should raise too many requests error when api request has been rate limited" do
     stub_request(:get, "http://example.com/cover.jpg")
-      .to_return(body: @cover_image_binary, status: 200, headers: {"Content-Type" => "image/jpeg"})
+      .to_return(body: @cover_image_binary, status: 200, headers: { "Content-Type" => "image/jpeg" })
 
     stub_request(:get, "https://api.discogs.com/database/search")
       .with(
-        headers: {"Authorization" => "Discogs token=fake_token"},
-        query: {type: "master", release_title: "album1", artist: "artist1"}
+        headers: { "Authorization" => "Discogs token=fake_token" },
+        query: { type: "master", release_title: "album1", artist: "artist1" }
       )
       .to_return(status: 429)
 
@@ -72,8 +72,8 @@ class Integrations::DiscogsTest < ActiveSupport::TestCase
 
     stub_request(:get, "https://api.discogs.com/database/search")
       .with(
-        headers: {"Authorization" => "Discogs token=fake_token"},
-        query: {type: "master", release_title: "album1", artist: "artist1"}
+        headers: { "Authorization" => "Discogs token=fake_token" },
+        query: { type: "master", release_title: "album1", artist: "artist1" }
       )
       .to_return(body: @api_response.to_json, status: 200)
 

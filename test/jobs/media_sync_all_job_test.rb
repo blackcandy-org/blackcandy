@@ -133,8 +133,8 @@ class MediaSyncAllJobTest < ActiveJob::TestCase
     assert_not Media.syncing?
 
     mock = Minitest::Mock.new
-    mock.expect(:call, true, [true])
-    mock.expect(:call, true, [false])
+    mock.expect(:call, true, [ true ])
+    mock.expect(:call, true, [ false ])
 
     MediaSyncAllJob.perform_later
 

@@ -7,7 +7,7 @@ class Api::V1::CurrentPlaylist::Songs::PlaylistsControllerTest < ActionDispatch:
   end
 
   test "should replace all songs with playlist songs" do
-    playlist = @user.playlists.create(name: "test", song_ids: [1, 2, 3])
+    playlist = @user.playlists.create(name: "test", song_ids: [ 1, 2, 3 ])
 
     put api_v1_current_playlist_playlist_url(playlist), as: :json, headers: api_token_header(@user)
     response = @response.parsed_body
@@ -24,7 +24,7 @@ class Api::V1::CurrentPlaylist::Songs::PlaylistsControllerTest < ActionDispatch:
   end
 
   test "should return not found when playlist is not owned by user" do
-    playlist = users(:visitor1).playlists.create(name: "test", song_ids: [1, 2, 3])
+    playlist = users(:visitor1).playlists.create(name: "test", song_ids: [ 1, 2, 3 ])
 
     put api_v1_current_playlist_playlist_url(playlist), as: :json, headers: api_token_header(@user)
 

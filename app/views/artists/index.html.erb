@@ -6,7 +6,7 @@
       <h1 class='u-my-narrow u-mr-small'><%= t("label.artists") %></h1>
     <% end %>
     <div class='<%= "u-ml-auto" if native_app? %>'>
-      <%= render partial: "shared/sort_select", locals: {option: @sort_option, sort_controller: controller_name, filter_sort_presenter: FilterSortPresenter.new(params)} %>
+      <%= render partial: "shared/sort_select", locals: { option: @sort_option, sort_controller: controller_name, filter_sort_presenter: FilterSortPresenter.new(params) } %>
     </div>
   </div>
   <% if @artists.empty? %>
@@ -18,7 +18,7 @@
       <%= render partial: "artists/artist", collection: @artists %>
 
       <% if @pagy.next %>
-        <%= turbo_frame_tag "turbo-artists-page-#{@pagy.next}", src: pagy_url_for(@pagy, @pagy.next), loading: "lazy", class: "o-grid__item o-grid__item--row u-my-small", data: {controller: "element", action: "turbo:frame-render->element#replaceWithChildren"}  do %>
+        <%= turbo_frame_tag "turbo-artists-page-#{@pagy.next}", src: pagy_url_for(@pagy, @pagy.next), loading: "lazy", class: "o-grid__item o-grid__item--row u-my-small", data: { controller: "element", action: "turbo:frame-render->element#replaceWithChildren" }  do %>
           <div class='o-flex o-flex--justify-center'>
             <%= loader_tag %>
           </div>

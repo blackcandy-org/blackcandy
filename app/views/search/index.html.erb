@@ -50,7 +50,7 @@
         <%= link_to t("label.see_all"), search_songs_path(query: params[:query]), class: "is-active" %>
       <% end %>
     </div>
-    <%= render partial: "search/songs/table", locals: {songs: @songs} %>
+    <%= render partial: "search/songs/table", locals: { songs: @songs } %>
   <% end %>
 <% else %>
   <h1><%= t("label.no_search_results", query: params[:query]) %></h1>

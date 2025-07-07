@@ -3,7 +3,7 @@
 class Setting < ApplicationRecord
   include GlobalSettingConcern
 
-  AVAILABLE_BITRATE_OPTIONS = [128, 192, 320].freeze
+  AVAILABLE_BITRATE_OPTIONS = [ 128, 192, 320 ].freeze
 
   has_setting :media_path, default: proc { BlackCandy.config.media_path }
   has_setting :discogs_token
@@ -12,7 +12,7 @@ class Setting < ApplicationRecord
   has_setting :enable_media_listener, type: :boolean, default: false
   has_setting :enable_parallel_media_sync, type: :boolean, default: false
 
-  validates :transcode_bitrate, inclusion: {in: AVAILABLE_BITRATE_OPTIONS}, allow_nil: true
+  validates :transcode_bitrate, inclusion: { in: AVAILABLE_BITRATE_OPTIONS }, allow_nil: true
   validate :media_path_exist
   validate :parallel_media_sync_database
 

@@ -89,16 +89,16 @@ class UserTest < ActiveSupport::TestCase
     assert_empty @user.recently_played_album_ids
 
     @user.add_album_to_recently_played albums(:album1)
-    assert_equal [albums(:album1).id], @user.recently_played_album_ids
+    assert_equal [ albums(:album1).id ], @user.recently_played_album_ids
   end
 
   test "should only add album to recently played once" do
     @user.add_album_to_recently_played albums(:album1)
     @user.add_album_to_recently_played albums(:album2)
-    assert_equal [albums(:album2).id, albums(:album1).id], @user.recently_played_album_ids
+    assert_equal [ albums(:album2).id, albums(:album1).id ], @user.recently_played_album_ids
 
     @user.add_album_to_recently_played albums(:album1)
-    assert_equal [albums(:album1).id, albums(:album2).id], @user.recently_played_album_ids
+    assert_equal [ albums(:album1).id, albums(:album2).id ], @user.recently_played_album_ids
   end
 
   test "should get recently played albums on correct position" do
@@ -107,7 +107,7 @@ class UserTest < ActiveSupport::TestCase
     @user.add_album_to_recently_played albums(:album3)
     @user.add_album_to_recently_played albums(:album2)
 
-    assert_equal [albums(:album2), albums(:album3), albums(:album1)], @user.recently_played_albums
+    assert_equal [ albums(:album2), albums(:album3), albums(:album1) ], @user.recently_played_albums
   end
 
   test "should not over the limit of recently played albums" do
@@ -122,11 +122,11 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "should broadcast theme change" do
-    assert_no_turbo_stream_broadcasts [@user, :theme] do
+    assert_no_turbo_stream_broadcasts [ @user, :theme ] do
       @user.update(theme: "auto")
     end
 
-    assert_turbo_stream_broadcasts [@user, :theme] do
+    assert_turbo_stream_broadcasts [ @user, :theme ] do
       @user.update(theme: "light")
     end
   end

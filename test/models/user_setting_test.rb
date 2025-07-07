@@ -4,7 +4,7 @@ require "test_helper"
 
 class UserSettingTest < ActiveSupport::TestCase
   test "should have AVAILABLE_SETTINGS constant" do
-    assert_equal [:theme], User::AVAILABLE_SETTINGS
+    assert_equal [ :theme ], User::AVAILABLE_SETTINGS
   end
 
   test "should get default value when setting value did not set" do

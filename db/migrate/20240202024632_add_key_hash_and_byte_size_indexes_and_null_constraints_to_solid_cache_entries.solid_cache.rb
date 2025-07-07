@@ -5,7 +5,7 @@ class AddKeyHashAndByteSizeIndexesAndNullConstraintsToSolidCacheEntries < Active
       t.change_null :key_hash, false
       t.change_null :byte_size, false
       t.index :key_hash, unique: true
-      t.index [:key_hash, :byte_size]
+      t.index [ :key_hash, :byte_size ]
       t.index :byte_size
     end
   end

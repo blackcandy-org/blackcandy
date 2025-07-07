@@ -28,7 +28,7 @@ class Playlist < ApplicationRecord
 
     PlaylistsSong.acts_as_list_no_update do
       playlist_songs = song_ids.map.with_index do |song_id, index|
-        {song_id: song_id, playlist_id: id, position: index + 1}
+        { song_id: song_id, playlist_id: id, position: index + 1 }
       end
 
       PlaylistsSong.insert_all(playlist_songs)

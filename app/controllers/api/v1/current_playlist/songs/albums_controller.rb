@@ -5,7 +5,7 @@ module Api
     class CurrentPlaylist::Songs::AlbumsController < ApiController
       before_action :find_current_playlist
       before_action :find_album
-      after_action :add_to_recently_played, only: [:update]
+      after_action :add_to_recently_played, only: [ :update ]
 
       def update
         @current_playlist.replace(@album.song_ids)

@@ -6,9 +6,9 @@ require "capybara/cuprite"
 SimpleCov.command_name "test:system"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  driven_by :cuprite, screen_size: [1400, 900], options: {
-    browser_options: {"no-sandbox": nil},
-    url_blacklist: ["https://www.gravatar.com"],
+  driven_by :cuprite, screen_size: [ 1400, 900 ], options: {
+    browser_options: { "no-sandbox": nil },
+    url_blacklist: [ "https://www.gravatar.com" ],
     timeout: 10,
     process_timeout: 20
   }

@@ -80,8 +80,9 @@ gem "thruster", "~> 0.1.14", require: false
 gem "bootsnap", "~> 1.18.0", require: false
 
 group :development, :test do
-  gem "standard", "~> 1.50.0"
-  gem "standard-rails"
+  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
+  gem "rubocop-rails-omakase", require: false
+
   gem "erb_lint", "~> 0.9.0", require: false
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
@@ -109,4 +110,4 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "tzinfo-data", platforms: [ :mingw, :mswin, :x64_mingw, :jruby ]

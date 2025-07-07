@@ -4,7 +4,7 @@ module Api
   module V1
     class FavoritePlaylist::SongsController < ApiController
       before_action :find_playlist
-      before_action :find_song, only: [:destroy]
+      before_action :find_song, only: [ :destroy ]
 
       def create
         @song = Song.find(params[:song_id])

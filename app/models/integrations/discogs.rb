@@ -27,12 +27,12 @@ class Integrations::Discogs < Integrations::Service
   end
 
   def artist_cover_image(artist)
-    options = {query: {type: "artist", q: artist.name}, format: :plain}
+    options = { query: { type: "artist", q: artist.name }, format: :plain }
     search_cover_image(options)
   end
 
   def album_cover_image(album)
-    options = {query: {type: "master", release_title: album.name, artist: album.artist.name}, format: :plain}
+    options = { query: { type: "master", release_title: album.name, artist: album.artist.name }, format: :plain }
     search_cover_image(options)
   end
 end

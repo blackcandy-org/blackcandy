@@ -2,8 +2,8 @@
 
 class Playlists::SongsController < ApplicationController
   before_action :find_playlist
-  before_action :find_song, only: [:move, :destroy]
-  before_action :redirect_to_built_in_playlist, only: [:index]
+  before_action :find_song, only: [ :move, :destroy ]
+  before_action :redirect_to_built_in_playlist, only: [ :index ]
 
   def index
     @pagy, @songs = pagy(@playlist.songs.includes(:artist))
@@ -17,7 +17,7 @@ class Playlists::SongsController < ApplicationController
   rescue ActiveRecord::RecordNotUnique
     flash[:error] = t("error.already_in_playlist")
   ensure
-    redirect_back_with_referer_params(fallback_location: {action: "index"})
+    redirect_back_with_referer_params(fallback_location: { action: "index" })
   end
 
   def destroy

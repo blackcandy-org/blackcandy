@@ -13,7 +13,7 @@ class AttachCoverImageFromDiscogsJobTest < ActiveJob::TestCase
         filename: "cover.jpg",
         content_type: "image/jpeg"
       },
-      [ApplicationRecord]
+      [ ApplicationRecord ]
     )
   end
 
@@ -48,7 +48,7 @@ class AttachCoverImageFromDiscogsJobTest < ActiveJob::TestCase
     end
 
     Integrations::Discogs.stub(:new, discogs_client) do
-      assert_enqueued_with(job: AttachCoverImageFromDiscogsJob, args: [album]) do
+      assert_enqueued_with(job: AttachCoverImageFromDiscogsJob, args: [ album ]) do
         AttachCoverImageFromDiscogsJob.perform_now(album)
       end
     end

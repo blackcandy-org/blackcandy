@@ -16,14 +16,14 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     Setting.update(discogs_token: "token")
 
     login users(:admin)
-    patch setting_url, params: {setting: {discogs_token: "updated_token"}}, xhr: true
+    patch setting_url, params: { setting: { discogs_token: "updated_token" } }, xhr: true
 
     assert_equal "updated_token", Setting.discogs_token
   end
 
   test "should has error flash when failed to update" do
     login users(:admin)
-    patch setting_url, params: {setting: {transcode_bitrate: 11}}, xhr: true
+    patch setting_url, params: { setting: { transcode_bitrate: 11 } }, xhr: true
 
     assert flash[:error].present?
   end
@@ -32,7 +32,7 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     login users(:admin)
 
     assert_enqueued_with(job: MediaSyncJob) do
-      patch setting_url, params: {setting: {media_path: Rails.root.join("test/fixtures")}}, xhr: true
+      patch setting_url, params: { setting: { media_path: Rails.root.join("test/fixtures") } }, xhr: true
       assert_equal Rails.root.join("test/fixtures").to_s, Setting.media_path
     end
   end
@@ -40,7 +40,7 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
   test "should only admin can update global settings" do
     login
 
-    patch setting_url, params: {setting: {discogs_token: "updated_token"}}, xhr: true
+    patch setting_url, params: { setting: { discogs_token: "updated_token" } }, xhr: true
     assert_response :forbidden
   end
 
@@ -48,7 +48,7 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     with_env("DEMO_MODE" => "true") do
       login users(:admin)
 
-      patch setting_url, params: {setting: {discogs_token: "updated_token"}}, xhr: true
+      patch setting_url, params: { setting: { discogs_token: "updated_token" } }, xhr: true
       assert_response :forbidden
     end
   end

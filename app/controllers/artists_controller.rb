@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class ArtistsController < ApplicationController
-  before_action :require_admin, only: [:update]
-  before_action :find_artist, except: [:index]
-  before_action :get_sort_option, only: [:index]
+  before_action :require_admin, only: [ :update ]
+  before_action :find_artist, except: [ :index ]
+  before_action :get_sort_option, only: [ :index ]
 
   def index
     records = Artist.sort_records(*sort_params).with_attached_cover_image
@@ -36,7 +36,7 @@ class ArtistsController < ApplicationController
   end
 
   def sort_params
-    [params[:sort], params[:sort_direction]]
+    [ params[:sort], params[:sort_direction] ]
   end
 
   def get_sort_option
