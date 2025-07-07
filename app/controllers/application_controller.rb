@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "ostruct"
+
 class ApplicationController < ActionController::Base
   include Pagy::Backend
   include SessionsHelper
