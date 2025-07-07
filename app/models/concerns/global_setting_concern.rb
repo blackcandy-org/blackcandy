@@ -5,7 +5,7 @@ module GlobalSettingConcern
 
   included do
     # Ensures only one Settings row is created
-    validates :singleton_guard, inclusion: {in: [0]}
+    validates :singleton_guard, inclusion: { in: [ 0 ] }
     const_set(:AVAILABLE_SETTINGS, [])
   end
 

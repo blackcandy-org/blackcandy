@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "ostruct"
+
 class ApplicationController < ActionController::Base
   include Pagy::Backend
   include SessionsHelper
@@ -123,7 +125,7 @@ class ApplicationController < ActionController::Base
   end
 
   def render_json_error(error, status)
-    render json: {type: error.type, message: error.message}, status: status
+    render json: { type: error.type, message: error.message }, status: status
   end
 
   def find_current_request_details

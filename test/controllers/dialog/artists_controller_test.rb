@@ -16,7 +16,7 @@ class Dialog::ArtistsControllerTest < ActionDispatch::IntegrationTest
     get edit_dialog_artist_url(artists(:artist1))
     assert_response :forbidden
 
-    patch artist_url(artists(:artist1)), params: {artist: {image: fixture_file_upload("cover_image.jpg", "image/jpeg")}}
+    patch artist_url(artists(:artist1)), params: { artist: { image: fixture_file_upload("cover_image.jpg", "image/jpeg") } }
     assert_response :forbidden
   end
 
@@ -27,7 +27,7 @@ class Dialog::ArtistsControllerTest < ActionDispatch::IntegrationTest
       get edit_dialog_artist_url(artists(:artist1))
       assert_response :forbidden
 
-      patch artist_url(artists(:artist1)), params: {artist: {image: fixture_file_upload("cover_image.jpg", "image/jpeg")}}
+      patch artist_url(artists(:artist1)), params: { artist: { image: fixture_file_upload("cover_image.jpg", "image/jpeg") } }
       assert_response :forbidden
     end
   end

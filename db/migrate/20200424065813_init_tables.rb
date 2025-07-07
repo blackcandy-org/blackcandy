@@ -31,7 +31,7 @@ class InitTables < ActiveRecord::Migration[6.0]
     end
 
     create_join_table :playlists, :songs do |t|
-      t.index [:song_id, :playlist_id], unique: true
+      t.index [ :song_id, :playlist_id ], unique: true
       t.datetime :created_at, null: false
     end
 
@@ -53,7 +53,7 @@ class InitTables < ActiveRecord::Migration[6.0]
       t.integer :thing_id
       t.string :thing_type, limit: 30
       t.timestamps
-      t.index [:thing_type, :thing_id, :var], unique: true
+      t.index [ :thing_type, :thing_id, :var ], unique: true
     end
   end
 end

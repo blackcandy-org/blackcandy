@@ -3,8 +3,8 @@
 module Api
   module V1
     class AuthenticationsController < ApiController
-      skip_before_action :find_current_session, only: [:create]
-      skip_before_action :require_login, only: [:create]
+      skip_before_action :find_current_session, only: [ :create ]
+      skip_before_action :require_login, only: [ :create ]
 
       def create
         @session = Session.build_from_credential(session_params)

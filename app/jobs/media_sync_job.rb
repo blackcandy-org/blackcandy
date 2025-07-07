@@ -30,7 +30,7 @@ class MediaSyncJob < ApplicationJob
 
   def parallel_sync(type, file_paths)
     parallel_processor_count = self.class.parallel_processor_count
-    grouped_file_paths = (parallel_processor_count > 0) ? file_paths.in_groups(parallel_processor_count, false).compact_blank : [file_paths]
+    grouped_file_paths = (parallel_processor_count > 0) ? file_paths.in_groups(parallel_processor_count, false).compact_blank : [ file_paths ]
 
     Parallel.each grouped_file_paths, in_processes: parallel_processor_count do |paths|
       Media.sync(type, paths)

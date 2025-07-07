@@ -6,7 +6,7 @@ class Api::V1::TranscodedStreamControllerTest < ActionDispatch::IntegrationTest
   class StreamMock < Stream
     def initialize(song)
       super(song)
-      @tmp_cache_file = Tempfile.new(["", ".#{TRANSCODE_FORMAT}"])
+      @tmp_cache_file = Tempfile.new([ "", ".#{TRANSCODE_FORMAT}" ])
     end
 
     def transcode_cache_file_path

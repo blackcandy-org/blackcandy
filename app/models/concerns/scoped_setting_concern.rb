@@ -26,7 +26,7 @@ module ScopedSettingConcern
 
     case type
     when :boolean
-      ["true", "1", 1, true].include?(value)
+      [ "true", "1", 1, true ].include?(value)
     when :integer
       value.to_i
     else

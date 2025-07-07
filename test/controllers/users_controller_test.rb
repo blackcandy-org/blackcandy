@@ -37,24 +37,24 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test "should create user" do
     users_count = User.count
 
-    post users_url, params: {user: {email: "test@test.com", password: "foobar"}}
+    post users_url, params: { user: { email: "test@test.com", password: "foobar" } }
     assert_equal users_count + 1, User.count
   end
 
   test "should has error flash when failed to create user" do
-    post users_url, params: {user: {email: "test.com", password: "foobar"}}, xhr: true
+    post users_url, params: { user: { email: "test.com", password: "foobar" } }, xhr: true
     assert flash[:error].present?
   end
 
   test "should update user" do
     user = users(:visitor1)
 
-    patch user_url(user), params: {user: {email: "visitor_updated@blackcandy.com"}}, xhr: true
+    patch user_url(user), params: { user: { email: "visitor_updated@blackcandy.com" } }, xhr: true
     assert_equal "visitor_updated@blackcandy.com", user.reload.email
   end
 
   test "should has error flash when failed to update user" do
-    patch user_url(users(:visitor1)), params: {user: {email: "test.com", password: "foobar"}}, xhr: true
+    patch user_url(users(:visitor1)), params: { user: { email: "test.com", password: "foobar" } }, xhr: true
     assert flash[:error].present?
   end
 
@@ -62,11 +62,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     user = users(:visitor1)
 
     login user
-    patch user_url(user), params: {user: {email: "visitor_updated@blackcandy.com"}}, xhr: true
+    patch user_url(user), params: { user: { email: "visitor_updated@blackcandy.com" } }, xhr: true
     assert_equal "visitor_updated@blackcandy.com", user.reload.email
 
     login users(:visitor2)
-    patch user_url(user), params: {user: {email: "visitor_updated@blackcandy.com"}}, xhr: true
+    patch user_url(user), params: { user: { email: "visitor_updated@blackcandy.com" } }, xhr: true
     assert_response :forbidden
   end
 
@@ -91,7 +91,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get new_user_url
     assert_response :forbidden
 
-    post users_url, params: {user: {email: "test@test.com", password: "foobar"}}
+    post users_url, params: { user: { email: "test@test.com", password: "foobar" } }
     assert_response :forbidden
 
     delete user_url(users(:visitor2)), xhr: true
@@ -108,7 +108,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       get new_user_url
       assert_response :forbidden
 
-      post users_url, params: {user: {email: "test@test.com", password: "foobar"}}
+      post users_url, params: { user: { email: "test@test.com", password: "foobar" } }
       assert_response :forbidden
 
       delete user_url(users(:visitor2)), xhr: true
@@ -117,7 +117,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       get edit_user_url(users(:visitor2))
       assert_response :forbidden
 
-      patch user_url(users(:visitor2)), params: {user: {email: "visitor_updated@blackcandy.com"}}, xhr: true
+      patch user_url(users(:visitor2)), params: { user: { email: "visitor_updated@blackcandy.com" } }, xhr: true
       assert_response :forbidden
     end
   end

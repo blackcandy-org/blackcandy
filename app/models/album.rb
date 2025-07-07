@@ -15,7 +15,7 @@ class Album < ApplicationRecord
   has_many :songs, -> { order(:discnum, :tracknum) }, inverse_of: :album, dependent: :destroy
   belongs_to :artist, touch: true
 
-  search_by :name, associations: {artist: :name}
+  search_by :name, associations: { artist: :name }
 
   filter_by :year, :genre
 
@@ -24,9 +24,9 @@ class Album < ApplicationRecord
 
   scope :lack_metadata, -> {
     includes(:artist, :cover_image_attachment)
-      .where(cover_image_attachment: {id: nil})
+      .where(cover_image_attachment: { id: nil })
       .where.not(name: Album::UNKNOWN_NAME)
-      .where.not(artists: {name: Artist::UNKNOWN_NAME})
+      .where.not(artists: { name: Artist::UNKNOWN_NAME })
   }
 
   def unknown?

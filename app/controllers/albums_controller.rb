@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class AlbumsController < ApplicationController
-  before_action :require_admin, only: [:update]
-  before_action :find_album, except: [:index]
-  before_action :get_sort_option, only: [:index]
+  before_action :require_admin, only: [ :update ]
+  before_action :find_album, except: [ :index ]
+  before_action :get_sort_option, only: [ :index ]
 
   def index
     records = Album.includes(:artist)
@@ -43,7 +43,7 @@ class AlbumsController < ApplicationController
   end
 
   def sort_params
-    [params[:sort], params[:sort_direction]]
+    [ params[:sort], params[:sort_direction] ]
   end
 
   def get_sort_option

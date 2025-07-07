@@ -27,7 +27,7 @@
               }
             ) %>
         <% if is_admin? %>
-          <%= link_to t("label.edit"), edit_dialog_album_path(@album), data: {"turbo-frame" => ("turbo-dialog" unless native_app?)}, class: "c-button c-button--secondary u-ml-tiny" %>
+          <%= link_to t("label.edit"), edit_dialog_album_path(@album), data: { "turbo-frame" => ("turbo-dialog" unless native_app?) }, class: "c-button c-button--secondary u-ml-tiny" %>
         <% end %>
       </div>
     </div>
@@ -113,7 +113,7 @@
                 <%= link_to(
                       t("label.add_to_playlist"),
                       dialog_playlists_path(song_id: song.id, referer_url: current_url),
-                      data: {"turbo-frame" => ("turbo-dialog" unless native_app?)},
+                      data: { "turbo-frame" => ("turbo-dialog" unless native_app?) },
                       class: "c-dropdown__item"
                     ) %>
                 <%= link_to(

@@ -23,7 +23,7 @@ module BlackCandy
       end
 
       def version
-        @version ||= [MAJOR, MINOR, PATCH, PRE].compact.join(".")
+        @version ||= [ MAJOR, MINOR, PATCH, PRE ].compact.join(".")
       end
 
       private

@@ -42,7 +42,6 @@
 *.swp
 yarn-debug.log*
 .yarn-integrity
-.envrc
 /.direnv
 /.gems
 /.pg_data
@@ -52,9 +51,8 @@ yarn-debug.log*
 /app/assets/builds/*
 !/app/assets/builds/.keep
 
-.env
-.env.*
-!.env.template
+# Ignore all environment files.
+/.env*
 
 .is-edge-release.txt
 

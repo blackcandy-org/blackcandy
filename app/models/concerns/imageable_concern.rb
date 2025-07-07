@@ -5,9 +5,9 @@ module ImageableConcern
 
   included do
     has_one_attached :cover_image do |attachable|
-      attachable.variant :small, resize_to_fill: [200, 200]
-      attachable.variant :medium, resize_to_fill: [400, 400], preprocessed: true
-      attachable.variant :large, resize_to_fill: [600, 600]
+      attachable.variant :small, resize_to_fill: [ 200, 200 ]
+      attachable.variant :medium, resize_to_fill: [ 400, 400 ], preprocessed: true
+      attachable.variant :large, resize_to_fill: [ 600, 600 ]
     end
 
     validate :content_type_of_cover_image

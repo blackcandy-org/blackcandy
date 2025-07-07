@@ -101,7 +101,7 @@ class ActiveSupport::TestCase
   end
 
   def create_tmp_file(format: "")
-    tmp_file = Tempfile.new(["", ".#{format}"])
+    tmp_file = Tempfile.new([ "", ".#{format}" ])
     yield tmp_file.path
   ensure
     tmp_file.close
@@ -109,12 +109,12 @@ class ActiveSupport::TestCase
   end
 
   def login(user = users(:visitor1))
-    post sessions_url, params: {session: {email: user.email, password: "foobar"}}
+    post sessions_url, params: { session: { email: user.email, password: "foobar" } }
   end
 
   def api_token_header(user)
     session = user.sessions.create!
-    {authorization: ActionController::HttpAuthentication::Token.encode_credentials(session.signed_id)}
+    { authorization: ActionController::HttpAuthentication::Token.encode_credentials(session.signed_id) }
   end
 
   def fixtures_file_path(file_name)

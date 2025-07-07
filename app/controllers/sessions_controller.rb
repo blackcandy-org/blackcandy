@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   layout "plain"
 
   skip_before_action :require_login
-  before_action :find_session, only: [:destroy]
+  before_action :find_session, only: [ :destroy ]
 
   def new
     redirect_to root_path if logged_in?

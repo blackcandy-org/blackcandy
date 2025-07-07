@@ -33,7 +33,7 @@ module BlackCandy
 
           converted_env_value = case default_value.class.name
           when "TrueClass", "FalseClass"
-            ["true", "yes"].include?(env_value&.downcase)
+            [ "true", "yes" ].include?(env_value&.downcase)
           when "Integer"
             env_value.to_i
           else
@@ -52,7 +52,7 @@ module BlackCandy
           instance_variable_set("@#{config_name}", value)
         end
 
-        if [true, false].include?(default)
+        if [ true, false ].include?(default)
           config.singleton_class.send(:alias_method, "#{config_name}?", config_name)
         end
       end

@@ -22,7 +22,7 @@ class SongTest < ActiveSupport::TestCase
   end
 
   test "should filter by album genre" do
-    song_ids = Song.where(album: [albums(:album1), albums(:album2)]).ids.sort
+    song_ids = Song.where(album: [ albums(:album1), albums(:album2) ]).ids.sort
     assert_equal song_ids, Song.filter_records(album_genre: "Rock").ids.sort
   end
 

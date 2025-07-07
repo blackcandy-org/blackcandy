@@ -20,7 +20,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create session" do
-    post sessions_url, params: {session: {email: @user.email, password: "foobar"}}
+    post sessions_url, params: { session: { email: @user.email, password: "foobar" } }
 
     assert_redirected_to root_url
     assert_not_empty cookies[:session_id]
@@ -28,7 +28,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should has error flash when failed to create session" do
-    post sessions_url, params: {session: {email: @user.email, password: "fake"}}, xhr: true
+    post sessions_url, params: { session: { email: @user.email, password: "fake" } }, xhr: true
     assert flash[:error].present?
     assert_empty @user.sessions
   end

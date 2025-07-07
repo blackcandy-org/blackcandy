@@ -17,7 +17,7 @@ class MediaSyncAllJob < MediaSyncJob
   private
 
   def after_sync(_)
-    Media.instance.broadcast_render_to "media_sync", partial: "media_syncing/syncing", locals: {syncing: false}
+    Media.instance.broadcast_render_to "media_sync", partial: "media_syncing/syncing", locals: { syncing: false }
     super(fetch_external_metadata: true)
   end
 end

@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 unless Rails.env.production?
-  require "standard/rake"
-
   namespace :lint do
     task :js do
       abort("rails lint:js failed") unless system("npx standard 'app/javascript/**/*.js'")
@@ -13,9 +11,13 @@ unless Rails.env.production?
     end
 
     task :erb do
-      abort("rails lint:erb failed") unless system("bundle exec erblint --lint-all")
+      abort("rails lint:erb failed") unless system("bundle exec erb_lint --lint-all")
     end
 
-    task all: %w[standard erb js css]
+    task :rb do
+      abort("rails lint:rb failed") unless system("./bin/rubocop")
+    end
+
+    task all: %w[rb erb js css]
   end
 end

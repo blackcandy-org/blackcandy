@@ -19,7 +19,7 @@ module ApplicationHelper
     size_class = size.blank? ? "" : "c-icon--#{size}"
     active_class = is_active ? "c-icon--active" : ""
     emphasis_class = is_emphasis ? "c-icon--emphasis" : ""
-    icon_class = ["c-icon", size_class, active_class, emphasis_class, options.delete(:class)].join(" ")
+    icon_class = [ "c-icon", size_class, active_class, emphasis_class, options.delete(:class) ].join(" ")
 
     tag.svg(
       fill: "currentColor",
@@ -64,7 +64,7 @@ module ApplicationHelper
   end
 
   def empty_alert_tag(has_icon: false, has_overlay: true)
-    render partial: "shared/empty_alert", locals: {has_icon: has_icon, has_overlay: has_overlay}
+    render partial: "shared/empty_alert", locals: { has_icon: has_icon, has_overlay: has_overlay }
   end
 
   def format_duration(sec)
@@ -73,7 +73,7 @@ module ApplicationHelper
   end
 
   def format_number(number)
-    number_to_human(number, units: {thousand: "K", million: "M", billion: "B"}, precision: 1, significant: false)
+    number_to_human(number, units: { thousand: "K", million: "M", billion: "B" }, precision: 1, significant: false)
   end
 
   def page_title_tag(title)

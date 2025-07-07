@@ -8,10 +8,10 @@ class MediaSyncJobTest < ActiveJob::TestCase
   end
 
   test "sync added media" do
-    file_paths = [fixtures_file_path("artist1_album1.flac")]
+    file_paths = [ fixtures_file_path("artist1_album1.flac") ]
     mock = Minitest::Mock.new
 
-    mock.expect(:call, true, [:added, file_paths])
+    mock.expect(:call, true, [ :added, file_paths ])
 
     MediaSyncJob.perform_later(:added, file_paths)
 
@@ -22,10 +22,10 @@ class MediaSyncJobTest < ActiveJob::TestCase
   end
 
   test "sync removed media" do
-    file_paths = [fixtures_file_path("artist1_album1.flac")]
+    file_paths = [ fixtures_file_path("artist1_album1.flac") ]
     mock = Minitest::Mock.new
 
-    mock.expect(:call, true, [:removed, file_paths])
+    mock.expect(:call, true, [ :removed, file_paths ])
 
     MediaSyncJob.perform_later(:removed, file_paths)
 
@@ -36,10 +36,10 @@ class MediaSyncJobTest < ActiveJob::TestCase
   end
 
   test "sync modified media" do
-    file_paths = [fixtures_file_path("artist1_album1.flac")]
+    file_paths = [ fixtures_file_path("artist1_album1.flac") ]
     mock = Minitest::Mock.new
 
-    mock.expect(:call, true, [:modified, file_paths])
+    mock.expect(:call, true, [ :modified, file_paths ])
 
     MediaSyncJob.perform_later(:modified, file_paths)
 
@@ -53,10 +53,10 @@ class MediaSyncJobTest < ActiveJob::TestCase
     assert_not Media.syncing?
 
     mock = Minitest::Mock.new
-    mock.expect(:call, true, [true])
-    mock.expect(:call, true, [false])
+    mock.expect(:call, true, [ true ])
+    mock.expect(:call, true, [ false ])
 
-    MediaSyncJob.perform_later(:added, [fixtures_file_path("artist1_album1.flac")])
+    MediaSyncJob.perform_later(:added, [ fixtures_file_path("artist1_album1.flac") ])
 
     Media.stub(:syncing=, mock) do
       perform_enqueued_jobs
@@ -68,11 +68,11 @@ class MediaSyncJobTest < ActiveJob::TestCase
     Setting.update(discogs_token: "fake_token")
 
     assert_enqueued_jobs 2, only: AttachCoverImageFromDiscogsJob do
-      MediaSyncJob.perform_now(:added, [fixtures_file_path("artist1_album1.flac"), fixtures_file_path("artist2_album3.wav")])
+      MediaSyncJob.perform_now(:added, [ fixtures_file_path("artist1_album1.flac"), fixtures_file_path("artist2_album3.wav") ])
     end
 
     assert_no_enqueued_jobs only: AttachCoverImageFromDiscogsJob do
-      MediaSyncJob.perform_now(:removed, [fixtures_file_path("artist1_album1.flac")])
+      MediaSyncJob.perform_now(:removed, [ fixtures_file_path("artist1_album1.flac") ])
     end
   end
 

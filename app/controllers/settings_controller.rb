@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SettingsController < ApplicationController
-  before_action :require_admin, only: [:update]
+  before_action :require_admin, only: [ :update ]
   def show
     @user = Current.user
   end

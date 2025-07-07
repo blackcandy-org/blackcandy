@@ -9,7 +9,7 @@ class CurrentPlaylist::Songs::PlaylistsControllerTest < ActionDispatch::Integrat
   end
 
   test "should replace all songs with playlist songs" do
-    playlist = @user.playlists.create(name: "test", song_ids: [1, 2, 3])
+    playlist = @user.playlists.create(name: "test", song_ids: [ 1, 2, 3 ])
 
     put current_playlist_playlist_url(playlist, should_play: true)
 
@@ -24,7 +24,7 @@ class CurrentPlaylist::Songs::PlaylistsControllerTest < ActionDispatch::Integrat
   end
 
   test "should return not found when playlist is not owned by user" do
-    playlist = users(:visitor1).playlists.create(name: "test", song_ids: [1, 2, 3])
+    playlist = users(:visitor1).playlists.create(name: "test", song_ids: [ 1, 2, 3 ])
 
     put current_playlist_playlist_url(playlist)
 

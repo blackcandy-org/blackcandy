@@ -17,9 +17,9 @@ class User < ApplicationRecord
 
   normalizes :email, with: ->(email) { email.strip.downcase }
 
-  validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}, uniqueness: {case_sensitive: false}
-  validates :password, allow_nil: true, length: {minimum: 6}
-  validates :theme, inclusion: {in: AVAILABLE_THEME_OPTIONS}, allow_nil: true
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: { case_sensitive: false }
+  validates :password, allow_nil: true, length: { minimum: 6 }
+  validates :theme, inclusion: { in: AVAILABLE_THEME_OPTIONS }, allow_nil: true
 
   has_many :playlists, -> { where(type: nil) }, inverse_of: :user, dependent: :destroy
   has_many :sessions, dependent: :destroy
@@ -74,6 +74,6 @@ class User < ApplicationRecord
   end
 
   def broadcast_theme_change
-    broadcast_replace_to self, :theme, target: "turbo-theme", partial: "shared/theme_meta", locals: {theme: theme}
+    broadcast_replace_to self, :theme, target: "turbo-theme", partial: "shared/theme_meta", locals: { theme: theme }
   end
 end

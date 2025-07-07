@@ -6,9 +6,9 @@ class DropSolidCacheEntriesTable < ActiveRecord::Migration[7.2]
       t.datetime "created_at", null: false
       t.integer "key_hash", limit: 8, null: false
       t.integer "byte_size", limit: 4, null: false
-      t.index ["byte_size"], name: "index_solid_cache_entries_on_byte_size"
-      t.index ["key_hash", "byte_size"], name: "index_solid_cache_entries_on_key_hash_and_byte_size"
-      t.index ["key_hash"], name: "index_solid_cache_entries_on_key_hash", unique: true
+      t.index [ "byte_size" ], name: "index_solid_cache_entries_on_byte_size"
+      t.index [ "key_hash", "byte_size" ], name: "index_solid_cache_entries_on_key_hash_and_byte_size"
+      t.index [ "key_hash" ], name: "index_solid_cache_entries_on_key_hash", unique: true
     end
   end
 end

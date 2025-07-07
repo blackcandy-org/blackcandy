@@ -12,11 +12,11 @@
       </div>
       <% if is_admin? %>
         <div class='u-mt-large'>
-          <%= link_to t("label.edit"), edit_dialog_artist_path(@artist), data: {"turbo-frame" => ("turbo-dialog" unless native_app?)}, class: "c-button c-button--secondary u-mt-large" %>
+          <%= link_to t("label.edit"), edit_dialog_artist_path(@artist), data: { "turbo-frame" => ("turbo-dialog" unless native_app?) }, class: "c-button c-button--secondary u-mt-large" %>
         </div>
       <% end %>
     </div>
   </div>
-  <%= render partial: "artists/albums", locals: {title: t("label.albums"), albums: @albums} %>
-  <%= render partial: "artists/albums", locals: {title: t("label.appears_on"), albums: @appears_on_albums} %>
+  <%= render partial: "artists/albums", locals: { title: t("label.albums"), albums: @albums } %>
+  <%= render partial: "artists/albums", locals: { title: t("label.appears_on"), albums: @appears_on_albums } %>
 </div>

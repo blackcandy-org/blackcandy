@@ -16,7 +16,7 @@ class Dialog::AlbumsControllerTest < ActionDispatch::IntegrationTest
     get edit_dialog_album_url(albums(:album1))
     assert_response :forbidden
 
-    patch album_url(albums(:album1)), params: {album: {image: fixture_file_upload("cover_image.jpg", "image/jpeg")}}
+    patch album_url(albums(:album1)), params: { album: { image: fixture_file_upload("cover_image.jpg", "image/jpeg") } }
     assert_response :forbidden
   end
 
@@ -27,7 +27,7 @@ class Dialog::AlbumsControllerTest < ActionDispatch::IntegrationTest
       get edit_dialog_album_url(albums(:album1))
       assert_response :forbidden
 
-      patch album_url(albums(:album1)), params: {album: {image: fixture_file_upload("cover_image.jpg", "image/jpeg")}}
+      patch album_url(albums(:album1)), params: { album: { image: fixture_file_upload("cover_image.jpg", "image/jpeg") } }
       assert_response :forbidden
     end
   end

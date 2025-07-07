@@ -1,7 +1,7 @@
 <div id='turbo-settings'>
   <h2 class="o-flex o-flex--justify-between o-flex--align-center">
     <span><%= t("label.library") %></span>
-    <%= render partial: "media_syncing/button", locals: {syncing: Media.syncing?} %>
+    <%= render partial: "media_syncing/button", locals: { syncing: Media.syncing? } %>
   </h2>
 
   <%= form_with model: Setting, url: setting_path, method: :put, class: "c-form" do |form| %>
@@ -61,7 +61,7 @@
 
     <div class='c-form__field c-form__field--inline'>
       <%= form.label :transcode_bitrate, t("field.transcode_bitrate") %>
-      <%= form.select :transcode_bitrate, Setting::AVAILABLE_BITRATE_OPTIONS.map { |option| ["#{option} kbps", option] }, selected: Setting.transcode_bitrate, class: "c-input" %>
+      <%= form.select :transcode_bitrate, Setting::AVAILABLE_BITRATE_OPTIONS.map { |option| [ "#{option} kbps", option ] }, selected: Setting.transcode_bitrate, class: "c-input" %>
     </div>
     <div class='c-form__field c-form__field--submit'>
       <%= form.submit t("button.save"), class: "c-button c-button--primary c-button--full-width" %>

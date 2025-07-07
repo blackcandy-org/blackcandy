@@ -21,8 +21,8 @@ class Artist < ApplicationRecord
 
   scope :lack_metadata, -> {
     includes(:cover_image_attachment)
-      .where(cover_image_attachment: {id: nil})
-      .where.not(name: [Artist::UNKNOWN_NAME, Artist::VARIOUS_NAME])
+      .where(cover_image_attachment: { id: nil })
+      .where.not(name: [ Artist::UNKNOWN_NAME, Artist::VARIOUS_NAME ])
   }
 
   def unknown?

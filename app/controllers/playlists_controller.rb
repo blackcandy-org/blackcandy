@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class PlaylistsController < ApplicationController
-  before_action :find_playlist, only: [:destroy, :update]
-  before_action :get_sort_option, only: [:index]
+  before_action :find_playlist, only: [ :destroy, :update ]
+  before_action :get_sort_option, only: [ :index ]
 
   def index
     @pagy, @playlists = pagy(Current.user.playlists_with_favorite.sort_records(*sort_params))
@@ -47,7 +47,7 @@ class PlaylistsController < ApplicationController
   end
 
   def sort_params
-    [params[:sort], params[:sort_direction]]
+    [ params[:sort], params[:sort_direction] ]
   end
 
   def get_sort_option

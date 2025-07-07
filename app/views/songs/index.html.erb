@@ -8,8 +8,8 @@
       <h1 class='u-my-narrow u-mr-small'><%= t("label.songs") %></h1>
     <% end %>
     <div class='o-flex o-flex--align-center <%= "u-ml-auto" if native_app? %>'>
-      <%= render partial: "songs/filters", locals: {filter_sort_presenter: filter_sort_presenter} %>
-      <%= render partial: "shared/sort_select", locals: {option: @sort_option, sort_controller: controller_name, filter_sort_presenter: filter_sort_presenter} %>
+      <%= render partial: "songs/filters", locals: { filter_sort_presenter: filter_sort_presenter } %>
+      <%= render partial: "shared/sort_select", locals: { option: @sort_option, sort_controller: controller_name, filter_sort_presenter: filter_sort_presenter } %>
     </div>
   </div>
   <% if @songs.empty? %>
@@ -17,6 +17,6 @@
       <%= empty_alert_tag has_icon: true, has_overlay: false %>
     </div>
   <% else %>
-    <%= render partial: "songs/table", locals: {songs: @songs, pagy: @pagy} %>
+    <%= render partial: "songs/table", locals: { songs: @songs, pagy: @pagy } %>
   <% end %>
 </div>

@@ -4,7 +4,7 @@ module Api
   module V1
     class CurrentPlaylist::SongsController < ApiController
       before_action :find_playlist
-      before_action :find_song, only: [:destroy, :move]
+      before_action :find_song, only: [ :destroy, :move ]
 
       def index
         @songs = @playlist.songs_with_favorite

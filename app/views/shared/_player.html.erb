@@ -40,10 +40,10 @@
     </div>
     <div class="c-player__control__secondary o-flex">
       <button class='c-button c-button--icon u-mr-tiny' data-action='click->player#nextMode'>
-        <%= icon_tag "repeat", size: "small", title: t("label.no_repeat_mode"), data: {"player-target" => "modeButton"} %>
-        <%= icon_tag "repeat", size: "small", active: true, title: t("label.repeat_mode"), data: {"player-target" => "modeButton"} %>
-        <%= icon_tag "repeat-one", size: "small", active: true, title: t("label.single_mode"), data: {"player-target" => "modeButton"} %>
-        <%= icon_tag "shuffle", size: "small", active: true, title: t("label.shuffle_mode"), data: {"player-target" => "modeButton"} %>
+        <%= icon_tag "repeat", size: "small", title: t("label.no_repeat_mode"), data: { "player-target" => "modeButton" } %>
+        <%= icon_tag "repeat", size: "small", active: true, title: t("label.repeat_mode"), data: { "player-target" => "modeButton" } %>
+        <%= icon_tag "repeat-one", size: "small", active: true, title: t("label.single_mode"), data: { "player-target" => "modeButton" } %>
+        <%= icon_tag "shuffle", size: "small", active: true, title: t("label.shuffle_mode"), data: { "player-target" => "modeButton" } %>
       </button>
       <div class="o-flex o-flex--align-center o-flex__item--grow-1">
         <button class='c-button c-button--icon' data-action='click->player#mute'>
@@ -55,10 +55,10 @@
         </button>
       </div>
       <div data-action='turbo:submit-end->player#toggleFavorite' class="u-ml-tiny">
-        <%= button_to "#", class: "c-button c-button--icon", disabled: true, form: {"data-player-target" => "favoriteButton"} do %>
+        <%= button_to "#", class: "c-button c-button--icon", disabled: true, form: { "data-player-target" => "favoriteButton" } do %>
           <%= icon_tag "heart", size: "small", title: t("label.toggle_favorite") %>
         <% end %>
-        <%= button_to "#", class: "c-button c-button--icon", method: :delete, form_class: "u-display-none", form: {"data-player-target" => "unFavoriteButton"} do %>
+        <%= button_to "#", class: "c-button c-button--icon", method: :delete, form_class: "u-display-none", form: { "data-player-target" => "unFavoriteButton" } do %>
           <%= icon_tag "heart", size: "small", emphasis: true, title: t("label.toggle_favorite") %>
         <% end %>
       </div>
