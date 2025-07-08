@@ -10,7 +10,7 @@ COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
 
 RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 
-RUN apk add --no-cache tzdata libpq-dev build-base gcompat
+RUN apk add --no-cache tzdata libpq-dev build-base gcompat yaml-dev
 
 WORKDIR /app
 
