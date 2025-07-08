@@ -1,5 +1,5 @@
 FROM node:20.11.0-alpine AS node
-FROM ruby:3.3.1-alpine AS base
+FROM ruby:3.4.4-alpine AS base
 FROM base AS builder
 
 ENV RAILS_ENV production
