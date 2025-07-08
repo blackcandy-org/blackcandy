@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module BlackCandy
+  CustomError = Data.define(:type, :message)
+
   class BaseError < StandardError
     def type
       self.class.name.split("::").last

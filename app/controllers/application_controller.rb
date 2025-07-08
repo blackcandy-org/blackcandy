@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "ostruct"
-
 class ApplicationController < ActionController::Base
   include Pagy::Backend
   include SessionsHelper
@@ -36,7 +34,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordNotFound do |error|
     respond_to do |format|
-      format.json { render_json_error(OpenStruct.new(type: "RecordNotFound", message: error.message), :not_found) }
+      format.json { render_json_error(BlackCandy::CustomError.new("RecordNotFound", error.message), :not_found) }
       format.html { render template: "errors/not_found", layout: "plain", status: :not_found }
     end
   end
