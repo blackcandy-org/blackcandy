@@ -95,7 +95,4 @@ Rails.application.configure do
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
   config.active_record.async_query_executor = :global_thread_pool
-
-  # Disable warning of running SQLite in production
-  config.active_record.sqlite3_production_warning = false
 end
