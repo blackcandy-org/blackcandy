@@ -98,7 +98,7 @@ group :development do
   # Help to kill N+1 queries and unused eager loading
   gem "bullet", "~> 8.0.0"
   # For deployment
-  gem "kamal", "~> 1.4.0"
+  gem "kamal", "~> 2.7.0", require: false
 end
 
 group :test do
