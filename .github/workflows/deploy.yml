@@ -20,6 +20,12 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+      - name: Create kamal secrets
+        run: |
+          mkdir -p .kamal
+          echo "SECRET_KEY_BASE=\$SECRET_KEY_BASE" >> .kamal/secrets
+          echo "REGISTRY_USER=\$REGISTRY_USER" >> .kamal/secrets
+          echo "REGISTRY_TOKEN=$REGISTRY_TOKEN" >> .kamal/secrets
       - name: Deploy to demo
         run: bundle exec kamal deploy -P --version=edge
         env:

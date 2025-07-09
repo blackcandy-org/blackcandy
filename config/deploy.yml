@@ -2,6 +2,11 @@ service: blackcandy
 
 image: blackcandy-org/blackcandy
 
+builder:
+  arch:
+    - amd64
+    - arm64
+
 registry:
   server: ghcr.io
   username:
@@ -11,14 +16,9 @@ registry:
 
 servers:
   web:
-    hosts: <%= ENV["SERVER_IP"] %>
-    labels:
-      traefik.http.routers.blackcandy.rule: Host(`demo.blackcandy.org`)
-      traefik.http.routers.blackcandy_secure.rule: Host(`demo.blackcandy.org`)
-      traefik.http.routers.blackcandy_secure.entrypoints: websecure
-      traefik.http.routers.blackcandy_secure.tls: true
-      traefik.http.routers.blackcandy_secure.tls.certresolver: letsencrypt
-
+    hosts:
+     - <%= ENV["SERVER_IP"] %>
+    asset_path: /app/public/assets
 env:
   clear:
     MEDIA_PATH: /media_data
@@ -33,26 +33,6 @@ volumes:
   - "${PWD}/media_data:/media_data"
   - "${PWD}/storage_data:/app/storage"
 
-healthcheck:
-  port: "80"
-  max_attempts: 15
-
-traefik:
-  options:
-    publish:
-      - "443:443"
-    volume:
-      - "${PWD}/letsencrypt/acme.json:/letsencrypt/acme.json"
-  args:
-    entryPoints.web.address: ":80"
-    entryPoints.websecure.address: ":443"
-    entryPoints.websecure.forwardedHeaders.insecure: true
-    entryPoints.web.http.redirections.entryPoint.to: websecure
-    entryPoints.web.http.redirections.entryPoint.scheme: https
-    entryPoints.web.http.redirections.entrypoint.permanent: true
-    certificatesResolvers.letsencrypt.acme.email: "aidewoode@gmail.com"
-    certificatesResolvers.letsencrypt.acme.storage: "/letsencrypt/acme.json"
-    certificatesResolvers.letsencrypt.acme.httpchallenge: true
-    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
-
-  asset_path: /app/public/assets
+proxy:
+  host: demo.blackcandy.org
+  ssl: true
