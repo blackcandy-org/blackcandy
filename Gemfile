@@ -2,7 +2,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 8.0.0"
+gem "rails", "~> 8.1.0"
 
 # Deliver assets for Rails
 gem "propshaft", "~> 1.1.0"
@@ -96,7 +96,7 @@ group :development do
   # Memory profiler for ruby
   gem "memory_profiler", "~> 1.1.0", require: false
   # Help to kill N+1 queries and unused eager loading
-  gem "bullet", "~> 8.0.0"
+  gem "bullet", "~> 8.1.0"
   # For deployment
   gem "kamal", "~> 2.7.0", require: false
 end

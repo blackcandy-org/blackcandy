@@ -13,8 +13,6 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update global setting" do
-    Setting.update(discogs_token: "token")
-
     login users(:admin)
     patch setting_url, params: { setting: { discogs_token: "updated_token" } }, xhr: true
 
