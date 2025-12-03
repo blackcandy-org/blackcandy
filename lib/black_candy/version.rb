@@ -5,7 +5,7 @@ module BlackCandy
     MAJOR = 3
     MINOR = 1
     PATCH = 0
-    PRE = nil
+    PRE = ""
 
     class << self
       def to_s
@@ -23,7 +23,7 @@ module BlackCandy
       end
 
       def version
-        @version ||= [ MAJOR, MINOR, PATCH, PRE ].compact.join(".")
+        @version ||= [ MAJOR, MINOR, PATCH, PRE ].compact_blank.join(".")
       end
 
       private
