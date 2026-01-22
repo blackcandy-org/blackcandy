@@ -2,6 +2,7 @@
   "name": "black_candy",
   "private": true,
   "dependencies": {
+    "@hotwired/hotwire-native-bridge": "^1.2.2",
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/turbo-rails": "^8.0.0",
     "esbuild": "^0.18.17",

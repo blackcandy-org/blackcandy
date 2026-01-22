@@ -4,78 +4,65 @@
 
 import { application } from './application'
 
-import DialogController from './dialog_controller.js'
+import AlbumBridgeController from './album_bridge_controller'
+
+import BridgeAccountController from './bridge/account_controller'
+
+import BridgeSearchController from './bridge/search_controller'
+
+import CoverImageController from './cover_image_controller'
+
+import CurrentPlaylistSongsController from './current_playlist_songs_controller'
+
+import DialogController from './dialog_controller'
+
+import DropdownController from './dropdown_controller'
 
 import ElementController from './element_controller'
 
-import FlashController from './flash_controller.js'
+import FlashBridgeController from './flash_bridge_controller'
 
-import FormController from './form_controller.js'
+import FlashController from './flash_controller'
 
-import MediaSessionController from './media_session_controller.js'
+import FormController from './form_controller'
 
-import MiniPlayerController from './mini_player_controller.js'
+import MediaSessionController from './media_session_controller'
 
-import PlayerController from './player_controller.js'
+import MiniPlayerController from './mini_player_controller'
 
-import SongsController from './songs_controller.js'
+import PlayerController from './player_controller'
 
-import CurrentPlaylistSongsController from './current_playlist_songs_controller.js'
+import PlaylistBridgeController from './playlist_bridge_controller'
 
-import PlaylistSortableController from './playlist_sortable_controller.js'
+import PlaylistSortableController from './playlist_sortable_controller'
 
-import SearchController from './search_controller.js'
+import SearchController from './search_controller'
 
-import SongsBridgeController from './songs_bridge_controller.js'
+import SongsBridgeController from './songs_bridge_controller'
 
-import AlbumBridgeController from './album_bridge_controller.js'
+import SongsController from './songs_controller'
 
-import PlaylistBridgeController from './playlist_bridge_controller.js'
+import ThemeBridgeController from './theme_bridge_controller'
 
-import FlashBridgeController from './flash_bridge_controller.js'
-
-import ThemeController from './theme_controller.js'
-
-import ThemeBridgeController from './theme_bridge_controller.js'
-
-import DropdownController from './dropdown_controller.js'
-
-import CoverImageController from './cover_image_controller.js'
-
-application.register('dialog', DialogController)
-
-application.register('element', ElementController)
-
-application.register('flash', FlashController)
-
-application.register('form', FormController)
-
-application.register('media-session', MediaSessionController)
-
-application.register('mini-player', MiniPlayerController)
-
-application.register('player', PlayerController)
-
-application.register('songs', SongsController)
-
-application.register('current-playlist-songs', CurrentPlaylistSongsController)
-
-application.register('playlist-sortable', PlaylistSortableController)
-
-application.register('search', SearchController)
-
-application.register('songs-bridge', SongsBridgeController)
-
+import ThemeController from './theme_controller'
 application.register('album-bridge', AlbumBridgeController)
-
-application.register('playlist-bridge', PlaylistBridgeController)
-
-application.register('flash-bridge', FlashBridgeController)
-
-application.register('theme', ThemeController)
-
-application.register('theme-bridge', ThemeBridgeController)
-
-application.register('dropdown', DropdownController)
-
+application.register('bridge--account', BridgeAccountController)
+application.register('bridge--search', BridgeSearchController)
 application.register('cover-image', CoverImageController)
+application.register('current-playlist-songs', CurrentPlaylistSongsController)
+application.register('dialog', DialogController)
+application.register('dropdown', DropdownController)
+application.register('element', ElementController)
+application.register('flash-bridge', FlashBridgeController)
+application.register('flash', FlashController)
+application.register('form', FormController)
+application.register('media-session', MediaSessionController)
+application.register('mini-player', MiniPlayerController)
+application.register('player', PlayerController)
+application.register('playlist-bridge', PlaylistBridgeController)
+application.register('playlist-sortable', PlaylistSortableController)
+application.register('search', SearchController)
+application.register('songs-bridge', SongsBridgeController)
+application.register('songs', SongsController)
+application.register('theme-bridge', ThemeBridgeController)
+application.register('theme', ThemeController)
