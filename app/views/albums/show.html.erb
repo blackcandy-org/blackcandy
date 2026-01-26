@@ -1,6 +1,6 @@
 <% page_title_tag @album.name %>
 
-<div class='o-container o-container--narrow' data-controller='songs songs-bridge album-bridge' data-album-bridge-id-value='<%= @album.id %>'>
+<div class='o-container o-container--narrow' data-controller='songs bridge--songs bridge--album' data-bridge--album-id-value='<%= @album.id %>'>
   <div class='c-card c-card--horizontal c-card--center@narrow u-my-large'>
     <%= cover_image_tag @album, class: "c-card__image u-image-medium" %>
     <div class='c-card__body'>
@@ -22,7 +22,7 @@
                 data: {
                   "disabled-on-native" => "true",
                   "turbo-frame" => "turbo-playlist",
-                  "action" => "album-bridge#play"
+                  "action" => "bridge--album#play"
                 }
               }
             ) %>
@@ -48,7 +48,7 @@
                   form_class: "o-flex__item--grow-1",
                   form: {
                     data: {
-                      "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->album-bridge#playBeginWith",
+                      "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->bridge--album#playBeginWith",
                       "turbo-frame" => "turbo-playlist",
                       "disabled-on-native" => "true"
                     }
@@ -81,7 +81,7 @@
                       form: {
                         data: {
                           "turbo-frame" => "turbo-playlist",
-                          "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->songs-bridge#playNow",
+                          "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->bridge--songs#playNow",
                           "disabled-on-native" => "true"
                         }
                       }
@@ -93,7 +93,7 @@
                       form: {
                         data: {
                           "turbo-frame" => "turbo-playlist",
-                          "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext click->songs-bridge#playNext",
+                          "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext click->bridge--songs#playNext",
                           "disabled-on-native" => "true"
                         }
                       }
@@ -105,7 +105,7 @@
                       form: {
                         data: {
                           "turbo-frame" => "turbo-playlist",
-                          "delegated-action" => "click->songs-bridge#playLast",
+                          "delegated-action" => "click->bridge--songs#playLast",
                           "disabled-on-native" => "true"
                         }
                       }

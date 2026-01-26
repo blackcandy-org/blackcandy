@@ -28,6 +28,9 @@
       "fetch",
       "CustomEvent",
       "App"
+    ],
+    "ignore": [
+      "app/javascript/controllers/index.js"
     ]
   }
 }

@@ -2,67 +2,67 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from './application'
+import { application } from "./application"
 
-import AlbumBridgeController from './album_bridge_controller'
+import Bridge__AccountController from "./bridge/account_controller"
+application.register("bridge--account", Bridge__AccountController)
 
-import BridgeAccountController from './bridge/account_controller'
+import Bridge__AlbumController from "./bridge/album_controller"
+application.register("bridge--album", Bridge__AlbumController)
 
-import BridgeSearchController from './bridge/search_controller'
+import Bridge__FlashController from "./bridge/flash_controller"
+application.register("bridge--flash", Bridge__FlashController)
 
-import CoverImageController from './cover_image_controller'
+import Bridge__PlaylistController from "./bridge/playlist_controller"
+application.register("bridge--playlist", Bridge__PlaylistController)
 
-import CurrentPlaylistSongsController from './current_playlist_songs_controller'
+import Bridge__SearchController from "./bridge/search_controller"
+application.register("bridge--search", Bridge__SearchController)
 
-import DialogController from './dialog_controller'
+import Bridge__SongsController from "./bridge/songs_controller"
+application.register("bridge--songs", Bridge__SongsController)
 
-import DropdownController from './dropdown_controller'
+import Bridge__ThemeController from "./bridge/theme_controller"
+application.register("bridge--theme", Bridge__ThemeController)
 
-import ElementController from './element_controller'
+import CoverImageController from "./cover_image_controller"
+application.register("cover-image", CoverImageController)
 
-import FlashBridgeController from './flash_bridge_controller'
+import CurrentPlaylistSongsController from "./current_playlist_songs_controller"
+application.register("current-playlist-songs", CurrentPlaylistSongsController)
 
-import FlashController from './flash_controller'
+import DialogController from "./dialog_controller"
+application.register("dialog", DialogController)
 
-import FormController from './form_controller'
+import DropdownController from "./dropdown_controller"
+application.register("dropdown", DropdownController)
 
-import MediaSessionController from './media_session_controller'
+import ElementController from "./element_controller"
+application.register("element", ElementController)
 
-import MiniPlayerController from './mini_player_controller'
+import FlashController from "./flash_controller"
+application.register("flash", FlashController)
 
-import PlayerController from './player_controller'
+import FormController from "./form_controller"
+application.register("form", FormController)
 
-import PlaylistBridgeController from './playlist_bridge_controller'
+import MediaSessionController from "./media_session_controller"
+application.register("media-session", MediaSessionController)
 
-import PlaylistSortableController from './playlist_sortable_controller'
+import MiniPlayerController from "./mini_player_controller"
+application.register("mini-player", MiniPlayerController)
 
-import SearchController from './search_controller'
+import PlayerController from "./player_controller"
+application.register("player", PlayerController)
 
-import SongsBridgeController from './songs_bridge_controller'
+import PlaylistSortableController from "./playlist_sortable_controller"
+application.register("playlist-sortable", PlaylistSortableController)
 
-import SongsController from './songs_controller'
+import SearchController from "./search_controller"
+application.register("search", SearchController)
 
-import ThemeBridgeController from './theme_bridge_controller'
+import SongsController from "./songs_controller"
+application.register("songs", SongsController)
 
-import ThemeController from './theme_controller'
-application.register('album-bridge', AlbumBridgeController)
-application.register('bridge--account', BridgeAccountController)
-application.register('bridge--search', BridgeSearchController)
-application.register('cover-image', CoverImageController)
-application.register('current-playlist-songs', CurrentPlaylistSongsController)
-application.register('dialog', DialogController)
-application.register('dropdown', DropdownController)
-application.register('element', ElementController)
-application.register('flash-bridge', FlashBridgeController)
-application.register('flash', FlashController)
-application.register('form', FormController)
-application.register('media-session', MediaSessionController)
-application.register('mini-player', MiniPlayerController)
-application.register('player', PlayerController)
-application.register('playlist-bridge', PlaylistBridgeController)
-application.register('playlist-sortable', PlaylistSortableController)
-application.register('search', SearchController)
-application.register('songs-bridge', SongsBridgeController)
-application.register('songs', SongsController)
-application.register('theme-bridge', ThemeBridgeController)
-application.register('theme', ThemeController)
+import ThemeController from "./theme_controller"
+application.register("theme", ThemeController)

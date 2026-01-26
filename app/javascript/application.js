@@ -2,12 +2,10 @@ import '@hotwired/turbo-rails'
 import './controllers'
 
 import Player from './player'
-import NativeBridge from './native_bridge'
 import { isNativeApp } from './helper'
 
 window.App = {
   player: new Player(),
-  nativeBridge: new NativeBridge()
 }
 
 // Use custom rendering to avoid reloading the permanent aside player element.

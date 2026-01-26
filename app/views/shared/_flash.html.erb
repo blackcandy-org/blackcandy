@@ -1,6 +1,6 @@
 <div id='turbo-flash' data-turbo-temporary class='c-flash <%= "u-display-none" if native_app? %>'>
   <% flash.each do |key, value| %>
-    <div class='o-animation-fadeInDown c-flash__body <%= "c-flash__body--#{key}" %>' data-controller='flash flash-bridge'>
+    <div class='o-animation-fadeInDown c-flash__body <%= "c-flash__body--#{key}" %>' data-controller='flash bridge--flash'>
       <%= h value %>
     </div>
   <% end %>

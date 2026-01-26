@@ -1,11 +1,8 @@
-import { Controller } from '@hotwired/stimulus'
-import { installEventHandler } from './mixins/event_handler'
-import { isNativeApp } from '../helper'
+import { BridgeComponent } from '@hotwired/hotwire-native-bridge'
+import { installEventHandler } from '../mixins/event_handler'
 
-export default class extends Controller {
-  static get shouldLoad () {
-    return isNativeApp()
-  }
+export default class extends BridgeComponent {
+  static component = 'album'
 
   static values = {
     id: Number
@@ -16,6 +13,8 @@ export default class extends Controller {
   }
 
   connect () {
+    super.connect()
+
     this.handleEvent('click', {
       on: this.element,
       with: this.playBeginWith,
@@ -24,11 +23,11 @@ export default class extends Controller {
   }
 
   play () {
-    App.nativeBridge.playAlbum(this.idValue)
+    this.send('play', { albumId: this.idValue })
   }
 
   playBeginWith = (event) => {
     const { songId } = event.target.closest('[data-song-id]').dataset
-    App.nativeBridge.playAlbumBeginWith(this.idValue, songId)
+    this.send('playBeginWith', { albumId: this.idValue, songId })
   }
 }
