@@ -11,7 +11,7 @@ export default class extends BridgeComponent {
       const query = data.query
 
       this.inputTarget.value = query
-      this.element.submit()
+      this.element.requestSubmit()
     })
   }
 }

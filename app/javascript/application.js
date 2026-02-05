@@ -5,7 +5,7 @@ import Player from './player'
 import { isNativeApp } from './helper'
 
 window.App = {
-  player: new Player(),
+  player: new Player()
 }
 
 // Use custom rendering to avoid reloading the permanent aside player element.
