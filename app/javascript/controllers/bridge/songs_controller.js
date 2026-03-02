@@ -31,17 +31,17 @@ export default class extends BridgeComponent {
   }
 
   playNow = (event) => {
-    const { songId } = event.target.closest('[data-song-id]').dataset
+    const songId = Number(event.target.closest('[data-song-id]').dataset.songId)
     this.send('playNow', { songId })
   }
 
   playNext = (event) => {
-    const { songId } = event.target.closest('[data-song-id]').dataset
+    const songId = Number(event.target.closest('[data-song-id]').dataset.songId)
     this.send('playNext', { songId })
   }
 
   playLast = (event) => {
-    const { songId } = event.target.closest('[data-song-id]').dataset
+    const songId = Number(event.target.closest('[data-song-id]').dataset.songId)
     this.send('playLast', { songId })
   }
 }

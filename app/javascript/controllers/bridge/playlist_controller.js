@@ -27,7 +27,7 @@ export default class extends BridgeComponent {
   }
 
   playBeginWith = (event) => {
-    const { songId } = event.target.closest('[data-song-id]').dataset
+    const songId = Number(event.target.closest('[data-song-id]').dataset.songId)
     this.send('playBeginWith', { playlistId: this.idValue, songId })
   }
 }
