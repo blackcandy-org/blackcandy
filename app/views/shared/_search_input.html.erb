@@ -1,0 +1,11 @@
+<%= form_tag search_path, method: :get, class: "c-search c-input-group o-flex__item", data: { action: "search#submit", controller: "search bridge--search" } do %>
+  <div class='c-input-group__icon'>
+    <%= icon_tag "search", size: "large" %>
+  </div>
+
+  <%= text_field_tag "query", query, class: "c-input", data: { "search-target" => "input", "bridge--search-target" => "input" }, autocomplete: "on" %>
+
+  <div class='c-input-group__icon'>
+    <%= loader_tag size: "small" %>
+  </div>
+<% end %>

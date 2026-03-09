@@ -5,7 +5,7 @@
           class: "c-button c-button--link",
           form: {
             data: {
-              "delegated-action" => "turbo:submit-start-songs#checkBeforePlay click->songs-bridge#playNow",
+              "delegated-action" => "turbo:submit-start-songs#checkBeforePlay click->bridge--songs#playNow",
               "turbo-frame" => "turbo-playlist",
               "disabled-on-native" => "true"
             }
@@ -40,7 +40,7 @@
               form: {
                 data: {
                   "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext click->songs-bridge#playNext",
+                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext click->bridge--songs#playNext",
                   "disabled-on-native" => "true"
                 }
               }
@@ -52,7 +52,7 @@
               form: {
                 data: {
                   "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "click->songs-bridge#playLast",
+                  "delegated-action" => "click->bridge--songs#playLast",
                   "disabled-on-native" => "true"
                 }
               }

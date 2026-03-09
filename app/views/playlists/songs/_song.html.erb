@@ -11,7 +11,7 @@
           form_class: "o-flex__item--grow-1",
           form: {
             data: {
-              "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->playlist-bridge#playBeginWith",
+              "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->bridge--playlist#playBeginWith",
               "turbo-frame" => "turbo-playlist",
               "disabled-on-native" => "true"
             }
@@ -39,7 +39,7 @@
               form: {
                 data: {
                   "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->songs-bridge#playNow",
+                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->bridge--songs#playNow",
                   "disabled-on-native" => "true"
                 }
               }
@@ -51,7 +51,7 @@
               form: {
                 data: {
                   "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext click->songs-bridge#playNext",
+                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext click->bridge--songs#playNext",
                   "disabled-on-native" => "true"
                 }
               }
@@ -63,7 +63,7 @@
               form: {
                 data: {
                   "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "click->songs-bridge#playLast",
+                  "delegated-action" => "click->bridge--songs#playLast",
                   "disabled-on-native" => "true"
                 }
               }

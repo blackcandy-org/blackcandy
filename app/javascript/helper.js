@@ -34,11 +34,11 @@ function dispatchEvent (element, type, data = null) {
 }
 
 function isiOSApp () {
-  return !!(window.webkit && window.webkit.messageHandlers)
+  return !!window.navigator.userAgent.match(/Black Candy iOS/)
 }
 
 function isAndroidApp () {
-  return !!(window.NativeBridge)
+  return !!window.navigator.userAgent.match(/Black Candy Android/)
 }
 
 function isNativeApp () {

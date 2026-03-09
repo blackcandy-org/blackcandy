@@ -1,0 +1,33 @@
+import { BridgeComponent } from '@hotwired/hotwire-native-bridge'
+import { installEventHandler } from '../mixins/event_handler'
+
+export default class extends BridgeComponent {
+  static component = 'album'
+
+  static values = {
+    id: Number
+  }
+
+  initialize () {
+    installEventHandler(this)
+  }
+
+  connect () {
+    super.connect()
+
+    this.handleEvent('click', {
+      on: this.element,
+      with: this.playBeginWith,
+      delegation: true
+    })
+  }
+
+  play () {
+    this.send('play', { albumId: this.idValue })
+  }
+
+  playBeginWith = (event) => {
+    const songId = Number(event.target.closest('[data-song-id]').dataset.songId)
+    this.send('playBeginWith', { albumId: this.idValue, songId })
+  }
+}

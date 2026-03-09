@@ -1,5 +1,9 @@
 <% page_title_tag t("label.home") %>
 
+<% if native_app? %>
+  <%= render partial: "shared/account_menu", locals: { current_user: Current.user, current_session: Current.session } %>
+<% end %>
+
 <% if [@recently_added_albums, @recently_played_albums].any?(&:present?) %>
   <% if @recently_played_albums.present? %>
     <h1><%= t("label.recently_played") %></h1>
