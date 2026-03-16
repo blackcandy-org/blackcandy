@@ -12,4 +12,14 @@ class Api::V1::SystemsControllerTest < ActionDispatch::IntegrationTest
     assert_equal BlackCandy::Version::MINOR, response["minor"]
     assert_equal BlackCandy::Version::PATCH, response["patch"]
   end
+
+  test "should get minimum app version" do
+    get api_v1_system_url, as: :json
+    response = @response.parsed_body["min_app_version"]
+
+    assert_response :success
+    assert_equal BlackCandy::MinAppVersion::MAJOR, response["major"]
+    assert_equal BlackCandy::MinAppVersion::MINOR, response["minor"]
+    assert_equal BlackCandy::MinAppVersion::PATCH, response["patch"]
+  end
 end

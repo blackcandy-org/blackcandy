@@ -4,3 +4,9 @@ json.version do
   json.patch BlackCandy::Version::PATCH
   json.pre BlackCandy::Version::PRE
 end
+
+json.min_app_version do
+  json.major BlackCandy::MinAppVersion::MAJOR
+  json.minor BlackCandy::MinAppVersion::MINOR
+  json.patch BlackCandy::MinAppVersion::PATCH
+end
