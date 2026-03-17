@@ -18,7 +18,6 @@ servers:
   web:
     hosts:
      - <%= ENV["SERVER_IP"] %>
-    asset_path: /app/public/assets
 env:
   clear:
     MEDIA_PATH: /media_data
