@@ -63,7 +63,8 @@ COPY --from=builder --chown=app:app /app/ /app/
 
 # Forwards media listener logs to stdout so they can be captured in docker logs.
 RUN ln -sf /dev/stdout /app/log/media_listener_production.log \
-  && find /app/tmp -type d -exec chmod 1777 '{}' +
+  && find /app/tmp -type d -exec chmod 1777 '{}' + \
+  && ln -sf /app/storage /storage
 
 ENTRYPOINT ["./bin/docker-entrypoint"]
 
