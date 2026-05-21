@@ -15,7 +15,7 @@ class Playlists::SongsController < ApplicationController
 
     respond_to do |format|
       format.json { render partial: "songs/song", locals: { song: @song } }
-      format.html { redirect_back_or_to({ action: "index" }, notice: t("notice.added_to_playlist")) }
+      format.html { redirect_to({ action: "index" }, notice: t("notice.added_to_playlist")) }
     end
   rescue ActiveRecord::RecordNotUnique
     raise BlackCandy::DuplicatePlaylistSong
