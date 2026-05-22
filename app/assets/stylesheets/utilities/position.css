@@ -1,0 +1,17 @@
+@layer utilities {
+  .u-position-relative {
+    position: relative;
+  }
+
+  .u-position-sticky-top {
+    position: sticky;
+    top: 0;
+  }
+
+  .u-position-fixed-bottom {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}

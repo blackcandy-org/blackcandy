@@ -117,8 +117,6 @@ GEM
       bigdecimal
       rexml
     crass (1.0.6)
-    cssbundling-rails (1.4.3)
-      railties (>= 6.0.0)
     csv (3.3.5)
     cuprite (0.14.3)
       capybara (~> 3.0)
@@ -425,7 +423,6 @@ DEPENDENCIES
   browser (~> 6.2.0)
   bullet (~> 8.1.0)
   capybara (~> 3.40.0)
-  cssbundling-rails (~> 1.4.0)
   cuprite (~> 0.14.3)
   debug
   erb_lint (~> 0.9.0)
@@ -491,7 +488,6 @@ CHECKSUMS
   connection_pool (3.0.2) sha256=33fff5ba71a12d2aa26cb72b1db8bba2a1a01823559fb01d29eb74c286e62e0a
   crack (1.0.1) sha256=ff4a10390cd31d66440b7524eb1841874db86201d5b70032028553130b6d4c7e
   crass (1.0.6) sha256=dc516022a56e7b3b156099abc81b6d2b08ea1ed12676ac7a5657617f012bd45d
-  cssbundling-rails (1.4.3) sha256=53aecd5a7d24ac9c8fcd92975acd0e830fead4ee4583d3d3d49bb64651946e41
   csv (3.3.5) sha256=6e5134ac3383ef728b7f02725d9872934f523cb40b961479f69cf3afa6c8e73f
   cuprite (0.14.3) sha256=5d3b8f85f680f0979bc122bcae69e1f13499956eacdf6307a80498ce9131afbd
   date (3.5.1) sha256=750d06384d7b9c15d562c76291407d89e368dda4d4fff957eb94962d325a0dc0

@@ -1,0 +1,6 @@
+@layer utilities {
+  [data-bridge-components~="account"] [data-controller~="bridge--account"],
+  [data-bridge-components~="search"] [data-controller~="bridge--search"] {
+    display: none;
+  }
+}

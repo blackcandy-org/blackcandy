@@ -13,9 +13,6 @@ gem "turbo-rails", "~> 2.0.0"
 # Install Stimulus on Rails
 gem "stimulus-rails", "~> 1.3.4"
 
-# Bundle and process CSS in Rails
-gem "cssbundling-rails", "~> 1.4.0"
-
 # Bundle and transpile JavaScript in Rails
 gem "jsbundling-rails", "~> 1.3.0"
 

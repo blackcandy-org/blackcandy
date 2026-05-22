@@ -1,0 +1,63 @@
+@layer components {
+  .c-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .c-list--grouped {
+    background-color: var(--list-grouped-bg-color);
+    padding: 0 var(--spacing-narrow);
+    border-radius: var(--border-radius-large);
+  }
+
+  .c-list__item {
+    width: 100%;
+    padding: var(--spacing-narrow) 0;
+    text-decoration: none;
+    border-bottom: 1px solid var(--list-border-color);
+  }
+
+  .c-list__item--divider {
+    margin-top: var(--spacing-small);
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .c-list__item__subtext {
+    display: inline-block;
+    margin-top: var(--spacing-tiny);
+    color: var(--list-subtext-color);
+  }
+
+  .c-list--border-none .c-list__item {
+    border-bottom: none;
+  }
+
+  .c-list--grouped .c-list__item {
+    padding: var(--spacing-small) 0;
+  }
+
+  .c-list__item:last-child {
+    border-bottom: none;
+  }
+
+  .c-list__item.is-active * {
+    color: var(--list-active-color);
+  }
+
+  .c-list.is-dragging .c-list__item {
+    border: none;
+  }
+
+  .c-list.is-dragging .c-list__item:not(.is-dragging-source) * {
+    /* Prevent dragleave from firing when dragging into a child element */
+    pointer-events: none;
+    opacity: 0.85;
+  }
+
+  .c-list .c-list__item.is-dragging-over {
+    border: 2px dashed var(--list-active-color);
+    border-radius: var(--border-radius-medium);
+  }
+}

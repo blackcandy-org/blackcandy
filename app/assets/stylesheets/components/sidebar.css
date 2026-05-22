@@ -1,0 +1,61 @@
+@layer components {
+  .c-sidebar {
+    background: var(--sidebar-bg-color);
+    z-index: var(--z-sidebar);
+  }
+
+  @media (min-width: 1880px) {
+    .c-sidebar {
+      width: 440px;
+    }
+  }
+
+  @media (max-width: 1880px) {
+    .c-sidebar {
+      width: 420px;
+    }
+  }
+
+  @media (max-width: 1630px) {
+    .c-sidebar {
+      width: 400px;
+    }
+  }
+
+  @media (max-width: 1380px) {
+    .c-sidebar {
+      width: 380px;
+    }
+  }
+
+  @media (max-width: 1130px) {
+    .c-sidebar {
+      width: 360px;
+    }
+  }
+
+  @media (max-width: 930px) {
+    .c-sidebar {
+      width: 340px;
+    }
+  }
+
+  @media (max-width: 730px) {
+    .c-sidebar {
+      position: fixed;
+      bottom: 0;
+      z-index: -1;
+      height: 100%;
+      width: 100%;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .c-sidebar.is-expanded {
+      z-index: var(--z-expanded-sidebar);
+      visibility: visible;
+      height: 100%;
+      opacity: 1;
+    }
+  }
+}

@@ -7,7 +7,7 @@ unless Rails.env.production?
     end
 
     task :css do
-      abort("rails lint:css failed") unless system("npx stylelint 'app/assets/stylesheets/**/*.scss'")
+      abort("rails lint:css failed") unless system("npx stylelint 'app/assets/stylesheets/**/*.css'")
     end
 
     task :erb do

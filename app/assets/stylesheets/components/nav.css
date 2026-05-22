@@ -1,0 +1,21 @@
+@layer components {
+  .c-nav {
+    padding: var(--spacing-small) var(--spacing-small) 0;
+    box-shadow: var(--nav-shadow);
+    z-index: var(--z-nav);
+  }
+
+  .c-nav--primary {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      z-index: -1;
+      background: var(--nav-primary-bg-color);
+    }
+  }
+}

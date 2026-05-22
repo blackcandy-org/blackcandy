@@ -1,3 +1,2 @@
 web: bin/rails server
-js: npm run build-dev -- --watch
-css: npm run build-dev:css -- --watch
+assets: node esbuild.config.mjs --dev --watch

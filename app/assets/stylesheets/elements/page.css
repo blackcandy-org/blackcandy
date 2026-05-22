@@ -1,0 +1,8 @@
+@layer elements {
+  body {
+    font-family: var(--font-sans-serif);
+    background-color: var(--body-bg-color);
+    color: var(--text-secondary-color);
+    font-size: var(--font-size-medium);
+  }
+}
