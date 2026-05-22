@@ -1,0 +1,95 @@
+@layer components {
+  .c-dropdown {
+    display: inline-block;
+    position: relative;
+  }
+
+  .c-dropdown > summary {
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  .c-dropdown[open] > summary {
+    &::before {
+      position: fixed;
+      inset: 0;
+      z-index: var(--z-dropdown-overlay);
+      display: block;
+      cursor: default;
+      content: "";
+      background: transparent;
+    }
+  }
+
+  .c-dropdown:not([open]) > *:not(summary) {
+    display: none;
+  }
+
+  .c-dropdown__menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: var(--z-dropdown);
+    min-width: 100px;
+    background: var(--dropdown-bg-color);
+    border-radius: var(--border-radius-medium);
+    color: var(--dropdown-color);
+    box-shadow: 0 1px 6px var(--dropdown-shadow-color);
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  .c-dropdown__menu > hr {
+    margin: 0;
+  }
+
+  .c-dropdown__menu--right {
+    left: 0;
+    right: auto;
+  }
+
+  .c-dropdown__item {
+    display: block;
+    padding: var(--spacing-narrow);
+    white-space: nowrap;
+  }
+
+  a.c-dropdown__item {
+    text-decoration: none;
+    color: var(--dropdown-color);
+  }
+
+  form.c-dropdown__item input[type="submit"],
+  form.c-dropdown__item button[type="submit"] {
+    width: 100%;
+    background: var(--dropdown-bg-color);
+    border: none;
+    cursor: pointer;
+  }
+
+  .c-dropdown__item:first-child,
+  form.c-dropdown__item:first-child input[type="submit"],
+  form.c-dropdown__item:first-child button[type="submit"] {
+    border-top-left-radius: var(--border-radius-medium);
+    border-top-right-radius: var(--border-radius-medium);
+  }
+
+  .c-dropdown__item:last-child,
+  form.c-dropdown__item:last-child input[type="submit"],
+  form.c-dropdown__item:last-child button[type="submit"] {
+    border-bottom-left-radius: var(--border-radius-medium);
+    border-bottom-right-radius: var(--border-radius-medium);
+  }
+
+  a.c-dropdown__item:hover,
+  form.c-dropdown__item:hover input[type="submit"],
+  form.c-dropdown__item:hover button[type="submit"],
+  .c-dropdown__item:hover {
+    background: var(--dropdown-active-color);
+    color: var(--dropdown-color);
+  }
+}

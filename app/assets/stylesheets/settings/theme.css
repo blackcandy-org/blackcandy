@@ -1,0 +1,148 @@
+@layer settings {
+  :root {
+    color-scheme: light dark;
+
+    --primary-color: light-dark(var(--color-purple), var(--color-purple-light));
+    --primary-bg-color: light-dark(var(--color-white), var(--color-grey-800));
+
+    --link-active-color: var(--primary-color);
+
+    /* Body */
+    --body-bg-color: light-dark(var(--color-white), var(--color-grey-800));
+
+    /* Text */
+    --text-primary-color: light-dark(var(--color-grey-900), var(--color-white));
+    --text-secondary-color: light-dark(var(--color-grey-600), var(--color-grey-300));
+    --text-success-color: var(--color-green);
+
+    /* Sidebar */
+    --sidebar-bg-color: light-dark(var(--color-grey-100), var(--color-grey-900));
+
+    /* Progress bar */
+    --progress-bar-bg-color: var(--primary-color);
+
+    /* Button */
+    --btn-color: var(--color-white);
+    --btn-primary-bg-color: var(--color-purple);
+    --btn-primary-hover-bg-color: light-dark(var(--color-purple-shade), var(--color-purple-tint));
+    --btn-secondary-bg-color: rgb(from var(--color-purple) r g b / 0.25);
+    --btn-secondary-hover-bg-color: light-dark(rgb(from var(--color-purple-shade) r g b / 0.25), rgb(from var(--color-purple-tint) r g b / 0.25));
+    --btn-secondary-color: light-dark(var(--color-purple-light), var(--primary-color));
+    --btn-outline-color: light-dark(var(--color-grey-900), var(--color-white));
+    --btn-outline-border-color: light-dark(var(--color-grey-300), var(--color-grey-800));
+    --btn-outline-bg-color: light-dark(var(--color-grey-100), var(--color-grey-700));
+    --btn-outline-hover-bg-color: light-dark(var(--color-grey-250), var(--color-grey-650));
+    --btn-icon-hover-bg-color: light-dark(rgb(from var(--color-grey-300) r g b / 0.3), rgb(from var(--color-grey-600) r g b / 0.5));
+
+    /* Flash message */
+    --flash-color: var(--color-white);
+    --flash-notice-bg-color: var(--color-green);
+    --flash-alert-bg-color: var(--color-red);
+
+    /* Tab */
+    --tab-color: light-dark(var(--color-grey-900), var(--color-white));
+    --tab-active-color: var(--primary-color);
+
+    /* List */
+    --list-border-color: light-dark(var(--color-grey-200), var(--color-grey-800));
+    --list-active-color: var(--primary-color);
+    --list-grouped-bg-color: light-dark(var(--color-grey-100), var(--color-grey-900));
+    --list-subtext-color: light-dark(var(--color-grey-500), var(--color-grey-400));
+
+    /* Table */
+    --table-border-color: light-dark(var(--color-grey-200), var(--color-grey-900));
+    --table-active-color: var(--primary-color);
+    --table-color: light-dark(var(--color-grey-600), var(--color-grey-300));
+
+    /* Input */
+    --input-bg-color: light-dark(var(--color-grey-200), var(--color-grey-700));
+    --input-color: light-dark(var(--color-grey-900), var(--color-white));
+    --input-icon-color: light-dark(var(--color-grey-500), var(--color-grey-900));
+
+    /* Loader */
+    --loader-bg-color: var(--primary-color);
+    --loader-secondary-bg-color: rgb(from var(--primary-color) r g b / 0.3);
+
+    /* Dropdown */
+    --dropdown-bg-color: light-dark(var(--color-white), var(--color-grey-700));
+    --dropdown-active-color: light-dark(var(--color-grey-300), var(--color-grey-500));
+    --dropdown-color: light-dark(var(--color-grey-900), var(--color-white));
+    --dropdown-shadow-color: light-dark(var(--color-grey-300), var(--color-black));
+
+    /* Dialog */
+    --dialog-bg-color: light-dark(var(--color-white), var(--color-grey-900));
+    --dialog-header-bg-color: light-dark(var(--color-grey-200), var(--color-grey-500));
+    --dialog-header-color: var(--color-grey-900);
+
+    ::backdrop {
+      --dialog-backdrop-color: rgb(from light-dark(var(--color-grey-100), var(--color-grey-800)) r g b / 0.9);
+    }
+
+    /* Overlay */
+    --overlay-blur-bg-color: rgb(from light-dark(var(--color-grey-100), var(--color-grey-800)) r g b / 0.9);
+
+    /* Hr */
+    --hr-color: light-dark(var(--color-grey-200), var(--color-grey-900));
+
+    /* Action bar */
+    --action-bar-bg-color: light-dark(var(--color-grey-200), var(--color-grey-800));
+
+    /* Nav */
+    --nav-shadow:
+      0 1px 0 rgb(from light-dark(var(--color-grey-300), var(--color-black)) r g b / 0.12),
+      0 1px 3px rgb(from light-dark(var(--color-grey-300), var(--color-black)) r g b / 0.15);
+    --nav-primary-bg-color: rgb(from light-dark(var(--color-white), var(--color-grey-800)) r g b / 0.9);
+    --nav-backdrop-bg-color: rgb(from light-dark(var(--color-white), var(--color-grey-800)) r g b / 0.88);
+
+    /* Player */
+    --player-bg-color: light-dark(var(--color-grey-200), var(--color-black));
+    --player-header-bg-color: rgb(from light-dark(var(--color-grey-200), var(--color-black)) r g b / 0.65);
+    --player-progress-bg-color: light-dark(var(--color-grey-200), var(--color-black));
+    --player-progress-hover-bg-color: light-dark(var(--color-grey-100), var(--color-grey-800));
+    --player-progress-color: var(--primary-color);
+    --player-volume-bg-color: light-dark(var(--color-grey-300), var(--color-grey-600));
+    --player-volume-color: var(--primary-color);
+    --player-control-color: light-dark(var(--color-grey-500), var(--color-grey-400));
+    --player-control-border-color: light-dark(var(--color-grey-300), var(--color-grey-800));
+    --player-control-main-color: light-dark(var(--color-grey-900), var(--color-white));
+
+    /* Badge */
+    --badge-bg-color: rgb(from var(--primary-color) r g b / 0.2);
+    --badge-color: var(--primary-color);
+
+    /* Card */
+    --card-border-color: light-dark(var(--color-grey-200), var(--color-grey-700));
+    --card-bg-color: light-dark(var(--color-grey-100), var(--color-grey-900));
+
+    /* Icon */
+    --icon-active-color: var(--primary-color);
+    --icon-emphasis-color: var(--color-red);
+
+    --gradient-bg-color:
+      linear-gradient(
+        rgb(from var(--color-white) r g b / 0.85),
+        rgb(from var(--color-white) r g b / 0.65)
+      ),
+      linear-gradient(var(--primary-color), var(--primary-color));
+
+  }
+
+  [data-color-scheme="light"] {
+    color-scheme: light;
+  }
+
+  [data-color-scheme="dark"] {
+    color-scheme: dark;
+    --gradient-bg-color:
+      linear-gradient(var(--color-black), rgb(from var(--color-black) r g b / 0.75)),
+      linear-gradient(var(--primary-color), var(--primary-color));
+  }
+
+  @media (prefers-color-scheme: dark) {
+    [data-color-scheme="auto"] {
+      --gradient-bg-color:
+        linear-gradient(var(--color-black), rgb(from var(--color-black) r g b / 0.75)),
+        linear-gradient(var(--primary-color), var(--primary-color));
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@layer components {
+  .c-dialog {
+    padding: 0;
+    margin-top: 100px;
+    background: var(--dialog-bg-color);
+    border: none;
+    border-radius: var(--border-radius-medium);
+    width: 100%;
+    max-width: 360px;
+    color: inherit;
+  }
+
+  .c-dialog::backdrop {
+    background-color: var(--dialog-backdrop-color);
+  }
+
+  .c-dialog__header {
+    padding: var(--spacing-narrow) var(--spacing-small);
+    background: var(--dialog-header-bg-color);
+    color: var(--dialog-header-color);
+    border-top-left-radius: var(--border-radius-medium);
+    border-top-right-radius: var(--border-radius-medium);
+  }
+
+  .c-dialog__content {
+    padding: var(--spacing-narrow) var(--spacing-small);
+    overflow-y: auto;
+    min-height: 50px;
+    max-height: calc(100vh - 300px);
+  }
+}

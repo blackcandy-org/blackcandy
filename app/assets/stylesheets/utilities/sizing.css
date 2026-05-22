@@ -1,0 +1,25 @@
+@layer utilities {
+  .u-vw-100 {
+    width: 100vw;
+  }
+
+  .u-vh-100 {
+    height: 100vh;
+  }
+
+  .u-w-100 {
+    width: 100%;
+  }
+
+  .u-h-100 {
+    height: 100%;
+  }
+
+  .u-h-0 {
+    height: 0;
+  }
+
+  .u-w-0 {
+    width: 0;
+  }
+}
