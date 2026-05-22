@@ -1,0 +1,39 @@
+@layer objects {
+  /* Base on Raster grid subsystem (rsms.me/raster) */
+
+  .o-grid {
+    display: grid;
+  }
+
+  .o-grid > .o-grid__item {
+    display: block;
+    appearance: none;
+  }
+
+  .o-grid--shelf {
+    gap: var(--spacing-medium);
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+
+  .o-grid--list {
+    gap: var(--spacing-small);
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .o-grid > .o-grid__item--row {
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: 560px) {
+    .o-grid--shelf {
+      gap: var(--spacing-small);
+    }
+  }
+
+  @media (max-width: 375px) {
+    .o-grid--shelf {
+      gap: var(--spacing-narrow);
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

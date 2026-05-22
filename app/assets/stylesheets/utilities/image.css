@@ -1,0 +1,21 @@
+@layer utilities {
+  .u-image-large {
+    width: 300px;
+    height: 300px;
+  }
+
+  .u-image-medium {
+    width: 200px;
+    height: 200px;
+  }
+
+  .u-image-small {
+    width: 100px;
+    height: 100px;
+  }
+
+  .u-image-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+}
