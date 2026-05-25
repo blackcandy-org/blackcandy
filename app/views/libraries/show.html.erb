@@ -8,8 +8,8 @@
   <ul class='c-list c-list--grouped'>
     <li class='c-list__item'>
       <%= link_to albums_path, class: "o-flex o-flex--justify-between" do %>
-        <span class='o-flex o-flex--align-center u-text-size-large'>
-          <%= icon_tag "album", class: "u-mr-tiny" %>
+        <span class='o-flex o-flex--align-center u-text-size-3'>
+          <%= icon_tag "album", class: "u-mr-1" %>
           <%= t("label.albums") %>
         </span>
         <span class='c-badge'><%= format_number(@albums_count) %></span>
@@ -17,8 +17,8 @@
     </li>
     <li class='c-list__item'>
       <%= link_to artists_path, class: "o-flex o-flex--justify-between" do %>
-        <span class='o-flex o-flex--align-center u-text-size-large'>
-          <%= icon_tag "mic", class: "u-mr-tiny" %>
+        <span class='o-flex o-flex--align-center u-text-size-3'>
+          <%= icon_tag "mic", class: "u-mr-1" %>
           <%= t("label.artists") %>
         </span>
         <span class='c-badge'><%= format_number(@artists_count) %></span>
@@ -26,8 +26,8 @@
     </li>
     <li class='c-list__item'>
       <%= link_to playlists_path, class: "o-flex o-flex--justify-between" do %>
-        <span class='o-flex o-flex--align-center u-text-size-large'>
-          <%= icon_tag "queue-music", class: "u-mr-tiny" %>
+        <span class='o-flex o-flex--align-center u-text-size-3'>
+          <%= icon_tag "queue-music", class: "u-mr-1" %>
           <%= t("label.playlists") %>
         </span>
         <span class='c-badge'><%= format_number(@playlists_count) %></span>
@@ -35,8 +35,8 @@
     </li>
     <li class='c-list__item'>
       <%= link_to songs_path, class: "o-flex o-flex--justify-between" do %>
-        <span class='o-flex o-flex--align-center u-text-size-large'>
-          <%= icon_tag "music-note", class: "u-mr-tiny" %>
+        <span class='o-flex o-flex--align-center u-text-size-3'>
+          <%= icon_tag "music-note", class: "u-mr-1" %>
           <%= t("label.songs") %>
         </span>
         <span class='c-badge'><%= format_number(@songs_count) %></span>

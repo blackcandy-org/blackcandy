@@ -1,7 +1,7 @@
 <% page_title_tag @album.name %>
 
 <div class='o-container o-container--narrow' data-controller='songs bridge--songs bridge--album' data-bridge--album-id-value='<%= @album.id %>'>
-  <div class='c-card c-card--horizontal c-card--center@narrow u-my-large'>
+  <div class='c-card c-card--horizontal c-card--center@narrow u-my-5'>
     <%= cover_image_tag @album, class: "c-card__image u-image-medium" %>
     <div class='c-card__body'>
       <h1 class='c-card__body__title'><%= @album.name %></h1>
@@ -11,7 +11,7 @@
         <span>,</span>
         <span class='u-text-monospace'><%= format_duration(@album.songs.sum(:duration)) %></span>
       </div>
-      <div class='u-mt-large'>
+      <div class='u-mt-5'>
         <%= button_to(
               t("button.play"),
               current_playlist_album_path(@album, should_play: true),
@@ -27,7 +27,7 @@
               }
             ) %>
         <% if is_admin? %>
-          <%= link_to t("label.edit"), edit_dialog_album_path(@album), data: { "turbo-frame" => ("turbo-dialog" unless native_app?) }, class: "c-button c-button--secondary u-ml-tiny" %>
+          <%= link_to t("label.edit"), edit_dialog_album_path(@album), data: { "turbo-frame" => ("turbo-dialog" unless native_app?) }, class: "c-button c-button--secondary u-ml-1" %>
         <% end %>
       </div>
     </div>
@@ -65,7 +65,7 @@
                     <% end %>
                   <% end %>
                 </div>
-                <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
+                <div class='u-text-monospace u-mr-2'><%= format_duration(song.duration) %></div>
               </div>
             <% end %>
 

@@ -11,12 +11,12 @@
   }
 
   .o-grid--shelf {
-    gap: var(--spacing-medium);
+    gap: var(--spacing-4);
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   }
 
   .o-grid--list {
-    gap: var(--spacing-small);
+    gap: var(--spacing-3);
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 
@@ -26,13 +26,13 @@
 
   @media (max-width: 560px) {
     .o-grid--shelf {
-      gap: var(--spacing-small);
+      gap: var(--spacing-3);
     }
   }
 
   @media (max-width: 375px) {
     .o-grid--shelf {
-      gap: var(--spacing-narrow);
+      gap: var(--spacing-2);
       grid-template-columns: repeat(2, 1fr);
     }
   }

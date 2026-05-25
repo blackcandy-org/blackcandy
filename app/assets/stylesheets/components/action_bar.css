@@ -1,7 +1,7 @@
 @layer components {
   .c-action-bar {
-    padding: var(--spacing-tiny) var(--spacing-narrow);
-    border-radius: var(--border-radius-medium);
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--border-radius-2);
     background: var(--action-bar-bg-color);
   }
 }

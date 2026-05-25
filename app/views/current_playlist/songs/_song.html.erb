@@ -6,18 +6,18 @@
   data-should-play='<%= local_assigns[:should_play] ? should_play : false %>'
   draggable='true'>
 
-  <div class='o-flex o-flex--align-center u-py-narrow'>
+  <div class='o-flex o-flex--align-center u-py-2'>
     <% unless mobile? %>
-      <button class='c-button c-button--icon js-playlist-sortable-item-handle u-mr-narrow'><%= icon_tag "drag-indicator", size: "small" %></button>
+      <button class='c-button c-button--icon js-playlist-sortable-item-handle u-mr-2'><%= icon_tag "drag-indicator", size: "small" %></button>
     <% end %>
 
     <button class='c-button c-button--link o-flex__item--grow-1' data-delegated-action='click->current-playlist-songs#play'>
       <div class='o-flex o-flex--justify-between o-flex--align-center'>
-        <div class='u-mr-narrow'>
+        <div class='u-mr-2'>
           <span class='u-text-line-clamp-2'><%= song.name %></span>
           <%= link_to song.artist.name, artist_path(song.artist), class: "c-list__item__subtext", data: { "turbo-frame" => "_top", "prevent-delegation" => true } %>
         </div>
-        <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
+        <div class='u-text-monospace u-mr-2'><%= format_duration(song.duration) %></div>
       </div>
     </button>
 

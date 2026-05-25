@@ -7,26 +7,26 @@
 
   .c-list--grouped {
     background-color: var(--list-grouped-bg-color);
-    padding: 0 var(--spacing-narrow);
-    border-radius: var(--border-radius-large);
+    padding: 0 var(--spacing-2);
+    border-radius: var(--border-radius-3);
   }
 
   .c-list__item {
     width: 100%;
-    padding: var(--spacing-narrow) 0;
+    padding: var(--spacing-2) 0;
     text-decoration: none;
     border-bottom: 1px solid var(--list-border-color);
   }
 
   .c-list__item--divider {
-    margin-top: var(--spacing-small);
+    margin-top: var(--spacing-3);
     font-weight: bold;
     text-transform: uppercase;
   }
 
   .c-list__item__subtext {
     display: inline-block;
-    margin-top: var(--spacing-tiny);
+    margin-top: var(--spacing-1);
     color: var(--list-subtext-color);
   }
 
@@ -35,7 +35,7 @@
   }
 
   .c-list--grouped .c-list__item {
-    padding: var(--spacing-small) 0;
+    padding: var(--spacing-3) 0;
   }
 
   .c-list__item:last-child {
@@ -58,6 +58,6 @@
 
   .c-list .c-list__item.is-dragging-over {
     border: 2px dashed var(--list-active-color);
-    border-radius: var(--border-radius-medium);
+    border-radius: var(--border-radius-2);
   }
 }

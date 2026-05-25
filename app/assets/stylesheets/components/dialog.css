@@ -4,7 +4,7 @@
     margin-top: 100px;
     background: var(--dialog-bg-color);
     border: none;
-    border-radius: var(--border-radius-medium);
+    border-radius: var(--border-radius-2);
     width: 100%;
     max-width: 360px;
     color: inherit;
@@ -15,15 +15,15 @@
   }
 
   .c-dialog__header {
-    padding: var(--spacing-narrow) var(--spacing-small);
+    padding: var(--spacing-2) var(--spacing-3);
     background: var(--dialog-header-bg-color);
     color: var(--dialog-header-color);
-    border-top-left-radius: var(--border-radius-medium);
-    border-top-right-radius: var(--border-radius-medium);
+    border-top-left-radius: var(--border-radius-2);
+    border-top-right-radius: var(--border-radius-2);
   }
 
   .c-dialog__content {
-    padding: var(--spacing-narrow) var(--spacing-small);
+    padding: var(--spacing-2) var(--spacing-3);
     overflow-y: auto;
     min-height: 50px;
     max-height: calc(100vh - 300px);

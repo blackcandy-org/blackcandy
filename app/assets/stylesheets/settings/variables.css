@@ -5,23 +5,24 @@
     --font-monospace: "Menlo", "Monaco", "Consolas", "Courier New", monospace;
 
     /* Font sizes */
-    --font-size-small: 12px;
-    --font-size-medium: 14px;
-    --font-size-large: 16px;
-    --font-size-wide: 20px;
+    --font-size-1: 12px;
+    --font-size-2: 14px;
+    --font-size-3: 16px;
+    --font-size-4: 20px;
 
     /* Spacing */
-    --spacing-tiny: 6px;
-    --spacing-narrow: 12px;
-    --spacing-small: 18px;
-    --spacing-medium: 24px;
-    --spacing-large: 36px;
-    --spacing-wide: 48px;
+    --spacing-1: 6px;
+    --spacing-2: 12px;
+    --spacing-3: 18px;
+    --spacing-4: 24px;
+    --spacing-5: 36px;
+    --spacing-6: 48px;
 
     /* Border radius */
-    --border-radius-small: 2px;
-    --border-radius-medium: 4px;
-    --border-radius-large: 8px;
+    --border-radius-1: 2px;
+    --border-radius-2: 4px;
+    --border-radius-3: 8px;
+    --border-radius-4: 16px;
 
     /* Z-indexes */
     --z-base: 0;

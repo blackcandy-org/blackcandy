@@ -1,10 +1,10 @@
 @layer components {
   .c-badge {
     display: inline-block;
-    border-radius: var(--border-radius-large);
+    border-radius: var(--border-radius-3);
     background-color: var(--badge-bg-color);
     color: var(--badge-color);
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-1);
     padding: 2px 13px;
     font-weight: 500;
   }

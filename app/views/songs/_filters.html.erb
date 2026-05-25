@@ -1,5 +1,5 @@
 <% if filter_sort_presenter.has_filter? %>
-  <%= link_to songs_path, class: "c-button c-button--outline c-button--small u-mr-small", data: { "turbo-action" => ("replace" if native_app?) } do %>
+  <%= link_to songs_path, class: "c-button c-button--outline c-button--small u-mr-3", data: { "turbo-action" => ("replace" if native_app?) } do %>
     <span class='o-flex o-flex--align-center'>
       <%= icon_tag "close" %>
       <%= t("label.clear_filters") %>
@@ -7,7 +7,7 @@
   <% end %>
 <% end %>
 
-<details class='c-dropdown u-mr-small' data-controller='dropdown'>
+<details class='c-dropdown u-mr-3' data-controller='dropdown'>
   <summary class='c-button c-button--outline c-button--small'>
     <span class='o-flex o-flex--align-center'>
       <%= t("field.genre") %>
@@ -16,14 +16,14 @@
   </summary>
   <div class='c-dropdown__menu c-dropdown__menu--right' data-dropdown-target="menu">
     <%= turbo_frame_tag "turbo-album-genre-filter", src: songs_filter_genres_path(**filter_sort_presenter.params), loading: "lazy" do %>
-      <div class='o-flex o-flex--justify-center u-p-medium'>
+      <div class='o-flex o-flex--justify-center u-p-4'>
         <%= loader_tag size: "small" %>
       </div>
     <% end %>
   </div>
 </details>
 
-<details class='c-dropdown u-mr-small' data-controller='dropdown'>
+<details class='c-dropdown u-mr-3' data-controller='dropdown'>
   <summary class='c-button c-button--outline c-button--small'>
     <span class='o-flex o-flex--align-center'>
       <%= t("field.year") %>
@@ -32,7 +32,7 @@
   </summary>
   <div class='c-dropdown__menu' data-dropdown-target="menu">
     <%= turbo_frame_tag "turbo-album-year-filter", src: songs_filter_years_path(**filter_sort_presenter.params), loading: "lazy" do %>
-      <div class='o-flex o-flex--justify-center u-p-medium'>
+      <div class='o-flex o-flex--justify-center u-p-4'>
         <%= loader_tag size: "small" %>
       </div>
     <% end %>

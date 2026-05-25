@@ -4,8 +4,8 @@
     background: var(--input-bg-color);
     border: none;
     color: var(--input-color);
-    padding: var(--spacing-tiny);
-    border-radius: var(--border-radius-medium);
+    padding: var(--spacing-1);
+    border-radius: var(--border-radius-2);
     filter: none;
   }
 
@@ -13,8 +13,8 @@
     display: flex;
     align-items: center;
     background: var(--input-bg-color);
-    border-radius: var(--border-radius-medium);
-    padding: 0 var(--spacing-tiny);
+    border-radius: var(--border-radius-2);
+    padding: 0 var(--spacing-1);
   }
 
   .c-input-group input {

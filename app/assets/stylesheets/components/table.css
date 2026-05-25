@@ -36,7 +36,7 @@
   .c-table [role="cell"] {
     display: inline-flex;
     align-items: center;
-    padding: var(--spacing-narrow);
+    padding: var(--spacing-2);
     text-align: left;
     color: var(--table-color);
   }

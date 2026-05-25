@@ -7,15 +7,15 @@
     border: none;
   }
 
-  .u-border-radius-small {
-    border-radius: var(--border-radius-small);
+  .u-border-radius-1 {
+    border-radius: var(--border-radius-1);
   }
 
-  .u-border-radius-medium {
-    border-radius: var(--border-radius-medium);
+  .u-border-radius-2 {
+    border-radius: var(--border-radius-2);
   }
 
-  .u-border-radius-large {
-    border-radius: var(--border-radius-large);
+  .u-border-radius-3 {
+    border-radius: var(--border-radius-3);
   }
 }

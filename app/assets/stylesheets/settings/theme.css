@@ -41,7 +41,9 @@
 
     /* Tab */
     --tab-color: light-dark(var(--color-grey-900), var(--color-white));
-    --tab-active-color: var(--primary-color);
+    --tab-active-bg-color: var(--primary-color);
+    --tab-active-color: var(--color-white);
+    --tab-hover-bg-color: light-dark(var(--color-grey-200), var(--color-grey-700));
 
     /* List */
     --list-border-color: light-dark(var(--color-grey-200), var(--color-grey-800));
