@@ -44,19 +44,19 @@
     overflow: hidden;
   }
 
-  .u-text-size-small {
-    font-size: var(--font-size-small);
+  .u-text-size-1 {
+    font-size: var(--font-size-1);
   }
 
-  .u-text-size-medium {
-    font-size: var(--font-size-medium);
+  .u-text-size-2 {
+    font-size: var(--font-size-2);
   }
 
-  .u-text-size-large {
-    font-size: var(--font-size-large);
+  .u-text-size-3 {
+    font-size: var(--font-size-3);
   }
 
-  .u-text-size-wide {
-    font-size: var(--font-size-wide);
+  .u-text-size-4 {
+    font-size: var(--font-size-4);
   }
 }

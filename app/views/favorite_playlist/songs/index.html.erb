@@ -1,6 +1,6 @@
 <div class='o-container o-container--narrow'>
   <div data-controller='songs bridge--songs bridge--playlist' data-bridge--playlist-id-value='<%= @playlist.id %>'>
-    <div class="c-card c-card--horizontal u-my-large">
+    <div class="c-card c-card--horizontal u-my-5">
       <div class='c-card__body'>
         <h1 class='c-card__body__title'><%= @playlist.name %></h1>
         <div class='c-card__body__text'>
@@ -9,7 +9,7 @@
           <span>,</span>
           <span id='<%= dom_id(@playlist, :songs_duration) %>' class='u-text-monospace'><%= format_duration(@playlist.songs.sum(:duration)) %></span>
         </div>
-        <div class='u-mt-large'>
+        <div class='u-mt-5'>
           <% unless @songs.blank? %>
             <%= button_to(
                   t("button.play"),

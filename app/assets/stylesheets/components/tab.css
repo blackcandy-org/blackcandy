@@ -1,29 +1,37 @@
 @layer components {
   .c-tab {
     display: flex;
-    justify-content: center;
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
   .c-tab__item {
-    padding-bottom: var(--spacing-narrow);
-    border-bottom: 2px solid transparent;
-    margin: 0 var(--spacing-large);
+    margin-right: var(--spacing-4);
+    border-radius: var(--border-radius-4);
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      background-color: var(--tab-hover-bg-color);
+    }
   }
 
+
   .c-tab__item a {
+    display: inline-block;
+    padding: var(--spacing-1) var(--spacing-2);
     color: var(--tab-color);
     text-decoration: none;
   }
 
-  .c-tab__item.is-active a,
-  .c-tab__item a:hover {
+  .c-tab__item.is-active a {
     color: var(--tab-active-color);
   }
 
   .c-tab__item.is-active {
-    border-color: var(--tab-active-color);
+    background-color: var(--tab-active-bg-color);
   }
 }

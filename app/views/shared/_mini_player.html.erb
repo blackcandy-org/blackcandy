@@ -1,12 +1,12 @@
-<div id='js-mini-player' class='c-player o-flex o-flex--justify-between o-flex--align-center u-p-narrow' data-controller='mini-player' data-turbo-permanent>
+<div id='js-mini-player' class='c-player o-flex o-flex--justify-between o-flex--align-center u-p-2' data-controller='mini-player' data-turbo-permanent>
   <div data-action='click->mini-player#expand' class='o-flex o-flex--align-center o-flex__item--grow-1 u-w-0'>
-    <span class='u-mr-narrow'><%= icon_tag "expand-less", size: "large", title: t("label.expand_player") %></span>
+    <span class='u-mr-2'><%= icon_tag "expand-less", size: "large", title: t("label.expand_player") %></span>
     <span data-mini-player-target='songName' class='u-text-truncate'></span>
     <span data-mini-player-target='loader' class='u-display-none'><%= loader_tag(size: "small") %></span>
   </div>
   <div class='o-flex o-flex--justify-between '>
-    <button data-action='click->mini-player#play' class='c-button c-button--icon u-mx-small' data-mini-player-target='playButton'><%= icon_tag "play", size: "large", title: t("label.play_song") %></button>
-    <button data-action='click->mini-player#pause' class='c-button c-button--icon u-mx-small u-display-none' data-mini-player-target='pauseButton'><%= icon_tag "pause", size: "large", title: t("label.pause_song") %></button>
+    <button data-action='click->mini-player#play' class='c-button c-button--icon u-mx-3' data-mini-player-target='playButton'><%= icon_tag "play", size: "large", title: t("label.play_song") %></button>
+    <button data-action='click->mini-player#pause' class='c-button c-button--icon u-mx-3 u-display-none' data-mini-player-target='pauseButton'><%= icon_tag "pause", size: "large", title: t("label.pause_song") %></button>
     <button data-action='click->mini-player#next' class='c-button c-button--icon'><%= icon_tag "fast-forward", size: "large", title: t("label.next_song") %></button>
   </div>
 </div>

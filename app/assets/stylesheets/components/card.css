@@ -5,32 +5,32 @@
 
   .c-card--border {
     border: 1px solid var(--card-border-color);
-    border-radius: var(--border-radius-medium);
+    border-radius: var(--border-radius-2);
     background-color: var(--card-bg-color);
   }
 
   .c-card--border .c-card__body {
-    padding: var(--spacing-narrow);
+    padding: var(--spacing-2);
   }
 
   .c-card__image {
     display: block;
-    margin-bottom: var(--spacing-narrow);
+    margin-bottom: var(--spacing-2);
   }
 
   .c-card__image,
   .c-card__image img {
-    border-radius: var(--border-radius-medium);
+    border-radius: var(--border-radius-2);
   }
 
   .c-card__body__title {
-    margin-bottom: var(--spacing-narrow);
-    font-size: var(--font-size-large);
+    margin-bottom: var(--spacing-2);
+    font-size: var(--font-size-3);
   }
 
   .c-card__body__text {
     display: block;
-    margin-bottom: var(--spacing-tiny);
+    margin-bottom: var(--spacing-1);
   }
 
   .c-card__body__text:last-child {
@@ -41,7 +41,7 @@
     display: flex;
 
     .c-card__image {
-      margin-right: var(--spacing-medium);
+      margin-right: var(--spacing-4);
     }
 
     .c-card__body {
@@ -58,7 +58,7 @@
       text-align: center;
 
       .c-card__image {
-        margin: 0 0 var(--spacing-small);
+        margin: 0 0 var(--spacing-3);
       }
 
       .c-card__body {

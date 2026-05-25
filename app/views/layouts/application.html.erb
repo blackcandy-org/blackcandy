@@ -8,7 +8,7 @@
 
   <% if native_app? %>
     <%= render "shared/flash" %>
-    <main class='u-p-large u-p-small@small'>
+    <main class='u-p-5 u-p-3@small'>
       <%= yield %>
     </main>
   <% else %>
@@ -27,10 +27,9 @@
         <div>
           <header class='c-nav c-nav--primary u-position-sticky-top'>
             <%= render "shared/flash" %>
-            <%= render partial: "shared/search_bar", locals: { current_user: Current.user, query: params[:query] } %>
-            <%= render partial: "shared/nav_bar", locals: { current_controller: controller_name } %>
+            <%= render partial: "shared/top_bar", locals: { current_user: Current.user, current_controller: controller_name, query: params[:query] } %>
           </header>
-          <main class='o-container--wide u-m-auto u-p-large u-p-small@small u-p-narrow@extra-narrow'>
+          <main class='o-container--wide u-m-auto u-p-5 u-p-3@small u-p-2@extra-narrow'>
             <%= yield %>
           </main>
           <footer class='u-display-none u-display-block@extra-small u-position-fixed-bottom'>

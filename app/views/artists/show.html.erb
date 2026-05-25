@@ -1,7 +1,7 @@
 <% page_title_tag @artist.name %>
 
 <div class='o-container o-container--wide'>
-  <div class='c-card c-card--horizontal c-card--center@narrow u-my-large'>
+  <div class='c-card c-card--horizontal c-card--center@narrow u-my-5'>
     <%= cover_image_tag @artist, class: "c-card__image u-image-medium" %>
     <div class='c-card__body'>
       <h1 class='c-card__body__title'><%= @artist.name %></h1>
@@ -11,8 +11,8 @@
         <span><%= @artist.songs.size %> <%= t("label.songs") %></span>
       </div>
       <% if is_admin? %>
-        <div class='u-mt-large'>
-          <%= link_to t("label.edit"), edit_dialog_artist_path(@artist), data: { "turbo-frame" => ("turbo-dialog" unless native_app?) }, class: "c-button c-button--secondary u-mt-large" %>
+        <div class='u-mt-5'>
+          <%= link_to t("label.edit"), edit_dialog_artist_path(@artist), data: { "turbo-frame" => ("turbo-dialog" unless native_app?) }, class: "c-button c-button--secondary u-mt-5" %>
         </div>
       <% end %>
     </div>
