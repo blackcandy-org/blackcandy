@@ -113,6 +113,24 @@ docker run --user 2000:2000 -v ./storage_data:/rails/storage ghcr.io/blackcandy-
 
 Black Candy logs to `STDOUT` by default. So if you want to control the log, Docker already supports a lot of options to handle the log in the container. See: https://docs.docker.com/config/containers/logging/configure/.
 
+### Secret Key Base
+
+Black Candy uses cryptography to protect sessions and other security-sensitive data, and needs a secret value as the basis of those secrets. This value can be anything, but it should be unguessable, and specific to your instance.
+
+You can use any long random string for this. One way to generate one is with `openssl`:
+
+```shell
+openssl rand -hex 64
+```
+
+Once you have one, set it in the `SECRET_KEY_BASE` environment variable:
+
+```shell
+docker run -e SECRET_KEY_BASE=your_generated_secret ghcr.io/blackcandy-org/blackcandy:latest
+```
+
+If `SECRET_KEY_BASE` is not set, Black Candy will generate a new one on each startup, which will invalidate all existing sessions.
+
 ## Environment Variables
 
 | Name                         | Default   | Description                                                                                                                                                                                                                                                                               |
@@ -126,6 +144,7 @@ Black Candy logs to `STDOUT` by default. So if you want to control the log, Dock
 | SECRET_KEY_BASE              |           | When the SECRET_KEY_BASE environment variable is not set, Black candy will generate SECRET_KEY_BASE environment variable every time when service start up. This will cause old sessions invalid, You can set your own SECRET_KEY_BASE environment variable on docker service to avoid it. |
 | FORCE_SSL                    | false     | Force all access to the app over SSL.                                                                                                                                                                                                                                                     |
 | DEMO_MODE                    | false     | Whether to enable demo mode, when demo mode is on, all users cannot access administrator privileges, even user is admin. And also users cannot change their profile.                                                                                                                      |
+| HTTP_PORT                    | 80        | The port that Black Candy listens on inside the container. Useful when you want to run Black Candy on a port other than 80.                                                                                                                                                               |
 
 ## Edge Version
 
