@@ -36,7 +36,7 @@
     z-index: var(--z-dropdown);
     min-width: 100px;
     background: var(--dropdown-bg-color);
-    border-radius: var(--border-radius-medium);
+    border-radius: var(--border-radius-2);
     color: var(--dropdown-color);
     box-shadow: 0 1px 6px var(--dropdown-shadow-color);
     max-height: 300px;
@@ -54,7 +54,7 @@
 
   .c-dropdown__item {
     display: block;
-    padding: var(--spacing-narrow);
+    padding: var(--spacing-2);
     white-space: nowrap;
   }
 
@@ -74,15 +74,15 @@
   .c-dropdown__item:first-child,
   form.c-dropdown__item:first-child input[type="submit"],
   form.c-dropdown__item:first-child button[type="submit"] {
-    border-top-left-radius: var(--border-radius-medium);
-    border-top-right-radius: var(--border-radius-medium);
+    border-top-left-radius: var(--border-radius-2);
+    border-top-right-radius: var(--border-radius-2);
   }
 
   .c-dropdown__item:last-child,
   form.c-dropdown__item:last-child input[type="submit"],
   form.c-dropdown__item:last-child button[type="submit"] {
-    border-bottom-left-radius: var(--border-radius-medium);
-    border-bottom-right-radius: var(--border-radius-medium);
+    border-bottom-left-radius: var(--border-radius-2);
+    border-bottom-right-radius: var(--border-radius-2);
   }
 
   a.c-dropdown__item:hover,

@@ -1,6 +1,6 @@
 @layer components {
   .c-nav {
-    padding: var(--spacing-small) var(--spacing-small) 0;
+    padding: var(--spacing-3) var(--spacing-5);
     box-shadow: var(--nav-shadow);
     z-index: var(--z-nav);
   }

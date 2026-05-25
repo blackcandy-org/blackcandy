@@ -2,7 +2,7 @@
   .c-search {
     max-width: 380px;
     width: 100%;
-    margin: 0 var(--spacing-small);
+    margin: 0 var(--spacing-3);
   }
 
   .c-search .c-loader {
