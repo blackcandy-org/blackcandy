@@ -2,6 +2,7 @@
   .c-sidebar {
     background: var(--sidebar-bg-color);
     z-index: var(--z-sidebar);
+    border-right: 1px solid var(--sidebar-border-color);
   }
 
   @media (min-width: 1880px) {

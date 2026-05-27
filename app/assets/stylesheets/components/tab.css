@@ -7,7 +7,7 @@
   }
 
   .c-tab__item {
-    margin-right: var(--spacing-4);
+    margin-right: var(--spacing-3);
     border-radius: var(--border-radius-4);
 
     &:last-child {

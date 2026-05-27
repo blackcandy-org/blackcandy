@@ -24,7 +24,13 @@
     --border-radius-3: 8px;
     --border-radius-4: 16px;
 
+    /* Image sizes */
+    --image-size-1: 100px;
+    --image-size-2: 200px;
+    --image-size-3: 300px;
+
     /* Z-indexes */
+    --z-background: -1;
     --z-base: 0;
     --z-nav: 1;
     --z-sidebar: 2;
