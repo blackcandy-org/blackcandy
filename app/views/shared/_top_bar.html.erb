@@ -1,11 +1,9 @@
 <div class='o-flex o-flex--align-center o-flex--justify-between'>
-  <div class='o-flex__item '>
+  <div class='o-flex__item o-flex o-flex--align-center'>
     <%= render partial: "shared/nav_bar", locals: { current_controller: current_controller } %>
+    <%= render partial: "shared/search_input", locals: { query: query } %>
   </div>
-
-  <%= render partial: "shared/search_input", locals: { query: query } %>
-
-  <div class='o-flex o-flex--align-center '>
+  <div class='o-flex__item o-flex o-flex--align-center'>
     <%= render partial: "shared/account_menu", locals: { current_user: current_user } %>
   </div>
 </div>

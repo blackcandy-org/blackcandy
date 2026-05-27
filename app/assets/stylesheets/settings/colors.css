@@ -7,18 +7,19 @@
     --color-purple-light: rgb(161 90 191);
 
     --color-white: rgb(255 255 251);
+    --color-light: rgb(252 250 242);
     --color-grey-100: rgb(237 237 237);
     --color-grey-200: rgb(217 217 217);
     --color-grey-250: rgb(211 211 211);
-    --color-grey-300: rgb(191 191 191);
-    --color-grey-400: rgb(166 166 166);
-    --color-grey-500: rgb(140 140 140);
-    --color-grey-600: rgb(89 89 89);
-    --color-grey-650: rgb(80 80 80);
+    --color-grey-300: rgb(189 192 186);
+    --color-grey-400: rgb(145 152 159);
+    --color-grey-500: rgb(130 130 130);
+    --color-grey-600: rgb(101 103 101);
+    --color-grey-650: rgb(83 89 83);
     --color-grey-700: rgb(59 59 59);
-    --color-grey-800: rgb(33 33 33);
-    --color-grey-900: rgb(18 18 18);
-    --color-black: rgb(0 0 0);
+    --color-grey-800: rgb(28 28 28);
+    --color-grey-900: rgb(12 12 12);
+    --color-black: rgb(8 8 8);
 
     --color-red: rgb(166 22 55);
     --color-green: rgb(35 166 80);
