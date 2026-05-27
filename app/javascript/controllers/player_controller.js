@@ -5,7 +5,6 @@ import { installEventHandler } from './mixins/event_handler'
 
 export default class extends Controller {
   static targets = [
-    'header',
     'image',
     'backgroundImage',
     'songName',
@@ -130,7 +129,6 @@ export default class extends Controller {
   }
 
   #setBeforePlayingStatus = () => {
-    this.headerTarget.classList.add('is-expanded')
     this.loaderTarget.classList.remove('u-display-none')
     this.favoriteButtonTarget.querySelector('button').disabled = false
     this.songTimerTarget.textContent = formatDuration(0)
@@ -175,7 +173,6 @@ export default class extends Controller {
     this.#setPauseStatus()
 
     if (!this.currentSong.id) {
-      this.headerTarget.classList.remove('is-expanded')
       dispatchEvent(document, 'songs:hidePlaying')
     }
   }

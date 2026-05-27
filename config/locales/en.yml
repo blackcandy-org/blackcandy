@@ -35,6 +35,9 @@ en:
     play_song: 'Play song'
     pause_song: 'Pause song'
     toggle_favorite: 'Toggle favorite'
+    lyrics: 'Lyrics'
+    mute: 'Mute'
+    max_volume: 'Max volume'
     expand_player: 'Expand player'
     collapse_player: 'Collapse player'
     personal: 'Personal'
@@ -56,6 +59,7 @@ en:
     no_search_results: "No search results for \"%{query}\""
     search_results_for: "Search results for \"%{query}\""
     go_to_artist: 'Go to Artist'
+    not_playing: 'Not Playing'
 
   button:
     login: 'Login'

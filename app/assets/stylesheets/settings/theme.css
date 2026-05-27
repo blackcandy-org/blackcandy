@@ -8,7 +8,7 @@
     --link-active-color: var(--primary-color);
 
     /* Body */
-    --body-bg-color: light-dark(var(--color-white), var(--color-grey-800));
+    --body-bg-color: light-dark(var(--color-white), var(--color-black));
 
     /* Text */
     --text-primary-color: light-dark(var(--color-grey-900), var(--color-white));
@@ -16,7 +16,8 @@
     --text-success-color: var(--color-green);
 
     /* Sidebar */
-    --sidebar-bg-color: light-dark(var(--color-grey-100), var(--color-grey-900));
+    --sidebar-bg-color: light-dark(var(--color-light), var(--color-grey-800));
+    --sidebar-border-color: light-dark(var(--color-grey-200), var(--color-grey-700));
 
     /* Progress bar */
     --progress-bar-bg-color: var(--primary-color);
@@ -97,15 +98,14 @@
     --nav-backdrop-bg-color: rgb(from light-dark(var(--color-white), var(--color-grey-800)) r g b / 0.88);
 
     /* Player */
-    --player-bg-color: light-dark(var(--color-grey-200), var(--color-black));
-    --player-header-bg-color: rgb(from light-dark(var(--color-grey-200), var(--color-black)) r g b / 0.65);
-    --player-progress-bg-color: light-dark(var(--color-grey-200), var(--color-black));
-    --player-progress-hover-bg-color: light-dark(var(--color-grey-100), var(--color-grey-800));
+    --player-bg-color: rgb(from light-dark(var(--color-white), var(--color-black)) r g b / 0.7);
+    --player-border-color: light-dark(var(--color-grey-200), var(--color-grey-700));
+    --player-progress-bg-color: light-dark(var(--color-grey-400), var(--color-grey-600));
+    --player-progress-hover-bg-color: var(--color-grey-500);
     --player-progress-color: var(--primary-color);
-    --player-volume-bg-color: light-dark(var(--color-grey-300), var(--color-grey-600));
+    --player-volume-bg-color: light-dark(var(--color-grey-400), var(--color-grey-600));
     --player-volume-color: var(--primary-color);
     --player-control-color: light-dark(var(--color-grey-500), var(--color-grey-400));
-    --player-control-border-color: light-dark(var(--color-grey-300), var(--color-grey-800));
     --player-control-main-color: light-dark(var(--color-grey-900), var(--color-white));
 
     /* Badge */
@@ -119,6 +119,9 @@
     /* Icon */
     --icon-active-color: var(--primary-color);
     --icon-emphasis-color: var(--color-red);
+
+    /* Avatar */
+    --avatar-border-color: light-dark(var(--color-grey-300), var(--color-grey-700));
 
     --gradient-bg-color:
       linear-gradient(

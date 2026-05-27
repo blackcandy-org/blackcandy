@@ -14,9 +14,14 @@
     height: 14px;
   }
 
-  .c-icon--large {
+  .c-icon--medium {
     width: 22px;
     height: 22px;
+  }
+
+  .c-icon--large {
+    width: 26px;
+    height: 26px;
   }
 
   .c-icon--active {

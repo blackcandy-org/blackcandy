@@ -3,5 +3,6 @@
     width: 25px;
     height: 25px;
     border-radius: 50%;
+    border: 2px solid var(--avatar-border-color);
   }
 }
