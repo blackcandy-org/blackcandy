@@ -15,24 +15,24 @@
     background: var(--input-bg-color);
     border-radius: var(--border-radius-2);
     padding: 0 var(--spacing-1);
-  }
 
-  .c-input-group input {
-    width: 0;
-    flex-grow: 1;
-  }
+    input {
+      width: 0;
+      flex-grow: 1;
 
-  .c-input-group input:focus {
-    outline: none;
+      &:focus {
+        outline: none;
+      }
+    }
   }
 
   .c-input-group__icon {
     display: flex;
     align-items: center;
     color: var(--input-icon-color);
-  }
 
-  .c-input-group__icon a {
-    color: var(--input-icon-color);
+    a {
+      color: var(--input-icon-color);
+    }
   }
 }
