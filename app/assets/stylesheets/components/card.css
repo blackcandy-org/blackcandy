@@ -16,11 +16,11 @@
   .c-card__image {
     display: block;
     margin-bottom: var(--spacing-2);
-  }
-
-  .c-card__image,
-  .c-card__image img {
     border-radius: var(--border-radius-2);
+
+    img {
+      border-radius: inherit;
+    }
   }
 
   .c-card__body__title {
