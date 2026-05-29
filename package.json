@@ -5,7 +5,7 @@
     "@hotwired/hotwire-native-bridge": "^1.2.2",
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/turbo-rails": "^8.0.0",
-    "esbuild": "^0.18.17",
+    "esbuild": "^0.28.0",
     "howler": "^2.2.3",
     "idiomorph": "^0.7.4"
   },
