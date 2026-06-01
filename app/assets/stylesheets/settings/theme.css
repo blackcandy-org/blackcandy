@@ -95,7 +95,7 @@
       0 1px 0 rgb(from light-dark(var(--color-grey-300), var(--color-black)) r g b / 0.12),
       0 1px 3px rgb(from light-dark(var(--color-grey-300), var(--color-black)) r g b / 0.15);
     --nav-primary-bg-color: rgb(from light-dark(var(--color-white), var(--color-grey-800)) r g b / 0.9);
-    --nav-backdrop-bg-color: rgb(from light-dark(var(--color-white), var(--color-grey-800)) r g b / 0.88);
+    --nav-secondary-bg-color: rgb(from light-dark(var(--color-light), var(--color-grey-800)) r g b / 0.8);
 
     /* Player */
     --player-bg-color: rgb(from light-dark(var(--color-white), var(--color-black)) r g b / 0.7);
@@ -122,6 +122,9 @@
 
     /* Avatar */
     --avatar-border-color: light-dark(var(--color-grey-300), var(--color-grey-700));
+
+    /* Playlist */
+    --playlist-active-bg-color: rgb(from var(--primary-color) r g b / 0.1);
 
     --gradient-bg-color:
       linear-gradient(
