@@ -3,19 +3,15 @@
     padding: var(--spacing-3) var(--spacing-5);
     box-shadow: var(--nav-shadow);
     z-index: var(--z-nav);
+    backdrop-filter: blur(15px);
   }
 
   .c-nav--primary {
-    position: relative;
+    background: var(--nav-primary-bg-color);
+  }
 
-    &::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      z-index: -1;
-      background: var(--nav-primary-bg-color);
-    }
+  .c-nav--secondary {
+    padding: var(--spacing-2) var(--spacing-4);
+    background: var(--nav-secondary-bg-color);
   }
 }

@@ -1,0 +1,49 @@
+@layer components {
+  .c-playlist {
+    margin: var(--spacing-1) 0;
+  }
+
+  .c-playlist__item {
+    border: none
+  }
+
+  .c-playlist__item.is-active {
+    background-color: var(--playlist-active-bg-color);
+    border-radius: var(--border-radius-3);
+
+    .c-playlist__playing-indicator {
+      display: inline-block;
+    }
+
+    .c-playlist__drag-indicator {
+      display: none;
+    }
+  }
+
+  .c-playlist__playing-indicator,
+  .c-playlist__pause-indicator {
+    display: none;
+    color: var(--primary-color);
+  }
+
+  .c-playlist__item.is-active.is-paused {
+    .c-playlist__playing-indicator {
+      display: none;
+    }
+
+    .c-playlist__pause-indicator {
+      display: inline-block;
+    }
+  }
+
+  .c-playlist__item.is-active:hover {
+    .c-playlist__playing-indicator,
+    .c-playlist__pause-indicator {
+      display: none;
+    }
+
+    .c-playlist__drag-indicator {
+      display: revert;
+    }
+  }
+}

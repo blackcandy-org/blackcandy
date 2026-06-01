@@ -167,6 +167,8 @@ export default class extends Controller {
 
     this.pauseButtonTarget.classList.add('u-display-none')
     this.playButtonTarget.classList.remove('u-display-none')
+
+    dispatchEvent(document, 'songs:pausePlaying')
   }
 
   #setStopStatus = () => {
