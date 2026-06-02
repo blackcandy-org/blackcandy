@@ -14,13 +14,39 @@
   }
 
   .c-card__image {
+    position: relative;
     display: block;
     margin-bottom: var(--spacing-2);
     border-radius: var(--border-radius-2);
 
-    img {
+    > a {
+      display: block;
       border-radius: inherit;
     }
+
+    img {
+      border-radius: inherit;
+      transition: filter 0.15s ease;
+    }
+
+    > a:hover img {
+      filter: brightness(0.8);
+    }
+  }
+
+  .c-card__image__actions {
+    position: absolute;
+    opacity: 0;
+    bottom: var(--spacing-2);
+    right: var(--spacing-2);
+    transform: translateY(var(--spacing-1));
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .c-card__image:hover .c-card__image__actions,
+  .c-card__image__actions:focus-within {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .c-card__body__title {

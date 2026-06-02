@@ -71,6 +71,14 @@
     }
   }
 
+  .c-button--circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-1);
+    border-radius: 50%;
+  }
+
   .c-button--full-width {
     width: 100%;
   }
