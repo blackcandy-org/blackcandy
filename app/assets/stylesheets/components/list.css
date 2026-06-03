@@ -15,7 +15,21 @@
     width: 100%;
     padding: var(--spacing-2) 0;
     text-decoration: none;
-    border-bottom: 1px solid var(--list-border-color);
+    border-top: 1px solid var(--list-border-color);
+
+    &:first-child {
+      border-top: none;
+    }
+
+    &:hover {
+      background-color: var(--list-hover-bg-color);
+      border-radius: var(--border-radius-3);
+      border-color: transparent;
+
+      + .c-list__item {
+        border-top-color: transparent;
+      }
+    }
   }
 
   .c-list__item--divider {
@@ -36,10 +50,6 @@
 
   .c-list--grouped .c-list__item {
     padding: var(--spacing-3) 0;
-  }
-
-  .c-list__item:last-child {
-    border-bottom: none;
   }
 
   .c-list__item.is-active * {

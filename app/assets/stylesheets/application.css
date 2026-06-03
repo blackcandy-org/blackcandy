@@ -22,6 +22,7 @@
 @import "./components/icon.css";
 @import "./components/tab.css";
 @import "./components/card.css";
+@import "./components/cover.css";
 @import "./components/loader.css";
 @import "./components/input.css";
 @import "./components/dropdown.css";
@@ -37,6 +38,7 @@
 @import "./components/search.css";
 @import "./components/badge.css";
 @import "./components/playlist.css";
+@import "./components/song.css";
 
 @import "./utilities/display.css";
 @import "./utilities/spacing.css";

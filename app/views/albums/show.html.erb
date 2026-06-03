@@ -2,22 +2,22 @@
 
 <div class='o-container o-container--narrow' data-controller='songs bridge--songs bridge--album' data-bridge--album-id-value='<%= @album.id %>'>
   <div class='c-card c-card--horizontal c-card--center@narrow u-my-5'>
-    <%= cover_image_tag @album, class: "c-card__image u-image-medium" %>
-    <div class='c-card__body'>
-      <h1 class='c-card__body__title'><%= @album.name %></h1>
-      <%= link_to @album.artist.name, artist_path(@album.artist), class: "c-card__body__text" %>
-      <div class='c-card__body__text'>
-        <span><%= @album.songs.count %> <%= t("label.tracks") %></span>
-        <span>,</span>
-        <span class='u-text-monospace'><%= format_duration(@album.songs.sum(:duration)) %></span>
+    <%= cover_image_tag @album, class: "c-card__image u-image-medium c-cover" %>
+    <div class='c-card__body o-flex o-flex--column o-flex--justify-between u-my-2'>
+      <div>
+        <h1 class='c-card__body__title'><%= @album.name %></h1>
+        <%= link_to @album.artist.name, artist_path(@album.artist), class: "c-card__body__text" %>
+        <% if (meta_info = album_meta_info(@album)).present? %>
+          <div class='c-card__body__text'><%= meta_info %></div>
+        <% end %>
+        <div class='c-card__body__text u-mt-3'><%= album_tracks_info(@album) %></div>
       </div>
-      <div class='u-mt-5'>
+      <div class='u-mt-2 o-flex'>
         <%= button_to(
-              t("button.play"),
               current_playlist_album_path(@album, should_play: true),
               method: :put,
               form_class: "u-display-inline-block",
-              class: "c-button c-button--primary",
+              class: "c-button c-button--primary c-button--large",
               form: {
                 data: {
                   "disabled-on-native" => "true",
@@ -25,9 +25,12 @@
                   "action" => "bridge--album#play"
                 }
               }
-            ) %>
+            ) do %>
+            <%= icon_tag "play", size: "medium" %>
+            <%= t("button.play") %>
+        <% end %>
         <% if is_admin? %>
-          <%= link_to t("label.edit"), edit_dialog_album_path(@album), data: { "turbo-frame" => ("turbo-dialog" unless native_app?) }, class: "c-button c-button--secondary u-ml-1" %>
+          <%= link_to t("label.edit"), edit_dialog_album_path(@album), data: { "turbo-frame" => ("turbo-dialog" unless native_app?) }, class: "c-button c-button--secondary c-button--large u-ml-1" %>
         <% end %>
       </div>
     </div>
@@ -39,7 +42,7 @@
       <% end %>
 
       <% songs.each do |song| %>
-        <li class='c-list__item' data-songs-target='item' data-song-id='<%= song.id %>'>
+        <li class='c-list__item c-song' data-songs-target='item' data-song-id='<%= song.id %>'>
           <div class='o-flex o-flex--justify-between o-flex--align-center'>
             <%= button_to(
                   current_playlist_album_path(@album, should_play: true, song_id: song.id),
@@ -55,15 +58,21 @@
                   }
                 ) do %>
               <div class='o-flex o-flex--justify-between o-flex--align-center'>
-                <div>
-                  <div><%= song.name %></div>
-                  <% if @album.artist.various? %>
-                    <% if native_app? %>
-                      <span class='c-list__item__subtext'><%= song.artist.name %></span>
-                    <% else %>
-                      <%= link_to song.artist.name, artist_path(song.artist), class: "c-list__item__subtext" %>
+                <div class='o-flex o-flex--align-center'>
+                  <div class='c-song__track-num u-mr-2'>
+                    <span><%= song.tracknum %></span>
+                    <%= icon_tag "play", size: "small", class: "c-song__play-icon" %>
+                  </div>
+                  <div>
+                    <div><%= song.name %></div>
+                    <% if @album.artist.various? %>
+                      <% if native_app? %>
+                        <span class='c-list__item__subtext'><%= song.artist.name %></span>
+                      <% else %>
+                        <%= link_to song.artist.name, artist_path(song.artist), class: "c-list__item__subtext" %>
+                      <% end %>
                     <% end %>
-                  <% end %>
+                  </div>
                 </div>
                 <div class='u-text-monospace u-mr-2'><%= format_duration(song.duration) %></div>
               </div>
