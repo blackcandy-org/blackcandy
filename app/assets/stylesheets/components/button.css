@@ -1,7 +1,8 @@
 @layer components {
   .c-button {
     text-align: center;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     border-radius: var(--border-radius-2);
     border: none;
     padding: var(--spacing-1) var(--spacing-2);
@@ -34,6 +35,7 @@
   }
 
   .c-button--link {
+    display: inline-block;
     text-align: left;
     background: none;
     color: var(--text-primary-color);
@@ -47,6 +49,11 @@
   .c-button--small {
     padding: 2px var(--spacing-1);
     font-size: var(--font-size-1);
+  }
+
+  .c-button--large {
+    padding: var(--spacing-1) var(--spacing-4);
+    font-size: var(--font-size-3);
   }
 
   .c-button--outline {

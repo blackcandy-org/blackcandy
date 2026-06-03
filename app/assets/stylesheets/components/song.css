@@ -1,0 +1,29 @@
+@layer components {
+  .c-song:hover {
+    .c-song__track-num {
+      visibility: hidden;
+    }
+
+    .c-song__play-icon {
+      visibility: visible;
+      color: var(--primary-color);
+    }
+  }
+
+  .c-song__track-num {
+    display: inline-grid;
+    place-items: center;
+    width: var(--spacing-4);
+    color: var(--list-subtext-color);
+    font-family: var(--font-monospace);
+    flex-shrink: 0;
+
+    > * {
+      grid-area: 1 / 1;
+    }
+  }
+
+  .c-song__play-icon {
+    visibility: hidden;
+  }
+}

@@ -1,4 +1,8 @@
 @layer elements {
+  html {
+    background-color: var(--body-bg-color);
+  }
+
   body {
     font-family: var(--font-sans-serif);
     background-color: var(--body-bg-color);

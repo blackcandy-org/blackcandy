@@ -8,7 +8,7 @@
     --link-active-color: var(--primary-color);
 
     /* Body */
-    --body-bg-color: light-dark(var(--color-white), var(--color-black));
+    --body-bg-color: light-dark(var(--color-white), var(--color-grey-900));
 
     /* Text */
     --text-primary-color: light-dark(var(--color-grey-900), var(--color-white));
@@ -47,8 +47,9 @@
     --tab-hover-bg-color: light-dark(var(--color-grey-200), var(--color-grey-700));
 
     /* List */
-    --list-border-color: light-dark(var(--color-grey-200), var(--color-grey-800));
+    --list-border-color: light-dark(var(--color-grey-100), var(--color-grey-800));
     --list-active-color: var(--primary-color);
+    --list-hover-bg-color: light-dark(rgb(from var(--color-grey-100) r g b / 0.6), rgb(from var(--color-grey-800) r g b / 0.6));
     --list-grouped-bg-color: light-dark(var(--color-grey-100), var(--color-grey-900));
     --list-subtext-color: light-dark(var(--color-grey-500), var(--color-grey-400));
 
@@ -126,6 +127,11 @@
     /* Playlist */
     --playlist-active-bg-color: rgb(from var(--primary-color) r g b / 0.1);
 
+    /* Cover */
+    --cover-shadow:
+      0 1px 2px rgb(from var(--color-black) r g b / 0.08),
+      0 4px 12px rgb(from var(--color-black) r g b / 0.1);
+
     --gradient-bg-color:
       linear-gradient(
         rgb(from var(--color-white) r g b / 0.85),
@@ -144,6 +150,9 @@
     --gradient-bg-color:
       linear-gradient(var(--color-black), rgb(from var(--color-black) r g b / 0.75)),
       linear-gradient(var(--primary-color), var(--primary-color));
+    --cover-shadow:
+      0 1px 2px rgb(from var(--color-black) r g b / 0.4),
+      0 4px 12px rgb(from var(--color-black) r g b / 0.5);
   }
 
   @media (prefers-color-scheme: dark) {
@@ -151,6 +160,9 @@
       --gradient-bg-color:
         linear-gradient(var(--color-black), rgb(from var(--color-black) r g b / 0.75)),
         linear-gradient(var(--primary-color), var(--primary-color));
+      --cover-shadow:
+        0 1px 2px rgb(from var(--color-black) r g b / 0.4),
+        0 4px 12px rgb(from var(--color-black) r g b / 0.5);
     }
   }
 }
