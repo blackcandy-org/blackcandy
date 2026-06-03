@@ -68,6 +68,7 @@
 
     .c-card__image {
       margin-right: var(--spacing-4);
+      margin-bottom: 0;
     }
 
     .c-card__body {
