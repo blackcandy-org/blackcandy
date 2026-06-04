@@ -1,22 +1,31 @@
 <% page_title_tag @artist.name %>
+<% content_for :fluid_layout, true %>
 
-<div class='o-container o-container--wide'>
-  <div class='c-card c-card--horizontal c-card--center@narrow u-my-5'>
-    <%= cover_image_tag @artist, class: "c-card__image u-image-medium" %>
-    <div class='c-card__body'>
-      <h1 class='c-card__body__title'><%= @artist.name %></h1>
-      <div class='c-card__body__text'>
-        <span><%= @artist.all_albums.size %> <%= t("label.albums") %></span>
-        <span>,</span>
-        <span><%= @artist.songs.size %> <%= t("label.songs") %></span>
-      </div>
-      <% if is_admin? %>
-        <div class='u-mt-5'>
-          <%= link_to t("label.edit"), edit_dialog_artist_path(@artist), data: { "turbo-frame" => ("turbo-dialog" unless native_app?) }, class: "c-button c-button--secondary u-mt-5" %>
+<div class='c-backdrop c-backdrop--blur-large' style='--backdrop-image: url(<%= cover_image_url_for(@artist) %>)'>
+  <div class='c-backdrop__content o-container o-container--large'>
+    <div class='c-card c-card--horizontal c-card--center@narrow'>
+      <%= cover_image_tag @artist, class: "c-card__image u-image-medium c-cover" %>
+      <div class='c-card__body o-flex o-flex--column o-flex--justify-between'>
+        <div>
+          <h1 class='c-card__body__title'><%= @artist.name %></h1>
+          <div class='c-card__body__text'>
+            <span><%= @artist.all_albums.size %> <%= t("label.albums") %></span>
+            <span>,</span>
+            <span><%= @artist.songs.size %> <%= t("label.songs") %></span>
+          </div>
         </div>
-      <% end %>
+        <% if is_admin? %>
+          <div class='u-mt-2'>
+            <%= link_to t("label.edit"), edit_dialog_artist_path(@artist), data: { "turbo-frame" => ("turbo-dialog" unless native_app?) }, class: "c-button c-button--secondary c-button--large" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-  <%= render partial: "artists/albums", locals: { title: t("label.albums"), albums: @albums } %>
-  <%= render partial: "artists/albums", locals: { title: t("label.appears_on"), albums: @appears_on_albums } %>
+</div>
+<div class="u-p-5">
+  <div class="o-container o-container--large">
+    <%= render partial: "artists/albums", locals: { title: t("label.albums"), albums: @albums } %>
+    <%= render partial: "artists/albums", locals: { title: t("label.appears_on"), albums: @appears_on_albums } %>
+  </div>
 </div>

@@ -72,6 +72,7 @@
     }
 
     .c-card__body {
+      margin: var(--spacing-2) 0;
       flex-grow: 1;
       width: 0;
     }
