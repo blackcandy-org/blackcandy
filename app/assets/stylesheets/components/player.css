@@ -4,8 +4,6 @@
     background: var(--player-bg-color);
     border-radius: var(--border-radius-3);
     border: 1px solid var(--player-border-color);
-    position: relative;
-    overflow: hidden;
   }
 
   .c-player__header {
@@ -43,16 +41,6 @@
 
   .c-player__control__secondary {
     padding: var(--spacing-1) 0;
-  }
-
-  .c-player__background {
-    position: absolute;
-    inset: 0;
-    filter: blur(15px);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: var(--z-background);
   }
 
   .c-player__progress {
