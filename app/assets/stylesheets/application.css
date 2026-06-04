@@ -21,6 +21,7 @@
 @import "./components/button.css";
 @import "./components/icon.css";
 @import "./components/tab.css";
+@import "./components/backdrop.css";
 @import "./components/card.css";
 @import "./components/cover.css";
 @import "./components/loader.css";

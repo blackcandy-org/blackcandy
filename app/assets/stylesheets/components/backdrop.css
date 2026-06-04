@@ -1,0 +1,28 @@
+@layer components {
+  .c-backdrop {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(var(--backdrop-overlay-color), var(--backdrop-overlay-color)),
+        var(--backdrop-image) center / cover no-repeat;
+      filter: blur(15px);
+      z-index: var(--z-background);
+    }
+  }
+
+  .c-backdrop--blur-large {
+    &::after {
+      filter: blur(30px);
+    }
+  }
+
+  .c-backdrop__content {
+    padding: var(--spacing-5);
+  }
+}

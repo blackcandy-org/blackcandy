@@ -6,7 +6,6 @@ import { installEventHandler } from './mixins/event_handler'
 export default class extends Controller {
   static targets = [
     'image',
-    'backgroundImage',
     'songName',
     'artistName',
     'albumName',
@@ -139,8 +138,8 @@ export default class extends Controller {
     const favoriteSongUrl = `/favorite_playlist/songs?song_id=${currentSong.id}`
     const unFavoriteSongUrl = `/favorite_playlist/songs/${currentSong.id}`
 
+    this.element.style.setProperty('--backdrop-image', `url(${currentSong.album_image_urls.small})`)
     this.imageTarget.src = currentSong.album_image_urls.small
-    this.backgroundImageTarget.style.backgroundImage = `url(${currentSong.album_image_urls.small})`
     this.songNameTarget.textContent = currentSong.name
     this.artistNameTarget.textContent = currentSong.artist_name
     this.albumNameTarget.textContent = currentSong.album_name

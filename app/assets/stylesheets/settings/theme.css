@@ -99,7 +99,7 @@
     --nav-secondary-bg-color: rgb(from light-dark(var(--color-light), var(--color-grey-800)) r g b / 0.8);
 
     /* Player */
-    --player-bg-color: rgb(from light-dark(var(--color-white), var(--color-black)) r g b / 0.7);
+    --player-bg-color: light-dark(var(--color-white), var(--color-black));
     --player-border-color: light-dark(var(--color-grey-200), var(--color-grey-700));
     --player-progress-bg-color: light-dark(var(--color-grey-400), var(--color-grey-600));
     --player-progress-hover-bg-color: var(--color-grey-500);
@@ -126,6 +126,9 @@
 
     /* Playlist */
     --playlist-active-bg-color: rgb(from var(--primary-color) r g b / 0.1);
+
+    /* Backdrop */
+    --backdrop-overlay-color: rgb(from light-dark(var(--color-white), var(--color-black)) r g b / 0.7);
 
     /* Cover */
     --cover-shadow:
