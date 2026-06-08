@@ -92,5 +92,6 @@
 
   .c-button[disabled] {
     opacity: 0.6;
+    filter: grayscale(1);
   }
 }

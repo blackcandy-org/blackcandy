@@ -1,5 +1,5 @@
 <div class='o-grid__item c-card c-card--border'>
-  <div class='c-card__body'>
+  <div class='c-card__body o-flex o-flex--align-center o-flex--justify-between'>
     <%= link_to playlist_songs_path(playlist), class: "o-flex o-flex--align-center" do %>
       <% if playlist.favorite? %>
         <%= icon_tag("heart", emphasis: true) %>
@@ -7,6 +7,19 @@
         <%= icon_tag("queue-music") %>
       <% end %>
       <span class='u-text-truncate u-mr-2 u-ml-1'><%= playlist.name %></span>
+    <% end %>
+    <%= button_to(
+          current_playlist_playlist_path(playlist, should_play: true),
+          method: :put,
+          class: "c-button c-button--circle c-button--secondary",
+          disabled: playlist.playlists_songs.empty?,
+          form: {
+            data: {
+              "turbo-frame" => "turbo-playlist"
+            }
+          }
+        ) do %>
+      <%= icon_tag "play", size: "small", title: t("button.play") %>
     <% end %>
   </div>
 </div>
