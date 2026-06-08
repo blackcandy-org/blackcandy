@@ -5,7 +5,7 @@ class PlaylistsController < ApplicationController
   before_action :get_sort_option, only: [ :index ]
 
   def index
-    @pagy, @playlists = pagy(Current.user.playlists_with_favorite.sort_records(*sort_params))
+    @pagy, @playlists = pagy(Current.user.playlists_with_favorite.includes(:playlists_songs).sort_records(*sort_params))
   end
 
   def create
@@ -42,7 +42,7 @@ class PlaylistsController < ApplicationController
   end
 
   def playlist_params
-    params.require(:playlist).permit(:name)
+    params.require(:playlist).permit(:name, :cover_image)
   end
 
   def sort_params

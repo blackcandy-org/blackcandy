@@ -51,6 +51,8 @@
     --list-active-color: var(--primary-color);
     --list-hover-bg-color: light-dark(rgb(from var(--color-grey-100) r g b / 0.6), rgb(from var(--color-grey-800) r g b / 0.6));
     --list-grouped-bg-color: light-dark(var(--color-grey-100), var(--color-grey-900));
+    --list-grouped-border-color: light-dark(var(--color-grey-200), var(--color-grey-800));
+    --list-grouped-hover-bg-color:  light-dark(var(--color-grey-200), var(--color-grey-800));
     --list-subtext-color: light-dark(var(--color-grey-500), var(--color-grey-400));
 
     /* Table */

@@ -79,6 +79,7 @@ en:
     media_path: 'Media Path'
     album_cover: 'Album Cover'
     artist_cover: 'Artist Cover'
+    playlist_cover: 'Playlist Cover'
     album_name: 'Album Name'
     album_year: 'Album Year'
     artist_name: 'Artist Name'
