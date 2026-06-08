@@ -6,6 +6,11 @@
     <%= form.text_field :name, class: "c-input" %>
   </div>
 
+  <div class='c-form__field'>
+    <%= form.label :cover_image, t("field.playlist_cover") %>
+    <%= form.file_field :cover_image, accept: "image/png, image/jpeg", class: "c-input" %>
+  </div>
+
   <div class='c-form__field c-form__field--submit'>
     <%= form.submit t("button.save"), class: "c-button c-button--primary c-button--full-width" %>
   </div>

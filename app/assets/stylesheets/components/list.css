@@ -7,7 +7,6 @@
 
   .c-list--grouped {
     background-color: var(--list-grouped-bg-color);
-    padding: 0 var(--spacing-2);
     border-radius: var(--border-radius-3);
   }
 
@@ -49,7 +48,23 @@
   }
 
   .c-list--grouped .c-list__item {
-    padding: var(--spacing-3) 0;
+    padding: var(--spacing-3) var(--spacing-2);
+    border-color: var(--list-grouped-border-color);
+
+    &:first-child:hover {
+      border-top-left-radius: var(--border-radius-3);
+      border-top-right-radius: var(--border-radius-3);
+    }
+
+    &:last-child:hover {
+      border-bottom-left-radius: var(--border-radius-3);
+      border-bottom-right-radius: var(--border-radius-3);
+    }
+
+    &:hover {
+      background-color: var(--list-grouped-hover-bg-color);
+      border-radius: 0;
+    }
   }
 
   .c-list__item.is-active * {
