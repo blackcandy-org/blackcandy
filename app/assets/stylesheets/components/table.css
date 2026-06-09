@@ -21,9 +21,8 @@
   }
 
   .c-table tr,
-  .c-table [role="columnheader"],
   .c-table [role="cell"] {
-    border-bottom: 1px solid var(--table-border-color);
+    border-top: 1px solid var(--table-border-color);
   }
 
   .c-table [role="columnheader"] {
@@ -39,6 +38,25 @@
     padding: var(--spacing-2);
     text-align: left;
     color: var(--table-color);
+  }
+
+  .c-table [role="row"]:hover > [role="cell"] {
+    background-color: var(--table-hover-bg-color);
+    border-top-color: transparent;
+
+    &:first-child {
+      border-top-left-radius: var(--border-radius-3);
+      border-bottom-left-radius: var(--border-radius-3);
+    }
+
+    &:last-child {
+      border-top-right-radius: var(--border-radius-3);
+      border-bottom-right-radius: var(--border-radius-3);
+    }
+  }
+
+  .c-table [role="row"]:hover + [role="row"] > [role="cell"] {
+    border-top-color: transparent;
   }
 
   .c-table [role="cell"][span="row"] {

@@ -11,7 +11,13 @@
             }
           }
         ) do %>
-      <span><%= song.name %></span>
+      <span class='o-flex o-flex--align-center'>
+        <span class='c-song__cover u-mr-2'>
+          <%= cover_image_tag song.album, size: :small %>
+          <%= icon_tag "play", size: "medium", class: "c-song__cover__play-icon" %>
+        </span>
+        <span><%= song.name %></span>
+      </span>
     <% end %>
   </div>
   <div role='cell' class='u-display-none@medium'>
