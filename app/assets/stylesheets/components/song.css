@@ -26,4 +26,40 @@
   .c-song__play-icon {
     visibility: hidden;
   }
+
+  .c-song__cover {
+    position: relative;
+    display: inline-flex;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+
+    > img {
+      width: 100%;
+      height: 100%;
+      border-radius: var(--border-radius-2);
+      transition: filter 0.15s ease;
+    }
+
+    &:hover {
+      > img {
+        filter: brightness(0.5);
+      }
+
+      > .c-song__cover__play-icon {
+        opacity: 1;
+      }
+    }
+  }
+
+  .c-song__cover__play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    color: var(--color-white);
+    pointer-events: none;
+  }
 }
