@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [ :new, :create ]
   resource :setting, only: [ :show, :update ]
-  resource :library, only: [ :show ]
   resource :system, only: [ :show ]
 
   resources :artists, only: [ :index, :show, :update ]
