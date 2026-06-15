@@ -2,6 +2,8 @@
 
 module My
   class ProfilesController < ApplicationController
+    layout "settings"
+
     before_action :require_non_demo_mode
 
     def edit
