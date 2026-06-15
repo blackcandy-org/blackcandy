@@ -1,0 +1,10 @@
+<h2><%= t("label.integration") %></h2>
+<%= form_with model: Setting, url: settings_integration_path, method: :put, class: "c-form" do |form| %>
+  <div class='c-form__field'>
+    <%= form.label :discogs_token, t("field.discogs_token") %>
+    <%= form.text_field :discogs_token, value: Setting.discogs_token, class: "c-input" %>
+  </div>
+  <div class='c-form__field c-form__field--submit'>
+    <%= form.submit t("button.save"), class: "c-button c-button--primary c-button--full-width" %>
+  </div>
+<% end %>

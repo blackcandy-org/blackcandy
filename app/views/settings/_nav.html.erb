@@ -1,0 +1,24 @@
+<nav>
+  <ul class='c-tab c-tab--vertical c-tab--secondary'>
+    <li class='c-tab__item <%= "is-active" if current_page?(settings_appearance_path) %>'>
+      <%= link_to t("label.appearance"), settings_appearance_path %>
+    </li>
+    <li class='c-tab__item <%= "is-active" if current_page?(edit_my_profile_path) %>'>
+      <%= link_to t("label.profile"), edit_my_profile_path %>
+    </li>
+    <% if is_admin? %>
+      <li class='c-tab__item <%= "is-active" if current_page?(settings_library_path) %>'>
+        <%= link_to t("label.library"), settings_library_path %>
+      </li>
+      <li class='c-tab__item <%= "is-active" if current_page?(settings_integration_path) %>'>
+        <%= link_to t("label.integration"), settings_integration_path %>
+      </li>
+      <li class='c-tab__item <%= "is-active" if current_page?(settings_transcoding_path) %>'>
+        <%= link_to t("label.transcoding"), settings_transcoding_path %>
+      </li>
+      <li class='c-tab__item <%= "is-active" if current_page?(users_path) %>'>
+        <%= link_to t("label.users"), users_path %>
+      </li>
+    <% end %>
+  </ul>
+</nav>

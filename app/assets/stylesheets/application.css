@@ -41,6 +41,7 @@
 @import "./components/badge.css";
 @import "./components/playlist.css";
 @import "./components/song.css";
+@import "./components/settings.css";
 
 @import "./utilities/display.css";
 @import "./utilities/spacing.css";
