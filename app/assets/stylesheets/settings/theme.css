@@ -45,9 +45,14 @@
     --tab-active-bg-color: var(--primary-color);
     --tab-active-color: var(--color-white);
     --tab-hover-bg-color: light-dark(var(--color-grey-200), var(--color-grey-700));
+    --tab-secondary-active-bg-color: rgb(from var(--primary-color) r g b / 0.2);
+    --tab-secondary-active-color: var(--primary-color);
 
     /* Library nav */
     --library-nav-color: light-dark(var(--color-grey-400), var(--color-grey-500));
+
+    /* Settings */
+    --settings-nav-border-color: light-dark(var(--color-grey-200), var(--color-grey-700));
 
     /* List */
     --list-border-color: light-dark(var(--color-grey-100), var(--color-grey-800));
@@ -134,7 +139,7 @@
     --playlist-active-bg-color: rgb(from var(--primary-color) r g b / 0.1);
 
     /* Backdrop */
-    --backdrop-overlay-color: rgb(from light-dark(var(--color-white), var(--color-black)) r g b / 0.7);
+    --backdrop-overlay-color: rgb(from light-dark(var(--color-white), var(--color-black)) r g b / 0.65);
 
     /* Cover */
     --cover-shadow:

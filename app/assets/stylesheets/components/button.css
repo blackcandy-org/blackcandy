@@ -88,6 +88,7 @@
 
   .c-button--full-width {
     width: 100%;
+    justify-content: center
   }
 
   .c-button[disabled] {

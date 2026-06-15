@@ -1,0 +1,29 @@
+@layer components {
+  .c-settings {
+    display: flex;
+
+    @media (max-width: 560px) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  .c-settings__content {
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  .c-settings__nav {
+    flex-shrink: 0;
+    min-width: 160px;
+    margin-left: var(--spacing-5);
+    padding-left: var(--spacing-3);
+    border-left: 1px solid var(--settings-nav-border-color);
+
+    @media (max-width: 560px) {
+      margin-left: 0;
+      margin-bottom: var(--spacing-4);
+      padding-left: 0;
+      border-left: none;
+    }
+  }
+}

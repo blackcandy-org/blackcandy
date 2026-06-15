@@ -9,7 +9,7 @@
   <% if native_app? %>
     <%= render "shared/flash" %>
     <main class='u-p-5 u-p-3@small'>
-      <%= yield %>
+      <%= content_for?(:content) ? yield(:content) : yield %>
     </main>
   <% else %>
     <div class='o-flex'>
@@ -30,7 +30,7 @@
             <%= render partial: "shared/top_bar", locals: { current_user: Current.user, current_controller: controller_name, query: params[:query] } %>
           </header>
           <main class='<%= "o-container--wide u-p-5 u-p-3@small u-p-2@extra-narrow" unless content_for?(:fluid_layout) %>'>
-            <%= yield %>
+            <%= content_for?(:content) ? yield(:content) : yield %>
           </main>
           <footer class='u-display-none u-display-block@extra-small u-position-fixed-bottom'>
             <%= render "shared/mini_player" %>

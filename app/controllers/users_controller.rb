@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  layout "settings"
+
   before_action :require_admin
   before_action :find_user, only: [ :edit, :update, :destroy ]
 

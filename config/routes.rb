@@ -2,7 +2,14 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :sessions, only: [ :new, :create ]
-  resource :setting, only: [ :show, :update ]
+  get "settings", to: redirect("/settings/appearance")
+
+  namespace :settings do
+    resource :appearance, only: [ :show ]
+    resource :library, only: [ :show, :update ]
+    resource :integration, only: [ :show, :update ]
+    resource :transcoding, only: [ :show, :update ]
+  end
   resource :system, only: [ :show ]
 
   resources :artists, only: [ :index, :show, :update ]
@@ -44,6 +51,8 @@ Rails.application.routes.draw do
     resources :artists, only: [ :edit ]
     resources :albums, only: [ :edit ]
   end
+
+  resource :about, only: [ :show ]
 
   get "/search", to: "search#index", as: "search"
 
