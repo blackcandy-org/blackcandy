@@ -59,8 +59,9 @@ docker-compose up
 
 Black Candy mobile apps are available in the following app stores:
 
-[<img src="https://raw.githubusercontent.com/blackcandy-org/ios/master/images/appstore_badge.png" alt="Get it on App Store" height="50">](https://apps.apple.com/app/blackcandy/id6444304071)
-[<img src="https://raw.githubusercontent.com/blackcandy-org/android/master/images/fdroid_badge.png" alt="Get it on F-Droid" height="50">](https://f-droid.org/packages/org.blackcandy.androidApp/)
+[<img src="https://raw.githubusercontent.com/blackcandy-org/app/master/images/appstore_badge.png" alt="Get it on App Store" height="50">](https://apps.apple.com/app/blackcandy/id6444304071)
+[<img src="https://raw.githubusercontent.com/blackcandy-org/app/master/images/googleplay_badge.png" alt="Get it on Google Play" height="50">](https://play.google.com/store/apps/details?id=org.blackcandy.androidApp)
+[<img src="https://raw.githubusercontent.com/blackcandy-org/app/master/images/fdroid_badge.png" alt="Get it on F-Droid" height="50">](https://f-droid.org/packages/org.blackcandy.androidApp/)
 
 
 For Android app, you can also download APK from [GitHub Release](https://github.com/blackcandy-org/android/releases/latest)
