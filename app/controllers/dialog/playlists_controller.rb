@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Dialog
-  class PlaylistsController < DialogController
+  class PlaylistsController < ApplicationController
     def index
       @pagy, @playlists = pagy(Current.user.playlists_with_favorite.order(created_at: :desc))
     end

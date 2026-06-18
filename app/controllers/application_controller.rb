@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   include ExceptionRescue
   include Flashy
   include Pagination
+  include DialogRendering
 
   allow_browser versions: :modern, block: -> { render template: "errors/unsupported_browser", layout: "plain", status: :not_acceptable }
 end

@@ -16,7 +16,7 @@
         </div>
         <% if is_admin? %>
           <div class='u-mt-2'>
-            <%= link_to t("label.edit"), edit_dialog_artist_path(@artist), data: { "turbo-frame" => ("turbo-dialog" unless native_app?) }, class: "c-button c-button--secondary c-button--large" %>
+            <%= dialog_link_to t("label.edit"), edit_dialog_artist_path(@artist), class: "c-button c-button--secondary c-button--large" %>
           </div>
         <% end %>
       </div>

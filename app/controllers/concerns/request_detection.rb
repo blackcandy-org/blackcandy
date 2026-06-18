@@ -9,7 +9,7 @@ module RequestDetection
   private
 
   def dialog?
-    is_a? Dialog::DialogController
+    is_a? Dialog::ApplicationController
   end
 
   def api_request?
