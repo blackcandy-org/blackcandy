@@ -3,6 +3,6 @@
   <div class='c-dropdown__menu' data-dropdown-target="menu">
     <%= link_to t("label.settings"), settings_path, class: "c-dropdown__item", data: { "bridge--account-target": "menuItem", bridge_id: :settings } %>
     <%= button_to t("button.logout"), my_session_path, method: :delete, form_class: "c-dropdown__item", data: { "bridge--account-target": "menuItem", bridge_id: :logout } %>
-    <%= link_to t("label.about"), about_path, class: "c-dropdown__item", data: { "turbo-frame" => ("turbo-dialog" unless native_app?) } %>
+    <%= dialog_link_to t("label.about"), about_path, class: "c-dropdown__item" %>
   </div>
 </details>

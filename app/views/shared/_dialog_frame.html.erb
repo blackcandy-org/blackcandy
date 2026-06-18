@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "turbo-dialog" do %>
+  <% if (src = dialog_frame_src) %>
+    <%= turbo_frame_tag "turbo-dialog-content", src: src %>
+  <% end %>
+<% end %>

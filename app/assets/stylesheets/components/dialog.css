@@ -4,14 +4,33 @@
     margin-top: 100px;
     background: var(--dialog-bg-color);
     border: none;
-    border-radius: var(--border-radius-2);
+    border-radius: var(--border-radius-3);
     width: 100%;
-    max-width: 360px;
+    max-width: 460px;
     color: inherit;
-  }
+    opacity: 0;
+    transform: translateY(calc(-1 * var(--spacing-3)));
+    transition: opacity 0.2s ease, transform 0.2s ease, overlay 0.2s ease allow-discrete, display 0.2s ease allow-discrete;
 
-  .c-dialog::backdrop {
-    background-color: var(--dialog-backdrop-color);
+    &[open] {
+      opacity: 1;
+      transform: translateY(0);
+
+      @starting-style {
+        opacity: 0;
+        transform: translateY(calc(-1 * var(--spacing-3)));
+      }
+    }
+
+    &::backdrop {
+      background-color: var(--dialog-backdrop-color);
+      backdrop-filter: blur(15px);
+      opacity: 0;
+    }
+
+    &[open]::backdrop {
+      opacity: 1;
+    }
   }
 
   .c-dialog__header {

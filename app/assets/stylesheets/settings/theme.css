@@ -90,7 +90,7 @@
     --dialog-header-color: var(--color-grey-900);
 
     ::backdrop {
-      --dialog-backdrop-color: rgb(from light-dark(var(--color-grey-100), var(--color-grey-800)) r g b / 0.9);
+      --dialog-backdrop-color: rgb(from light-dark(var(--color-grey-100), var(--color-grey-800)) r g b / 0.5);
     }
 
     /* Overlay */
