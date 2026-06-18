@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Dialog
-  class ArtistsController < DialogController
+  class ArtistsController < ApplicationController
     before_action :require_admin
 
     def edit

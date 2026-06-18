@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AboutsController < Dialog::DialogController
+class AboutsController < Dialog::ApplicationController
   def show
   end
 end
