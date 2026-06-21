@@ -69,6 +69,7 @@ en:
     play_now: 'Play Now'
     play_next: 'Play Next'
     play_last: 'Play Last'
+    create_and_add: 'Create and Add'
 
   field:
     name: 'Name'

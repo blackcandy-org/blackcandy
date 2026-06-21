@@ -1,8 +1,21 @@
 <% page_title_tag t("label.add_to_playlist") %>
 
+<%= form_with model: Playlist.new, class: "c-form", data: { "turbo-frame" => "_top", "turbo-action" => ("replace" if native_app?) } do |form| %>
+  <%= hidden_field_tag :song_id, params[:song_id] if params[:song_id].present? %>
+
+  <div class='c-form__field'>
+    <%= form.label :name, t("label.create_playlist") %>
+    <%= form.text_field :name, class: "c-input" %>
+  </div>
+
+  <div class='c-form__field c-form__field--submit'>
+    <%= form.submit t(params[:song_id].present? ? "button.create_and_add" : "button.save"), class: "c-button c-button--primary c-button--full-width" %>
+  </div>
+<% end %>
+
 <% if @playlists.present? %>
   <%= form_tag nil, "data-turbo-frame": "_top", "data-turbo-action": ("replace" if native_app?) do %>
-    <%= hidden_field_tag :song_id, params[:song_id] %>
+    <%= hidden_field_tag :song_id, params[:song_id] if params[:song_id].present? %>
 
     <%= turbo_frame_tag "turbo-dialog-playlists-page-#{@pagy.page}", class: "c-list", target: "_top" do %>
       <%= render partial: "dialog/playlists/playlist", collection: @playlists %>

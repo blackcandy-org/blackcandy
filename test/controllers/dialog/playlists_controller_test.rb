@@ -5,9 +5,11 @@ require "test_helper"
 class Dialog::PlaylistsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     login
-    get dialog_playlists_url
+    get dialog_playlists_url(song_id: songs(:mp3_sample).id)
 
     assert_response :success
+    assert_select "form[action='#{playlists_path}']"
+    assert_select "input[name='song_id'][value='#{songs(:mp3_sample).id}']"
   end
 
   test "should get new playlist" do
