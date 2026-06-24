@@ -9,6 +9,10 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: >
+      github.event.workflow_run.conclusion == 'success' &&
+      startsWith(github.event.workflow_run.head_branch, 'v') &&
+      !contains(github.event.workflow_run.head_branch, 'beta')
     steps:
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
@@ -27,7 +31,7 @@ jobs:
           echo "REGISTRY_USER=\$REGISTRY_USER" >> .kamal/secrets
           echo "REGISTRY_TOKEN=\$REGISTRY_TOKEN" >> .kamal/secrets
       - name: Deploy to demo
-        run: bundle exec kamal deploy -P --version=edge
+        run: bundle exec kamal deploy -P --version=latest
         env:
           SERVER_IP: ${{ secrets.DEMO_SERVER_IP }}
           SERVER_USER: ${{ secrets.DEMO_SERVER_USER }}
