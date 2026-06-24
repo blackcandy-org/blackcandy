@@ -5,7 +5,7 @@
     <%= render "shared/library_nav" %>
 
     <div class='o-flex o-flex--align-center'>
-      <%= dialog_link_to t("label.add"), new_dialog_playlist_path, class: "c-button c-button--primary u-mr-2" %>
+      <%= dialog_link_to t("label.add"), new_playlist_path, class: "c-button c-button--primary u-mr-2" %>
       <%= render partial: "shared/sort_select", locals: { option: @sort_option, sort_controller: controller_name, filter_sort_presenter: FilterSortPresenter.new(params) } %>
     </div>
   </div>
