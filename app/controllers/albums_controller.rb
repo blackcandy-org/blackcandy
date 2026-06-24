@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class AlbumsController < ApplicationController
-  before_action :require_admin, only: [ :update ]
+  render_in_dialog :edit
+
+  before_action :require_admin, only: [ :edit, :update ]
   before_action :find_album, except: [ :index ]
   before_action :get_sort_option, only: [ :index ]
 
@@ -17,6 +19,9 @@ class AlbumsController < ApplicationController
   def show
     @songs = @album.songs.includes(:artist)
     @groped_songs = @songs.group_by(&:discnum)
+  end
+
+  def edit
   end
 
   def update

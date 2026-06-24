@@ -33,7 +33,7 @@
         <%= icon_tag "more-vertical", size: "small", title: t("label.more") %>
       </summary>
       <div class='c-dropdown__menu' data-dropdown-target="menu">
-        <%= dialog_link_to t("label.add_to_playlist"), dialog_playlists_path(song_id: song.id), class: "c-dropdown__item" %>
+        <%= dialog_link_to t("label.add_to_playlist"), playlists_selections_path(song_id: song.id), class: "c-dropdown__item" %>
         <%= button_to(
               t("button.play_next"),
               current_playlist_songs_path(song_id: song.id),
