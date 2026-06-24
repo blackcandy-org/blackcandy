@@ -12,19 +12,23 @@ Rails.application.routes.draw do
   end
   resource :system, only: [ :show ]
 
-  resources :artists, only: [ :index, :show, :update ]
+  resources :artists, only: [ :index, :show, :edit, :update ]
   resources :songs, only: [ :index, :show ]
-  resources :albums, only: [ :index, :show, :update ]
+  resources :albums, only: [ :index, :show, :edit, :update ]
 
   resources :users, except: [ :show ] do
     resource :setting, only: [ :update ], module: "users"
   end
 
-  resources :playlists, only: [ :index, :create, :update, :destroy ] do
+  resources :playlists, only: [ :index, :new, :create, :edit, :update, :destroy ] do
     resources :songs, only: [ :index, :create, :destroy ], module: "playlists" do
       delete "/", action: :destroy_all, on: :collection
       put "move", on: :member
     end
+  end
+
+  namespace :playlists do
+    resources :selections, only: :index
   end
 
   namespace :current_playlist do
@@ -45,14 +49,6 @@ Rails.application.routes.draw do
       put "move", on: :member
     end
   end
-
-  namespace :dialog do
-    resources :playlists, only: [ :index, :new, :edit ]
-    resources :artists, only: [ :edit ]
-    resources :albums, only: [ :edit ]
-  end
-
-  resource :about, only: [ :show ]
 
   get "/search", to: "search#index", as: "search"
 
@@ -86,6 +82,8 @@ Rails.application.routes.draw do
   resources :transcoded_stream, only: [ :new ]
 
   resource :media_syncing, only: [ :create ]
+
+  resource :about, only: [ :show ]
 
   get "/403", to: "errors#forbidden", as: :forbidden
   get "/404", to: "errors#not_found", as: :not_found

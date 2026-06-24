@@ -1,11 +1,20 @@
 # frozen_string_literal: true
 
 class PlaylistsController < ApplicationController
-  before_action :find_playlist, only: [ :destroy, :update ]
+  render_in_dialog :new, :edit
+
+  before_action :find_playlist, only: [ :edit, :destroy, :update ]
   before_action :get_sort_option, only: [ :index ]
 
   def index
     @pagy, @playlists = pagy(Current.user.playlists_with_favorite.includes(:playlists_songs).sort_records(*sort_params))
+  end
+
+  def new
+    @playlist = Playlist.new
+  end
+
+  def edit
   end
 
   def create

@@ -33,7 +33,7 @@
               <%= t("button.play") %>
             <% end %>
             <% if is_admin? %>
-              <%= dialog_link_to t("label.edit"), edit_dialog_album_path(@album), class: "c-button c-button--secondary c-button--large u-ml-1" %>
+              <%= dialog_link_to t("label.edit"), edit_album_path(@album), class: "c-button c-button--secondary c-button--large u-ml-1" %>
             <% end %>
           </div>
         </div>
@@ -125,7 +125,7 @@
                           }
                         }
                       ) %>
-                  <%= dialog_link_to t("label.add_to_playlist"), dialog_playlists_path(song_id: song.id), class: "c-dropdown__item" %>
+                  <%= dialog_link_to t("label.add_to_playlist"), playlists_selections_path(song_id: song.id), class: "c-dropdown__item" %>
                   <%= link_to(
                         t("label.go_to_artist"),
                         artist_path(song.artist),

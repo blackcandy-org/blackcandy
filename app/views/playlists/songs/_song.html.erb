@@ -74,7 +74,7 @@
               method: :delete,
               form_class: "c-dropdown__item"
             ) %>
-        <%= dialog_link_to t("label.add_to_playlist"), dialog_playlists_path(song_id: song.id), class: "c-dropdown__item" %>
+        <%= dialog_link_to t("label.add_to_playlist"), playlists_selections_path(song_id: song.id), class: "c-dropdown__item" %>
         <%= link_to(
               t("label.go_to_artist"),
               artist_path(song.artist),

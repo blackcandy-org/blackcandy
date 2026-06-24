@@ -18,8 +18,9 @@ module DialogHelper
   def dialog_path?(path)
     return false unless path.match?(%r{\A/[^/]})
 
-    controller = "#{Rails.application.routes.recognize_path(path)[:controller]}_controller".classify.constantize
-    controller <= Dialog::ApplicationController
+    recognized = Rails.application.routes.recognize_path(path)
+    controller = "#{recognized[:controller]}_controller".classify.constantize
+    controller.dialog?(recognized[:action])
   rescue
     false
   end
