@@ -19,6 +19,6 @@ export default class extends Controller {
       this.remove()
     }, { once: true })
 
-    this.element.classList.add('o-animation-fadeOutUp')
+    this.element.classList.add('o-animation-fadeOutDown')
   }
 }

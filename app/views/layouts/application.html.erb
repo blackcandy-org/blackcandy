@@ -6,8 +6,9 @@
   <%= turbo_stream_from "media_sync" if is_admin? %>
   <%= turbo_stream_from Current.user, :theme %>
 
+  <%= render "shared/flash" %>
+
   <% if native_app? %>
-    <%= render "shared/flash" %>
     <main class='u-p-5 u-p-3@small'>
       <%= content_for?(:content) ? yield(:content) : yield %>
     </main>
@@ -26,7 +27,6 @@
       <div id='js-app' class='o-flex__item o-flex__item--grow-1'>
         <div>
           <header class='c-nav c-nav--primary u-position-sticky-top'>
-            <%= render "shared/flash" %>
             <%= render partial: "shared/top_bar", locals: { current_user: Current.user, current_controller: controller_name, query: params[:query] } %>
           </header>
           <main class='<%= "o-container--wide u-p-5 u-p-3@small u-p-2@extra-narrow" unless content_for?(:fluid_layout) %>'>
