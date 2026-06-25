@@ -9,6 +9,6 @@ module Flashy
 
   def stream_flash(type: :notice, message: "")
     flash.now[type] = message unless message.blank?
-    turbo_stream.update "turbo-flash", partial: "shared/flash"
+    turbo_stream.replace "turbo-flash", partial: "shared/flash"
   end
 end
