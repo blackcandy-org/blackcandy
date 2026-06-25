@@ -11,7 +11,7 @@
     --color-grey-100: rgb(237 237 237);
     --color-grey-200: rgb(217 217 217);
     --color-grey-250: rgb(211 211 211);
-    --color-grey-300: rgb(189 192 186);
+    --color-grey-300: rgb(189 189 189);
     --color-grey-400: rgb(145 152 159);
     --color-grey-500: rgb(130 130 130);
     --color-grey-600: rgb(101 103 101);
@@ -22,7 +22,9 @@
     --color-black: rgb(0 0 0);
 
     --color-red: rgb(166 22 55);
+    --color-red-light: rgb(232 118 140);
     --color-green: rgb(35 166 80);
+    --color-green-light: rgb(96 206 138);
     --color-navy: rgb(9 30 66);
   }
 }

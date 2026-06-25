@@ -36,9 +36,10 @@
     --btn-icon-hover-bg-color: light-dark(rgb(from var(--color-grey-300) r g b / 0.3), rgb(from var(--color-grey-600) r g b / 0.5));
 
     /* Flash message */
-    --flash-color: var(--color-white);
-    --flash-notice-bg-color: var(--color-green);
-    --flash-alert-bg-color: var(--color-red);
+    --flash-notice-color: light-dark(var(--color-green), var(--color-green-light));
+    --flash-alert-color: light-dark(var(--color-red), var(--color-red-light));
+    --flash-notice-bg-color: color-mix(in srgb, var(--flash-notice-color) 15%, var(--primary-bg-color));
+    --flash-alert-bg-color: color-mix(in srgb, var(--flash-alert-color) 15%, var(--primary-bg-color));
 
     /* Tab */
     --tab-color: light-dark(var(--color-grey-900), var(--color-white));
@@ -80,17 +81,17 @@
 
     /* Dropdown */
     --dropdown-bg-color: light-dark(var(--color-white), var(--color-grey-700));
-    --dropdown-active-color: light-dark(var(--color-grey-300), var(--color-grey-500));
+    --dropdown-active-color: light-dark(var(--color-grey-200), var(--color-grey-600));
     --dropdown-color: light-dark(var(--color-grey-900), var(--color-white));
     --dropdown-shadow-color: light-dark(var(--color-grey-300), var(--color-black));
 
     /* Dialog */
     --dialog-bg-color: light-dark(var(--color-white), var(--color-grey-900));
-    --dialog-header-bg-color: light-dark(var(--color-grey-200), var(--color-grey-500));
+    --dialog-header-bg-color: light-dark(var(--color-grey-100), var(--color-grey-700));
     --dialog-header-color: var(--color-grey-900);
 
     ::backdrop {
-      --dialog-backdrop-color: rgb(from light-dark(var(--color-grey-100), var(--color-grey-800)) r g b / 0.5);
+      --dialog-backdrop-color: rgb(from light-dark(var(--color-grey-300), var(--color-grey-500)) r g b / 0.5);
     }
 
     /* Overlay */
