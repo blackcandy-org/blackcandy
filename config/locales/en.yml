@@ -9,6 +9,8 @@ en:
     artists: 'Artists'
     songs: 'Songs'
     settings: 'Settings'
+    about: 'About'
+    profile: 'Profile'
     tracks: 'Tracks'
     integration: 'Integration'
     appears_on: 'Appears On'
@@ -24,7 +26,6 @@ en:
     no_items: 'No Items'
     add_to_playlist: 'Add to Playlist'
     update_profile: 'Update Profile'
-    manage_users: 'Manage Users'
     create_user: 'Create User'
     no_repeat_mode: 'No repeat mode'
     repeat_mode: 'Repeat mode'
@@ -35,9 +36,12 @@ en:
     play_song: 'Play song'
     pause_song: 'Pause song'
     toggle_favorite: 'Toggle favorite'
+    lyrics: 'Lyrics'
+    mute: 'Mute'
+    max_volume: 'Max volume'
     expand_player: 'Expand player'
     collapse_player: 'Collapse player'
-    personal: 'Personal'
+    appearance: 'Appearance'
     edit_album: 'Edit Album'
     edit_artist: 'Edit Artist'
     album: 'Album'
@@ -56,6 +60,7 @@ en:
     no_search_results: "No search results for \"%{query}\""
     search_results_for: "Search results for \"%{query}\""
     go_to_artist: 'Go to Artist'
+    not_playing: 'Not Playing'
 
   button:
     login: 'Login'
@@ -75,6 +80,7 @@ en:
     media_path: 'Media Path'
     album_cover: 'Album Cover'
     artist_cover: 'Artist Cover'
+    playlist_cover: 'Playlist Cover'
     album_name: 'Album Name'
     album_year: 'Album Year'
     artist_name: 'Artist Name'

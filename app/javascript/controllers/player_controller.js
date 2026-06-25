@@ -5,9 +5,7 @@ import { installEventHandler } from './mixins/event_handler'
 
 export default class extends Controller {
   static targets = [
-    'header',
     'image',
-    'backgroundImage',
     'songName',
     'artistName',
     'albumName',
@@ -130,7 +128,6 @@ export default class extends Controller {
   }
 
   #setBeforePlayingStatus = () => {
-    this.headerTarget.classList.add('is-expanded')
     this.loaderTarget.classList.remove('u-display-none')
     this.favoriteButtonTarget.querySelector('button').disabled = false
     this.songTimerTarget.textContent = formatDuration(0)
@@ -141,8 +138,8 @@ export default class extends Controller {
     const favoriteSongUrl = `/favorite_playlist/songs?song_id=${currentSong.id}`
     const unFavoriteSongUrl = `/favorite_playlist/songs/${currentSong.id}`
 
+    this.element.style.setProperty('--backdrop-image', `url(${currentSong.album_image_urls.small})`)
     this.imageTarget.src = currentSong.album_image_urls.small
-    this.backgroundImageTarget.style.backgroundImage = `url(${currentSong.album_image_urls.small})`
     this.songNameTarget.textContent = currentSong.name
     this.artistNameTarget.textContent = currentSong.artist_name
     this.albumNameTarget.textContent = currentSong.album_name
@@ -169,13 +166,14 @@ export default class extends Controller {
 
     this.pauseButtonTarget.classList.add('u-display-none')
     this.playButtonTarget.classList.remove('u-display-none')
+
+    dispatchEvent(document, 'songs:pausePlaying')
   }
 
   #setStopStatus = () => {
     this.#setPauseStatus()
 
     if (!this.currentSong.id) {
-      this.headerTarget.classList.remove('is-expanded')
       dispatchEvent(document, 'songs:hidePlaying')
     }
   }

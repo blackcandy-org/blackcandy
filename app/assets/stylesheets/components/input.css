@@ -1,0 +1,38 @@
+@layer components {
+  input.c-input {
+    width: 100%;
+    background: var(--input-bg-color);
+    border: none;
+    color: var(--input-color);
+    padding: var(--spacing-1);
+    border-radius: var(--border-radius-2);
+    filter: none;
+  }
+
+  .c-input-group {
+    display: flex;
+    align-items: center;
+    background: var(--input-bg-color);
+    border-radius: var(--border-radius-2);
+    padding: 0 var(--spacing-1);
+
+    input {
+      width: 0;
+      flex-grow: 1;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .c-input-group__icon {
+    display: flex;
+    align-items: center;
+    color: var(--input-icon-color);
+
+    a {
+      color: var(--input-icon-color);
+    }
+  }
+}

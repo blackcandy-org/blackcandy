@@ -1,0 +1,9 @@
+@layer components {
+  .c-logo {
+    display: inline-block;
+    background: url("logo.svg") no-repeat top left;
+    background-size: contain;
+    width: 70px;
+    height: 70px;
+  }
+}

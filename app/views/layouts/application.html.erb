@@ -6,16 +6,17 @@
   <%= turbo_stream_from "media_sync" if is_admin? %>
   <%= turbo_stream_from Current.user, :theme %>
 
+  <%= render "shared/flash" %>
+
   <% if native_app? %>
-    <%= render "shared/flash" %>
-    <main class='u-p-large u-p-small@small'>
-      <%= yield %>
+    <main class='u-p-5 u-p-3@small'>
+      <%= content_for?(:content) ? yield(:content) : yield %>
     </main>
   <% else %>
     <div class='o-flex'>
       <aside id='js-sidebar' class='o-flex__item o-flex__item--shrink-0 c-sidebar'>
         <div class='o-flex o-flex--column-reverse u-position-sticky-top u-overflow-auto u-vh-100'>
-          <div class='o-flex__item o-flex__item--shrink-0'>
+          <div class='o-flex__item o-flex__item--shrink-0 u-p-2 u-pt-0'>
             <%= render "shared/player" %>
           </div>
           <div class='o-flex__item o-flex__item--grow-1 u-h-0'>
@@ -26,18 +27,16 @@
       <div id='js-app' class='o-flex__item o-flex__item--grow-1'>
         <div>
           <header class='c-nav c-nav--primary u-position-sticky-top'>
-            <%= render "shared/flash" %>
-            <%= render partial: "shared/search_bar", locals: { current_user: Current.user, query: params[:query] } %>
-            <%= render partial: "shared/nav_bar", locals: { current_controller: controller_name } %>
+            <%= render partial: "shared/top_bar", locals: { current_user: Current.user, current_controller: controller_name, query: params[:query] } %>
           </header>
-          <main class='o-container--wide u-m-auto u-p-large u-p-small@small u-p-narrow@extra-narrow'>
-            <%= yield %>
+          <main class='<%= "o-container--wide u-p-5 u-p-3@small u-p-2@extra-narrow" unless content_for?(:fluid_layout) %>'>
+            <%= content_for?(:content) ? yield(:content) : yield %>
           </main>
           <footer class='u-display-none u-display-block@extra-small u-position-fixed-bottom'>
             <%= render "shared/mini_player" %>
           </footer>
         </div>
-        <%= turbo_frame_tag "turbo-dialog" %>
+        <%= render "shared/dialog_frame" %>
       </div>
     </div>
   <% end %>

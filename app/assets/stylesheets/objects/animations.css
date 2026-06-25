@@ -1,0 +1,43 @@
+@layer objects {
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes fadeOutDown {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .o-animation-fadeInUp {
+    animation-name: fadeInUp;
+    animation-duration: 0.25s;
+  }
+
+  .o-animation-fadeOutDown {
+    animation-name: fadeOutDown;
+    animation-duration: 0.25s;
+  }
+
+  .o-animation-spin {
+    animation: spin 0.9s linear infinite;
+  }
+}

@@ -1,0 +1,47 @@
+@layer components {
+  .c-form {
+    padding-bottom: var(--spacing-4);
+  }
+
+  .c-form__field {
+    margin-top: var(--spacing-3);
+
+    label {
+      display: block;
+      margin-bottom: var(--spacing-2);
+
+      &[disabled] {
+        opacity: 0.5;
+      }
+    }
+
+    > label {
+      font-weight: bold;
+    }
+  }
+
+  .c-form__field--inline {
+    display: flex;
+    align-items: center;
+
+    label {
+      margin-bottom: 0;
+      margin-right: var(--spacing-1);
+    }
+  }
+
+  .c-form__field--submit {
+    margin-top: var(--spacing-4);
+  }
+
+  .c-form__radio {
+    display: inline-flex;
+    align-items: center;
+    margin-right: var(--spacing-2);
+
+    label {
+      margin-bottom: 0;
+      margin-left: var(--spacing-1);
+    }
+  }
+}

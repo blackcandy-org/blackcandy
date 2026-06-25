@@ -1,0 +1,9 @@
+@layer utilities {
+  .u-bg-primary {
+    background: var(--primary-bg-color);
+  }
+
+  .u-bg-gradient {
+    background: var(--gradient-bg-color);
+  }
+}

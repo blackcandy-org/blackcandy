@@ -1,30 +1,34 @@
 <li id='<%= "#{dom_id(playlist)}_#{dom_id(song)}" %>'
-  class='c-list__item u-p-0'
+  class='c-list__item c-playlist__item u-p-0'
   data-current-playlist-songs-target='item'
   data-song-id='<%= song.id %>'
   data-song-json='<%= song_json_builder(song).target! %>'
   data-should-play='<%= local_assigns[:should_play] ? should_play : false %>'
   draggable='true'>
 
-  <div class='o-flex o-flex--align-center u-py-narrow'>
+  <div class='o-flex o-flex--align-center u-py-2 u-px-1'>
     <% unless mobile? %>
-      <button class='c-button c-button--icon js-playlist-sortable-item-handle u-mr-narrow'><%= icon_tag "drag-indicator", size: "small" %></button>
+      <button class='c-button c-button--icon js-playlist-sortable-item-handle u-mr-1'>
+        <%= icon_tag "equalizer-animated", size: "small", class: "c-playlist__playing-indicator" %>
+        <%= icon_tag "equalizer", size: "small", class: "c-playlist__pause-indicator" %>
+        <%= icon_tag "drag-indicator", size: "small", class: "c-playlist__drag-indicator" %>
+      </button>
     <% end %>
 
     <button class='c-button c-button--link o-flex__item--grow-1' data-delegated-action='click->current-playlist-songs#play'>
       <div class='o-flex o-flex--justify-between o-flex--align-center'>
-        <div class='u-mr-narrow'>
+        <div class='u-mr-2'>
           <span class='u-text-line-clamp-2'><%= song.name %></span>
           <%= link_to song.artist.name, artist_path(song.artist), class: "c-list__item__subtext", data: { "turbo-frame" => "_top", "prevent-delegation" => true } %>
         </div>
-        <div class='u-text-monospace u-mr-narrow'><%= format_duration(song.duration) %></div>
+        <div class='u-text-monospace u-mr-2'><%= format_duration(song.duration) %></div>
       </div>
     </button>
 
     <details class='c-dropdown' data-controller="dropdown">
       <summary class="c-button c-button--icon" role="button"><%= icon_tag "more-vertical", size: "small", title: t("label.more") %></summary>
       <div class='c-dropdown__menu' data-dropdown-target="menu">
-        <%= link_to t("label.add_to_playlist"), dialog_playlists_path(song_id: song.id), data: { "turbo-frame" => ("turbo-dialog" unless native_app?) }, class: "c-dropdown__item" %>
+        <%= dialog_link_to t("label.add_to_playlist"), playlists_selections_path(song_id: song.id), class: "c-dropdown__item" %>
 
         <%= button_to t("button.delete"), current_playlist_song_path(song), method: :delete, form_class: "c-dropdown__item", form: { data: { "turbo-frame" => "turbo-playlist" } } %>
       </div>

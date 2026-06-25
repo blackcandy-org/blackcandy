@@ -1,0 +1,34 @@
+@layer components {
+  .c-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .c-icon--small {
+    width: 16px;
+    height: 16px;
+  }
+
+  .c-icon--narrow {
+    width: 14px;
+    height: 14px;
+  }
+
+  .c-icon--medium {
+    width: 22px;
+    height: 22px;
+  }
+
+  .c-icon--large {
+    width: 26px;
+    height: 26px;
+  }
+
+  .c-icon--active {
+    color: var(--icon-active-color);
+  }
+
+  .c-icon--emphasis {
+    color: var(--icon-emphasis-color);
+  }
+}

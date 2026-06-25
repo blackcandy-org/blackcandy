@@ -1,5 +1,6 @@
 {
-  "extends": "stylelint-config-standard-scss",
+  "extends": "stylelint-config-standard",
+  "plugins": ["@stylistic/stylelint-plugin"],
   "rules": {
     "selector-class-pattern": null,
     "custom-property-empty-line-before": null,
@@ -7,10 +8,14 @@
     "value-keyword-case": ["lower", { "ignoreKeywords": ["BlinkMacSystemFont"] }],
     "keyframes-name-pattern": null,
     "property-no-vendor-prefix": null,
-    "color-function-notation": "legacy",
+    "color-function-notation": "modern",
     "alpha-value-notation": "number",
-    "max-line-length": null,
     "value-no-vendor-prefix": null,
-    "scss/dollar-variable-empty-line-before": null
+    "declaration-block-single-line-max-declarations": null,
+    "media-feature-range-notation": null,
+    "selector-not-notation": null,
+    "no-descending-specificity": null,
+    "import-notation": null,
+    "@stylistic/indentation": 2
   }
 }

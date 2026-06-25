@@ -1,0 +1,17 @@
+@layer components {
+  .c-search {
+    max-width: 380px;
+    min-width: 200px;
+    width: 100%;
+    margin: 0 var(--spacing-3);
+    border-radius: var(--border-radius-4);
+  }
+
+  .c-search .c-loader {
+    visibility: hidden;
+  }
+
+  .c-search.is-loading .c-loader {
+    visibility: visible;
+  }
+}

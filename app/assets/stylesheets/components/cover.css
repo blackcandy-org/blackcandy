@@ -1,0 +1,5 @@
+@layer components {
+  .c-cover {
+    box-shadow: var(--cover-shadow);
+  }
+}

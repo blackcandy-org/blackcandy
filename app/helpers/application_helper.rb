@@ -76,6 +76,10 @@ module ApplicationHelper
     number_to_human(number, units: { thousand: "K", million: "M", billion: "B" }, precision: 1, significant: false)
   end
 
+  def library_pages?
+    [ albums_path, artists_path, playlists_path, songs_path ].any? { |path| current_page?(path) }
+  end
+
   def page_title_tag(title)
     title_suffix = " - #{t(:app_name)}"
     title = "#{title}#{title_suffix unless native_app? || dialog?}"

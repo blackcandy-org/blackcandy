@@ -3,6 +3,7 @@
 class Playlist < ApplicationRecord
   include SearchableConcern
   include SortableConcern
+  include ImageableConcern
 
   validates :name, presence: true, if: :require_name?
 

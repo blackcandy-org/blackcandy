@@ -5,20 +5,17 @@
     "@hotwired/hotwire-native-bridge": "^1.2.2",
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/turbo-rails": "^8.0.0",
-    "esbuild": "^0.18.17",
-    "howler": "^2.2.3",
-    "sass": "^1.64.2"
+    "esbuild": "^0.28.0",
+    "howler": "^2.2.3"
   },
   "devDependencies": {
+    "@stylistic/stylelint-plugin": "^5.2.0",
     "standard": "^17.1.0",
-    "stylelint": "^15.10.2",
-    "stylelint-config-standard-scss": "^9.0.0"
+    "stylelint": "^17.12.0",
+    "stylelint-config-standard": "^40.0.0"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets --minify",
-    "build-dev": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
-    "build:css": "sass app/assets/stylesheets/application.scss:app/assets/builds/application.css --no-source-map --style=compressed",
-    "build-dev:css": "sass app/assets/stylesheets/application.scss:app/assets/builds/application.css --no-source-map"
+    "build": "node esbuild.config.mjs"
   },
   "standard": {
     "globals": [

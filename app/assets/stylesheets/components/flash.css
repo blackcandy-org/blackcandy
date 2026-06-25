@@ -1,0 +1,30 @@
+@layer components {
+  .c-flash {
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    z-index: var(--z-flash);
+    backface-visibility: hidden;
+    filter: blur(0);
+    max-width: 90%;
+    bottom: 35px;
+    right: 35px;
+    width: 300px;
+  }
+
+  .c-flash__body {
+    padding: var(--spacing-2);
+    text-align: center;
+    border-radius: var(--border-radius-2);
+  }
+
+  .c-flash__body--alert {
+    background-color: var(--flash-alert-bg-color);
+    color: var(--flash-alert-color);
+  }
+
+  .c-flash__body--notice {
+    background-color: var(--flash-notice-bg-color);
+    color: var(--flash-notice-color);
+  }
+}
