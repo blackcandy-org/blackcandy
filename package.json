@@ -7,6 +7,7 @@
     "@hotwired/turbo-rails": "^8.0.0",
     "esbuild": "^0.18.17",
     "howler": "^2.2.3",
+    "idiomorph": "^0.7.4",
     "sass": "^1.64.2"
   },
   "devDependencies": {
