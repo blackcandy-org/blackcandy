@@ -1,4 +1,7 @@
 import '@hotwired/turbo-rails'
+// TODO: Drop this dependency for Turbo's own exported morph once it ships.
+// See https://github.com/hotwired/turbo/pull/1438
+import { Idiomorph } from 'idiomorph'
 import './controllers'
 
 import Player from './player'
@@ -22,9 +25,9 @@ window.addEventListener('turbo:before-render', ({ detail }) => {
     const newAppContainer = newElement.querySelector('#js-app')
 
     if (appContainer && newAppContainer) {
-      appContainer.replaceWith(newAppContainer)
+      Idiomorph.morph(appContainer, newAppContainer)
     } else {
-      document.body.replaceWith(newElement)
+      Idiomorph.morph(currentElement, newElement)
     }
   }
 })
