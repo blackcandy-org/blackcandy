@@ -9,12 +9,17 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    @playlist = Current.user.playlists.create!(playlist_params)
+    Playlist.transaction do
+      @playlist = Current.user.playlists.create!(playlist_params)
+      @playlist.songs.push(Song.find(params[:song_id])) if add_song_to_created_playlist?
+    end
 
     respond_to do |format|
-      format.html { redirect_to action: "index", notice: t("notice.created") }
+      format.html { redirect_to after_create_path, notice: create_notice }
       format.json { render partial: "playlists/playlist", locals: { playlist: @playlist }, status: :created }
     end
+  rescue ActiveRecord::RecordNotUnique
+    raise BlackCandy::DuplicatePlaylistSong
   end
 
   def update
@@ -43,6 +48,18 @@ class PlaylistsController < ApplicationController
 
   def playlist_params
     params.require(:playlist).permit(:name)
+  end
+
+  def after_create_path
+    add_song_to_created_playlist? ? playlist_songs_path(@playlist) : { action: "index" }
+  end
+
+  def create_notice
+    add_song_to_created_playlist? ? t("notice.added_to_playlist") : t("notice.created")
+  end
+
+  def add_song_to_created_playlist?
+    params[:song_id].present?
   end
 
   def sort_params
