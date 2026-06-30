@@ -8,9 +8,15 @@
         <img src="/images/default_album_small.png" data-player-target='image'>
       </div>
       <div class='c-player__header__content'>
-        <h1 class='u-text-truncate u-mb-2 u-text-size-3' data-player-target='songName'><%= t("label.not_playing") %></h1>
-        <p class='u-text-truncate u-mb-1' data-player-target='albumName'></p>
-        <p class='u-text-truncate' data-player-target='artistName'></p>
+        <h1 class='o-marquee u-mb-2 u-text-size-3'>
+          <span class='o-marquee__content' data-player-target='songName'><%= t("label.not_playing") %></span>
+        </h1>
+        <p class='u-text-truncate u-mb-1'>
+          <a data-player-target='albumLink'></a>
+        </p>
+        <p class='u-text-truncate'>
+          <a data-player-target='artistLink'></a>
+        </p>
       </div>
     </div>
 

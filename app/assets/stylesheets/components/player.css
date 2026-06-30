@@ -13,6 +13,10 @@
   .c-player__header__content {
     max-width: 200px;
     padding: 0 var(--spacing-2);
+
+    a {
+      color: inherit;
+    }
   }
 
   .c-player__header__image {

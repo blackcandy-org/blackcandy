@@ -12,6 +12,7 @@
 @import "./elements/content.css";
 
 @import "./objects/animations.css";
+@import "./objects/marquee.css";
 @import "./objects/grid.css";
 @import "./objects/flex.css";
 @import "./objects/container.css";
