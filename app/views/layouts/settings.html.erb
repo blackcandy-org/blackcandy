@@ -1,0 +1,14 @@
+<% page_title_tag t("label.settings") %>
+
+<% content_for :content do %>
+  <div class='c-settings'>
+    <div class='c-settings__content o-container o-container--narrow'>
+      <%= yield %>
+    </div>
+    <div class='c-settings__nav'>
+      <%= render "settings/nav" %>
+    </div>
+  </div>
+<% end %>
+
+<%= render template: "layouts/application" %>

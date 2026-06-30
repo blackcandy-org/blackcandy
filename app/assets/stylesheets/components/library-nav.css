@@ -1,0 +1,28 @@
+@layer components {
+  .c-library-nav {
+    display: flex;
+    align-items: baseline;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .c-library-nav__item {
+    margin-right: var(--spacing-3);
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    > a {
+      font-size: var(--font-size-3);
+      color: var(--library-nav-color);
+    }
+
+    &.is-active > a {
+      font-size: var(--font-size-4);
+      font-weight: bold;
+      color: var(--text-primary-color);
+    }
+  }
+}

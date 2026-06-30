@@ -1,49 +1,59 @@
 <% page_title_tag @playlist.name %>
+<% content_for :fluid_layout, true %>
 
-<div class='o-container o-container--narrow'>
-  <div data-controller='songs bridge--songs bridge--playlist' data-bridge--playlist-id-value='<%= @playlist.id %>'>
-    <div class="c-card c-card--horizontal u-my-large">
-      <div class='c-card__body'>
-        <h1 class='c-card__body__title'><%= @playlist.name %></h1>
-        <div class='c-card__body__text'>
-          <span id='<%= dom_id(@playlist, :songs_count) %>'><%= @playlist.songs.size %></span>
-          <span><%= t("label.tracks") %></span>
-          <span>,</span>
-          <span id='<%= dom_id(@playlist, :songs_duration) %>' class='u-text-monospace'><%= format_duration(@playlist.songs.sum(:duration)) %></span>
-        </div>
-        <div class='u-mt-large'>
-          <% unless @songs.blank? %>
-            <%= button_to(
-                  t("button.play"),
-                  current_playlist_playlist_path(@playlist, should_play: true),
-                  method: :put,
-                  class: "c-button c-button--primary",
-                  form_class: "u-display-inline-block",
-                  form: {
-                    data: {
-                      "disabled-on-native" => "true",
-                      "turbo-frame" => "turbo-playlist",
-                      "action" => "bridge--playlist#play"
-                    }
-                  }
-                ) %>
-          <% end %>
-          <%= link_to t("label.edit"), edit_dialog_playlist_path(@playlist), data: { "turbo-frame" => ("turbo-dialog" unless native_app?) }, class: "c-button c-button--secondary" %>
-
-          <details class='c-dropdown' data-controller='dropdown'>
-            <summary class="c-button c-button--secondary">
-              <%= icon_tag "more-horizontal", size: "narrow", title: t("label.more") %>
-            </summary>
-            <div class='c-dropdown__menu c-dropdown__menu--right' data-dropdown-target="menu">
-              <% unless @songs.blank? %>
-                <%= button_to t("button.clear"), playlist_songs_path(@playlist), method: :delete, form_class: "c-dropdown__item" %>
-              <% end %>
-              <%= button_to t("button.delete"), playlist_path(@playlist), method: :delete, form_class: "c-dropdown__item" %>
+<div data-controller='songs bridge--songs bridge--playlist' data-bridge--playlist-id-value='<%= @playlist.id %>'>
+  <div class='c-backdrop c-backdrop--blur-large' style='--backdrop-image: url(<%= cover_image_url_for(@playlist) %>)'>
+    <div class='c-backdrop__content o-container o-container--large'>
+      <div class="c-card c-card--horizontal c-card--center@narrow">
+        <%= cover_image_tag @playlist, class: "c-card__image u-image-medium c-cover" %>
+        <div class='c-card__body o-flex o-flex--column o-flex--justify-between'>
+          <div>
+            <h1 class='c-card__body__title'><%= @playlist.name %></h1>
+            <div class='c-card__body__text'>
+              <span id='<%= dom_id(@playlist, :songs_count) %>'><%= @playlist.songs.size %></span>
+              <span><%= t("label.tracks") %></span>
+              <span>,</span>
+              <span id='<%= dom_id(@playlist, :songs_duration) %>' class='u-text-monospace'><%= format_duration(@playlist.songs.sum(:duration)) %></span>
             </div>
-          </details>
+          </div>
+          <div class='u-mt-2 o-flex'>
+            <% unless @songs.blank? %>
+              <%= button_to(
+                    current_playlist_playlist_path(@playlist, should_play: true),
+                    method: :put,
+                    form_class: "u-display-inline-block",
+                    class: "c-button c-button--primary c-button--large",
+                    form: {
+                      data: {
+                        "disabled-on-native" => "true",
+                        "turbo-frame" => "turbo-playlist",
+                        "action" => "bridge--playlist#play"
+                      }
+                    }
+                  ) do %>
+                <%= icon_tag "play", size: "medium" %>
+                <%= t("button.play") %>
+              <% end %>
+            <% end %>
+            <%= dialog_link_to t("label.edit"), edit_playlist_path(@playlist), class: "c-button c-button--secondary c-button--large u-ml-1" %>
+
+            <details class='c-dropdown u-ml-1' data-controller='dropdown'>
+              <summary class="c-button c-button--secondary c-button--large">
+                <%= icon_tag "more-horizontal", size: "medium", title: t("label.more") %>
+              </summary>
+              <div class='c-dropdown__menu c-dropdown__menu--right' data-dropdown-target="menu">
+                <% unless @songs.blank? %>
+                  <%= button_to t("button.clear"), playlist_songs_path(@playlist), method: :delete, form_class: "c-dropdown__item" %>
+                <% end %>
+                <%= button_to t("button.delete"), playlist_path(@playlist), method: :delete, form_class: "c-dropdown__item" %>
+              </div>
+            </details>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class='o-container o-container--large u-p-5'>
     <% if @playlist.present? %>
       <%= render partial: "playlists/songs/list", locals: { playlist: @playlist, songs: @songs, pagy: @pagy } %>
     <% end %>

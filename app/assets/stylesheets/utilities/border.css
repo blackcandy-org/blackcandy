@@ -1,0 +1,21 @@
+@layer utilities {
+  .u-border-shadow {
+    box-shadow: 0 8px 16px -4px rgb(from var(--color-navy) r g b / 0.25), 0 0 1px rgb(from var(--color-navy) r g b / 0.31);
+  }
+
+  .u-border-none {
+    border: none;
+  }
+
+  .u-border-radius-1 {
+    border-radius: var(--border-radius-1);
+  }
+
+  .u-border-radius-2 {
+    border-radius: var(--border-radius-2);
+  }
+
+  .u-border-radius-3 {
+    border-radius: var(--border-radius-3);
+  }
+}

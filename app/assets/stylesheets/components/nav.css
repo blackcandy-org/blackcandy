@@ -1,0 +1,17 @@
+@layer components {
+  .c-nav {
+    padding: var(--spacing-3) var(--spacing-5);
+    box-shadow: var(--nav-shadow);
+    z-index: var(--z-nav);
+    backdrop-filter: blur(15px);
+  }
+
+  .c-nav--primary {
+    background: var(--nav-primary-bg-color);
+  }
+
+  .c-nav--secondary {
+    padding: var(--spacing-2) var(--spacing-4);
+    background: var(--nav-secondary-bg-color);
+  }
+}

@@ -1,10 +1,10 @@
-<nav class='u-mt-medium'>
+<nav>
   <ul class='c-tab'>
-    <li class='c-tab__item <%= "is-active" if current_controller == "home" %>'>
+    <li class='c-tab__item <%= "is-active" if current_page?(root_path) %>'>
       <%= link_to t("label.home"), root_path %>
     </li>
-    <li class='c-tab__item <%= "is-active" if current_controller == "libraries" %>'>
-      <%= link_to t("label.library"), library_path %>
+    <li class='c-tab__item <%= "is-active" if library_pages? %>'>
+      <%= link_to t("label.library"), albums_path %>
     </li>
   </ul>
 </nav>

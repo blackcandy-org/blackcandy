@@ -8,7 +8,7 @@
         <span class='o-flex o-flex--justify-between o-flex--align-center'>
           <%= t("field.#{sort_value}") %>
           <% if filter_sort_presenter.sort_value == sort_value || (filter_sort_presenter.sort_value.blank? && sort_value == option.default.name) %>
-            <%= icon_tag("check", size: "small", class: "u-ml-narrow") %>
+            <%= icon_tag("check", size: "small", class: "u-ml-2") %>
           <% end %>
         </span>
       <% end %>
@@ -21,7 +21,7 @@
         <span class='o-flex o-flex--justify-between o-flex--align-center'>
           <%= t("label.#{sort_direction}") %>
           <% if filter_sort_presenter.sort_direction_value == sort_direction || (filter_sort_presenter.sort_direction_value.blank? && option.default.direction == sort_direction) %>
-            <%= icon_tag("check", size: "small", class: "u-ml-narrow") %>
+            <%= icon_tag("check", size: "small", class: "u-ml-2") %>
           <% end %>
         </span>
       <% end %>

@@ -10,6 +10,22 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get new playlist" do
+    login
+    get new_playlist_url
+
+    assert_response :success
+  end
+
+  test "should edit playlist" do
+    playlist = playlists(:playlist1)
+
+    login playlist.user
+    get edit_playlist_url(playlist)
+
+    assert_response :success
+  end
+
   test "should create playlist" do
     playlists_count = Playlist.count
 

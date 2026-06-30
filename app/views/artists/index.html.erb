@@ -1,16 +1,14 @@
 <% page_title_tag t("label.artists") %>
 
 <div class='o-container o-container--large'>
-  <div class='o-flex o-flex--align-center o-flex--justify-between o-flex--wrap u-mb-large'>
-    <% unless native_app? %>
-      <h1 class='u-my-narrow u-mr-small'><%= t("label.artists") %></h1>
-    <% end %>
-    <div class='<%= "u-ml-auto" if native_app? %>'>
+  <div class='o-flex o-flex--align-center o-flex--justify-between o-flex--wrap u-mb-5'>
+    <%= render "shared/library_nav" %>
+    <div>
       <%= render partial: "shared/sort_select", locals: { option: @sort_option, sort_controller: controller_name, filter_sort_presenter: FilterSortPresenter.new(params) } %>
     </div>
   </div>
   <% if @artists.empty? %>
-    <div class='u-mt-wide'>
+    <div class='u-mt-6'>
       <%= empty_alert_tag has_icon: true, has_overlay: false %>
     </div>
   <% else %>
@@ -18,7 +16,7 @@
       <%= render partial: "artists/artist", collection: @artists %>
 
       <% if @pagy.next %>
-        <%= turbo_frame_tag "turbo-artists-page-#{@pagy.next}", src: pagy_url_for(@pagy, @pagy.next), loading: "lazy", class: "o-grid__item o-grid__item--row u-my-small", data: { controller: "element", action: "turbo:frame-render->element#replaceWithChildren" }  do %>
+        <%= turbo_frame_tag "turbo-artists-page-#{@pagy.next}", src: pagy_url_for(@pagy, @pagy.next), loading: "lazy", class: "o-grid__item o-grid__item--row u-my-3", data: { controller: "element", action: "turbo:frame-render->element#replaceWithChildren" }  do %>
           <div class='o-flex o-flex--justify-center'>
             <%= loader_tag %>
           </div>

@@ -1,0 +1,16 @@
+<nav>
+  <ul class='c-library-nav'>
+    <li class='c-library-nav__item <%= "is-active" if current_page?(albums_path) %>'>
+      <%= link_to t("label.albums"), albums_path %>
+    </li>
+    <li class='c-library-nav__item <%= "is-active" if current_page?(artists_path) %>'>
+      <%= link_to t("label.artists"), artists_path %>
+    </li>
+    <li class='c-library-nav__item <%= "is-active" if current_page?(songs_path) %>'>
+      <%= link_to t("label.songs"), songs_path %>
+    </li>
+    <li class='c-library-nav__item <%= "is-active" if current_page?(playlists_path) %>'>
+      <%= link_to t("label.playlists"), playlists_path %>
+    </li>
+  </ul>
+</nav>

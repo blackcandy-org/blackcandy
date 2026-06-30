@@ -1,0 +1,62 @@
+@layer utilities {
+  .u-text-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .u-text-weight-bold {
+    font-weight: bold;
+  }
+
+  .u-text-weight-normal {
+    font-weight: normal;
+  }
+
+  .u-text-color-primary {
+    color: var(--text-primary-color);
+  }
+
+  .u-text-color-secondary {
+    color: var(--text-secondary-color);
+  }
+
+  .u-text-color-success {
+    color: var(--text-success-color);
+  }
+
+  .u-text-monospace {
+    font-family: var(--font-monospace);
+  }
+
+  .u-text-align-center {
+    text-align: center;
+  }
+
+  .u-text-align-left {
+    text-align: left;
+  }
+
+  .u-text-line-clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  .u-text-size-1 {
+    font-size: var(--font-size-1);
+  }
+
+  .u-text-size-2 {
+    font-size: var(--font-size-2);
+  }
+
+  .u-text-size-3 {
+    font-size: var(--font-size-3);
+  }
+
+  .u-text-size-4 {
+    font-size: var(--font-size-4);
+  }
+}

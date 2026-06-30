@@ -1,0 +1,22 @@
+@layer objects {
+  .o-marquee {
+    overflow: hidden;
+    container-type: inline-size;
+  }
+
+  .o-marquee__content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee-scroll 8s linear infinite;
+  }
+
+  @keyframes marquee-scroll {
+    0%, 10% {
+      transform: translateX(0);
+    }
+
+    80%, 100% {
+      transform: translateX(min(0px, 100cqw - 100%));
+    }
+  }
+}

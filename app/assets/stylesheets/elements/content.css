@@ -1,0 +1,51 @@
+@layer elements {
+  h1 {
+    font-size: var(--font-size-4);
+    margin-bottom: var(--spacing-6);
+  }
+
+  h2,
+  h3 {
+    font-size: var(--font-size-3);
+    margin-bottom: var(--spacing-4);
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-size: var(--font-size-2);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--text-primary-color);
+  }
+
+  p {
+    font-size: var(--font-size-2);
+    color: var(--text-secondary-color);
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--text-primary-color);
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  a.is-active {
+    color: var(--link-active-color);
+  }
+
+  hr {
+    border: 0;
+    margin: var(--spacing-5) 0;
+    border-top: 1px solid var(--hr-color);
+  }
+}

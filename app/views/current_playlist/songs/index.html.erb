@@ -1,22 +1,18 @@
+<div class='c-nav c-nav--secondary o-flex o-flex--justify-between o-flex--align-center u-position-sticky-top'>
+  <p>
+    <span id='<%= dom_id(@playlist, :songs_count) %>'><%= @playlist.songs.count %></span>
+    <span><%= t("label.tracks") %></span>
+  </p>
+  <%= button_to t("button.clear"), current_playlist_songs_path, method: :delete %>
+</div>
 <div
+  class="u-px-2"
   data-controller='current-playlist-songs'
   data-current-playlist-songs-should-play-value='<%= @should_play %>'>
   <% if @songs.empty? %>
     <%= empty_alert_tag %>
   <% else %>
-    <div class='c-action-bar o-flex o-flex--justify-between o-flex--align-center'>
-      <p>
-        <span id='<%= dom_id(@playlist, :songs_count) %>'><%= @playlist.songs.count %></span>
-        <span><%= t("label.tracks") %></span>
-      </p>
-      <details class='c-dropdown' data-controller='dropdown'>
-        <summary class="c-button c-button--icon"><%= icon_tag "more-vertical", title: t("label.more") %></summary>
-        <div class='c-dropdown__menu' data-dropdown-target="menu">
-          <%= button_to t("button.clear"), current_playlist_songs_path, method: :delete, form_class: "c-dropdown__item" %>
-        </div>
-      </details>
-    </div>
-    <ul class="c-list u-my-tiny" data-controller="playlist-sortable" data-playlist-id='<%= @playlist.id %>'>
+    <ul class="c-list c-playlist" data-controller="playlist-sortable" data-playlist-id='<%= @playlist.id %>'>
       <% @songs.each do |song| %>
         <%= render partial: "current_playlist/songs/song", locals: { song: song, playlist: @playlist, should_play: @should_play_song_id == song.id } %>
       <% end %>

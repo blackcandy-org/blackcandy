@@ -1,0 +1,43 @@
+@layer settings {
+  :root {
+    /* Fonts */
+    --font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "Wenquanyi Micro Hei", sans-serif;
+    --font-monospace: "Menlo", "Monaco", "Consolas", "Courier New", monospace;
+
+    /* Font sizes */
+    --font-size-1: 12px;
+    --font-size-2: 14px;
+    --font-size-3: 16px;
+    --font-size-4: 20px;
+
+    /* Spacing */
+    --spacing-1: 6px;
+    --spacing-2: 12px;
+    --spacing-3: 18px;
+    --spacing-4: 24px;
+    --spacing-5: 36px;
+    --spacing-6: 48px;
+
+    /* Border radius */
+    --border-radius-1: 2px;
+    --border-radius-2: 4px;
+    --border-radius-3: 8px;
+    --border-radius-4: 16px;
+
+    /* Image sizes */
+    --image-size-1: 100px;
+    --image-size-2: 200px;
+    --image-size-3: 300px;
+
+    /* Z-indexes */
+    --z-background: -1;
+    --z-base: 0;
+    --z-nav: 1;
+    --z-sidebar: 2;
+    --z-dropdown-overlay: 3;
+    --z-dropdown: 4;
+    --z-flash: 5;
+    --z-fixed-overlay: 6;
+    --z-expanded-sidebar: 7;
+  }
+}

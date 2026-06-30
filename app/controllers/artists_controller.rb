@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class ArtistsController < ApplicationController
-  before_action :require_admin, only: [ :update ]
+  render_in_dialog :edit
+
+  before_action :require_admin, only: [ :edit, :update ]
   before_action :find_artist, except: [ :index ]
   before_action :get_sort_option, only: [ :index ]
 
@@ -13,6 +15,9 @@ class ArtistsController < ApplicationController
   def show
     @albums = @artist.albums.with_attached_cover_image.load_async
     @appears_on_albums = @artist.appears_on_albums.with_attached_cover_image.load_async
+  end
+
+  def edit
   end
 
   def update

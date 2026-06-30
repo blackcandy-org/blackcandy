@@ -1,0 +1,98 @@
+@layer components {
+  .c-button {
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    border-radius: var(--border-radius-2);
+    border: none;
+    padding: var(--spacing-1) var(--spacing-2);
+    cursor: pointer;
+    font-size: var(--font-size-2);
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .c-button--primary {
+    color: var(--btn-color);
+    background: var(--btn-primary-bg-color);
+
+    &:hover {
+      background: var(--btn-primary-hover-bg-color);
+      color: var(--btn-color);
+    }
+  }
+
+  .c-button--secondary {
+    background: var(--btn-secondary-bg-color);
+    color: var(--btn-secondary-color);
+
+    &:hover {
+      background: var(--btn-secondary-hover-bg-color);
+      color: var(--btn-secondary-color);
+    }
+  }
+
+  .c-button--link {
+    display: inline-block;
+    text-align: left;
+    background: none;
+    color: var(--text-primary-color);
+    padding: 0;
+
+    &:hover {
+      color: var(--link-active-color);
+    }
+  }
+
+  .c-button--small {
+    padding: 2px var(--spacing-1);
+    font-size: var(--font-size-1);
+  }
+
+  .c-button--large {
+    padding: var(--spacing-1) var(--spacing-4);
+    font-size: var(--font-size-3);
+  }
+
+  .c-button--outline {
+    border-radius: var(--border-radius-3);
+    color: var(--btn-outline-color);
+    border: 1px solid var(--btn-outline-border-color);
+    background: var(--btn-outline-bg-color);
+
+    &:hover {
+      background: var(--btn-outline-hover-bg-color);
+    }
+  }
+
+  .c-button--icon {
+    display: inline-flex;
+    padding: var(--spacing-1);
+    border-radius: var(--border-radius-2);
+    color: currentcolor;
+
+    &:hover {
+      background: var(--btn-icon-hover-bg-color);
+    }
+  }
+
+  .c-button--circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-1);
+    border-radius: 50%;
+  }
+
+  .c-button--full-width {
+    width: 100%;
+    justify-content: center
+  }
+
+  .c-button[disabled] {
+    opacity: 0.6;
+    filter: grayscale(1);
+  }
+}

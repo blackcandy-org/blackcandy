@@ -11,7 +11,13 @@
             }
           }
         ) do %>
-      <span><%= song.name %></span>
+      <span class='o-flex o-flex--align-center'>
+        <span class='c-song__cover u-mr-2'>
+          <%= cover_image_tag song.album, size: :small %>
+          <%= icon_tag "play", size: "medium", class: "c-song__cover__play-icon" %>
+        </span>
+        <span><%= song.name %></span>
+      </span>
     <% end %>
   </div>
   <div role='cell' class='u-display-none@medium'>
@@ -27,12 +33,7 @@
         <%= icon_tag "more-vertical", size: "small", title: t("label.more") %>
       </summary>
       <div class='c-dropdown__menu' data-dropdown-target="menu">
-        <%= link_to(
-              t("label.add_to_playlist"),
-              dialog_playlists_path(song_id: song.id),
-              data: { "turbo-frame" => ("turbo-dialog" unless native_app?) },
-              class: "c-dropdown__item"
-            ) %>
+        <%= dialog_link_to t("label.add_to_playlist"), playlists_selections_path(song_id: song.id), class: "c-dropdown__item" %>
         <%= button_to(
               t("button.play_next"),
               current_playlist_songs_path(song_id: song.id),
