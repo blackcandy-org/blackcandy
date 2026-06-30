@@ -7,8 +7,8 @@ export default class extends Controller {
   static targets = [
     'image',
     'songName',
-    'artistName',
-    'albumName',
+    'artistLink',
+    'albumLink',
     'songDuration',
     'songTimer',
     'progress',
@@ -141,8 +141,10 @@ export default class extends Controller {
     this.element.style.setProperty('--backdrop-image', `url(${currentSong.album_image_urls.small})`)
     this.imageTarget.src = currentSong.album_image_urls.small
     this.songNameTarget.textContent = currentSong.name
-    this.artistNameTarget.textContent = currentSong.artist_name
-    this.albumNameTarget.textContent = currentSong.album_name
+    this.artistLinkTarget.textContent = currentSong.artist_name
+    this.artistLinkTarget.href = `/artists/${currentSong.artist_id}`
+    this.albumLinkTarget.textContent = currentSong.album_name
+    this.albumLinkTarget.href = `/albums/${currentSong.album_id}`
     this.songDurationTarget.textContent = formatDuration(currentSong.duration)
 
     this.pauseButtonTarget.classList.remove('u-display-none')
