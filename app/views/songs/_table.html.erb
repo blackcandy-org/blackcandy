@@ -1,24 +1,16 @@
-<%# Because turbo frame doesn't support add on others built-in elements like tbody yet, %>
-<%# So I can't use table element here to implement infinite scroll. %>
-<%# If turbo frame support built-in elements later https://github.com/hotwired/turbo/pull/131,%>
-<%# this view can use table element to refactor. %>
-<div role='table' class='c-table' data-controller='songs bridge--songs' cols-at-medium='3' cols-at-small='2'>
-  <div role='rowgroup'>
-    <div role='row'>
-      <div role='columnheader'><%= t("field.name") %></div>
-      <div role='columnheader' class='u-display-none@medium'><%= t("label.artist") %></div>
-      <div role='columnheader' class='u-display-none@medium'><%= t("label.album") %></div>
-      <div role='columnheader' class='u-display-none@small'><%= t("label.duration") %></div>
-      <div role='columnheader'><%= t("label.actions") %></div>
-    </div>
-  </div>
-  <%= turbo_frame_tag "turbo-songs-page-#{pagy.page}", role: "rowgroup", target: "_top" do %>
+<table class='c-table' data-controller='songs bridge--songs'>
+  <thead>
+    <tr>
+      <th><%= t("field.name") %></th>
+      <th class='u-display-none@medium'><%= t("label.artist") %></th>
+      <th class='u-display-none@medium'><%= t("label.album") %></th>
+      <th class='u-display-none@small'><%= t("label.duration") %></th>
+      <th><%= t("label.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
     <%= render partial: "songs/song", collection: songs %>
+  </tbody>
+</table>
 
-    <% if pagy.next %>
-      <%= turbo_frame_tag "turbo-songs-page-#{pagy.next}", src: pagy_url_for(pagy, pagy.next), loading: "lazy", role: "cell", span: "row", class: "o-flex o-flex--justify-center u-my-3 u-border-none", data: { controller: "element", action: "turbo:frame-render->element#replaceWithChildren" }  do %>
-        <%= loader_tag %>
-      <% end %>
-    <% end %>
-  <% end %>
-</div>
+<%= render partial: "shared/pagination", locals: { pagy: pagy } %>

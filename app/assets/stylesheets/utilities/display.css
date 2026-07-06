@@ -11,6 +11,10 @@
     display: inline-block;
   }
 
+  .u-display-flex {
+    display: flex;
+  }
+
   @media (min-width: 1880px) {
     .u-display-none\@extra-wide { display: none; }
     .u-display-block\@extra-wide { display: block; }
@@ -44,6 +48,7 @@
   @media (max-width: 730px) {
     .u-display-none\@extra-small { display: none; }
     .u-display-block\@extra-small { display: block; }
+    .u-display-flex\@extra-small { display: flex; }
   }
 
   @media (max-width: 560px) {

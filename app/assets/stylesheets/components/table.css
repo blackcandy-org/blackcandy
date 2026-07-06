@@ -1,46 +1,26 @@
 @layer components {
   .c-table {
-    display: table;
     width: 100%;
-    table-layout: auto;
     text-align: left;
-  }
-
-  .c-table[role="table"] {
-    display: grid;
-    grid-template-columns: var(--grid-tc);
-    --grid-tc: repeat(5, auto);
-  }
-
-  .c-table [role="rowgroup"] {
-    display: contents;
-  }
-
-  .c-table [role="row"] {
-    display: contents;
-  }
-
-  .c-table tr,
-  .c-table [role="cell"] {
-    border-top: 1px solid var(--table-border-color);
-  }
-
-  .c-table [role="columnheader"] {
-    font-weight: bold;
   }
 
   .c-table th,
-  .c-table td,
-  .c-table [role="columnheader"],
-  .c-table [role="cell"] {
-    display: inline-flex;
-    align-items: center;
+  .c-table td {
     padding: var(--spacing-2);
     text-align: left;
+    vertical-align: middle;
     color: var(--table-color);
   }
 
-  .c-table [role="row"]:hover > [role="cell"] {
+  .c-table th {
+    font-weight: bold;
+  }
+
+  .c-table td {
+    border-top: 1px solid var(--table-border-color);
+  }
+
+  .c-table tbody tr:hover > td {
     background-color: var(--table-hover-bg-color);
     border-top-color: transparent;
 
@@ -55,19 +35,7 @@
     }
   }
 
-  .c-table [role="row"]:hover + [role="row"] > [role="cell"] {
+  .c-table tbody tr:hover + tr > td {
     border-top-color: transparent;
-  }
-
-  .c-table [role="cell"][span="row"] {
-    grid-column: 1 / -1;
-  }
-
-  @media (max-width: 1130px) {
-    .c-table[role="table"][cols-at-medium="3"] { --grid-tc: repeat(3, auto); }
-  }
-
-  @media (max-width: 930px) {
-    .c-table[role="table"][cols-at-small="2"] { --grid-tc: repeat(2, auto); }
   }
 }

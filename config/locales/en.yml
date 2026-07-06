@@ -61,6 +61,10 @@ en:
     search_results_for: "Search results for \"%{query}\""
     go_to_artist: 'Go to Artist'
     not_playing: 'Not Playing'
+    pagination: 'Pagination'
+    previous_page: 'Previous page'
+    next_page: 'Next page'
+    page_of: 'Page %{page} of %{pages}'
 
   button:
     login: 'Login'

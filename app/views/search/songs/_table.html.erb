@@ -1,14 +1,14 @@
-<div role='table' class='c-table' data-controller='songs bridge--songs' cols-at-medium='3' cols-at-small='2'>
-  <div role='rowgroup'>
-    <div role='row'>
-      <div role='columnheader'><%= t("field.name") %></div>
-      <div role='columnheader' class='u-display-none@medium'><%= t("label.artist") %></div>
-      <div role='columnheader' class='u-display-none@medium'><%= t("label.album") %></div>
-      <div role='columnheader' class='u-display-none@small'><%= t("label.duration") %></div>
-      <div role='columnheader'><%= t("label.actions") %></div>
-    </div>
-  </div>
-  <div role='rowgroup'>
+<table class='c-table' data-controller='songs bridge--songs'>
+  <thead>
+    <tr>
+      <th><%= t("field.name") %></th>
+      <th class='u-display-none@medium'><%= t("label.artist") %></th>
+      <th class='u-display-none@medium'><%= t("label.album") %></th>
+      <th class='u-display-none@small'><%= t("label.duration") %></th>
+      <th><%= t("label.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
     <%= render partial: "songs/song", collection: songs %>
-  </div>
-</div>
+  </tbody>
+</table>

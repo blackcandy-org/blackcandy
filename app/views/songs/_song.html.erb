@@ -1,5 +1,5 @@
-<div role='row' data-song-id='<%= song.id %>'>
-  <div role='cell' data-songs-target='item'>
+<tr data-song-id='<%= song.id %>'>
+  <td data-songs-target='item'>
     <%= button_to(
           current_playlist_songs_path(song_id: song.id, should_play: true),
           class: "c-button c-button--link",
@@ -19,15 +19,15 @@
         <span><%= song.name %></span>
       </span>
     <% end %>
-  </div>
-  <div role='cell' class='u-display-none@medium'>
+  </td>
+  <td class='u-display-none@medium'>
     <%= link_to song.artist.name, artist_path(song.artist) %>
-  </div>
-  <div role='cell' class='u-display-none@medium'>
+  </td>
+  <td class='u-display-none@medium'>
     <%= link_to song.album.name, album_path(song.album) %>
-  </div>
-  <div role='cell' class='u-display-none@small'><%= format_duration(song.duration) %></div>
-  <div role='cell'>
+  </td>
+  <td class='u-display-none@small'><%= format_duration(song.duration) %></td>
+  <td>
     <details class='c-dropdown' data-controller='dropdown'>
       <summary class="c-button c-button--icon">
         <%= icon_tag "more-vertical", size: "small", title: t("label.more") %>
@@ -60,5 +60,5 @@
             ) %>
       </div>
     </details>
-  </div>
-</div>
+  </td>
+</tr>
