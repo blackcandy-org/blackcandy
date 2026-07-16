@@ -78,8 +78,8 @@
     }
   }
 
-  @media (max-width: 560px) {
-    .c-card--center\@narrow {
+  @media (max-width: 930px) {
+    .c-card--center\@small {
       display: flex;
       flex-direction: column;
       align-items: center;

@@ -5,7 +5,7 @@
     background: var(--dialog-bg-color);
     border: none;
     border-radius: var(--border-radius-3);
-    width: 100%;
+    width: calc(100% - var(--spacing-5));
     max-width: 460px;
     color: inherit;
     opacity: 0;

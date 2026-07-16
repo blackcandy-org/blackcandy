@@ -77,7 +77,7 @@ module ApplicationHelper
   end
 
   def library_pages?
-    [ albums_path, artists_path, playlists_path, songs_path ].any? { |path| current_page?(path) }
+    [ library_path, albums_path, artists_path, playlists_path, songs_path ].any? { |path| current_page?(path) }
   end
 
   def page_title_tag(title)

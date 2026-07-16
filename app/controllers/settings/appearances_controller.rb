@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class Settings::AppearancesController < Settings::ApplicationController
-  skip_before_action :require_admin
+class Settings::AppearancesController < ApplicationController
+  layout "settings"
 
   def show
     @user = Current.user

@@ -27,7 +27,7 @@
     <% end %>
   </nav>
 
-  <nav class='c-pagination u-display-none u-display-flex@extra-small' aria-label='<%= t("label.pagination") %>'>
+  <nav class='c-pagination u-mb-5 u-display-none u-display-flex@extra-small' aria-label='<%= t("label.pagination") %>'>
     <%= link_to pagy_url_for(pagy, pagy.prev),
           class: "c-button c-button--outline c-button--large",
           disabled: (true unless pagy.prev),

@@ -4,7 +4,7 @@
 <div data-controller='songs bridge--songs bridge--playlist' data-bridge--playlist-id-value='<%= @playlist.id %>'>
   <div class='c-backdrop c-backdrop--blur-large' style='--backdrop-image: url(<%= cover_image_url_for(@playlist) %>)'>
     <div class='c-backdrop__content o-container o-container--large'>
-      <div class="c-card c-card--horizontal c-card--center@narrow">
+      <div class="c-card c-card--horizontal c-card--center@small">
         <%= cover_image_tag @playlist, class: "c-card__image u-image-medium c-cover" %>
         <div class='c-card__body o-flex o-flex--column o-flex--justify-between'>
           <div>

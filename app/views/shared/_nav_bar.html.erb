@@ -1,10 +1,11 @@
-<nav>
+<nav class='u-display-none@extra-small u-mr-3'>
   <ul class='c-tab'>
     <li class='c-tab__item <%= "is-active" if current_page?(root_path) %>'>
       <%= link_to t("label.home"), root_path %>
     </li>
     <li class='c-tab__item <%= "is-active" if library_pages? %>'>
-      <%= link_to t("label.library"), albums_path %>
+      <%= link_to t("label.library"), albums_path, class: "u-display-none@small" %>
+      <%= link_to t("label.library"), library_path, class: "u-display-none u-display-block@small" %>
     </li>
   </ul>
 </nav>

@@ -8,6 +8,14 @@
 
   .c-nav--primary {
     background: var(--nav-primary-bg-color);
+
+    @media (max-width: 930px) {
+      padding: var(--spacing-3) var(--spacing-2);
+    }
+
+    @media (max-width: 730px) {
+      padding: var(--spacing-2);
+    }
   }
 
   .c-nav--secondary {

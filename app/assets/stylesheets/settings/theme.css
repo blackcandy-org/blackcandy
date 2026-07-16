@@ -117,6 +117,10 @@
     --nav-primary-bg-color: rgb(from light-dark(var(--color-white), var(--color-grey-800)) r g b / 0.9);
     --nav-secondary-bg-color: rgb(from light-dark(var(--color-light), var(--color-grey-800)) r g b / 0.8);
 
+    /* Bottom nav */
+    --bottom-nav-color: light-dark(var(--color-grey-500), var(--color-grey-400));
+    --bottom-nav-active-color: var(--primary-color);
+
     /* Player */
     --player-bg-color: light-dark(var(--color-white), var(--color-black));
     --player-border-color: light-dark(var(--color-grey-200), var(--color-grey-700));

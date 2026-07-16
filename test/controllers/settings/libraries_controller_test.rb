@@ -7,14 +7,14 @@ class Settings::LibrariesControllerTest < ActionDispatch::IntegrationTest
 
   test "should show library setting" do
     login users(:admin)
-    get settings_library_url
+    get setting_library_url
 
     assert_response :success
   end
 
   test "should not show library setting for non admin users" do
     login
-    get settings_library_url
+    get setting_library_url
 
     assert_response :forbidden
   end
@@ -23,7 +23,7 @@ class Settings::LibrariesControllerTest < ActionDispatch::IntegrationTest
     login users(:admin)
 
     assert_enqueued_with(job: MediaSyncAllJob) do
-      patch settings_library_url, params: { setting: { media_path: Rails.root.join("test/fixtures") } }
+      patch setting_library_url, params: { setting: { media_path: Rails.root.join("test/fixtures") } }
       assert_equal Rails.root.join("test/fixtures").to_s, Setting.media_path
     end
   end
@@ -31,7 +31,7 @@ class Settings::LibrariesControllerTest < ActionDispatch::IntegrationTest
   test "should only admin can update library settings" do
     login
 
-    patch settings_library_url, params: { setting: { media_path: Rails.root.join("test/fixtures") } }
+    patch setting_library_url, params: { setting: { media_path: Rails.root.join("test/fixtures") } }
     assert_response :forbidden
   end
 
@@ -39,7 +39,7 @@ class Settings::LibrariesControllerTest < ActionDispatch::IntegrationTest
     with_env("DEMO_MODE" => "true") do
       login users(:admin)
 
-      patch settings_library_url, params: { setting: { media_path: Rails.root.join("test/fixtures") } }
+      patch setting_library_url, params: { setting: { media_path: Rails.root.join("test/fixtures") } }
       assert_response :forbidden
     end
   end

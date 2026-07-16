@@ -2,16 +2,19 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :sessions, only: [ :new, :create ]
-  get "settings", to: redirect("/settings/appearance")
 
-  namespace :settings do
-    resource :appearance, only: [ :show ]
-    resource :library, only: [ :show, :update ]
-    resource :integration, only: [ :show, :update ]
-    resource :transcoding, only: [ :show, :update ]
+  resource :setting, only: [ :show ] do
+    scope module: :settings do
+      resource :appearance, only: [ :show ]
+      resource :library, only: [ :show, :update ]
+      resource :integration, only: [ :show, :update ]
+      resource :transcoding, only: [ :show, :update ]
+    end
   end
+
   resource :system, only: [ :show ]
 
+  resource :library, only: [ :show ]
   resources :artists, only: [ :index, :show, :edit, :update ]
   resources :songs, only: [ :index, :show ]
   resources :albums, only: [ :index, :show, :edit, :update ]

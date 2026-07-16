@@ -5,7 +5,7 @@
 <div class='o-container o-container--large'>
   <div class='o-flex o-flex--align-center o-flex--justify-between o-flex--wrap u-mb-5'>
     <%= render "shared/library_nav" %>
-    <div class='o-flex o-flex--align-center'>
+    <div class='o-flex o-flex--align-center u-ml-auto'>
       <%= render partial: "songs/filters", locals: { filter_sort_presenter: filter_sort_presenter } %>
       <%= render partial: "shared/sort_select", locals: { option: @sort_option, sort_controller: controller_name, filter_sort_presenter: filter_sort_presenter } %>
     </div>

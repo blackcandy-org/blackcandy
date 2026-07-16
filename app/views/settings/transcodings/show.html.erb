@@ -1,6 +1,6 @@
 <h2><%= t("label.transcoding") %></h2>
 <p><%= t("text.transcoding") %></p>
-<%= form_with model: Setting, url: settings_transcoding_path, method: :put, class: "c-form" do |form| %>
+<%= form_with model: Setting, url: setting_transcoding_path, method: :put, class: "c-form" do |form| %>
   <div class='c-form__field c-form__field--inline'>
     <%= form.label :allow_transcode_lossless, t("field.allow_transcode_lossless") %>
     <%= form.check_box :allow_transcode_lossless %>

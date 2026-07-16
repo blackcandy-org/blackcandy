@@ -6,6 +6,14 @@
     border: 1px solid var(--player-border-color);
   }
 
+  .c-player--mini {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    background: var(--nav-primary-bg-color);
+    backdrop-filter: blur(15px);
+  }
+
   .c-player__header {
     margin-bottom: var(--spacing-3);
   }

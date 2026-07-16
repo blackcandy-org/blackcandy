@@ -139,6 +139,17 @@
     .u-p-3\@small {
       padding: var(--spacing-3);
     }
+
+    .u-mx-auto\@small {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  @media (max-width: 730px) {
+    .u-pb-7\@extra-small {
+      padding-bottom: var(--spacing-7);
+    }
   }
 
   @media (max-width: 375px) {

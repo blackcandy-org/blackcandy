@@ -4,7 +4,7 @@
 <div data-controller='songs bridge--songs bridge--album' data-bridge--album-id-value='<%= @album.id %>'>
   <div class='c-backdrop c-backdrop--blur-large' style='--backdrop-image: url(<%= cover_image_url_for(@album) %>)'>
     <div class='c-backdrop__content o-container o-container--large'>
-      <div class="c-card c-card--horizontal c-card--center@narrow">
+      <div class="c-card c-card--horizontal c-card--center@small">
         <%= cover_image_tag @album, class: "c-card__image u-image-medium c-cover" %>
         <div class='c-card__body o-flex o-flex--column o-flex--justify-between'>
           <div>
@@ -15,7 +15,7 @@
             <% end %>
             <div class='c-card__body__text u-mt-3'><%= album_tracks_info(@album) %></div>
           </div>
-          <div class='u-mt-2 o-flex'>
+          <div class='u-mt-2 o-flex u-mx-auto@small'>
             <%= button_to(
                   current_playlist_album_path(@album, should_play: true),
                   method: :put,
@@ -40,7 +40,7 @@
       </div>
     </div>
   </div>
-  <div class='o-container o-container--large u-p-5'>
+  <div class='o-container o-container--large u-p-5 u-p-3@small'>
     <ul class='c-list'>
       <% @groped_songs.each do |discnum, songs| %>
         <% if @groped_songs.size > 1 %>

@@ -37,6 +37,7 @@
 @import "./components/player.css";
 @import "./components/sidebar.css";
 @import "./components/nav.css";
+@import "./components/bottom-nav.css";
 @import "./components/table.css";
 @import "./components/search.css";
 @import "./components/badge.css";

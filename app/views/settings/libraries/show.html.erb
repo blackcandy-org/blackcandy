@@ -3,7 +3,7 @@
   <%= render partial: "media_syncing/button", locals: { syncing: Media.syncing? } %>
 </h2>
 
-<%= form_with model: Setting, url: settings_library_path, method: :put, class: "c-form" do |form| %>
+<%= form_with model: Setting, url: setting_library_path, method: :put, class: "c-form" do |form| %>
   <div class='c-form__field'>
     <%= form.label :media_path, t("field.media_path") %>
     <%= form.text_field :media_path, value: Setting.media_path, class: "c-input" %>

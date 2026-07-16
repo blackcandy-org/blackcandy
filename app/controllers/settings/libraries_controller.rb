@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 
-class Settings::LibrariesController < Settings::ApplicationController
+class Settings::LibrariesController < ApplicationController
+  layout "settings"
+  before_action :require_admin
+
   def show
   end
 
   def update
     Setting.instance.update!(setting_params)
 
-    redirect_to settings_library_path, notice: t("notice.updated")
+    redirect_to setting_library_path, notice: t("notice.updated")
   end
 
   private

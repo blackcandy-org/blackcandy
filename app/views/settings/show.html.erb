@@ -1,0 +1,62 @@
+<% page_title_tag t("label.settings") %>
+
+<div class='o-container o-container--narrow'>
+  <ul class='c-list c-list--grouped'>
+    <li class='c-list__item'>
+      <%= link_to setting_appearance_path, class: "o-flex o-flex--align-center o-flex--justify-between u-text-size-3" do %>
+        <span class='o-flex o-flex--align-center'>
+          <%= icon_tag "palette", class: "u-mr-2" %>
+          <%= t("label.appearance") %>
+        </span>
+        <%= icon_tag "chevron-right" %>
+      <% end %>
+    </li>
+    <li class='c-list__item'>
+      <%= link_to edit_my_profile_path, class: "o-flex o-flex--align-center o-flex--justify-between u-text-size-3" do %>
+        <span class='o-flex o-flex--align-center'>
+          <%= icon_tag "person", class: "u-mr-2" %>
+          <%= t("label.profile") %>
+        </span>
+        <%= icon_tag "chevron-right" %>
+      <% end %>
+    </li>
+    <% if is_admin? %>
+      <li class='c-list__item'>
+        <%= link_to setting_library_path, class: "o-flex o-flex--align-center o-flex--justify-between u-text-size-3" do %>
+          <span class='o-flex o-flex--align-center'>
+            <%= icon_tag "folder", class: "u-mr-2" %>
+            <%= t("label.library") %>
+          </span>
+          <%= icon_tag "chevron-right" %>
+        <% end %>
+      </li>
+      <li class='c-list__item'>
+        <%= link_to setting_integration_path, class: "o-flex o-flex--align-center o-flex--justify-between u-text-size-3" do %>
+          <span class='o-flex o-flex--align-center'>
+            <%= icon_tag "extension", class: "u-mr-2" %>
+            <%= t("label.integration") %>
+          </span>
+          <%= icon_tag "chevron-right" %>
+        <% end %>
+      </li>
+      <li class='c-list__item'>
+        <%= link_to setting_transcoding_path, class: "o-flex o-flex--align-center o-flex--justify-between u-text-size-3" do %>
+          <span class='o-flex o-flex--align-center'>
+            <%= icon_tag "tune", class: "u-mr-2" %>
+            <%= t("label.transcoding") %>
+          </span>
+          <%= icon_tag "chevron-right" %>
+        <% end %>
+      </li>
+      <li class='c-list__item'>
+        <%= link_to users_path, class: "o-flex o-flex--align-center o-flex--justify-between u-text-size-3" do %>
+          <span class='o-flex o-flex--align-center'>
+            <%= icon_tag "group", class: "u-mr-2" %>
+            <%= t("label.users") %>
+          </span>
+          <%= icon_tag "chevron-right" %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

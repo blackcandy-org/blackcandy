@@ -1,0 +1,26 @@
+@layer components {
+  .c-bottom-nav {
+    display: flex;
+    background: var(--nav-primary-bg-color);
+    backdrop-filter: blur(15px);
+  }
+
+  .c-bottom-nav__item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-1);
+    padding: var(--spacing-2) 0;
+    color: var(--bottom-nav-color);
+    text-decoration: none;
+
+    &.is-active {
+      color: var(--bottom-nav-active-color);
+    }
+  }
+
+  .c-bottom-nav__label {
+    font-size: var(--font-size-1);
+  }
+}

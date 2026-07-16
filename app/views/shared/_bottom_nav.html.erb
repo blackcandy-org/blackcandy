@@ -1,0 +1,11 @@
+<nav class='c-bottom-nav'>
+  <%= link_to root_path, class: "c-bottom-nav__item #{"is-active" if current_page?(root_path)}" do %>
+    <%= icon_tag "home", size: "large" %>
+    <span class='c-bottom-nav__label'><%= t("label.home") %></span>
+  <% end %>
+
+  <%= link_to library_path, class: "c-bottom-nav__item #{"is-active" if library_pages?}" do %>
+    <%= icon_tag "library-music", size: "large" %>
+    <span class='c-bottom-nav__label'><%= t("label.library") %></span>
+  <% end %>
+</nav>

@@ -3,7 +3,7 @@
 
 <div class='c-backdrop c-backdrop--blur-large' style='--backdrop-image: url(<%= cover_image_url_for(@artist) %>)'>
   <div class='c-backdrop__content o-container o-container--large'>
-    <div class='c-card c-card--horizontal c-card--center@narrow'>
+    <div class='c-card c-card--horizontal c-card--center@small'>
       <%= cover_image_tag @artist, class: "c-card__image u-image-medium c-cover" %>
       <div class='c-card__body o-flex o-flex--column o-flex--justify-between'>
         <div>
@@ -23,7 +23,7 @@
     </div>
   </div>
 </div>
-<div class="u-p-5">
+<div class="u-p-5 u-p-3@small">
   <div class="o-container o-container--large">
     <%= render partial: "artists/albums", locals: { title: t("label.albums"), albums: @albums } %>
     <%= render partial: "artists/albums", locals: { title: t("label.appears_on"), albums: @appears_on_albums } %>
