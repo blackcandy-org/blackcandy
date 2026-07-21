@@ -2,6 +2,8 @@ module DialogHelper
   DIALOG_PARAM = "dialog"
 
   def dialog_link_to(name, path, **options)
+    return link_to name, path, **options if native_app?
+
     options[:data] = (options[:data] || {}).merge("turbo-frame" => "turbo-dialog", "turbo-action" => "advance")
     link_to name, "?#{request.query_parameters.merge(DIALOG_PARAM => path).to_query}", **options
   end

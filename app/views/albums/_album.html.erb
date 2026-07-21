@@ -3,14 +3,16 @@
     <%= link_to album_path(album) do %>
       <%= cover_image_tag album, class: "u-image-fluid" %>
     <% end %>
-    <div class='c-card__image__actions'>
+    <div class='c-card__image__actions' data-controller='bridge--album' data-bridge--album-id-value='<%= album.id %>'>
       <%= button_to(
             current_playlist_album_path(album, should_play: true),
             method: :put,
             class: "c-button c-button--circle c-button--primary",
             form: {
               data: {
-                "turbo-frame" => "turbo-playlist"
+                "disabled-on-native" => "true",
+                "turbo-frame" => "turbo-playlist",
+                "action" => "bridge--album#play"
               }
             }
           ) do %>

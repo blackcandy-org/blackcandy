@@ -1,5 +1,9 @@
 <% page_title_tag t("label.library") %>
 
+<% if native_app? %>
+  <%= render partial: "shared/search_input", locals: { query: params[:query] } %>
+<% end %>
+
 <div class='o-container o-container--narrow'>
   <ul class='c-list c-list--grouped'>
     <li class='c-list__item'>

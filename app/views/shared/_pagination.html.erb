@@ -1,16 +1,19 @@
 <% if pagy.pages > 1 %>
+  <% turbo_action = "replace" if native_app? %>
+
   <nav class='c-pagination u-display-none@extra-small' aria-label='<%= t("label.pagination") %>'>
     <%= link_to pagy_url_for(pagy, pagy.prev),
           class: "c-pagination__item #{"is-disabled" unless pagy.prev}",
           rel: "prev",
           tabindex: ("-1" unless pagy.prev),
+          data: { turbo_action: turbo_action },
           aria: { disabled: (true unless pagy.prev) } do %>
       <%= icon_tag "chevron-left", size: "small", title: t("label.previous_page") %>
     <% end %>
 
     <% pagy.series.each do |item| %>
       <% if item.is_a?(Integer) %>
-        <%= link_to item, pagy_url_for(pagy, item), class: "c-pagination__item" %>
+        <%= link_to item, pagy_url_for(pagy, item), class: "c-pagination__item", data: { turbo_action: turbo_action } %>
       <% elsif item.is_a?(String) %>
         <span class='c-pagination__item is-active' aria-current='page'><%= item %></span>
       <% elsif item == :gap %>
@@ -22,6 +25,7 @@
           class: "c-pagination__item #{"is-disabled" unless pagy.next}",
           rel: "next",
           tabindex: ("-1" unless pagy.next),
+          data: { turbo_action: turbo_action },
           aria: { disabled: (true unless pagy.next) } do %>
       <%= icon_tag "chevron-right", size: "small", title: t("label.next_page") %>
     <% end %>
@@ -33,8 +37,9 @@
           disabled: (true unless pagy.prev),
           rel: "prev",
           tabindex: ("-1" unless pagy.prev),
+          data: { turbo_action: turbo_action },
           aria: { disabled: (true unless pagy.prev) } do %>
-      <%= icon_tag "chevron-left", size: "small", title: t("label.previous_page") %>
+      <%= icon_tag "chevron-left", size: "medium", title: t("label.previous_page") %>
     <% end %>
 
     <span class='u-text-size-2 u-text-color-secondary'><%= t("label.page_of", page: pagy.page, pages: pagy.pages) %></span>
@@ -44,8 +49,9 @@
           disabled: (true unless pagy.next),
           rel: "next",
           tabindex: ("-1" unless pagy.next),
+          data: { turbo_action: turbo_action },
           aria: { disabled: (true unless pagy.next) } do %>
-      <%= icon_tag "chevron-right", size: "small", title: t("label.next_page") %>
+      <%= icon_tag "chevron-right", size: "medium", title: t("label.next_page") %>
     <% end %>
   </nav>
 <% end %>

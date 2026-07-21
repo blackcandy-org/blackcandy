@@ -8,7 +8,7 @@
 
   <% if native_app? %>
     <%= render "shared/flash" %>
-    <main class='u-p-5 u-p-3@small'>
+    <main class='<%= "u-p-5 u-p-3@small" unless content_for?(:fluid_layout) %>'>
       <%= content_for?(:content) ? yield(:content) : yield %>
     </main>
   <% else %>

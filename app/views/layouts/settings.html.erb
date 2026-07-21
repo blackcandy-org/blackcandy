@@ -5,9 +5,11 @@
     <div class='c-settings__content o-container o-container--narrow'>
       <%= yield %>
     </div>
-    <div class='c-settings__nav u-display-none@small'>
-      <%= render "settings/nav" %>
-    </div>
+    <% unless native_app? %>
+        <div class='c-settings__nav u-display-none@small'>
+          <%= render "settings/nav" %>
+        </div>
+    <% end %>
   </div>
 <% end %>
 

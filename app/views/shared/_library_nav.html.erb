@@ -1,4 +1,5 @@
-<nav class='u-display-none@small'>
+<% unless native_app? %>
+  <nav class='u-display-none@small'>
   <ul class='c-library-nav'>
     <li class='c-library-nav__item <%= "is-active" if current_page?(albums_path) %>'>
       <%= link_to t("label.albums"), albums_path %>
@@ -14,3 +15,4 @@
     </li>
   </ul>
 </nav>
+<% end %>
