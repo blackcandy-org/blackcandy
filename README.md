@@ -168,6 +168,7 @@ volumes:
 | FORCE_SSL                    | false     | Force all access to the app over SSL.                                                                                                                                                                                                                                                     |
 | DEMO_MODE                    | false     | Whether to enable demo mode, when demo mode is on, all users cannot access administrator privileges, even user is admin. And also users cannot change their profile.                                                                                                                      |
 | HTTP_PORT                    | 80        | The port that Black Candy listens on inside the container. Useful when you want to run Black Candy on a port other than 80.                                                                                                                                                               |
+| WEB_CONCURRENCY              |           | The number of [Puma](https://github.com/puma/puma) worker processes to run. By default Black Candy runs in single mode to keep memory usage low, which is enough for most use cases. Only set this to a number (or "auto" to match the number of available processors) to run Puma in cluster mode if you really need better performance, but it will cost more memory usage.                                          |
 
 ## Edge Version
 

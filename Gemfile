@@ -20,7 +20,7 @@ gem "cssbundling-rails", "~> 1.4.0"
 gem "jsbundling-rails", "~> 1.3.0"
 
 # Use Puma as the app server
-gem "puma", "~> 6.6.0"
+gem "puma", "~> 8.0.0"
 
 # Default database
 gem "sqlite3", "~> 2.7.0"
@@ -29,7 +29,7 @@ gem "sqlite3", "~> 2.7.0"
 gem "solid_cache", "~> 1.0.0"
 
 # Background job processing
-gem "solid_queue", "~> 1.1.0"
+gem "solid_queue", "~> 1.4.0"
 
 # Action Cable adapter
 gem "solid_cable", "~> 3.0.0"
