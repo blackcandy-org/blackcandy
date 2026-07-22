@@ -39,6 +39,8 @@ plugin :tmp_restart
 
 plugin :solid_queue
 
+solid_queue_mode :async if ENV.fetch("BACKGROUND_JOB_SUPERVISOR_MODE", "async") == "async"
+
 plugin :media_listener
 
 # Specify the PID file. Defaults to tmp/pids/server.pid in development.
