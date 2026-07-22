@@ -61,9 +61,7 @@ COPY --from=tianon/gosu /gosu /usr/local/bin/
 COPY --from=builder --chown=app:app /usr/local/bundle/ /usr/local/bundle/
 COPY --from=builder --chown=app:app /rails/ /rails/
 
-# Forwards media listener logs to stdout so they can be captured in docker logs.
-RUN ln -sf /dev/stdout /rails/log/media_listener_production.log \
-  && find /rails/tmp -type d -exec chmod 1777 '{}' +
+RUN find /rails/tmp -type d -exec chmod 1777 '{}' +
 
 ENTRYPOINT ["./bin/docker-entrypoint"]
 

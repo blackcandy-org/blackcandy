@@ -67,9 +67,6 @@ gem "listen", "~> 3.9.0"
 # For parallel media sync
 gem "parallel", "~> 1.25.0"
 
-# For daemonize library sync process
-gem "daemons", "~> 1.4.0"
-
 # Optional support for postgresql as database
 gem "pg", "~> 1.5.9"
 

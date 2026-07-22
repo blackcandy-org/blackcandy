@@ -33,10 +33,6 @@ allowed_sites_for_webmock = [
 
 WebMock.disable_net_connect!(allow_localhost: true, net_http_connect_on_start: true, allow: allowed_sites_for_webmock)
 
-MediaListener.configure do |config|
-  config.service_name = "media_listener_service_test"
-end
-
 MediaSyncJob.configure do |config|
   config.parallel_processor_count = 0
 end
