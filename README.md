@@ -133,7 +133,7 @@ If `SECRET_KEY_BASE` is not set, Black Candy will generate a new one on each sta
 
 ### Example
 
-And if you would like to use docker compose instead of the CLI commands:
+And if you would like to use docker compose to run Black Candy. Here is an example `docker-compose.yml` file.
 
 ```YAML
 services:
@@ -141,16 +141,16 @@ services:
     image: ghcr.io/blackcandy-org/blackcandy:latest
     restart: unless-stopped
     ports:
-      - "3000:80" # Don't forget to check for port conflicts on the host
+      - "3000:80"
     volumes:
-      - storage_data:/app/storage # Application Data storage
-      - ./media_data:/media_data # Your media goes here
+      - storage_data:/app/storage
+      - ./media_data:/media_data
     environment:
-      SECRET_KEY_BASE: fake_secret_key # Don't forget to generate one using 'openssl rand -hex 64' on the console
+      SECRET_KEY_BASE: fake_secret_key
       MEDIA_PATH: /media_data
 
 volumes:
-  storage_data: # Required to avoid database corruption issues.
+  storage_data:
 ```
 
 

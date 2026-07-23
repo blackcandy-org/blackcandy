@@ -136,6 +136,28 @@ docker run -e SECRET_KEY_BASE=your_generated_secret ghcr.io/blackcandy-org/black
 
 If `SECRET_KEY_BASE` is not set, Black Candy will generate a new one on each startup, which will invalidate all existing sessions.
 
+### Example
+
+And if you would like to use docker compose to run Black Candy. Here is an example `docker-compose.yml` file.
+
+```YAML
+services:
+  app:
+    image: ghcr.io/blackcandy-org/blackcandy:latest
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    volumes:
+      - storage_data:/app/storage
+      - ./media_data:/media_data
+    environment:
+      SECRET_KEY_BASE: fake_secret_key
+      MEDIA_PATH: /media_data
+
+volumes:
+  storage_data:
+```
+
 ## Environment Variables
 
 | Name                         | Default   | Description                                                                                                                                                                                                                                                                               |
