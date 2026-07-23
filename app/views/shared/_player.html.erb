@@ -1,13 +1,13 @@
 <div class='c-player c-backdrop' data-controller='player media-session'>
   <div class='c-player__header o-flex o-flex--align-center o-flex--justify-between'>
-    <div class="o-flex o-flex--align-center">
-      <div class="c-player__header__image">
+    <div class="o-flex o-flex--align-center o-flex__item--grow-1 u-w-0">
+      <div class="c-player__header__image o-flex__item--shrink-0">
         <div data-player-target='loader' class='c-overlay c-overlay--blur u-display-none'>
           <%= loader_tag %>
         </div>
         <img src="/images/default_album_small.png" data-player-target='image'>
       </div>
-      <div class='c-player__header__content'>
+      <div class='c-player__header__content o-flex__item--grow-1 u-w-0'>
         <h1 class='o-marquee u-mb-2 u-text-size-3'>
           <span class='o-marquee__content' data-player-target='songName'><%= t("label.not_playing") %></span>
         </h1>

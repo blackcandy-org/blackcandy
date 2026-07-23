@@ -1,7 +1,7 @@
 <div class='o-grid__item c-card u-mb-4'>
   <div class='c-card__image'>
     <%= link_to album_path(album) do %>
-      <%= cover_image_tag album, class: "u-image-fluid" %>
+      <%= cover_image_tag album, class: "c-cover" %>
     <% end %>
     <div class='c-card__image__actions' data-controller='bridge--album' data-bridge--album-id-value='<%= album.id %>'>
       <%= button_to(

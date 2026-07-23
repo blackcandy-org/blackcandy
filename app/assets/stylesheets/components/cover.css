@@ -1,5 +1,12 @@
 @layer components {
   .c-cover {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--cover-border-color);
+  }
+
+  .c-cover--shadow {
+    border: 0;
     box-shadow: var(--cover-shadow);
   }
 }

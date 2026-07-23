@@ -3,7 +3,7 @@
   <div class='c-dropdown__menu' data-dropdown-target="menu">
     <%= link_to t("label.settings"), setting_appearance_path, class: "c-dropdown__item u-display-none@small" %>
     <%= link_to t("label.settings"), setting_path, class: "c-dropdown__item u-display-none u-display-block@small", data: { "bridge--account-target": "menuItem", bridge_id: :settings } %>
-    <%= dialog_link_to t("label.about"), about_path, class: "c-dropdown__item",  data: { "bridge--account-target": "menuItem", bridge_id: :about }  %>
+    <%= dialog_link_to t("label.about"), about_path, class: "c-dropdown__item",  data: { "bridge--account-target": "menuItem", bridge_id: :about } %>
     <%= button_to t("button.logout"), my_session_path, method: :delete, form_class: "c-dropdown__item", data: { "bridge--account-target": "menuItem", bridge_id: :logout } %>
   </div>
 </details>

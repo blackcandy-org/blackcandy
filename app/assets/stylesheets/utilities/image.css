@@ -13,9 +13,4 @@
     width: var(--image-size-1);
     height: var(--image-size-1);
   }
-
-  .u-image-fluid {
-    max-width: 100%;
-    height: auto;
-  }
 }

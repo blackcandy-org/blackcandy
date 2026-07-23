@@ -8,7 +8,7 @@
     --link-active-color: var(--primary-color);
 
     /* Body */
-    --body-bg-color: light-dark(var(--color-white), var(--color-grey-900));
+    --body-bg-color: light-dark(var(--color-white), var(--color-black));
 
     /* Text */
     --text-primary-color: light-dark(var(--color-grey-900), var(--color-white));
@@ -16,7 +16,7 @@
     --text-success-color: var(--color-green);
 
     /* Sidebar */
-    --sidebar-bg-color: light-dark(var(--color-light), var(--color-grey-800));
+    --sidebar-bg-color: light-dark(var(--color-light), var(--color-dark));
     --sidebar-border-color: light-dark(var(--color-grey-200), var(--color-grey-700));
 
     /* Progress bar */
@@ -26,7 +26,7 @@
     --btn-color: var(--color-white);
     --btn-primary-bg-color: var(--color-purple);
     --btn-primary-hover-bg-color: light-dark(var(--color-purple-shade), var(--color-purple-tint));
-    --btn-secondary-bg-color: rgb(from var(--color-purple) r g b / 0.25);
+    --btn-secondary-bg-color: rgb(from var(--color-purple) r g b / 0.45);
     --btn-secondary-hover-bg-color: light-dark(rgb(from var(--color-purple-shade) r g b / 0.25), rgb(from var(--color-purple-tint) r g b / 0.25));
     --btn-secondary-color: light-dark(var(--color-purple-light), var(--primary-color));
     --btn-outline-color: light-dark(var(--color-grey-900), var(--color-white));
@@ -112,10 +112,10 @@
 
     /* Nav */
     --nav-shadow:
-      0 1px 0 rgb(from light-dark(var(--color-grey-300), var(--color-black)) r g b / 0.12),
-      0 1px 3px rgb(from light-dark(var(--color-grey-300), var(--color-black)) r g b / 0.15);
-    --nav-primary-bg-color: rgb(from light-dark(var(--color-white), var(--color-grey-800)) r g b / 0.9);
-    --nav-secondary-bg-color: rgb(from light-dark(var(--color-light), var(--color-grey-800)) r g b / 0.8);
+      0 1px 0 rgb(from light-dark(var(--color-grey-300), var(--color-grey-600)) r g b / 0.12),
+      0 1px 3px rgb(from light-dark(var(--color-grey-300), var(--color-grey-600)) r g b / 0.15);
+    --nav-primary-bg-color: rgb(from light-dark(var(--color-white), var(--color-black)) r g b / 0.9);
+    --nav-secondary-bg-color: rgb(from light-dark(var(--color-light), var(--color-dark)) r g b / 0.8);
 
     /* Bottom nav */
     --bottom-nav-color: light-dark(var(--color-grey-500), var(--color-grey-400));
@@ -154,6 +154,7 @@
     --backdrop-overlay-color: rgb(from light-dark(var(--color-white), var(--color-black)) r g b / 0.65);
 
     /* Cover */
+    --cover-border-color: light-dark(var(--color-grey-100), var(--color-grey-900));
     --cover-shadow:
       0 1px 2px rgb(from var(--color-black) r g b / 0.08),
       0 4px 12px rgb(from var(--color-black) r g b / 0.1);
