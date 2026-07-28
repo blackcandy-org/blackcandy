@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PlaylistsController < ApplicationController
-  render_in_dialog :new, :edit
+  render_in_dialog only: [ :new, :edit ]
 
   before_action :find_playlist, only: [ :edit, :destroy, :update ]
   before_action :get_sort_option, only: [ :index ]

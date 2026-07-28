@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AlbumsController < ApplicationController
-  render_in_dialog :edit
+  render_in_dialog only: :edit
 
   before_action :require_admin, only: [ :edit, :update ]
   before_action :find_album, except: [ :index ]

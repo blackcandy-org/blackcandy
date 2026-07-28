@@ -3,25 +3,20 @@ module DialogRendering
 
   included do
     layout -> { "dialog" if dialog? && !native_app? }
-    class_attribute :dialog_actions, default: [], instance_writer: false
     helper_method :dialog?
     before_action :render_dialog_frame
   end
 
   class_methods do
-    def render_in_dialog(*actions)
-      self.dialog_actions = actions.empty? ? :all : actions.map(&:to_s)
-    end
-
-    def dialog?(action)
-      dialog_actions == :all || dialog_actions.include?(action.to_s)
+    def render_in_dialog(**options)
+      before_action(**options) { @dialog = true }
     end
   end
 
   private
 
   def dialog?
-    self.class.dialog?(action_name)
+    !!@dialog
   end
 
   def render_dialog_frame
