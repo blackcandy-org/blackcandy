@@ -44,6 +44,7 @@ en:
     appearance: 'Appearance'
     edit_album: 'Edit Album'
     edit_artist: 'Edit Artist'
+    edit_song: 'Edit Song'
     album: 'Album'
     artist: 'Artist'
     sort: 'Sort'
@@ -100,6 +101,7 @@ en:
     allow_transcode_lossless: 'Allow Transcode Lossless'
     transcode_bitrate: 'Transcode Bitrate'
     password_confirmation: 'Password Confirmation'
+    lyrics: 'Lyrics File'
 
   error:
     login: 'Wrong email or password'
@@ -125,6 +127,7 @@ en:
     enable_media_listener: "Media listener can automatically sync with library changes."
     enable_parallel_media_sync: "Parallel media sync only available when using PostgreSQL as database."
     media_listener_running: "Listener is running"
+    replace_lyrics: "This song already has lyrics. Uploading a new file will replace them."
 
   activerecord:
     errors:
@@ -132,4 +135,5 @@ en:
         not_exist: 'does not exist'
         unreadable: 'is unreadable'
         invalid_content_type: "has an invalid content type"
+        too_large: "is too large"
         not_supported_with_sqlite: "is not supported with SQLite"

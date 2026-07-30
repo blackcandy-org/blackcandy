@@ -39,6 +39,17 @@ class MediaFile
 
     private
 
+    def extract_lyrics_from(tag)
+      lyrics = tag.lyrics
+      return if lyrics.blank?
+
+      {
+        io: StringIO.new(lyrics),
+        filename: "lyrics.lrc",
+        content_type: "text/plain"
+      }
+    end
+
     def extract_image_from(tag)
       image = tag.images.first
       return unless image.present?
@@ -67,7 +78,8 @@ class MediaFile
         discnum: tag.disc,
         duration: tag.duration.round,
         bit_depth: tag.bit_depth,
-        image: extract_image_from(tag)
+        image: extract_image_from(tag),
+        lyrics: extract_lyrics_from(tag)
       }.tap do |info|
         info[:year] = begin
           Date.strptime(tag.year, "%Y").year

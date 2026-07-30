@@ -138,6 +138,18 @@ class ActiveSupport::TestCase
     end
   end
 
+  def with_external_lyrics_file(content, extension: ".lrc")
+    create_tmp_dir(from: Rails.root.join("test/fixtures/files")) do |tmp_dir|
+      song = songs(:mp3_sample)
+      song.update!(file_path: File.join(tmp_dir, "artist1_album2.mp3"))
+
+      lyrics_file_path = File.join(tmp_dir, "#{File.basename(song.file_path, ".*")}#{extension}")
+      File.binwrite(lyrics_file_path, content)
+
+      yield song, lyrics_file_path
+    end
+  end
+
   def with_forgery_protection
     old = ActionController::Base.allow_forgery_protection
     ActionController::Base.allow_forgery_protection = true

@@ -16,7 +16,9 @@ Rails.application.routes.draw do
 
   resource :library, only: [ :show ]
   resources :artists, only: [ :index, :show, :edit, :update ]
-  resources :songs, only: [ :index, :show ]
+  resources :songs, only: [ :index, :show, :edit, :update ] do
+    resource :lyrics, only: [ :show ], module: :songs
+  end
   resources :albums, only: [ :index, :show, :edit, :update ]
 
   resources :users, except: [ :show ] do
