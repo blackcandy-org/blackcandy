@@ -45,6 +45,27 @@
     {
       "warning_type": "File Access",
       "warning_code": 16,
+      "fingerprint": "597e2ae4cc0cb7f3125fbbcf3ad1af151e91d350df3d77628275420b2ea566e4",
+      "check_name": "SendFile",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/songs/lyrics_controller.rb",
+      "line": 10,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(Song.find(params[:song_id]).external_lyrics_file_path, :type => \"text/plain\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Songs::LyricsController",
+        "method": "show"
+      },
+      "user_input": "Song.find(params[:song_id]).external_lyrics_file_path",
+      "confidence": "Medium",
+      "cwe_id": [22],
+      "note": "external_lyrics_file_path resolves a file name from Dir.children of the song's own directory, so the result is always inside that directory. Song#file_path is populated by the server-side media library scanner, never from user input."
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
       "fingerprint": "980458fbea02714d42ffd09e0ea5a5e811d201a8453747da0e0208bf57e82852",
       "check_name": "SendFile",
       "message": "Model attribute used in file name",
@@ -64,6 +85,6 @@
       "note": "transcode_cache_file_path is constructed entirely server-side from a fixed cache root, song.id, Base64-encoded md5_hash, and Setting.transcode_bitrate. No user-supplied path segments."
     }
   ],
-  "updated": "2026-05-14 19:30:00 +0900",
+  "updated": "2026-07-30 20:21:23 +0900",
   "brakeman_version": "8.0.4"
 }
