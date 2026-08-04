@@ -18,7 +18,10 @@ class Playlists::SongsController < ApplicationController
       format.html { redirect_to({ action: "index" }, notice: t("notice.added_to_playlist")) }
     end
   rescue ActiveRecord::RecordNotUnique
-    raise BlackCandy::DuplicatePlaylistSong
+    respond_to do |format|
+      format.json { render_json_error("DuplicatePlaylistSong", t("error.already_in_playlist"), :bad_request) }
+      format.html { redirect_back_or_to root_path, alert: t("error.already_in_playlist") }
+    end
   end
 
   def destroy

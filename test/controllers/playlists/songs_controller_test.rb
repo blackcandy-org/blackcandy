@@ -16,15 +16,15 @@ class Playlists::SongsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should add songs to playlist" do
-    post playlist_songs_url(@playlist), params: { song_id: 3 }, xhr: true
+    post playlist_songs_url(@playlist), params: { song_id: 3 }
     assert_equal [ 1, 2, 3 ], @playlist.reload.song_ids
   end
 
   test "should remove songs from playlist" do
-    delete playlist_song_url(@playlist, id: 1), xhr: true
+    delete playlist_song_url(@playlist, id: 1)
     assert_equal [ 2 ], @playlist.reload.song_ids
 
-    delete playlist_song_url(@playlist, id: 2), xhr: true
+    delete playlist_song_url(@playlist, id: 2)
     assert_equal [], @playlist.reload.song_ids
   end
 
@@ -34,7 +34,7 @@ class Playlists::SongsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should reorder songs from playlist" do
-    post playlist_songs_url(@playlist), params: { song_id: 3 }, xhr: true
+    post playlist_songs_url(@playlist), params: { song_id: 3 }
     assert_equal [ 1, 2, 3 ], @playlist.reload.song_ids
 
     put move_playlist_song_url(@playlist, id: 1), params: { destination_song_id: 2 }
@@ -53,7 +53,7 @@ class Playlists::SongsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should has error flash when song alreay in playlist" do
-    post playlist_songs_url(@playlist), params: { song_id: 1 }, xhr: true
+    post playlist_songs_url(@playlist), params: { song_id: 1 }
     assert flash[:alert].present?
   end
 

@@ -30,31 +30,31 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should has error flash when failed to create user" do
-    post users_url, params: { user: { email: "test.com", password: "foobar" } }, xhr: true
+    post users_url, params: { user: { email: "test.com", password: "foobar" } }
     assert flash[:alert].present?
   end
 
   test "should update user" do
     user = users(:visitor1)
 
-    patch user_url(user), params: { user: { email: "visitor_updated@blackcandy.com" } }, xhr: true
+    patch user_url(user), params: { user: { email: "visitor_updated@blackcandy.com" } }
     assert_equal "visitor_updated@blackcandy.com", user.reload.email
   end
 
   test "should has error flash when failed to update user" do
-    patch user_url(users(:visitor1)), params: { user: { email: "test.com", password: "foobar" } }, xhr: true
+    patch user_url(users(:visitor1)), params: { user: { email: "test.com", password: "foobar" } }
     assert flash[:alert].present?
   end
 
   test "should destroy user" do
     users_count = User.count
 
-    delete user_url(users(:visitor2)), xhr: true
+    delete user_url(users(:visitor2))
     assert_equal users_count - 1, User.count
   end
 
   test "should not let user destroy self" do
-    delete user_url(users(:admin)), xhr: true
+    delete user_url(users(:admin))
     assert_response :forbidden
   end
 
@@ -73,10 +73,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     post users_url, params: { user: { email: "test@test.com", password: "foobar" } }
     assert_response :forbidden
 
-    patch user_url(users(:visitor2)), params: { user: { email: "visitor_updated@blackcandy.com" } }, xhr: true
+    patch user_url(users(:visitor2)), params: { user: { email: "visitor_updated@blackcandy.com" } }
     assert_response :forbidden
 
-    delete user_url(users(:visitor2)), xhr: true
+    delete user_url(users(:visitor2))
     assert_response :forbidden
   end
 
@@ -180,13 +180,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       post users_url, params: { user: { email: "test@test.com", password: "foobar" } }
       assert_response :forbidden
 
-      delete user_url(users(:visitor2)), xhr: true
+      delete user_url(users(:visitor2))
       assert_response :forbidden
 
       get edit_user_url(users(:visitor2))
       assert_response :forbidden
 
-      patch user_url(users(:visitor2)), params: { user: { email: "visitor_updated@blackcandy.com" } }, xhr: true
+      patch user_url(users(:visitor2)), params: { user: { email: "visitor_updated@blackcandy.com" } }
       assert_response :forbidden
     end
   end

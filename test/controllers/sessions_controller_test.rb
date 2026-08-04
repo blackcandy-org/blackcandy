@@ -28,7 +28,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should has error flash when failed to create session" do
-    post sessions_url, params: { session: { email: @user.email, password: "fake" } }, xhr: true
+    post sessions_url, params: { session: { email: @user.email, password: "fake" } }
     assert flash[:alert].present?
     assert_empty @user.sessions
   end

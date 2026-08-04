@@ -13,7 +13,7 @@ class Settings::TranscodingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update transcoding setting" do
     login users(:admin)
-    patch setting_transcoding_url, params: { setting: { transcode_bitrate: 192 } }, xhr: true
+    patch setting_transcoding_url, params: { setting: { transcode_bitrate: 192 } }
 
     assert_equal 192, Setting.transcode_bitrate
   end
