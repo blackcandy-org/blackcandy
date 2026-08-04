@@ -19,12 +19,6 @@ module BlackCandy
     end
   end
 
-  class DuplicatePlaylistSong < BaseError
-    def message
-      I18n.t("error.already_in_playlist")
-    end
-  end
-
   class Unauthorized < BaseError
     def message
       I18n.t("error.unauthorized")

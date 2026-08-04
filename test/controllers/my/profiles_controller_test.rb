@@ -15,12 +15,12 @@ module My
     end
 
     test "should update current user" do
-      patch my_profile_url, params: { user: { email: "visitor_updated@blackcandy.com" } }, xhr: true
+      patch my_profile_url, params: { user: { email: "visitor_updated@blackcandy.com" } }
       assert_equal "visitor_updated@blackcandy.com", @user.reload.email
     end
 
     test "should has error flash when failed to update" do
-      patch my_profile_url, params: { user: { email: "invalid" } }, xhr: true
+      patch my_profile_url, params: { user: { email: "invalid" } }
       assert flash[:alert].present?
     end
 
@@ -53,7 +53,7 @@ module My
         get edit_my_profile_url
         assert_response :forbidden
 
-        patch my_profile_url, params: { user: { email: "visitor_updated@blackcandy.com" } }, xhr: true
+        patch my_profile_url, params: { user: { email: "visitor_updated@blackcandy.com" } }
         assert_response :forbidden
       end
     end

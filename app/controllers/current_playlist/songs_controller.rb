@@ -33,7 +33,10 @@ class CurrentPlaylist::SongsController < Playlists::SongsController
       end
     end
   rescue ActiveRecord::RecordNotUnique
-    raise BlackCandy::DuplicatePlaylistSong
+    respond_to do |format|
+      format.json { render_json_error("DuplicatePlaylistSong", t("error.already_in_playlist"), :bad_request) }
+      format.turbo_stream { render turbo_stream: stream_flash(type: :alert, message: t("error.already_in_playlist")) }
+    end
   end
 
   private

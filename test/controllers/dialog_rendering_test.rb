@@ -35,6 +35,39 @@ class DialogRenderingTest < ActionDispatch::IntegrationTest
     assert_select "turbo-frame#turbo-dialog turbo-frame#turbo-dialog-content[src=?]", "/about"
   end
 
+  test "redirects back to the referer without the dialog param" do
+    playlist = playlists(:playlist1)
+    login playlist.user
+
+    post playlist_songs_url(playlist),
+      params: { song_id: 1 },
+      headers: { "Referer" => "http://www.example.com/albums?query=test&dialog=#{signed_dialog_path("/playlists/selections")}" }
+
+    assert_redirected_to "http://www.example.com/albums?query=test"
+  end
+
+  test "redirects back to the referer as is when it carries no dialog param" do
+    playlist = playlists(:playlist1)
+    login playlist.user
+
+    post playlist_songs_url(playlist),
+      params: { song_id: 1 },
+      headers: { "Referer" => "http://www.example.com/albums?query=test&sort=name" }
+
+    assert_redirected_to "http://www.example.com/albums?query=test&sort=name"
+  end
+
+  test "redirects back to the fallback when the referer is not a valid url" do
+    playlist = playlists(:playlist1)
+    login playlist.user
+
+    post playlist_songs_url(playlist),
+      params: { song_id: 1 },
+      headers: { "Referer" => "http:// not a url" }
+
+    assert_redirected_to root_url
+  end
+
   private
 
   def signed_dialog_path(path)
