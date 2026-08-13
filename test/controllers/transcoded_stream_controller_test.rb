@@ -104,4 +104,20 @@ class TranscodedStreamControllerTest < ActionDispatch::IntegrationTest
       assert_equal "audio/mpeg", @response.get_header("Content-Type")
     end
   end
+
+  test "should not treat an empty cache file as valid" do
+    Stream.stub(:new, @stream_mock) do
+      stream = Stream.new(songs(:flac_sample))
+
+      # An empty cache file must be considered invalid so it gets regenerated
+      # instead of being sent as a 0-byte response.
+      FileUtils.mkdir_p(File.dirname(stream.transcode_cache_file_path))
+      File.write(stream.transcode_cache_file_path, "")
+
+      get new_transcoded_stream_url(song_id: songs(:flac_sample).id), headers: api_token_header(@user)
+      assert_response :success
+      assert_not_empty response.body
+      assert_not File.zero?(stream.transcode_cache_file_path)
+    end
+  end
 end

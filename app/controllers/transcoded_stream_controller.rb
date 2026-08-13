@@ -36,12 +36,18 @@ class TranscodedStreamController < ApplicationController
   end
 
   def valid_cache?
+    cache_file = @stream.transcode_cache_file_path
+    return false unless File.exist?(cache_file)
+
+    # A cache file that is empty or has not been fully written is invalid.
+    return false if File.zero?(cache_file)
+
     # Compare duration of cache file and original file to check integrity of cache file.
     # Because the different format of the file, the duration will have a little difference,
     # so the duration difference in two seconds are considered no problem.
-    cache_file_tag = WahWah.open(@stream.transcode_cache_file_path)
+    cache_file_tag = WahWah.open(cache_file)
     (@stream.duration - cache_file_tag.duration).abs <= 2
-  rescue
+  rescue StandardError
     false
   end
 end
