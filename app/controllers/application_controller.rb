@@ -75,7 +75,21 @@ class ApplicationController < ActionController::Base
 
   def redirect_back_with_referer_params(fallback_location:)
     if params[:referer_url].present?
-      redirect_to params[:referer_url]
+      referer_url = begin
+        URI.parse(params[:referer_url].to_s)
+      rescue URI::InvalidURIError
+        nil
+      end
+
+      # Only redirect to an on-site URL to avoid an open redirect.
+      # The `referer_url` param is user-influenced (it can be embedded in a page URL),
+      # so pointing it at an arbitrary external host lets an attacker craft a link that
+      # silently drops the user off on a phishing domain.
+      if referer_url && (referer_url.host.blank? || referer_url.host == request.host)
+        redirect_to params[:referer_url]
+      else
+        redirect_back_or_to(fallback_location)
+      end
     else
       redirect_back_or_to(fallback_location)
     end

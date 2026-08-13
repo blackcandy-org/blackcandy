@@ -88,7 +88,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resource :authentication, only: [ :create, :destroy ]
       resource :system, only: [ :show ]
-      resources :songs, only: [ :show ]
+      resources :songs, only: [ :index, :show ]
+      resource :media_syncing, only: [ :create ]
       resources :stream, only: [ :new ]
       resources :transcoded_stream, only: [ :new ]
 

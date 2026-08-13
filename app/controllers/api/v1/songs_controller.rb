@@ -3,6 +3,10 @@
 module Api
   module V1
     class SongsController < ApiController
+      def index
+        @songs = Song.includes(:artist, :album).all
+      end
+
       def show
         @song = Song.find(params[:id])
       end
