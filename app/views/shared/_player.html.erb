@@ -1,4 +1,4 @@
-<div class='c-player c-backdrop' data-controller='player media-session'>
+<div class='c-player c-backdrop' data-controller='media-session' data-player-target='backdrop'>
   <div class='c-player__header o-flex o-flex--align-center o-flex--justify-between'>
     <div class="o-flex o-flex--align-center o-flex__item--grow-1 u-w-0">
       <div class="c-player__header__image o-flex__item--shrink-0">
@@ -59,7 +59,7 @@
           <%= icon_tag "fast-forward", size: "large", title: t("label.next_song") %>
         </button>
       </div>
-      <button class='c-button c-button--icon'>
+      <button class='c-button c-button--icon' data-action='click->player#toggleLyrics'>
         <%= icon_tag "lyrics", size: "small", title: t("label.lyrics") %>
       </button>
     </div>

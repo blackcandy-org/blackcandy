@@ -1,0 +1,12 @@
+<% if @lines.empty? %>
+  <%= empty_alert_tag message: t("label.no_lyrics") %>
+<% else %>
+  <div
+    class='c-lyrics__lines'
+    data-controller='lyrics'
+    data-action='click->lyrics#seek wheel->lyrics#suspendFollowing:passive touchmove->lyrics#suspendFollowing:passive'>
+    <% @lines.each do |line| %>
+      <%= tag.p line.content, class: "c-lyrics__line", data: { lyrics_target: "line", time: line.time } %>
+    <% end %>
+  </div>
+<% end %>

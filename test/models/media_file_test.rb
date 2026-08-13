@@ -64,7 +64,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 1984, tag_info[:year]
     assert_equal "Rock", tag_info[:genre]
     assert_equal cover_image_binary, tag_image_binary
-    assert_equal "lyrics test", tag_info[:lyrics][:io].read
+    assert_equal "lyrics test", tag_info[:lyrics]
     assert_equal 0, tag_info[:discnum]
   end
 
@@ -82,7 +82,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 1984, tag_info[:year]
     assert_equal "Rock", tag_info[:genre]
     assert_equal cover_image_binary, tag_image_binary
-    assert_equal "lyrics test", tag_info[:lyrics][:io].read
+    assert_equal "lyrics test", tag_info[:lyrics]
     assert_equal 0, tag_info[:discnum]
   end
 
@@ -97,7 +97,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 8, tag_info[:duration]
     assert_equal 1984, tag_info[:year]
     assert_equal "Rock", tag_info[:genre]
-    assert_equal "lyrics test", tag_info[:lyrics][:io].read
+    assert_equal "lyrics test", tag_info[:lyrics]
     assert_nil tag_info[:discnum]
   end
 
@@ -130,7 +130,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 8, tag_info[:duration]
     assert_equal 1984, tag_info[:year]
     assert_equal "Rock", tag_info[:genre]
-    assert_equal "lyrics test", tag_info[:lyrics][:io].read
+    assert_equal "lyrics test", tag_info[:lyrics]
     assert_nil tag_info[:discnum]
   end
 
@@ -148,7 +148,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 1984, tag_info[:year]
     assert_equal "Rock", tag_info[:genre]
     assert_equal cover_image_binary, tag_image_binary
-    assert_equal "lyrics test", tag_info[:lyrics][:io].read
+    assert_equal "lyrics test", tag_info[:lyrics]
     assert_nil tag_info[:discnum]
   end
 
@@ -163,7 +163,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 8, tag_info[:duration]
     assert_equal 1984, tag_info[:year]
     assert_equal "Rock", tag_info[:genre]
-    assert_equal "lyrics test", tag_info[:lyrics][:io].read
+    assert_equal "lyrics test", tag_info[:lyrics]
     assert_nil tag_info[:discnum]
   end
 
@@ -178,7 +178,7 @@ class MediaFileTest < ActiveSupport::TestCase
     assert_equal 8, tag_info[:duration]
     assert_nil tag_info[:year]
     assert_nil tag_info[:genre]
-    assert_equal "lyrics test", tag_info[:lyrics][:io].read
+    assert_equal "lyrics test", tag_info[:lyrics]
     assert_nil tag_info[:discnum]
   end
 
@@ -197,12 +197,5 @@ class MediaFileTest < ActiveSupport::TestCase
 
     assert_equal "image/jpg", tag.images.first[:mime_type]
     assert_equal "image/jpeg", MediaFile.file_info(file_fixture("artist2_album3.wav"))[:image][:content_type]
-  end
-
-  test "should get lyrics file name and content type" do
-    lyrics = MediaFile.file_info(file_fixture("artist1_album2.mp3"))[:lyrics]
-
-    assert_equal "lyrics.lrc", lyrics[:filename]
-    assert_equal "text/plain", lyrics[:content_type]
   end
 end

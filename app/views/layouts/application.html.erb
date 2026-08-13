@@ -13,13 +13,17 @@
     </main>
   <% else %>
     <div class='o-flex'>
-      <aside id='js-sidebar' class='o-flex__item o-flex__item--shrink-0 c-sidebar'>
+      <aside id='js-sidebar' class='o-flex__item o-flex__item--shrink-0 c-sidebar' data-controller='player'>
         <div class='o-flex o-flex--column-reverse u-position-sticky-top u-overflow-auto u-vh-100'>
           <div class='o-flex__item o-flex__item--shrink-0 u-p-2 u-pt-0'>
             <%= render "shared/player" %>
           </div>
           <div class='o-flex__item o-flex__item--grow-1 u-h-0'>
-            <%= turbo_frame_tag "turbo-playlist", src: current_playlist_songs_path, class: "u-h-100 o-flex o-flex--column" %>
+            <%= turbo_frame_tag "turbo-playlist", src: current_playlist_songs_path, class: "u-h-100 o-flex o-flex--column", data: { "player-target" => "playlistFrame" } %>
+            <%= turbo_frame_tag "turbo-lyrics", loading: "lazy", class: "c-lyrics u-display-none", data: { "player-target" => "lyricsFrame" } do %>
+              <%= loader_tag class: "c-lyrics__loader" %>
+              <%= empty_alert_tag message: t("label.no_lyrics") %>
+            <% end %>
           </div>
         </div>
       </aside>

@@ -84,13 +84,9 @@ class Media
 
       attach_cover_image(album, file_info[:image])
 
-      song = Song.create_or_find_by!(md5_hash: file_info[:md5_hash]) do |item|
+      Song.create_or_find_by!(md5_hash: file_info[:md5_hash]) do |item|
         item.attributes = song_info(file_info).merge(album_id: album.id, artist_id: artist.id)
       end
-
-      attach_lyrics(song, file_info[:lyrics])
-
-      song
     end
 
     def attach_cover_image(album, image)
@@ -99,14 +95,8 @@ class Media
       album.cover_image.attach(image)
     end
 
-    def attach_lyrics(song, lyrics)
-      return if lyrics.blank? || song.lyrics.attached?
-
-      song.lyrics.attach(lyrics)
-    end
-
     def song_info(file_info)
-      file_info.slice(:name, :tracknum, :discnum, :duration, :file_path, :file_path_hash, :bit_depth).compact
+      file_info.slice(:name, :tracknum, :discnum, :duration, :file_path, :file_path_hash, :bit_depth, :lyrics).compact
     end
 
     def album_info(file_info)

@@ -99,20 +99,16 @@ class MediaTest < ActiveSupport::TestCase
     end
   end
 
-  test "should attach lyrics from embedded lyrics after synced" do
+  test "should set lyrics from embedded lyrics after synced" do
     Media.sync(:added, [ file_fixture("artist1_album2.mp3") ])
 
-    song = Song.find_by(name: "mp3_sample")
-
-    assert song.lyrics.attached?
-    assert_equal "lyrics.lrc", song.lyrics.filename.to_s
-    assert_equal "lyrics test", song.lyrics.download
+    assert_equal "lyrics test", Song.find_by(name: "mp3_sample").lyrics
   end
 
-  test "should not attach lyrics after synced when file has no lyrics" do
+  test "should not set lyrics after synced when file has no lyrics" do
     Media.sync(:added, [ file_fixture("artist2_album3.wav") ])
 
-    assert_not Song.find_by(name: "wav_sample").lyrics.attached?
+    assert_nil Song.find_by(name: "wav_sample").lyrics
   end
 
   test "should set album attributes after synced" do

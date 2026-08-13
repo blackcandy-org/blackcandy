@@ -68,16 +68,16 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
     song = songs(:mp3_sample)
     login users(:admin)
 
-    assert_changes -> { song.reload.lyrics.attached? } do
-      patch song_url(song), params: { song: { lyrics: fixture_file_upload("sample.lrc", "text/plain") } }
+    assert_changes -> { song.reload.lyrics } do
+      patch song_url(song), params: { song: { lyrics_file: fixture_file_upload("sample.lrc", "text/plain") } }
     end
 
-    assert_includes song.lyrics.download, "First line of lyrics"
+    assert_includes song.lyrics, "First line of lyrics"
   end
 
   test "should has error flash when failed to update song" do
     login users(:admin)
-    patch song_url(songs(:mp3_sample)), params: { song: { lyrics: fixture_file_upload("cover_image.jpg", "image/jpeg") } }
+    patch song_url(songs(:mp3_sample)), params: { song: { lyrics_file: fixture_file_upload("cover_image.jpg", "image/jpeg") } }
 
     assert flash[:alert].present?
   end
@@ -88,7 +88,7 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
     get edit_song_url(songs(:mp3_sample))
     assert_response :forbidden
 
-    patch song_url(songs(:mp3_sample)), params: { song: { lyrics: fixture_file_upload("sample.lrc", "text/plain") } }
+    patch song_url(songs(:mp3_sample)), params: { song: { lyrics_file: fixture_file_upload("sample.lrc", "text/plain") } }
     assert_response :forbidden
   end
 
@@ -99,7 +99,7 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
       get edit_song_url(songs(:mp3_sample))
       assert_response :forbidden
 
-      patch song_url(songs(:mp3_sample)), params: { song: { lyrics: fixture_file_upload("sample.lrc", "text/plain") } }
+      patch song_url(songs(:mp3_sample)), params: { song: { lyrics_file: fixture_file_upload("sample.lrc", "text/plain") } }
       assert_response :forbidden
     end
   end
@@ -107,9 +107,9 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
   test "should update lyrics for song via api" do
     song = songs(:mp3_sample)
 
-    assert_changes -> { song.reload.lyrics.attached? } do
+    assert_changes -> { song.reload.lyrics } do
       patch song_url(song),
-        params: { song: { lyrics: fixture_file_upload("sample.lrc", "text/plain") } },
+        params: { song: { lyrics_file: fixture_file_upload("sample.lrc", "text/plain") } },
         headers: api_token_header(users(:admin)).merge("Accept" => "application/json")
     end
 
@@ -119,7 +119,7 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
 
   test "should return error response when failed to update song via api" do
     patch song_url(songs(:mp3_sample)),
-      params: { song: { lyrics: fixture_file_upload("cover_image.jpg", "image/jpeg") } },
+      params: { song: { lyrics_file: fixture_file_upload("cover_image.jpg", "image/jpeg") } },
       headers: api_token_header(users(:admin)).merge("Accept" => "application/json")
 
     assert_response :unprocessable_entity

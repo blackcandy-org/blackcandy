@@ -128,6 +128,10 @@ class ActiveSupport::TestCase
     File.read(file_path).force_encoding("BINARY").strip
   end
 
+  def uploaded_file(file_name, content_type: "text/plain")
+    Rack::Test::UploadedFile.new(file_fixture(file_name), content_type)
+  end
+
   def stub_file_metadata(file_path, attributes = {})
     media_file_mock = MediaFileMock.new(file_path, attributes)
 

@@ -1,0 +1,52 @@
+@layer components {
+  .c-lyrics {
+    display: block;
+    position: relative;
+    height: 100%;
+
+    &[busy] {
+      > .c-lyrics__loader {
+        display: block;
+      }
+
+      > *:not(.c-lyrics__loader) {
+        visibility: hidden;
+      }
+    }
+  }
+
+  .c-lyrics__loader {
+    display: none;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+  }
+
+  .c-lyrics__lines {
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    padding: var(--spacing-4);
+  }
+
+  .c-lyrics__line {
+    margin-bottom: var(--spacing-4);
+    font-size: var(--font-size-4);
+    font-weight: bold;
+    color: var(--lyrics-line-color);
+    transition: color 0.2s;
+
+    &.is-active {
+      color: var(--lyrics-line-active-color);
+    }
+
+    &[data-time] {
+      cursor: pointer;
+
+      &:hover {
+        color: var(--lyrics-line-active-color);
+      }
+    }
+  }
+}

@@ -3,52 +3,57 @@
 require "test_helper"
 
 class Song::LyricsTest < ActiveSupport::TestCase
-  test "should attach lyrics from lyrics file" do
+  test "should get lyrics lines" do
     song = songs(:mp3_sample)
+    song.update!(lyrics: "[00:01.00]first\n[00:02.00]second")
 
-    assert song.lyrics.attach(io: file_fixture("sample.lrc").open, filename: "sample.lrc", content_type: "text/plain")
-    assert song.lyrics.attached?
-    assert_equal "sample.lrc", song.lyrics.filename.to_s
-    assert_equal "text/plain", song.lyrics.content_type
-    assert_includes song.lyrics.download, "First line of lyrics"
+    assert_equal [ 1.0, 2.0 ], song.lyrics_lines.map(&:time)
+    assert_equal [ "first", "second" ], song.lyrics_lines.map(&:content)
   end
 
-  test "should replace attached lyrics with new lyrics file" do
+  test "should get no lyrics lines when song has no lyrics" do
+    assert_empty songs(:mp3_sample).lyrics_lines
+  end
+
+  test "should get lyrics content from external lyrics file when song has no lyrics" do
+    with_external_lyrics_file("[00:01.00]external") do |song|
+      assert_equal "[00:01.00]external", song.lyrics_content
+      assert_equal [ "external" ], song.lyrics_lines.map(&:content)
+    end
+  end
+
+  test "should get lyrics content from external lyrics file with uppercase extension" do
+    with_external_lyrics_file("[00:01.00]external", extension: ".LRC") do |song|
+      assert_equal "[00:01.00]external", song.lyrics_content
+    end
+  end
+
+  test "should get lyrics content from lyrics column first when song also has external lyrics file" do
+    with_external_lyrics_file("[00:01.00]external") do |song|
+      song.update!(lyrics: "[00:01.00]saved")
+
+      assert_equal "[00:01.00]saved", song.lyrics_content
+    end
+  end
+
+  test "should set lyrics from lyrics file" do
     song = songs(:mp3_sample)
-    song.lyrics.attach(io: StringIO.new("old lyrics"), filename: "old.lrc", content_type: "text/plain")
 
-    song.lyrics.attach(io: file_fixture("sample.lrc").open, filename: "sample.lrc", content_type: "text/plain")
-
-    assert_includes song.lyrics.download, "First line of lyrics"
+    assert song.update(lyrics_file: uploaded_file("sample.lrc"))
+    assert_includes song.lyrics, "First line of lyrics"
   end
 
   test "should get error when lyrics file format is invalid" do
     song = songs(:mp3_sample)
 
-    assert_not song.lyrics.attach(io: file_fixture("cover_image.jpg").open, filename: "cover_image.jpg", content_type: "image/jpeg")
-    assert song.errors[:lyrics].present?
+    assert_not song.update(lyrics_file: uploaded_file("cover_image.jpg", content_type: "image/jpeg"))
+    assert song.errors[:lyrics_file].present?
   end
 
-  test "should get error when lyrics file is too large" do
+  test "should get error when lyrics are too long" do
     song = songs(:mp3_sample)
 
-    assert_not song.lyrics.attach(io: StringIO.new("a" * (Song::LYRICS_FILE_MAX_SIZE + 1)), filename: "sample.lrc", content_type: "text/plain")
+    assert_not song.update(lyrics: "a" * (Song::LYRICS_MAX_LENGTH + 1))
     assert song.errors[:lyrics].present?
-  end
-
-  test "should get external lyrics file path of song" do
-    with_external_lyrics_file("external lyrics") do |song, lyrics_file_path|
-      assert_equal lyrics_file_path, song.external_lyrics_file_path
-    end
-  end
-
-  test "should get external lyrics file path from lrc file with uppercase extension" do
-    with_external_lyrics_file("external lyrics", extension: ".LRC") do |song, lyrics_file_path|
-      assert_equal lyrics_file_path, song.external_lyrics_file_path
-    end
-  end
-
-  test "should get nil external lyrics file path when song has no external lyrics file" do
-    assert_nil songs(:mp3_sample).external_lyrics_file_path
   end
 end

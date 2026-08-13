@@ -34,6 +34,7 @@
     --btn-outline-bg-color: light-dark(var(--color-grey-100), var(--color-grey-700));
     --btn-outline-hover-bg-color: light-dark(var(--color-grey-250), var(--color-grey-650));
     --btn-icon-hover-bg-color: light-dark(rgb(from var(--color-grey-300) r g b / 0.3), rgb(from var(--color-grey-600) r g b / 0.5));
+    --btn-icon-active-color: var(--primary-color);
 
     /* Flash message */
     --flash-notice-color: light-dark(var(--color-green), var(--color-green-light));
@@ -131,6 +132,10 @@
     --player-volume-color: var(--primary-color);
     --player-control-color: light-dark(var(--color-grey-500), var(--color-grey-400));
     --player-control-main-color: light-dark(var(--color-grey-900), var(--color-white));
+
+    /* Lyrics */
+    --lyrics-line-color: light-dark(var(--color-grey-500), var(--color-grey-400));
+    --lyrics-line-active-color: light-dark(var(--color-grey-900), var(--color-white));
 
     /* Badge */
     --badge-bg-color: rgb(from var(--primary-color) r g b / 0.2);

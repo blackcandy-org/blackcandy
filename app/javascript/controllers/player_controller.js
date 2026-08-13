@@ -18,7 +18,10 @@ export default class extends Controller {
     'unFavoriteButton',
     'modeButton',
     'loader',
-    'volume'
+    'volume',
+    'backdrop',
+    'playlistFrame',
+    'lyricsFrame'
   ]
 
   initialize () {
@@ -35,6 +38,7 @@ export default class extends Controller {
     this.handleEvent('player:pause', { with: this.#setPauseStatus })
     this.handleEvent('player:stop', { with: this.#setStopStatus })
     this.handleEvent('player:end', { with: this.#setEndStatus })
+    this.handleEvent('player:seek', { with: this.#setSeekStatus })
   }
 
   play () {
@@ -83,7 +87,6 @@ export default class extends Controller {
 
   seek (event) {
     this.player.seek((event.offsetX / event.target.offsetWidth) * this.currentSong.duration)
-    window.requestAnimationFrame(this.#setProgress.bind(this))
   }
 
   volume (event) {
@@ -96,6 +99,16 @@ export default class extends Controller {
 
   maxVolume () {
     this.#setVolume(1)
+  }
+
+  toggleLyrics ({ currentTarget }) {
+    this.lyricsFrameTarget.classList.toggle('u-display-none')
+    this.playlistFrameTarget.classList.toggle('u-display-none', this.#isLyricsOpen)
+    this.lyricsFrameTarget.loading = this.#isLyricsOpen ? 'eager' : 'lazy'
+
+    currentTarget.classList.toggle('is-active', this.#isLyricsOpen)
+
+    if (this.#isLyricsOpen) { dispatchEvent(document, 'lyrics:show') }
   }
 
   collapse () {
@@ -119,12 +132,15 @@ export default class extends Controller {
   }
 
   get currentTime () {
-    const currentTime = this.currentSong.howl ? this.currentSong.howl.seek() : 0
-    return (typeof currentTime === 'number') ? Math.round(currentTime) : 0
+    return Math.round(this.player.currentTime)
   }
 
   get isEndOfPlaylist () {
     return this.currentIndex === this.player.playlist.length - 1
+  }
+
+  get #isLyricsOpen () {
+    return !this.lyricsFrameTarget.classList.contains('u-display-none')
   }
 
   #setBeforePlayingStatus = () => {
@@ -138,7 +154,7 @@ export default class extends Controller {
     const favoriteSongUrl = `/favorite_playlist/songs?song_id=${currentSong.id}`
     const unFavoriteSongUrl = `/favorite_playlist/songs/${currentSong.id}`
 
-    this.element.style.setProperty('--backdrop-image', `url(${currentSong.album_image_urls.small})`)
+    this.backdropTarget.style.setProperty('--backdrop-image', `url(${currentSong.album_image_urls.small})`)
     this.imageTarget.src = currentSong.album_image_urls.small
     this.songNameTarget.textContent = currentSong.name
     this.artistLinkTarget.textContent = currentSong.artist_name
@@ -158,6 +174,8 @@ export default class extends Controller {
 
     window.requestAnimationFrame(this.#setProgress.bind(this))
     this.timerInterval = setInterval(this.#setTimer.bind(this), 1000)
+
+    this.#updateLyrics()
 
     // let playlist can show current playing song
     dispatchEvent(document, 'songs:showPlaying')
@@ -180,6 +198,13 @@ export default class extends Controller {
     }
   }
 
+  #setSeekStatus = () => {
+    if (this.player.isPlaying) { return }
+
+    this.#setTimer()
+    window.requestAnimationFrame(this.#setProgress.bind(this))
+  }
+
   #setEndStatus = () => {
     this.#clearTimerInterval()
 
@@ -197,6 +222,14 @@ export default class extends Controller {
       default:
         this.next()
     }
+  }
+
+  #updateLyrics () {
+    const { lyrics_url: lyricsUrl } = this.currentSong
+
+    if (this.lyricsFrameTarget.src === lyricsUrl) { return }
+
+    this.lyricsFrameTarget.src = lyricsUrl
   }
 
   #setProgress () {

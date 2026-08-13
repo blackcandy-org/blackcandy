@@ -33,7 +33,7 @@ class SongsController < ApplicationController
   private
 
   def song_params
-    params.require(:song).permit(:lyrics)
+    params.require(:song).permit(:lyrics_file)
   end
 
   def find_song

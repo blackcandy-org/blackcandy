@@ -3,13 +3,37 @@
 module Song::Lyrics
   extend ActiveSupport::Concern
 
-  LYRICS_FILE_MAX_SIZE = 100.kilobytes
+  LYRICS_MAX_LENGTH = 100_000
   ALLOWED_LYRICS_FILE_EXTENSION = ".lrc"
 
   included do
-    has_one_attached :lyrics
+    attr_reader :lyrics_file
 
-    validate :format_of_lyrics, :size_of_lyrics, if: -> { lyrics.attached? }
+    validates :lyrics, length: { maximum: LYRICS_MAX_LENGTH }
+    validate :format_of_lyrics_file, if: -> { lyrics_file.present? }
+  end
+
+  def lyrics_file=(file)
+    return if file.blank?
+
+    @lyrics_file = file
+    self.lyrics = file.read.force_encoding(Encoding::UTF_8).scrub
+  end
+
+  def lyrics_content
+    lyrics.presence || external_lyrics_file_content
+  end
+
+  def lyrics_lines
+    Parser.new(lyrics_content).lines
+  end
+
+  private
+
+  def external_lyrics_file_content
+    lyrics_file_path = external_lyrics_file_path
+
+    File.read(lyrics_file_path).scrub if lyrics_file_path
   end
 
   def external_lyrics_file_path
@@ -22,14 +46,8 @@ module Song::Lyrics
     File.join(directory, found_file_name) if found_file_name
   end
 
-  private
-
-  def format_of_lyrics
-    extension = File.extname(lyrics.filename.to_s).downcase
-    errors.add(:lyrics, :invalid_content_type) unless extension == ALLOWED_LYRICS_FILE_EXTENSION
-  end
-
-  def size_of_lyrics
-    errors.add(:lyrics, :too_large) if lyrics.blob.byte_size > LYRICS_FILE_MAX_SIZE
+  def format_of_lyrics_file
+    extension = File.extname(lyrics_file.original_filename).downcase
+    errors.add(:lyrics_file, :invalid_content_type) unless extension == ALLOWED_LYRICS_FILE_EXTENSION
   end
 end
