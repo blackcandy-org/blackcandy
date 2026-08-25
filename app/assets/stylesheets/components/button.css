@@ -76,6 +76,10 @@
     &:hover {
       background: var(--btn-icon-hover-bg-color);
     }
+
+    &.is-active {
+      color: var(--btn-icon-active-color);
+    }
   }
 
   .c-button--circle {

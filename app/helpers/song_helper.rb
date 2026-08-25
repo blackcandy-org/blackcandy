@@ -12,6 +12,7 @@ module SongHelper
       json.artist_name song.artist.name
       json.is_favorited song.is_favorited.nil? ? Current.user.favorited?(song) : song.is_favorited
       json.format need_transcode?(song) ? Stream::TRANSCODE_FORMAT : song.format
+      json.lyrics_url song_lyrics_url(song)
       json.album_image_urls do
         json.small URI.join(root_url, cover_image_url_for(song.album, size: :small))
         json.medium URI.join(root_url, cover_image_url_for(song.album, size: :medium))

@@ -4,6 +4,7 @@ class Song < ApplicationRecord
   include SearchableConcern
   include FilterableConcern
   include SortableConcern
+  include Lyrics
 
   validates :name, :file_path, :file_path_hash, :md5_hash, presence: true
 

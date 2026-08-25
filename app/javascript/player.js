@@ -25,7 +25,8 @@ class Player {
         onplay: () => { dispatchEvent(document, 'player:playing') },
         onpause: () => { dispatchEvent(document, 'player:pause') },
         onend: () => { dispatchEvent(document, 'player:end') },
-        onstop: () => { dispatchEvent(document, 'player:stop') }
+        onstop: () => { dispatchEvent(document, 'player:stop') },
+        onseek: () => { dispatchEvent(document, 'player:seek') }
       })
     }
 
@@ -77,6 +78,8 @@ class Player {
   }
 
   seek (seconds) {
+    if (!this.currentSong.howl) { return }
+
     this.currentSong.howl.seek(seconds)
   }
 
@@ -86,6 +89,11 @@ class Player {
 
   get currentIndex () {
     return Math.max(this.playlist.indexOf(this.currentSong.id), 0)
+  }
+
+  get currentTime () {
+    const currentTime = this.currentSong.howl ? this.currentSong.howl.seek() : 0
+    return (typeof currentTime === 'number') ? currentTime : 0
   }
 }
 

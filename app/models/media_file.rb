@@ -67,7 +67,8 @@ class MediaFile
         discnum: tag.disc,
         duration: tag.duration.round,
         bit_depth: tag.bit_depth,
-        image: extract_image_from(tag)
+        image: extract_image_from(tag),
+        lyrics: tag.lyrics.presence
       }.tap do |info|
         info[:year] = begin
           Date.strptime(tag.year, "%Y").year

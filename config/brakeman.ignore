@@ -18,7 +18,9 @@
       },
       "user_input": null,
       "confidence": "Medium",
-      "cwe_id": [22],
+      "cwe_id": [
+        22
+      ],
       "note": "Song#file_path is populated by the server-side media library scanner, never from user input. params[:song_id] is consumed by Song.find for record lookup only."
     },
     {
@@ -39,7 +41,9 @@
       },
       "user_input": null,
       "confidence": "Medium",
-      "cwe_id": [22],
+      "cwe_id": [
+        22
+      ],
       "note": "transcode_cache_file_path is constructed entirely server-side from a fixed cache root, song.id, Base64-encoded md5_hash, and Setting.transcode_bitrate. No user-supplied path segments."
     },
     {
@@ -60,10 +64,12 @@
       },
       "user_input": null,
       "confidence": "Medium",
-      "cwe_id": [22],
+      "cwe_id": [
+        22
+      ],
       "note": "transcode_cache_file_path is constructed entirely server-side from a fixed cache root, song.id, Base64-encoded md5_hash, and Setting.transcode_bitrate. No user-supplied path segments."
     }
   ],
-  "updated": "2026-05-14 19:30:00 +0900",
+  "updated": "2026-07-30 20:21:23 +0900",
   "brakeman_version": "8.0.4"
 }

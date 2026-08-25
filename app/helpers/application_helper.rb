@@ -58,13 +58,15 @@ module ApplicationHelper
     )
   end
 
-  def loader_tag(size: "")
+  def loader_tag(size: "", **options)
     size_class = size.blank? ? "" : "c-loader--#{size}"
-    tag.div class: "o-animation-spin c-loader #{size_class}"
+    loader_class = [ "o-animation-spin", "c-loader", size_class, options.delete(:class) ].compact_blank.join(" ")
+
+    tag.div class: loader_class, **options
   end
 
-  def empty_alert_tag(has_icon: false, has_overlay: true)
-    render partial: "shared/empty_alert", locals: { has_icon: has_icon, has_overlay: has_overlay }
+  def empty_alert_tag(has_icon: false, has_overlay: true, message: t("label.no_items"))
+    render partial: "shared/empty_alert", locals: { has_icon: has_icon, has_overlay: has_overlay, message: message }
   end
 
   def format_duration(sec)

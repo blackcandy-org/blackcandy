@@ -14,6 +14,25 @@ class MediaSyncAllJobTest < ActiveJob::TestCase
     assert_equal 9, Song.count
   end
 
+  test "should update existing song attributes when full sync" do
+    song = Song.find_by(name: "mp3_sample")
+    song.update_column(:lyrics, nil)
+
+    MediaSyncAllJob.perform_now(full: true)
+
+    assert_equal "lyrics test", song.reload.lyrics
+    assert_equal song.id, Song.find_by(name: "mp3_sample").id
+  end
+
+  test "should not update existing song attributes when not full sync" do
+    song = Song.find_by(name: "mp3_sample")
+    song.update_column(:lyrics, nil)
+
+    MediaSyncAllJob.perform_now
+
+    assert_nil song.reload.lyrics
+  end
+
   test "should create associations between artists and albums" do
     assert_equal Album.where(name: %w[album1 album2]).ids.sort, Artist.find_by(name: "artist1").albums.ids.sort
     assert_equal Album.where(name: "album3").ids.sort, Artist.find_by(name: "artist2").albums.ids.sort

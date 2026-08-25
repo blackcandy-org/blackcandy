@@ -37,6 +37,7 @@ en:
     pause_song: 'Pause song'
     toggle_favorite: 'Toggle favorite'
     lyrics: 'Lyrics'
+    no_lyrics: 'No Lyrics'
     mute: 'Mute'
     max_volume: 'Max volume'
     expand_player: 'Expand player'
@@ -44,6 +45,7 @@ en:
     appearance: 'Appearance'
     edit_album: 'Edit Album'
     edit_artist: 'Edit Artist'
+    edit_song: 'Edit Song'
     album: 'Album'
     artist: 'Artist'
     sort: 'Sort'
@@ -74,6 +76,8 @@ en:
     delete: 'Delete'
     save: 'Save'
     sync: 'Sync'
+    quick_sync: 'Quick Sync'
+    full_sync: 'Full Sync'
     syncing: 'Syncing...'
     play_now: 'Play Now'
     play_next: 'Play Next'
@@ -100,6 +104,7 @@ en:
     allow_transcode_lossless: 'Allow Transcode Lossless'
     transcode_bitrate: 'Transcode Bitrate'
     password_confirmation: 'Password Confirmation'
+    lyrics: 'Lyrics File'
 
   error:
     login: 'Wrong email or password'
@@ -125,6 +130,7 @@ en:
     enable_media_listener: "Media listener can automatically sync with library changes."
     enable_parallel_media_sync: "Parallel media sync only available when using PostgreSQL as database."
     media_listener_running: "Listener is running"
+    replace_lyrics: "This song already has lyrics. Uploading a new file will replace them."
 
   activerecord:
     errors:

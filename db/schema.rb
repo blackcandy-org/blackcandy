@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_18_134323) do
+ActiveRecord::Schema[7.2].define(version: 2026_08_06_103000) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -104,6 +104,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_18_134323) do
     t.string "file_path_hash"
     t.integer "bit_depth"
     t.integer "discnum"
+    t.text "lyrics"
     t.index ["album_id"], name: "index_songs_on_album_id"
     t.index ["artist_id"], name: "index_songs_on_artist_id"
     t.index ["file_path_hash"], name: "index_songs_on_file_path_hash"

@@ -126,6 +126,9 @@
                         }
                       ) %>
                   <%= dialog_link_to t("label.add_to_playlist"), playlists_selections_path(song_id: song.id), class: "c-dropdown__item" %>
+                  <% if is_admin? %>
+                    <%= dialog_link_to t("label.edit_song"), edit_song_path(song), class: "c-dropdown__item" %>
+                  <% end %>
                   <%= link_to(
                         t("label.go_to_artist"),
                         artist_path(song.artist),

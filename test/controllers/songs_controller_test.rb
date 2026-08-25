@@ -26,6 +26,7 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
     assert_equal song.album.name, song_response["album_name"]
     assert_equal song.artist.name, song_response["artist_name"]
     assert song_response["url"].present?
+    assert_equal song_lyrics_url(song), song_response["lyrics_url"]
     assert song_response["album_image_urls"]["small"].present?
     assert song_response["album_image_urls"]["medium"].present?
     assert song_response["album_image_urls"]["large"].present?
@@ -54,6 +55,76 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
     assert_equal songs_url(limit: 2, page: 1), links["prev"]
     assert_equal songs_url(limit: 2, page: 3), links["next"]
     assert_equal songs_url(limit: 2, page: 3), links["last"]
+  end
+
+  test "should edit song" do
+    login users(:admin)
+    get edit_song_url(songs(:mp3_sample))
+
+    assert_response :success
+  end
+
+  test "should update lyrics for song" do
+    song = songs(:mp3_sample)
+    login users(:admin)
+
+    assert_changes -> { song.reload.lyrics } do
+      patch song_url(song), params: { song: { lyrics_file: fixture_file_upload("sample.lrc", "text/plain") } }
+    end
+
+    assert_includes song.lyrics, "First line of lyrics"
+  end
+
+  test "should has error flash when failed to update song" do
+    login users(:admin)
+    patch song_url(songs(:mp3_sample)), params: { song: { lyrics_file: fixture_file_upload("cover_image.jpg", "image/jpeg") } }
+
+    assert flash[:alert].present?
+  end
+
+  test "should only admin can edit song" do
+    login
+
+    get edit_song_url(songs(:mp3_sample))
+    assert_response :forbidden
+
+    patch song_url(songs(:mp3_sample)), params: { song: { lyrics_file: fixture_file_upload("sample.lrc", "text/plain") } }
+    assert_response :forbidden
+  end
+
+  test "should not edit song when is on demo mode" do
+    with_env("DEMO_MODE" => "true") do
+      login users(:admin)
+
+      get edit_song_url(songs(:mp3_sample))
+      assert_response :forbidden
+
+      patch song_url(songs(:mp3_sample)), params: { song: { lyrics_file: fixture_file_upload("sample.lrc", "text/plain") } }
+      assert_response :forbidden
+    end
+  end
+
+  test "should update lyrics for song via api" do
+    song = songs(:mp3_sample)
+
+    assert_changes -> { song.reload.lyrics } do
+      patch song_url(song),
+        params: { song: { lyrics_file: fixture_file_upload("sample.lrc", "text/plain") } },
+        headers: api_token_header(users(:admin)).merge("Accept" => "application/json")
+    end
+
+    assert_response :success
+    assert_equal song.id, @response.parsed_body["id"]
+  end
+
+  test "should return error response when failed to update song via api" do
+    patch song_url(songs(:mp3_sample)),
+      params: { song: { lyrics_file: fixture_file_upload("cover_image.jpg", "image/jpeg") } },
+      headers: api_token_header(users(:admin)).merge("Accept" => "application/json")
+
+    assert_response :unprocessable_entity
+    assert_equal "RecordInvalid", @response.parsed_body["type"]
+    assert @response.parsed_body["message"].present?
   end
 
   test "should get transcoded stream url for unsupported format via api" do

@@ -46,6 +46,9 @@ application.register("flash", FlashController)
 import FormController from "./form_controller"
 application.register("form", FormController)
 
+import LyricsController from "./lyrics_controller"
+application.register("lyrics", LyricsController)
+
 import MediaSessionController from "./media_session_controller"
 application.register("media-session", MediaSessionController)
 

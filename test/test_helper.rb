@@ -128,6 +128,10 @@ class ActiveSupport::TestCase
     File.read(file_path).force_encoding("BINARY").strip
   end
 
+  def uploaded_file(file_name, content_type: "text/plain")
+    Rack::Test::UploadedFile.new(file_fixture(file_name), content_type)
+  end
+
   def stub_file_metadata(file_path, attributes = {})
     media_file_mock = MediaFileMock.new(file_path, attributes)
 
@@ -135,6 +139,18 @@ class ActiveSupport::TestCase
       MediaFile.stub(:file_info, media_file_mock.method(:file_info)) do
         yield
       end
+    end
+  end
+
+  def with_external_lyrics_file(content, extension: ".lrc")
+    create_tmp_dir do |tmp_dir|
+      song = songs(:mp3_sample)
+      song.update!(file_path: File.join(tmp_dir, "artist1_album2.mp3"))
+
+      lyrics_file_path = File.join(tmp_dir, "#{File.basename(song.file_path, ".*")}#{extension}")
+      File.binwrite(lyrics_file_path, content)
+
+      yield song, lyrics_file_path
     end
   end
 

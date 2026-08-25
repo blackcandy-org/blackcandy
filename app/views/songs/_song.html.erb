@@ -34,6 +34,9 @@
       </summary>
       <div class='c-dropdown__menu' data-dropdown-target="menu">
         <%= dialog_link_to t("label.add_to_playlist"), playlists_selections_path(song_id: song.id), class: "c-dropdown__item" %>
+        <% if is_admin? %>
+          <%= dialog_link_to t("label.edit_song"), edit_song_path(song), class: "c-dropdown__item" %>
+        <% end %>
         <%= button_to(
               t("button.play_next"),
               current_playlist_songs_path(song_id: song.id),

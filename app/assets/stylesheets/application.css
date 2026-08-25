@@ -42,6 +42,7 @@
 @import "./components/search.css";
 @import "./components/badge.css";
 @import "./components/playlist.css";
+@import "./components/lyrics.css";
 @import "./components/song.css";
 @import "./components/settings.css";
 @import "./components/pagination.css";
