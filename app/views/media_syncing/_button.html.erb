@@ -12,18 +12,8 @@
         <%= t("button.sync") %>
       </summary>
       <div class='c-dropdown__menu' data-dropdown-target="menu">
-        <%= button_to(
-              t("button.quick_sync"),
-              media_syncing_path,
-              form_class: "c-dropdown__item",
-              form: { data: { "turbo-submits-with" => t("button.syncing") } }
-            ) %>
-        <%= button_to(
-              t("button.full_sync"),
-              media_syncing_path(full: true),
-              form_class: "c-dropdown__item",
-              form: { data: { "turbo-submits-with" => t("button.syncing") } }
-            ) %>
+        <%= button_to t("button.quick_sync"), media_syncing_path, form_class: "c-dropdown__item" %>
+        <%= button_to t("button.full_sync"), media_syncing_path(full: true), form_class: "c-dropdown__item" %>
       </div>
     </details>
   <% end %>
