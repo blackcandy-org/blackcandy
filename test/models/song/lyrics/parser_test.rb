@@ -36,6 +36,12 @@ class Song::Lyrics::ParserTest < ActiveSupport::TestCase
     assert_equal [ "synced" ], lines.map(&:content)
   end
 
+  test "should keep section marker lines that look like metadata" do
+    lines = parse_lines("[Chorus:]\nfirst")
+
+    assert_equal [ "[Chorus:]", "first" ], lines.map(&:content)
+  end
+
   test "should ignore metadata lines" do
     lines = parse_lines("[ar:Artist]\n[ti:Title]\nfirst")
 

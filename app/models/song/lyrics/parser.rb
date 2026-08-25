@@ -4,7 +4,7 @@ class Song::Lyrics::Parser
   TIME_TAG_PATTERN = /\[(\d{1,2}):(\d{1,2})(?:\.(\d{1,3}))?\]/
   WORD_TIME_TAG_PATTERN = /<\d{1,2}:\d{1,2}(?:\.\d{1,3})?>/
   TAG_PATTERN = Regexp.union(TIME_TAG_PATTERN, WORD_TIME_TAG_PATTERN)
-  METADATA_LINE_PATTERN = /\A\s*\[[a-z]+:/i
+  METADATA_LINE_PATTERN = /\A\s*\[(?:ar|ti|al|au|by|offset|re|ve|length):/i
   OFFSET_TAG_PATTERN = /^\[offset:\s*([+-]?\d+)\]/i
 
   Line = Data.define(:time, :content) do

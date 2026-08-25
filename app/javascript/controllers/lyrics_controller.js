@@ -5,6 +5,7 @@ const RESUME_FOLLOWING_DELAY = 4000
 
 export default class extends Controller {
   static targets = ['line']
+  static outlets = ['player']
 
   initialize () {
     this.activeLine = null
@@ -47,8 +48,12 @@ export default class extends Controller {
     return this.lineTargets[0]?.dataset.time !== undefined
   }
 
+  get #isPanelOpen () {
+    return this.hasPlayerOutlet && this.playerOutlet.isLyricsOpen
+  }
+
   get #shouldSync () {
-    return this.element.isConnected && this.player.isPlaying && this.#isSynced
+    return this.#isPanelOpen && this.element.isConnected && this.player.isPlaying && this.#isSynced
   }
 
   #show = () => {

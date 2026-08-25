@@ -9,7 +9,7 @@ module Song::Lyrics
   included do
     attr_reader :lyrics_file
 
-    validates :lyrics, length: { maximum: LYRICS_MAX_LENGTH }
+    validates :lyrics, length: { maximum: LYRICS_MAX_LENGTH }, if: -> { lyrics_file.present? }
     validate :format_of_lyrics_file, if: -> { lyrics_file.present? }
   end
 

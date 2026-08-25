@@ -4,7 +4,7 @@
   <div class='c-form__field'>
     <%= form.label :lyrics_file, t("field.lyrics") %>
     <%= form.file_field :lyrics_file, accept: Song::ALLOWED_LYRICS_FILE_EXTENSION, class: "c-input" %>
-    <% if @song.lyrics.present? %>
+    <% if @song.lyrics_content.present? %>
       <small><%= t("text.replace_lyrics") %></small>
     <% end %>
   </div>

@@ -7,13 +7,24 @@
           disabled: true
         ) %>
   <% else %>
-    <%= button_to(
-        t("button.sync"),
-        media_syncing_path,
-        class: "c-button c-button--secondary",
-        data: {
-          "turbo-submits-with" => t("button.syncing")
-        }
-      ) %>
+    <details class='c-dropdown' data-controller='dropdown'>
+      <summary class="c-button c-button--secondary">
+        <%= t("button.sync") %>
+      </summary>
+      <div class='c-dropdown__menu' data-dropdown-target="menu">
+        <%= button_to(
+              t("button.quick_sync"),
+              media_syncing_path,
+              form_class: "c-dropdown__item",
+              form: { data: { "turbo-submits-with" => t("button.syncing") } }
+            ) %>
+        <%= button_to(
+              t("button.full_sync"),
+              media_syncing_path(full: true),
+              form_class: "c-dropdown__item",
+              form: { data: { "turbo-submits-with" => t("button.syncing") } }
+            ) %>
+      </div>
+    </details>
   <% end %>
 </div>

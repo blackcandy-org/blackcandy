@@ -28,7 +28,7 @@ export default class extends Controller {
   }
 
   expand () {
-    document.querySelector('#js-sidebar').classList.add('is-expanded')
+    document.querySelector('#js-player').classList.add('is-expanded')
   }
 
   #setBeforePlayingStatus = () => {

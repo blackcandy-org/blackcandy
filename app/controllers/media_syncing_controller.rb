@@ -8,7 +8,7 @@ class MediaSyncingController < ApplicationController
       flash[:alert] = t("error.syncing_in_progress")
       redirect_to setting_library_path
     else
-      MediaSyncAllJob.perform_later
+      MediaSyncAllJob.perform_later(full: params[:full].present?)
     end
   end
 end

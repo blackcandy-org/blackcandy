@@ -50,9 +50,11 @@ class Player {
 
   stop () {
     this.isPlaying = false
-    this.currentSong = {}
 
     Howler.stop()
+
+    // reset current song
+    this.currentSong = {}
   }
 
   next () {

@@ -5,6 +5,5 @@ class Songs::LyricsController < ApplicationController
 
   def show
     @song = Song.find(params[:song_id])
-    @lines = @song.lyrics_lines
   end
 end

@@ -15,6 +15,16 @@ class MediaSyncingControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "should full sync media" do
+    login users(:admin)
+
+    Media.stub(:syncing?, false) do
+      assert_enqueued_with(job: MediaSyncAllJob, args: [ { full: true } ]) do
+        post media_syncing_url(full: true)
+      end
+    end
+  end
+
   test "should only admin can sync media" do
     login
 

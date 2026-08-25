@@ -50,10 +50,15 @@ class Song::LyricsTest < ActiveSupport::TestCase
     assert song.errors[:lyrics_file].present?
   end
 
-  test "should get error when lyrics are too long" do
+  test "should get error when lyrics from lyrics file are too long" do
     song = songs(:mp3_sample)
 
-    assert_not song.update(lyrics: "a" * (Song::LYRICS_MAX_LENGTH + 1))
+    create_tmp_file(format: "lrc") do |file_path|
+      File.write(file_path, "a" * (Song::LYRICS_MAX_LENGTH + 1))
+
+      assert_not song.update(lyrics_file: Rack::Test::UploadedFile.new(file_path, "text/plain"))
+    end
+
     assert song.errors[:lyrics].present?
   end
 end

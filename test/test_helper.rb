@@ -143,7 +143,7 @@ class ActiveSupport::TestCase
   end
 
   def with_external_lyrics_file(content, extension: ".lrc")
-    create_tmp_dir(from: Rails.root.join("test/fixtures/files")) do |tmp_dir|
+    create_tmp_dir do |tmp_dir|
       song = songs(:mp3_sample)
       song.update!(file_path: File.join(tmp_dir, "artist1_album2.mp3"))
 

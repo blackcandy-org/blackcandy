@@ -103,16 +103,16 @@ export default class extends Controller {
 
   toggleLyrics ({ currentTarget }) {
     this.lyricsFrameTarget.classList.toggle('u-display-none')
-    this.playlistFrameTarget.classList.toggle('u-display-none', this.#isLyricsOpen)
-    this.lyricsFrameTarget.loading = this.#isLyricsOpen ? 'eager' : 'lazy'
+    this.playlistFrameTarget.classList.toggle('u-display-none', this.isLyricsOpen)
+    this.lyricsFrameTarget.loading = this.isLyricsOpen ? 'eager' : 'lazy'
 
-    currentTarget.classList.toggle('is-active', this.#isLyricsOpen)
+    currentTarget.classList.toggle('is-active', this.isLyricsOpen)
 
-    if (this.#isLyricsOpen) { dispatchEvent(document, 'lyrics:show') }
+    if (this.isLyricsOpen) { dispatchEvent(document, 'lyrics:show') }
   }
 
   collapse () {
-    document.querySelector('#js-sidebar').classList.remove('is-expanded')
+    this.element.classList.remove('is-expanded')
   }
 
   get player () {
@@ -139,7 +139,7 @@ export default class extends Controller {
     return this.currentIndex === this.player.playlist.length - 1
   }
 
-  get #isLyricsOpen () {
+  get isLyricsOpen () {
     return !this.lyricsFrameTarget.classList.contains('u-display-none')
   }
 

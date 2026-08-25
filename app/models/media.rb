@@ -75,18 +75,24 @@ class Media
       artist = Artist.create_or_find_by!(name: file_info[:artist_name] || Artist::UNKNOWN_NAME)
       various_artist = Artist.create_or_find_by!(various: true) if various_artist?(file_info)
 
+      album_attributes = album_info(file_info)
+
       album = Album.create_or_find_by!(
         artist_id: various_artist&.id || artist.id,
         name: file_info[:album_name] || Album::UNKNOWN_NAME
-      )
+      ) do |item|
+        item.attributes = album_attributes
+      end
 
-      album.update!(album_info(file_info))
+      album.update!(album_attributes)
 
       attach_cover_image(album, file_info[:image])
 
+      song_attributes = song_info(file_info).merge(album_id: album.id, artist_id: artist.id)
+
       Song.create_or_find_by!(md5_hash: file_info[:md5_hash]) do |item|
-        item.attributes = song_info(file_info).merge(album_id: album.id, artist_id: artist.id)
-      end
+        item.attributes = song_attributes
+      end.update!(song_attributes)
     end
 
     def attach_cover_image(album, image)
@@ -96,7 +102,7 @@ class Media
     end
 
     def song_info(file_info)
-      file_info.slice(:name, :tracknum, :discnum, :duration, :file_path, :file_path_hash, :bit_depth, :lyrics).compact
+      file_info.slice(:name, :tracknum, :discnum, :duration, :file_path, :file_path_hash, :bit_depth, :lyrics)
     end
 
     def album_info(file_info)

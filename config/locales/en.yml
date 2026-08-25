@@ -76,6 +76,8 @@ en:
     delete: 'Delete'
     save: 'Save'
     sync: 'Sync'
+    quick_sync: 'Quick Sync'
+    full_sync: 'Full Sync'
     syncing: 'Syncing...'
     play_now: 'Play Now'
     play_next: 'Play Next'
