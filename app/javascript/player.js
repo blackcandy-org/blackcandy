@@ -13,6 +13,9 @@ class Player {
     dispatchEvent(document, 'player:beforePlaying')
 
     const song = this.playlist.songs[index]
+
+    if (this.currentSong !== song) { this.#unloadCurrentSong() }
+
     this.currentSong = song
     this.isPlaying = true
 
@@ -52,6 +55,7 @@ class Player {
     this.isPlaying = false
 
     Howler.stop()
+    this.#unloadCurrentSong()
 
     // reset current song
     this.currentSong = {}
@@ -94,6 +98,13 @@ class Player {
   get currentTime () {
     const currentTime = this.currentSong.howl ? this.currentSong.howl.seek() : 0
     return (typeof currentTime === 'number') ? currentTime : 0
+  }
+
+  #unloadCurrentSong () {
+    if (!this.currentSong.howl) { return }
+
+    this.currentSong.howl.unload()
+    delete this.currentSong.howl
   }
 }
 
