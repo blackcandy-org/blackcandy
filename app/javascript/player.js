@@ -13,6 +13,9 @@ class Player {
     dispatchEvent(document, 'player:beforePlaying')
 
     const song = this.playlist.songs[index]
+
+    if (this.currentSong !== song) { this.#unloadCurrentSong() }
+
     this.currentSong = song
     this.isPlaying = true
 
@@ -51,6 +54,7 @@ class Player {
     this.isPlaying = false
 
     Howler.stop()
+    this.#unloadCurrentSong()
 
     // reset current song
     this.currentSong = {}
@@ -86,6 +90,13 @@ class Player {
 
   get currentIndex () {
     return Math.max(this.playlist.indexOf(this.currentSong.id), 0)
+  }
+
+  #unloadCurrentSong () {
+    if (!this.currentSong.howl) { return }
+
+    this.currentSong.howl.unload()
+    delete this.currentSong.howl
   }
 }
 
