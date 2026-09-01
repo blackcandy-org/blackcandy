@@ -5,7 +5,7 @@ class User < ApplicationRecord
   DEFAULT_THEME = "auto"
   RECENTLY_PLAYED_LIMIT = 10
 
-  include ScopedSettingConcern
+  include ScopedSetting
 
   has_secure_password
   has_setting :theme, default: DEFAULT_THEME

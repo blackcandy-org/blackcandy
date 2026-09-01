@@ -1,4 +1,4 @@
-module ImageableConcern
+module Imageable
   extend ActiveSupport::Concern
 
   ALLOWED_IMAGE_CONTENT_TYPES = %w[image/jpeg image/png].freeze

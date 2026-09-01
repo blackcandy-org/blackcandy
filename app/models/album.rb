@@ -3,10 +3,10 @@
 class Album < ApplicationRecord
   UNKNOWN_NAME = "Unknown Album"
 
-  include SearchableConcern
-  include ImageableConcern
-  include FilterableConcern
-  include SortableConcern
+  include Searchable
+  include Imageable
+  include Filterable
+  include Sortable
 
   after_initialize :set_default_name, if: :new_record?
 

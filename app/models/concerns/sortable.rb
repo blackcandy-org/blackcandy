@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module SortableConcern
+module Sortable
   extend ActiveSupport::Concern
 
   included do

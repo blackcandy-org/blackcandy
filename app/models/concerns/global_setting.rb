@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module GlobalSettingConcern
+module GlobalSetting
   extend ActiveSupport::Concern
 
   included do
@@ -22,12 +22,12 @@ module GlobalSettingConcern
       store :values, accessors: setting
 
       define_method("#{setting}=") do |value|
-        setting_value = ScopedSettingConcern.convert_setting_value(type, value)
+        setting_value = ScopedSetting.convert_setting_value(type, value)
         super(setting_value)
       end
 
       define_method(setting) do
-        ScopedSettingConcern.convert_setting_value(type, super())
+        ScopedSetting.convert_setting_value(type, super())
       end
 
       define_singleton_method(setting) do
