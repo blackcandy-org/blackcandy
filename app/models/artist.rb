@@ -4,9 +4,9 @@ class Artist < ApplicationRecord
   UNKNOWN_NAME = "Unknown Artist"
   VARIOUS_NAME = "Various Artists"
 
-  include SearchableConcern
-  include ImageableConcern
-  include SortableConcern
+  include Searchable
+  include Imageable
+  include Sortable
 
   after_initialize :set_default_name, if: :new_record?
 
