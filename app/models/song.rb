@@ -15,8 +15,6 @@ class Song < ApplicationRecord
 
   attribute :is_favorited, :boolean
 
-  before_destroy :remove_transcode_cache
-
   search_by :name, associations: { artist: :name, album: :name }
 
   filter_by_associations album: [ :genre, :year ]
@@ -30,14 +28,5 @@ class Song < ApplicationRecord
 
   def lossless?
     bit_depth.present?
-  end
-
-  private
-
-  def remove_transcode_cache
-    cache_directory = "#{Stream::TRANSCODE_CACHE_DIRECTORY}/#{id}"
-
-    return unless Dir.exist?(cache_directory)
-    FileUtils.remove_dir(cache_directory)
   end
 end

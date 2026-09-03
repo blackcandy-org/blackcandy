@@ -12,15 +12,6 @@ class SongTest < ActiveSupport::TestCase
     assert_equal "m4a", songs(:m4a_sample).format
   end
 
-  test "should remove relative cache files when destroyed" do
-    stream = Stream.new(songs(:flac_sample))
-    FileUtils.touch(stream.transcode_cache_file_path)
-    assert File.exist?(stream.transcode_cache_file_path)
-
-    songs(:flac_sample).destroy
-    assert_not File.exist?(stream.transcode_cache_file_path)
-  end
-
   test "should filter by album genre" do
     song_ids = Song.where(album: [ albums(:album1), albums(:album2) ]).ids.sort
     assert_equal song_ids, Song.filter_records(album_genre: "Rock").ids.sort

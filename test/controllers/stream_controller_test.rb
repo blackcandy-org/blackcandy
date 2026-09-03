@@ -27,6 +27,26 @@ class StreamControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  # Rack::Files tags its refusals with x-cascade, which tells Rails to resume
+  # routing and turns a 416 into a routing 404 if it reaches the response.
+  test "should refuse a range past the end of the file" do
+    login(@user)
+
+    get new_stream_url(song_id: songs(:mp3_sample).id), headers: { "Range" => "bytes=99999999-" }
+
+    assert_response :range_not_satisfiable
+  end
+
+  test "should answer a bounded range" do
+    login(@user)
+
+    get new_stream_url(song_id: songs(:mp3_sample).id), headers: { "Range" => "bytes=10-19" }
+
+    assert_response :partial_content
+    assert_equal 10, response.body.bytesize
+    assert_equal "bytes", response.headers["Accept-Ranges"]
+  end
+
   test "should get new stream via api" do
     get new_stream_url(song_id: songs(:mp3_sample).id), headers: api_token_header(@user)
     assert_response :success
