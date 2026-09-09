@@ -1,5 +1,14 @@
 <% page_title_tag t("label.add_to_playlist") %>
 
+<%= form_with model: Playlist.new, class: "c-form", data: { "turbo-frame" => "_top", "turbo-action" => ("replace" if native_app?) } do |form| %>
+  <%= hidden_field_tag :song_id, params[:song_id] %>
+
+  <div class='c-form__field c-form__field--inline'>
+    <%= form.text_field :name, class: "c-input", placeholder: t("field.name"), "aria-label": t("field.name") %>
+    <%= form.submit t("button.create_and_add"), class: "c-button c-button--primary u-ml-2" %>
+  </div>
+<% end %>
+
 <% if @playlists.present? %>
   <%= form_tag nil, "data-turbo-frame": "_top", "data-turbo-action": ("replace" if native_app?) do %>
     <%= hidden_field_tag :song_id, params[:song_id] %>
