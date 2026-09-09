@@ -35,6 +35,20 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
     assert_equal playlists_count + 1, Playlist.count
   end
 
+  test "should create playlist and add song" do
+    login
+    song = songs(:mp3_sample)
+
+    assert_difference -> { Playlist.count }, 1 do
+      post playlists_url, params: { playlist: { name: "test" }, song_id: song.id }
+    end
+
+    playlist = Playlist.last
+
+    assert_equal [ song.id ], playlist.song_ids
+    assert_redirected_to playlist_songs_path(playlist)
+  end
+
   test "should has error flash when failed to create playlist" do
     login
     post playlists_url, params: { playlist: { name: "" } }

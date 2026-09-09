@@ -4,6 +4,7 @@ class PlaylistsController < ApplicationController
   render_in_dialog only: [ :new, :edit ]
 
   before_action :find_playlist, only: [ :edit, :destroy, :update ]
+  before_action :find_song, only: [ :create ]
   before_action :get_sort_option, only: [ :index ]
 
   def index
@@ -18,10 +19,20 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    @playlist = Current.user.playlists.create!(playlist_params)
+    Playlist.transaction do
+      @playlist = Current.user.playlists.create!(playlist_params)
+      @playlist.songs.push(@song) if @song
+    end
 
     respond_to do |format|
-      format.html { redirect_to action: "index", notice: t("notice.created") }
+      format.html do
+        if @song
+          redirect_to playlist_songs_path(@playlist), notice: t("notice.added_to_playlist")
+        else
+          redirect_to action: "index", notice: t("notice.created")
+        end
+      end
+
       format.json { render partial: "playlists/playlist", locals: { playlist: @playlist }, status: :created }
     end
   end
@@ -48,6 +59,10 @@ class PlaylistsController < ApplicationController
 
   def find_playlist
     @playlist = Current.user.playlists.find(params[:id])
+  end
+
+  def find_song
+    @song = Song.find(params[:song_id]) if params[:song_id].present?
   end
 
   def playlist_params
