@@ -30,6 +30,8 @@ docker run -p 80:80 blackcandy/blackcandy:latest
 ```
 That's all. Now, you can access either http://localhost or http://host-ip in a browser, and use initial admin user to log in (email: admin@admin.com, password: foobar).
 
+You can also deploy Black Candy with one click using the official [Easypanel](https://easypanel.io/) template: https://easypanel.io/templates/blackcandy
+
 ## Upgrade
 
 > [!IMPORTANT]
