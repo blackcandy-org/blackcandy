@@ -1,4 +1,6 @@
 class Session < ApplicationRecord
+  include Client
+
   before_create :find_current_info
   belongs_to :user
 
@@ -12,6 +14,10 @@ class Session < ApplicationRecord
     authed_user&.update(password: credential[:password]) if authed_user&.deprecated_password_salt.present?
 
     new(user: authed_user)
+  end
+
+  def current?
+    self == Current.session
   end
 
   private

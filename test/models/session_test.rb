@@ -31,6 +31,14 @@ class SessionTest < ActiveSupport::TestCase
     assert_equal "test_user_agent", session.user_agent
   end
 
+  test "should be current when session is the current session" do
+    session = Session.create(user: users(:visitor1))
+    Current.session = session
+
+    assert session.current?
+    assert_not Session.create(user: users(:visitor2)).current?
+  end
+
   test "should remove deprecated_password_salt after build from user credential with deprecated_password_salt successfully" do
     user = users(:visitor1)
     assert_not_nil user.deprecated_password_salt

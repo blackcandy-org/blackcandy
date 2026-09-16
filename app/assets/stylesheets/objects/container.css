@@ -1,7 +1,7 @@
 @layer objects {
   .o-container {
     max-width: 1130px;
-    margin: auto;
+    margin: 0 auto;
   }
 
   .o-container--extra-wide {

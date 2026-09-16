@@ -1,11 +1,18 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  layout "plain"
+  layout :sessions_layout
 
-  skip_before_action :require_login
+  skip_before_action :require_login, only: [ :new, :create ]
+  before_action :require_admin, only: [ :index, :destroy ]
+  before_action :find_session, only: [ :destroy ]
 
   rate_limit to: 10, within: 3.minutes, only: :create
+
+  def index
+    @current_session = Current.session
+    @sessions = Session.includes(:user).where.not(id: @current_session.id).order(created_at: :desc)
+  end
 
   def new
     redirect_to root_path if logged_in?
@@ -23,7 +30,26 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    raise BlackCandy::Forbidden if @session.current?
+
+    @session.destroy
+
+    respond_to do |format|
+      format.html { redirect_to sessions_path, notice: t("notice.deleted") }
+      format.json { head :no_content }
+    end
+  end
+
   private
+
+  def sessions_layout
+    (action_name == "index") ? "settings" : "plain"
+  end
+
+  def find_session
+    @session = Session.find(params[:id])
+  end
 
   def session_params
     params.require(:session).permit(:email, :password)

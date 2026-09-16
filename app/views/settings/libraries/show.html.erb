@@ -1,7 +1,8 @@
-<div class='o-flex o-flex--justify-between o-flex--align-center u-mb-4'>
+<div class='o-flex o-flex--justify-between o-flex--align-center'>
   <h2 class='u-mb-0'><%= t("label.library") %></h2>
   <%= render partial: "media_syncing/button", locals: { syncing: Media.syncing? } %>
 </div>
+<hr>
 
 <%= form_with model: Setting, url: setting_library_path, method: :put, class: "c-form" do |form| %>
   <div class='c-form__field'>

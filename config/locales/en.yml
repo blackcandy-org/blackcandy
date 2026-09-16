@@ -9,6 +9,7 @@ en:
     artists: 'Artists'
     songs: 'Songs'
     settings: 'Settings'
+    sessions: 'Sessions'
     about: 'About'
     profile: 'Profile'
     tracks: 'Tracks'
@@ -67,6 +68,9 @@ en:
     previous_page: 'Previous page'
     next_page: 'Next page'
     page_of: 'Page %{page} of %{pages}'
+    current_session: 'This device'
+    signed_in: 'Signed in on %{date}'
+    unknown_client: 'Unknown Client'
 
   button:
     login: 'Login'
@@ -74,6 +78,7 @@ en:
     play: 'Play'
     clear: 'Clear'
     delete: 'Delete'
+    revoke: 'Revoke'
     save: 'Save'
     sync: 'Sync'
     quick_sync: 'Quick Sync'
@@ -132,6 +137,10 @@ en:
     enable_parallel_media_sync: "Parallel media sync only available when using PostgreSQL as database."
     media_listener_running: "Listener is running"
     replace_lyrics: "This song already has lyrics. Uploading a new file will replace them."
+
+  date:
+    formats:
+      medium: '%b %-d, %Y'
 
   activerecord:
     errors:

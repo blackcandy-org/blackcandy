@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "home#index"
 
-  resources :sessions, only: [ :new, :create ]
+  resources :sessions, only: [ :index, :new, :create, :destroy ]
 
   resource :setting, only: [ :show ] do
     scope module: :settings do

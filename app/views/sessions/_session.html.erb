@@ -1,0 +1,12 @@
+<li id='<%= dom_id(session) %>' class='c-list__item o-flex o-flex--justify-between o-flex--align-center'>
+  <div>
+    <span class='u-text-weight-bold'><%= session.user.email %></span>
+    <span class='c-list__item__subtext u-display-block'><%= session_details(session) %></span>
+    <span class='c-list__item__subtext u-display-block'><%= t("label.signed_in", date: l(session.created_at.to_date, format: :medium)) %></span>
+  </div>
+  <% if session.current? %>
+    <span class='c-badge'><%= t("label.current_session") %></span>
+  <% else %>
+    <%= button_to t("button.revoke"), session_path(session), method: :delete, class: "c-button c-button--danger c-button--outline" %>
+  <% end %>
+</li>

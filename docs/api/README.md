@@ -5,6 +5,7 @@
 - [Authentication](sections/authentication.md) — sessions, API tokens, logout
 - [System](sections/system.md) — server version and minimum supported app version
 - [Users](sections/users.md) — listing, creating, updating, and deleting users; updating own profile
+- [Sessions](sections/sessions.md) — listing and revoking the sessions of every user
 - [Songs](sections/songs.md) — browsing, filtering, and sorting songs
 - [Albums](sections/albums.md) — browsing albums and updating cover images
 - [Artists](sections/artists.md) — browsing artists and updating cover images
