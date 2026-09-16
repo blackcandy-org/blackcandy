@@ -19,6 +19,9 @@
       <li class='c-tab__item <%= "is-active" if current_page?(users_path) %>'>
         <%= link_to t("label.users"), users_path %>
       </li>
+      <li class='c-tab__item <%= "is-active" if current_page?(sessions_path) %>'>
+        <%= link_to t("label.sessions"), sessions_path %>
+      </li>
     <% end %>
   </ul>
 </nav>

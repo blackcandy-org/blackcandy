@@ -67,6 +67,16 @@
     }
   }
 
+  .c-button--danger {
+    color: var(--btn-danger-color);
+    background: var(--btn-danger-bg-color);
+
+    &:hover {
+      background: var(--btn-danger-hover-bg-color);
+      color: var(--btn-danger-color);
+    }
+  }
+
   .c-button--icon {
     display: inline-flex;
     padding: var(--spacing-1);

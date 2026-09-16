@@ -33,6 +33,9 @@
     --btn-outline-border-color: light-dark(var(--color-grey-300), var(--color-grey-800));
     --btn-outline-bg-color: light-dark(var(--color-grey-100), var(--color-grey-700));
     --btn-outline-hover-bg-color: light-dark(var(--color-grey-250), var(--color-grey-650));
+    --btn-danger-color: light-dark(var(--color-red), var(--color-red-light));
+    --btn-danger-bg-color: rgb(from var(--color-red) r g b / 0.15);
+    --btn-danger-hover-bg-color: rgb(from var(--color-red) r g b / 0.25);
     --btn-icon-hover-bg-color: light-dark(rgb(from var(--color-grey-300) r g b / 0.3), rgb(from var(--color-grey-600) r g b / 0.5));
     --btn-icon-active-color: var(--primary-color);
 

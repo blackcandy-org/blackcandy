@@ -57,6 +57,15 @@
           <%= icon_tag "chevron-right" %>
         <% end %>
       </li>
+      <li class='c-list__item'>
+        <%= link_to sessions_path, class: "o-flex o-flex--align-center o-flex--justify-between u-text-size-3" do %>
+          <span class='o-flex o-flex--align-center'>
+            <%= icon_tag "devices", class: "u-mr-2" %>
+            <%= t("label.sessions") %>
+          </span>
+          <%= icon_tag "chevron-right" %>
+        <% end %>
+      </li>
     <% end %>
   </ul>
 </div>
