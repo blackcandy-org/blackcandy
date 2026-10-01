@@ -17,6 +17,7 @@ adminCurrentPlaylist:
 adminFavoritePlaylist:
   type: 'FavoritePlaylist'
   user: 'admin'
+  created_at: 2022-12-31
 
 visitor1CurrentPlaylist:
   type: 'CurrentPlaylist'
