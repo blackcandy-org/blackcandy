@@ -8,7 +8,12 @@ class PlaylistsController < ApplicationController
   before_action :get_sort_option, only: [ :index ]
 
   def index
-    @pagy, @playlists = pagy(Current.user.playlists_with_favorite.includes(:playlists_songs).sort_records(*sort_params))
+    records = Current.user.playlists_with_favorite
+      .includes(:playlists_songs)
+      .favorite_first
+      .sort_records(*sort_params)
+
+    @pagy, @playlists = pagy(records)
   end
 
   def new

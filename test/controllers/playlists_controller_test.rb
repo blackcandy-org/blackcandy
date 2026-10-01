@@ -102,6 +102,15 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
     assert_equal false, playlist_response["is_favorite"]
   end
 
+  test "should list favorite playlist first on index" do
+    user = users(:admin)
+
+    get playlists_url, as: :json, headers: api_token_header(user)
+
+    assert_response :success
+    assert_equal user.favorite_playlist.id, @response.parsed_body.first["id"]
+  end
+
   test "should create playlist via api" do
     user = users(:admin)
 

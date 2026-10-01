@@ -16,6 +16,8 @@ class Playlist < ApplicationRecord
   sort_by :name, :created_at
   default_sort :created_at, :desc
 
+  scope :favorite_first, -> { in_order_of(:type, %w[FavoritePlaylist], filter: false) }
+
   def current?
     type == "CurrentPlaylist"
   end

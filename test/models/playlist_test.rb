@@ -54,4 +54,14 @@ class PlaylistTest < ActiveSupport::TestCase
   test "should use default sort when use invalid sort value" do
     assert_equal %w[playlist1 playlist2], users(:admin).playlists.sort_records(:invalid).pluck(:name)
   end
+
+  test "should put favorite playlist first regardless of sort" do
+    user_playlists = users(:admin).playlists_with_favorite.favorite_first
+    favorite_playlist = users(:admin).favorite_playlist
+
+    assert_equal [ favorite_playlist, playlists(:playlist1), playlists(:playlist2) ], user_playlists.sort_records(:name)
+    assert_equal [ favorite_playlist, playlists(:playlist2), playlists(:playlist1) ], user_playlists.sort_records(:name, :desc)
+    assert_equal [ favorite_playlist, playlists(:playlist2), playlists(:playlist1) ], user_playlists.sort_records(:created_at)
+    assert_equal [ favorite_playlist, playlists(:playlist1), playlists(:playlist2) ], user_playlists.sort_records(:created_at, :desc)
+  end
 end
