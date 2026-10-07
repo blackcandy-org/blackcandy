@@ -81,6 +81,7 @@ Rails.application.routes.draw do
   namespace :my do
     resource :session, only: [ :destroy ]
     resource :profile, only: [ :edit, :update ]
+    resources :recently_played, only: [ :index ]
   end
 
   resources :stream, only: [ :new ]

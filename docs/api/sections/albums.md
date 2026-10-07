@@ -83,3 +83,11 @@ Updates an album's cover image. Admins only. Because this endpoint accepts a fil
 __Response:__
 
 Returns the updated album in the same shape as `GET /albums/:id`.
+
+## `GET /my/recently_played`
+
+Returns the albums the current user has played most recently, newest first. An album is added to this list when it is played through [`PUT /current_playlist/songs/albums/:id`](current_playlist.md#put-current_playlistsongsalbumsid). **Not paginated** — the list holds at most 10 albums.
+
+__Response:__
+
+An array of album objects (same shape as `GET /albums`).

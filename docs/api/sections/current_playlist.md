@@ -93,7 +93,7 @@ Returns `204 No Content` on success.
 
 ## `PUT /current_playlist/songs/albums/:id`
 
-Replaces the queue with every song from the given album, in album order. The album is also added to the user's "recently played" list.
+Replaces the queue with every song from the given album, in album order. The album is also added to the user's [recently played](albums.md#get-myrecently_played) list.
 
 __Response:__
 
