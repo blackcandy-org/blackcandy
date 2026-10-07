@@ -7,7 +7,7 @@
 - [Users](sections/users.md) — listing, creating, updating, and deleting users; updating own profile
 - [Sessions](sections/sessions.md) — listing and revoking the sessions of every user
 - [Songs](sections/songs.md) — browsing, filtering, and sorting songs
-- [Albums](sections/albums.md) — browsing albums and updating cover images
+- [Albums](sections/albums.md) — browsing albums, listing recently played albums, and updating cover images
 - [Artists](sections/artists.md) — browsing artists and updating cover images
 - [Playlists](sections/playlists.md) — managing the user's playlists
 - [Playlist songs](sections/playlist_songs.md) — listing, adding, removing, and reordering songs inside a playlist
