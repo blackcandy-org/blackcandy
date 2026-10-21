@@ -1,7 +1,7 @@
 <% page_title_tag @album.name %>
 <% content_for :fluid_layout, true %>
 
-<div data-controller='songs bridge--songs bridge--album' data-bridge--album-id-value='<%= @album.id %>'>
+<div data-controller='songs'>
   <div class='c-backdrop c-backdrop--blur-large' style='--backdrop-image: url(<%= cover_image_url_for(@album) %>)'>
     <div class='c-backdrop__content o-container o-container--large'>
       <div class="c-card c-card--horizontal c-card--center@small">
@@ -23,9 +23,7 @@
                   class: "c-button c-button--primary c-button--large",
                   form: {
                     data: {
-                      "disabled-on-native" => "true",
-                      "turbo-frame" => "turbo-playlist",
-                      "action" => "bridge--album#play"
+                      "turbo-frame" => "turbo-playlist"
                     }
                   }
                 ) do %>
@@ -57,9 +55,8 @@
                     form_class: "o-flex__item--grow-1",
                     form: {
                       data: {
-                        "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->bridge--album#playBeginWith",
-                        "turbo-frame" => "turbo-playlist",
-                        "disabled-on-native" => "true"
+                        "delegated-action" => "turbo:submit-start->songs#checkBeforePlay",
+                        "turbo-frame" => "turbo-playlist"
                       }
                     }
                   ) do %>
@@ -72,11 +69,7 @@
                     <div>
                       <div><%= song.name %></div>
                       <% if @album.artist.various? %>
-                        <% if native_app? %>
-                          <span class='c-list__item__subtext'><%= song.artist.name %></span>
-                        <% else %>
-                          <%= link_to song.artist.name, artist_path(song.artist), class: "c-list__item__subtext" %>
-                        <% end %>
+                        <%= link_to song.artist.name, artist_path(song.artist), class: "c-list__item__subtext" %>
                       <% end %>
                     </div>
                   </div>
@@ -96,8 +89,7 @@
                         form: {
                           data: {
                             "turbo-frame" => "turbo-playlist",
-                            "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->bridge--songs#playNow",
-                            "disabled-on-native" => "true"
+                            "delegated-action" => "turbo:submit-start->songs#checkBeforePlay"
                           }
                         }
                       ) %>
@@ -108,8 +100,7 @@
                         form: {
                           data: {
                             "turbo-frame" => "turbo-playlist",
-                            "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext click->bridge--songs#playNext",
-                            "disabled-on-native" => "true"
+                            "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext"
                           }
                         }
                       ) %>
@@ -119,9 +110,7 @@
                         form_class: "c-dropdown__item",
                         form: {
                           data: {
-                            "turbo-frame" => "turbo-playlist",
-                            "delegated-action" => "click->bridge--songs#playLast",
-                            "disabled-on-native" => "true"
+                            "turbo-frame" => "turbo-playlist"
                           }
                         }
                       ) %>
