@@ -84,7 +84,7 @@ module ApplicationHelper
 
   def page_title_tag(title)
     title_suffix = " - #{t(:app_name)}"
-    title = "#{title}#{title_suffix unless native_app? || dialog?}"
+    title = "#{title}#{title_suffix unless dialog?}"
 
     content_for(:title, title)
   end

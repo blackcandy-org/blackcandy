@@ -1,5 +1,5 @@
 <div class='o-container o-container--narrow'>
-  <div data-controller='songs bridge--songs bridge--playlist' data-bridge--playlist-id-value='<%= @playlist.id %>'>
+  <div data-controller='songs'>
     <div class="c-card c-card--horizontal u-my-5">
       <div class='c-card__body'>
         <h1 class='c-card__body__title'><%= @playlist.name %></h1>
@@ -19,9 +19,7 @@
                   form_class: "u-display-inline-block",
                   form: {
                     data: {
-                      "disabled-on-native" => "true",
-                      "turbo-frame" => "turbo-playlist",
-                      "action" => "bridge--playlist#play"
+                      "turbo-frame" => "turbo-playlist"
                     }
                   }
                 ) %>

@@ -2,7 +2,7 @@ module ClientDetection
   extend ActiveSupport::Concern
 
   included do
-    helper_method :native_app?, :mobile?, :need_transcode?
+    helper_method :mobile?, :need_transcode?
   end
 
   private

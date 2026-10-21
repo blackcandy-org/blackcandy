@@ -2,7 +2,7 @@ module DialogRendering
   extend ActiveSupport::Concern
 
   included do
-    layout -> { "dialog" if dialog? && !native_app? }
+    layout -> { "dialog" if dialog? }
     helper_method :dialog?
     before_action :remove_dialog_param_from_referer
     before_action :render_dialog_frame

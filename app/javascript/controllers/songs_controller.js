@@ -1,13 +1,8 @@
 import { Controller } from '@hotwired/stimulus'
 import { installEventHandler } from './mixins/event_handler'
 import { installPlayingSongIndicator } from './mixins/playing_song_indicator'
-import { isNativeApp } from '../helper'
 
 export default class extends Controller {
-  static get shouldLoad () {
-    return !isNativeApp()
-  }
-
   static targets = ['item']
 
   initialize () {

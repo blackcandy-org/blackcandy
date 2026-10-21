@@ -1,7 +1,7 @@
 <% page_title_tag @playlist.name %>
 <% content_for :fluid_layout, true %>
 
-<div data-controller='songs bridge--songs bridge--playlist' data-bridge--playlist-id-value='<%= @playlist.id %>'>
+<div data-controller='songs'>
   <div class='c-backdrop c-backdrop--blur-large' style='--backdrop-image: url(<%= cover_image_url_for(@playlist) %>)'>
     <div class='c-backdrop__content o-container o-container--large'>
       <div class="c-card c-card--horizontal c-card--center@small">
@@ -25,9 +25,7 @@
                     class: "c-button c-button--primary c-button--large",
                     form: {
                       data: {
-                        "disabled-on-native" => "true",
-                        "turbo-frame" => "turbo-playlist",
-                        "action" => "bridge--playlist#play"
+                        "turbo-frame" => "turbo-playlist"
                       }
                     }
                   ) do %>

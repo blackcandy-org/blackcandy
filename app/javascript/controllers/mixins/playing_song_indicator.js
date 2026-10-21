@@ -10,7 +10,7 @@ export const installPlayingSongIndicator = (controller, getSongElements = () => 
 
   const hidePlayingSong = () => {
     const playingSongElement = getSongElements().find((element) => element.classList.contains('is-active'))
-    playingSongElement.classList.remove('is-active', 'is-paused')
+    playingSongElement?.classList.remove('is-active', 'is-paused')
   }
 
   const pausePlayingSong = () => {

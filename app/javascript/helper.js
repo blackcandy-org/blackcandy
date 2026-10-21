@@ -33,24 +33,9 @@ function dispatchEvent (element, type, data = null) {
   element.dispatchEvent(new CustomEvent(type, { detail: data }))
 }
 
-function isiOSApp () {
-  return !!window.navigator.userAgent.match(/Black Candy iOS/)
-}
-
-function isAndroidApp () {
-  return !!window.navigator.userAgent.match(/Black Candy Android/)
-}
-
-function isNativeApp () {
-  return isiOSApp() || isAndroidApp()
-}
-
 export {
   formatDuration,
   randomIndex,
   fetchRequest,
-  dispatchEvent,
-  isiOSApp,
-  isAndroidApp,
-  isNativeApp
+  dispatchEvent
 }

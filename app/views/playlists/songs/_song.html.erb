@@ -11,20 +11,15 @@
           form_class: "o-flex__item--grow-1",
           form: {
             data: {
-              "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->bridge--playlist#playBeginWith",
-              "turbo-frame" => "turbo-playlist",
-              "disabled-on-native" => "true"
+              "delegated-action" => "turbo:submit-start->songs#checkBeforePlay",
+              "turbo-frame" => "turbo-playlist"
             }
           }
         ) do %>
       <div class='o-flex o-flex--justify-between o-flex--align-center'>
         <div class='u-mr-2'>
           <span class='u-mb-1 u-text-line-clamp-2'><%= song.name %></span>
-          <% if native_app? %>
-            <span class='c-list__item__subtext'><%= song.artist.name %></span>
-          <% else %>
-            <%= link_to song.artist.name, artist_path(song.artist), class: "c-list__item__subtext" %>
-          <% end %>
+          <%= link_to song.artist.name, artist_path(song.artist), class: "c-list__item__subtext" %>
         </div>
         <div class='u-text-monospace u-mr-2'><%= format_duration(song.duration) %></div>
       </div>
@@ -39,8 +34,7 @@
               form: {
                 data: {
                   "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->bridge--songs#playNow",
-                  "disabled-on-native" => "true"
+                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlay"
                 }
               }
             ) %>
@@ -51,8 +45,7 @@
               form: {
                 data: {
                   "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext click->bridge--songs#playNext",
-                  "disabled-on-native" => "true"
+                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext"
                 }
               }
             ) %>
@@ -62,9 +55,7 @@
               form_class: "c-dropdown__item",
               form: {
                 data: {
-                  "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "click->bridge--songs#playLast",
-                  "disabled-on-native" => "true"
+                  "turbo-frame" => "turbo-playlist"
                 }
               }
             ) %>

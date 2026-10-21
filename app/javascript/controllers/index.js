@@ -4,27 +4,6 @@
 
 import { application } from "./application"
 
-import Bridge__AccountController from "./bridge/account_controller"
-application.register("bridge--account", Bridge__AccountController)
-
-import Bridge__AlbumController from "./bridge/album_controller"
-application.register("bridge--album", Bridge__AlbumController)
-
-import Bridge__FlashController from "./bridge/flash_controller"
-application.register("bridge--flash", Bridge__FlashController)
-
-import Bridge__PlaylistController from "./bridge/playlist_controller"
-application.register("bridge--playlist", Bridge__PlaylistController)
-
-import Bridge__SearchController from "./bridge/search_controller"
-application.register("bridge--search", Bridge__SearchController)
-
-import Bridge__SongsController from "./bridge/songs_controller"
-application.register("bridge--songs", Bridge__SongsController)
-
-import Bridge__ThemeController from "./bridge/theme_controller"
-application.register("bridge--theme", Bridge__ThemeController)
-
 import CoverImageController from "./cover_image_controller"
 application.register("cover-image", CoverImageController)
 
