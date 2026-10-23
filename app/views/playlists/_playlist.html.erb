@@ -13,11 +13,7 @@
           method: :put,
           class: "c-button c-button--circle c-button--secondary",
           disabled: playlist.playlists_songs.empty?,
-          form: {
-            data: {
-              "turbo-frame" => "turbo-playlist"
-            }
-          }
+          form: turbo_frame_target("turbo-playlist")
         ) do %>
       <%= icon_tag "play", size: "small", title: t("button.play") %>
     <% end %>

@@ -8,11 +8,7 @@
             current_playlist_album_path(album, should_play: true),
             method: :put,
             class: "c-button c-button--circle c-button--primary",
-            form: {
-              data: {
-                "turbo-frame" => "turbo-playlist"
-              }
-            }
+            form: turbo_frame_target("turbo-playlist")
           ) do %>
         <%= icon_tag "play", size: "medium", title: t("button.play") %>
       <% end %>

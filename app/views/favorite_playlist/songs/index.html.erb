@@ -17,11 +17,7 @@
                   method: :put,
                   class: "c-button c-button--primary",
                   form_class: "u-display-inline-block",
-                  form: {
-                    data: {
-                      "turbo-frame" => "turbo-playlist"
-                    }
-                  }
+                  form: turbo_frame_target("turbo-playlist")
                 ) %>
             <%= button_to t("button.clear"), favorite_playlist_songs_path, class: "c-button c-button--secondary", form_class: "u-display-inline-block", method: :delete %>
           <% end %>

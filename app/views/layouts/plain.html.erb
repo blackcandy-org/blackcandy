@@ -1,6 +1,9 @@
+<%# Pages without #js-app can't be swapped in, and their links and forms have no #js-app to swap into. Have htmx load them in full both ways. %>
+<% response.set_header("HX-Redirect", request.url) if htmx_request? %>
+
 <% content_for :body do %>
   <%= render "shared/flash" %>
-  <div class='o-flex o-flex--justify-center o-flex--align-center u-vh-100 u-bg-gradient'>
+  <div class='o-flex o-flex--justify-center o-flex--align-center u-vh-100 u-bg-gradient' hx-boost:inherited='false'>
     <div class='o-container o-container--extra-narrow  u-w-100 u-mx-3 u-bg-primary u-px-3 u-py-5 u-border-shadow u-border-radius-3'>
       <div class='u-mb-5 u-text-align-center'>
         <span class='c-logo'></span>

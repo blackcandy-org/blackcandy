@@ -3,12 +3,7 @@
     <%= button_to(
           current_playlist_songs_path(song_id: song.id, should_play: true),
           class: "c-button c-button--link",
-          form: {
-            data: {
-              "delegated-action" => "turbo:submit-start->songs#checkBeforePlay",
-              "turbo-frame" => "turbo-playlist"
-            }
-          }
+          form: turbo_frame_target("turbo-playlist", delegated_action: "turbo:submit-start->songs#checkBeforePlay")
         ) do %>
       <span class='o-flex o-flex--align-center'>
         <span class='c-song__cover u-mr-2'>
@@ -40,22 +35,13 @@
               t("button.play_next"),
               current_playlist_songs_path(song_id: song.id),
               form_class: "c-dropdown__item",
-              form: {
-                data: {
-                  "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext"
-                }
-              }
+              form: turbo_frame_target("turbo-playlist", delegated_action: "turbo:submit-start->songs#checkBeforePlayNext")
             ) %>
         <%= button_to(
               t("button.play_last"),
               current_playlist_songs_path(song_id: song.id, location: "last"),
               form_class: "c-dropdown__item",
-              form: {
-                data: {
-                  "turbo-frame" => "turbo-playlist"
-                }
-              }
+              form: turbo_frame_target("turbo-playlist")
             ) %>
       </div>
     </details>

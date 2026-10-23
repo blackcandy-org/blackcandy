@@ -26,7 +26,8 @@ export default class extends Controller {
     if (!url.searchParams.has(DIALOG_PARAM)) return
 
     url.searchParams.delete(DIALOG_PARAM)
-    window.history.replaceState({}, '', url)
+    // Keep the entry's state: htmx only restores entries marked { htmx: true }.
+    window.history.replaceState(window.history.state, '', url)
   }
 
   onPopstate = () => {

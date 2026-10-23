@@ -40,5 +40,6 @@
     --z-flash: 5;
     --z-fixed-overlay: 6;
     --z-expanded-sidebar: 7;
+    --z-progress-bar: 8;
   }
 }

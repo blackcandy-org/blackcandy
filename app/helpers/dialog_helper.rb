@@ -9,8 +9,8 @@ module DialogHelper
   end
 
   def dialog_link_to(name, path, **options)
-    options[:data] = (options[:data] || {}).merge("turbo-frame" => "turbo-dialog", "turbo-action" => "advance")
-    link_to name, "?#{request.query_parameters.merge(DIALOG_PARAM => DialogHelper.verifier.generate(path)).to_query}", **options
+    url = "?#{request.query_parameters.merge(DIALOG_PARAM => DialogHelper.verifier.generate(path)).to_query}"
+    link_to name, url, **options.deep_merge(turbo_frame_target("turbo-dialog"))
   end
 
   def dialog_frame_src

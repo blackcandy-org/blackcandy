@@ -22,9 +22,6 @@ application.register("element", ElementController)
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)
 
-import FormController from "./form_controller"
-application.register("form", FormController)
-
 import LyricsController from "./lyrics_controller"
 application.register("lyrics", LyricsController)
 

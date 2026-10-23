@@ -6,7 +6,7 @@
     "@hotwired/turbo-rails": "^8.0.0",
     "esbuild": "^0.28.0",
     "howler": "^2.2.3",
-    "idiomorph": "^0.7.4"
+    "htmx.org": "4.0.0"
   },
   "devDependencies": {
     "@stylistic/stylelint-plugin": "^5.2.0",
@@ -24,6 +24,8 @@
       "Request",
       "fetch",
       "CustomEvent",
+      "MutationObserver",
+      "Node",
       "App"
     ],
     "ignore": [

@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <div data-action='turbo:submit-end->player#toggleFavorite'>
+    <div data-action='htmx:after:request->player#toggleFavorite'>
       <%= button_to "#", class: "c-button c-button--icon", disabled: true, form: { "data-player-target" => "favoriteButton" } do %>
         <%= icon_tag "heart", size: "small", title: t("label.toggle_favorite") %>
       <% end %>

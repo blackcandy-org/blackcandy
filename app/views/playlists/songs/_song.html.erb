@@ -9,12 +9,7 @@
           method: :put,
           class: "c-button c-button--link u-w-100",
           form_class: "o-flex__item--grow-1",
-          form: {
-            data: {
-              "delegated-action" => "turbo:submit-start->songs#checkBeforePlay",
-              "turbo-frame" => "turbo-playlist"
-            }
-          }
+          form: turbo_frame_target("turbo-playlist", delegated_action: "turbo:submit-start->songs#checkBeforePlay")
         ) do %>
       <div class='o-flex o-flex--justify-between o-flex--align-center'>
         <div class='u-mr-2'>
@@ -31,33 +26,19 @@
               t("button.play_now"),
               current_playlist_songs_path(song_id: song.id, should_play: true),
               form_class: "c-dropdown__item",
-              form: {
-                data: {
-                  "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlay"
-                }
-              }
+              form: turbo_frame_target("turbo-playlist", delegated_action: "turbo:submit-start->songs#checkBeforePlay")
             ) %>
         <%= button_to(
               t("button.play_next"),
               current_playlist_songs_path(song_id: song.id),
               form_class: "c-dropdown__item",
-              form: {
-                data: {
-                  "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext"
-                }
-              }
+              form: turbo_frame_target("turbo-playlist", delegated_action: "turbo:submit-start->songs#checkBeforePlayNext")
             ) %>
         <%= button_to(
               t("button.play_last"),
               current_playlist_songs_path(song_id: song.id, location: "last"),
               form_class: "c-dropdown__item",
-              form: {
-                data: {
-                  "turbo-frame" => "turbo-playlist"
-                }
-              }
+              form: turbo_frame_target("turbo-playlist")
             ) %>
         <%= button_to(
               t("button.delete"),

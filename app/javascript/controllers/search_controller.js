@@ -16,14 +16,18 @@ export default class extends Controller {
     }
   }
 
-  submit (e) {
-    this.inputTarget.value = this.inputTarget.value.trim()
+  // Runs on htmx:config:request. htmx has already taken the submit event,
+  // so cancelling its request is what drops an empty search.
+  submit (event) {
+    const query = this.inputTarget.value.trim()
 
-    if (this.inputTarget.value.length === 0) {
-      e.preventDefault()
-      e.stopPropagation()
-    } else {
-      this.element.classList.add('is-loading')
+    if (query.length === 0) {
+      event.preventDefault()
+      return
     }
+
+    this.inputTarget.value = query
+    event.detail.ctx.request.body.set(this.inputTarget.name, query)
+    this.element.classList.add('is-loading')
   }
 }

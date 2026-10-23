@@ -46,6 +46,7 @@
 @import "./components/song.css";
 @import "./components/settings.css";
 @import "./components/pagination.css";
+@import "./components/progress-bar.css";
 
 @import "./utilities/display.css";
 @import "./utilities/spacing.css";

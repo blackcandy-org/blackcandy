@@ -3,7 +3,7 @@
     <span id='<%= dom_id(@playlist, :songs_count) %>'><%= @playlist.songs.count %></span>
     <span><%= t("label.tracks") %></span>
   </p>
-  <%= button_to t("button.clear"), current_playlist_songs_path, method: :delete %>
+  <%= button_to t("button.clear"), current_playlist_songs_path, method: :delete, form: { "hx-boost": "false" } %>
 </div>
 <div
   class="u-px-2"

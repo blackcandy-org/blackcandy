@@ -50,7 +50,7 @@ export default class extends Controller {
   }
 
   toggleFavorite (event) {
-    if (!event.detail.success) { return }
+    if (event.detail.ctx.response.status >= 400) { return }
 
     const isFavorited = this.currentSong.is_favorited
 

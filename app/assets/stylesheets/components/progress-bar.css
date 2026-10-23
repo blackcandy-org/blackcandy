@@ -1,0 +1,20 @@
+@layer components {
+  .c-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--z-progress-bar);
+    width: 0;
+    height: 3px;
+    background-color: var(--progress-bar-bg-color);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* htmx adds htmx-request while a request runs. Like Turbo's bar, it shows only after 500ms. */
+  .c-progress-bar.htmx-request {
+    width: 90%;
+    opacity: 1;
+    transition: width 10s cubic-bezier(0.1, 0.7, 0.2, 1) 500ms, opacity 0s 500ms;
+  }
+}

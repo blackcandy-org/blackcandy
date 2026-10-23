@@ -23,11 +23,7 @@
                     method: :put,
                     form_class: "u-display-inline-block",
                     class: "c-button c-button--primary c-button--large",
-                    form: {
-                      data: {
-                        "turbo-frame" => "turbo-playlist"
-                      }
-                    }
+                    form: turbo_frame_target("turbo-playlist")
                   ) do %>
                 <%= icon_tag "play", size: "medium" %>
                 <%= t("button.play") %>

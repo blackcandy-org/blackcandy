@@ -21,11 +21,7 @@
                   method: :put,
                   form_class: "u-display-inline-block",
                   class: "c-button c-button--primary c-button--large",
-                  form: {
-                    data: {
-                      "turbo-frame" => "turbo-playlist"
-                    }
-                  }
+                  form: turbo_frame_target("turbo-playlist")
                 ) do %>
               <%= icon_tag "play", size: "medium" %>
               <%= t("button.play") %>
@@ -53,12 +49,7 @@
                     method: :put,
                     class: "c-button c-button--link u-w-100",
                     form_class: "o-flex__item--grow-1",
-                    form: {
-                      data: {
-                        "delegated-action" => "turbo:submit-start->songs#checkBeforePlay",
-                        "turbo-frame" => "turbo-playlist"
-                      }
-                    }
+                    form: turbo_frame_target("turbo-playlist", delegated_action: "turbo:submit-start->songs#checkBeforePlay")
                   ) do %>
                 <div class='o-flex o-flex--justify-between o-flex--align-center'>
                   <div class='o-flex o-flex--align-center'>
@@ -86,33 +77,19 @@
                         t("button.play_now"),
                         current_playlist_songs_path(song_id: song.id, should_play: true),
                         form_class: "c-dropdown__item",
-                        form: {
-                          data: {
-                            "turbo-frame" => "turbo-playlist",
-                            "delegated-action" => "turbo:submit-start->songs#checkBeforePlay"
-                          }
-                        }
+                        form: turbo_frame_target("turbo-playlist", delegated_action: "turbo:submit-start->songs#checkBeforePlay")
                       ) %>
                   <%= button_to(
                         t("button.play_next"),
                         current_playlist_songs_path(song_id: song.id),
                         form_class: "c-dropdown__item",
-                        form: {
-                          data: {
-                            "turbo-frame" => "turbo-playlist",
-                            "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext"
-                          }
-                        }
+                        form: turbo_frame_target("turbo-playlist", delegated_action: "turbo:submit-start->songs#checkBeforePlayNext")
                       ) %>
                   <%= button_to(
                         t("button.play_last"),
                         current_playlist_songs_path(song_id: song.id, location: "last"),
                         form_class: "c-dropdown__item",
-                        form: {
-                          data: {
-                            "turbo-frame" => "turbo-playlist"
-                          }
-                        }
+                        form: turbo_frame_target("turbo-playlist")
                       ) %>
                   <%= dialog_link_to t("label.add_to_playlist"), playlists_selections_path(song_id: song.id), class: "c-dropdown__item" %>
                   <% if is_admin? %>
