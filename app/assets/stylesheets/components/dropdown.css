@@ -68,6 +68,15 @@
     width: 100%;
     background: var(--dropdown-bg-color);
     border: none;
+    text-align: left;
+    color: var(--dropdown-color);
+    cursor: pointer;
+  }
+
+  button.c-dropdown__item {
+    width: 100%;
+    text-align: left;
+    color: var(--dropdown-color);
     cursor: pointer;
   }
 

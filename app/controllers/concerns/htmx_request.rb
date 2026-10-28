@@ -13,12 +13,16 @@ module HtmxRequest
     request.headers["HX-Request"] == "true" || request.headers["HX-History-Restore-Request"] == "true"
   end
 
+  def partial_request?
+    request.headers["HX-Request-Type"] == "partial"
+  end
+
   def htmx_navigation?
     request.get? && (request.headers["HX-Boosted"] == "true" || request.headers["HX-History-Restore-Request"] == "true")
   end
 
   def vary_on_htmx_headers
-    response.headers["Vary"] = [ response.headers["Vary"], "HX-Request", "HX-History-Restore-Request" ].compact.join(", ")
+    response.headers["Vary"] = [ response.headers["Vary"], "HX-Request", "HX-Request-Type", "HX-History-Restore-Request" ].compact.join(", ")
   end
 
   def asset_version

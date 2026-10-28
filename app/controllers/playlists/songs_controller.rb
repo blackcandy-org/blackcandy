@@ -7,6 +7,10 @@ class Playlists::SongsController < ApplicationController
 
   def index
     @pagy, @songs = pagy(@playlist.songs.includes(:artist))
+
+    if partial_request?
+      render partial: "playlists/songs/page", locals: { playlist: @playlist, songs: @songs, pagy: @pagy }
+    end
   end
 
   def create
@@ -30,7 +34,7 @@ class Playlists::SongsController < ApplicationController
     if @playlist.songs.empty?
       respond_to do |format|
         format.json { render partial: "songs/song", locals: { song: @song } }
-        format.html { redirect_to action: "index" }
+        format.html { redirect_to({ action: "index" }, status: :see_other) }
       end
     else
       respond_to do |format|
@@ -57,7 +61,7 @@ class Playlists::SongsController < ApplicationController
 
     respond_to do |format|
       format.json { head :no_content }
-      format.html { redirect_to action: "index" }
+      format.html { redirect_to({ action: "index" }, status: :see_other) }
     end
   end
 

@@ -1,0 +1,5 @@
+<div id='js-dialog'>
+  <% if (src = dialog_src) %>
+    <div hx-get='<%= src %>' hx-trigger='load' hx-target='#js-dialog'></div>
+  <% end %>
+</div>

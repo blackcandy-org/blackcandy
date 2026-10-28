@@ -1,10 +1,9 @@
 <tr data-song-id='<%= song.id %>'>
   <td data-songs-target='item'>
-    <%= button_to(
-          current_playlist_songs_path(song_id: song.id, should_play: true),
-          class: "c-button c-button--link",
-          form: turbo_frame_target("turbo-playlist", delegated_action: "turbo:submit-start->songs#checkBeforePlay")
-        ) do %>
+    <button class='c-button c-button--link'
+      hx-post='<%= current_playlist_songs_path(song_id: song.id, should_play: true) %>'
+      hx-target='#js-playlist'
+      data-delegated-action='htmx:config:request->songs#checkBeforePlay'>
       <span class='o-flex o-flex--align-center'>
         <span class='c-song__cover u-mr-2'>
           <%= cover_image_tag song.album, size: :small %>
@@ -12,7 +11,7 @@
         </span>
         <span><%= song.name %></span>
       </span>
-    <% end %>
+    </button>
   </td>
   <td class='u-display-none@medium'>
     <%= link_to song.artist.name, artist_path(song.artist) %>
@@ -31,18 +30,17 @@
         <% if is_admin? %>
           <%= dialog_link_to t("label.edit_song"), edit_song_path(song), class: "c-dropdown__item" %>
         <% end %>
-        <%= button_to(
-              t("button.play_next"),
-              current_playlist_songs_path(song_id: song.id),
-              form_class: "c-dropdown__item",
-              form: turbo_frame_target("turbo-playlist", delegated_action: "turbo:submit-start->songs#checkBeforePlayNext")
-            ) %>
-        <%= button_to(
-              t("button.play_last"),
-              current_playlist_songs_path(song_id: song.id, location: "last"),
-              form_class: "c-dropdown__item",
-              form: turbo_frame_target("turbo-playlist")
-            ) %>
+        <button class='c-dropdown__item'
+          hx-post='<%= current_playlist_songs_path(song_id: song.id) %>'
+          hx-target='#js-playlist'
+          data-delegated-action='htmx:config:request->songs#checkBeforePlayNext'>
+          <%= t("button.play_next") %>
+        </button>
+        <button class='c-dropdown__item'
+          hx-post='<%= current_playlist_songs_path(song_id: song.id, location: "last") %>'
+          hx-target='#js-playlist'>
+          <%= t("button.play_last") %>
+        </button>
       </div>
     </details>
   </td>

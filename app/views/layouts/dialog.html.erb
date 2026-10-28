@@ -1,13 +1,11 @@
-<%= turbo_frame_tag "turbo-dialog-content" do %>
-  <dialog class='c-dialog' data-controller='dialog'>
-    <header class='c-dialog__header o-flex o-flex--justify-between o-flex--align-center'>
-      <h2 class='u-mb-0'><%= yield(:title) %></h2>
-      <button class='c-button c-button--icon' data-action='click->dialog#hide'>
-        <%= icon_tag "close", title: t("label.close") %>
-      </button>
-    </header>
-    <div class='c-dialog__content u-position-relative'>
-      <%= yield %>
-    </div>
-  </dialog>
-<% end %>
+<dialog id='dialog' class='c-dialog' data-controller='dialog'>
+  <header class='c-dialog__header o-flex o-flex--justify-between o-flex--align-center'>
+    <h2 class='u-mb-0'><%= yield(:title) %></h2>
+    <button class='c-button c-button--icon' command='close' commandfor='dialog'>
+      <%= icon_tag "close", title: t("label.close") %>
+    </button>
+  </header>
+  <div class='c-dialog__content u-position-relative'>
+    <%= yield %>
+  </div>
+</dialog>

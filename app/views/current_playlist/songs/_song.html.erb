@@ -19,7 +19,7 @@
       <div class='o-flex o-flex--justify-between o-flex--align-center'>
         <div class='u-mr-2'>
           <span class='u-text-line-clamp-2'><%= song.name %></span>
-          <%= link_to song.artist.name, artist_path(song.artist), class: "c-list__item__subtext", data: { "turbo-frame" => "_top", "prevent-delegation" => true } %>
+          <%= link_to song.artist.name, artist_path(song.artist), class: "c-list__item__subtext", data: { "prevent-delegation" => true } %>
         </div>
         <div class='u-text-monospace u-mr-2'><%= format_duration(song.duration) %></div>
       </div>
@@ -30,7 +30,7 @@
       <div class='c-dropdown__menu' data-dropdown-target="menu">
         <%= dialog_link_to t("label.add_to_playlist"), playlists_selections_path(song_id: song.id), class: "c-dropdown__item" %>
 
-        <%= button_to t("button.delete"), current_playlist_song_path(song), method: :delete, form_class: "c-dropdown__item", form: turbo_frame_target("turbo-playlist") %>
+        <button class='c-dropdown__item' hx-delete='<%= current_playlist_song_path(song) %>' hx-target='#js-playlist'><%= t("button.delete") %></button>
       </div>
     </details>
   </div>

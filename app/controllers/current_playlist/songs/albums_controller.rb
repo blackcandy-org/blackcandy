@@ -14,7 +14,7 @@ class CurrentPlaylist::Songs::AlbumsController < ApplicationController
         redirect_to current_playlist_songs_path(
           should_play: params[:should_play],
           song_id: params[:song_id]
-        )
+        ), status: :see_other
       end
     end
   end

@@ -15,6 +15,14 @@ class Playlists::SongsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should render only the next page's songs for infinite scroll" do
+    get playlist_songs_url(@playlist, limit: 1, page: 2), headers: { "HX-Request" => "true", "HX-Request-Type" => "partial" }
+
+    assert_response :success
+    assert_includes response.body, songs(:flac_sample).name
+    assert_not_includes response.body, songs(:mp3_sample).name
+  end
+
   test "should add songs to playlist" do
     post playlist_songs_url(@playlist), params: { song_id: 3 }
     assert_equal [ 1, 2, 3 ], @playlist.reload.song_ids

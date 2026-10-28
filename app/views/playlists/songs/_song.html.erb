@@ -4,13 +4,10 @@
       <button class='c-button c-button--icon js-playlist-sortable-item-handle u-mr-2'><%= icon_tag "drag-indicator", size: "small" %></button>
     <% end %>
 
-    <%= button_to(
-          current_playlist_playlist_path(playlist, should_play: true, song_id: song.id),
-          method: :put,
-          class: "c-button c-button--link u-w-100",
-          form_class: "o-flex__item--grow-1",
-          form: turbo_frame_target("turbo-playlist", delegated_action: "turbo:submit-start->songs#checkBeforePlay")
-        ) do %>
+    <button class='c-button c-button--link o-flex__item--grow-1'
+      hx-put='<%= current_playlist_playlist_path(playlist, should_play: true, song_id: song.id) %>'
+      hx-target='#js-playlist'
+      data-delegated-action='htmx:config:request->songs#checkBeforePlay'>
       <div class='o-flex o-flex--justify-between o-flex--align-center'>
         <div class='u-mr-2'>
           <span class='u-mb-1 u-text-line-clamp-2'><%= song.name %></span>
@@ -18,28 +15,27 @@
         </div>
         <div class='u-text-monospace u-mr-2'><%= format_duration(song.duration) %></div>
       </div>
-    <% end %>
+    </button>
     <details class='c-dropdown' data-controller='dropdown'>
       <summary class="c-button c-button--icon"><%= icon_tag "more-vertical", size: "small", title: t("label.more") %></summary>
       <div class='c-dropdown__menu' data-dropdown-target="menu">
-        <%= button_to(
-              t("button.play_now"),
-              current_playlist_songs_path(song_id: song.id, should_play: true),
-              form_class: "c-dropdown__item",
-              form: turbo_frame_target("turbo-playlist", delegated_action: "turbo:submit-start->songs#checkBeforePlay")
-            ) %>
-        <%= button_to(
-              t("button.play_next"),
-              current_playlist_songs_path(song_id: song.id),
-              form_class: "c-dropdown__item",
-              form: turbo_frame_target("turbo-playlist", delegated_action: "turbo:submit-start->songs#checkBeforePlayNext")
-            ) %>
-        <%= button_to(
-              t("button.play_last"),
-              current_playlist_songs_path(song_id: song.id, location: "last"),
-              form_class: "c-dropdown__item",
-              form: turbo_frame_target("turbo-playlist")
-            ) %>
+        <button class='c-dropdown__item'
+          hx-post='<%= current_playlist_songs_path(song_id: song.id, should_play: true) %>'
+          hx-target='#js-playlist'
+          data-delegated-action='htmx:config:request->songs#checkBeforePlay'>
+          <%= t("button.play_now") %>
+        </button>
+        <button class='c-dropdown__item'
+          hx-post='<%= current_playlist_songs_path(song_id: song.id) %>'
+          hx-target='#js-playlist'
+          data-delegated-action='htmx:config:request->songs#checkBeforePlayNext'>
+          <%= t("button.play_next") %>
+        </button>
+        <button class='c-dropdown__item'
+          hx-post='<%= current_playlist_songs_path(song_id: song.id, location: "last") %>'
+          hx-target='#js-playlist'>
+          <%= t("button.play_last") %>
+        </button>
         <%= button_to(
               t("button.delete"),
               playlist_song_path(playlist, song),

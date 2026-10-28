@@ -10,6 +10,17 @@ class Search::AlbumsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should render only the next page's albums for infinite scroll" do
+    3.times { |i| Album.create!(name: "pager_album_#{i}", artist: artists(:artist1)) }
+
+    login
+    get search_albums_url(query: "pager_", limit: 1, page: 2), headers: { "HX-Request" => "true", "HX-Request-Type" => "partial" }
+
+    assert_response :success
+    assert_includes response.body, "pager_album_1"
+    assert_not_includes response.body, "pager_album_0"
+  end
+
   test "should get index via api" do
     get search_albums_url(query: "1"), as: :json, headers: api_token_header(users(:visitor1))
 

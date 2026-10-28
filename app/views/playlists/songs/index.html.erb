@@ -18,16 +18,12 @@
           </div>
           <div class='u-mt-2 o-flex'>
             <% unless @songs.blank? %>
-              <%= button_to(
-                    current_playlist_playlist_path(@playlist, should_play: true),
-                    method: :put,
-                    form_class: "u-display-inline-block",
-                    class: "c-button c-button--primary c-button--large",
-                    form: turbo_frame_target("turbo-playlist")
-                  ) do %>
+              <button class='c-button c-button--primary c-button--large'
+                hx-put='<%= current_playlist_playlist_path(@playlist, should_play: true) %>'
+                hx-target='#js-playlist'>
                 <%= icon_tag "play", size: "medium" %>
                 <%= t("button.play") %>
-              <% end %>
+              </button>
             <% end %>
             <%= dialog_link_to t("label.edit"), edit_playlist_path(@playlist), class: "c-button c-button--secondary c-button--large u-ml-1" %>
 

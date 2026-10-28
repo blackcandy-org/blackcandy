@@ -8,14 +8,11 @@
       <% end %>
       <span class='u-text-truncate u-mr-2 u-ml-1'><%= playlist.name %></span>
     <% end %>
-    <%= button_to(
-          current_playlist_playlist_path(playlist, should_play: true),
-          method: :put,
-          class: "c-button c-button--circle c-button--secondary",
-          disabled: playlist.playlists_songs.empty?,
-          form: turbo_frame_target("turbo-playlist")
-        ) do %>
+    <button class='c-button c-button--circle c-button--secondary'
+      hx-put='<%= current_playlist_playlist_path(playlist, should_play: true) %>'
+      hx-target='#js-playlist'
+      <%= tag.attributes(disabled: playlist.playlists_songs.empty?) %>>
       <%= icon_tag "play", size: "small", title: t("button.play") %>
-    <% end %>
+    </button>
   </div>
 </div>

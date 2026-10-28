@@ -15,11 +15,9 @@
     </span>
   </summary>
   <div class='c-dropdown__menu c-dropdown__menu--right' data-dropdown-target="menu">
-    <%= turbo_frame_tag "turbo-genre-filter", src: albums_filter_genres_path(**filter_sort_presenter.params), loading: "lazy" do %>
-      <div class='o-flex o-flex--justify-center u-p-4'>
-        <%= loader_tag size: "small" %>
-      </div>
-    <% end %>
+    <div class='o-flex o-flex--justify-center u-p-4' hx-get='<%= albums_filter_genres_path(**filter_sort_presenter.params) %>' hx-trigger='intersect once' hx-swap='outerHTML'>
+      <%= loader_tag size: "small" %>
+    </div>
   </div>
 </details>
 
@@ -31,10 +29,8 @@
     </span>
   </summary>
   <div class='c-dropdown__menu' data-dropdown-target="menu">
-    <%= turbo_frame_tag "turbo-year-filter", src: albums_filter_years_path(**filter_sort_presenter.params), loading: "lazy" do %>
-      <div class='o-flex o-flex--justify-center u-p-4'>
-        <%= loader_tag size: "small" %>
-      </div>
-    <% end %>
+    <div class='o-flex o-flex--justify-center u-p-4' hx-get='<%= albums_filter_years_path(**filter_sort_presenter.params) %>' hx-trigger='intersect once' hx-swap='outerHTML'>
+      <%= loader_tag size: "small" %>
+    </div>
   </div>
 </details>

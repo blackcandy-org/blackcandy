@@ -95,6 +95,7 @@ class HtmxRequestTest < ActionDispatch::IntegrationTest
     get new_session_url
 
     assert_includes response.headers["Vary"], "HX-Request"
+    assert_includes response.headers["Vary"], "HX-Request-Type"
     assert_includes response.headers["Vary"], "HX-History-Restore-Request"
   end
 

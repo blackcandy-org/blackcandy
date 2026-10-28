@@ -16,9 +16,6 @@ application.register("dialog", DialogController)
 import DropdownController from "./dropdown_controller"
 application.register("dropdown", DropdownController)
 
-import ElementController from "./element_controller"
-application.register("element", ElementController)
-
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)
 

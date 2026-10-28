@@ -11,13 +11,13 @@ export default class extends Controller {
   }
 
   connect () {
-    this.handleEvent('turbo:submit-start', {
+    this.handleEvent('htmx:config:request', {
       on: this.element,
       with: this.checkBeforePlay,
       delegation: true
     })
 
-    this.handleEvent('turbo:submit-start', {
+    this.handleEvent('htmx:config:request', {
       on: this.element,
       with: this.checkBeforePlayNext,
       delegation: true
@@ -29,7 +29,7 @@ export default class extends Controller {
     const playlistIndex = this.player.playlist.indexOf(songId)
 
     if (playlistIndex !== -1) {
-      event.detail.formSubmission.stop()
+      event.preventDefault()
       this.player.skipTo(playlistIndex)
     } else {
       this.#appendCurrentSongIdToSubmission(event)
@@ -44,7 +44,7 @@ export default class extends Controller {
     const currentSongId = this.player.currentSong.id
 
     if (currentSongId !== undefined) {
-      event.detail.formSubmission.fetchRequest.body.append('current_song_id', currentSongId)
+      event.detail.ctx.request.body.append('current_song_id', currentSongId)
     }
   }
 

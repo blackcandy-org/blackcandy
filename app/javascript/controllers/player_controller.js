@@ -1,5 +1,6 @@
 import { Controller } from '@hotwired/stimulus'
 import { Howl } from 'howler'
+import htmx from 'htmx.org'
 import { formatDuration, dispatchEvent } from '../helper'
 import { installEventHandler } from './mixins/event_handler'
 
@@ -20,8 +21,8 @@ export default class extends Controller {
     'loader',
     'volume',
     'backdrop',
-    'playlistFrame',
-    'lyricsFrame'
+    'playlist',
+    'lyrics'
   ]
 
   initialize () {
@@ -102,13 +103,15 @@ export default class extends Controller {
   }
 
   toggleLyrics ({ currentTarget }) {
-    this.lyricsFrameTarget.classList.toggle('u-display-none')
-    this.playlistFrameTarget.classList.toggle('u-display-none', this.isLyricsOpen)
-    this.lyricsFrameTarget.loading = this.isLyricsOpen ? 'eager' : 'lazy'
+    this.lyricsTarget.classList.toggle('u-display-none')
+    this.playlistTarget.classList.toggle('u-display-none', this.isLyricsOpen)
 
     currentTarget.classList.toggle('is-active', this.isLyricsOpen)
 
-    if (this.isLyricsOpen) { dispatchEvent(document, 'lyrics:show') }
+    if (this.isLyricsOpen) {
+      this.#loadLyrics()
+      dispatchEvent(document, 'lyrics:show')
+    }
   }
 
   collapse () {
@@ -140,7 +143,7 @@ export default class extends Controller {
   }
 
   get isLyricsOpen () {
-    return !this.lyricsFrameTarget.classList.contains('u-display-none')
+    return !this.lyricsTarget.classList.contains('u-display-none')
   }
 
   #setBeforePlayingStatus = () => {
@@ -225,11 +228,17 @@ export default class extends Controller {
   }
 
   #updateLyrics () {
-    const { lyrics_url: lyricsUrl } = this.currentSong
+    this.lyricsTarget.setAttribute('hx-get', this.currentSong.lyrics_url)
 
-    if (this.lyricsFrameTarget.src === lyricsUrl) { return }
+    if (this.isLyricsOpen) { this.#loadLyrics() }
+  }
 
-    this.lyricsFrameTarget.src = lyricsUrl
+  #loadLyrics () {
+    const lyricsUrl = this.lyricsTarget.getAttribute('hx-get')
+    if (!lyricsUrl || this.loadedLyricsUrl === lyricsUrl) { return }
+
+    this.loadedLyricsUrl = lyricsUrl
+    htmx.trigger(this.lyricsTarget, 'lyrics:load')
   }
 
   #setProgress () {

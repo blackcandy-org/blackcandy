@@ -22,9 +22,9 @@
   <%# Boosted links and forms swap #js-app only and leave the player aside alone. With hx-preserve, htmx would move the aside out and back in, and Stimulus would reconnect the current playlist controller, which stops the song. %>
   <body hx-headers:inherited='<%= { "X-CSRF-Token" => form_authenticity_token, "X-Asset-Version" => asset_version }.to_json %>'
     hx-boost:inherited='target:#js-app select:#js-app swap:outerMorph transition:true'
-    hx-indicator:inherited='#progress-bar'>
+    hx-indicator:inherited='#js-progress-bar'>
     <%= content_for?(:body) ? yield(:body) : yield %>
-    <div id='progress-bar' class='c-progress-bar'></div>
+    <div id='js-progress-bar' class='c-progress-bar'></div>
     <%= render "shared/icons" %>
   </body>
 </html>

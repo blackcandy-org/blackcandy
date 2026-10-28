@@ -9,11 +9,11 @@ module DialogHelper
   end
 
   def dialog_link_to(name, path, **options)
-    url = "?#{request.query_parameters.merge(DIALOG_PARAM => DialogHelper.verifier.generate(path)).to_query}"
-    link_to name, url, **options.deep_merge(turbo_frame_target("turbo-dialog"))
+    page_url = "?#{request.query_parameters.merge(DIALOG_PARAM => DialogHelper.verifier.generate(path)).to_query}"
+    link_to name, page_url, **options, "hx-get": path, "hx-target": "#js-dialog", "hx-push-url": page_url
   end
 
-  def dialog_frame_src
+  def dialog_src
     DialogHelper.verifier.verified(params[DIALOG_PARAM])
   end
 end

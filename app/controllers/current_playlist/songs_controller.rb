@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CurrentPlaylist::SongsController < Playlists::SongsController
-  layout "playlist"
+  layout false
 
   skip_before_action :redirect_to_built_in_playlist
 

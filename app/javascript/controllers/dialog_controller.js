@@ -22,6 +22,8 @@ export default class extends Controller {
   }
 
   onClose = () => {
+    this.element.remove()
+
     const url = new URL(window.location)
     if (!url.searchParams.has(DIALOG_PARAM)) return
 

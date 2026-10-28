@@ -11,14 +11,11 @@
         </div>
         <div class='u-mt-5'>
           <% unless @songs.blank? %>
-            <%= button_to(
-                  t("button.play"),
-                  current_playlist_playlist_path(@playlist, should_play: true),
-                  method: :put,
-                  class: "c-button c-button--primary",
-                  form_class: "u-display-inline-block",
-                  form: turbo_frame_target("turbo-playlist")
-                ) %>
+            <button class='c-button c-button--primary'
+              hx-put='<%= current_playlist_playlist_path(@playlist, should_play: true) %>'
+              hx-target='#js-playlist'>
+              <%= t("button.play") %>
+            </button>
             <%= button_to t("button.clear"), favorite_playlist_songs_path, class: "c-button c-button--secondary", form_class: "u-display-inline-block", method: :delete %>
           <% end %>
         </div>

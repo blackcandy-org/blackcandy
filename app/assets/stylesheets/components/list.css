@@ -13,6 +13,7 @@
   .c-list__item {
     width: 100%;
     padding: var(--spacing-2);
+    text-align: left;
     text-decoration: none;
     border-top: 1px solid var(--list-border-color);
 

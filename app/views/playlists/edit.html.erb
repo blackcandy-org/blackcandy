@@ -1,12 +1,6 @@
 <% page_title_tag t("label.edit_playlist") %>
 
-<%= form_with(
-      model: @playlist,
-      class: "c-form",
-      data: {
-        "turbo-frame" => "_top"
-      }
-    ) do |form| %>
+<%= form_with(model: @playlist, class: "c-form") do |form| %>
   <div class='c-form__field'>
     <%= form.label :name, t("field.name") %>
     <%= form.text_field :name, class: "c-input" %>
