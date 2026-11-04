@@ -29,13 +29,13 @@ class CurrentPlaylist::SongsController < Playlists::SongsController
     else
       respond_to do |format|
         format.json { render partial: "songs/song", locals: { song: @song } }
-        format.turbo_stream
+        format.html
       end
     end
   rescue ActiveRecord::RecordNotUnique
     respond_to do |format|
       format.json { render_json_error("DuplicatePlaylistSong", t("error.already_in_playlist"), :bad_request) }
-      format.turbo_stream { render turbo_stream: stream_flash(type: :alert, message: t("error.already_in_playlist")) }
+      format.html { render html: flash_partial(type: :alert, message: t("error.already_in_playlist")) }
     end
   end
 

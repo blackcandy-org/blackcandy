@@ -3,9 +3,6 @@
 <% end %>
 
 <% content_for :body do %>
-  <%= turbo_stream_from "media_sync" if is_admin? %>
-  <%= turbo_stream_from Current.user, :theme %>
-
   <div class='o-flex'>
     <aside id='js-player' class='o-flex__item o-flex__item--shrink-0 c-sidebar' data-controller='player'>
       <div class='o-flex o-flex--column-reverse u-position-sticky-top u-overflow-auto u-vh-100'>
@@ -13,7 +10,7 @@
           <%= render "shared/player" %>
         </div>
         <div class='o-flex__item o-flex__item--grow-1 u-h-0'>
-          <div id='js-playlist' class='u-h-100 o-flex o-flex--column' hx-get='<%= current_playlist_songs_path %>' hx-trigger='load' data-player-target='playlist'></div>
+          <div id='hx-playlist' class='u-h-100 o-flex o-flex--column' hx-get='<%= current_playlist_songs_path %>' hx-trigger='load' data-player-target='playlist'></div>
           <div class='c-lyrics u-display-none' hx-get='' hx-trigger='lyrics:load' hx-sync='replace' hx-indicator='this' data-player-target='lyrics'>
             <%= loader_tag class: "c-lyrics__loader" %>
             <%= empty_alert_tag message: t("label.no_lyrics") %>
@@ -21,7 +18,7 @@
         </div>
       </div>
     </aside>
-    <div id='js-app' class='o-flex__item o-flex__item--grow-1 u-pb-7@extra-small' hx-history-elt>
+    <div id='hx-app' class='o-flex__item o-flex__item--grow-1 u-pb-7@extra-small' hx-history-elt>
       <%= render "shared/flash" %>
       <div>
         <header class='c-nav c-nav--primary u-position-sticky-top'>

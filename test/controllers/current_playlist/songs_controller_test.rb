@@ -32,7 +32,7 @@ class CurrentPlaylistSongsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should has error flash when song alreay in playlist" do
-    post current_playlist_songs_url, params: { song_id: 2 }, as: :turbo_stream
+    post current_playlist_songs_url, params: { song_id: 2 }
     assert flash[:alert].present?
   end
 

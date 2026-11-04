@@ -2,8 +2,6 @@
 
 class Media
   include Singleton
-  include Turbo::Broadcastable
-  extend ActiveModel::Naming
 
   class << self
     def sync(type, file_paths = [])

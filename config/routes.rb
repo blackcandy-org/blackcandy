@@ -87,7 +87,7 @@ Rails.application.routes.draw do
   resources :stream, only: [ :new ]
   resources :transcoded_stream, only: [ :new ]
 
-  resource :media_syncing, only: [ :create ]
+  resource :media_syncing, only: [ :show, :create ]
 
   resource :about, only: [ :show ]
 

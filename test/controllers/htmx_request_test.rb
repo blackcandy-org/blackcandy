@@ -44,7 +44,24 @@ class HtmxRequestTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_nil response.headers["HX-Redirect"]
-    assert_select "#js-app[hx-history-elt]"
+    assert_nil response.headers["HX-Push-Url"]
+    assert_select "#hx-app[hx-history-elt]"
+  end
+
+  test "keeps the URL when a boosted request is answered with partials" do
+    login users(:visitor1)
+    patch user_setting_url(users(:visitor1)), params: { user: { theme: "light" } }, headers: { "HX-Request" => "true", "HX-Boosted" => "true" }
+
+    assert_response :success
+    assert_equal "false", response.headers["HX-Push-Url"]
+  end
+
+  test "lets a boosted request that redirects push the new URL" do
+    login users(:admin)
+    delete playlist_url(playlists(:playlist1)), headers: { "HX-Request" => "true", "HX-Boosted" => "true" }
+
+    assert_response :redirect
+    assert_nil response.headers["HX-Push-Url"]
   end
 
   test "doesn't boost pages without the app layout" do

@@ -1,0 +1,4 @@
+<hx-partial hx-target="#hx-<%= dom_id(@playlist, :songs_count) %>" hx-swap="textContent"><%= @playlist.songs.size %></hx-partial>
+<hx-partial hx-target="#hx-<%= dom_id(@playlist, :songs_duration) %>" hx-swap="textContent"><%= format_duration(@playlist.songs.sum(:duration)) %></hx-partial>
+<hx-partial hx-target="#hx-<%= dom_id(@playlist) %>_<%= dom_id(@song) %>" hx-swap="delete"></hx-partial>
+<%= flash_partial(message: t("notice.deleted_from_playlist")) %>

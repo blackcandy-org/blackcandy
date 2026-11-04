@@ -1,4 +1,4 @@
-<div id="turbo-media-syncing-button">
+<div id="hx-media-syncing-button" <%= tag.attributes("hx-get": media_syncing_path, "hx-trigger": "load delay:3s", "hx-indicator": "this") if syncing %>>
   <% if syncing %>
     <%= button_to(
           t("button.syncing"),

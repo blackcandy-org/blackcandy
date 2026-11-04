@@ -39,7 +39,7 @@ class Playlists::SongsController < ApplicationController
     else
       respond_to do |format|
         format.json { render partial: "songs/song", locals: { song: @song } }
-        format.turbo_stream
+        format.html { render layout: false }
       end
     end
   end

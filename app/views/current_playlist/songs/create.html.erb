@@ -1,0 +1,17 @@
+<% if params[:location] == "last" %>
+  <hx-partial hx-target="#hx-<%= dom_id(@playlist) %>_<%= dom_id(@playlist.songs.second_to_last) %>" hx-swap="after">
+    <%= render partial: "current_playlist/songs/song", locals: { song: @song, playlist: @playlist } %>
+  </hx-partial>
+<% elsif @current_song_position.zero? %>
+  <hx-partial hx-target="#hx-<%= dom_id(@playlist) %>_<%= dom_id(@playlist.songs.second) %>" hx-swap="before">
+    <%= render partial: "current_playlist/songs/song", locals: { song: @song, playlist: @playlist, should_play: params[:should_play] } %>
+  </hx-partial>
+<% else %>
+  <%# add song next to the current_song %>
+  <hx-partial hx-target="#hx-<%= dom_id(@playlist) %>_song_<%= params[:current_song_id] %>" hx-swap="after">
+    <%= render partial: "current_playlist/songs/song", locals: { song: @song, playlist: @playlist, should_play: params[:should_play] } %>
+  </hx-partial>
+<% end %>
+
+<hx-partial hx-target="#hx-<%= dom_id(@playlist, :songs_count) %>" hx-swap="textContent"><%= @playlist.songs.size %></hx-partial>
+<%= flash_partial(message: t("notice.added_to_playlist")) %>

@@ -1,4 +1,4 @@
-<li id='<%= "#{dom_id(playlist)}_#{dom_id(song)}" %>' class='c-list__item u-p-0' data-songs-target='item' data-song-id='<%= song.id %>' draggable='true'>
+<li id='<%= "hx-#{dom_id(playlist)}_#{dom_id(song)}" %>' class='c-list__item u-p-0' data-songs-target='item' data-song-id='<%= song.id %>' draggable='true'>
   <div class='o-flex o-flex--align-center u-py-2'>
     <% unless mobile? %>
       <button class='c-button c-button--icon js-playlist-sortable-item-handle u-mr-2'><%= icon_tag "drag-indicator", size: "small" %></button>
@@ -6,7 +6,7 @@
 
     <button class='c-button c-button--link o-flex__item--grow-1'
       hx-put='<%= current_playlist_playlist_path(playlist, should_play: true, song_id: song.id) %>'
-      hx-target='#js-playlist'
+      hx-target='#hx-playlist'
       data-delegated-action='htmx:config:request->songs#checkBeforePlay'>
       <div class='o-flex o-flex--justify-between o-flex--align-center'>
         <div class='u-mr-2'>
@@ -21,19 +21,19 @@
       <div class='c-dropdown__menu' data-dropdown-target="menu">
         <button class='c-dropdown__item'
           hx-post='<%= current_playlist_songs_path(song_id: song.id, should_play: true) %>'
-          hx-target='#js-playlist'
+          hx-target='#hx-playlist'
           data-delegated-action='htmx:config:request->songs#checkBeforePlay'>
           <%= t("button.play_now") %>
         </button>
         <button class='c-dropdown__item'
           hx-post='<%= current_playlist_songs_path(song_id: song.id) %>'
-          hx-target='#js-playlist'
+          hx-target='#hx-playlist'
           data-delegated-action='htmx:config:request->songs#checkBeforePlayNext'>
           <%= t("button.play_next") %>
         </button>
         <button class='c-dropdown__item'
           hx-post='<%= current_playlist_songs_path(song_id: song.id, location: "last") %>'
-          hx-target='#js-playlist'>
+          hx-target='#hx-playlist'>
           <%= t("button.play_last") %>
         </button>
         <%= button_to(

@@ -114,12 +114,6 @@ class MediaSyncAllJobTest < ActiveJob::TestCase
     end
   end
 
-  test "should broadcast media sync stream when sync all completed" do
-    assert_broadcasts("media_sync", 1) do
-      MediaSyncAllJob.perform_now
-    end
-  end
-
   test "should not attach record when file path is invalide" do
     clear_media_data
 

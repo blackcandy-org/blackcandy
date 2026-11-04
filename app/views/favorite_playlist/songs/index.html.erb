@@ -4,16 +4,16 @@
       <div class='c-card__body'>
         <h1 class='c-card__body__title'><%= @playlist.name %></h1>
         <div class='c-card__body__text'>
-          <span id='<%= dom_id(@playlist, :songs_count) %>'><%= @playlist.songs.size %></span>
+          <span id='hx-<%= dom_id(@playlist, :songs_count) %>'><%= @playlist.songs.size %></span>
           <span><%= t("label.tracks") %></span>
           <span>,</span>
-          <span id='<%= dom_id(@playlist, :songs_duration) %>' class='u-text-monospace'><%= format_duration(@playlist.songs.sum(:duration)) %></span>
+          <span id='hx-<%= dom_id(@playlist, :songs_duration) %>' class='u-text-monospace'><%= format_duration(@playlist.songs.sum(:duration)) %></span>
         </div>
         <div class='u-mt-5'>
           <% unless @songs.blank? %>
             <button class='c-button c-button--primary'
               hx-put='<%= current_playlist_playlist_path(@playlist, should_play: true) %>'
-              hx-target='#js-playlist'>
+              hx-target='#hx-playlist'>
               <%= t("button.play") %>
             </button>
             <%= button_to t("button.clear"), favorite_playlist_songs_path, class: "c-button c-button--secondary", form_class: "u-display-inline-block", method: :delete %>

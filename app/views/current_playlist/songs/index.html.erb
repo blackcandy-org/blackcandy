@@ -1,10 +1,10 @@
 <div class='u-position-relative o-flex__item o-flex__item--grow-1 u-h-0 u-overflow-auto'>
   <div class='c-nav c-nav--secondary o-flex o-flex--justify-between o-flex--align-center u-position-sticky-top'>
     <p>
-      <span id='<%= dom_id(@playlist, :songs_count) %>'><%= @playlist.songs.count %></span>
+      <span id='hx-<%= dom_id(@playlist, :songs_count) %>'><%= @playlist.songs.count %></span>
       <span><%= t("label.tracks") %></span>
     </p>
-    <button class='u-text-color-secondary' hx-delete='<%= current_playlist_songs_path %>' hx-target='#js-playlist'><%= t("button.clear") %></button>
+    <button class='u-text-color-secondary' hx-delete='<%= current_playlist_songs_path %>' hx-target='#hx-playlist'><%= t("button.clear") %></button>
   </div>
   <div
     class="u-px-2"

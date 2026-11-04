@@ -6,7 +6,7 @@
     <div class='c-card__image__actions'>
       <button class='c-button c-button--circle c-button--primary'
         hx-put='<%= current_playlist_album_path(album, should_play: true) %>'
-        hx-target='#js-playlist'>
+        hx-target='#hx-playlist'>
         <%= icon_tag "play", size: "medium", title: t("button.play") %>
       </button>
     </div>

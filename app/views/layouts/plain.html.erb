@@ -1,4 +1,4 @@
-<%# Pages without #js-app can't be swapped in, and their links and forms have no #js-app to swap into. Have htmx load them in full both ways. %>
+<%# Pages without #hx-app can't be swapped in, and their links and forms have no #hx-app to swap into. Have htmx load them in full both ways. %>
 <% response.set_header("HX-Redirect", request.url) if htmx_request? %>
 
 <% content_for :body do %>

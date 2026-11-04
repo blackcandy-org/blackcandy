@@ -1,4 +1,4 @@
-<li id='<%= "#{dom_id(playlist)}_#{dom_id(song)}" %>'
+<li id='<%= "hx-#{dom_id(playlist)}_#{dom_id(song)}" %>'
   class='c-list__item c-playlist__item u-p-0'
   data-current-playlist-songs-target='item'
   data-song-id='<%= song.id %>'
@@ -30,7 +30,7 @@
       <div class='c-dropdown__menu' data-dropdown-target="menu">
         <%= dialog_link_to t("label.add_to_playlist"), playlists_selections_path(song_id: song.id), class: "c-dropdown__item" %>
 
-        <button class='c-dropdown__item' hx-delete='<%= current_playlist_song_path(song) %>' hx-target='#js-playlist'><%= t("button.delete") %></button>
+        <button class='c-dropdown__item' hx-delete='<%= current_playlist_song_path(song) %>' hx-target='#hx-playlist'><%= t("button.delete") %></button>
       </div>
     </details>
   </div>

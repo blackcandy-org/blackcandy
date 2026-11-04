@@ -18,7 +18,7 @@
           <div class='u-mt-2 o-flex u-mx-auto@small'>
             <button class='c-button c-button--primary c-button--large'
               hx-put='<%= current_playlist_album_path(@album, should_play: true) %>'
-              hx-target='#js-playlist'>
+              hx-target='#hx-playlist'>
               <%= icon_tag "play", size: "medium" %>
               <%= t("button.play") %>
             </button>
@@ -42,7 +42,7 @@
             <div class='o-flex o-flex--justify-between o-flex--align-center'>
               <button class='c-button c-button--link o-flex__item--grow-1'
                 hx-put='<%= current_playlist_album_path(@album, should_play: true, song_id: song.id) %>'
-                hx-target='#js-playlist'
+                hx-target='#hx-playlist'
                 data-delegated-action='htmx:config:request->songs#checkBeforePlay'>
                 <div class='o-flex o-flex--justify-between o-flex--align-center'>
                   <div class='o-flex o-flex--align-center'>
@@ -68,19 +68,19 @@
                 <div class='c-dropdown__menu' data-dropdown-target="menu">
                   <button class='c-dropdown__item'
                     hx-post='<%= current_playlist_songs_path(song_id: song.id, should_play: true) %>'
-                    hx-target='#js-playlist'
+                    hx-target='#hx-playlist'
                     data-delegated-action='htmx:config:request->songs#checkBeforePlay'>
                     <%= t("button.play_now") %>
                   </button>
                   <button class='c-dropdown__item'
                     hx-post='<%= current_playlist_songs_path(song_id: song.id) %>'
-                    hx-target='#js-playlist'
+                    hx-target='#hx-playlist'
                     data-delegated-action='htmx:config:request->songs#checkBeforePlayNext'>
                     <%= t("button.play_next") %>
                   </button>
                   <button class='c-dropdown__item'
                     hx-post='<%= current_playlist_songs_path(song_id: song.id, location: "last") %>'
-                    hx-target='#js-playlist'>
+                    hx-target='#hx-playlist'>
                     <%= t("button.play_last") %>
                   </button>
                   <%= dialog_link_to t("label.add_to_playlist"), playlists_selections_path(song_id: song.id), class: "c-dropdown__item" %>

@@ -8,7 +8,7 @@ class DialogRenderingTest < ActionDispatch::IntegrationTest
     get album_url(albums(:album1), dialog: signed_dialog_path("/about"))
 
     assert_response :success
-    assert_select "#js-dialog [hx-get=?][hx-trigger=load][hx-target='#js-dialog']", "/about"
+    assert_select "#hx-dialog [hx-get=?][hx-trigger=load][hx-target='#hx-dialog']", "/about"
   end
 
   test "renders no dialog placeholder for an unsigned param" do
@@ -16,7 +16,7 @@ class DialogRenderingTest < ActionDispatch::IntegrationTest
     get album_url(albums(:album1), dialog: "/about")
 
     assert_response :success
-    assert_select "#js-dialog [hx-get]", false
+    assert_select "#hx-dialog [hx-get]", false
   end
 
   test "renders no dialog placeholder for a tampered param" do
@@ -24,7 +24,7 @@ class DialogRenderingTest < ActionDispatch::IntegrationTest
     get album_url(albums(:album1), dialog: signed_dialog_path("/about").swapcase)
 
     assert_response :success
-    assert_select "#js-dialog [hx-get]", false
+    assert_select "#hx-dialog [hx-get]", false
   end
 
   test "renders a dialog in the dialog layout, without the app layout" do
@@ -33,7 +33,7 @@ class DialogRenderingTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_select "dialog.c-dialog"
-    assert_select "#js-app", false
+    assert_select "#hx-app", false
   end
 
   test "redirects back to the referer without the dialog param" do

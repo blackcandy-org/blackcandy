@@ -10,7 +10,7 @@
     <% end %>
     <button class='c-button c-button--circle c-button--secondary'
       hx-put='<%= current_playlist_playlist_path(playlist, should_play: true) %>'
-      hx-target='#js-playlist'
+      hx-target='#hx-playlist'
       <%= tag.attributes(disabled: playlist.playlists_songs.empty?) %>>
       <%= icon_tag "play", size: "small", title: t("button.play") %>
     </button>

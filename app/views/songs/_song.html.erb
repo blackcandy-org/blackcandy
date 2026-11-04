@@ -2,7 +2,7 @@
   <td data-songs-target='item'>
     <button class='c-button c-button--link'
       hx-post='<%= current_playlist_songs_path(song_id: song.id, should_play: true) %>'
-      hx-target='#js-playlist'
+      hx-target='#hx-playlist'
       data-delegated-action='htmx:config:request->songs#checkBeforePlay'>
       <span class='o-flex o-flex--align-center'>
         <span class='c-song__cover u-mr-2'>
@@ -32,13 +32,13 @@
         <% end %>
         <button class='c-dropdown__item'
           hx-post='<%= current_playlist_songs_path(song_id: song.id) %>'
-          hx-target='#js-playlist'
+          hx-target='#hx-playlist'
           data-delegated-action='htmx:config:request->songs#checkBeforePlayNext'>
           <%= t("button.play_next") %>
         </button>
         <button class='c-dropdown__item'
           hx-post='<%= current_playlist_songs_path(song_id: song.id, location: "last") %>'
-          hx-target='#js-playlist'>
+          hx-target='#hx-playlist'>
           <%= t("button.play_last") %>
         </button>
       </div>

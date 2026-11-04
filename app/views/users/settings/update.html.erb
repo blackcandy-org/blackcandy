@@ -1,0 +1,4 @@
+<% if @user.saved_change_to_theme? %>
+  <hx-partial hx-target="#hx-theme" hx-swap="outerHTML"><%= render partial: "shared/theme_meta", locals: { theme: @user.theme } %></hx-partial>
+<% end %>
+<%= flash_partial %>
