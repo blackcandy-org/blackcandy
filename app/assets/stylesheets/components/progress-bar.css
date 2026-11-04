@@ -11,7 +11,7 @@
     pointer-events: none;
   }
 
-  /* htmx adds htmx-request while a request runs. Like Turbo's bar, it shows only after 500ms. */
+  /* htmx adds htmx-request while a request runs. The bar shows only after 500ms. */
   .c-progress-bar.htmx-request {
     width: 90%;
     opacity: 1;
