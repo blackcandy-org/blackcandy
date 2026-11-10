@@ -21,11 +21,11 @@
   </td>
   <td class='u-display-none@small'><%= format_duration(song.duration) %></td>
   <td>
-    <details class='c-dropdown' data-controller='dropdown'>
+    <details class='c-dropdown' x-data='dropdown'>
       <summary class="c-button c-button--icon">
         <%= icon_tag "more-vertical", size: "small", title: t("label.more") %>
       </summary>
-      <div class='c-dropdown__menu' data-dropdown-target="menu">
+      <div class='c-dropdown__menu' x-on:click="close">
         <%= dialog_link_to t("label.add_to_playlist"), playlists_selections_path(song_id: song.id), class: "c-dropdown__item" %>
         <% if is_admin? %>
           <%= dialog_link_to t("label.edit_song"), edit_song_path(song), class: "c-dropdown__item" %>

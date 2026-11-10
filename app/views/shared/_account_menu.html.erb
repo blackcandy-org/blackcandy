@@ -1,6 +1,6 @@
-<details class='c-dropdown u-ml-auto' data-controller='dropdown'>
+<details class='c-dropdown u-ml-auto' x-data='dropdown'>
   <summary><%= avatar_tag current_user %></summary>
-  <div class='c-dropdown__menu' data-dropdown-target="menu">
+  <div class='c-dropdown__menu' x-on:click="close">
     <%= link_to t("label.settings"), setting_appearance_path, class: "c-dropdown__item u-display-none@small" %>
     <%= link_to t("label.settings"), setting_path, class: "c-dropdown__item u-display-none u-display-block@small" %>
     <%= dialog_link_to t("label.about"), about_path, class: "c-dropdown__item" %>

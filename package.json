@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@hotwired/stimulus": "^3.2.1",
+    "alpinejs": "3.17.4",
     "esbuild": "^0.28.0",
     "howler": "^2.2.3",
     "htmx.org": "4.0.0"

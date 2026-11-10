@@ -1,9 +1,9 @@
-<%= form_tag search_path, method: :get, class: "c-search c-input-group o-flex__item", data: { action: "htmx:config:request->search#submit", controller: "search" } do %>
+<%= form_tag search_path, method: :get, class: "c-search c-input-group o-flex__item", "hx-indicator": "this" do %>
   <div class='c-input-group__icon'>
     <%= icon_tag "search", size: "small" %>
   </div>
 
-  <%= text_field_tag "query", query, class: "c-input", data: { "search-target" => "input" }, autocomplete: "on" %>
+  <%= text_field_tag "query", query, class: "c-input", required: true, pattern: ".*\\S.*", autofocus: query.present?, autocomplete: "on" %>
 
   <div class='c-input-group__icon'>
     <%= loader_tag size: "small" %>

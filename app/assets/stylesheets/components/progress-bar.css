@@ -11,8 +11,7 @@
     pointer-events: none;
   }
 
-  /* htmx adds htmx-request while a request runs. The bar shows only after 500ms. */
-  .c-progress-bar.htmx-request {
+  .c-progress-bar.is-loading {
     width: 90%;
     opacity: 1;
     transition: width 10s cubic-bezier(0.1, 0.7, 0.2, 1) 500ms, opacity 0s 500ms;

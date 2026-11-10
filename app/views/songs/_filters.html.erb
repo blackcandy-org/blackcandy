@@ -7,28 +7,28 @@
   <% end %>
 <% end %>
 
-<details class='c-dropdown u-mr-3' data-controller='dropdown'>
+<details class='c-dropdown u-mr-3' x-data='dropdown'>
   <summary class='c-button c-button--outline c-button--small'>
     <span class='o-flex o-flex--align-center'>
       <%= t("field.genre") %>
       <%= icon_tag "expand-more" %>
     </span>
   </summary>
-  <div class='c-dropdown__menu c-dropdown__menu--right' data-dropdown-target="menu">
+  <div class='c-dropdown__menu c-dropdown__menu--right' x-on:click="close">
     <div class='o-flex o-flex--justify-center u-p-4' hx-get='<%= songs_filter_genres_path(**filter_sort_presenter.params) %>' hx-trigger='intersect once' hx-swap='outerHTML'>
       <%= loader_tag size: "small" %>
     </div>
   </div>
 </details>
 
-<details class='c-dropdown u-mr-3' data-controller='dropdown'>
+<details class='c-dropdown u-mr-3' x-data='dropdown'>
   <summary class='c-button c-button--outline c-button--small'>
     <span class='o-flex o-flex--align-center'>
       <%= t("field.year") %>
       <%= icon_tag "expand-more" %>
     </span>
   </summary>
-  <div class='c-dropdown__menu' data-dropdown-target="menu">
+  <div class='c-dropdown__menu' x-on:click="close">
     <div class='o-flex o-flex--justify-center u-p-4' hx-get='<%= songs_filter_years_path(**filter_sort_presenter.params) %>' hx-trigger='intersect once' hx-swap='outerHTML'>
       <%= loader_tag size: "small" %>
     </div>

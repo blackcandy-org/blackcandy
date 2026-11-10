@@ -27,11 +27,11 @@
             <% end %>
             <%= dialog_link_to t("label.edit"), edit_playlist_path(@playlist), class: "c-button c-button--secondary c-button--large u-ml-1" %>
 
-            <details class='c-dropdown u-ml-1' data-controller='dropdown'>
+            <details class='c-dropdown u-ml-1' x-data='dropdown'>
               <summary class="c-button c-button--secondary c-button--large">
                 <%= icon_tag "more-horizontal", size: "medium", title: t("label.more") %>
               </summary>
-              <div class='c-dropdown__menu c-dropdown__menu--right' data-dropdown-target="menu">
+              <div class='c-dropdown__menu c-dropdown__menu--right' x-on:click="close">
                 <% unless @songs.blank? %>
                   <%= button_to t("button.clear"), playlist_songs_path(@playlist), method: :delete, form_class: "c-dropdown__item" %>
                 <% end %>

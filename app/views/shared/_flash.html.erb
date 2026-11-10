@@ -1,6 +1,6 @@
 <div id='hx-flash' class='c-flash'>
   <% flash.each do |key, value| %>
-    <div class='o-animation-fadeInUp c-flash__body <%= "c-flash__body--#{key}" %>' data-controller='flash'>
+    <div class='c-flash__body <%= "c-flash__body--#{key}" %>' x-data x-on:animationend="$event.animationName === 'fadeOutDown' && $el.remove()">
       <%= h value %>
     </div>
   <% end %>

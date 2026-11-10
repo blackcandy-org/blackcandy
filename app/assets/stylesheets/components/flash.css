@@ -16,6 +16,7 @@
     padding: var(--spacing-2);
     text-align: center;
     border-radius: var(--border-radius-2);
+    animation: fadeInUp 0.25s, fadeOutDown 0.25s 4s forwards;
   }
 
   .c-flash__body--alert {

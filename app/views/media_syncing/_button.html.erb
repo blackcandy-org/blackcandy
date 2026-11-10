@@ -7,11 +7,11 @@
           disabled: true
         ) %>
   <% else %>
-    <details class='c-dropdown' data-controller='dropdown'>
+    <details class='c-dropdown' x-data='dropdown'>
       <summary class="c-button c-button--secondary">
         <%= t("button.sync") %>
       </summary>
-      <div class='c-dropdown__menu' data-dropdown-target="menu">
+      <div class='c-dropdown__menu' x-on:click="close">
         <%= button_to t("button.quick_sync"), media_syncing_path, form_class: "c-dropdown__item" %>
         <%= button_to t("button.full_sync"), media_syncing_path(full: true), form_class: "c-dropdown__item" %>
       </div>

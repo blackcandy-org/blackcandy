@@ -16,9 +16,9 @@
         <div class='u-text-monospace u-mr-2'><%= format_duration(song.duration) %></div>
       </div>
     </button>
-    <details class='c-dropdown' data-controller='dropdown'>
+    <details class='c-dropdown' x-data='dropdown'>
       <summary class="c-button c-button--icon"><%= icon_tag "more-vertical", size: "small", title: t("label.more") %></summary>
-      <div class='c-dropdown__menu' data-dropdown-target="menu">
+      <div class='c-dropdown__menu' x-on:click="close">
         <button class='c-dropdown__item'
           hx-post='<%= current_playlist_songs_path(song_id: song.id, should_play: true) %>'
           hx-target='#hx-playlist'

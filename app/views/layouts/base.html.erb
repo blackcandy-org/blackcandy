@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html data-color-scheme='<%= User::DEFAULT_THEME %>'>
+<html data-color-scheme='<%= Current.user&.theme || User::DEFAULT_THEME %>'>
   <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="<%= t(:app_name) %>">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="htmx-config" content='{"requestClass":"is-loading"}'>
     <title><%= content_for?(:title) ? yield(:title) : t(:app_name) %></title>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag "link_icon.png", type: "image/png" %>

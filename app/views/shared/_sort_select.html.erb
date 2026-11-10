@@ -1,8 +1,8 @@
-<details class='c-dropdown' data-controller='dropdown'>
+<details class='c-dropdown' x-data='dropdown'>
   <summary class="c-button c-button--icon">
     <%= icon_tag "sort", title: t("label.sort") %>
   </summary>
-  <div class='c-dropdown__menu' data-dropdown-target="menu">
+  <div class='c-dropdown__menu' x-on:click="close">
     <% option.values.each do |sort_value| %>
       <%= link_to url_for(controller: sort_controller, action: :index, **filter_sort_presenter.params(sort: sort_value)), class: "c-dropdown__item" do %>
         <span class='o-flex o-flex--justify-between o-flex--align-center'>

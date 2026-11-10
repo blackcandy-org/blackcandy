@@ -4,20 +4,11 @@
 
 import { application } from "./application"
 
-import CoverImageController from "./cover_image_controller"
-application.register("cover-image", CoverImageController)
-
 import CurrentPlaylistSongsController from "./current_playlist_songs_controller"
 application.register("current-playlist-songs", CurrentPlaylistSongsController)
 
 import DialogController from "./dialog_controller"
 application.register("dialog", DialogController)
-
-import DropdownController from "./dropdown_controller"
-application.register("dropdown", DropdownController)
-
-import FlashController from "./flash_controller"
-application.register("flash", FlashController)
 
 import LyricsController from "./lyrics_controller"
 application.register("lyrics", LyricsController)
@@ -34,11 +25,5 @@ application.register("player", PlayerController)
 import PlaylistSortableController from "./playlist_sortable_controller"
 application.register("playlist-sortable", PlaylistSortableController)
 
-import SearchController from "./search_controller"
-application.register("search", SearchController)
-
 import SongsController from "./songs_controller"
 application.register("songs", SongsController)
-
-import ThemeController from "./theme_controller"
-application.register("theme", ThemeController)
