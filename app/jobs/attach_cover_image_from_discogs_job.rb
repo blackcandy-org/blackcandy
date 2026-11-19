@@ -2,7 +2,7 @@
 
 require "open-uri"
 class AttachCoverImageFromDiscogsJob < ApplicationJob
-  retry_on Integrations::Service::TooManyRequests, wait: 1.minute, attempts: :unlimited
+  retry_on Integrations::Service::TooManyRequests, wait: :polynomially_longer, attempts: :unlimited
   queue_as :default
 
   def perform(imageable)
