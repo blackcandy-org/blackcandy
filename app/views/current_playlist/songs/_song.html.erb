@@ -1,5 +1,7 @@
 <li id='<%= "hx-#{dom_id(playlist)}_#{dom_id(song)}" %>'
   class='c-list__item c-playlist__item u-p-0'
+  x-data='song(<%= song.id %>)'
+  x-bind:class="{ 'is-active': isCurrent, 'is-paused': isPaused }"
   data-current-playlist-songs-target='item'
   data-song-id='<%= song.id %>'
   data-song-json='<%= song_json_builder(song).target! %>'

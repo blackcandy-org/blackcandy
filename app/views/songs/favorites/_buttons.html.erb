@@ -1,0 +1,6 @@
+<button class='c-button c-button--icon' hx-post='' x-bind:hx-post="`/songs/${$store.player.currentSong.id}/favorite`" disabled x-bind:disabled='!$store.player.hasCurrentSong' x-show='!$store.player.currentSong.is_favorited'>
+  <%= icon_tag "heart", size: "small", title: t("label.toggle_favorite") %>
+</button>
+<button class='c-button c-button--icon' x-cloak hx-delete='' x-bind:hx-delete="`/songs/${$store.player.currentSong.id}/favorite`" x-show='$store.player.currentSong.is_favorited'>
+  <%= icon_tag "heart", size: "small", emphasis: true, title: t("label.toggle_favorite") %>
+</button>

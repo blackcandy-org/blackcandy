@@ -1,9 +1,12 @@
-<tr data-song-id='<%= song.id %>'>
-  <td data-songs-target='item'>
+<tr x-data='song(<%= song.id %>)'>
+  <td>
     <button class='c-button c-button--link'
       hx-post='<%= current_playlist_songs_path(song_id: song.id, should_play: true) %>'
+      hx-trigger='song:request'
       hx-target='#hx-playlist'
-      data-delegated-action='htmx:config:request->songs#checkBeforePlay'>
+      name='current_song_id'
+      x-bind:value='$store.player.currentSong.id'
+      x-on:click='play'>
       <span class='o-flex o-flex--align-center'>
         <span class='c-song__cover u-mr-2'>
           <%= cover_image_tag song.album, size: :small %>
@@ -33,7 +36,8 @@
         <button class='c-dropdown__item'
           hx-post='<%= current_playlist_songs_path(song_id: song.id) %>'
           hx-target='#hx-playlist'
-          data-delegated-action='htmx:config:request->songs#checkBeforePlayNext'>
+          name='current_song_id'
+          x-bind:value='$store.player.currentSong.id'>
           <%= t("button.play_next") %>
         </button>
         <button class='c-dropdown__item'

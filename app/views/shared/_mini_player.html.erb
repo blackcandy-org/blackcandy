@@ -1,12 +1,12 @@
-<div id='hx-mini-player' class='c-player c-player--mini o-flex o-flex--justify-between o-flex--align-center u-p-2' data-controller='mini-player' hx-preserve>
-  <div data-action='click->mini-player#expand' class='o-flex o-flex--align-center o-flex__item--grow-1 u-w-0'>
+<div class='c-player c-player--mini o-flex o-flex--justify-between o-flex--align-center u-p-2' x-data>
+  <div x-on:click="$dispatch('sidebar:expand')" class='o-flex o-flex--align-center o-flex__item--grow-1 u-w-0'>
     <span class='u-mr-2'><%= icon_tag "expand-less", size: "large", title: t("label.expand_player") %></span>
-    <span data-mini-player-target='songName' class='u-text-truncate'></span>
-    <span data-mini-player-target='loader' class='u-display-none'><%= loader_tag(size: "small") %></span>
+    <span x-text='$store.player.currentSong.name' x-show='!$store.player.isLoading' class='u-text-truncate'></span>
+    <span x-show='$store.player.isLoading' x-cloak><%= loader_tag(size: "small") %></span>
   </div>
   <div class='o-flex o-flex--justify-between '>
-    <button data-action='click->mini-player#play' class='c-button c-button--icon u-mx-3' data-mini-player-target='playButton'><%= icon_tag "play", size: "large", title: t("label.play_song") %></button>
-    <button data-action='click->mini-player#pause' class='c-button c-button--icon u-mx-3 u-display-none' data-mini-player-target='pauseButton'><%= icon_tag "pause", size: "large", title: t("label.pause_song") %></button>
-    <button data-action='click->mini-player#next' class='c-button c-button--icon'><%= icon_tag "fast-forward", size: "large", title: t("label.next_song") %></button>
+    <button x-on:click='$store.player.play()' x-show='!$store.player.isPlaying' class='c-button c-button--icon u-mx-3'><%= icon_tag "play", size: "large", title: t("label.play_song") %></button>
+    <button x-on:click='$store.player.pause()' x-show='$store.player.isPlaying' x-cloak class='c-button c-button--icon u-mx-3'><%= icon_tag "pause", size: "large", title: t("label.pause_song") %></button>
+    <button x-on:click='$store.player.next()' class='c-button c-button--icon'><%= icon_tag "fast-forward", size: "large", title: t("label.next_song") %></button>
   </div>
 </div>

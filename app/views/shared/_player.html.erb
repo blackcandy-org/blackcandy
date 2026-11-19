@@ -1,81 +1,76 @@
-<div class='c-player c-backdrop' data-controller='media-session' data-player-target='backdrop'>
+<div class='c-player c-backdrop' x-data='player' x-bind:style="{ '--backdrop-image': hasCurrentSong ? `url(${currentSong.album_image_urls.small})` : '' }">
   <div class='c-player__header o-flex o-flex--align-center o-flex--justify-between'>
     <div class="o-flex o-flex--align-center o-flex__item--grow-1 u-w-0">
       <div class="c-player__header__image o-flex__item--shrink-0">
-        <div data-player-target='loader' class='c-overlay c-overlay--blur u-display-none'>
+        <div x-show='$store.player.isLoading' x-cloak class='c-overlay c-overlay--blur'>
           <%= loader_tag %>
         </div>
-        <img src="/images/default_album_small.png" data-player-target='image'>
+        <img src="/images/default_album_small.png" x-bind:src="hasCurrentSong ? currentSong.album_image_urls.small : '/images/default_album_small.png'">
       </div>
       <div class='c-player__header__content o-flex__item--grow-1 u-w-0'>
         <h1 class='o-marquee u-mb-2 u-text-size-3'>
-          <span class='o-marquee__content' data-player-target='songName'><%= t("label.not_playing") %></span>
+          <span class='o-marquee__content' x-text="hasCurrentSong ? currentSong.name : '<%= j t("label.not_playing") %>'"><%= t("label.not_playing") %></span>
         </h1>
         <p class='u-text-truncate u-mb-1'>
-          <a data-player-target='albumLink'></a>
+          <a x-bind:href="hasCurrentSong ? `/albums/${currentSong.album_id}` : null" x-text='currentSong.album_name'></a>
         </p>
         <p class='u-text-truncate'>
-          <a data-player-target='artistLink'></a>
+          <a x-bind:href="hasCurrentSong ? `/artists/${currentSong.artist_id}` : null" x-text='currentSong.artist_name'></a>
         </p>
       </div>
     </div>
 
-    <div data-action='htmx:after:request->player#toggleFavorite'>
-      <%= button_to "#", class: "c-button c-button--icon", disabled: true, form: { "data-player-target" => "favoriteButton" } do %>
-        <%= icon_tag "heart", size: "small", title: t("label.toggle_favorite") %>
-      <% end %>
-      <%= button_to "#", class: "c-button c-button--icon", method: :delete, form_class: "u-display-none", form: { "data-player-target" => "unFavoriteButton" } do %>
-        <%= icon_tag "heart", size: "small", emphasis: true, title: t("label.toggle_favorite") %>
-      <% end %>
+    <div id='hx-favorite'>
+      <%= render "songs/favorites/buttons" %>
     </div>
   </div>
   <div class='c-player__control'>
     <div class='c-player__progress'>
-      <progress data-player-target='progress' data-action='click->player#seek' class='u-w-100' max='100'></progress>
+      <progress x-bind:value='progress' x-on:click='seek' class='u-w-100' max='100'></progress>
     </div>
     <div class='u-text-monospace u-text-color-primary u-mt-2 o-flex o-flex--justify-between'>
-      <small data-player-target='songTimer'>00:00</small>
-      <small data-player-target='songDuration'>--:--</small>
+      <small x-text='timer'>00:00</small>
+      <small x-text='duration'>--:--</small>
     </div>
 
     <div class="c-player__control__main o-flex o-flex--justify-between o-flex--align-center">
-      <button class='c-button c-button--icon u-mr-1' data-action='click->player#nextMode'>
-        <%= icon_tag "repeat", size: "small", title: t("label.no_repeat_mode"), data: { "player-target" => "modeButton" } %>
-        <%= icon_tag "repeat", size: "small", active: true, title: t("label.repeat_mode"), data: { "player-target" => "modeButton" } %>
-        <%= icon_tag "repeat-one", size: "small", active: true, title: t("label.single_mode"), data: { "player-target" => "modeButton" } %>
-        <%= icon_tag "shuffle", size: "small", active: true, title: t("label.shuffle_mode"), data: { "player-target" => "modeButton" } %>
+      <button class='c-button c-button--icon u-mr-1' x-on:click='$store.player.nextMode()'>
+        <%= icon_tag "repeat", size: "small", title: t("label.no_repeat_mode"), "x-show" => "$store.player.mode === 'noRepeat'" %>
+        <%= icon_tag "repeat", size: "small", active: true, "x-cloak" => true, title: t("label.repeat_mode"), "x-show" => "$store.player.mode === 'repeat'" %>
+        <%= icon_tag "repeat-one", size: "small", active: true, "x-cloak" => true, title: t("label.single_mode"), "x-show" => "$store.player.mode === 'single'" %>
+        <%= icon_tag "shuffle", size: "small", active: true, "x-cloak" => true, title: t("label.shuffle_mode"), "x-show" => "$store.player.mode === 'shuffle'" %>
       </button>
       <div>
-        <button class='c-button c-button--icon' data-action='click->player#previous'>
+        <button class='c-button c-button--icon' x-on:click='$store.player.previous()'>
           <%= icon_tag "rewind", size: "large", title: t("label.previous_song") %>
         </button>
-        <button class='u-mx-4 c-button c-button--icon' data-action='click->player#play' data-player-target='playButton'>
+        <button class='u-mx-4 c-button c-button--icon' x-on:click='$store.player.play()' x-show='!$store.player.isPlaying'>
           <%= icon_tag "play", size: "large", title: t("label.play_song") %>
         </button>
-        <button class='u-mx-4 c-button c-button--icon u-display-none' data-action='click->player#pause' data-player-target='pauseButton'>
+        <button class='u-mx-4 c-button c-button--icon' x-cloak x-on:click='$store.player.pause()' x-show='$store.player.isPlaying'>
           <%= icon_tag "pause", size: "large", title: t("label.pause_song") %>
         </button>
-        <button class='c-button c-button--icon' data-action='click->player#next'>
+        <button class='c-button c-button--icon' x-on:click='$store.player.next()'>
           <%= icon_tag "fast-forward", size: "large", title: t("label.next_song") %>
         </button>
       </div>
-      <button class='c-button c-button--icon' data-action='click->player#toggleLyrics'>
+      <button class='c-button c-button--icon' x-on:click='toggleLyrics' x-bind:class="{ 'is-active': lyricsOpen }">
         <%= icon_tag "lyrics", size: "small", title: t("label.lyrics") %>
       </button>
     </div>
     <div class="c-player__control__secondary o-flex">
       <div class="o-flex o-flex--align-center o-flex__item--grow-1">
-        <button class='c-button c-button--icon' data-action='click->player#mute'>
+        <button class='c-button c-button--icon' x-on:click='$store.player.setVolume(0)'>
           <%= icon_tag "volume-down", size: "small", title: t("label.mute") %>
         </button>
-        <input class="c-player__volume" min="0" max="1" type="range" step="0.01" autocomplete="off" data-player-target="volume" data-action="player#volume">
-        <button class='c-button c-button--icon' data-action='click->player#maxVolume'>
+        <input class="c-player__volume" min="0" max="1" type="range" step="0.01" autocomplete="off" x-bind:value="$store.player.volume" x-bind:style="{ '--progress': `${$store.player.volume * 100}%` }" x-on:input="$store.player.setVolume($event.target.value)">
+        <button class='c-button c-button--icon' x-on:click='$store.player.setVolume(1)'>
           <%= icon_tag "volume-up", size: "small", title: t("label.max_volume") %>
         </button>
       </div>
     </div>
   </div>
-  <div class='u-py-1 u-text-align-center u-display-none u-display-block@extra-small' data-action='click->player#collapse'>
+  <div class='u-py-1 u-text-align-center u-display-none u-display-block@extra-small' x-on:click="$dispatch('sidebar:collapse')">
     <%= icon_tag "expand-more", size: "large", title: t("label.collapse_player") %>
   </div>
 </div>

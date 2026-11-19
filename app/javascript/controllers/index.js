@@ -13,17 +13,5 @@ application.register("dialog", DialogController)
 import LyricsController from "./lyrics_controller"
 application.register("lyrics", LyricsController)
 
-import MediaSessionController from "./media_session_controller"
-application.register("media-session", MediaSessionController)
-
-import MiniPlayerController from "./mini_player_controller"
-application.register("mini-player", MiniPlayerController)
-
-import PlayerController from "./player_controller"
-application.register("player", PlayerController)
-
 import PlaylistSortableController from "./playlist_sortable_controller"
 application.register("playlist-sortable", PlaylistSortableController)
-
-import SongsController from "./songs_controller"
-application.register("songs", SongsController)

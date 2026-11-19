@@ -23,8 +23,7 @@
       "MediaMetadata",
       "Request",
       "fetch",
-      "CustomEvent",
-      "App"
+      "CustomEvent"
     ],
     "ignore": [
       "app/javascript/controllers/index.js"

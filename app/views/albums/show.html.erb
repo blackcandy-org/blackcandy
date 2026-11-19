@@ -1,7 +1,7 @@
 <% page_title_tag @album.name %>
 <% content_for :fluid_layout, true %>
 
-<div data-controller='songs'>
+<div>
   <div class='c-backdrop c-backdrop--blur-large' style='--backdrop-image: url(<%= cover_image_url_for(@album) %>)'>
     <div class='c-backdrop__content o-container o-container--large'>
       <div class="c-card c-card--horizontal c-card--center@small">
@@ -38,12 +38,13 @@
         <% end %>
 
         <% songs.each do |song| %>
-          <li class='c-list__item c-song' data-songs-target='item' data-song-id='<%= song.id %>'>
+          <li class='c-list__item c-song' x-data='song(<%= song.id %>)' x-bind:class="{ 'is-active': isCurrent, 'is-paused': isPaused }">
             <div class='o-flex o-flex--justify-between o-flex--align-center'>
               <button class='c-button c-button--link o-flex__item--grow-1'
                 hx-put='<%= current_playlist_album_path(@album, should_play: true, song_id: song.id) %>'
+                hx-trigger='song:request'
                 hx-target='#hx-playlist'
-                data-delegated-action='htmx:config:request->songs#checkBeforePlay'>
+                x-on:click='play'>
                 <div class='o-flex o-flex--justify-between o-flex--align-center'>
                   <div class='o-flex o-flex--align-center'>
                     <div class='c-song__track-num u-mr-2'>
@@ -68,14 +69,18 @@
                 <div class='c-dropdown__menu' x-on:click="close">
                   <button class='c-dropdown__item'
                     hx-post='<%= current_playlist_songs_path(song_id: song.id, should_play: true) %>'
+                    hx-trigger='song:request'
                     hx-target='#hx-playlist'
-                    data-delegated-action='htmx:config:request->songs#checkBeforePlay'>
+                    name='current_song_id'
+                    x-bind:value='$store.player.currentSong.id'
+                    x-on:click='play'>
                     <%= t("button.play_now") %>
                   </button>
                   <button class='c-dropdown__item'
                     hx-post='<%= current_playlist_songs_path(song_id: song.id) %>'
                     hx-target='#hx-playlist'
-                    data-delegated-action='htmx:config:request->songs#checkBeforePlayNext'>
+                    name='current_song_id'
+                    x-bind:value='$store.player.currentSong.id'>
                     <%= t("button.play_next") %>
                   </button>
                   <button class='c-dropdown__item'

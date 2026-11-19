@@ -1,0 +1,6 @@
+<hx-partial hx-target="#hx-favorite" hx-swap="outerHTML">
+  <div id='hx-favorite' x-init='$store.player.setFavorited(<%= @song.id %>, false)'>
+    <%= render "songs/favorites/buttons" %>
+  </div>
+</hx-partial>
+<%= flash_partial(message: t("notice.deleted_from_playlist")) %>
