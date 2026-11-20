@@ -11,6 +11,8 @@
 
 Black Candy is a self-hosted music streaming server, your personal music center.
 
+[![Deploy to Railyard](https://app.railyard.run/deploy/badge)](https://app.railyard.run/deploy?repo=https://github.com/blackcandy-org/blackcandy)
+
 ## Try The Demo
 
 Please visit <https://demo.blackcandy.org> and use demo user (email: admin@admin.com, password: foobar) to log in. And feel free to try it.
