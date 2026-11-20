@@ -4,68 +4,14 @@
 
 import { application } from "./application"
 
-import Bridge__AccountController from "./bridge/account_controller"
-application.register("bridge--account", Bridge__AccountController)
-
-import Bridge__AlbumController from "./bridge/album_controller"
-application.register("bridge--album", Bridge__AlbumController)
-
-import Bridge__FlashController from "./bridge/flash_controller"
-application.register("bridge--flash", Bridge__FlashController)
-
-import Bridge__PlaylistController from "./bridge/playlist_controller"
-application.register("bridge--playlist", Bridge__PlaylistController)
-
-import Bridge__SearchController from "./bridge/search_controller"
-application.register("bridge--search", Bridge__SearchController)
-
-import Bridge__SongsController from "./bridge/songs_controller"
-application.register("bridge--songs", Bridge__SongsController)
-
-import Bridge__ThemeController from "./bridge/theme_controller"
-application.register("bridge--theme", Bridge__ThemeController)
-
-import CoverImageController from "./cover_image_controller"
-application.register("cover-image", CoverImageController)
-
 import CurrentPlaylistSongsController from "./current_playlist_songs_controller"
 application.register("current-playlist-songs", CurrentPlaylistSongsController)
 
 import DialogController from "./dialog_controller"
 application.register("dialog", DialogController)
 
-import DropdownController from "./dropdown_controller"
-application.register("dropdown", DropdownController)
-
-import ElementController from "./element_controller"
-application.register("element", ElementController)
-
-import FlashController from "./flash_controller"
-application.register("flash", FlashController)
-
-import FormController from "./form_controller"
-application.register("form", FormController)
-
 import LyricsController from "./lyrics_controller"
 application.register("lyrics", LyricsController)
 
-import MediaSessionController from "./media_session_controller"
-application.register("media-session", MediaSessionController)
-
-import MiniPlayerController from "./mini_player_controller"
-application.register("mini-player", MiniPlayerController)
-
-import PlayerController from "./player_controller"
-application.register("player", PlayerController)
-
 import PlaylistSortableController from "./playlist_sortable_controller"
 application.register("playlist-sortable", PlaylistSortableController)
-
-import SearchController from "./search_controller"
-application.register("search", SearchController)
-
-import SongsController from "./songs_controller"
-application.register("songs", SongsController)
-
-import ThemeController from "./theme_controller"
-application.register("theme", ThemeController)

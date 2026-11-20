@@ -10,6 +10,17 @@ class Search::ArtistsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should render only the next page's artists for infinite scroll" do
+    3.times { |i| Artist.create!(name: "pager_artist_#{i}") }
+
+    login
+    get search_artists_url(query: "pager_", limit: 1, page: 2), headers: { "HX-Request" => "true", "HX-Request-Type" => "partial" }
+
+    assert_response :success
+    assert_includes response.body, "pager_artist_1"
+    assert_not_includes response.body, "pager_artist_0"
+  end
+
   test "should get index via api" do
     get search_artists_url(query: "1"), as: :json, headers: api_token_header(users(:visitor1))
 

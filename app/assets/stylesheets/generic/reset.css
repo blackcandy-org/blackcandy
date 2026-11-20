@@ -39,16 +39,4 @@
   textarea {
     resize: vertical;
   }
-
-  /* Reset element style generate from button_to */
-  [type="submit"] {
-    text-align: left;
-    color: currentcolor;
-    font-weight: normal;
-  }
-
-  /* Reset style for turbo progress bar */
-  .turbo-progress-bar {
-    background-color: var(--progress-bar-bg-color);
-  }
 }

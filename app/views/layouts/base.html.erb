@@ -1,26 +1,30 @@
 <!DOCTYPE html>
-<html data-color-scheme='<%= User::DEFAULT_THEME %>'>
+<html data-color-scheme='<%= Current.user&.theme || User::DEFAULT_THEME %>'>
   <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="<%= t(:app_name) %>">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="turbo-refresh-method" content="morph">
-    <meta name="view-transition" content="same-origin">
+    <meta name="htmx-config" content='{"requestClass":"is-loading","morphIgnore":["data-htmx-powered","x-cloak"]}'>
     <title><%= content_for?(:title) ? yield(:title) : t(:app_name) %></title>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag "link_icon.png", type: "image/png" %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application", type: "module" %>
     <%= yield(:head) %>
 
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
   </head>
 
-  <body>
+  <%# Every htmx request sends the CSRF token, for the ones that don't come from a Rails form, and the asset version this page loaded with. %>
+  <%# Boosted links and forms swap #hx-app only and leave the player aside alone. With hx-preserve, htmx would move the aside out and back in, and Stimulus would reconnect the current playlist controller, which stops the song. %>
+  <body hx-headers:inherited='<%= { "X-CSRF-Token" => form_authenticity_token, "X-Asset-Version" => asset_version }.to_json %>'
+    hx-boost:inherited='target:#hx-app select:#hx-app swap:outerMorph transition:true'
+    hx-indicator:inherited='#hx-progress-bar'>
     <%= content_for?(:body) ? yield(:body) : yield %>
+    <div id='hx-progress-bar' class='c-progress-bar'></div>
     <%= render "shared/icons" %>
   </body>
 </html>

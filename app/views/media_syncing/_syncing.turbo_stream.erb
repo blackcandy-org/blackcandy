@@ -1,5 +1,0 @@
-<%= turbo_stream.replace "turbo-media-syncing-button", partial: "media_syncing/button", locals: {syncing: syncing} %>
-
-<% unless syncing %>
-  <%= stream_flash(message: t("notice.sync_completed")) %>
-<% end %>

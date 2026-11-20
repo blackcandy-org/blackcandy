@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   include Authorization
   include ClientDetection
   include RequestDetection
+  include HtmxRequest
   include ExceptionRescue
   include Flashy
   include Pagination

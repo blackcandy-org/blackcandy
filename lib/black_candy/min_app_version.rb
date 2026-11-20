@@ -2,7 +2,7 @@
 
 module BlackCandy
   module MinAppVersion
-    MAJOR = 2
+    MAJOR = 3
     MINOR = 0
     PATCH = 0
   end

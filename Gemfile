@@ -7,9 +7,6 @@ gem "rails", "~> 8.1.0"
 # Deliver assets for Rails
 gem "propshaft", "~> 1.1.0"
 
-# Install Turbo on Rails
-gem "turbo-rails", "~> 2.0.0"
-
 # Install Stimulus on Rails
 gem "stimulus-rails", "~> 1.3.4"
 

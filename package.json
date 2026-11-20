@@ -2,12 +2,11 @@
   "name": "black_candy",
   "private": true,
   "dependencies": {
-    "@hotwired/hotwire-native-bridge": "^1.2.2",
     "@hotwired/stimulus": "^3.2.1",
-    "@hotwired/turbo-rails": "^8.0.0",
+    "alpinejs": "3.17.4",
     "esbuild": "^0.28.0",
     "howler": "^2.2.3",
-    "idiomorph": "^0.7.4"
+    "htmx.org": "4.0.0"
   },
   "devDependencies": {
     "@stylistic/stylelint-plugin": "^5.2.0",
@@ -24,8 +23,7 @@
       "MediaMetadata",
       "Request",
       "fetch",
-      "CustomEvent",
-      "App"
+      "CustomEvent"
     ],
     "ignore": [
       "app/javascript/controllers/index.js"

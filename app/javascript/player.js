@@ -1,110 +1,82 @@
 import { Howl, Howler } from 'howler'
 import { dispatchEvent } from './helper'
-import Playlist from './playlist'
 
 class Player {
-  currentSong = {}
-  isPlaying = false
-  playlist = new Playlist()
+  onplay = () => {}
+  onend = () => {}
+  #howl = null
+  #songId
 
-  playOn (index) {
-    if (this.playlist.length === 0) { return }
+  constructor () {
+    // Hack for Safari issue of can not play song when first time page loaded.
+    // So call Howl init function manually let document have audio unlock event when click or touch.
+    // When first time user interact page the audio will be unlocked.
+    new Howl({ src: [''], format: ['mp3'] }) // eslint-disable-line no-new
+  }
 
+  load (song) {
     dispatchEvent(document, 'player:beforePlaying')
 
-    const song = this.playlist.songs[index]
-
-    if (this.currentSong !== song) { this.#unloadCurrentSong() }
-
-    this.currentSong = song
-    this.isPlaying = true
-
-    if (!song.howl) {
-      song.howl = new Howl({
-        src: [song.url],
-        format: [song.format],
-        html5: true,
-        volume: 1.0,
-        onplay: () => { dispatchEvent(document, 'player:playing') },
-        onpause: () => { dispatchEvent(document, 'player:pause') },
-        onend: () => { dispatchEvent(document, 'player:end') },
-        onstop: () => { dispatchEvent(document, 'player:stop') },
-        onseek: () => { dispatchEvent(document, 'player:seek') }
-      })
+    if (this.#songId === song.id) {
+      this.#howl.stop()
+      return
     }
 
-    song.howl.play()
+    this.#unload()
+    this.#songId = song.id
+    this.#howl = new Howl({
+      src: [song.url],
+      format: [song.format],
+      html5: true,
+      volume: 1.0,
+      onplay: () => {
+        dispatchEvent(document, 'player:playing')
+        this.onplay()
+      },
+      onpause: () => { dispatchEvent(document, 'player:pause') },
+      onend: () => {
+        dispatchEvent(document, 'player:end')
+        this.onend()
+      },
+      onstop: () => { dispatchEvent(document, 'player:stop') },
+      onseek: () => { dispatchEvent(document, 'player:seek') }
+    })
   }
 
   play () {
-    this.isPlaying = true
-
-    if (!this.currentSong.howl) {
-      this.playOn(this.currentIndex)
-    } else {
-      this.currentSong.howl.play()
-    }
+    this.#howl && this.#howl.play()
   }
 
   pause () {
-    this.isPlaying = false
-    this.currentSong.howl && this.currentSong.howl.pause()
+    this.#howl && this.#howl.pause()
   }
 
   stop () {
-    this.isPlaying = false
-
     Howler.stop()
-    this.#unloadCurrentSong()
-
-    // reset current song
-    this.currentSong = {}
-  }
-
-  next () {
-    this.skipTo(this.currentIndex + 1)
-  }
-
-  previous () {
-    this.skipTo(this.currentIndex - 1)
-  }
-
-  skipTo (index) {
-    this.currentSong.howl && this.currentSong.howl.stop()
-
-    if (index >= this.playlist.length) {
-      index = 0
-    } else if (index < 0) {
-      index = this.playlist.length - 1
-    }
-
-    this.playOn(index)
+    this.#unload()
   }
 
   seek (seconds) {
-    if (!this.currentSong.howl) { return }
+    if (!this.#howl) { return }
 
-    this.currentSong.howl.seek(seconds)
+    this.#howl.seek(seconds)
   }
 
-  volume (value) {
+  setVolume (value) {
     Howler.volume(value)
   }
 
-  get currentIndex () {
-    return Math.max(this.playlist.indexOf(this.currentSong.id), 0)
-  }
-
   get currentTime () {
-    const currentTime = this.currentSong.howl ? this.currentSong.howl.seek() : 0
+    const currentTime = this.#howl ? this.#howl.seek() : 0
     return (typeof currentTime === 'number') ? currentTime : 0
   }
 
-  #unloadCurrentSong () {
-    if (!this.currentSong.howl) { return }
+  #unload () {
+    if (!this.#howl) { return }
 
-    this.currentSong.howl.unload()
-    delete this.currentSong.howl
+    this.#howl.unload()
+    this.#howl = null
+    this.#songId = undefined
   }
 }
 

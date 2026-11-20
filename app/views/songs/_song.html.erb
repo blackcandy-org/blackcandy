@@ -1,16 +1,12 @@
-<tr data-song-id='<%= song.id %>'>
-  <td data-songs-target='item'>
-    <%= button_to(
-          current_playlist_songs_path(song_id: song.id, should_play: true),
-          class: "c-button c-button--link",
-          form: {
-            data: {
-              "delegated-action" => "turbo:submit-start-songs#checkBeforePlay click->bridge--songs#playNow",
-              "turbo-frame" => "turbo-playlist",
-              "disabled-on-native" => "true"
-            }
-          }
-        ) do %>
+<tr x-data='song(<%= song.id %>)'>
+  <td>
+    <button class='c-button c-button--link'
+      hx-post='<%= current_playlist_songs_path(song_id: song.id, should_play: true) %>'
+      hx-trigger='song:request'
+      hx-target='#hx-playlist'
+      name='current_song_id'
+      x-bind:value='$store.player.currentSong.id'
+      x-on:click='play'>
       <span class='o-flex o-flex--align-center'>
         <span class='c-song__cover u-mr-2'>
           <%= cover_image_tag song.album, size: :small %>
@@ -18,7 +14,7 @@
         </span>
         <span><%= song.name %></span>
       </span>
-    <% end %>
+    </button>
   </td>
   <td class='u-display-none@medium'>
     <%= link_to song.artist.name, artist_path(song.artist) %>
@@ -28,39 +24,27 @@
   </td>
   <td class='u-display-none@small'><%= format_duration(song.duration) %></td>
   <td>
-    <details class='c-dropdown' data-controller='dropdown'>
+    <details class='c-dropdown' x-data='dropdown'>
       <summary class="c-button c-button--icon">
         <%= icon_tag "more-vertical", size: "small", title: t("label.more") %>
       </summary>
-      <div class='c-dropdown__menu' data-dropdown-target="menu">
+      <div class='c-dropdown__menu' x-on:click="close">
         <%= dialog_link_to t("label.add_to_playlist"), playlists_selections_path(song_id: song.id), class: "c-dropdown__item" %>
         <% if is_admin? %>
           <%= dialog_link_to t("label.edit_song"), edit_song_path(song), class: "c-dropdown__item" %>
         <% end %>
-        <%= button_to(
-              t("button.play_next"),
-              current_playlist_songs_path(song_id: song.id),
-              form_class: "c-dropdown__item",
-              form: {
-                data: {
-                  "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext click->bridge--songs#playNext",
-                  "disabled-on-native" => "true"
-                }
-              }
-            ) %>
-        <%= button_to(
-              t("button.play_last"),
-              current_playlist_songs_path(song_id: song.id, location: "last"),
-              form_class: "c-dropdown__item",
-              form: {
-                data: {
-                  "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "click->bridge--songs#playLast",
-                  "disabled-on-native" => "true"
-                }
-              }
-            ) %>
+        <button class='c-dropdown__item'
+          hx-post='<%= current_playlist_songs_path(song_id: song.id) %>'
+          hx-target='#hx-playlist'
+          name='current_song_id'
+          x-bind:value='$store.player.currentSong.id'>
+          <%= t("button.play_next") %>
+        </button>
+        <button class='c-dropdown__item'
+          hx-post='<%= current_playlist_songs_path(song_id: song.id, location: "last") %>'
+          hx-target='#hx-playlist'>
+          <%= t("button.play_last") %>
+        </button>
       </div>
     </details>
   </td>

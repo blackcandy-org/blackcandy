@@ -22,11 +22,14 @@ export default class extends Controller {
   }
 
   onClose = () => {
+    this.element.remove()
+
     const url = new URL(window.location)
     if (!url.searchParams.has(DIALOG_PARAM)) return
 
     url.searchParams.delete(DIALOG_PARAM)
-    window.history.replaceState({}, '', url)
+    // Keep the entry's state: htmx only restores entries marked { htmx: true }.
+    window.history.replaceState(window.history.state, '', url)
   }
 
   onPopstate = () => {

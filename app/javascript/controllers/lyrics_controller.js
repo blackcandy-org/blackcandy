@@ -1,11 +1,11 @@
 import { Controller } from '@hotwired/stimulus'
+import Alpine from 'alpinejs'
 import { installEventHandler } from './mixins/event_handler'
 
 const RESUME_FOLLOWING_DELAY = 4000
 
 export default class extends Controller {
   static targets = ['line']
-  static outlets = ['player']
 
   initialize () {
     this.activeLine = null
@@ -41,7 +41,7 @@ export default class extends Controller {
   }
 
   get player () {
-    return App.player
+    return Alpine.store('player')
   }
 
   get #isSynced () {
@@ -49,7 +49,7 @@ export default class extends Controller {
   }
 
   get #isPanelOpen () {
-    return this.hasPlayerOutlet && this.playerOutlet.isLyricsOpen
+    return Alpine.$data(this.element).lyricsOpen
   }
 
   get #shouldSync () {

@@ -1,73 +1,46 @@
-<li id='<%= "#{dom_id(playlist)}_#{dom_id(song)}" %>' class='c-list__item u-p-0' data-songs-target='item' data-song-id='<%= song.id %>' draggable='true'>
+<li id='<%= "hx-#{dom_id(playlist)}_#{dom_id(song)}" %>' class='c-list__item u-p-0' x-data='song(<%= song.id %>)' x-bind:class="{ 'is-active': isCurrent, 'is-paused': isPaused }" data-song-id='<%= song.id %>' draggable='true'>
   <div class='o-flex o-flex--align-center u-py-2'>
     <% unless mobile? %>
       <button class='c-button c-button--icon js-playlist-sortable-item-handle u-mr-2'><%= icon_tag "drag-indicator", size: "small" %></button>
     <% end %>
 
-    <%= button_to(
-          current_playlist_playlist_path(playlist, should_play: true, song_id: song.id),
-          method: :put,
-          class: "c-button c-button--link u-w-100",
-          form_class: "o-flex__item--grow-1",
-          form: {
-            data: {
-              "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->bridge--playlist#playBeginWith",
-              "turbo-frame" => "turbo-playlist",
-              "disabled-on-native" => "true"
-            }
-          }
-        ) do %>
+    <button class='c-button c-button--link o-flex__item--grow-1'
+      hx-put='<%= current_playlist_playlist_path(playlist, should_play: true, song_id: song.id) %>'
+      hx-trigger='song:request'
+      hx-target='#hx-playlist'
+      x-on:click='play'>
       <div class='o-flex o-flex--justify-between o-flex--align-center'>
         <div class='u-mr-2'>
           <span class='u-mb-1 u-text-line-clamp-2'><%= song.name %></span>
-          <% if native_app? %>
-            <span class='c-list__item__subtext'><%= song.artist.name %></span>
-          <% else %>
-            <%= link_to song.artist.name, artist_path(song.artist), class: "c-list__item__subtext" %>
-          <% end %>
+          <%= link_to song.artist.name, artist_path(song.artist), class: "c-list__item__subtext" %>
         </div>
         <div class='u-text-monospace u-mr-2'><%= format_duration(song.duration) %></div>
       </div>
-    <% end %>
-    <details class='c-dropdown' data-controller='dropdown'>
+    </button>
+    <details class='c-dropdown' x-data='dropdown'>
       <summary class="c-button c-button--icon"><%= icon_tag "more-vertical", size: "small", title: t("label.more") %></summary>
-      <div class='c-dropdown__menu' data-dropdown-target="menu">
-        <%= button_to(
-              t("button.play_now"),
-              current_playlist_songs_path(song_id: song.id, should_play: true),
-              form_class: "c-dropdown__item",
-              form: {
-                data: {
-                  "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->bridge--songs#playNow",
-                  "disabled-on-native" => "true"
-                }
-              }
-            ) %>
-        <%= button_to(
-              t("button.play_next"),
-              current_playlist_songs_path(song_id: song.id),
-              form_class: "c-dropdown__item",
-              form: {
-                data: {
-                  "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext click->bridge--songs#playNext",
-                  "disabled-on-native" => "true"
-                }
-              }
-            ) %>
-        <%= button_to(
-              t("button.play_last"),
-              current_playlist_songs_path(song_id: song.id, location: "last"),
-              form_class: "c-dropdown__item",
-              form: {
-                data: {
-                  "turbo-frame" => "turbo-playlist",
-                  "delegated-action" => "click->bridge--songs#playLast",
-                  "disabled-on-native" => "true"
-                }
-              }
-            ) %>
+      <div class='c-dropdown__menu' x-on:click="close">
+        <button class='c-dropdown__item'
+          hx-post='<%= current_playlist_songs_path(song_id: song.id, should_play: true) %>'
+          hx-trigger='song:request'
+          hx-target='#hx-playlist'
+          name='current_song_id'
+          x-bind:value='$store.player.currentSong.id'
+          x-on:click='play'>
+          <%= t("button.play_now") %>
+        </button>
+        <button class='c-dropdown__item'
+          hx-post='<%= current_playlist_songs_path(song_id: song.id) %>'
+          hx-target='#hx-playlist'
+          name='current_song_id'
+          x-bind:value='$store.player.currentSong.id'>
+          <%= t("button.play_next") %>
+        </button>
+        <button class='c-dropdown__item'
+          hx-post='<%= current_playlist_songs_path(song_id: song.id, location: "last") %>'
+          hx-target='#hx-playlist'>
+          <%= t("button.play_last") %>
+        </button>
         <%= button_to(
               t("button.delete"),
               playlist_song_path(playlist, song),

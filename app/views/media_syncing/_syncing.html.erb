@@ -1,0 +1,5 @@
+<hx-partial hx-target="#hx-media-syncing-button" hx-swap="outerHTML"><%= render partial: "media_syncing/button", locals: { syncing: syncing } %></hx-partial>
+
+<% unless syncing %>
+  <%= flash_partial(message: t("notice.sync_completed")) %>
+<% end %>

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::SettingsController < ApplicationController
+  layout false
+
   before_action :find_user
   before_action :auth_user
 

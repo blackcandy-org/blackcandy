@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :artists, only: [ :index, :show, :edit, :update ]
   resources :songs, only: [ :index, :show, :edit, :update ] do
     resource :lyrics, only: [ :show ], module: :songs
+    resource :favorite, only: [ :create, :destroy ], module: :songs
   end
   resources :albums, only: [ :index, :show, :edit, :update ]
 
@@ -87,7 +88,7 @@ Rails.application.routes.draw do
   resources :stream, only: [ :new ]
   resources :transcoded_stream, only: [ :new ]
 
-  resource :media_syncing, only: [ :create ]
+  resource :media_syncing, only: [ :show, :create ]
 
   resource :about, only: [ :show ]
 

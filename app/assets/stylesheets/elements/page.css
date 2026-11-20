@@ -9,4 +9,8 @@
     color: var(--text-secondary-color);
     font-size: var(--font-size-2);
   }
+
+  [x-cloak] {
+    display: none !important;
+  }
 }

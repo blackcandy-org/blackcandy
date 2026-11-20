@@ -120,14 +120,4 @@ class UserTest < ActiveSupport::TestCase
 
     assert_equal User::RECENTLY_PLAYED_LIMIT, @user.recently_played_album_ids.count
   end
-
-  test "should broadcast theme change" do
-    assert_no_turbo_stream_broadcasts [ @user, :theme ] do
-      @user.update(theme: "auto")
-    end
-
-    assert_turbo_stream_broadcasts [ @user, :theme ] do
-      @user.update(theme: "light")
-    end
-  end
 end

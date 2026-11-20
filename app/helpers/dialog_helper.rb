@@ -9,13 +9,11 @@ module DialogHelper
   end
 
   def dialog_link_to(name, path, **options)
-    return link_to name, path, **options if native_app?
-
-    options[:data] = (options[:data] || {}).merge("turbo-frame" => "turbo-dialog", "turbo-action" => "advance")
-    link_to name, "?#{request.query_parameters.merge(DIALOG_PARAM => DialogHelper.verifier.generate(path)).to_query}", **options
+    page_url = "?#{request.query_parameters.merge(DIALOG_PARAM => DialogHelper.verifier.generate(path)).to_query}"
+    link_to name, page_url, **options, "hx-get": path, "hx-target": "#hx-dialog", "hx-push-url": page_url
   end
 
-  def dialog_frame_src
+  def dialog_src
     DialogHelper.verifier.verified(params[DIALOG_PARAM])
   end
 end

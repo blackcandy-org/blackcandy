@@ -1,7 +1,7 @@
 <% page_title_tag @album.name %>
 <% content_for :fluid_layout, true %>
 
-<div data-controller='songs bridge--songs bridge--album' data-bridge--album-id-value='<%= @album.id %>'>
+<div>
   <div class='c-backdrop c-backdrop--blur-large' style='--backdrop-image: url(<%= cover_image_url_for(@album) %>)'>
     <div class='c-backdrop__content o-container o-container--large'>
       <div class="c-card c-card--horizontal c-card--center@small">
@@ -16,22 +16,12 @@
             <div class='c-card__body__text u-mt-3'><%= album_tracks_info(@album) %></div>
           </div>
           <div class='u-mt-2 o-flex u-mx-auto@small'>
-            <%= button_to(
-                  current_playlist_album_path(@album, should_play: true),
-                  method: :put,
-                  form_class: "u-display-inline-block",
-                  class: "c-button c-button--primary c-button--large",
-                  form: {
-                    data: {
-                      "disabled-on-native" => "true",
-                      "turbo-frame" => "turbo-playlist",
-                      "action" => "bridge--album#play"
-                    }
-                  }
-                ) do %>
+            <button class='c-button c-button--primary c-button--large'
+              hx-put='<%= current_playlist_album_path(@album, should_play: true) %>'
+              hx-target='#hx-playlist'>
               <%= icon_tag "play", size: "medium" %>
               <%= t("button.play") %>
-            <% end %>
+            </button>
             <% if is_admin? %>
               <%= dialog_link_to t("label.edit"), edit_album_path(@album), class: "c-button c-button--secondary c-button--large u-ml-1" %>
             <% end %>
@@ -48,21 +38,13 @@
         <% end %>
 
         <% songs.each do |song| %>
-          <li class='c-list__item c-song' data-songs-target='item' data-song-id='<%= song.id %>'>
+          <li class='c-list__item c-song' x-data='song(<%= song.id %>)' x-bind:class="{ 'is-active': isCurrent, 'is-paused': isPaused }">
             <div class='o-flex o-flex--justify-between o-flex--align-center'>
-              <%= button_to(
-                    current_playlist_album_path(@album, should_play: true, song_id: song.id),
-                    method: :put,
-                    class: "c-button c-button--link u-w-100",
-                    form_class: "o-flex__item--grow-1",
-                    form: {
-                      data: {
-                        "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->bridge--album#playBeginWith",
-                        "turbo-frame" => "turbo-playlist",
-                        "disabled-on-native" => "true"
-                      }
-                    }
-                  ) do %>
+              <button class='c-button c-button--link o-flex__item--grow-1'
+                hx-put='<%= current_playlist_album_path(@album, should_play: true, song_id: song.id) %>'
+                hx-trigger='song:request'
+                hx-target='#hx-playlist'
+                x-on:click='play'>
                 <div class='o-flex o-flex--justify-between o-flex--align-center'>
                   <div class='o-flex o-flex--align-center'>
                     <div class='c-song__track-num u-mr-2'>
@@ -72,59 +54,40 @@
                     <div>
                       <div><%= song.name %></div>
                       <% if @album.artist.various? %>
-                        <% if native_app? %>
-                          <span class='c-list__item__subtext'><%= song.artist.name %></span>
-                        <% else %>
-                          <%= link_to song.artist.name, artist_path(song.artist), class: "c-list__item__subtext" %>
-                        <% end %>
+                        <%= link_to song.artist.name, artist_path(song.artist), class: "c-list__item__subtext" %>
                       <% end %>
                     </div>
                   </div>
                   <div class='u-text-monospace u-mr-2'><%= format_duration(song.duration) %></div>
                 </div>
-              <% end %>
+              </button>
 
-              <details class='c-dropdown' data-controller='dropdown'>
+              <details class='c-dropdown' x-data='dropdown'>
                 <summary class="c-button c-button--icon">
                   <%= icon_tag "more-vertical", size: "small", title: t("label.more") %>
                 </summary>
-                <div class='c-dropdown__menu' data-dropdown-target="menu">
-                  <%= button_to(
-                        t("button.play_now"),
-                        current_playlist_songs_path(song_id: song.id, should_play: true),
-                        form_class: "c-dropdown__item",
-                        form: {
-                          data: {
-                            "turbo-frame" => "turbo-playlist",
-                            "delegated-action" => "turbo:submit-start->songs#checkBeforePlay click->bridge--songs#playNow",
-                            "disabled-on-native" => "true"
-                          }
-                        }
-                      ) %>
-                  <%= button_to(
-                        t("button.play_next"),
-                        current_playlist_songs_path(song_id: song.id),
-                        form_class: "c-dropdown__item",
-                        form: {
-                          data: {
-                            "turbo-frame" => "turbo-playlist",
-                            "delegated-action" => "turbo:submit-start->songs#checkBeforePlayNext click->bridge--songs#playNext",
-                            "disabled-on-native" => "true"
-                          }
-                        }
-                      ) %>
-                  <%= button_to(
-                        t("button.play_last"),
-                        current_playlist_songs_path(song_id: song.id, location: "last"),
-                        form_class: "c-dropdown__item",
-                        form: {
-                          data: {
-                            "turbo-frame" => "turbo-playlist",
-                            "delegated-action" => "click->bridge--songs#playLast",
-                            "disabled-on-native" => "true"
-                          }
-                        }
-                      ) %>
+                <div class='c-dropdown__menu' x-on:click="close">
+                  <button class='c-dropdown__item'
+                    hx-post='<%= current_playlist_songs_path(song_id: song.id, should_play: true) %>'
+                    hx-trigger='song:request'
+                    hx-target='#hx-playlist'
+                    name='current_song_id'
+                    x-bind:value='$store.player.currentSong.id'
+                    x-on:click='play'>
+                    <%= t("button.play_now") %>
+                  </button>
+                  <button class='c-dropdown__item'
+                    hx-post='<%= current_playlist_songs_path(song_id: song.id) %>'
+                    hx-target='#hx-playlist'
+                    name='current_song_id'
+                    x-bind:value='$store.player.currentSong.id'>
+                    <%= t("button.play_next") %>
+                  </button>
+                  <button class='c-dropdown__item'
+                    hx-post='<%= current_playlist_songs_path(song_id: song.id, location: "last") %>'
+                    hx-target='#hx-playlist'>
+                    <%= t("button.play_last") %>
+                  </button>
                   <%= dialog_link_to t("label.add_to_playlist"), playlists_selections_path(song_id: song.id), class: "c-dropdown__item" %>
                   <% if is_admin? %>
                     <%= dialog_link_to t("label.edit_song"), edit_song_path(song), class: "c-dropdown__item" %>
